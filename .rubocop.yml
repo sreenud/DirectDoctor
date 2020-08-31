@@ -1,0 +1,31 @@
+inherit_gem:
+  rubocop-shopify: rubocop.yml
+
+Style/FrozenStringLiteralComment:
+  Enabled: false
+  EnforcedStyle: always
+  Exclude:
+    - 'actionview/test/**/*.builder'
+    - 'actionview/test/**/*.ruby'
+    - 'actionpack/test/**/*.builder'
+    - 'actionpack/test/**/*.ruby'
+    - 'activestorage/db/migrate/**/*.rb'
+    - 'activestorage/db/update_migrate/**/*.rb'
+    - 'actionmailbox/db/migrate/**/*.rb'
+    - 'actiontext/db/migrate/**/*.rb'
+    - '**/config/deploy/**'
+    - '**/config/initializers/*.rb'
+    - '**/db/**'
+    - '**/config/environments/**'
+
+Layout/LineLength:
+  Exclude:
+    - '**/config/initializers/*.rb'
+
+Style/ClassAndModuleChildren:
+  Exclude:
+    - 'config/initializers/routing_draw.rb'
+
+Lint/SuppressedException:
+  Exclude:
+    - '**/jobs/**.rb'
