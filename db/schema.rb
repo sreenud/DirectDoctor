@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_31_074425) do
+ActiveRecord::Schema.define(version: 2020_09_01_040940) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,6 +23,51 @@ ActiveRecord::Schema.define(version: 2020_08_31_074425) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["name", "resource_type", "resource_id"], name: "index_roles_on_name_and_resource_type_and_resource_id"
     t.index ["resource_type", "resource_id"], name: "index_roles_on_resource_type_and_resource_id"
+  end
+
+  create_table "tips", force: :cascade do |t|
+    t.string "name"
+    t.string "slug"
+    t.string "code"
+    t.text "summary"
+    t.text "content"
+    t.integer "authour_id"
+    t.string "meta_title"
+    t.jsonb "meta_keywords"
+    t.text "meta_description"
+    t.string "h1_tag"
+    t.text "image_data"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["code"], name: "index_tips_on_code", unique: true
+    t.index ["slug"], name: "index_tips_on_slug", unique: true
+  end
+
+  create_table "topic_tips", force: :cascade do |t|
+    t.bigint "topic_id", null: false
+    t.bigint "tip_id", null: false
+    t.integer "position", default: 0
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["tip_id"], name: "index_topic_tips_on_tip_id"
+    t.index ["topic_id"], name: "index_topic_tips_on_topic_id"
+  end
+
+  create_table "topics", force: :cascade do |t|
+    t.string "name"
+    t.string "slug"
+    t.text "summary"
+    t.text "content"
+    t.boolean "is_popular", default: false
+    t.integer "authour_id"
+    t.string "meta_title"
+    t.jsonb "meta_keywords", default: {}
+    t.text "meta_description"
+    t.string "h1_tag"
+    t.text "image_data"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["slug"], name: "index_topics_on_slug", unique: true
   end
 
   create_table "users", force: :cascade do |t|
@@ -53,4 +98,6 @@ ActiveRecord::Schema.define(version: 2020_08_31_074425) do
     t.index ["user_id"], name: "index_users_roles_on_user_id"
   end
 
+  add_foreign_key "topic_tips", "tips"
+  add_foreign_key "topic_tips", "topics"
 end
