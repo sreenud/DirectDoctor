@@ -1,0 +1,102 @@
+.btn {
+  @apply font-normal text-base rounded cursor-pointer border border-transparent appearance-none inline-block select-none leading-normal antialiased align-baseline;
+
+  padding: 0.35rem 0.75rem;
+  transition: 0.15s ease;
+
+  &.btn-sm {
+    @apply text-sm py-px px-2;
+  }
+
+  &.btn-md {
+    @apply text-sm py-px p-1 px-4;
+  }
+
+  &.btn-lg {
+    @apply text-lg py-2 px-6;
+  }
+
+  &.btn-xl {
+    @apply text-xl py-3 px-8;
+  }
+
+  &.btn-expanded {
+    @apply block w-full;
+  }
+
+  &.btn-round {
+    @apply rounded-full;
+  }
+
+  &.btn-square {
+    @apply rounded-none;
+  }
+}
+
+.btn-default {
+  @apply bg-white border border-gray-400 text-gray-700;
+
+  &:hover,
+  &:focus {
+    @apply border-gray-700;
+  }
+}
+
+.btn-white {
+  @apply bg-white text-gray-700 border-transparent border;
+
+  &:hover,
+  &:focus {
+    @apply bg-gray-200 text-gray-800;
+  }
+
+  &.btn-outline {
+    @apply border border-white bg-transparent text-white;
+
+    &:hover,
+    &:focus {
+      @apply bg-white border border-white text-gray-800;
+    }
+  }
+}
+
+.btn-gray {
+  @apply bg-gray-300 text-gray-800;
+
+  &:hover,
+  &:focus {
+    @apply bg-gray-400;
+  }
+
+  &.btn-outline {
+    @apply bg-transparent text-gray-800 border border-gray-400;
+
+    &:hover,
+    &:focus {
+      @apply bg-gray-400;
+    }
+  }
+}
+
+.btn-transparent {
+  @apply text-gray-800 bg-transparent;
+
+  &:hover,
+  &:focus {
+    @apply bg-gray-200;
+  }
+}
+
+.btn-group {
+  .btn {
+    @apply rounded-none;
+
+    &:first-child {
+      @apply rounded-tr-none rounded-br-none border-r-0 rounded-tl rounded-bl;
+    }
+
+    &:last-child {
+      @apply rounded-tl-none rounded-bl-none border-l-0 rounded-tr rounded-br;
+    }
+  }
+}

@@ -2,7 +2,8 @@
 /* eslint-disable global-require */
 const environment = {
   plugins: [
-    require('tailwindcss'),
+    // require('tailwindcss'),
+    require('tailwindcss')('./app/javascript/stylesheets/tailwind.config.js'),
     require('autoprefixer'),
     require('postcss-import'),
     require('postcss-flexbugs-fixes'),
