@@ -1,0 +1,15 @@
+/* color */
+.text-dd-blue {
+  color: #191932;
+}
+.bg-dd-blue {
+  background-color: #191932;
+}
+
+.text-dd-yello {
+  color: #e7ab00;
+}
+
+.btn-dd-blue {
+  @apply bg-dd-blue text-white;
+}
