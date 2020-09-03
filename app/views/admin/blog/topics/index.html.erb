@@ -6,7 +6,7 @@
 <section class="flex mt-2">
   <div class="flex-1 mb-6 mr-4">
     <div class="my-2 flex sm:flex-row flex-col">
-      <%= render partial: 'search' %>
+      <%= render partial: 'search', locals: {q: @q} %>
       <div class="w-1/2">
         <a href="<%=new_admin_topic_url%>" class="btn btn-md btn-default btn-outline text-sm font-bold float-right text-gray-600">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-6 h-6 inline-block">
@@ -17,7 +17,7 @@
       </div>
     </div>
     <div class="bg-white border mb-6 rounded shadow">
-      <%= render partial: 'list' %>
+      <%= render partial: 'list', locals: {topics: @topics} %>
     </div>
   </div>
 </section>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_01_040940) do
+ActiveRecord::Schema.define(version: 2020_09_03_014604) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -39,6 +39,7 @@ ActiveRecord::Schema.define(version: 2020_09_01_040940) do
     t.text "image_data"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "status"
     t.index ["code"], name: "index_tips_on_code", unique: true
     t.index ["slug"], name: "index_tips_on_slug", unique: true
   end
@@ -61,12 +62,13 @@ ActiveRecord::Schema.define(version: 2020_09_01_040940) do
     t.boolean "is_popular", default: false
     t.integer "authour_id"
     t.string "meta_title"
-    t.jsonb "meta_keywords", default: {}
     t.text "meta_description"
     t.string "h1_tag"
     t.text "image_data"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "meta_keywords"
+    t.string "status"
     t.index ["slug"], name: "index_topics_on_slug", unique: true
   end
 

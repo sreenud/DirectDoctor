@@ -4,7 +4,10 @@ module Admin
       before_action :set_topic, only: [:show, :edit, :update, :destroy, :skills]
 
       def index
-        @topics = Topic.latest
+        @q = Topic.ransack(params[:q])
+        @topics = @q.result.latest
+
+        @pagy, @topics = pagy(@topics)
       end
 
       def show
@@ -12,9 +15,11 @@ module Admin
 
       def new
         @topic = Topic.new
+        @statuses = Topic.statuses
       end
 
       def edit
+        @statuses = Topic.statuses
       end
 
       def create
@@ -41,6 +46,13 @@ module Admin
         end
       end
 
+      def destroy
+        @topic = Topic.find(params[:id])
+        @topic.destroy
+
+        redirect_to(admin_topics_url)
+      end
+
       private
 
       def set_topic
@@ -49,7 +61,7 @@ module Admin
 
       def topic_params
         params.require(:topic).permit(:name, :slug, :summary, :content, :is_popular, :author_id, :image,
-          :meta_title, :meta_description, :h1_tag, :status, meta_keywords: [[:name]])
+          :meta_title, :meta_description, :h1_tag, :status, :meta_keywords, :status)
       end
     end
   end

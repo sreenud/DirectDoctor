@@ -1,3 +1,13 @@
+GIT
+  remote: https://github.com/waynehoover/s3_direct_upload.git
+  revision: 6f6decc75fdf89888d7f729fc89f78e90d91cece
+  specs:
+    s3_direct_upload (0.1.7)
+      coffee-rails (>= 3.1)
+      jquery-fileupload-rails (~> 0.4.1)
+      rails (>= 3.1)
+      sass-rails (>= 3.1)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -59,6 +69,22 @@ GEM
     addressable (2.7.0)
       public_suffix (>= 2.0.2, < 5.0)
     ast (2.4.0)
+    aws-eventstream (1.1.0)
+    aws-partitions (1.363.0)
+    aws-sdk-core (3.105.0)
+      aws-eventstream (~> 1, >= 1.0.2)
+      aws-partitions (~> 1, >= 1.239.0)
+      aws-sigv4 (~> 1.1)
+      jmespath (~> 1.0)
+    aws-sdk-kms (1.37.0)
+      aws-sdk-core (~> 3, >= 3.99.0)
+      aws-sigv4 (~> 1.1)
+    aws-sdk-s3 (1.79.1)
+      aws-sdk-core (~> 3, >= 3.104.3)
+      aws-sdk-kms (~> 1)
+      aws-sigv4 (~> 1.1)
+    aws-sigv4 (1.2.2)
+      aws-eventstream (~> 1, >= 1.0.2)
     bcrypt (3.1.15)
     better_errors (2.7.1)
       coderay (>= 1.0.0)
@@ -82,7 +108,15 @@ GEM
     code_analyzer (0.5.1)
       sexp_processor
     coderay (1.1.3)
+    coffee-rails (5.0.0)
+      coffee-script (>= 2.2.0)
+      railties (>= 5.2.0)
+    coffee-script (2.4.1)
+      coffee-script-source
+      execjs
+    coffee-script-source (1.12.2)
     concurrent-ruby (1.1.6)
+    content_disposition (1.0.0)
     crass (1.0.6)
     database_cleaner (1.8.5)
     devise (4.7.2)
@@ -93,13 +127,17 @@ GEM
       warden (~> 1.2.3)
     diff-lcs (1.4.4)
     docile (1.3.2)
+    down (5.1.1)
+      addressable (~> 2.5)
     erubi (1.9.0)
     erubis (2.7.0)
+    execjs (2.7.0)
     factory_bot (6.1.0)
       activesupport (>= 5.0.0)
     factory_bot_rails (6.1.0)
       factory_bot (~> 6.1.0)
       railties (>= 5.0.0)
+    fastimage (2.2.0)
     ffi (1.13.1)
     globalid (0.4.2)
       activesupport (>= 4.2.0)
@@ -108,6 +146,11 @@ GEM
     jaro_winkler (1.5.4)
     jbuilder (2.10.0)
       activesupport (>= 5.0.0)
+    jmespath (1.4.0)
+    jquery-fileupload-rails (0.4.7)
+      actionpack (>= 3.1)
+      railties (>= 3.1)
+      sass (>= 3.2)
     json (2.3.0)
     listen (3.2.1)
       rb-fsevent (~> 0.10, >= 0.10.3)
@@ -226,12 +269,30 @@ GEM
       rubocop (~> 0.82.0)
     ruby-progressbar (1.10.1)
     rubyzip (2.3.0)
+    sass (3.7.4)
+      sass-listen (~> 4.0.0)
+    sass-listen (4.0.0)
+      rb-fsevent (~> 0.9, >= 0.9.4)
+      rb-inotify (~> 0.9, >= 0.9.7)
+    sass-rails (6.0.0)
+      sassc-rails (~> 2.1, >= 2.1.1)
+    sassc (2.4.0)
+      ffi (~> 1.9)
+    sassc-rails (2.1.2)
+      railties (>= 4.0.0)
+      sassc (>= 2.0)
+      sprockets (> 3.0)
+      sprockets-rails
+      tilt
     selenium-webdriver (3.142.7)
       childprocess (>= 0.5, < 4.0)
       rubyzip (>= 1.2.2)
     sexp_processor (4.14.1)
     shoulda-matchers (4.3.0)
       activesupport (>= 4.2.0)
+    shrine (3.2.2)
+      content_disposition (~> 1.0)
+      down (~> 5.1)
     simplecov (0.18.5)
       docile (~> 1.1)
       simplecov-html (~> 0.11)
@@ -249,6 +310,7 @@ GEM
       sprockets (>= 3.0.0)
     thor (1.0.1)
     thread_safe (0.3.6)
+    tilt (2.0.10)
     turbolinks (5.2.1)
       turbolinks-source (~> 5.2)
     turbolinks-source (5.2.0)
@@ -277,6 +339,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  aws-sdk-s3 (~> 1.14)
   better_errors
   bootsnap (>= 1.4.2)
   brakeman
@@ -285,6 +348,7 @@ DEPENDENCIES
   database_cleaner
   devise
   factory_bot_rails
+  fastimage
   jbuilder (~> 2.7)
   listen (~> 3.2)
   pagy (~> 3.5)
@@ -298,8 +362,10 @@ DEPENDENCIES
   rspec-rails
   rubocop
   rubocop-shopify
+  s3_direct_upload!
   selenium-webdriver
   shoulda-matchers
+  shrine (~> 3.2)
   simplecov
   spring
   spring-watcher-listen (~> 2.0.0)

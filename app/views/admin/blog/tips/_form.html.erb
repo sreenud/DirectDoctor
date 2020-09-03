@@ -1,23 +1,27 @@
-<%= form_with(model: [:admin, topic], class: "flex w-full", data: {type: "html", action: "ajax:error->message#errorHandler ajax:success->message#success" }) do |form| %>
+<%= form_with(model: [:admin, tip], class: "flex w-full", data: {type: "html", action: "ajax:error->message#errorHandler ajax:success->message#success" }) do |form| %>
   <div class="flex-1 mb-6 mr-4">
     <div class="bg-white border pb-16 rounded shadow p-5">
-      <div class="tab_wrapper" x-data="{ tab: window.location.hash ? window.location.hash.substring(1) : 'topic' }">
+      <div class="tab_wrapper" x-data="{ tab: window.location.hash ? window.location.hash.substring(1) : 'tip' }">
         <nav class="flex border-b">
-          <div @click.prevent="tab = 'topic'; window.location.hash = 'topic'" :class="{ '-mb-px': tab === 'topic' }">
-            <a :class="tab === 'topic' ? 'border-l border-t border-r rounded-t text-blue-700' : 'text-blue-500 hover:text-blue-800'" href="#" class="bg-white inline-block py-2 px-4 font-semibold">Topic</a>
+          <div @click.prevent="tab = 'tip'; window.location.hash = 'tip'" :class="{ '-mb-px': tab === 'tip' }">
+            <a :class="tab === 'tip' ? 'border-l border-t border-r rounded-t text-blue-700' : 'text-blue-500 hover:text-blue-800'" href="#" class="bg-white inline-block py-2 px-4 font-semibold">Tip</a>
           </div>
           <div @click.prevent="tab = 'meta'; window.location.hash = 'meta'" :class="{ '-mb-px': tab === 'meta' }">
             <a :class="tab === 'meta' ? 'border-l border-t border-r rounded-t text-blue-700' : 'text-blue-500 hover:text-blue-800'" href="#" class="bg-white inline-block py-2 px-4 font-semibold">Meta tags</a>
           </div>
         </nav>
         <div class="w-full pt-4">
-          <div x-show="tab === 'topic'">
+          <div x-show="tab === 'tip'">
             <div class="input-group">
-              <%= form.label :topic_name, :class => "label text-gray-500" %>
+              <%= form.label :topics, :class => "label text-gray-500" %>
+              <%= form.select(:topic_ids, topics.collect {|topic| [ topic.name, topic.id ]}, {:prompt => "Select..."} ,{class: "select bg-gray-400", :multiple => true}) %>
+            </div>
+            <div class="input-group">
+              <%= form.label :tip_name, :class => "label text-gray-500" %>
               <%= form.text_field :name, :class => "input bg-white", :autocomplete => "off", data: {action: "keyup->slug#updateSlug", record: form.object.new_record?} %>
             </div>
             <div class="input-group">
-              <%= form.label :topic_slug, :class => "label text-gray-500" %>
+              <%= form.label :tip_slug, :class => "label text-gray-500" %>
               <%= form.text_field :slug, :class => "input bg-white", :autocomplete => "off", data: {target: "slug.slug"} %>
             </div>
             <div class="input-group">
@@ -47,7 +51,7 @@
       </div>
       <div class="float-left pt-5">
         <%= form.button(type: "submit", class: "btn btn-md btn-default btn-dd-blue btn-outline text-sm font-bold float-right", data: {disable_with: "<i class='fab fa fa-spinner fa-spin pr-2'></i> Saving in..." }) do %>
-          <span><i class='fab fa fa-floppy-o pr-2'></i><%=button_text%> Topic</span>
+          <span><i class='fab fa fa-floppy-o pr-2'></i><%=button_text%> tip</span>
         <% end %>
       </div>
     </div>
@@ -62,7 +66,7 @@
         <%= image_tag form.object.image_url if form.object.image_url %>
       </div>
       <div class="input-group">
-        <%= form.label :topic_status, :class => "label text-gray-500" %>
+        <%= form.label :tip_status, :class => "label text-gray-500" %>
         <%= form.select(:status, statuses.map {|k, v| [k.humanize.capitalize, v]}, {}, {class: "select"}) %>
       </div>
     </div>

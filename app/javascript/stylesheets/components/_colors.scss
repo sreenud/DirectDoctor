@@ -13,3 +13,19 @@
 .btn-dd-blue {
   @apply bg-dd-blue text-white;
 }
+
+.draft-badge {
+  @apply mr-2 text-blue-600 p-2;
+}
+
+.published-badge {
+  @apply mr-2 text-green-600 p-2;
+}
+
+.review-badge {
+  @apply mr-2 text-orange-600 p-2;
+}
+
+.archive-badge {
+  @apply mr-2 text-red-600 p-2;
+}

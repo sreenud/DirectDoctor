@@ -16,41 +16,42 @@
     </tr>
   </thead>
   <tbody>
-    <% topics&.each do |topic| %>
+    <% tips&.each do |tip| %>
       <tr>
         <td class="px-6 py-4 border-b border-gray-200 bg-white">
           <div class="flex">
             <div class=" w-1/4">
               <figure class="relative rounded w-full">
-                <img src="<%=topic.image_url%>" alt="<%=topic.name%>" class="w-full h-20 object-cover object-center">
+                <img src="<%=tip.image_url%>" alt="<%=tip.name%>" class="w-full h-20 object-cover object-center">
               </figure>
             </div>
             <div class="w-3/4 ml-5">
-              <div class="text-sm leading-5 font-medium text-gray-900"><%=topic.name%></div>
+              <div class="text-sm leading-5 font-medium text-gray-900"><%=tip.name%></div>
               <div class="text-sm leading-5 text-gray-500">
-                <p class=" break-words"> <%=topic.summary.truncate(130)%> </p>
+                <p class=" break-words"> <%=tip.summary.truncate(130)%> </p>
+                <p class=" break-words"> <%=tip.code%> </p>
               </div>
             </div>
           </div>
         </td>
         <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-          <div class="<%=status_style(topic.status)%> rounded-full">
-            <%=topic.status.humanize%>
+          <div class="<%=status_style(tip.status)%> rounded-full">
+            <%=tip.status.humanize%>
           </div>
         </td>
         <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
           <p class="text-gray-900 whitespace-no-wrap">
-            <%=topic.created_at%>
+            <%=tip.created_at%>
           </p>
         </td>
         <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
           <div class="flex">
-            <a href="<%=edit_admin_topic_url(topic)%>" class="text-indigo-600 hover:text-indigo-900">
+            <a href="<%=edit_admin_tip_url(tip)%>" class="text-indigo-600 hover:text-indigo-900">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" class="w-6 h-6" fill="currentColor">
                 <path d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z"></path>
               </svg>
             </a>
-            <%= link_to admin_topic_url(topic), :method => :delete, data: {confirm: 'Are you sure?' }, class: "text-red-400 hover:text-red-600" do %>
+            <%= link_to admin_tip_url(tip), :method => :delete, data: {confirm: 'Are you sure?' }, class: "text-red-400 hover:text-red-600" do %>
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-6 h-6">
                 <path d="M4 3a2 2 0 100 4h12a2 2 0 100-4H4z" />
                 <path fill-rule="evenodd" d="M3 8h14v7a2 2 0 01-2 2H5a2 2 0 01-2-2V8zm5 3a1 1 0 011-1h2a1 1 0 110 2H9a1 1 0 01-1-1z" clip-rule="evenodd" />

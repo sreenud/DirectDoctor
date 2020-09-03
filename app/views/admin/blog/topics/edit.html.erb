@@ -1,7 +1,7 @@
 <header class="flex">
   <div class="w-1/2">
     <div class="inline-flex text-gray-600">
-      <h1 class="font-semibold text-2xl">Create Topic</h1>
+      <h1 class="font-semibold text-2xl">Update Topic</h1>
     </div>
   </div>
   <div class="w-1/2">
@@ -16,6 +16,6 @@
 <section class="flex mt-6">
   <div class="w-full" data-controller="message tinymce slug topic">
     <div class="w-full z-10" data-target="message.errors"></div>
-    <%= render partial: 'form', locals: {topic: @topic, statuses: @statuses, button_text: 'Create'} %>
+    <%= render partial: 'form', locals: {topic: @topic, statuses: @statuses, button_text: 'Update'} %>
   </div>
 </section>
