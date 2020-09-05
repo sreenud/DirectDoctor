@@ -1,5 +1,6 @@
 class Tip < ApplicationRecord
   include ImageUploader::Attachment(:image)
+  acts_as_taggable_on :tags
 
   has_many :topic_tips
   has_many :topics, through: :topic_tips

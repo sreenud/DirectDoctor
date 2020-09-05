@@ -13,5 +13,13 @@ export default class extends Controller {
       removeItemButton: true,
       duplicateItemsAllowed: false,
     });
+
+    const tagsList = new Choices('#topic_tag_list', {
+      delimiter: ',',
+      editItems: true,
+      maxItemCount: 5,
+      removeItemButton: true,
+      duplicateItemsAllowed: false,
+    });
   }
 }

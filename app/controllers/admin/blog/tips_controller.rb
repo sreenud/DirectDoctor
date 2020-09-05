@@ -61,7 +61,8 @@ module Admin
 
       def tip_params
         params.require(:tip).permit(:name, :slug, :summary, :content, :author_id, :image,
-          :meta_title, :meta_description, :h1_tag, :status, :meta_keywords, :status, topic_ids: [])
+          :meta_title, :meta_description, :h1_tag, :status, :meta_keywords, :status, :tag_list,
+          topic_ids: [])
       end
     end
   end

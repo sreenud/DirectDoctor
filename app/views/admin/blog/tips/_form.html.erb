@@ -66,6 +66,10 @@
         <%= image_tag form.object.image_url if form.object.image_url %>
       </div>
       <div class="input-group">
+        <%= form.label :tags, :class => "label text-gray-500" %>
+        <%= form.text_field :tag_list, value: form.object.tag_list.to_s, :class => "input bg-white", :autocomplete => "off" %>
+      </div>
+      <div class="input-group">
         <%= form.label :tip_status, :class => "label text-gray-500" %>
         <%= form.select(:status, statuses.map {|k, v| [k.humanize.capitalize, v]}, {}, {class: "select"}) %>
       </div>

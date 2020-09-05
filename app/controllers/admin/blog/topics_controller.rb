@@ -61,7 +61,7 @@ module Admin
 
       def topic_params
         params.require(:topic).permit(:name, :slug, :summary, :content, :is_popular, :author_id, :image,
-          :meta_title, :meta_description, :h1_tag, :status, :meta_keywords, :status)
+          :meta_title, :meta_description, :h1_tag, :status, :meta_keywords, :status, :tag_list)
       end
     end
   end
