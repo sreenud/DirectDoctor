@@ -28,7 +28,6 @@ module Admin
         role = Role.find(role)
         @user.add_role(role.name)
       end
-
       respond_to do |format|
         if @user.save
           format.html { redirect_to admin_users_url, notice: 'User was successfully created.' }
@@ -63,6 +62,12 @@ module Admin
       end
     end
 
+    def destroy
+      @user.destroy
+
+      redirect_to(admin_users_url)
+    end
+
     private
 
     def set_user
@@ -71,9 +76,9 @@ module Admin
 
     def user_params(password = true)
       if password
-        params.require(:user).permit(:name, :email, :password, :password_confirmation)
+        params.require(:user).permit(:full_name, :email, :password, :password_confirmation)
       else
-        params.require(:user).permit(:name, :email)
+        params.require(:user).permit(:full_name, :email)
       end
     end
   end

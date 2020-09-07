@@ -5,4 +5,5 @@ namespace :admin do
     resources :tips
     resources :tags
   end
+  resources :users
 end

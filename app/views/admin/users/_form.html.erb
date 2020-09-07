@@ -1,0 +1,39 @@
+<%= form_with(model: [:admin, user], class: "flex w-full", data: {type: "html", action: "ajax:error->message#errorHandler ajax:success->message#success" }) do |form| %>
+  <div class="flex-1 mb-6 mr-4">
+    <div class="bg-white border pb-16 rounded shadow p-5">
+      <div class="w-full pt-4">
+        <div>
+          <div class="input-group">
+            <%= form.label :name, :class => "label text-gray-500" %>
+            <%= form.text_field :full_name, :class => "input bg-white", :autocomplete => "off" %>
+          </div>
+          <div class="input-group">
+            <%= form.label :email, :class => "label text-gray-500" %>
+            <%= form.text_field :email, :class => "input bg-white", :autocomplete => "off"%>
+          </div>
+          <div class="input-group">
+            <%= form.label :password, :class => "label text-gray-500" %>
+            <%= form.password_field :password, :class => "input bg-white" %>
+          </div>
+          <div class="input-group">
+            <%= form.label :password_confirmation, :class => "label text-gray-500" %>
+            <%= form.password_field :password_confirmation, :class => "input bg-white tinymce" %>
+          </div>
+        </div>
+      </div>
+      <div class="float-left pt-5">
+        <%= form.button(type: "submit", class: "btn btn-md btn-default btn-dd-blue btn-outline text-sm font-bold float-right", data: {disable_with: "<i class='fab fa fa-spinner fa-spin pr-2'></i> Saving in..." }) do %>
+          <span><i class='fab fa fa-floppy-o pr-2'></i><%=button_text%> User</span>
+        <% end %>
+      </div>
+    </div>
+  </div>
+  <div class="w-1/4">
+    <div class="bg-white border p-5 rounded shadow">
+      <div class="input-group">
+        <%= form.label :roles, :class => "label text-gray-500" %>
+        <%= form.select(:role_ids, roles.collect {|role| [ role.name.humanize, role.id ]}, {:prompt => "Select..."} ,{class: "select bg-gray-400", :multiple => true}) %>
+      </div>
+    </div>
+  </div>
+<% end %>

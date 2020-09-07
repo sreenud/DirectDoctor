@@ -7,6 +7,8 @@ class User < ApplicationRecord
 
   after_create :assign_default_role
 
+  validates :full_name, :email, presence: true
+
   def assign_default_role
     add_role(:patient) if roles.blank?
   end

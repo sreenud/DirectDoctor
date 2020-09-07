@@ -1,1 +1,22 @@
-<h1>Home page</h1>
+<section>
+  <div class="sm:flex sm:w-full sm:mx-32 mx-20">
+    <div class="sm:w-3/4 my-32">
+      <h1 class="font-glacialbold font-bold text-doctor-blue text-4xl w-3/6 leading-none">You deserve better healthcare!</h1>
+      <p>Find your Direct Primary Care or Concierge Doctor</p>
+    </div>
+    <div class="sm:w-1/4 relative mt-6">
+      <div class="relative">
+        <%= image_pack_tag 'light_yellow_slant.svg', class: 'w-24' %>
+      </div>
+      <div class="flex relative -mt-32 justify-end">
+        <%=image_pack_tag 'light_grey_2_lines_vertical.svg', class: 'h-32' %>
+      </div>
+      <div class="absolute right-0 mt-32">
+        <%= image_pack_tag 'light_yellow_slant.svg', class: 'w-24' %>
+      </div>
+      <div class="relative z-10 -mt-20 ml-8 mr-6">
+        <%= image_pack_tag 'doctor.svg', class: 'w-64'%>
+      </div>
+    </div>
+  </div>
+</section>
