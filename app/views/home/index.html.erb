@@ -1,8 +1,27 @@
-<section>
-  <div class="sm:flex sm:w-full sm:mx-32 mx-20">
+<section class="sm:flex sm:w-full">
+  <div class="mt-32">
+    <%= image_pack_tag 'grey_cross_vector.svg', class: "w-6"  %>
+  </div>
+  <div class="sm:flex sm:w-full sm:ml-32 sm:mr-16 mx-20">
     <div class="sm:w-3/4 my-32">
       <h1 class="font-glacialbold font-bold text-doctor-blue text-4xl w-3/6 leading-none">You deserve better healthcare!</h1>
       <p>Find your Direct Primary Care or Concierge Doctor</p>
+      <div class="flex border rounded-lg mt-6 shadow justify-between items-center">
+        <div class="inline-block">
+          <span class="inline-block mx-2 pt-4">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-5 text-gray-600">
+              <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd" />
+            </svg>
+          </span>
+          <input class="my-2" type="text" name="">
+        </div>
+        <div>
+          <input class="my-2" type="text" name="">
+        </div>
+        <div>
+          <button class="bg-doctor-yellow text-gray-100 mr-4 rounded-md px-6 py-1">Search</button>
+        </div>
+      </div>
     </div>
     <div class="sm:w-1/4 relative mt-6">
       <div class="relative">
@@ -14,9 +33,12 @@
       <div class="absolute right-0 mt-32">
         <%= image_pack_tag 'light_yellow_slant.svg', class: 'w-24' %>
       </div>
-      <div class="relative z-10 -mt-20 ml-8 mr-6">
-        <%= image_pack_tag 'doctor.svg', class: 'w-64'%>
+      <div class="relative z-10 -mt-24 ml-8 mr-6">
+        <%= image_pack_tag 'doctor.svg', class: 'w-full'%>
       </div>
     </div>
+  </div>
+  <div class="flex justify-end mt-40">
+    <%=image_pack_tag "light_grey_round_edge_sides.svg", class:"h-48"%>
   </div>
 </section>
