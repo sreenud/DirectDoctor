@@ -11,3 +11,10 @@
 @import 'tailwindcss/utilities';
 
 @import 'choices.js/public/assets/styles/choices';
+
+.bacground-image-gray {
+  background-image: url('../images/light_grey_background.png');
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
