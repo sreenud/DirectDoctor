@@ -24,7 +24,8 @@ set(:deploy_to, "/home/ubuntu/direct_doctor_uat/")
 append(:linked_files, "config/database.yml", "config/credentials.yml.enc", "config/master.key", "config/sidekiq.yml")
 
 # Default value for linked_dirs is []
-append(:linked_dirs, "log", "tmp/pids", "tmp/cache", "tmp/sockets", "public/system", "node_modules", "public/packs")
+append(:linked_dirs, "log", "tmp/pids", "tmp/cache", "tmp/sockets", "public/system", "node_modules",
+  "public/packs", "public/images")
 
 # Default value for default_env is {}
 # set :default_env, { path: "/opt/ruby/bin:$PATH" }
