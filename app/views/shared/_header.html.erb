@@ -1,7 +1,7 @@
 <header class="sm:flex sm:justify-between sm:items-center sm:px-16 sm:py-3 mx-16 mt-5" >
   <div class="flex items-center justify-between px-3 py-4 sm:p-0">
     <div>
-      <%= image_pack_tag "logo.png", alt: "Find my Direct Doctor", class: "h-10"%>
+      <%= image_pack_tag "logo.png", alt: "Find my Direct Doctor", class: "h-12"%>
     </div>
     <div class="sm:hidden" @click.away="open = false" >
       <button id="userButton" type="button" class="block hover:text-doctor-yellow focus:text-doctor-yellow focus:outline-none" @click="open = !open">
@@ -11,14 +11,49 @@
       </button>
     </div>
   </div>
-  <div id="userMenu" class="px-4 pt-2 pb-4 sm:flex sm:p-0 sm:items-center sm:justify-center" x-show="open">
+  <div id="userMenu" class="px-4 pt-2 pb-4 sm:flex sm:p-0 sm:items-center sm:justify-center hidden" x-show="open">
     <a href="#" class="block text-gray-800 font-semibold hover:text-doctor-yellow">
       Direct Doctor Directory
+      <span>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="inline w-5">
+          <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+        </svg>
+      </span>
     </a>
-    <a href="#" class="block text-gray-800 font-semibold hover:text-doctor-yellow sm:mt-0 sm:ml-4">Free Articles</a>
-    <a href="#" class="block text-gray-800 font-semibold hover:text-doctor-yellow sm:mt-0 sm:ml-4">Quiz</a>
-    <a href="#" class="block text-gray-800 font-semibold hover:text-doctor-yellow sm:mt-0 sm:ml-4">Top 10</a>
-    <a href="#" class="block text-gray-800 font-semibold hover:text-doctor-yellow sm:mt-0 sm:ml-4">For Providers</a>
-    <a href="#" class="block text-gray-800 border rounded-lg px-6 py-1 border-doctor-yellow ml-4"> Login </a>
+    <a href="#" class="block text-gray-800 font-semibold hover:text-doctor-yellow sm:mt-0 sm:ml-4">
+      Free Articles
+      <span>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="inline w-5">
+          <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+        </svg>
+      </span>
+    </a>
+    <a href="#" class="block text-gray-800 font-semibold hover:text-doctor-yellow sm:mt-0 sm:ml-4">
+      Quiz
+      <span>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="inline w-5">
+          <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+        </svg>
+      </span>
+    </a>
+    <a href="#" class="block text-gray-800 font-semibold hover:text-doctor-yellow sm:mt-0 sm:ml-4">
+      Top 10
+      <span>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="inline w-5">
+          <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+        </svg>
+      </span>
+    </a>
+    <a href="#" class="block text-gray-800 font-semibold hover:text-doctor-yellow sm:mt-0 sm:ml-4">
+      For Providers
+      <span>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="inline w-5">
+          <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+        </svg>
+      </span>
+    </a>
+    <a href="#" class="block text-gray-800 border rounded-lg px-6 py-1 border-doctor-yellow ml-4">
+      Login
+    </a>
   </div>
 </header>

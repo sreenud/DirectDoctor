@@ -1,25 +1,30 @@
 <section class="sm:flex sm:w-full">
-  <div class="mt-32">
-    <%= image_pack_tag 'grey_cross_vector.svg', class: "w-6"  %>
+  <div class="sm:mt-32">
+    <%= image_pack_tag 'grey_cross_vector.svg', class: "w-6" %>
   </div>
   <div class="sm:flex sm:w-full sm:ml-32 sm:mr-16 mx-20">
-    <div class="sm:w-3/4 my-32">
+    <div class="sm:w-3/4 sm:my-32">
       <h1 class="font-glacialbold font-bold text-doctor-blue text-4xl w-3/6 leading-none">You deserve better healthcare!</h1>
       <p>Find your Direct Primary Care or Concierge Doctor</p>
-      <div class="flex border rounded-lg mt-6 shadow justify-between items-center">
-        <div class="inline-block">
-          <span class="inline-block mx-2 pt-4">
+      <div class="flex border rounded-lg mt-6 shadow justify-between items-center sm:mr-24 py-1">
+        <div class="flex justify-center items-center w-full border-r pr-4">
+          <label class="ml-3 mr-5">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-5 text-gray-600">
               <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd" />
             </svg>
-          </span>
-          <input class="my-2" type="text" name="">
+          </label>
+          <input class="my-2 w-full focus:outline-none" type="text" name="" placeholder="Name/Speciality">
+        </div>
+        <div class="flex justify-center items-center w-full pr-4">
+          <label class="ml-3 mr-5">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-5 text-gray-600">
+              <path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd" />
+            </svg>
+          </label>
+          <input class="my-2 w-full focus:outline-none" type="text" name="" placeholder="Zip/City/State">
         </div>
         <div>
-          <input class="my-2" type="text" name="">
-        </div>
-        <div>
-          <button class="bg-doctor-yellow text-gray-100 mr-4 rounded-md px-6 py-1">Search</button>
+          <button class="bg-doctor-yellow text-gray-100 mr-4 rounded-md px-8 py-1">Search</button>
         </div>
       </div>
     </div>
@@ -27,18 +32,404 @@
       <div class="relative">
         <%= image_pack_tag 'light_yellow_slant.svg', class: 'w-24' %>
       </div>
-      <div class="flex relative -mt-32 justify-end">
+      <div class="flex relative sm:-mt-32 -mt-24 justify-end">
         <%=image_pack_tag 'light_grey_2_lines_vertical.svg', class: 'h-32' %>
       </div>
-      <div class="absolute right-0 mt-32">
+      <div class="absolute right-0 sm:mt-0 sm:mr-0 md:mt-32 mt-32 mr-32">
         <%= image_pack_tag 'light_yellow_slant.svg', class: 'w-24' %>
       </div>
       <div class="relative z-10 -mt-24 ml-8 mr-6">
-        <%= image_pack_tag 'doctor.svg', class: 'w-full'%>
+        <%= image_pack_tag 'doctor.svg', class: 'sm:w-full w-64'%>
       </div>
     </div>
   </div>
-  <div class="flex justify-end mt-40">
+  <div class="sm:flex sm:justify-end sm:mt-40 hidden">
     <%=image_pack_tag "light_grey_round_edge_sides.svg", class:"h-48"%>
   </div>
 </section>
+<section  class="sm:flex sm:w-full">
+  <div>
+    <%= image_pack_tag 'yellow_circle_small.svg', class: "w-6" %>
+  </div>
+  <div class="sm:flex sm:w-full sm:ml-32 sm:mr-16 mx-20">
+    <div class="sm:w-3/4 my-4">
+      <div class="font-glacialbold text-2xl text-doctor-blue tracking-wide">
+        What we do
+      </div>
+      <div class="mt-5 font-glacialbold text-2xl text-doctor-blue tracking-wide">
+        PhysicianEstate is a Physician - <span class="text-doctor-yellow">Operated</span>
+      </div>
+      <div class="font-glacialbold text-2xl text-doctor-blue tracking-wide">
+        Real Estate for Doctors - <span class="text-doctor-yellow">Resources</span>
+      </div>
+      <div class="font-glacialbold text-2xl text-doctor-blue tracking-wide">
+        Physician Resources in - <span class="text-doctor-yellow">Immigration</span>
+      </div>
+    </div>
+  </div>
+  <div class="flex mt-32">
+    <div class="mr-4">
+      <%= image_pack_tag 'light_yellow_slant.svg', class: "w-16" %>
+    </div>
+    <div class="absolute -ml-6 mt-8">
+      <%= image_pack_tag 'yellow_circle_big_shadow.svg', class: "w-12" %>
+    </div>
+  </div>
+</section>
+<section class="sm:flex sm:w-full">
+  <div class="flex">
+    <div class="mt-32">
+      <%= image_pack_tag 'yellow_half_circle_thick.svg', class: "w-20" %>
+    </div>
+    <div class="relative z-10 -ml-18 mt-24">
+      <%= image_pack_tag 'yellow_circle_full.svg', class: "w-8" %>
+    </div>
+  </div>
+  <div class="sm:flex sm:w-full sm:ml-16 sm:mr-16 sm:mt-16 mx-20 sm:justify-cente bg-cover bg-center" style="background-image: url(roundedRectangle3cop_11.png)">
+    <div class="sm:w-1/2 my-4 sm:mt-24 sm:mx-16">
+      <div class="font-glacialbold text-2xl text-doctor-blue tracking-wide">
+        <h2>Senario-1 explainer, goes here</h2>
+      </div>
+      <div class="border-b border-doctor-yellow pb-3 w-40"></div>
+      <div class="mt-5">
+        The content for senario-1 explainer should come here. The content for senario-1 explainer should come here.
+      </div>
+      <div class="mt-6">
+        Read more...
+      </div>
+    </div>
+    <div class="sm:w-1/2 my-4 overflow-hidden">
+      <%= image_pack_tag 'illustration_1.png', class: "w-full" %>
+    </div>
+  </div>
+  <div class="mt-12">
+    <%= image_pack_tag 'off_white_half_full_circle.svg', class: "w-20" %>
+  </div>
+</section>
+<section class="sm:flex sm:w-full">
+  <div class="sm:flex sm:w-full sm:ml-40 sm:mr-16 sm:mt-16 mx-20 sm:justify-center bg-cover bg-center" style="background-image: url(roundedRectangle3cop_11.png)">
+    <div class="sm:w-1/2 my-4 overflow-hidden">
+      <%= image_pack_tag 'illustration_2.png', class: "w-full" %>
+    </div>
+    <div class="sm:w-1/2 my-4 sm:mt-24 sm:mx-16">
+      <div class="font-glacialbold text-2xl text-doctor-blue tracking-wide">
+        <h2>Senario-1 explainer, goes here</h2>
+      </div>
+      <div class="border-b border-doctor-yellow pb-3 w-40"></div>
+      <div class="mt-5">
+        The content for senario-1 explainer should come here. The content for senario-1 explainer should come here.
+      </div>
+      <div class="mt-6">
+        Read more...
+      </div>
+    </div>
+  </div>
+  <div class="mt-12">
+    <%= image_pack_tag 'off_white_half_full_circle.svg', class: "w-20" %>
+  </div>
+</section>
+<section class="sm:flex sm:w-full bg-cover mt-16" style="background-image: url(light_grey_background.png);">
+  <div class="sm:flex sm:w-full sm:ml-32 sm:mr-32 sm:mt-16 mx-20 sm:justify-center sm:flex-wrap">
+    <div class="w-full flex justify-center">
+      <div class="flex border rounded-lg shadow justify-between items-center sm:mr-24 py-1 w-2/4 bg-white">
+        <div class="flex justify-center items-center w-full">
+          <label class="ml-3 mr-5">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-5 text-gray-600">
+              <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd" />
+            </svg>
+          </label>
+          <input class="my-2 w-full focus:outline-none" type="text" name="" placeholder="Find a DPC/Concierge doctor near you">
+        </div>
+        <div>
+          <button class="bg-doctor-yellow text-gray-100 mr-4 rounded-md px-8 py-1">Search</button>
+        </div>
+      </div>
+    </div>
+    <div class="w-full mt-24 text-center">
+      <h2 class="text-2xl font-glacialbold text-doctor-blue tracking-wider">Content placement of Senario-2 explainer</h2>
+      <p class=" inline">Omit this, if there's no Additional Content for this line </p>
+    </div>
+    <div class="flex w-full mt-20 justify-center pb-16">
+      <div class="w-1/3 bg-gray-100 rounded-tl-lg rounded-br-lg px-6 py-6">
+        <h3 class="font-glacialbold text-lg text-doctor-blue flex items-center">
+          <span class="mx-2">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-5 h-5">
+              <path fill-rule="evenodd" d="M4.083 9h1.946c.089-1.546.383-2.97.837-4.118A6.004 6.004 0 004.083 9zM10 2a8 8 0 100 16 8 8 0 000-16zm0 2c-.076 0-.232.032-.465.262-.238.234-.497.623-.737 1.182-.389.907-.673 2.142-.766 3.556h3.936c-.093-1.414-.377-2.649-.766-3.556-.24-.56-.5-.948-.737-1.182C10.232 4.032 10.076 4 10 4zm3.971 5c-.089-1.546-.383-2.97-.837-4.118A6.004 6.004 0 0115.917 9h-1.946zm-2.003 2H8.032c.093 1.414.377 2.649.766 3.556.24.56.5.948.737 1.182.233.23.389.262.465.262.076 0 .232-.032.465-.262.238-.234.498-.623.737-1.182.389-.907.673-2.142.766-3.556zm1.166 4.118c.454-1.147.748-2.572.837-4.118h1.946a6.004 6.004 0 01-2.783 4.118zm-6.268 0C6.412 13.97 6.118 12.546 6.03 11H4.083a6.004 6.004 0 002.783 4.118z" clip-rule="evenodd" />
+            </svg>
+          </span>
+          1. Main heading
+        </h3>
+        <div></div>
+        <p class="px-8 my-4 border-l-2 ml-4">
+          The content for senario-1 explainer should come here. The content for senario-1 explainer should come here.
+          The content for senario-1 explainer should come here. The content for senario-1 explainer should come here.
+        </p>
+      </div>
+      <div class="w-1/3 bg-gray-100 rounded-tl-lg rounded-br-lg px-6 py-6 ml-8">
+        <h3 class="font-glacialbold text-lg text-doctor-blue flex items-center">
+          <span class="mx-2">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-5 h-5">
+              <path fill-rule="evenodd" d="M4.083 9h1.946c.089-1.546.383-2.97.837-4.118A6.004 6.004 0 004.083 9zM10 2a8 8 0 100 16 8 8 0 000-16zm0 2c-.076 0-.232.032-.465.262-.238.234-.497.623-.737 1.182-.389.907-.673 2.142-.766 3.556h3.936c-.093-1.414-.377-2.649-.766-3.556-.24-.56-.5-.948-.737-1.182C10.232 4.032 10.076 4 10 4zm3.971 5c-.089-1.546-.383-2.97-.837-4.118A6.004 6.004 0 0115.917 9h-1.946zm-2.003 2H8.032c.093 1.414.377 2.649.766 3.556.24.56.5.948.737 1.182.233.23.389.262.465.262.076 0 .232-.032.465-.262.238-.234.498-.623.737-1.182.389-.907.673-2.142.766-3.556zm1.166 4.118c.454-1.147.748-2.572.837-4.118h1.946a6.004 6.004 0 01-2.783 4.118zm-6.268 0C6.412 13.97 6.118 12.546 6.03 11H4.083a6.004 6.004 0 002.783 4.118z" clip-rule="evenodd" />
+            </svg>
+          </span>
+          1. Main heading
+        </h3>
+        <div></div>
+        <p class="px-8 my-4 border-l-2 ml-4">
+          The content for senario-1 explainer should come here. The content for senario-1 explainer should come here.
+          The content for senario-1 explainer should come here. The content for senario-1 explainer should come here.
+        </p>
+      </div>
+      <div class="w-1/3 bg-gray-100 rounded-tl-lg rounded-br-lg px-6 py-6 ml-8">
+        <h3 class="font-glacialbold text-lg text-doctor-blue flex items-center">
+          <span class="mx-2">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-5 h-5">
+              <path fill-rule="evenodd" d="M4.083 9h1.946c.089-1.546.383-2.97.837-4.118A6.004 6.004 0 004.083 9zM10 2a8 8 0 100 16 8 8 0 000-16zm0 2c-.076 0-.232.032-.465.262-.238.234-.497.623-.737 1.182-.389.907-.673 2.142-.766 3.556h3.936c-.093-1.414-.377-2.649-.766-3.556-.24-.56-.5-.948-.737-1.182C10.232 4.032 10.076 4 10 4zm3.971 5c-.089-1.546-.383-2.97-.837-4.118A6.004 6.004 0 0115.917 9h-1.946zm-2.003 2H8.032c.093 1.414.377 2.649.766 3.556.24.56.5.948.737 1.182.233.23.389.262.465.262.076 0 .232-.032.465-.262.238-.234.498-.623.737-1.182.389-.907.673-2.142.766-3.556zm1.166 4.118c.454-1.147.748-2.572.837-4.118h1.946a6.004 6.004 0 01-2.783 4.118zm-6.268 0C6.412 13.97 6.118 12.546 6.03 11H4.083a6.004 6.004 0 002.783 4.118z" clip-rule="evenodd" />
+            </svg>
+          </span>
+          1. Main heading
+        </h3>
+        <div></div>
+        <p class="px-8 my-4 border-l-2 ml-4">
+          The content for senario-1 explainer should come here. The content for senario-1 explainer should come here.
+          The content for senario-1 explainer should come here. The content for senario-1 explainer should come here.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="sm:flex sm:w-full">
+  <div class="sm:flex sm:w-full sm:ml-32 sm:mr-32 sm:mt-16 mx-20 sm:justify-center sm:flex-wrap">
+    <div class="w-full text-center">
+      <h3 class="text-doctor-blue font-glacialbold text-2xl tracking-wider">
+        Regular/Traditional Primary Care
+        <span class="text-doctor-yellow capitalize text-4xl font-glacialbold"><em>VS</em></span>
+        DPC Concierge Doctor
+      </h3>
+      <div class="flex w-full justify-center">
+        <div class="w-1/2 text-center mt-4">
+          <span class="border border-doctor-yellow rounded-full px-4 py-2">Free for service</span>
+        </div>
+        <div class="w-1/2 text-center mt-4">
+          <span class="border border-doctor-yellow rounded-full px-4 py-2">Membership Model</span>
+        </div>
+      </div>
+    </div>
+    <div class="flex w-full justify-center mt-16">
+      <div class="w-1/2 border border-doctor-yellow rounded-tl-lg rounded-bl-lg border-r-0 shadow-xl">
+        <%= image_pack_tag 'illustration_3.png', class: "w-full p-8" %>
+        <p class="mx-8 text-center mt-6 mb-12">
+          The content for Illustration-2 explainer should be here. The content for Illustration-2 explainer should be here.
+        </p>
+      </div>
+      <div class="w-1/2 border border-doctor-yellow rounded-tr-lg rounded-br-lg shadow-xl">
+        <%= image_pack_tag 'illustration_4.png', class: "w-full  p-8" %>
+        <p class="mx-8 text-center mt-6 mb-12">
+          The content for Illustration-2 explainer should be here. The content for Illustration-2 explainer should be here.
+        </p>
+      </div>
+    </div>
+    <div class="flex w-full justify-center mt-16">
+      <div class="w-1/2 border border-doctor-yellow rounded-tl-lg rounded-bl-lg border-r-0 shadow-xl">
+        <%= image_pack_tag 'illustration_6.png', class: "w-full p-8" %>
+        <p class="mx-8 text-center mt-6 mb-12">
+          The content for Illustration-2 explainer should be here. The content for Illustration-2 explainer should be here.
+        </p>
+      </div>
+      <div class="w-1/2 border border-doctor-yellow rounded-tr-lg rounded-br-lg shadow-xl">
+        <%= image_pack_tag 'illustration_5.png', class: "w-full  p-8" %>
+        <p class="mx-8 text-center mt-6 mb-12">
+          The content for Illustration-2 explainer should be here. The content for Illustration-2 explainer should be here.
+        </p>
+      </div>
+    </div>
+    <div class="flex w-full justify-center mt-16">
+      <div class="w-1/2 border border-doctor-yellow rounded-tl-lg rounded-bl-lg border-r-0 shadow-xl">
+        <%= image_pack_tag 'illustration_8.png', class: "w-full p-8" %>
+        <p class="mx-8 text-center mt-6 mb-12">
+          The content for Illustration-2 explainer should be here. The content for Illustration-2 explainer should be here.
+        </p>
+      </div>
+      <div class="w-1/2 border border-doctor-yellow rounded-tr-lg rounded-br-lg shadow-xl">
+        <%= image_pack_tag 'illustration_7.png', class: "w-full  p-8" %>
+        <p class="mx-8 text-center mt-6 mb-12">
+          The content for Illustration-2 explainer should be here. The content for Illustration-2 explainer should be here.
+        </p>
+      </div>
+    </div>
+    <div class="flex w-full justify-center mt-16">
+      <div class="w-1/2 border border-doctor-yellow rounded-tl-lg rounded-bl-lg border-r-0 shadow-xl">
+        <%= image_pack_tag 'illustration_10.png', class: "w-full p-8" %>
+        <p class="mx-8 text-center mt-6 mb-12">
+          The content for Illustration-2 explainer should be here. The content for Illustration-2 explainer should be here.
+        </p>
+      </div>
+      <div class="w-1/2 border border-doctor-yellow rounded-tr-lg rounded-br-lg shadow-xl">
+        <%= image_pack_tag 'illustration_9.png', class: "w-full  p-8" %>
+        <p class="mx-8 text-center mt-6 mb-12">
+          The content for Illustration-2 explainer should be here. The content for Illustration-2 explainer should be here.
+        </p>
+      </div>
+    </div>
+    <div class="flex w-full justify-center mt-16">
+      <div class="w-1/2 border border-doctor-yellow rounded-tl-lg rounded-bl-lg border-r-0 shadow-xl">
+        <%= image_pack_tag 'illustration_12.png', class: "w-full p-8" %>
+        <p class="mx-8 text-center mt-6 mb-12">
+          The content for Illustration-2 explainer should be here. The content for Illustration-2 explainer should be here.
+        </p>
+      </div>
+      <div class="w-1/2 border border-doctor-yellow rounded-tr-lg rounded-br-lg shadow-xl">
+        <%= image_pack_tag 'illustration_11.png', class: "w-full  p-8" %>
+        <p class="mx-8 text-center mt-6 mb-12">
+          The content for Illustration-2 explainer should be here. The content for Illustration-2 explainer should be here.
+        </p>
+      </div>
+    </div>
+    <div class="flex w-full justify-center mt-16">
+      <div class="w-1/2 border border-doctor-yellow rounded-tl-lg rounded-bl-lg border-r-0 shadow-xl">
+        <%= image_pack_tag 'illustration_14.png', class: "w-full p-8" %>
+        <p class="mx-8 text-center mt-6 mb-12">
+          The content for Illustration-2 explainer should be here. The content for Illustration-2 explainer should be here.
+        </p>
+      </div>
+      <div class="w-1/2 border border-doctor-yellow rounded-tr-lg rounded-br-lg shadow-xl">
+        <%= image_pack_tag 'illustration_13.png', class: "w-full  p-8" %>
+        <p class="mx-8 text-center mt-6 mb-12">
+          The content for Illustration-2 explainer should be here. The content for Illustration-2 explainer should be here.
+        </p>
+      </div>
+    </div>
+    <div class="flex w-full justify-center mt-16">
+      <div class="w-1/2 border border-doctor-yellow rounded-tl-lg rounded-bl-lg border-r-0 shadow-xl">
+        <%= image_pack_tag 'illustration_15.png', class: "w-full p-8" %>
+        <p class="mx-8 text-center mt-6 mb-12">
+          The content for Illustration-2 explainer should be here. The content for Illustration-2 explainer should be here.
+        </p>
+      </div>
+      <div class="w-1/2 border border-doctor-yellow rounded-tr-lg rounded-br-lg shadow-xl">
+        <%= image_pack_tag 'illustration_16.png', class: "w-full  p-8" %>
+        <p class="mx-8 text-center mt-6 mb-12">
+          The content for Illustration-2 explainer should be here. The content for Illustration-2 explainer should be here.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="sm:flex sm:w-full mt-12 bg-cover bg-no-repeat" style="background-image: url(light_yellow_section_background.svg);">
+  <div class="sm:flex sm:w-full sm:ml-32 sm:mr-32 sm:mt-16 mx-20 sm:justify-center sm:flex-wrap">
+    <div class="w-full mx-10 mt-16">
+      <h3 class="text-doctor-blue font-glacialbold text-2xl tracking-wider">
+        Take a Quiz to find out if you would benefit from a Primary Doctor/ Concierge Doctor/ Traditional Doctor
+      </h3>
+    </div>
+    <div class="w-full mx-12 mt-10 ">
+      <div class="p-4 flex w-full">
+        <div class="w-3/4 text-xl tracking-wider">
+          The content Quiz question should come here.
+        </div>
+        <div class="w-1/4">
+          <a href="#" class="border border-doctor-yellow px-3 py-1 text-gray-600 rounded-full">
+            Yes
+          </a>
+          <a class="border border-doctor-yellow px-4 py-1 text-gray-600 rounded-full ml-4">
+            No
+          </a>
+        </div>
+      </div>
+      <div class="p-4 flex w-full">
+        <div class="w-3/4 text-xl tracking-wider">
+          The content Quiz question should come here.
+        </div>
+        <div class="w-1/4">
+          <a href="#" class="border border-doctor-yellow px-3 py-1 text-gray-600 rounded-full">
+            Yes
+          </a>
+          <a class="border border-doctor-yellow px-4 py-1 text-gray-600 rounded-full ml-4">
+            No
+          </a>
+        </div>
+      </div>
+      <div class="p-4 flex w-full">
+        <div class="w-3/4 text-xl tracking-wider">
+          The content Quiz question should come here.
+        </div>
+        <div class="w-1/4">
+          <a href="#" class="border border-doctor-yellow px-3 py-1 text-gray-600 rounded-full">
+            Yes
+          </a>
+          <a class="border border-doctor-yellow px-4 py-1 text-gray-600 rounded-full ml-4">
+            No
+          </a>
+        </div>
+      </div>
+      <div class="p-4 flex w-full">
+        <div class="w-3/4 text-xl tracking-wider">
+          The content Quiz question should come here.
+        </div>
+        <div class="w-1/4">
+          <a href="#" class="border border-doctor-yellow px-3 py-1 text-gray-600 rounded-full">
+            Yes
+          </a>
+          <a class="border border-doctor-yellow px-4 py-1 text-gray-600 rounded-full ml-4">
+            No
+          </a>
+        </div>
+      </div>
+      <div class="p-4 flex w-full">
+        <div class="w-3/4 text-xl tracking-wider">
+          The content Quiz question should come here.
+        </div>
+        <div class="w-1/4">
+          <a href="#" class="border border-doctor-yellow px-3 py-1 text-gray-600 rounded-full">
+            Yes
+          </a>
+          <a class="border border-doctor-yellow px-4 py-1 text-gray-600 rounded-full ml-4">
+            No
+          </a>
+        </div>
+      </div>
+      <div class="p-4 flex w-full">
+        <div class="w-3/4 text-xl tracking-wider">
+          The content Quiz question should come here.
+        </div>
+        <div class="w-1/4">
+          <a href="#" class="border border-doctor-yellow px-3 py-1 text-gray-600 rounded-full">
+            Yes
+          </a>
+          <a class="border border-doctor-yellow px-4 py-1 text-gray-600 rounded-full ml-4">
+            No
+          </a>
+        </div>
+      </div>
+      <div class="p-4 flex w-full">
+        <div class="w-3/4 text-xl tracking-wider">
+          The content Quiz question should come here.
+        </div>
+        <div class="w-1/4">
+          <a href="#" class="border border-doctor-yellow px-3 py-1 text-gray-600 rounded-full">
+            Yes
+          </a>
+          <a class="border border-doctor-yellow px-4 py-1 text-gray-600 rounded-full ml-4">
+            No
+          </a>
+        </div>
+      </div>
+      <div class="flex w-full justify-end">
+        <div class="w-1/4 mt-12 mb-20">
+          <button class="bg-doctor-yellow px-8 py-2 rounded-lg text-gray-100 shadow">
+            Submit
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!--<section class="sm:flex sm:w-full mt-12">
+  <div class="sm:flex sm:w-full sm:ml-32 sm:mr-32 sm:mt-8 mx-20 sm:justify-center sm:flex-wrap">
+    <div class="w-full mx-10 mt-8">
+      <h3 class="text-doctor-blue font-glacialbold text-2xl tracking-wider">
+        Doctors Directory
+      </h3>
+    </div>
+  </div>
+</section>-->

@@ -7,7 +7,7 @@
     <%= stylesheet_pack_tag 'application_style', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-  <body class="font-glacial  overflow-hidden">
+  <body class="font-glacial">
     <%= render partial: 'shared/header' %>
     <div class="absolute top-0">
       <div class="absolute">
@@ -22,8 +22,9 @@
         <%=image_pack_tag "yellow_circle_outline_opacity_right.png", class:"w-20"%>
       </div>
     </div>
-    <div class="flex sm:justify-between sm:items-center">
+    <div class="flex sm:justify-between sm:items-center flex-wrap">
       <%= yield %>
     </div>
+    <%= render partial: 'shared/footer' %>
   </body>
 </html>
