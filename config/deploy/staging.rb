@@ -11,7 +11,7 @@
 set(:branch, "development")
 set(:deploy_to, "/home/ubuntu/direct_doctor_uat/")
 
-server("3.23.128.53", user: "ubuntu", roles: %w[app db web])
+server("52.147.196.96", user: "azureuser", roles: %w[app db web])
 
 # role-based syntax
 # ==================
