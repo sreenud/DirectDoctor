@@ -9,7 +9,7 @@
 # server "example.com", user: "deploy", roles: %w{app web}, other_property: :other_value
 # server "db.example.com", user: "deploy", roles: %w{db}
 set(:branch, "development")
-set(:deploy_to, "/home/ubuntu/direct_doctor_uat/")
+set(:deploy_to, "/home/azureuser/direct_doctor_uat/")
 
 server("52.147.196.96", user: "azureuser", roles: %w[app db web])
 
