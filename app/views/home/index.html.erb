@@ -52,19 +52,41 @@
     <%= image_pack_tag 'yellow_circle_small.svg', class: "w-6" %>
   </div>
   <div class="sm:flex sm:w-full sm:ml-32 sm:mr-16 mx-20">
-    <div class="sm:w-3/4 my-4">
+    <div class="sm:w-4/6 my-4">
       <div class="font-glacialbold text-2xl text-doctor-blue tracking-wide">
         What we do
       </div>
-      <div class="mt-5 font-glacialbold text-2xl text-doctor-blue tracking-wide">
-        PhysicianEstate is a Physician - <span class="text-doctor-yellow">Operated</span>
+      <div class="mt-5 font-glacialbold text-xl text-doctor-blue tracking-wide">
+        Direct Primary Care (DPC) and Concierge Medicine doctors -
+        <div class="verticalFlip">
+          <span class="text-doctor-yellow">Directory</span>
+          <span class="text-doctor-yellow">Listings</span>
+          <span class="text-doctor-yellow">Directory</span>
+          <span class="text-doctor-yellow">Listings</span>
+        </div>
       </div>
-      <div class="font-glacialbold text-2xl text-doctor-blue tracking-wide">
-        Real Estate for Doctors - <span class="text-doctor-yellow">Resources</span>
+      <div class="font-glacialbold text-xl text-doctor-blue tracking-wide">
+        Exponentially grow patient awareness of -
+        <div class="verticalFlip">
+          <span class="text-doctor-yellow">DPC benefits</span>
+          <span class="text-doctor-yellow">Concierge Medicine benefits</span>
+          <span class="text-doctor-yellow">DPC benefits</span>
+          <span class="text-doctor-yellow">Concierge Medicine benefits</span>
+        </div>
       </div>
-      <div class="font-glacialbold text-2xl text-doctor-blue tracking-wide">
-        Physician Resources in - <span class="text-doctor-yellow">Immigration</span>
+      <div class="font-glacialbold text-xl text-doctor-blue tracking-wide">
+        Connect patients with best-suited boutique -
+        <div class="verticalFlip">
+          <span class="text-doctor-yellow">Concierge doctor</span>
+          <span class="text-doctor-yellow">DPC doctor</span>
+          <span class="text-doctor-yellow">Concierge doctor</span>
+          <span class="text-doctor-yellow">DPC doctor</span>
+        </div>
       </div>
+    </div>
+    <div class="md:w-2/6 flex flex-col justify-center">
+      <div class="border shadow-md px-8 py-2 rounded-lg hover:border-gray-500">Find a Concierge near me</div>
+      <div class="border shadow-md px-8 py-2 rounded-lg mt-8 hover:border-gray-500">Find a Direct Primary Care Doctor near me</div>
     </div>
   </div>
   <div class="flex mt-32">
@@ -85,49 +107,91 @@
       <%= image_pack_tag 'yellow_circle_full.svg', class: "w-8" %>
     </div>
   </div>
-  <div class="sm:flex sm:w-full sm:ml-16 sm:mr-16 sm:mt-16 mx-20 sm:justify-cente bg-cover bg-center" style="background-image: url(system/roundedRectangle3cop_11.png)">
-    <div class="sm:w-1/2 my-4 sm:mt-24 sm:mx-16">
-      <div class="font-glacialbold text-2xl text-doctor-blue tracking-wide">
-        <h2>Senario-1 explainer, goes here</h2>
-      </div>
-      <div class="border-b border-doctor-yellow pb-3 w-40"></div>
-      <div class="mt-5">
-        The content for senario-1 explainer should come here. The content for senario-1 explainer should come here.
-      </div>
-      <div class="mt-6">
-        Read more...
+  <div class="sm:grid sm:w-full sm:ml-12 sm:mr-16 sm:mt-16 mx-20 sm:justify-cente bg-cover bg-center" style="background-image: url(system/roundedRectangle3cop_11.png)">
+    <div class="grid py-4 pl-4">
+      <div class="w-full font-glacialbold text-2xl text-doctor-blue tracking-wide">
+        <h2>Insurance based healthcare – NOT effective!</h2>
+        <div class="border-b border-doctor-yellow pb-3 w-40"></div>
       </div>
     </div>
-    <div class="sm:w-1/2 my-4 overflow-hidden">
-      <%= image_pack_tag 'illustration_1.png', class: "w-full" %>
+    <div class="flex w-full">
+      <div class="sm:w-1/2 my-4 sm:mt-16 sm:mx-8">
+        <div class="mt-5">
+          <p>Tired of being another number in your doctor’s office?</p>
+          <p class="mt-4">Tired of insurance companies determining the quality of your healthcare?</p>
+        </div>
+      </div>
+      <div class="sm:w-1/2 my-4 overflow-hidden h-">
+        <%= image_pack_tag 'illustration_1.png', class: "h-56 w-full object-cover" %>
+      </div>
+    </div>
+    <div class="grid py-4 pr-4">
+      <div class="w-full font-glacialbold text-2xl text-doctor-blue tracking-wide text-right mt-4">
+        <h2>Concierge doctor = No insurance hassle = VERY effective!!</h2>
+        <div class="border-b border-doctor-yellow pb-3 w-40 float-right"></div>
+      </div>
+    </div>
+    <div class="flex w-full">
+      <div class="sm:w-1/2 my-4 overflow-hidden h-">
+        <%= image_pack_tag 'illustration_2.png', class: "h-56 w-full object-cover"  %>
+      </div>
+      <div class="sm:w-1/2 my-4 sm:mt-12 sm:mx-8">
+        <div class="mt-5">
+          <p> Direct Primary Care / Concierge Medicine Doctors are breaking the shackles from their insurance-reimbursed traditional practices, in efforts to provide a rejuvenated patient-focused health care.</p>
+          <p class="mt-6">Difference between <span class="underline">Concierge doctor and traditional insurance based doctor</span>
+          </p>
+        </div>
+      </div>
     </div>
   </div>
   <div class="mt-12">
     <%= image_pack_tag 'off_white_half_full_circle.svg', class: "w-20" %>
   </div>
 </section>
-<section class="sm:flex sm:w-full">
-  <div class="sm:flex sm:w-full sm:ml-40 sm:mr-16 sm:mt-16 mx-20 sm:justify-center bg-cover bg-center" style="background-image: url(system/roundedRectangle3cop_11.png)">
-    <div class="sm:w-1/2 my-4 overflow-hidden">
-      <%= image_pack_tag 'illustration_2.png', class: "w-full" %>
+<section class="sm:flex sm:w-full mt-16">
+  <div class="sm:flex sm:w-full sm:ml-32 sm:mr-32 mx-20 sm:flex-wrap">
+    <div class="w-full">
+      <h3 class="text-doctor-blue font-glacialbold text-3xl tracking-wider mt-10">
+        The Concierge Doctor Difference
+      </h3>
     </div>
-    <div class="sm:w-1/2 my-4 sm:mt-24 sm:mx-16">
-      <div class="font-glacialbold text-2xl text-doctor-blue tracking-wide">
-        <h2>Senario-1 explainer, goes here</h2>
-      </div>
-      <div class="border-b border-doctor-yellow pb-3 w-40"></div>
-      <div class="mt-5">
-        The content for senario-1 explainer should come here. The content for senario-1 explainer should come here.
-      </div>
-      <div class="mt-6">
-        Read more...
-      </div>
-    </div>
-  </div>
-  <div class="mt-12 relative">
-    <div class="">
-      <%= image_pack_tag 'yellow_circle_big_shadow.svg', class: "w-20 absolute bottom-0 left-0" %>
-      <%= image_pack_tag 'off_white_circle_full.svg', class: "w-20" %>
+    <div class="w-11/12 mt-10">
+      <ul class="list-disc list-outside ml-4">
+        <li>Imagine a scenario where your doctor is not rushed, not boggled down by paperwork, and he/she has all the time you need to sit down and discuss your health. –
+          <div class="verticalFlip">
+            <span class="text-doctor-yellow">Exclusive & privileged</span>
+            <span class="text-doctor-yellow">Patient centered healthcare</span>
+            <span class="text-doctor-yellow">Exclusive & privileged</span>
+            <span class="text-doctor-yellow">Patient centered healthcare</span>
+          </div>
+        </li>
+        <li class="mt-4">Imagine seeing this same doctor every year, year after year to continually take care of you. –
+          <div class="verticalFlip">
+            <span class="text-doctor-yellow">Continuity of care</span>
+            <span class="text-doctor-yellow">Longitudinal relationship</span>
+            <span class="text-doctor-yellow">Continuity of care</span>
+            <span class="text-doctor-yellow">Longitudinal relationship</span>
+          </div>
+        </li>
+        <li class="mt-4">Now, imagine having direct access to this doctor’s personal phone and email for your urgent and unexpected needs round the clock (no answering service, no front desk call holds). –
+          <div class="verticalFlip">
+            <span class="text-doctor-yellow">Priority access</span>
+            <span class="text-doctor-yellow">Peace of mind</span>
+            <span class="text-doctor-yellow">Priority access</span>
+            <span class="text-doctor-yellow">Peace of mind</span>
+          </div>
+        </li>
+        <li class="mt-4">All this for a small out of pocket premium membership fee that probably costs less than what an average person spends every month on eating at a restaurant. This out of pocket expense is justified by 1) high value healthcare, 2) lower wholesale drugs/labs pricing, and 3) reducing the insurance premiums to cover only for inpatient hospitalization, procedures and sub-specialty care.
+        </li>
+        <li class="mt-4">This in a nutshell is
+          <div class="verticalFlip">
+            <span class="text-doctor-yellow">Direct Primary Care.</span>
+            <span class="text-doctor-yellow">Concierge Medicine.</span>
+            <span class="text-doctor-yellow">Direct Primary Care.</span>
+            <span class="text-doctor-yellow">Concierge Medicine.</span>
+          </div>
+        </li>
+      </ul>
     </div>
   </div>
 </section>
@@ -155,7 +219,7 @@
       </div>
     </div>
     <div class="w-full mt-24 text-center">
-      <h2 class="text-2xl font-glacialbold text-doctor-blue tracking-wider">Content placement of Senario-2 explainer</h2>
+      <h2 class="text-3xl font-glacialbold text-doctor-blue tracking-wider">Content placement of Senario-2 explainer</h2>
       <p class=" inline">Omit this, if there's no Additional Content for this line </p>
     </div>
     <div class="flex w-full mt-20 justify-center pb-48 ">
@@ -218,7 +282,7 @@
 <section class="sm:flex sm:w-full">
   <div class="sm:flex sm:w-full sm:ml-32 sm:mr-32 mx-20 sm:justify-center sm:flex-wrap">
     <div class="w-full text-center">
-      <h3 class="text-doctor-blue font-glacialbold text-2xl tracking-wider">
+      <h3 class="text-doctor-blue font-glacialbold text-3xl tracking-wider">
         Regular/Traditional Primary Care
         <span class="text-doctor-yellow capitalize text-4xl font-glacialbold"><em>VS</em></span>
         DPC Concierge Doctor
