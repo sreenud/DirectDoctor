@@ -1,51 +1,56 @@
-<section  class="sm:flex sm:w-full">
-  <div>
-    <%= image_pack_tag 'yellow_circle_small.svg', class: "w-6" %>
+<section class="sm:grid sm:w-full mt-32 grid-cols-12">
+  <div class="col-span-1 relative">
+    <%= image_pack_tag 'yellow_circle_small.svg', class: "w-10" %>
   </div>
-  <div class="sm:flex sm:w-full sm:ml-32 sm:mr-16 mx-20">
-    <div class="sm:w-4/6 my-4">
-      <div class="font-glacialbold text-2xl text-doctor-blue tracking-wide">
-        What we do
-      </div>
-      <div class="mt-5 font-glacialbold text-xl text-doctor-blue tracking-wide">
-        Direct Primary Care (DPC) and Concierge Medicine doctors -
-        <div class="verticalFlip">
-          <span class="text-doctor-yellow">Directory</span>
-          <span class="text-doctor-yellow">Listings</span>
-          <span class="text-doctor-yellow">Directory</span>
-          <span class="text-doctor-yellow">Listings</span>
-        </div>
-      </div>
-      <div class="font-glacialbold text-xl text-doctor-blue tracking-wide">
-        Exponentially grow patient awareness of -
-        <div class="verticalFlip">
-          <span class="text-doctor-yellow">DPC benefits</span>
-          <span class="text-doctor-yellow">Concierge Medicine benefits</span>
-          <span class="text-doctor-yellow">DPC benefits</span>
-          <span class="text-doctor-yellow">Concierge Medicine benefits</span>
-        </div>
-      </div>
-      <div class="font-glacialbold text-xl text-doctor-blue tracking-wide">
-        Connect patients with best-suited boutique -
-        <div class="verticalFlip">
-          <span class="text-doctor-yellow">Concierge doctor</span>
-          <span class="text-doctor-yellow">DPC doctor</span>
-          <span class="text-doctor-yellow">Concierge doctor</span>
-          <span class="text-doctor-yellow">DPC doctor</span>
-        </div>
-      </div>
+  <div class="col-span-10 flex flex-wrap">
+    <div class=" w-full font-glacialbold text-4xl text-doctor-blue">
+      What we do
+      <div class="border-b border-doctor-yellow pb-3 w-32"></div>
     </div>
-    <div class="md:w-2/6 flex flex-col justify-center">
-      <div class="border shadow-md px-8 py-2 rounded-lg hover:border-gray-500">Find a Concierge near me</div>
-      <div class="border shadow-md px-8 py-2 rounded-lg mt-8 hover:border-gray-500">Find a Direct Primary Care Doctor near me</div>
+    <div class="sm:flex sm:w-full">
+      <div class="sm:w-5/6 my-8">
+        <div class="mt-10 font-glacialbold text-2xl text-doctor-blue">
+          Direct Primary Care (DPC) and Concierge Medicine doctors -
+          <div class="verticalFlip">
+            <span class="text-doctor-yellow">Directory</span>
+            <span class="text-doctor-yellow">Listings</span>
+            <span class="text-doctor-yellow">Directory</span>
+            <span class="text-doctor-yellow">Listings</span>
+          </div>
+        </div>
+        <div class="font-glacialbold text-2xl text-doctor-blue mt-8">
+          Exponentially grow patient awareness of -
+          <div class="verticalFlip">
+            <span class="text-doctor-yellow">DPC benefits</span>
+            <span class="text-doctor-yellow">Concierge Medicine benefits</span>
+            <span class="text-doctor-yellow">DPC benefits</span>
+            <span class="text-doctor-yellow">Concierge Medicine benefits</span>
+          </div>
+        </div>
+        <div class="font-glacialbold text-2xl text-doctor-blue mt-8">
+          Connect patients with best-suited boutique -
+          <div class="verticalFlip">
+            <span class="text-doctor-yellow">Concierge doctor</span>
+            <span class="text-doctor-yellow">DPC doctor</span>
+            <span class="text-doctor-yellow">Concierge doctor</span>
+            <span class="text-doctor-yellow">DPC doctor</span>
+          </div>
+        </div>
+      </div>
+      <div class="md:w-1/6 flex flex-col justify-center mt-16">
+        <div class="border shadow-md px-8 py-2 rounded-lg hover:bg-blue-400 hover:text-gray-100 hover:border-blue-200 cursor-pointer">Find a Concierge near me</div>
+        <div class="border shadow-md px-8 py-2 rounded-lg mt-8 hover:bg-blue-400 hover:text-gray-100 hover:border-blue-200 cursor-pointer">Find a Direct Primary Care Doctor near me</div>
+      </div>
     </div>
   </div>
-  <div class="flex mt-32">
-    <div class="mr-4">
-      <%= image_pack_tag 'light_yellow_slant.svg', class: "w-16" %>
-    </div>
-    <div class="absolute -ml-6 mt-8">
-      <%= image_pack_tag 'yellow_circle_big_shadow.svg', class: "w-12" %>
+  <div class="col-span-1 flex items-bottom justify-end relative -mb-8">
+    <div class="flex items-end relative justify-end bottom-0">
+      <div class="mr-2">
+        <%= image_pack_tag 'light_yellow_slant.svg', class: "w-16" %>
+      </div>
+      <div class="absolute left-0 mt-8 -mb-4 -ml-5">
+        <%= image_pack_tag 'yellow_circle_big_shadow.svg', class: "w-12" %>
+      </div>
     </div>
   </div>
 </section>

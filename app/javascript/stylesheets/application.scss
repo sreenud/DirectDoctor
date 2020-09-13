@@ -19,3 +19,15 @@
   align-items: center;
   justify-content: center;
 }
+
+.rounded-2lg {
+  border-radius: 1.5rem;
+}
+
+.rounded-br-2lg {
+  border-bottom-right-radius: 2.5rem;
+}
+
+.rounded-tl-2lg {
+  border-top-left-radius: 2.5rem;
+}

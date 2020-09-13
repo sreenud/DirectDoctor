@@ -1,49 +1,62 @@
-<section class="sm:flex sm:w-full">
-  <div class="sm:mt-32">
-    <%= image_pack_tag 'grey_cross_vector.svg', class: "w-6" %>
+<section class="sm:grid sm:w-full mt-16 grid-cols-12">
+  <div class="mt-32 col-span-1 relative">
+    <%= image_pack_tag 'grey_cross_vector.svg', class: "w-28" %>
   </div>
-  <div class="sm:flex sm:w-full sm:ml-32 sm:mr-16 mx-20">
-    <div class="sm:w-3/4 sm:my-32">
-      <h1 class="font-glacialbold font-bold text-doctor-blue text-4xl w-3/6 leading-none">You deserve better healthcare!</h1>
-      <p>Find your Direct Primary Care or Concierge Doctor</p>
-      <div class="flex border rounded-lg mt-6 shadow justify-between items-center sm:mr-24 py-1">
-        <div class="flex justify-center items-center w-full border-r pr-4">
-          <label class="ml-3 mr-5">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-5 text-gray-600">
-              <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd" />
-            </svg>
-          </label>
-          <input class="my-2 w-full focus:outline-none" type="text" name="" placeholder="Name/Speciality">
+  <div class="col-span-10 flex flex-wrap">
+    <div class="sm:flex sm:w-full">
+      <div class="sm:w-4/6 sm:my-32">
+        <h1 class="font-glacialbold font-bold text-doctor-blue text-5xl w-4/6 leading-tight">
+          You deserve better healthcare!
+        </h1>
+        <p class="text-lg">Find your Direct Primary Care or Concierge Doctor</p>
+        <div class="flex border rounded-lg mt-10 shadow justify-between items-center sm:mr-24 py-2">
+          <div class="flex justify-center items-center w-full border-r pr-4">
+            <label class="ml-3 mr-5">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-5 text-gray-600">
+                <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd" />
+              </svg>
+            </label>
+            <input class="my-2 w-full focus:outline-none" type="text" name="" placeholder="Name/Speciality">
+          </div>
+          <div class="flex justify-center items-center w-full pr-4">
+            <label class="ml-3 mr-5">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-5 text-gray-600">
+                <path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd" />
+              </svg>
+            </label>
+            <input class="my-2 w-full focus:outline-none" type="text" name="" placeholder="Zip/City/State">
+          </div>
+          <div>
+            <button class="bg-doctor-yellow text-gray-100 mr-4 rounded-md px-8 py-2">Search</button>
+          </div>
         </div>
-        <div class="flex justify-center items-center w-full pr-4">
-          <label class="ml-3 mr-5">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-5 text-gray-600">
-              <path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd" />
-            </svg>
-          </label>
-          <input class="my-2 w-full focus:outline-none" type="text" name="" placeholder="Zip/City/State">
+      </div>
+      <div class="sm:w-2/6 relative mt-6">
+        <div class="relative">
+          <div class="relative top-0">
+            <%= image_pack_tag 'light_yellow_slant.svg', class: 'w-24' %>
+          </div>
+          <div class="relative z-10 -mt-24 ml-8 mr-6">
+            <%= image_pack_tag 'doctor.svg', class: 'w-full'%>
+          </div>
+          <div class="relative flex justify-end -mt-24">
+            <%= image_pack_tag 'light_yellow_slant.svg', class: 'w-24' %>
+          </div>
         </div>
-        <div>
-          <button class="bg-doctor-yellow text-gray-100 mr-4 rounded-md px-8 py-1">Search</button>
+        <div class="flex absolute top-0 right-0 -mt-10 -mr-8 justify-end">
+          <%=image_pack_tag 'light_grey_2_lines_vertical.svg', class: 'w-20' %>
         </div>
       </div>
     </div>
-    <div class="sm:w-1/4 relative mt-6">
-      <div class="relative">
-        <%= image_pack_tag 'light_yellow_slant.svg', class: 'w-24' %>
-      </div>
-      <div class="flex relative sm:-mt-32 -mt-24 justify-end">
-        <%=image_pack_tag 'light_grey_2_lines_vertical.svg', class: 'h-32' %>
-      </div>
-      <div class="absolute right-0 sm:mt-0 sm:mr-0 md:mt-32 mt-32 mr-32">
-        <%= image_pack_tag 'light_yellow_slant.svg', class: 'w-24' %>
-      </div>
-      <div class="relative z-10 -mt-24 ml-8 mr-6">
-        <%= image_pack_tag 'doctor.svg', class: 'sm:w-full w-64'%>
+  </div>
+  <div class="col-span-1">
+    <div class="relative">
+      <div class="absolute right-0 top-0 sm:-mt-32">
+        <%=image_pack_tag "yellow_circle_outline_opacity_right.png", class: "w-24"%>
       </div>
     </div>
-  </div>
-  <div class="sm:flex sm:justify-end sm:mt-40 hidden">
-    <%=image_pack_tag "light_grey_round_edge_sides.svg", class:"h-48"%>
+    <div class="flex justify-end mt-56 bottom-0 relative">
+      <%=image_pack_tag "light_grey_round_edge_sides.svg", class: "w-28"%>
+    </div>
   </div>
 </section>
