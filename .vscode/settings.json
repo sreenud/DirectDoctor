@@ -4,7 +4,6 @@
   // default true
   "ruby.rubocop.onSave": true,
   "editor.formatOnSaveTimeout": 5000,
-  "editor.formatOnSave": true,
   "editor.tabSize": 2,
   "editor.renderWhitespace": "all",
   "editor.cursorStyle": "line",
@@ -52,5 +51,6 @@
     "plist"
   ],
   "prettier.useTabs": false,
-  "prettier.singleQuote": true
+  "prettier.singleQuote": true,
+  "editor.formatOnSave": true
 }
