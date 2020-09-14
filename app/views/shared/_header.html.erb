@@ -1,7 +1,9 @@
 <header class="sm:flex sm:justify-between sm:items-center sm:px-16 sm:py-3 mx-16 mt-5" >
   <div class="flex items-center justify-between px-3 py-4 sm:p-0">
     <div>
-      <%= image_pack_tag "logo.png", alt: "Find my Direct Doctor", class: "h-12"%>
+      <a href="<%=root_url%>">
+        <%= image_pack_tag "logo.png", alt: "Find my Direct Doctor", class: "h-12"%>
+      </a>
     </div>
     <div class="sm:hidden" @click.away="open = false" >
       <button id="userButton" type="button" class="block hover:text-doctor-yellow focus:text-doctor-yellow focus:outline-none" @click="open = !open">
