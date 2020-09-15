@@ -1,10 +1,10 @@
-<section class="grid grid-cols-12 sm:w-full">
-  <div class="col-start-2 col-span-10">
+<section class="grid grid-cols-12 md:w-full">
+  <div class="md:col-start-2 col-span-10">
     <div class="flex w-full flex-wrap justify-between">
-      <div class="w-3/6 mt-24 ml-20">
+      <div class="md:w-3/6 mt-24 ml-20">
         <h1 class=" text-heading font-hurmebold text-doctor-blue">Blogs and Podcasts</h1>
         <div class="flex mt-6 border shadow w-2/3 px-6 py-2 rounded-full">
-          <div class="w-5/6">
+          <div class="md:w-5/6 w-full">
             <input type="text" placeholder="Search Keyword" class="focus:outline-none w-full">
           </div>
           <div class="flex items-center justify-end w-1/6">
@@ -22,30 +22,28 @@
                 <h4 class=" font-glacialbold text-2xl">Physician Real Estate and Finance Topics</h4>
               </div>
               <% (0..6).each do |index| %>
-                <div class="w-full mt-3">
+                <div class="w-full mt-3 border-b-2 border-doctor-blue">
                   <div>
                     <a href="#" class="hover:underline">What is Real Estate Syndication? ABCs of Real Estate Syndication Investments for a Physician Investor.</a>
                   </div>
                   <div class="text-sm py-2">
                     <span class="font-glacialbold">Author:</span> Harsha Moole, M.D., MBBS | <span class="font-glacialbold">Read Time:</span> 6 minutes
                   </div>
-                  <div class=" border border-doctor-blue"></div>
                 </div>
               <% end %>
             </div>
           </div>
         <% end %>
       </div>
-      <div class="w-2/6 text-md mt-12">
+      <div class="md:w-2/6 text-md mt-12 w-full md:ml-4 ml-20">
         <div class="blog-bg-gray px-6 py-8 rounded-3lg mt-8">
           <div class="w-full">
             <h4 class="text-2xl font-glacialbold text-center">Most Popular Blog Posts</h4>
             <% (1..4).each do |index| %>
-              <div class="mt-4">
+              <div class="mt-4 border-b-2 border-doctor-blue">
                 <a href="#" class="hover:underline">
-                  <p>How Physicians Can Reduce Tax Bill by Using Cost Segregation and Bonus Depreciation </p>
+                  <p class="py-2">How Physicians Can Reduce Tax Bill by Using Cost Segregation and Bonus Depreciation </p>
                 </a>
-                <div class=" border border-doctor-blue mt-2"></div>
               </div>
             <% end %>
           </div>
@@ -54,11 +52,10 @@
           <div class="w-full">
             <h4 class="text-2xl font-glacialbold text-center">What Are Others Reading</h4>
             <% (1..4).each do |index| %>
-              <div class="mt-4">
+              <div class="mt-4 border-b-2 border-doctor-blue">
                 <a href="#" class="hover:underline">
-                  <p>How Physicians Can Reduce Tax Bill by Using Cost Segregation and Bonus Depreciation </p>
+                  <p class="py-2">How Physicians Can Reduce Tax Bill by Using Cost Segregation and Bonus Depreciation </p>
                 </a>
-                <div class=" border border-doctor-blue mt-2"></div>
               </div>
             <% end %>
           </div>
