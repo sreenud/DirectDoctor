@@ -14,6 +14,10 @@ module.exports = {
       },
       fontSize: {
         heading: '2.5rem',
+        heading3: '1.75rem',
+        px18: '18px',
+        px14: '14px',
+        px20: '20px',
       },
     },
   },
