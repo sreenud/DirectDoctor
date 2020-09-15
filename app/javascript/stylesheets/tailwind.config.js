@@ -12,6 +12,9 @@ module.exports = {
         glacialbold: ['GlacialBold'],
         glacialitalic: ['GlacialItalic'],
       },
+      fontSize: {
+        heading: '2.5rem',
+      },
     },
   },
   variants: {},
