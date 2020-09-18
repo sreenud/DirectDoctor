@@ -35,10 +35,6 @@
               <%= form.text_field :meta_title, :class => "input bg-white", :autocomplete => "off" %>
             </div>
             <div class="input-group">
-              <%= form.label :meta_keywords, :class => "label text-gray-500" %>
-              <%= form.text_field :meta_keywords, :class => "input bg-white", :autocomplete => "off" %>
-            </div>
-            <div class="input-group">
               <%= form.label :meta_description, :class => "label text-gray-500" %>
               <%= form.text_area :meta_description, :class => "input bg-white"%>
             </div>
@@ -62,8 +58,18 @@
         <%= image_tag form.object.image_url if form.object.image_url %>
       </div>
       <div class="input-group">
-        <%= form.label :tags, :class => "label text-gray-500" %>
-        <%= form.text_field :tag_list, value: form.object.tag_list.to_s, :class => "input bg-white", :autocomplete => "off" %>
+        <%= form.label :category, :class => "label text-gray-500" %>
+        <%= form.select(:category_id, categories.collect {|category| [ category.name, category.id ]}, {:prompt => "Select..."} ,{class: "select"}) %>
+      </div>
+      <div class="input-group mt-2">
+        <label class="inline-flex items-center mt-3">
+          <%= form.check_box :is_popular, class: "form-checkbox h-5 w-5 text-gray-600" %>
+          <span class="ml-2 text-gray-700">Is Popular</span>
+        </label>
+      </div>
+      <div class="input-group">
+        <label class="label text-gray-500" for="topic_read_time">Read time(in minutes)</label>
+        <%= form.text_field :read_time, :class => "input bg-white", :autocomplete => "off" %>
       </div>
       <div class="input-group">
         <%= form.label :topic_status, :class => "label text-gray-500" %>

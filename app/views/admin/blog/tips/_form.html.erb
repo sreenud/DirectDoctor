@@ -66,8 +66,8 @@
         <%= image_tag form.object.image_url if form.object.image_url %>
       </div>
       <div class="input-group">
-        <%= form.label :tags, :class => "label text-gray-500" %>
-        <%= form.text_field :tag_list, value: form.object.tag_list.to_s, :class => "input bg-white", :autocomplete => "off" %>
+        <%= form.label :related_topics, :class => "label text-gray-500" %>
+        <%= form.select(:related_topics, topics.collect {|topic| [ topic.name, topic.id ]}, {:prompt => "Select..."} ,{class: "select bg-gray-400", :multiple => true}) %>
       </div>
       <div class="input-group">
         <%= form.label :tip_status, :class => "label text-gray-500" %>

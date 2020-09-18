@@ -15,19 +15,21 @@
             </label>
           </div>
         </div>
-        <% (0..4).each do |index| %>
-          <div class="w-full">
+        <% @categories.each do |category| %>
+          <div class="w-full" id="<%==category.slug%>">
             <div class="flex flex-wrap mt-12">
               <div class="w-full pb-3">
-                <h4 class="font-glacialbold text-2xl">Physician Real Estate and Finance Topics</h4>
+                <h4 class="font-glacialbold text-2xl">
+                  <%=category.name%>
+                </h4>
               </div>
-              <% (0..6).each do |index| %>
+              <% category&.topics&.each do |topic| %>
                 <div class="w-full mt-3 border-b-2 border-doctor-blue">
                   <div>
-                    <a href="#" class="hover:underline">What is Real Estate Syndication? ABCs of Real Estate Syndication Investments for a Physician Investor.</a>
+                    <a href="<%= blog_url(topic.slug) %>" class="hover:underline"><%=topic.name%></a>
                   </div>
                   <div class="text-sm py-2">
-                    <span class="font-hurmebold">Author:</span> Harsha Moole, M.D., MBBS | <span class="font-hurmebold">Read Time:</span> 6 minutes
+                    <span class="font-hurmebold">Author:</span> Harsha Moole, M.D., MBBS | <span class="font-hurmebold">Read Time:</span> <%=topic&.read_time%> minutes
                   </div>
                 </div>
               <% end %>
@@ -39,10 +41,10 @@
         <div class="blog-bg-gray px-6 py-8 rounded-3lg mt-8">
           <div class="w-full">
             <h4 class="text-px20 font-hurmebold text-center">Most Popular Blog Posts</h4>
-            <% (1..4).each do |index| %>
+            <% @popular_topics&.each do |popular_topic| %>
               <div class="mt-4 border-b-2 border-doctor-blue">
-                <a href="#" class="hover:underline">
-                  <p class="py-2">How Physicians Can Reduce Tax Bill by Using Cost Segregation and Bonus Depreciation </p>
+                <a href="<%=popular_topic.slug%>" class="hover:underline">
+                  <p class="py-2"><%=popular_topic.name%> </p>
                 </a>
               </div>
             <% end %>

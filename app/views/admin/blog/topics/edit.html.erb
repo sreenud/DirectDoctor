@@ -16,6 +16,6 @@
 <section class="flex mt-6">
   <div class="w-full" data-controller="message tinymce slug topic">
     <div class="w-full z-10" data-target="message.errors"></div>
-    <%= render partial: 'form', locals: {topic: @topic, statuses: @statuses, button_text: 'Update'} %>
+    <%= render partial: 'form', locals: {topic: @topic, statuses: @statuses, categories: @categories, button_text: 'Update'} %>
   </div>
 </section>

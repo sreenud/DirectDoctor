@@ -16,10 +16,12 @@ module Admin
       def new
         @topic = Topic.new
         @statuses = Topic.statuses
+        @categories = Category.active
       end
 
       def edit
         @statuses = Topic.statuses
+        @categories = Category.active
       end
 
       def create
@@ -60,8 +62,9 @@ module Admin
       end
 
       def topic_params
-        params.require(:topic).permit(:name, :slug, :summary, :content, :is_popular, :author_id, :image,
-          :meta_title, :meta_description, :h1_tag, :status, :meta_keywords, :status, :tag_list)
+        params.require(:topic).permit(:category_id, :name, :slug, :summary, :content, :is_popular,
+          :author_id, :image, :meta_title, :meta_description, :h1_tag, :status, :read_time,
+          :status, :tag_list)
       end
     end
   end

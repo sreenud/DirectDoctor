@@ -60,9 +60,12 @@ module Admin
       end
 
       def tip_params
+        params[:tip][:topic_ids] = params[:tip][:topic_ids].reject(&:empty?)
+        params[:tip][:related_topics] = params[:tip][:related_topics].reject(&:empty?)
+
         params.require(:tip).permit(:name, :slug, :summary, :content, :author_id, :image,
           :meta_title, :meta_description, :h1_tag, :status, :meta_keywords, :status, :tag_list,
-          topic_ids: [])
+          related_topics: [], topic_ids: [])
       end
     end
   end

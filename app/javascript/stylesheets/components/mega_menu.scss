@@ -1,0 +1,18 @@
+.mega-menu {
+  display: none;
+  position: absolute;
+  text-align: left;
+  width: 100%;
+  left: 50%;
+  transform: translate(-50%);
+}
+.hoverable {
+  position: static;
+}
+.profile-menu {
+  display: none;
+}
+.hoverable:hover .mega-menu,
+.hoverable:hover .profile-menu {
+  display: block;
+}

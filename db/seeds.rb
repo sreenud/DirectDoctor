@@ -26,3 +26,11 @@ unless User.find_by_email("srinivasavarma.d@gmail.com")
   user.add_role(:admin)
   user.save!
 end
+
+unless Category.find_by_name("Concierge")
+  category = Category.new(
+    name: "Concierge",
+    slug: "concierge",
+  )
+  category.save!
+end

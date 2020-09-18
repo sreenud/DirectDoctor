@@ -6,4 +6,5 @@ namespace :admin do
     resources :tags
   end
   resources :users
+  resources :media_storages, only: %i[create destroy]
 end

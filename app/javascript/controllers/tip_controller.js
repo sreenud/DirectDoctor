@@ -18,7 +18,7 @@ export default class extends Controller {
       duplicateItemsAllowed: false,
     });
 
-    const tagsList = new Choices('#tip_tag_list', {
+    const tagsList = new Choices('#tip_related_topics', {
       delimiter: ',',
       editItems: true,
       maxItemCount: 5,

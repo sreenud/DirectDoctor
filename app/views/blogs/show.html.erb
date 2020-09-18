@@ -5,14 +5,14 @@
         <div class="w-full">
           <span class="text-px14 border bg-doctor-yellow rounded-full text-gray-100 font-bold border-doctor-yellow px-2 py-1 font-hurmebold">Physician Real Estate</span>
           <h1 class="mt-5 text-heading font-hurmebold text-doctor-blue leading-tight">
-            What is Real Estate Syndication? ABCs of Real Estate Syndication Investments for a Physician Investor.
+            <%= @topic&.name %>
           </h1>
         </div>
         <div class="w-full mt-4">
           <div class=" border border-doctor-blue"></div>
           <div class="flex w-full text-px14  py-4 px-4 font-hurmebold">
             <div class="w-1/2">
-              <h4> August 3, 2020 </h4>
+              <h4> <%=@topic.readable_published_date%> </h4>
             </div>
             <div class="w-1/2">
               <h4> Harsha Moole, M.D., MBBS</h4>
@@ -20,11 +20,8 @@
           </div>
           <div class=" border border-doctor-blue"></div>
         </div>
-        <div class="w-full">
-          <h3 class=" font-hurmebold text-heading3 leading-tight text-doctor-blue mt-6">
-            What is Real Estate Syndication? ABCs of Real Estate Syndication Investments for a Physician Investor.
-          </h3>
-          <%= render partial: "demo_post"%>
+        <div class="w-full mt-4">
+          <%= @topic&.content.html_safe %>
         </div>
         <div class="w-full mt-8 text-sm text-">
           <p><span class="text-doctor-blue font-glacialbold">Legal Disclaimer:</span> This is not investment advice. I am not a legal and/or investment advisor. This is my personal blog, and all information found here, including any ideas, opinions, views, predictions, forecasts, commentaries, suggestions, or stock picks, expressed or implied herein, are for informational, entertainment or educational purposes only and should not be construed as personal investment advice. These are my views, it is not a production of my employer, nor is it affiliated with any broker/dealer or registered investment advisor. While the information provided is believed to be accurate, it may include errors or inaccuracies. To the maximum extent permitted by law, PhysicianEstate disclaims any and all liability in the event any information, commentary, analysis, opinions, advice and/or recommendations prove to be inaccurate, incomplete or unreliable, or result in any investment or other losses. You should consult with an attorney or other professional to determine what may be best for your individual needs. Your use of the information on the website or materials linked from the Web is at your own risk.
@@ -37,7 +34,9 @@
               <p class="font-hurmebold text-doctor-blue px-4 py-4">Previous Post</p>
               <div class=" border border-doctor-blue"></div>
               <div class="hover:underline mt-6 text-base">
-                COVID-19 and Cabin Fever
+                <a href="<%=@topic&.previous&.slug%>">
+                  <%=@topic&.previous&.name%>
+                </a>
               </div>
             </div>
             <div class="col-span-2"></div>
@@ -45,7 +44,9 @@
               <p class="font-hurmebold text-doctor-blue px-4 py-4">Next Post</p>
               <div class=" border border-doctor-blue"></div>
               <div class="hover:underline mt-6  text-base">
-                6 Communication Tips to Reduce Medical Malpractice Risk
+                <a href="<%=@topic&.next&.slug%>">
+                  <%=@topic&.next&.name%>
+                </a>
               </div>
             </div>
           </div>
@@ -66,12 +67,11 @@
         <div class="blog-bg-gray px-6 py-8 rounded-2lg mt-8">
           <div class="w-full">
             <h4 class="text-px20 font-hurmebold text-center">Most Popular Blog Posts</h4>
-            <% (1..4).each do |index| %>
-              <div class="mt-4">
-                <a href="#" class="hover:underline">
-                  <p>How Physicians Can Reduce Tax Bill by Using Cost Segregation and Bonus Depreciation </p>
+            <% @popular_topics&.each do |popular_topic| %>
+              <div class="mt-4 border-b-2 border-doctor-blue">
+                <a href="<%=popular_topic.slug%>" class="hover:underline">
+                  <p class="py-2"><%=popular_topic.name%> </p>
                 </a>
-                <div class=" border border-doctor-blue mt-2"></div>
               </div>
             <% end %>
           </div>

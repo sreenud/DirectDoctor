@@ -10,10 +10,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_04_030834) do
+ActiveRecord::Schema.define(version: 2020_09_18_040039) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "categories", force: :cascade do |t|
+    t.string "name"
+    t.string "slug"
+    t.string "status", default: "active"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "media_storages", force: :cascade do |t|
+    t.text "image_data"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "roles", force: :cascade do |t|
     t.string "name"
@@ -67,6 +81,7 @@ ActiveRecord::Schema.define(version: 2020_09_04_030834) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "status"
+    t.integer "related_topics", array: true
     t.index ["code"], name: "index_tips_on_code", unique: true
     t.index ["slug"], name: "index_tips_on_slug", unique: true
   end
@@ -96,6 +111,9 @@ ActiveRecord::Schema.define(version: 2020_09_04_030834) do
     t.datetime "updated_at", precision: 6, null: false
     t.string "meta_keywords"
     t.string "status"
+    t.bigint "category_id"
+    t.integer "read_time"
+    t.index ["category_id"], name: "index_topics_on_caregory_id"
     t.index ["slug"], name: "index_topics_on_slug", unique: true
   end
 
