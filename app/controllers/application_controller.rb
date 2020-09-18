@@ -8,6 +8,6 @@ class ApplicationController < ActionController::Base
   end
 
   def menu_blog_categories
-    @categories = Category.latest.limit(5)
+    @menu_categories = Category.latest.limit(5)
   end
 end
