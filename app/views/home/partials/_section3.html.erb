@@ -1,5 +1,23 @@
-<section class="sm:grid sm:w-full mt-32 grid grid-cols-12">
-  <div class="col-start-2 col-span-10">
+<section class="sm:grid sm:w-full mt-16 grid grid-cols-12">
+  <div class="col-span-1 relative">
+    <div class="grid grid-rows-2">
+      <div class="flex items-start">
+        <%= image_pack_tag 'yellow_circle_outline_opacity.svg', class: "w-24" %>
+        <div class="absolute top-0 mt-40">
+          <%= image_pack_tag 'light_grey_3_lines_horizontal.svg'%>
+        </div>
+      </div>
+      <div class="flex items-end">
+        <div class="relative -mb-32">
+          <%= image_pack_tag 'light_yellow_slant.svg', class: "w-16" %>
+          <div class="absolute top-0 ml-8 -mr-12 -mt-12">
+            <%= image_pack_tag 'vector_plus_with_side_dots.svg', class: "w-24" %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-span-10">
     <div class="w-full">
       <h3 class="text-doctor-blue font-hurmebold text-4xl mt-10 text-center">
         The Concierge Doctor Difference
@@ -8,7 +26,7 @@
     <div class="mx-16">
       <div class="w-full flex mt-12">
         <div class="w-1/2">
-          <div class="verticalFlip font-hurmebold text-2xl pl-16">
+          <div class="verticalFlip font-hurmebold text-2xl pl-24">
             <span class="text-doctor-yellow">Exclusive & privileged</span>
             <span class="text-doctor-yellow">Patient centered healthcare</span>
             <span class="text-doctor-yellow">Exclusive & privileged</span>
@@ -21,7 +39,7 @@
       </div>
       <div class="w-full flex mt-8">
         <div class="w-1/2">
-          <div class="verticalFlip font-hurmebold text-2xl pl-16">
+          <div class="verticalFlip font-hurmebold text-2xl pl-24">
             <span class="text-doctor-yellow">Continuity of care</span>
             <span class="text-doctor-yellow">Longitudinal relationship</span>
             <span class="text-doctor-yellow">Continuity of care</span>
@@ -34,7 +52,7 @@
       </div>
       <div class="w-full flex mt-8">
         <div class="w-1/2">
-          <div class="verticalFlip font-hurmebold text-2xl pl-16">
+          <div class="verticalFlip font-hurmebold text-2xl pl-24">
             <span class="text-doctor-yellow">Priority access</span>
             <span class="text-doctor-yellow">Peace of mind</span>
             <span class="text-doctor-yellow">Priority access</span>
@@ -47,7 +65,7 @@
       </div>
       <div class="w-full flex mt-8">
         <div class="w-1/2">
-          <div class="verticalFlip font-hurmebold text-2xl pl-16">
+          <div class="verticalFlip font-hurmebold text-2xl pl-24">
             <span class="text-doctor-yellow">Priority access</span>
             <span class="text-doctor-yellow">Peace of mind</span>
             <span class="text-doctor-yellow">Priority access</span>
@@ -60,7 +78,7 @@
       </div>
       <div class="w-full flex mt-8">
         <div class="w-1/2">
-          <div class="verticalFlip font-hurmebold text-2xl pl-16">
+          <div class="verticalFlip font-hurmebold text-2xl pl-24">
             <span class="text-doctor-yellow">Direct Primary Care.</span>
             <span class="text-doctor-yellow">Concierge Medicine.</span>
             <span class="text-doctor-yellow">Direct Primary Care.</span>
@@ -70,6 +88,13 @@
         <div class="w-1/2">
           This in a nutshell is
         </div>
+      </div>
+    </div>
+  </div>
+  <div class="mt-32 col-span-1">
+    <div class="flex items-center relative justify-end pb-8">
+      <div class="mt-12">
+        <%= image_pack_tag 'light_yellow_edge.png', class: "w-12" %>
       </div>
     </div>
   </div>

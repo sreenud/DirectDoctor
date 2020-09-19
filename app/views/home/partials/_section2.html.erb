@@ -1,61 +1,70 @@
 <section class="sm:grid sm:w-full mt-32">
   <div class="grid justify-between grid-cols-12">
-    <div class="mt-32 col-span-1 relative">
+    <div class="col-span-1 relative flex items-end">
       <%= image_pack_tag 'yellow_half_circle_thick.svg', class: "w-20 pt-4" %>
-      <div class="absolute top-0 ml-12">
+      <div class="absolute bottom-0 mb-40 ml-16">
         <%= image_pack_tag 'yellow_circle_full.svg', class: "w-8" %>
       </div>
     </div>
     <div class="col-span-10 flex flex-wrap">
-      <div class="sm:grid sm:w-full sm:mt-16 bg-cover bg-center" style="background-image: url(system/roundedRectangle3cop_11.png)">
-        <div class="grid py-4 pl-4">
-          <div class="flex w-full">
-            <div class="sm:w-1/2 my-4 sm:mt-24 sm:mx-8">
-              <div class="w-12/12 font-hurmebold text-4xl text-doctor-blue">
-                <h2>Insurance based healthcare – NOT effective!</h2>
-                <div class="border-b border-doctor-yellow pb-3 w-40"></div>
-              </div>
-              <div class="mt-5">
-                <p>Tired of being another number in your doctor’s office?</p>
-                <p class="mt-4">Tired of insurance companies determining the quality of your healthcare?</p>
-              </div>
+      <div class="sm:grid sm:w-full sm:mt-16 bg-cover bg-center section3-bg-gray mt-8 rounded-3lg">
+        <div class="flex w-full py-4 pl-4">
+          <div class="sm:w-4/12 my-4 sm:mt-12 sm:mx-1">
+            <div class="w-12/12 font-hurmebold text-4xl text-doctor-blue">
+              <h2>Insurance based healthcare – <br />
+                NOT effective!</h2>
+              <div class="border-b border-doctor-yellow pb-3 w-40"></div>
             </div>
-            <div class="sm:w-1/2 my-4 overflow-hidden">
-              <%= image_pack_tag 'illustration_1.png', class: "w-full" %>
+            <div class="mt-5">
+              <p>Tired of being another number in your doctor’s office?</p>
+              <p class="mt-4">Tired of insurance companies determining the quality of your healthcare?</p>
             </div>
           </div>
-        </div>
-        <div class="grid py-4 pl-4">
-          <div class="flex w-full">
-            <div class="sm:w-1/2 my-4 overflow-hidden">
-              <%= image_pack_tag 'illustration_2.png', class: "w-full" %>
-            </div>
-            <div class="sm:w-1/2 my-4 sm:mx-8 sm:mt-24 sm:ml-12">
-              <div class="w-12/12 font-hurmebold text-4xl text-doctor-blue">
-                <h2>Concierge doctor = No insurance hassle = VERY effective!!</h2>
-                <div class="border-b border-doctor-yellow pb-3 w-40"></div>
-              </div>
-              <div class="mt-5">
-                <p> Direct Primary Care / Concierge Medicine Doctors are breaking the shackles from their insurance-reimbursed traditional practices, in efforts to provide a rejuvenated patient-focused health care.</p>
-                <p class="mt-6">Difference between <span class="underline">Concierge doctor and traditional insurance based doctor</span>
-                </div>
-              </div>
-            </div>
+          <div class="sm:w-8/12 my-4 overflow-hidden flex justify-end pr-5">
+            <%= image_pack_tag 'illustration_1.png', class: "object-cover"  %>
           </div>
         </div>
       </div>
-      <div class="col-span-1 grid grid-rows-3">
-        <div class="row-span-1">
-          <%= image_pack_tag 'off_white_half_full_circle.svg', class: "w-20 float-right" %>
-        </div>
-        <div class="row-span-2 flex items-end justify-end">
-          <div class="relative bottom-0 right-0">
-            <%= image_pack_tag 'off_white_circle_full.svg', class: "w-20 float-right" %>
-            <div class="absolute -mt-10">
-              <%= image_pack_tag 'yellow_circle_full.svg', class: "w-8" %>
+    </div>
+    <div class="col-span-1 grid grid-rows-3">
+      <div class="row-span-1">
+        <%= image_pack_tag 'off_white_half_full_circle.svg', class: "w-20 float-right" %>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="sm:grid sm:w-full mt-6">
+  <div class="grid justify-between grid-cols-12">
+    <div class="-mt-40 col-span-1 relative">
+    </div>
+    <div class="col-span-10 flex flex-wrap">
+      <div class="sm:grid sm:w-full sm:mt-16 bg-cover bg-center section3-bg-gray mt-8 rounded-3lg">
+        <div class="flex w-full py-4 pl-4">
+          <div class="sm:w-8/12 my-4 overflow-hidden flex justify-end pr-5">
+            <%= image_pack_tag 'illustration_2.png', class: "w-full" %>
+          </div>
+          <div class="sm:w-4/12 my-4 sm:mt-12 sm:mx-1">
+            <div class="w-12/12 font-hurmebold text-4xl text-doctor-blue">
+              <h2>Concierge doctor = No insurance hassle = VERY effective!!</h2>
+              <div class="border-b border-doctor-yellow pb-3 w-40"></div>
+            </div>
+            <div class="mt-5">
+              <p> Direct Primary Care / Concierge Medicine Doctors are breaking the shackles from their insurance-reimbursed
+                traditional practices, in efforts to provide a rejuvenated patient-focused health care.</p>
+              <p class="mt-6">Difference between <span class="underline">Concierge doctor and traditional insurance based
+                  doctor</span></p>
             </div>
           </div>
         </div>
       </div>
     </div>
-  </section>
+    <div class="col-span-1 flex items-end justify-end">
+      <div class="relative bottom-0 right-0">
+        <%= image_pack_tag 'off_white_circle_full.svg', class: "w-20 float-right" %>
+        <div class="absolute -mt-10">
+          <%= image_pack_tag 'yellow_circle_full.svg', class: "w-8" %>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
