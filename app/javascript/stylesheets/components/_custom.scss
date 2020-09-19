@@ -1,0 +1,45 @@
+.bacground-image-gray {
+  background-image: url('../images/light_grey_background.png');
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.rounded-2lg {
+  border-radius: 1.5rem;
+}
+
+.rounded-br-2lg {
+  border-bottom-right-radius: 2.5rem;
+}
+
+.rounded-tl-2lg {
+  border-top-left-radius: 2.5rem;
+}
+.rounded-3lg {
+  border-radius: 2.5rem;
+}
+
+.blog-bg-gray {
+  background-color: #dcdcdc;
+}
+
+.post h3 strong {
+  @apply text-heading3 text-doctor-blue font-hurmebold;
+}
+
+.post strong {
+  @apply text-px18 text-doctor-blue font-hurmebold;
+}
+
+.post h3 {
+  @apply text-heading3;
+}
+
+.post ul {
+  @apply list-disc pl-6;
+}
+
+.post ul li {
+  @apply py-2;
+}

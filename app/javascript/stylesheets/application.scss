@@ -9,33 +9,8 @@
 @import 'components/pagy';
 @import 'components/text_animation';
 @import 'components/mega_menu';
+@import 'components/custom';
 
 @import 'tailwindcss/utilities';
 
 @import 'choices.js/public/assets/styles/choices';
-
-.bacground-image-gray {
-  background-image: url('../images/light_grey_background.png');
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.rounded-2lg {
-  border-radius: 1.5rem;
-}
-
-.rounded-br-2lg {
-  border-bottom-right-radius: 2.5rem;
-}
-
-.rounded-tl-2lg {
-  border-top-left-radius: 2.5rem;
-}
-.rounded-3lg {
-  border-radius: 2.5rem;
-}
-
-.blog-bg-gray {
-  background-color: #dcdcdc;
-}
