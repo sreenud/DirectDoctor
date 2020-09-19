@@ -24,11 +24,11 @@
   background-color: #dcdcdc;
 }
 
-.post h3 strong {
+.post h2 strong {
   @apply text-heading3 text-doctor-blue font-hurmebold;
 }
 
-.post strong {
+.post h3 strong {
   @apply text-px18 text-doctor-blue font-hurmebold;
 }
 
