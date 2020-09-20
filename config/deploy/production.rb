@@ -64,7 +64,7 @@ namespace :deploy do
   task :restart do
     on roles(:app), in: :sequence, wait: 5 do
       execute :touch, release_path.join("tmp/restart.txt")
-      execute :sudo, :systemctl, :restart, :sidekiq_staging
+      execute :sudo, :systemctl, :restart, :sidekiq_production
     end
   end
   after :publishing, "deploy:restart"
