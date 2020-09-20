@@ -8,7 +8,7 @@ set(:repo_url, "git@github.com:sreenud/DirectDoctor.git")
 
 # Default deploy_to directory is /var/www/my_app_name
 
-set(:deploy_to, "/home/ubuntu/direct_doctor_uat/")
+# set(:deploy_to, "/home/ubuntu/direct_doctor_uat/")
 
 # Default value for :format is :airbrussh.
 # set :format, :airbrussh
