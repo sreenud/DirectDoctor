@@ -1,7 +1,7 @@
-<section class="grid grid-cols-12 md:w-full">
+<section class="grid grid-cols-12 md:w-full mt-16">
   <div class="md:col-start-2 col-span-10">
     <div class="flex w-full flex-wrap justify-between">
-      <div class="md:w-3/6 mt-24 ml-20">
+      <div class="md:w-9/12 mt-24  px-16">
         <h1 class=" text-heading font-hurmebold text-doctor-blue">Blogs and Podcasts</h1>
         <div class="flex mt-6 border shadow w-2/3 px-6 py-2 rounded-full">
           <div class="md:w-5/6 w-full">
@@ -16,11 +16,11 @@
           </div>
         </div>
         <% @categories.each do |category| %>
-          <div class="w-full" id="<%==category.slug%>">
+          <div class="w-full id="<%==category.slug%>">
             <div class="flex flex-wrap mt-12">
               <div class="w-full pb-3">
                 <h4 class="font-glacialbold text-2xl">
-                  <%=category.name%>
+                  Direct Primary Care and Concierge Medicine
                 </h4>
               </div>
               <% category&.topics&.each do |topic| %>
@@ -37,12 +37,12 @@
           </div>
         <% end %>
       </div>
-      <div class="md:w-2/6 text-md mt-12 w-full md:ml-4 ml-20">
+      <!--<div class="md:w-3/12 text-md mt-12 w-full text-sm">
         <div class="blog-bg-gray px-6 py-8 rounded-3lg mt-8">
           <div class="w-full">
             <h4 class="text-px20 font-hurmebold text-center">Most Popular Blog Posts</h4>
             <% @popular_topics&.each do |popular_topic| %>
-              <div class="mt-4 border-b-2 border-doctor-blue">
+              <div class="mt-1 border-b-2 border-doctor-blue">
                 <a href="<%=popular_topic.slug%>" class="hover:underline">
                   <p class="py-2"><%=popular_topic.name%> </p>
                 </a>
@@ -54,7 +54,7 @@
           <div class="w-full">
             <h4 class="text-px20 font-hurmebold text-center">What Are Others Reading</h4>
             <% (1..4).each do |index| %>
-              <div class="mt-4 border-b-2 border-doctor-blue">
+              <div class="mt-1 border-b-2 border-doctor-blue">
                 <a href="#" class="hover:underline">
                   <p class="py-2">How Physicians Can Reduce Tax Bill by Using Cost Segregation and Bonus Depreciation </p>
                 </a>
@@ -62,7 +62,7 @@
             <% end %>
           </div>
         </div>
-      </div>
+      </div>-->
     </div>
   </div>
 </section>
