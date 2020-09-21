@@ -12,5 +12,6 @@
 @import 'components/custom';
 
 @import 'tailwindcss/utilities';
-
+/* purgecss start ignore */
 @import 'choices.js/public/assets/styles/choices';
+/* purgecss end ignore */
