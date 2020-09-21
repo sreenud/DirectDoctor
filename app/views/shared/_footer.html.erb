@@ -1,4 +1,4 @@
-<section class="sm:grid sm:w-full mt-24 grid-cols-12">
+<section class="sm:grid sm:w-full mt-24 grid-cols-12 relative z-50">
   <div class="col-span-10 col-start-2">
     <div class="sm:flex sm:w-full sm:mt-8 sm:justify-center">
       <div class="w-3/4 border rounded-2lg shadow-2xl relative -mb-20 -mt-12 bg-white">
@@ -6,14 +6,14 @@
           <label class="text-doctor-blue text-lg font-hurmebold">
             Subscribe for our newsletter
           </label>
-          <div class="flex justify-between items-center bg-gray-300 rounded-lg mt-3">
+          <div class="flex justify-between items-center subscribe-bg-gray rounded-lg mt-3">
             <div class="flex justify-center items-center w-full">
               <label class="ml-3 mr-5">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" class="w-5 text-gray-600" viewBox="0 0 24 24" stroke="currentColor">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                 </svg>
               </label>
-              <input class="my-4 w-full focus:outline-none bg-gray-300" type="text" name="" placeholder="Enter your Email">
+              <input class="my-4 w-full focus:outline-none subscribe-bg-gray" type="text" name="" placeholder="Enter your Email">
             </div>
             <div>
               <button class="bg-doctor-yellow text-gray-100 mr-4 rounded-md px-8 py-2 text-sm shadow">Subscribe</button>
@@ -24,7 +24,7 @@
     </div>
   </div>
 </section>
-<section class="grid grid-cols-12 bg-doctor-blue rounded-tl-lg rounded-tr-lg tracking-wider">
+<section class="grid grid-cols-12 bg-doctor-blue rounded-tl-lg rounded-tr-lg tracking-wider relative z-10">
   <div class="flex flex-wrap col-start-2 col-span-10">
     <footer class="pt-20 w-full mx-24">
       <div class="flex w-full mt-20 mb-8 ml-8">
@@ -32,23 +32,28 @@
       </div>
       <div class="flex w-full text-gray-100 text-sm justify-between ml-8">
         <div class="w-3/12">
-          <div class="hover:text-gray-400 cursor-pointer">
-            <a>About Find My Direct Doctor</a>
+          <div class="text-xl font-hurmebold">
+            Resources
           </div>
-          <div class="hover:text-gray-400 cursor-pointer">
-            <a>Review your DPC/Concierge Doctor</a>
-          </div>
-          <div class="hover:text-gray-400 cursor-pointer">
-            <a>Patient Resources</a>
-          </div>
-          <div class="hover:text-gray-400 cursor-pointer">
-            <a>Concierge Doctor Resources</a>
-          </div>
-          <div class="hover:text-gray-400 cursor-pointer">
-            <a>Rating</a>
-          </div>
-          <div class="hover:text-gray-400 cursor-pointer">
-            <a>Contact Us</a>
+          <div class="mt-4">
+            <div class="hover:text-gray-400 cursor-pointer">
+              <a>About Find My Direct Doctor</a>
+            </div>
+            <div class="hover:text-gray-400 cursor-pointer">
+              <a>Review your DPC/Concierge Doctor</a>
+            </div>
+            <div class="hover:text-gray-400 cursor-pointer">
+              <a>Patient Resources</a>
+            </div>
+            <div class="hover:text-gray-400 cursor-pointer">
+              <a>Concierge Doctor Resources</a>
+            </div>
+            <div class="hover:text-gray-400 cursor-pointer">
+              <a>Rating</a>
+            </div>
+            <div class="hover:text-gray-400 cursor-pointer">
+              <a>Contact Us</a>
+            </div>
           </div>
           <div class="mt-12 flex w-full">
             <div class="w-1/4"></div>
@@ -61,7 +66,7 @@
         </div>
         <div class="w-3/12 pl-10">
           <div class="text-xl font-hurmebold">
-            Sub-Brands
+            Business
           </div>
           <div class="mt-4">
             <div class="hover:text-gray-400 cursor-pointer">
