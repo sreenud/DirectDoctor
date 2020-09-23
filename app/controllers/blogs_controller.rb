@@ -10,6 +10,6 @@ class BlogsController < ApplicationController
     @topic = Topic.find_by_slug(params[:id])
 
     @popular_topics = Topic.popular
-    @other_readings = Topic.where.not(id: @topic.id)
+    @other_readings = Topic.where.not(id: @topic.id).limit(5)
   end
 end
