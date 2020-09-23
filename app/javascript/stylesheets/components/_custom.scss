@@ -54,3 +54,19 @@
 .subscribe-bg-gray {
   background-color: #e4e4e4;
 }
+
+.radio-toolbar input[type='radio'] {
+  @apply opacity-0 fixed w-0;
+}
+.radio-toolbar label {
+  @apply inline-block w-16 border border-doctor-yellow px-2 py-1 text-gray-600 rounded-full text-center bg-white;
+}
+.radio-toolbar label:hover {
+  @apply bg-doctor-yellow text-gray-100 cursor-pointer;
+}
+.radio-toolbar input[type='radio']:focus + label {
+  @apply bg-doctor-yellow text-gray-100 shadow-2xl;
+}
+.radio-toolbar input[type='radio']:checked + label {
+  @apply bg-doctor-yellow text-gray-100;
+}

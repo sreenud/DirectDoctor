@@ -19,6 +19,9 @@ module.exports = {
         px14: '14px',
         px20: '20px',
       },
+      boxShadow: {
+        'outline-yellow': '0 0 0 3px rgba(231, 171, 0, 1)',
+      },
     },
   },
   variants: {},
