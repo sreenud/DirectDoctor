@@ -43,6 +43,14 @@
 .post ul li {
   @apply py-2;
 }
+
+.post a {
+  @apply text-hyperlink-blue;
+}
+.post a:hover {
+  @apply border-b border-hyperlink-blue;
+}
+
 .section2-bg-yellow {
   background-color: #fefdf9;
 }
