@@ -3,5 +3,6 @@ Rails.application.routes.draw do
   root 'home#index'
 
   resources :blogs, only: [:index, :show]
+  resources :surveys, only: [:index, :create]
   draw :admin
 end

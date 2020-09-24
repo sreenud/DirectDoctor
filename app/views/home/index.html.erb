@@ -11,5 +11,5 @@
     <%= image_pack_tag 'yellow_circle_big_shadow.svg', class: "w-16"%>
   </div>
 </section>
-<%= render partial: 'home/partials/section6' %>
+<%= render partial: 'home/partials/survey', locals: {survey: @survey, questions: @questions} %>
 <%= render partial: 'home/partials/section7' %>

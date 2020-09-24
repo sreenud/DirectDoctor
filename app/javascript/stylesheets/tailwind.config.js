@@ -5,6 +5,7 @@ module.exports = {
       colors: {
         'doctor-blue': '#191932',
         'doctor-yellow': '#e7ab00',
+        'doctor-yellow-500': '#EEC44D',
         'hyperlink-blue': '#13347f',
       },
       fontFamily: {
