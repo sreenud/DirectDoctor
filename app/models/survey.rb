@@ -1,7 +1,5 @@
-class Survey
-  include ActiveModel::Model
-
-  attr_accessor :email, :question
+class Survey < ApplicationRecord
+  attr_accessor :question
 
   validates :email, presence: true
 

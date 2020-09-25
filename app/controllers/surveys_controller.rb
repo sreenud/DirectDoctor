@@ -4,9 +4,13 @@ class SurveysController < ApplicationController
 
   def create
     @survey = Survey.new(survey_params)
+    @survey.survey = survey_params[:question]
 
     respond_to do |format|
-      if @survey.valid?
+      if @survey.save
+
+        SurveyMailer.with(survey: @survey).thankyou.deliver_later
+
         format.html { render(partial: "shared/partials/success", locals: { object: @survey }, status: :ok) }
       else
         format.html { render(partial: "shared/partials/errors", locals: { object: @survey }, status: :bad_request) }
