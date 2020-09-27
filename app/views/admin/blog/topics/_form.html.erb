@@ -52,7 +52,7 @@
     <div class="bg-white border p-5 rounded shadow">
       <div class="input-group">
         <%= form.label :authour, :class => "label text-gray-500" %>
-        <%= form.select(:authour_id, authors.collect {|author| [ author.full_name, author.id ]}, {:prompt => "Select..."} ,{class: "select"}) %>
+        <%= form.select(:author_id, authors.collect {|author| [ author.full_name, author.id ]}, {:prompt => "Select..."} ,{class: "select"}) %>
       </div>
       <div class="input-group">
         <%= form.label :display_image, :class => "label text-gray-500" %>
