@@ -1,3 +1,6 @@
+/* eslint-disable*/
+import cropbox from '../plugins/cropbox';
+
 import {
   Core,
   FileInput,
@@ -6,12 +9,11 @@ import {
   ThumbnailGenerator,
   XHRUpload,
 } from 'uppy';
-import cropbox from './cropbox';
 
 function profilePicUpload(fileInput) {
-  const hiddenInput = document.querySelector('.upload-data');
-  const imagePreview = document.querySelector('.upload-preview img');
-  const formGroup = fileInput.parentNode;
+  const hiddenInput = document.querySelector('.upload-data'),
+    imagePreview = document.querySelector('.upload-preview img'),
+    formGroup = fileInput.parentNode;
 
   // remove our file input in favour of Uppy's
   formGroup.removeChild(fileInput);
@@ -42,15 +44,15 @@ function profilePicUpload(fileInput) {
 
   uppy.on('upload-success', (file, response) => {
     // retrieve uploaded file data
-    const uploadedFileData = response.body.data;
+    const uploadedFileData = response.body['data'];
 
     // set hidden field value to the uploaded file data so that it's submitted
     // with the form as the attachment
     hiddenInput.value = JSON.stringify(uploadedFileData);
     cropbox(imagePreview, response.uploadURL, {
       onCrop(detail) {
-        const fileData = JSON.parse(hiddenInput.value);
-        fileData.metadata.crop = detail;
+        let fileData = JSON.parse(hiddenInput.value);
+        fileData['metadata']['crop'] = detail;
         hiddenInput.value = JSON.stringify(fileData);
       },
     });

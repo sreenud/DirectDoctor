@@ -5,6 +5,7 @@ class Topic < ApplicationRecord
   has_many :topic_tips
   has_many :tips, through: :topic_tips
   belongs_to :category, optional: true
+  belongs_to :author, foreign_key: "authour_id", class_name: "User", optional: true
 
   scope :latest, -> { order(created_at: :desc) }
   scope :popular, -> { where(is_popular: true) }

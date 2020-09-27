@@ -50,11 +50,11 @@
         <div class="w-full mt-12">
           <div class="flex flex-wrap w-full bg-doctor-blue rounded-lg items-center justify-center">
             <div class="w-1/3 flex justify-center">
-              <img src="//physicianestate.com/wp-content/themes/ourtheme/AUTHOR PHOTO.jpg" class="rounded-full border-solid border-white border-2 object-contain w-32 h-32">
+              <img src="<%=@topic&.author&.image_url%>" class="rounded-full border-solid border-white border-2 object-contain w-32 h-32">
             </div>
             <div class="w-2/3 text-green-100 py-8 md:pr-8">
-              <p class="font-hurmebold">Authored by Harsha Moole, M.D., MBBS</p>
-              <p class=" leading-snug text-sm mt-4">Hey there! I hope you enjoyed reading this blog. PhysicianEstate is my brain child and passion project. I run this platform to empower entrepreneurially motivated physicians to make financially educated investment decisions and discuss asset protection strategies. Lots of important but free content </p>
+              <p class="font-hurmebold">Authored by <%=@topic&.author&.full_name%>, <%=@topic&.author&.title%></p>
+              <p class=" leading-snug text-sm mt-4"><%=@topic&.author&.about%></p>
             </div>
           </div>
         </div>
