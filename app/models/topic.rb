@@ -5,13 +5,13 @@ class Topic < ApplicationRecord
   has_many :topic_tips
   has_many :tips, through: :topic_tips
   belongs_to :category, optional: true
-  belongs_to :author, foreign_key: "authour_id", class_name: "User", optional: true
+  belongs_to :author, foreign_key: "author_id", class_name: "User", optional: true
 
   scope :latest, -> { order(created_at: :desc) }
   scope :popular, -> { where(is_popular: true) }
   scope :published, -> { where(status: 'published') }
 
-  validates :name, :summary, :content, :meta_title, :read_time, :meta_description, :authour_id, presence: true
+  validates :name, :summary, :content, :meta_title, :read_time, :meta_description, :author_id, presence: true
   validates :slug, uniqueness: true
 
   enum status: {
