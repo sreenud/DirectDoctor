@@ -23,6 +23,7 @@ module Admin
 
     def create
       @user = User.new(user_params)
+      @user.image_derivatives!
       roles = params[:user][:role_ids].reject(&:empty?) if params[:user][:role_ids].present?
       roles&.each do |role|
         role = Role.find(role)
@@ -39,6 +40,7 @@ module Admin
     end
 
     def update
+      @user.image_derivatives!
       roles = params[:user][:role_ids].reject(&:empty?).map(&:to_i) if params[:user][:role_ids].present?
       remove_roles = @user&.role_ids&.select { |role_id| !roles.include?(role_id) }
 
@@ -76,9 +78,9 @@ module Admin
 
     def user_params(password = true)
       if password
-        params.require(:user).permit(:full_name, :email, :password, :password_confirmation)
+        params.require(:user).permit(:full_name, :email, :image, :password, :password_confirmation, :title, :about)
       else
-        params.require(:user).permit(:full_name, :email)
+        params.require(:user).permit(:full_name, :email, :image, :title, :about)
       end
     end
   end

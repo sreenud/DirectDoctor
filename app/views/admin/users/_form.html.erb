@@ -8,6 +8,10 @@
             <%= form.text_field :full_name, :class => "input bg-white", :autocomplete => "off" %>
           </div>
           <div class="input-group">
+            <%= form.label :title, :class => "label text-gray-500" %>
+            <%= form.text_field :title, :class => "input bg-white", :autocomplete => "off" %>
+          </div>
+          <div class="input-group">
             <%= form.label :email, :class => "label text-gray-500" %>
             <%= form.text_field :email, :class => "input bg-white", :autocomplete => "off"%>
           </div>
@@ -19,6 +23,10 @@
             <%= form.label :password_confirmation, :class => "label text-gray-500" %>
             <%= form.password_field :password_confirmation, :class => "input bg-white tinymce" %>
           </div>
+          <div class="input-group">
+            <%= form.label :about, :class => "label text-gray-500" %>
+            <%= form.text_area :about, :class => "input bg-white", :autocomplete => "off"%>
+          </div>
         </div>
       </div>
       <div class="float-left pt-5">
@@ -28,11 +36,20 @@
       </div>
     </div>
   </div>
-  <div class="w-1/4">
-    <div class="bg-white border p-5 rounded shadow">
+  <div class="w-2/6">
+    <div class="bg-white border p-5 rounded shadow" data-controller="profile-pic">
       <div class="input-group">
         <%= form.label :roles, :class => "label text-gray-500" %>
         <%= form.select(:role_ids, roles.collect {|role| [ role.name.humanize, role.id ]}, {:prompt => "Select..."} ,{class: "select bg-gray-400", :multiple => true}) %>
+      </div>
+      <div class="input-group">
+        <%= form.label :profile_image, :class => "label text-gray-500" %>
+        <%= image_tag form.object.image_url if form.object.cached_image_data %>
+        <%= form.hidden_field :image, value: form.object.cached_image_data, class: "upload-data" %>
+        <%= form.file_field :image, class: 'upload-file' %>
+      </div>
+      <div class="upload-preview">
+        <%= image_tag form.object.image_url(:small).to_s, height: "300", id: 'profile_image' %>
       </div>
     </div>
   </div>

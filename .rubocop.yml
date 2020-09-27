@@ -21,6 +21,7 @@ Style/FrozenStringLiteralComment:
 Layout/LineLength:
   Exclude:
     - '**/config/initializers/*.rb'
+    - '**/db/migrate/**'
 
 Style/ClassAndModuleChildren:
   Exclude:

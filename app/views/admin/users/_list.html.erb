@@ -21,7 +21,11 @@
         <td class="px-6 py-4 border-b border-gray-200 bg-white">
           <div class="flex items-center">
             <div class="flex-shrink-0 h-10 w-10">
-              <%= image_pack_tag 'default_profile_pic.svg', class: 'w-full h-full rounded-full' %>
+              <% if user&.image_data %>
+                <img src="<%= user.image_url(:small) %>" width="150" class="img-thumbnail" />
+              <% else %>
+                <%= image_pack_tag 'default_profile_pic.svg', class: 'w-full h-full rounded-full' %>
+              <% end %>
             </div>
             <div class="ml-4">
               <div class="text-sm leading-5 font-medium text-gray-900"><%=user&.full_name%></div>

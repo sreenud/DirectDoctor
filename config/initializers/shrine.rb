@@ -20,3 +20,6 @@ Shrine.plugin(:cached_attachment_data) # enables retaining cached file across fo
 Shrine.plugin(:restore_cached_data)    # extracts metadata for assigned cached files
 Shrine.plugin(:validation)
 Shrine.plugin(:validation_helpers)
+Shrine.plugin(:derivatives)
+Shrine.plugin(:derivation_endpoint, secret_key: "secret")
+Shrine.plugin(:upload_endpoint, url: true)
