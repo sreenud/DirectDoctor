@@ -1,7 +1,7 @@
 <section class="sm:grid sm:w-full mt-24 grid-cols-12 relative z-50">
   <div class="col-span-10 col-start-2">
     <div class="sm:flex sm:w-full sm:mt-8 sm:justify-center">
-      <div class="w-3/4 border rounded-2lg shadow-2xl relative -mb-20 -mt-12 bg-white">
+      <div class="w-full sm:w-3/4 border rounded-2lg shadow-2xl relative -mb-20 -mt-12 bg-white">
         <div class="px-8 pt-2">
           <label class="text-doctor-blue text-lg font-hurmebold">
             Subscribe for our newsletter
@@ -26,12 +26,12 @@
 </section>
 <section class="grid grid-cols-12 bg-doctor-blue rounded-tl-lg rounded-tr-lg tracking-wider relative z-10">
   <div class="flex flex-wrap col-start-2 col-span-10">
-    <footer class="pt-20 w-full mx-24">
-      <div class="flex w-full mt-20 mb-8 ml-8">
+    <footer class="pt-20 w-full sm:mx-24">
+      <div class="flex w-full mt-20 mb-8 sm:ml-8">
         <%= image_pack_tag 'logo_white.png', class: "h-8" %>
       </div>
-      <div class="flex w-full text-gray-100 text-sm justify-between ml-8">
-        <div class="w-3/12">
+      <div class="sm:flex w-full text-gray-100 text-sm justify-between sm:ml-8">
+        <div class="sm:w-3/12 w-full">
           <div class="text-xl font-hurmebold">
             Resources
           </div>
@@ -55,16 +55,16 @@
               <a>Contact Us</a>
             </div>
           </div>
-          <div class="mt-12 flex w-full">
+          <div class="mt-12 flex w-full hidden sm:block">
             <div class="w-1/4"></div>
             <div class="w-1/4"></div>
             <div class="w-1/4"></div>
           </div>
-          <div class="my-6 flex w-full text-xs text-gray-400">
+          <div class="my-6 flex w-full text-xs text-gray-400 hidden sm:block">
             All Rights Reserved 2020
           </div>
         </div>
-        <div class="w-3/12 pl-10">
+        <div class="sm:w-3/12 sm:pl-10 w-full mt-4">
           <div class="text-xl font-hurmebold">
             Business
           </div>
@@ -80,7 +80,7 @@
             </div>
           </div>
         </div>
-        <div class="w-3/12 pl-10">
+        <div class="sm:w-3/12 sm:pl-10 w-full mt-4">
           <div class="text-xl font-hurmebold">
             Legal
           </div>
@@ -98,6 +98,9 @@
               <a>Acceptable Use Policy</a>
             </div>
           </div>
+        </div>
+        <div class="my-6 flex w-full text-xs text-gray-400 block sm:hidden">
+          All Rights Reserved 2020
         </div>
       </div>
     </footer>
