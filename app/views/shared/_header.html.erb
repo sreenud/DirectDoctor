@@ -1,20 +1,32 @@
 <nav class="p-2 mt-0 fixed w-full z-50 top-0 bg-white">
-  <header class="sm:flex sm:justify-between sm:items-center sm:px-4 sm:py-3 sm:mx-16 mx-2 " >
+  <header
+    class="sm:flex sm:justify-between sm:items-center sm:px-4 sm:py-3 sm:mx-16 mx-2 "
+    x-data="{ isOpen: false }"
+    @keydown.escape="isOpen = false"
+    >
     <div class="flex items-center justify-between sm:px-3 py-4 sm:p-0">
       <div>
         <a href="<%=root_url%>">
           <%= image_pack_tag "logo.png", alt: "Find my Direct Doctor", class: "h-12"%>
         </a>
       </div>
-      <div class="sm:hidden" @click.away="open = false" >
-        <button id="userButton" type="button" class="block hover:text-doctor-yellow focus:text-doctor-yellow focus:outline-none" @click="open = !open">
-          <svg class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-            <path fill-rule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd" />
-          </svg>
-        </button>
-      </div>
+      <button id="userButton"
+        type="button"
+        class="block sm:hidden hover:text-doctor-yellow focus:text-doctor-yellow focus:outline-none"
+        @click="isOpen = !isOpen"
+        :class="{ 'transition transform-180': isOpen }"
+        >
+        <svg class="h-6 w-6 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+          <path x-show="isOpen" fill-rule="evenodd" clip-rule="evenodd" d="M18.278 16.864a1 1 0 0 1-1.414 1.414l-4.829-4.828-4.828 4.828a1 1 0 0 1-1.414-1.414l4.828-4.829-4.828-4.828a1 1 0 0 1 1.414-1.414l4.829 4.828 4.828-4.828a1 1 0 1 1 1.414 1.414l-4.828 4.829 4.828 4.828z"/>
+          <path x-show="!isOpen" fill-rule="evenodd" d="M4 5h16a1 1 0 0 1 0 2H4a1 1 0 1 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2z"/>
+        </svg>
+      </button>
     </div>
-    <div id="userMenu" class="px-4 pt-2 pb-4 sm:flex sm:p-0 sm:items-center sm:justify-center hidden" x-show="open">
+    <div id="userMenu"
+      class="px-4 pt-2 pb-4 sm:flex sm:p-0 sm:items-center sm:justify-center hidden"
+      :class="{ 'block shadow-2xl': isOpen, 'hidden': !isOpen }"
+      @click.away="isOpen = false"
+      x-show.transition="true">
       <a href="#" class="block text-gray-800 font-semibold hover:text-doctor-yellow">
         Direct Doctor Directory
         <span>
@@ -54,13 +66,13 @@
           </svg>
         </span>
       </a>
-      <a href="https://docs.google.com/forms/d/e/1FAIpQLSe4V_CNAPGLCwvx8TENP_XzfrvG28_0Ye5CG4JHt4ClxTl2Zw/viewform" target="_blank" class="block text-gray-800 border rounded-lg px-6 py-1 border-doctor-yellow ml-4 hover:bg-doctor-yellow hover:text-gray-100">
+      <a href="https://docs.google.com/forms/d/e/1FAIpQLSe4V_CNAPGLCwvx8TENP_XzfrvG28_0Ye5CG4JHt4ClxTl2Zw/viewform" target="_blank" class="block text-gray-800 border rounded-lg px-6 py-1 border-doctor-yellow sm:ml-4 hover:bg-doctor-yellow hover:text-gray-100 mt-3 sm:mt-0">
         List your practice
       </a>
       <% if user_signed_in? %>
-        <%= link_to " Logout".html_safe, destroy_user_session_path, method: :delete, class: "block text-gray-800 border rounded-lg px-6 py-1 border-doctor-yellow ml-4 hover:bg-doctor-yellow hover:text-gray-100" %>
+        <%= link_to " Logout".html_safe, destroy_user_session_path, method: :delete, class: "block text-gray-800 border rounded-lg px-6 py-1 border-doctor-yellow sm:ml-4 hover:bg-doctor-yellow hover:text-gray-100 mt-3 sm:mt-0" %>
       <% else %>
-        <a href="<%= new_user_session_path %>" class="block text-gray-800 border rounded-lg px-6 py-1 border-doctor-yellow ml-4 hover:bg-doctor-yellow hover:text-gray-100">
+        <a href="<%= new_user_session_path %>" class="block text-gray-800 border rounded-lg px-6 py-1 border-doctor-yellow sm:ml-4 hover:bg-doctor-yellow hover:text-gray-100 mt-3 sm:mt-0">
           Login
         </a>
       <% end %>
