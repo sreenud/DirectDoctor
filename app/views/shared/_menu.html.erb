@@ -1,0 +1,39 @@
+      <a href="#" class="block text-gray-800 font-semibold hover:text-doctor-yellow">
+  Direct Doctor Directory
+  <span>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="inline w-5">
+      <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+    </svg>
+  </span>
+</a>
+<div class="hoverable">
+  <a href="<%=blogs_url%>" class="block text-gray-800 font-semibold hover:text-doctor-yellow sm:mt-0 sm:ml-4">
+    Free Articles
+    <span>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="inline w-5">
+        <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+      </svg>
+    </span>
+  </a>
+  <div class="rounded-lg shadow-2xl absolute overflow-auto z-30 profile-menu px-4 py-2 bg-white">
+    <ul class="list-reset">
+      <% if @menu_categories %>
+        <% @menu_categories.each do |category| %>
+          <li class="border-b border-doctor-blue py-1">
+            <a href="<%=blogs_url%>#<%=category.slug%>" class="px-2 py-2 block hover:text-doctor-yellow">
+              <%=category.name%>
+            </a>
+          </li>
+        <% end %>
+      <% end %>
+    </ul>
+  </div>
+</div>
+<a href="#" class="block text-gray-800 font-semibold hover:text-doctor-yellow sm:mt-0 sm:ml-4">
+  Quiz
+  <span>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="inline w-5">
+      <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+    </svg>
+  </span>
+</a>

@@ -1,10 +1,10 @@
 <nav class="p-2 mt-0 fixed w-full z-50 top-0 bg-white">
   <header
-    class="md:flex md:justify-between md:items-center md:px-4 md:py-3 md:mx-16 mx-2 "
+    class="sm:flex sm:justify-between sm:items-center sm:px-4 sm:py-3 sm:mx-16 mx-2 "
     x-data="{ isOpen: false }"
     @keydown.escape="isOpen = false"
     >
-    <div class="flex items-center justify-between md:px-3 py-4 md:p-0">
+    <div class="flex items-center justify-between sm:px-3 py-4 sm:p-0">
       <div>
         <a href="<%=root_url%>">
           <%= image_pack_tag "logo.png", alt: "Find my Direct Doctor", class: "h-12"%>
@@ -12,7 +12,7 @@
       </div>
       <button id="userButton"
         type="button"
-        class="block md:hidden hover:text-doctor-yellow focus:text-doctor-yellow focus:outline-none"
+        class="block sm:hidden hover:text-doctor-yellow focus:text-doctor-yellow focus:outline-none"
         @click="isOpen = !isOpen"
         :class="{ 'transition transform-180': isOpen }"
         >
@@ -23,52 +23,15 @@
       </button>
     </div>
     <div id="userMenu"
-      class="pb-4 md:flex md:p-0 md:items-center md:justify-center hidden"
+      class="px-0 md:px-4 pt-2 pb-4 sm:flex sm:p-0 sm:items-center sm:justify-center hidden"
       :class="{ 'block shadow-2xl': isOpen, 'hidden': !isOpen }"
       @click.away="isOpen = false"
       x-show.transition="true">
-      <div class="md:border-none md:px-0 md:py-0 border-t border-b px-3 py-4">
-        <a href="#" class="block text-gray-800 font-semibold hover:text-doctor-yellow">
-          Direct Doctor Directory
-          <span class="float-right">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="inline w-5">
-              <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
-            </svg>
-          </span>
-        </a>
+      <div class="md:flex md:show hidden">
+        <%=render partial: 'shared/menu'%>
       </div>
-      <div class="hoverable md:border-none md:px-0 md:py-0 border-b px-3 py-4">
-        <a href="<%=blogs_url%>" class="block text-gray-800 font-semibold hover:text-doctor-yellow md:mt-0 sm:ml-4">
-          Free Articles
-          <span class="float-right">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="inline w-5">
-              <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
-            </svg>
-          </span>
-        </a>
-        <div class="rounded-lg shadow-2xl absolute overflow-auto z-30 profile-menu px-4 py-2 bg-white">
-          <ul class="list-reset">
-            <% if @menu_categories %>
-              <% @menu_categories.each do |category| %>
-                <li class="border-b border-doctor-blue py-1">
-                  <a href="<%=blogs_url%>#<%=category.slug%>" class="px-2 py-2 block hover:text-doctor-yellow">
-                    <%=category.name%>
-                  </a>
-                </li>
-              <% end %>
-            <% end %>
-          </ul>
-        </div>
-      </div>
-      <div class="border-b px-3 py-4 md:border-none md:px-0 md:py-0">
-        <a href="#" class="block text-gray-800 font-semibold hover:text-doctor-yellow sm:mt-0 sm:ml-4">
-          Quiz
-          <span class="float-right">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="inline w-5">
-              <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
-            </svg>
-          </span>
-        </a>
+      <div class="md:hidden show">
+        <%=render partial: 'shared/menu_mobile'%>
       </div>
       <div class="px-3 md:px-0">
         <a href="https://docs.google.com/forms/d/e/1FAIpQLSe4V_CNAPGLCwvx8TENP_XzfrvG28_0Ye5CG4JHt4ClxTl2Zw/viewform" target="_blank" class="block text-gray-800 border rounded-lg px-6 py-1 border-doctor-yellow sm:ml-4 hover:bg-doctor-yellow hover:text-gray-100 mt-3 sm:mt-0">

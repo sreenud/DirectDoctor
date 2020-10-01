@@ -1,0 +1,46 @@
+<div class="border-t">
+  <a class="block text-gray-800 font-semibold hover:text-doctor-yellow border-b px-4 py-4">
+    Direct Doctor Directory
+    <span class="float-right">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="inline w-5">
+        <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+      </svg>
+    </span>
+  </a>
+</div>
+<div x-data="{ isOpen: false }">
+  <a class="block text-gray-800 font-semibold hover:text-doctor-yellow border-b px-4 py-4 cursor-pointer" @click=" isOpen = !isOpen">
+    Free Articles
+    <span class="float-right">
+      <svg :class="{ 'hidden' : isOpen }" viewBox="0 0 20 20" fill="currentColor" class="inline w-5 transform">
+        <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+      </svg>
+      <svg :class="{ 'hidden' : !isOpen }" viewBox="0 0 20 20" fill="currentColor" class="inline w-5 transform">
+        <path fill-rule="evenodd" d="M14.707 12.707a1 1 0 01-1.414 0L10 9.414l-3.293 3.293a1 1 0 01-1.414-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 010 1.414z" clip-rule="evenodd" />
+      </svg>
+    </span>
+  </a>
+  <div class="bg-gray-200 border-l-4 border-doctor-yellow" x-show="isOpen">
+    <ul class="list-reset list-outside">
+      <% if @menu_categories %>
+        <% @menu_categories.each do |category| %>
+          <li class="border-b py-1 px-4">
+            <a href="<%=blogs_url%>#<%=category.slug%>" class="py-2 block hover:text-doctor-yellow">
+              <%=category.name%>
+            </a>
+          </li>
+        <% end %>
+      <% end %>
+    </ul>
+  </div>
+</div>
+<div class="border-b">
+  <a class="block text-gray-800 font-semibold hover:text-doctor-yellow px-4 py-4">
+    Quiz
+    <span class="float-right">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="inline w-5">
+        <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+      </svg>
+    </span>
+  </a>
+</div>
