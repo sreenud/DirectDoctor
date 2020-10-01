@@ -8,8 +8,7 @@
             <%= @topic&.name %>
           </h1>
         </div>
-        <div class="w-full mt-4">
-          <div class=" border border-doctor-blue"></div>
+        <div class="w-full mt-4 border-t-2 border-b-2 border-doctor-blue">
           <div class="flex w-full text-px14  py-4 px-4 font-hurmebold">
             <div class="w-1/2">
               <h4> <%=@topic.readable_published_date%> </h4>
@@ -18,17 +17,14 @@
               <h4> Harsha Moole, M.D., MBBS</h4>
             </div>
           </div>
-          <div class=" border border-doctor-blue"></div>
         </div>
         <div class="w-full mt-4 post">
           <%= @topic&.content.html_safe %>
         </div>
         <div class="w-full mt-10">
-          <div class=" border border-doctor-blue"></div>
-          <div class="grid grid-cols-12">
+          <div class="grid grid-cols-12 border-t-2 border-doctor-blue">
             <div class="col-span-5">
-              <p class="font-hurmebold text-doctor-blue px-4 py-4">Previous Post</p>
-              <div class=" border border-doctor-blue"></div>
+              <p class="font-hurmebold text-doctor-blue px-4 py-4 border-b-2 border-doctor-blue">Previous Post</p>
               <div class="hover:underline mt-6 text-base">
                 <a href="<%=@topic&.previous&.slug%>">
                   <%=@topic&.previous&.name%>
@@ -37,8 +33,7 @@
             </div>
             <div class="col-span-2"></div>
             <div class="col-span-5 ">
-              <p class="font-hurmebold text-doctor-blue px-4 py-4">Next Post</p>
-              <div class=" border border-doctor-blue"></div>
+              <p class="font-hurmebold text-doctor-blue px-4 py-4 border-b-2 border-doctor-blue">Next Post</p>
               <div class="hover:underline mt-6  text-base">
                 <a href="<%=@topic&.next&.slug%>">
                   <%=@topic&.next&.name%>
