@@ -1,10 +1,10 @@
 <nav class="p-2 mt-0 fixed w-full z-50 top-0 bg-white">
   <header
-    class="sm:flex sm:justify-between sm:items-center sm:px-4 sm:py-3 sm:mx-16 mx-2 "
+    class="md:flex md:justify-between md:items-center md:px-4 md:py-3 md:mx-16 mx-2 "
     x-data="{ isOpen: false }"
     @keydown.escape="isOpen = false"
     >
-    <div class="flex items-center justify-between sm:px-3 py-4 sm:p-0">
+    <div class="flex items-center justify-between md:px-3 py-4 md:p-0">
       <div>
         <a href="<%=root_url%>">
           <%= image_pack_tag "logo.png", alt: "Find my Direct Doctor", class: "h-12"%>
@@ -12,7 +12,7 @@
       </div>
       <button id="userButton"
         type="button"
-        class="block sm:hidden hover:text-doctor-yellow focus:text-doctor-yellow focus:outline-none"
+        class="block md:hidden hover:text-doctor-yellow focus:text-doctor-yellow focus:outline-none"
         @click="isOpen = !isOpen"
         :class="{ 'transition transform-180': isOpen }"
         >
@@ -23,7 +23,7 @@
       </button>
     </div>
     <div id="userMenu"
-      class="px-4 pt-2 pb-4 sm:flex sm:p-0 sm:items-center sm:justify-center hidden"
+      class="px-4 pt-2 pb-4 md:flex md:p-0 md:items-center md:justify-center hidden"
       :class="{ 'block shadow-2xl': isOpen, 'hidden': !isOpen }"
       @click.away="isOpen = false"
       x-show.transition="true">
@@ -36,7 +36,7 @@
         </span>
       </a>
       <div class="hoverable">
-        <a href="<%=blogs_url%>" class="block text-gray-800 font-semibold hover:text-doctor-yellow sm:mt-0 sm:ml-4">
+        <a href="<%=blogs_url%>" class="block text-gray-800 font-semibold hover:text-doctor-yellow md:mt-0 sm:ml-4">
           Free Articles
           <span>
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="inline w-5">
@@ -44,7 +44,7 @@
             </svg>
           </span>
         </a>
-        <div class="rounded-lg shadow-2xl absolute overflow-auto z-30 profile-menu px-4 py-2">
+        <div class="rounded-lg shadow-2xl absolute overflow-auto z-30 profile-menu px-4 py-2 bg-white">
           <ul class="list-reset">
             <% if @menu_categories %>
               <% @menu_categories.each do |category| %>
