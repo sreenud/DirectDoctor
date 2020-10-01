@@ -25,7 +25,7 @@
       <% if @menu_categories %>
         <% @menu_categories.each do |category| %>
           <li class="border-b py-1 px-4">
-            <a href="<%=blogs_url%>#<%=category.slug%>" class="py-2 block hover:text-doctor-yellow">
+            <a href="<%=blogs_url%>#<%=category.slug%>" class="py-2 block hover:text-doctor-yellow focus:outline-none">
               <%=category.name%>
             </a>
           </li>
