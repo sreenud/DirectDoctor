@@ -5,7 +5,7 @@ FactoryBot.define do
     summary { "MyText" }
     content { "MyText" }
     is_popular { false }
-    authour_id { 1 }
+    author_id { 1 }
     meta_title { "MyString" }
     meta_keywords { "" }
     meta_description { "MyText" }

@@ -4,7 +4,7 @@ FactoryBot.define do
     slug { "MyString" }
     summary { "MyText" }
     content { "MyText" }
-    authour_id { 1 }
+    author_id { 1 }
     meta_title { "MyString" }
     meta_keywords { "" }
     meta_description { "MyText" }

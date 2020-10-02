@@ -79,7 +79,7 @@ ActiveRecord::Schema.define(version: 2020_09_25_055633) do
     t.string "code"
     t.text "summary"
     t.text "content"
-    t.integer "authour_id"
+    t.integer "author_id"
     t.string "meta_title"
     t.jsonb "meta_keywords"
     t.text "meta_description"
@@ -109,7 +109,7 @@ ActiveRecord::Schema.define(version: 2020_09_25_055633) do
     t.text "summary"
     t.text "content"
     t.boolean "is_popular", default: false
-    t.integer "authour_id"
+    t.integer "author_id"
     t.string "meta_title"
     t.text "meta_description"
     t.string "h1_tag"
