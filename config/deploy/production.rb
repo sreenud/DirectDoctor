@@ -70,4 +70,11 @@ namespace :deploy do
   after :publishing, "deploy:restart"
   after :finishing, "deploy:cleanup"
   after :publishing, "sitemap:create"
+  after :publishing, "gzip" do
+    desc "gzip sitemap"
+    on roles(:app), in: :sequence, wait: 5 do
+      execute "cd #{release_path.join('public/')} && gunzip -f sitemap.xml.gz "
+      execute "mv #{release_path.join('public/sitemap.xml')} #{release_path.join('public/seo/')}"
+    end
+  end
 end
