@@ -17,7 +17,7 @@ const environment = {
 };
 
 if (
-  process.env.RAILS_ENV === 'production_new' ||
+  process.env.RAILS_ENV === 'production' ||
   process.env.RAILS_ENV === 'staging' ||
   process.env.RAILS_ENV === 'development'
 ) {
