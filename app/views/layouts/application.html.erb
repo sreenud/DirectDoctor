@@ -10,12 +10,12 @@
     <link rel="dns-prefetch" href="https://code.jquery.com">
     <link rel="dns-prefetch" href="https://cdn.rawgit.com">
     <link rel="dns-prefetch" href="https://www.googletagmanager.com">
-    <% if Rails.env.production? %>
+    <% if Rails.env.development? %>
+      <%= stylesheet_pack_tag 'application_style', media: 'all', 'data-turbolinks-track': 'reload', :async => "async"%>
+    <% else %>
       <style>
         <%= raw File.read("public" + asset_pack_path("application_style.css")) %>
       </style>
-    <% else %>
-      <%= stylesheet_pack_tag 'application_style', media: 'all', 'data-turbolinks-track': 'reload', :async => "async"%>
     <% end %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload', :async => "async" %>
     <!-- Global site tag (gtag.js) - Google Analytics -->
