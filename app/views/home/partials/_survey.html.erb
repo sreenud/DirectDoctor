@@ -8,7 +8,7 @@
     <div class="lg:flex lg:w-full lg:mx-20 mx-6 lg:justify-center lg:flex-wrap">
       <div class="w-full lg:mx-10 lg:mt-32">
         <h3 class="text-doctor-blue font-hurmebold text-2xl">
-          Take a Quiz to find out if you would benefit from a Direct Primary Care/ Concierge Doctor
+          Take a Quiz to find out if you would benefit from a Direct Primary Care Physician/ Concierge Doctor
         </h3>
       </div>
       <%= form_with(model: survey, class: " w-full", data: {type: "html", action: "ajax:error->survey#errorHandler ajax:success->survey#success"}) do |form| %>
