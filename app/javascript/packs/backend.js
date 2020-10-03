@@ -1,4 +1,4 @@
-import 'controllers/frontend';
+import 'controllers/backend';
 import 'alpinejs';
 
 require('@rails/ujs').start();

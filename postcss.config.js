@@ -28,7 +28,7 @@ if (
         './app/helpers/**/*.rb',
         './app/javascript/**/*.js',
       ],
-      whitelistPatterns: [/choices/],
+      whitelistPatterns: [/choices/, /a2a_s_/],
       whitelistPatternsChildren: [/choices/],
       defaultExtractor: (content) => content.match(/[A-Za-z0-9-_:/]+/g) || [],
     })

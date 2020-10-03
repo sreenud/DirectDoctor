@@ -1,5 +1,5 @@
 import { Controller } from 'stimulus';
-import profilePicUpload from '../plugins/profilePicUpload';
+import profilePicUpload from '../../plugins/profilePicUpload';
 
 export default class extends Controller {
   connect() {

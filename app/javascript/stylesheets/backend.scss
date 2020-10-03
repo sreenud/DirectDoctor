@@ -1,0 +1,30 @@
+@import "fonts.scss";
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+
+@import "components/buttons";
+@import "components/forms";
+@import "components/alerts";
+@import "components/colors";
+@import "components/pagy";
+@import "components/custom";
+
+@import "tailwindcss/utilities";
+
+@import "choices.js/public/assets/styles/choices";
+@import "uppy/dist/uppy.min.css";
+
+.upload-preview img {
+  display: block;
+  max-width: 100%;
+}
+
+.upload-preview {
+  margin-bottom: 10px;
+  display: inline-block;
+  height: 300px;
+}
+
+img[src=""] {
+  visibility: hidden;
+}
