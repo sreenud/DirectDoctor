@@ -7,8 +7,10 @@
     <meta name="description" content="Find the best direct primary care physicians and top concierge doctors online. FindMyDirectDoctor is the most comprehensive resource to find concierge doctors and direct primary care doctors in the US. Ask health queries, book appointments and consult for any medical assistance.">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-    <%= stylesheet_pack_tag 'application_style', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link rel="dns-prefetch" href="https://code.jquery.com">
+    <link rel="dns-prefetch" href="https://cdn.rawgit.com">
+    <%= stylesheet_pack_tag 'application_style', media: 'all', 'data-turbolinks-track': 'reload', :async => "async" %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload', :async => "async" %>
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-151952917-2"></script>
     <script>

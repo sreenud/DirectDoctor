@@ -16,7 +16,11 @@ const environment = {
   ],
 };
 
-if (process.env.RAILS_ENV === 'production_new') {
+if (
+  process.env.RAILS_ENV === 'production_new' ||
+  process.env.RAILS_ENV === 'staging' ||
+  process.env.RAILS_ENV === 'development'
+) {
   environment.plugins.push(
     require('@fullhuman/postcss-purgecss')({
       content: [
@@ -25,7 +29,7 @@ if (process.env.RAILS_ENV === 'production_new') {
         './app/javascript/**/*.js',
       ],
       whitelistPatterns: [/choices/],
-      whitelistPatternsChildren: [],
+      whitelistPatternsChildren: [/choices/],
       defaultExtractor: (content) => content.match(/[A-Za-z0-9-_:/]+/g) || [],
     })
   );

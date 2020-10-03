@@ -6,14 +6,6 @@ export default class extends Controller {
   static targets = ['output'];
 
   connect() {
-    const metaKeywords = new Choices('#topic_meta_keywords', {
-      delimiter: ',',
-      editItems: true,
-      maxItemCount: 5,
-      removeItemButton: true,
-      duplicateItemsAllowed: false,
-    });
-
     const category = new Choices('#topic_category_id');
   }
 }
