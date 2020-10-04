@@ -25,8 +25,9 @@ SitemapGenerator::Sitemap.create do
   #     add article_path(article), :lastmod => article.updated_at
   #   end
 
-  add blogs_path, priority: 0.5, changefreq: 'daily'
-  Topic.published.find_each do |topic|
-    add blog_path(topic.slug), lastmod: topic.updated_at, priority: 0.5
-  end
+  add root_path, priority: 0.5, changefreq: 'daily'
+  # add blogs_path, priority: 0.5, changefreq: 'daily'
+  # Topic.published.find_each do |topic|
+  #   add blog_path(topic.slug), lastmod: topic.updated_at, priority: 0.5
+  # end
 end
