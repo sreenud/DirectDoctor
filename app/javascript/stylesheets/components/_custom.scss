@@ -37,6 +37,16 @@
 .post a {
   @apply text-hyperlink-blue;
 }
+.post p {
+  @apply pt-5;
+}
+.post h1,
+.post h2,
+.post h3,
+.post h4 {
+  @apply py-2;
+}
+
 .post a:hover {
   @apply border-b border-hyperlink-blue;
 }
