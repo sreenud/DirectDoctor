@@ -22,6 +22,7 @@ Layout/LineLength:
   Exclude:
     - '**/config/initializers/*.rb'
     - '**/db/migrate/**'
+    - 'app/helpers/seo_helper.rb'
 
 Style/ClassAndModuleChildren:
   Exclude:
