@@ -1,10 +1,9 @@
 <title><%=meta_title%></title>
-<META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
+<META NAME="ROBOTS" CONTENT="<%=allow_crawler%>">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="currentLanguage" content="en" />
 <meta name="description" content="<%=meta_description%>">
 <link rel="canonical" href="<%=render_canonical%>" />
-
 <!-- Open Graph / Facebook -->
 <meta property="og:type" content="<%=og_type%>">
 <meta property="og:url" content="<%=request.original_url%>">
@@ -12,7 +11,7 @@
 <meta property="og:description" content="<%=meta_description%>">
 <meta property="og:image" content="https://directdoctor.s3.amazonaws.com/production/find_my_direct_doctor.png">
 <!-- Twitter -->
-<meta property="twitter:card" content="https://directdoctor.s3.amazonaws.com/production/find_my_direct_doctor.png">
+<meta property="twitter:card" content="summary_large_image">
 <meta property="twitter:url" content="<%=request.original_url%>">
 <meta property="twitter:title" content="<%=meta_title%>">
 <meta property="twitter:description" content="<%=meta_description%>">

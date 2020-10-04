@@ -15,7 +15,15 @@ module SeoHelper
     if @meta_description.present?
       @meta_description
     else
-      "Find the best direct primary care physicians and top concierge doctors online. FindMyDirectDoctor is the most comprehensive resource to find concierge doctors and direct primary care doctors in the US. Ask health queries, book appointments and consult for any medical assistance."
+      "Find the best direct primary care physicians and top concierge doctors online. FindMyDirectDoctor is the most comprehensive resource to find concierge doctors and direct primary care doctors in the US."
+    end
+  end
+
+  def allow_crawler
+    if controller_name == 'home'
+      "INDEX, FOLLOW"
+    else
+      "NOINDEX, NOFOLLOW"
     end
   end
 

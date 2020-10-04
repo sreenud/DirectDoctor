@@ -1,4 +1,5 @@
 sitemap: https://www.findmydirectdoctor.com/seo/sitemap.xml
 User-agent: *
 Disallow: /users/*
+Disallow: /admin/*
 Allow: *
