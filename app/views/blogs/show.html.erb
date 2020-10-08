@@ -25,7 +25,7 @@
               <h4> <%=@topic.readable_published_date%> </h4>
             </div>
             <div class="w-1/2">
-              <h4> Harsha Moole, M.D., MBBS</h4>
+              <h4> <%=@topic&.author&.full_name%>, <%=@topic&.author&.title%></h4>
             </div>
           </div>
         </div>
@@ -60,7 +60,7 @@
             </div>
             <div class="w-2/3 text-green-100 py-8 md:pr-8">
               <p class="font-hurmebold">Authored by <%=@topic&.author&.full_name%>, <%=@topic&.author&.title%></p>
-              <p class=" leading-snug text-sm mt-4"><%=@topic&.author&.about%></p>
+              <p class=" leading-snug text-sm mt-4"><%=@topic&.author&.about.html_safe %></p>
             </div>
           </div>
         </div>
