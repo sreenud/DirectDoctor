@@ -38,3 +38,9 @@
 .a2a_s_link svg path {
   fill: #191932 !important;
 }
+.about {
+  @apply text-doctor-yellow;
+}
+.about a:hover {
+  @apply border-b text-doctor-yellow;
+}

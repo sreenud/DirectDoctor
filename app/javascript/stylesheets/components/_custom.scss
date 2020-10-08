@@ -74,9 +74,3 @@
 .radio-toolbar input[type="radio"]:checked + label {
   @apply bg-doctor-yellow text-gray-100;
 }
-.about {
-  @apply text-doctor-yellow;
-}
-.about a:hover {
-  @apply border-b text-doctor-yellow;
-}
