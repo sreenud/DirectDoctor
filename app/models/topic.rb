@@ -11,8 +11,9 @@ class Topic < ApplicationRecord
   scope :popular, -> { where(is_popular: true) }
   scope :published, -> { where(status: 'published') }
 
-  validates :name, :summary, :content, :meta_title, :read_time, :meta_description, :author_id, presence: true
-  validates :slug, uniqueness: true
+  validates :name, :summary, :content, :meta_title, :read_time,
+    :meta_description, :author_id, :primary_keyword, presence: true
+  validates :slug, :primary_keyword, uniqueness: true
 
   enum status: {
     draft: "draft",

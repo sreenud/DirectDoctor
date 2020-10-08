@@ -51,6 +51,10 @@
   <div class="w-1/4">
     <div class="bg-white border p-5 rounded shadow">
       <div class="input-group">
+        <label class="label text-gray-500" for="topic_read_time">Primary Keyword</label>
+        <%= form.text_field :primary_keyword, :class => "input bg-white", :autocomplete => "off" %>
+      </div>
+      <div class="input-group">
         <%= form.label :authour, :class => "label text-gray-500" %>
         <%= form.select(:author_id, authors.collect {|author| [ author.full_name, author.id ]}, {:prompt => "Select..."} ,{class: "select"}) %>
       </div>

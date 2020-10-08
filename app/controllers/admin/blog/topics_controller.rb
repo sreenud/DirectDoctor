@@ -64,9 +64,11 @@ module Admin
       end
 
       def topic_params
+        params[:topic][:primary_keyword] = params[:topic][:primary_keyword].downcase
+
         params.require(:topic).permit(:category_id, :name, :slug, :summary, :content, :is_popular,
           :author_id, :image, :meta_title, :meta_description, :h1_tag, :status, :read_time,
-          :status, :tag_list, :author_id)
+          :status, :tag_list, :author_id, :primary_keyword)
       end
     end
   end

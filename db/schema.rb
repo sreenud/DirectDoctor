@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_25_055633) do
+ActiveRecord::Schema.define(version: 2020_10_08_122946) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -79,7 +79,7 @@ ActiveRecord::Schema.define(version: 2020_09_25_055633) do
     t.string "code"
     t.text "summary"
     t.text "content"
-    t.integer "author_id"
+    t.integer "authour_id"
     t.string "meta_title"
     t.jsonb "meta_keywords"
     t.text "meta_description"
@@ -120,7 +120,9 @@ ActiveRecord::Schema.define(version: 2020_09_25_055633) do
     t.string "status"
     t.bigint "category_id"
     t.integer "read_time"
+    t.string "primary_keyword"
     t.index ["category_id"], name: "index_topics_on_caregory_id"
+    t.index ["primary_keyword"], name: "index_topics_on_primary_keyword", unique: true
     t.index ["slug"], name: "index_topics_on_slug", unique: true
   end
 
