@@ -6,16 +6,8 @@ export default class extends Controller {
   static targets = ['output'];
 
   connect() {
-    const tipTopicIds = new Choices('#tip_topic_ids', {
+    const tipTopicIds = new Choices('#tip_topic_id', {
       removeItemButton: true,
-    });
-
-    const metaKeywords = new Choices('#tip_meta_keywords', {
-      delimiter: ',',
-      editItems: true,
-      maxItemCount: 5,
-      removeItemButton: true,
-      duplicateItemsAllowed: false,
     });
 
     const tagsList = new Choices('#tip_related_topics', {

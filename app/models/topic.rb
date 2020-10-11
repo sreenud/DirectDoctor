@@ -2,8 +2,9 @@ class Topic < ApplicationRecord
   include ImageUploader::Attachment(:image)
   acts_as_taggable_on :tags
 
-  has_many :topic_tips
-  has_many :tips, through: :topic_tips
+  # has_many :topic_tips
+  # has_many :tips, through: :topic_tips
+  has_many :tips
   belongs_to :category, optional: true
   belongs_to :author, foreign_key: "author_id", class_name: "User", optional: true
 

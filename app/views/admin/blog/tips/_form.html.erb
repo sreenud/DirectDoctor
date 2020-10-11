@@ -14,7 +14,7 @@
           <div x-show="tab === 'tip'">
             <div class="input-group">
               <%= form.label :topics, :class => "label text-gray-500" %>
-              <%= form.select(:topic_ids, topics.collect {|topic| [ topic.primary_keyword, topic.id ]}, {:prompt => "Select..."} ,{class: "select bg-gray-400"}) %>
+              <%= form.select(:topic_id, topics.collect {|topic| [ topic.primary_keyword, topic.id ]}, {:prompt => "Select..."} ,{class: "select bg-gray-400"}) %>
             </div>
             <div class="input-group">
               <%= form.label :tip_name, :class => "label text-gray-500" %>
@@ -37,10 +37,6 @@
             <div class="input-group">
               <%= form.label :meta_title, :class => "label text-gray-500" %>
               <%= form.text_field :meta_title, :class => "input bg-white", :autocomplete => "off" %>
-            </div>
-            <div class="input-group">
-              <%= form.label :meta_keywords, :class => "label text-gray-500" %>
-              <%= form.text_field :meta_keywords, :class => "input bg-white", :autocomplete => "off" %>
             </div>
             <div class="input-group">
               <%= form.label :meta_description, :class => "label text-gray-500" %>
