@@ -31,6 +31,15 @@
       <% menu_classes = admin_menu_classes(controller: "tips") %>
       <a href="<%=admin_tips_url%>" class="block leading-tight ml-10 mb-2 mt-2 text-sm text-gray-600 px-2 hover:text-indigo-900 <%=menu_classes[:active_class]%>">Tips</a>
     </nav>
+    <% menu_classes = admin_menu_classes(controller: "page_redirects") %>
+    <a href="<%=admin_page_redirects_url%>" class="flex items-center mt-3 pl-2 relative">
+      <div class="<%=menu_classes[:active_class]%> flex pl-2">
+        <svg class="fill-current h-5 text-gray-500" viewBox="0 0 20 20" fill="currentColor">
+          <path fill-rule="evenodd" d="M12.586 4.586a2 2 0 112.828 2.828l-3 3a2 2 0 01-2.828 0 1 1 0 00-1.414 1.414 4 4 0 005.656 0l3-3a4 4 0 00-5.656-5.656l-1.5 1.5a1 1 0 101.414 1.414l1.5-1.5zm-5 5a2 2 0 012.828 0 1 1 0 101.414-1.414 4 4 0 00-5.656 0l-3 3a4 4 0 105.656 5.656l1.5-1.5a1 1 0 10-1.414-1.414l-1.5 1.5a2 2 0 11-2.828-2.828l3-3z" clip-rule="evenodd" />
+        </svg>
+        <span class="font-medium leading-tight pl-2 text-gray-700 text-md">Page Redirects</span>
+      </div>
+    </a>
   </nav>
   <a href="" class="absolute bottom-0 flex items-center mb-5 pl-4">
     <svg class="fill-current h-5 text-gray-500" viewBox="0 0 20 20" focusable="false" aria-hidden="true">
