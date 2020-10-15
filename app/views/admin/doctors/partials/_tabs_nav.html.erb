@@ -1,0 +1,14 @@
+<nav class="flex border-b">
+  <div @click.prevent="tab = 'doctor'; window.location.hash = 'doctor'" :class="{ '-mb-px': tab === 'doctor' }">
+    <a :class="tab === 'doctor' ? 'border-l border-t border-r rounded-t text-blue-700' : 'text-blue-500 hover:text-blue-800'" href="#" class="bg-white inline-block py-2 px-4 font-semibold">Practice</a>
+  </div>
+  <div @click.prevent="tab = 'contact'; window.location.hash = 'contact'" :class="{ '-mb-px': tab === 'contact' }">
+    <a :class="tab === 'contact' ? 'border-l border-t border-r rounded-t text-blue-700' : 'text-blue-500 hover:text-blue-800'" href="#" class="bg-white inline-block py-2 px-4 font-semibold">Contact</a>
+  </div>
+  <div @click.prevent="tab = 'credentials'; window.location.hash = 'credentials'" :class="{ '-mb-px': tab === 'credentials' }">
+    <a :class="tab === 'credentials' ? 'border-l border-t border-r rounded-t text-blue-700' : 'text-blue-500 hover:text-blue-800'" href="#" class="bg-white inline-block py-2 px-4 font-semibold">Credentials</a>
+  </div>
+  <div @click.prevent="tab = 'background'; window.location.hash = 'background'" :class="{ '-mb-px': tab === 'background' }">
+    <a :class="tab === 'background' ? 'border-l border-t border-r rounded-t text-blue-700' : 'text-blue-500 hover:text-blue-800'" href="#" class="bg-white inline-block py-2 px-4 font-semibold">Background</a>
+  </div>
+</nav>

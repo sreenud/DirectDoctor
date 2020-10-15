@@ -1,0 +1,45 @@
+class CreateDoctors < ActiveRecord::Migration[6.0]
+  def change
+    create_table :doctors do |t|
+      t.references(:user, index: true, foreign_key: true)
+      t.string(:fdd_id, null: false, unique: true)
+      t.string(:name)
+      t.string(:slug)
+      t.string(:title)
+      t.string(:email)
+      t.string(:practice_name)
+      t.integer(:experience, default: 0)
+      t.string(:phone)
+      t.string(:fax)
+      t.string(:website_url)
+      t.string(:primary_speciality)
+      t.integer(:minimum_price, default: 0)
+      t.integer(:maximum_price, default: 0)
+      t.jsonb(:prices, default: {})
+      t.jsonb(:other_specialities, default: {})
+      t.string(:style)
+      t.string(:access)
+      t.jsonb(:appointments, default: {})
+      t.integer(:max_patients_in_panel, default: 0)
+      t.jsonb(:additional_features, default: {})
+      t.jsonb(:language, default: {})
+      t.string(:consultation)
+      t.text(:practice_details)
+      t.text(:address_line_1)
+      t.integer(:zipcode)
+      t.string(:city)
+      t.string(:state)
+      t.jsonb(:social_profiles, default: {})
+      t.jsonb(:education, default: {})
+      t.jsonb(:certifications, default: {})
+      t.jsonb(:achievements, default: {})
+      t.jsonb(:background_info, default: {})
+      t.integer(:fmdd_score, default: 0)
+      t.integer(:pear_recomendations, array: true)
+      t.text(:image_data)
+      t.string(:status, default: 'draft')
+
+      t.timestamps
+    end
+  end
+end

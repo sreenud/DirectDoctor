@@ -1,0 +1,86 @@
+<div class="w-full flex">
+  <div class="w-1/2">
+    <div class="input-group">
+      <%= form.label :name, :class => "label text-gray-500" %>
+      <%= form.text_field :name, :class => "input bg-white", :autocomplete => "off", data: {action: "keyup->slug#updateSlug", record: form.object.new_record?} %>
+    </div>
+  </div>
+  <div class="w-1/2 ml-2">
+    <div class="input-group">
+      <%= form.label :title, :class => "label text-gray-500" %>
+      <%= form.text_field :title, :class => "input bg-white", :autocomplete => "off"%>
+    </div>
+  </div>
+</div>
+<div class="w-full flex">
+  <div class="w-1/2">
+    <div class="input-group">
+      <%= form.label :practice_name, :class => "label text-gray-500" %>
+      <%= form.select(:practice_name, Doctor.practices.map {|k, v| [v, k]}, {}, {class: "select"}) %>
+    </div>
+  </div>
+  <div class="w-1/2 ml-2">
+    <div class="input-group">
+      <%= form.label :speciality, :class => "label text-gray-500" %>
+      <%= form.select(:primary_speciality, Doctor.specialities.map {|k, v| [v, k]}, {}, {class: "select"}) %>
+    </div>
+  </div>
+</div>
+<div class="w-full flex">
+  <div class="w-1/2">
+    <div class="input-group">
+      <%= form.label :style, :class => "label text-gray-500" %>
+      <%= form.select(:style, Doctor.practices.map {|k, v| [v, k]}, {}, {class: "select"}) %>
+    </div>
+  </div>
+  <div class="w-1/2 ml-2">
+    <div class="input-group">
+      <%= form.label :access, :class => "label text-gray-500" %>
+      <%= form.text_field :access, :class => "input bg-white", :autocomplete => "off"%>
+    </div>
+  </div>
+</div>
+<div class="w-full flex">
+  <div class="w-1/2">
+    <div class="input-group">
+      <%= form.label :appointments, :class => "label text-gray-500" %>
+      <%= form.text_field :appointments, :class => "input bg-white", :autocomplete => "off"%>
+    </div>
+  </div>
+  <div class="w-1/2 ml-2">
+    <div class="input-group">
+      <%= form.label :max_patients_in_panel, :class => "label text-gray-500" %>
+      <%= form.text_field :max_patients_in_panel, :class => "input bg-white", :autocomplete => "off"%>
+    </div>
+  </div>
+</div>
+<div class="w-full flex">
+  <div class="w-1/2">
+    <div class="input-group">
+      <%= form.label :cost, :class => "label text-gray-500" %>
+      <%= form.text_field :cost, :class => "input bg-white", :autocomplete => "off"%>
+    </div>
+  </div>
+  <div class="w-1/2 ml-2">
+    <div class="input-group">
+      <%= form.label :consultation, :class => "label text-gray-500" %>
+      <%= form.text_field :consultation, :class => "input bg-white", :autocomplete => "off"%>
+    </div>
+  </div>
+</div>
+<div class="w-full">
+  <div class="input-group">
+    <%= form.label :languages, :class => "label text-gray-500" %>
+    <%= form.text_field :language, :class => "input bg-white", :autocomplete => "off"%>
+  </div>
+</div>
+<div class="w-full">
+  <div class="input-group">
+    <%= form.label :additional_features, :class => "label text-gray-500" %>
+    <%= form.text_field :additional_features, :class => "input bg-white", :autocomplete => "off"%>
+  </div>
+</div>
+<div class="input-group">
+  <%= form.label :practice_details, :class => "label text-gray-500" %>
+  <%= form.text_area :practice_details, :class => "input bg-white tinymce" %>
+</div>
