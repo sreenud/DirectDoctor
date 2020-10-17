@@ -8,4 +8,5 @@ namespace :admin do
   resources :users
   resources :media_storages, only: %i[create destroy]
   resources :page_redirects
+  resources :specialities
 end

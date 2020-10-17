@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_12_024705) do
+ActiveRecord::Schema.define(version: 2020_10_17_100646) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,6 +21,49 @@ ActiveRecord::Schema.define(version: 2020_10_12_024705) do
     t.string "status", default: "active"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "doctors", force: :cascade do |t|
+    t.bigint "user_id"
+    t.string "fdd_id", null: false
+    t.string "name"
+    t.string "slug"
+    t.string "title"
+    t.string "email"
+    t.string "practice_name"
+    t.integer "experience", default: 0
+    t.string "phone"
+    t.string "fax"
+    t.string "website_url"
+    t.string "primary_speciality"
+    t.integer "minimum_price", default: 0
+    t.integer "maximum_price", default: 0
+    t.jsonb "prices", default: {}
+    t.jsonb "other_specialities", default: {}
+    t.string "style"
+    t.string "access"
+    t.jsonb "appointments", default: {}
+    t.integer "max_patients_in_panel", default: 0
+    t.jsonb "additional_features", default: {}
+    t.jsonb "language", default: {}
+    t.string "consultation"
+    t.text "practice_details"
+    t.text "address_line_1"
+    t.integer "zipcode"
+    t.string "city"
+    t.string "state"
+    t.jsonb "social_profiles", default: {}
+    t.jsonb "education", default: {}
+    t.jsonb "certifications", default: {}
+    t.jsonb "achievements", default: {}
+    t.jsonb "background_info", default: {}
+    t.integer "fmdd_score", default: 0
+    t.integer "pear_recomendations", array: true
+    t.text "image_data"
+    t.string "status", default: "draft"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_doctors_on_user_id"
   end
 
   create_table "media_storages", force: :cascade do |t|
@@ -48,6 +91,25 @@ ActiveRecord::Schema.define(version: 2020_10_12_024705) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["name", "resource_type", "resource_id"], name: "index_roles_on_name_and_resource_type_and_resource_id"
     t.index ["resource_type", "resource_id"], name: "index_roles_on_resource_type_and_resource_id"
+  end
+
+  create_table "specialities", force: :cascade do |t|
+    t.string "name"
+    t.string "code"
+    t.string "status", default: "active"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["code"], name: "index_specialities_on_code"
+  end
+
+  create_table "speciality_aliases", force: :cascade do |t|
+    t.bigint "speciality_id", null: false
+    t.string "speciality_code"
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["speciality_code"], name: "index_speciality_aliases_on_speciality_code"
+    t.index ["speciality_id"], name: "index_speciality_aliases_on_speciality_id"
   end
 
   create_table "surveys", force: :cascade do |t|
@@ -170,6 +232,8 @@ ActiveRecord::Schema.define(version: 2020_10_12_024705) do
     t.index ["user_id"], name: "index_users_roles_on_user_id"
   end
 
+  add_foreign_key "doctors", "users"
+  add_foreign_key "speciality_aliases", "specialities"
   add_foreign_key "taggings", "tags"
   add_foreign_key "topic_tips", "tips"
   add_foreign_key "topic_tips", "topics"
