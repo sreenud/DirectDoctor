@@ -9,4 +9,5 @@ namespace :admin do
   resources :media_storages, only: %i[create destroy]
   resources :page_redirects
   resources :doctors
+  resources :specialities
 end

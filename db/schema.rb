@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_15_004956) do
+ActiveRecord::Schema.define(version: 2020_10_17_100646) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -91,6 +91,25 @@ ActiveRecord::Schema.define(version: 2020_10_15_004956) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["name", "resource_type", "resource_id"], name: "index_roles_on_name_and_resource_type_and_resource_id"
     t.index ["resource_type", "resource_id"], name: "index_roles_on_resource_type_and_resource_id"
+  end
+
+  create_table "specialities", force: :cascade do |t|
+    t.string "name"
+    t.string "code"
+    t.string "status", default: "active"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["code"], name: "index_specialities_on_code"
+  end
+
+  create_table "speciality_aliases", force: :cascade do |t|
+    t.bigint "speciality_id", null: false
+    t.string "speciality_code"
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["speciality_code"], name: "index_speciality_aliases_on_speciality_code"
+    t.index ["speciality_id"], name: "index_speciality_aliases_on_speciality_id"
   end
 
   create_table "surveys", force: :cascade do |t|
@@ -214,6 +233,7 @@ ActiveRecord::Schema.define(version: 2020_10_15_004956) do
   end
 
   add_foreign_key "doctors", "users"
+  add_foreign_key "speciality_aliases", "specialities"
   add_foreign_key "taggings", "tags"
   add_foreign_key "topic_tips", "tips"
   add_foreign_key "topic_tips", "topics"
