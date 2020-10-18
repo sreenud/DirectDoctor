@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_17_100646) do
+ActiveRecord::Schema.define(version: 2020_10_18_040307) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,6 +21,15 @@ ActiveRecord::Schema.define(version: 2020_10_17_100646) do
     t.string "status", default: "active"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "doctor_degrees", force: :cascade do |t|
+    t.string "name"
+    t.string "code"
+    t.string "status", default: "active"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["code"], name: "index_doctor_degrees_on_code"
   end
 
   create_table "doctors", force: :cascade do |t|
@@ -43,7 +52,6 @@ ActiveRecord::Schema.define(version: 2020_10_17_100646) do
     t.string "style"
     t.string "access"
     t.jsonb "appointments", default: {}
-    t.integer "max_patients_in_panel", default: 0
     t.jsonb "additional_features", default: {}
     t.jsonb "language", default: {}
     t.string "consultation"
@@ -63,6 +71,9 @@ ActiveRecord::Schema.define(version: 2020_10_17_100646) do
     t.string "status", default: "draft"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "patients_in_panel"
+    t.integer "min_patients"
+    t.integer "max_patients"
     t.index ["user_id"], name: "index_doctors_on_user_id"
   end
 

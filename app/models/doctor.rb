@@ -13,15 +13,16 @@ class Doctor < ApplicationRecord
   }
 
   enum practice: {
-    dpc: "DPC",
-    concierge: "Concierge Practice",
+    dpc: "Direct Primary Care",
+    concierge: "Concierge",
+    both: "Both",
   }
 
-  enum speciality: {
-    d: "D",
-    c: "C",
-    cac: "CAC",
-    cal: "CAL",
-    can: "CAN",
+  enum patients_in_panel: {
+    "0-50": "<50 patients",
+    "51-200": "51 - 200 patients",
+    "201-500": "201 - 500 patients",
+    "501-1000": "501 - 1000 patients",
+    "1000": ">1000 patients",
   }
 end

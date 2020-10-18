@@ -10,4 +10,5 @@ namespace :admin do
   resources :page_redirects
   resources :doctors
   resources :specialities
+  resources :doctor_degrees
 end

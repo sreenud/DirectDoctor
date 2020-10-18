@@ -5,7 +5,7 @@
         <%=render partial: 'admin/doctors/partials/tabs_nav'%>
         <div class="w-full pt-4">
           <div x-show="tab === 'doctor'">
-            <%=render partial: 'admin/doctors/partials/practice', locals: {form: form}%>
+            <%=render partial: 'admin/doctors/partials/practice', locals: {form: form, doctor_degrees: doctor_degrees, specialities: specialities}%>
           </div>
           <div x-show="tab === 'contact'">
             <%=render partial: 'admin/doctors/partials/contact', locals: {form: form}%>

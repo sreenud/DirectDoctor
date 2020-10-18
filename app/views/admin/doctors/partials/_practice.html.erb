@@ -1,42 +1,64 @@
-<div class="w-full flex">
-  <div class="w-1/2">
-    <div class="input-group">
-      <%= form.label :name, :class => "label text-gray-500" %>
-      <%= form.text_field :name, :class => "input bg-white", :autocomplete => "off", data: {action: "keyup->slug#updateSlug", record: form.object.new_record?} %>
-    </div>
+<div class="w-full">
+  <div  class="input-group">
+    <%= form.label :name, :class => "label text-gray-500" %>
   </div>
-  <div class="w-1/2 ml-2">
-    <div class="input-group">
-      <%= form.label :title, :class => "label text-gray-500" %>
-      <%= form.text_field :title, :class => "input bg-white", :autocomplete => "off"%>
+  <div class="flex">
+    <div class="w-1/2">
+      <div class="input-group">
+        <%= form.select(:title, doctor_degrees.collect {|doctor_degree| [ doctor_degree.code, doctor_degree.code ]}, {:prompt => "Select..."} ,{class: "select", :multiple => true}) %>
+      </div>
     </div>
-  </div>
-</div>
-<div class="w-full flex">
-  <div class="w-1/2">
-    <div class="input-group">
-      <%= form.label :practice_name, :class => "label text-gray-500" %>
-      <%= form.select(:practice_name, Doctor.practices.map {|k, v| [v, k]}, {}, {class: "select"}) %>
-    </div>
-  </div>
-  <div class="w-1/2 ml-2">
-    <div class="input-group">
-      <%= form.label :speciality, :class => "label text-gray-500" %>
-      <%= form.select(:primary_speciality, Doctor.specialities.map {|k, v| [v, k]}, {}, {class: "select"}) %>
+    <div class="w-1/2 ml-2">
+      <div class="input-group">
+        <%= form.text_field :name, :class => "input bg-white py-3", :autocomplete => "off", data: {action: "keyup->slug#updateSlug", record: form.object.new_record?} %>
+      </div>
     </div>
   </div>
 </div>
 <div class="w-full flex">
   <div class="w-1/2">
     <div class="input-group">
-      <%= form.label :style, :class => "label text-gray-500" %>
-      <%= form.select(:style, Doctor.practices.map {|k, v| [v, k]}, {}, {class: "select"}) %>
+      <%= form.label :parctice_style, :class => "label text-gray-500" %>
+      <div class="inline-block relative w-full">
+        <%= form.select(:style, Doctor.practices.map {|k, v| [v, k]}, {}, {class: "select"}) %>
+        <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+          <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
+        </div>
+      </div>
     </div>
   </div>
   <div class="w-1/2 ml-2">
     <div class="input-group">
-      <%= form.label :access, :class => "label text-gray-500" %>
-      <%= form.text_field :access, :class => "input bg-white", :autocomplete => "off"%>
+      <label class="label text-gray-500" for="doctor_Practice/Clinic name">Practice / Clinic name</label>
+      <%= form.text_field :practice_name, :class => "input bg-white", :autocomplete => "off"%>
+    </div>
+  </div>
+</div>
+<div class="w-full flex">
+  <div class="w-1/2">
+    <div class="input-group">
+      <%= form.label :primary_speciality, :class => "label text-gray-500" %>
+      <%= form.select(:primary_speciality, specialities.collect {|speciality| [speciality.name, speciality.code]}, {:prompt => "Select..."}, {class: "select"}) %>
+    </div>
+  </div>
+  <div class="w-1/2 ml-2">
+    <div class="input-group">
+      <%= form.label :other_specialities, :class => "label text-gray-500" %>
+      <%= form.select(:other_specialities, specialities.collect {|speciality| [speciality.name, speciality.code]}, {:prompt => "Select..."}, {class: "select", :multiple => true}) %>
+    </div>
+  </div>
+</div>
+<div class="w-full flex">
+  <div class="w-1/2">
+    <div class="input-group">
+      <label class="label text-gray-500" for="doctor_Practice/Clinic name">24/7 Direct Phone Access to Doctor</label>
+      <%= form.select(:patients_in_panel, Doctor.patients_in_panels.map {|key, value| [value, key]}, {:prompt => "Select..."}, {class: "select"}) %>
+    </div>
+  </div>
+  <div class="w-1/2 ml-2">
+    <div class="input-group">
+      <label class="label text-gray-500" for="doctor_Practice/Clinic name">Maximum Patient Limit in Your Panel</label>
+      <%= form.select(:patients_in_panel, Doctor.patients_in_panels.map {|key, value| [value, key]}, {:prompt => "Select..."}, {class: "select"}) %>
     </div>
   </div>
 </div>
