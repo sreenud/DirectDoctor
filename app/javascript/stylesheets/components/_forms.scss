@@ -1,7 +1,7 @@
 %focus-style {
   @apply shadow outline-none border-gray-500;
 
-  box-shadow: 0 0 0 0.1rem theme('colors.gray.200');
+  box-shadow: 0 0 0 0.1rem theme("colors.gray.200");
   background-clip: padding-box;
 }
 
@@ -18,7 +18,7 @@
 }
 
 .label {
-  @apply block text-gray-600 text-sm font-bold mb-2;
+  @apply block text-gray-600 text-xs font-bold mb-2;
 }
 
 .select {
@@ -32,7 +32,7 @@
 .select:focus {
   @apply outline-none border-gray-400;
 
-  box-shadow: 0 0 0 0.1rem theme('colors.gray.100');
+  box-shadow: 0 0 0 0.1rem theme("colors.gray.100");
   background-clip: padding-box;
 }
 
@@ -71,12 +71,12 @@
 .input-checkbox {
   @apply flex items-center justify-start;
 
-  input[type='checkbox'] {
+  input[type="checkbox"] {
     @apply hidden appearance-none;
 
     &:checked ~ label::before {
-      content: '';
-      background-image: url('../images/icons/checkmark.svg');
+      content: "";
+      background-image: url("../images/icons/checkmark.svg");
       background-size: 10px 10px;
       border-radius: 2px;
       @apply border-transparent text-white bg-no-repeat bg-center transition ease-in-out duration-100 shadow-none;
@@ -94,7 +94,7 @@
       border-radius: 2px;
       border: 1px solid rgb(209, 209, 209);
       box-shadow: inset 0 1px 1px rgba(#ddd, 0.8);
-      content: '';
+      content: "";
       height: 16px;
       margin-right: 10px;
       top: -5px;
@@ -112,18 +112,18 @@
 .input-radio {
   @apply flex items-center justify-start;
 
-  input[type='radio'] {
+  input[type="radio"] {
     @apply hidden appearance-none;
 
     &:checked ~ label::before {
-      content: '';
+      content: "";
       @apply bg-blue-500 border-transparent text-white transition ease-in-out duration-100 shadow-none;
     }
 
     &:checked ~ label::after {
       @apply bg-white rounded-full;
 
-      content: '';
+      content: "";
       width: 6px;
       height: 6px;
       position: absolute;
@@ -143,7 +143,7 @@
     &::before {
       border: 1px solid rgb(209, 209, 209);
       box-shadow: inset 0 1px 1px rgba(#ddd, 0.8);
-      content: '';
+      content: "";
       height: 16px;
       margin-right: 4px;
       top: -5px;

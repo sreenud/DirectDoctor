@@ -1,6 +1,6 @@
 <div class="w-full">
   <div  class="input-group">
-    <%= form.label :name, :class => "label text-gray-500" %>
+    <%= form.label :name, :class => "label text-gray-600" %>
   </div>
   <div class="flex">
     <div class="w-1/2">
@@ -18,7 +18,7 @@
 <div class="w-full flex">
   <div class="w-1/2">
     <div class="input-group">
-      <%= form.label :parctice_style, :class => "label text-gray-500" %>
+      <%= form.label :parctice_style, :class => "label text-gray-600" %>
       <div class="inline-block relative w-full">
         <%= form.select(:style, Doctor.practices.map {|k, v| [v, k]}, {}, {class: "select"}) %>
         <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
@@ -29,7 +29,7 @@
   </div>
   <div class="w-1/2 ml-2">
     <div class="input-group">
-      <label class="label text-gray-500" for="doctor_Practice/Clinic name">Practice / Clinic name</label>
+      <label class="label text-gray-600" for="doctor_Practice/Clinic name">Practice / Clinic name</label>
       <%= form.text_field :practice_name, :class => "input bg-white", :autocomplete => "off"%>
     </div>
   </div>
@@ -37,13 +37,13 @@
 <div class="w-full flex">
   <div class="w-1/2">
     <div class="input-group">
-      <%= form.label :primary_speciality, :class => "label text-gray-500" %>
+      <%= form.label :primary_speciality, :class => "label text-gray-600" %>
       <%= form.select(:primary_speciality, specialities.collect {|speciality| [speciality.name, speciality.code]}, {:prompt => "Select..."}, {class: "select"}) %>
     </div>
   </div>
   <div class="w-1/2 ml-2">
     <div class="input-group">
-      <%= form.label :other_specialities, :class => "label text-gray-500" %>
+      <%= form.label :other_specialities, :class => "label text-gray-600" %>
       <%= form.select(:other_specialities, specialities.collect {|speciality| [speciality.name, speciality.code]}, {:prompt => "Select..."}, {class: "select", :multiple => true}) %>
     </div>
   </div>
@@ -51,13 +51,13 @@
 <div class="w-full flex">
   <div class="w-1/2">
     <div class="input-group">
-      <label class="label text-gray-500" for="doctor_Practice/Clinic name">24/7 Direct Phone Access to Doctor</label>
-      <%= form.select(:patients_in_panel, Doctor.patients_in_panels.map {|key, value| [value, key]}, {:prompt => "Select..."}, {class: "select"}) %>
+      <label class="label text-gray-600" for="access">24/7 Direct Phone Access to Doctor</label>
+      <%= form.text_field :access, :class => "selectMode", :placeholder => "Please select or write your own"%>
     </div>
   </div>
   <div class="w-1/2 ml-2">
     <div class="input-group">
-      <label class="label text-gray-500" for="doctor_Practice/Clinic name">Maximum Patient Limit in Your Panel</label>
+      <label class="label text-gray-600" for="dpatients_in_panel">Maximum Patient Limit in Your Panel</label>
       <%= form.select(:patients_in_panel, Doctor.patients_in_panels.map {|key, value| [value, key]}, {:prompt => "Select..."}, {class: "select"}) %>
     </div>
   </div>
@@ -65,44 +65,45 @@
 <div class="w-full flex">
   <div class="w-1/2">
     <div class="input-group">
-      <%= form.label :appointments, :class => "label text-gray-500" %>
-      <%= form.text_field :appointments, :class => "input bg-white", :autocomplete => "off"%>
+      <label class="label text-gray-600" for="appointments">Ability to See Patients</label>
+      <%= form.text_field :appointments, :class => "", :autocomplete => "off", :placeholder => "Choose or Write"%>
     </div>
   </div>
   <div class="w-1/2 ml-2">
-    <div class="input-group">
-      <%= form.label :max_patients_in_panel, :class => "label text-gray-500" %>
-      <%= form.text_field :max_patients_in_panel, :class => "input bg-white", :autocomplete => "off"%>
-    </div>
   </div>
 </div>
 <div class="w-full flex">
   <div class="w-1/2">
     <div class="input-group">
-      <%= form.label :cost, :class => "label text-gray-500" %>
-      <%= form.text_field :cost, :class => "input bg-white", :autocomplete => "off"%>
+      <label class="label text-gray-600" for="appointments">Free Initial Consultation</label>
+      <%= form.text_field :consultation, :class => "selectMode", :autocomplete => "off", :placeholder => "Please select or write your own"%>
     </div>
   </div>
-  <div class="w-1/2 ml-2">
+  <div class="w-1/2  ml-2">
     <div class="input-group">
-      <%= form.label :consultation, :class => "label text-gray-500" %>
-      <%= form.text_field :consultation, :class => "input bg-white", :autocomplete => "off"%>
+      <label class="label text-gray-600" for="appointments">
+        If you do offer a free initial consultation, how much time?
+      </label>
+      <%= form.text_field :free_consultation_time, :class => "selectMode", :autocomplete => "off", :placeholder => "Please select or write your own"%>
     </div>
   </div>
 </div>
 <div class="w-full">
   <div class="input-group">
-    <%= form.label :languages, :class => "label text-gray-500" %>
-    <%= form.text_field :language, :class => "input bg-white", :autocomplete => "off"%>
+    <%= form.label :languages, :class => "label text-gray-600" %>
+    <%= form.text_field :language, :class => "", :autocomplete => "off", :placeholder => "Please select or write your own"%>
   </div>
 </div>
 <div class="w-full">
   <div class="input-group">
-    <%= form.label :additional_features, :class => "label text-gray-500" %>
+    <%= form.label :additional_features, :class => "label text-gray-600" %>
     <%= form.text_field :additional_features, :class => "input bg-white", :autocomplete => "off"%>
   </div>
 </div>
 <div class="input-group">
-  <%= form.label :practice_details, :class => "label text-gray-500" %>
+  <%= form.label :practice_details, :class => "label text-gray-600" %>
   <%= form.text_area :practice_details, :class => "input bg-white tinymce" %>
+</div>
+<div class="input-group">
+  <%= form.text_field :demo_tagify, :value => "css, html, javascript", :class => "", :placeholder => "write some tags"%>
 </div>

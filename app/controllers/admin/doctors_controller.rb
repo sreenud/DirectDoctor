@@ -27,6 +27,7 @@ module Admin
 
     def create
       @doctor = Doctor.new(doctor_params)
+      # debugger
       # respond_to do |format|
       #   if @doctor.save
       #     format.html { redirect_to admin_doctors_url, notice: 'Doctor was successfully created.' }

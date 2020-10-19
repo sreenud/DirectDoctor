@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_18_040307) do
+ActiveRecord::Schema.define(version: 2020_10_18_081151) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -74,6 +74,7 @@ ActiveRecord::Schema.define(version: 2020_10_18_040307) do
     t.string "patients_in_panel"
     t.integer "min_patients"
     t.integer "max_patients"
+    t.string "free_consultation_time"
     t.index ["user_id"], name: "index_doctors_on_user_id"
   end
 
