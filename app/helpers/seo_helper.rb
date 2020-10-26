@@ -20,7 +20,7 @@ module SeoHelper
   end
 
   def allow_crawler
-    if controller_name == 'home'
+    if @allow_robots
       "INDEX, FOLLOW"
     else
       "NOINDEX, NOFOLLOW"
