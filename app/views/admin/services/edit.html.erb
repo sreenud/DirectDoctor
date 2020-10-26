@@ -1,0 +1,21 @@
+<header class="flex">
+  <div class="w-1/2">
+    <div class="inline-flex text-gray-600">
+      <h1 class="font-semibold text-2xl">Update Service</h1>
+    </div>
+  </div>
+  <div class="w-1/2">
+    <a href="<%=admin_services_url%>" class="btn btn-md btn-default btn-outline text-sm font-bold float-right text-gray-600">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-6 h-6 inline-block">
+        <path fill-rule="evenodd" d="M7.707 14.707a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l2.293 2.293a1 1 0 010 1.414z" clip-rule="evenodd" />
+      </svg>
+      <span class="leading-tight">Back to page services</span>
+    </a>
+  </div>
+</header>
+<section class="flex mt-6">
+  <div class="w-full" data-controller="message">
+    <div class="w-full z-10" data-target="message.errors"></div>
+    <%= render partial: 'form', locals: {service: @service, button_text: 'Update'} %>
+  </div>
+</section>

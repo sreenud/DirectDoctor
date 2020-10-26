@@ -11,4 +11,14 @@ namespace :admin do
   resources :doctors
   resources :specialities
   resources :doctor_degrees
+  resources :services
+  resources :languages
+  resources :data do
+    collection do
+      get :degree
+      get :holistic_medicine
+      get :services
+      get :languages
+    end
+  end
 end

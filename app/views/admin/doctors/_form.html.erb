@@ -1,5 +1,5 @@
 <%= form_with(model: [:admin, doctor], class: "flex w-full", data: {type: "html", action: "ajax:error->message#errorHandler ajax:success->message#success" }) do |form| %>
-  <div class="flex-1 mb-6 mr-4">
+  <div class="flex-1 mr-4">
     <div class="bg-white border pb-16 rounded shadow p-5">
       <div class="tab_wrapper" x-data="{ tab: window.location.hash ? window.location.hash.substring(1) : 'doctor' }">
         <%=render partial: 'admin/doctors/partials/tabs_nav'%>
@@ -18,11 +18,12 @@
           </div>
         </div>
       </div>
-      <div class="float-left pt-5">
+      <div class="float-right pt-5 my-4">
         <%= form.button(type: "submit", class: "btn btn-md btn-default btn-dd-blue btn-outline text-sm font-bold float-right", data: {disable_with: "<i class='fab fa fa-spinner fa-spin pr-2'></i> Saving in..." }) do %>
           <span><i class='fab fa fa-floppy-o pr-2'></i><%=button_text%> Doctor</span>
         <% end %>
       </div>
+      <div class="my-6"></div>
     </div>
   </div>
   <div class="w-1/4">

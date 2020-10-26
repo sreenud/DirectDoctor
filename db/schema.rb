@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_18_081151) do
+ActiveRecord::Schema.define(version: 2020_10_25_164701) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -51,9 +51,7 @@ ActiveRecord::Schema.define(version: 2020_10_18_081151) do
     t.jsonb "other_specialities", default: {}
     t.string "style"
     t.string "access"
-    t.jsonb "appointments", default: {}
     t.jsonb "additional_features", default: {}
-    t.jsonb "language", default: {}
     t.string "consultation"
     t.text "practice_details"
     t.text "address_line_1"
@@ -75,7 +73,23 @@ ActiveRecord::Schema.define(version: 2020_10_18_081151) do
     t.integer "min_patients"
     t.integer "max_patients"
     t.string "free_consultation_time"
+    t.boolean "is_holistic_medicine"
+    t.string "holistic_option"
+    t.boolean "is_telehealth_service"
+    t.string "telehealth_option"
+    t.boolean "is_home_visit"
+    t.string "home_visit_option"
+    t.string "aditional_services"
+    t.string "appointments"
+    t.string "language"
     t.index ["user_id"], name: "index_doctors_on_user_id"
+  end
+
+  create_table "languages", force: :cascade do |t|
+    t.string "name"
+    t.string "status", default: "active"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "media_storages", force: :cascade do |t|
@@ -103,6 +117,13 @@ ActiveRecord::Schema.define(version: 2020_10_18_081151) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["name", "resource_type", "resource_id"], name: "index_roles_on_name_and_resource_type_and_resource_id"
     t.index ["resource_type", "resource_id"], name: "index_roles_on_resource_type_and_resource_id"
+  end
+
+  create_table "services", force: :cascade do |t|
+    t.string "name"
+    t.string "status", default: "active"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "specialities", force: :cascade do |t|

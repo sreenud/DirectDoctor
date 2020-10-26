@@ -1,0 +1,17 @@
+<%= form_with(model: [:admin, language], class: "flex w-full", data: {type: "html", action: "ajax:error->message#errorHandler ajax:success->message#success" }) do |form| %>
+  <div class="flex-1 mb-6 mr-4">
+    <div class="bg-white border pb-16 rounded shadow p-5 w-3/4">
+      <div class="w-full pt-4 flex">
+        <div class="input-group w-1/2 ml-4">
+          <%= form.label :name, :class => "label text-gray-500" %>
+          <%= form.text_field :name, :class => "input bg-white", :autocomplete => "off" %>
+        </div>
+      </div>
+      <div class="float-left pt-5">
+        <%= form.button(type: "submit", class: "btn btn-md btn-default btn-dd-blue btn-outline text-sm font-bold float-right", data: {disable_with: "<i class='fab fa fa-spinner fa-spin pr-2'></i> Saving in..." }) do %>
+          <span><i class='fab fa fa-floppy-o pr-2'></i><%=button_text%> Language</span>
+        <% end %>
+      </div>
+    </div>
+  </div>
+<% end %>
