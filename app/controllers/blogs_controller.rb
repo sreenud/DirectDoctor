@@ -23,5 +23,6 @@ class BlogsController < ApplicationController
   def set_meta_data
     @meta_title ||= @topic.meta_title
     @meta_description ||= @topic.meta_description
+    @allow_robots ||= @topic.status == 'published' ? true : false
   end
 end

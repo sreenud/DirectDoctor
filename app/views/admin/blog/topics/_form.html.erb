@@ -16,10 +16,17 @@
               <%= form.label :topic_name, :class => "label text-gray-500" %>
               <%= form.text_field :name, :class => "input bg-white", :autocomplete => "off", data: {action: "keyup->slug#updateSlug", record: form.object.new_record?} %>
             </div>
-            <div class="input-group">
-              <%= form.label :topic_slug, :class => "label text-gray-500" %>
-              <%= form.text_field :slug, :class => "input bg-white", :autocomplete => "off", data: {target: "slug.slug"} %>
-            </div>
+            <% if form.object.status == 'published' %>
+              <div class="input-group">
+                <%= form.label :topic_slug, :class => "label text-gray-500" %>
+                <%= form.object.slug %>
+              </div>
+            <% else %>
+              <div class="input-group">
+                <%= form.label :topic_slug, :class => "label text-gray-500" %>
+                <%= form.text_field :slug, :class => "input bg-white", :autocomplete => "off", data: {target: "slug.slug"} %>
+              </div>
+            <% end %>
             <div class="input-group">
               <%= form.label :summary, :class => "label text-gray-500" %>
               <%= form.text_area :summary, :class => "input bg-white" %>
