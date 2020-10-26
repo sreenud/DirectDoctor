@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_25_164701) do
+ActiveRecord::Schema.define(version: 2020_10_26_035343) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -40,7 +40,6 @@ ActiveRecord::Schema.define(version: 2020_10_25_164701) do
     t.string "title"
     t.string "email"
     t.string "practice_name"
-    t.integer "experience", default: 0
     t.string "phone"
     t.string "fax"
     t.string "website_url"
@@ -82,6 +81,8 @@ ActiveRecord::Schema.define(version: 2020_10_25_164701) do
     t.string "aditional_services"
     t.string "appointments"
     t.string "language"
+    t.integer "min_experience", default: 0
+    t.integer "max_experience", default: 0
     t.index ["user_id"], name: "index_doctors_on_user_id"
   end
 

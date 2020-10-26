@@ -6,13 +6,7 @@ import Choices from 'choices.js';
 import Tagify from '@yaireo/tagify';
 
 export default class extends Controller {
-  static targets = [
-    'componentText',
-    'componentLink',
-    'components',
-    'componentTemplate',
-    'errors',
-  ];
+  static targets = ['errors', 'minExperience', 'maxExperience'];
 
   connect() {
     const primarySpeciality = new Choices('#doctor_primary_speciality', {
@@ -229,5 +223,12 @@ export default class extends Controller {
         );
         doctorTitle.loading(false).dropdown.show.call(doctorTitle, value);
       });
+  }
+
+  experienceChange(event) {
+    const select = event.target;
+    const option = select[select.selectedIndex];
+    this.minExperienceTarget.value = option.dataset.minExperience;
+    this.maxExperienceTarget.value = option.dataset.maxExperience;
   }
 }

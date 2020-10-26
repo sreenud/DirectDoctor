@@ -13,7 +13,10 @@ module Admin
     end
 
     def new
-      @doctor = Doctor.new
+      @doctor = Doctor.new(
+        min_experience: Doctor.first_experience&.first,
+        max_experience: Doctor.first_experience&.last
+      )
       @statuses = Doctor.statuses
       @doctor_degrees = DoctorDegree.latest
       @specialities = Speciality.latest

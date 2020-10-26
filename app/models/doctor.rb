@@ -1,7 +1,7 @@
 class Doctor < ApplicationRecord
   include ImageUploader::Attachment(:image)
 
-  attr_accessor :cost
+  attr_accessor :cost, :experience
 
   scope :latest, -> { order(created_at: :desc) }
 
@@ -37,4 +37,8 @@ class Doctor < ApplicationRecord
     "yes": "Yes",
     "no": "No",
   }
+
+  def self.first_experience
+    experiences&.first&.first
+  end
 end

@@ -36,11 +36,13 @@
     <div class="input-group">
       <label class="label text-gray-600" for="doctor_Practice/Clinic name">Doctor's Experience - Years in Practice</label>
       <div class="inline-block relative w-full">
-        <%= form.select(:experience, Doctor.experiences.map {|k, v| [v, k]}, {}, {class: "select"}) %>
+        <%= select_tag nil, options_for_select(experience_options(Doctor.experiences), experience_string(form.object)), class: 'select', data: { action: "change->doctor#experienceChange" } %>
         <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
           <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
         </div>
       </div>
+      <%= form.hidden_field :min_experience, class: 'form-control', data: { target: "doctor.minExperience" } %>
+      <%= form.hidden_field :max_experience, class: 'form-control', data: { target: "doctor.maxExperience" } %>
     </div>
     <div class="input-group">
       <label class="label text-gray-600" for="doctor_Practice/Clinic name">Languages Spoken</label>
@@ -109,8 +111,10 @@
     </div>
     <div class="w-2/3">
       <div class="input-group">
-        <label class="label text-gray-600" for="dpatients_in_panel">Maximum Patient Limit in Your Panel</label>
+        <label class="label text-gray-600" for="patients_in_panel">Maximum Patient Limit in Your Panel</label>
         <%= form.select(:patients_in_panel, Doctor.patients_in_panels.map {|key, value| [value, key]}, {:prompt => "Select..."}, {class: "select"}) %>
+        <%= form.hidden_field :min_patients, class: 'form-control', data: { target: "doctor.minPatients" } %>
+        <%= form.hidden_field :max_patients, class: 'form-control', data: { target: "doctor.maxPatients" } %>
       </div>
       <div class="input-group">
         <label class="label text-gray-600" for="access">24/7 Direct Phone Access to Doctor</label>
