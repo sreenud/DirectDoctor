@@ -1,0 +1,35 @@
+<%= form_with(model: [:admin, @state, location], class: "flex w-full", data: {type: "html", action: "ajax:error->message#errorHandler ajax:success->message#success" }) do |form| %>
+  <div class="flex-1 mb-6 mr-4">
+    <div class="bg-white border pb-16 rounded shadow p-5 w-3/4">
+      <div class="w-full pt-4 flex">
+        <div class="input-group w-1/2 ml-4">
+          <%= form.label :name, :class => "label text-gray-500" %>
+          <%= form.text_field :name, :class => "input bg-white", :autocomplete => "off" %>
+        </div>
+        <div class="input-group w-1/2 ml-4">
+          <%= form.label :county, :class => "label text-gray-500" %>
+          <%= form.text_field :county, :class => "input bg-white", :autocomplete => "off" %>
+        </div>
+      </div>
+      <div class="input-group ml-4 pt-4">
+        <%= form.label :zip_codes, :class => "label text-gray-500" %>
+        <%= form.text_field :zip_codes, :class => "input bg-white", :autocomplete => "off" %>
+      </div>
+      <div class="w-full pt-4 flex">
+        <div class="input-group w-1/2 ml-4">
+          <%= form.label :latitude, :class => "label text-gray-500" %>
+          <%= form.text_field :latitude, :class => "input bg-white", :autocomplete => "off" %>
+        </div>
+        <div class="input-group w-1/2 ml-4">
+          <%= form.label :longitude, :class => "label text-gray-500" %>
+          <%= form.text_field :longitude, :class => "input bg-white", :autocomplete => "off" %>
+        </div>
+      </div>
+      <div class="float-right pt-5">
+        <%= form.button(type: "submit", class: "btn btn-md btn-default btn-dd-blue btn-outline text-sm font-bold float-right", data: {disable_with: "<i class='fab fa fa-spinner fa-spin pr-2'></i> Saving in..." }) do %>
+          <span><i class='fab fa fa-floppy-o pr-2'></i><%=button_text%> Location</span>
+        <% end %>
+      </div>
+    </div>
+  </div>
+<% end %>

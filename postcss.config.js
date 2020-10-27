@@ -28,8 +28,8 @@ if (
         './app/helpers/**/*.rb',
         './app/javascript/**/*.js',
       ],
-      whitelistPatterns: [/choices/, /a2a_s_/, /tagify/],
-      whitelistPatternsChildren: [/choices/, /tagify/],
+      whitelistPatterns: [/choices/, /a2a_s_/, /tagify/, /pagy-nav/],
+      whitelistPatternsChildren: [/choices/, /tagify/, /pagy-nav/],
       defaultExtractor: (content) => content.match(/[A-Za-z0-9-_:/]+/g) || [],
     })
   );

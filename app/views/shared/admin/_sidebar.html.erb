@@ -62,6 +62,13 @@
       <a href="<%=admin_services_url%>" class="block leading-tight ml-10 mb-2 mt-2 text-sm px-2 <%=menu_classes[:active_class]%>">Services</a>
       <% menu_classes = admin_menu_classes(controller: "languages") %>
       <a href="<%=admin_languages_url%>" class="block leading-tight ml-10 mb-2 mt-2 text-sm px-2 <%=menu_classes[:active_class]%>">Languages</a>
+      <% menu_classes = if (controller_name == "states")
+          admin_menu_classes(controller: "states")
+        else
+          admin_menu_classes(controller: "locations")
+        end
+      %>
+      <a href="<%=admin_states_url%>" class="block leading-tight ml-10 mb-2 mt-2 text-sm px-2 <%=menu_classes[:active_class]%>">States</a>
       <% menu_classes = admin_menu_classes(controller: "page_redirects") %>
       <a href="<%=admin_page_redirects_url%>" class="block leading-tight ml-10 mb-2 mt-2 text-sm text-gray-600 px-2 hover:text-indigo-900 <%=menu_classes[:active_class]%>">Page Redirects</a>
     </nav>

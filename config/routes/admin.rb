@@ -13,6 +13,10 @@ namespace :admin do
   resources :doctor_degrees
   resources :services
   resources :languages
+  resources :states do
+    resources :locations
+  end
+
   resources :data do
     collection do
       get :degree

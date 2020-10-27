@@ -7,6 +7,9 @@
           <div x-show="tab === 'doctor'">
             <%=render partial: 'admin/doctors/partials/practice', locals: {form: form, doctor_degrees: doctor_degrees, specialities: specialities}%>
           </div>
+          <div x-show="tab === 'pricing'">
+            <%=render partial: 'admin/doctors/partials/pricing', locals: {form: form}%>
+          </div>
           <div x-show="tab === 'contact'">
             <%=render partial: 'admin/doctors/partials/contact', locals: {form: form}%>
           </div>
@@ -14,7 +17,7 @@
             <%=render partial: 'admin/doctors/partials/credentials', locals: {form: form}%>
           </div>
           <div x-show="tab === 'background'">
-            <%=render partial: 'admin/doctors/partials/background', locals: {form: form}%>
+            <%=render partial: 'admin/doctors/partials/background', locals: {form: form, states: states}%>
           </div>
         </div>
       </div>
@@ -28,6 +31,12 @@
   </div>
   <div class="w-1/4">
     <div class="bg-white border p-5 rounded shadow">
+      <% if form.object&.fdd_id %>
+        <div class="input-group">
+          <label class="label text-gray-500" for="doctor_FDD_ID">FDD ID</label>
+          <%= form.object&.fdd_id %>
+        </div>
+      <% end %>
       <div class="input-group">
         <%= form.label :slug, :class => "label text-gray-500" %>
         <%= form.text_field :slug, :class => "input bg-white", :autocomplete => "off", data: {target: "slug.slug"} %>

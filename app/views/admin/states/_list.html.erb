@@ -1,0 +1,49 @@
+<table class="min-w-full leading-normal">
+  <thead>
+    <tr>
+      <th class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+        Code
+      </th>
+      <th class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+        Name
+      </th>
+      <th class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+        Created at
+      </th>
+      <th class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+        Actions
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <% states&.each do |state| %>
+      <tr>
+        <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+          <p class="text-gray-900 break-all">
+            <%=state&.code%>
+          </p>
+        </td>
+        <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+          <p class="text-gray-900 break-all">
+            <%=state&.name%>
+          </p>
+        </td>
+        <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+          <p class="text-gray-900 whitespace-no-wrap">
+            <%=state&.created_at%>
+          </p>
+        </td>
+        <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+          <div class="flex">
+            <a href="<%=admin_state_locations_url(state)%>" class="text-indigo-600 hover:text-indigo-900">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20"><path d="M10 20S3 10.87 3 7a7 7 0 1 1 14 0c0 3.87-7 13-7 13zm0-11a2 2 0 1 0 0-4 2 2 0 0 0 0 4z"/></svg>
+            </a>
+          </div>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<div class="my-4">
+  <div class="text-center"><%= pagy_nav(@pagy).html_safe %></div>
+</div>

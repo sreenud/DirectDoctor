@@ -4,33 +4,13 @@
     <p class="text-gray-600 text-sm"> About Background Information </p>
   </div>
   <div class="w-2/3" data-controller="components">
-    <!-- components -->
-    <% background_info = { 'name' => nil } %>
-    <template data-target="components.componentTemplate">
-      <%= render "admin/doctors/partials/background_info", value: background_info %>
-    </template>
     <div class="input-group">
-      <%= form.label :background_info, :class => "label text-gray-500" %>
-      <div class="mt-2 sortable" data-target="components.components">
-        <% if form.object.background_info.present? %>
-          <% form.object.background_info.each do |background_info_data| %>
-            <div class="mb-3">
-              <%= render "admin/doctors/partials/background_info", value: background_info_data %>
-            </div>
-          <% end %>
-        <% else %>
-          <div class="mb-3">
-            <%= render "admin/doctors/partials/background_info", value: background_info %>
-          </div>
-        <% end %>
-      </div>
-      <div class="text-sm text-primary underline text-gco">
-        <label class="cursor-pointer" data-action="click->components#addComponent">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-6 h-6 inline-block">
-            <path fillRule="evenodd" d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z" clipRule="evenodd" />
-          </svg>Add Background Info</label>
-      </div>
+      <label class="label text-gray-600" for="title">Active Medical License</label>
+      <%= form.select(:active_licenses, states.collect {|state| [state.name, state.name]}, {:prompt => "Select..."}, {class: "select", :multiple => true}) %>
     </div>
-    <!-- components -->
+    <div class="input-group">
+      <label class="label text-gray-600" for="title">Disciplinary Action Taken By Sates Medical Board</label>
+      <%= form.text_field :disciplinary_action_taken, :class => "", :placeholder => "Select"%>
+    </div>
   </div>
 </div>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_26_035343) do
+ActiveRecord::Schema.define(version: 2020_10_27_143656) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -34,7 +34,7 @@ ActiveRecord::Schema.define(version: 2020_10_26_035343) do
 
   create_table "doctors", force: :cascade do |t|
     t.bigint "user_id"
-    t.string "fdd_id", null: false
+    t.string "fdd_id"
     t.string "name"
     t.string "slug"
     t.string "title"
@@ -44,15 +44,13 @@ ActiveRecord::Schema.define(version: 2020_10_26_035343) do
     t.string "fax"
     t.string "website_url"
     t.string "primary_speciality"
-    t.integer "minimum_price", default: 0
-    t.integer "maximum_price", default: 0
+    t.integer "min_price", default: 0
+    t.integer "max_price", default: 0
     t.jsonb "prices", default: {}
-    t.jsonb "other_specialities", default: {}
     t.string "style"
     t.string "access"
     t.jsonb "additional_features", default: {}
     t.string "consultation"
-    t.text "practice_details"
     t.text "address_line_1"
     t.integer "zipcode"
     t.string "city"
@@ -72,17 +70,23 @@ ActiveRecord::Schema.define(version: 2020_10_26_035343) do
     t.integer "min_patients"
     t.integer "max_patients"
     t.string "free_consultation_time"
-    t.boolean "is_holistic_medicine"
+    t.string "is_holistic_medicine"
     t.string "holistic_option"
-    t.boolean "is_telehealth_service"
+    t.string "is_telehealth_service"
     t.string "telehealth_option"
-    t.boolean "is_home_visit"
+    t.string "is_home_visit"
     t.string "home_visit_option"
     t.string "aditional_services"
     t.string "appointments"
     t.string "language"
     t.integer "min_experience", default: 0
     t.integer "max_experience", default: 0
+    t.string "gender"
+    t.string "other_specialities", array: true
+    t.text "about_doctor"
+    t.text "about_clinic"
+    t.string "active_licenses", array: true
+    t.text "disciplinary_action_taken"
     t.index ["user_id"], name: "index_doctors_on_user_id"
   end
 
@@ -91,6 +95,28 @@ ActiveRecord::Schema.define(version: 2020_10_26_035343) do
     t.string "status", default: "active"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "locations", force: :cascade do |t|
+    t.bigint "state_id", null: false
+    t.string "name"
+    t.string "county"
+    t.string "state_code"
+    t.string "state"
+    t.string "zip_codes"
+    t.string "location_type"
+    t.string "latitude"
+    t.string "longitude"
+    t.string "area_code"
+    t.string "population"
+    t.string "households"
+    t.string "median_income"
+    t.string "land_area"
+    t.string "water_area"
+    t.string "time_zone"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["state_id"], name: "index_locations_on_state_id"
   end
 
   create_table "media_storages", force: :cascade do |t|
@@ -144,6 +170,14 @@ ActiveRecord::Schema.define(version: 2020_10_26_035343) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["speciality_code"], name: "index_speciality_aliases_on_speciality_code"
     t.index ["speciality_id"], name: "index_speciality_aliases_on_speciality_id"
+  end
+
+  create_table "states", force: :cascade do |t|
+    t.string "name"
+    t.string "code"
+    t.string "status", default: "active"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "surveys", force: :cascade do |t|
@@ -267,6 +301,7 @@ ActiveRecord::Schema.define(version: 2020_10_26_035343) do
   end
 
   add_foreign_key "doctors", "users"
+  add_foreign_key "locations", "states"
   add_foreign_key "speciality_aliases", "specialities"
   add_foreign_key "taggings", "tags"
   add_foreign_key "topic_tips", "tips"

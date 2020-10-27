@@ -6,7 +6,15 @@ import Choices from 'choices.js';
 import Tagify from '@yaireo/tagify';
 
 export default class extends Controller {
-  static targets = ['errors', 'minExperience', 'maxExperience'];
+  static targets = [
+    'errors',
+    'minExperience',
+    'maxExperience',
+    'minPatients',
+    'maxPatients',
+    'minPrice',
+    'maxPrice',
+  ];
 
   connect() {
     const primarySpeciality = new Choices('#doctor_primary_speciality', {
@@ -15,6 +23,11 @@ export default class extends Controller {
     });
 
     const otherSpeciality = new Choices('#doctor_other_specialities', {
+      addItems: true,
+      removeItemButton: true,
+    });
+
+    const states = new Choices('#doctor_active_licenses', {
       addItems: true,
       removeItemButton: true,
     });
@@ -63,6 +76,18 @@ export default class extends Controller {
     const freeConsultationTime = new Tagify(timeInput, {
       mode: 'select',
       whitelist: ['15 minutes', '30 minutes', '45 minutes', '1 hour'],
+      keepInvalidTags: true, // do not auto-remove invalid tags
+      dropdown: {
+        // closeOnSelect: false
+      },
+    });
+
+    const disciplinaryActionInput = document.querySelector(
+      'input[name="doctor[disciplinary_action_taken]"]'
+    );
+    const disciplinaryAction = new Tagify(disciplinaryActionInput, {
+      mode: 'select',
+      whitelist: ['Yes', 'No', 'None'],
       keepInvalidTags: true, // do not auto-remove invalid tags
       dropdown: {
         // closeOnSelect: false
@@ -230,5 +255,19 @@ export default class extends Controller {
     const option = select[select.selectedIndex];
     this.minExperienceTarget.value = option.dataset.minExperience;
     this.maxExperienceTarget.value = option.dataset.maxExperience;
+  }
+
+  patientChange(event) {
+    const select = event.target;
+    const option = select[select.selectedIndex];
+    this.minPatientsTarget.value = option.dataset.minPatients;
+    this.maxPatientsTarget.value = option.dataset.maxPatients;
+  }
+
+  priceChange(event) {
+    const select = event.target;
+    const option = select[select.selectedIndex];
+    this.minPriceTarget.value = option.dataset.minPrice;
+    this.maxPriceTarget.value = option.dataset.maxPrice;
   }
 }

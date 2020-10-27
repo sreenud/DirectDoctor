@@ -1,0 +1,17 @@
+<header class="flex">
+  <div class="inline-flex text-gray-600">
+    <h1 class="font-semibold text-2xl">States</h1>
+  </div>
+</header>
+<section class="flex mt-2">
+  <div class="flex-1 mb-6 mr-4">
+    <div class="my-2 flex sm:flex-row flex-col">
+      <%= render partial: 'search', locals: {q: @q} %>
+      <div class="w-1/2">
+      </div>
+    </div>
+    <div class="bg-white border mb-6 rounded shadow">
+      <%= render partial: 'list', locals: {states: @states} %>
+    </div>
+  </div>
+</section>

@@ -14,31 +14,36 @@ module Admin
 
     def new
       @doctor = Doctor.new(
-        min_experience: Doctor.first_experience&.first,
-        max_experience: Doctor.first_experience&.last
+        min_experience: Doctor.default_experience&.first,
+        max_experience: Doctor.default_experience&.last,
+        min_patients: Doctor.default_patient&.first,
+        max_patients: Doctor.default_patient&.last,
+        min_price: Doctor.default_price&.first,
+        max_price: Doctor.default_price&.last,
       )
       @statuses = Doctor.statuses
       @doctor_degrees = DoctorDegree.latest
       @specialities = Speciality.latest
+      @states = State.by_name
     end
 
     def edit
       @statuses = Doctor.statuses
       @doctor_degrees = DoctorDegree.latest
       @specialities = Speciality.latest
+      @states = State.by_name
     end
 
     def create
       @doctor = Doctor.new(doctor_params)
-      # debugger
-      # respond_to do |format|
-      #   if @doctor.save
-      #     format.html { redirect_to admin_doctors_url, notice: 'Doctor was successfully created.' }
-      #     format.json { render :show, status: :created, location: @doctor }
-      #   else
-      #     format.html { render(partial: "shared/partials/errors", locals: { object: @doctor }, status: :bad_request) }
-      #   end
-      # end
+      respond_to do |format|
+        if @doctor.save
+          format.html { redirect_to admin_doctors_url, notice: 'Doctor was successfully created.' }
+          format.json { render :show, status: :created, location: @doctor }
+        else
+          format.html { render(partial: "shared/partials/errors", locals: { object: @doctor }, status: :bad_request) }
+        end
+      end
     end
 
     def update
@@ -66,9 +71,14 @@ module Admin
     end
 
     def doctor_params
-      params.require(:doctor).permit(:category_id, :name, :slug, :summary, :content, :is_popular,
-        :author_id, :image, :meta_title, :meta_description, :h1_tag, :status, :read_time,
-        :status, :tag_list, :author_id, :primary_keyword, :other_specialities)
+      params.require(:doctor).permit(:title, :gender, :name, :slug, :practice_name, :style, :primary_speciality,
+        :min_experience, :max_experience, :language, :is_holistic_medicine, :holistic_option,
+        :is_telehealth_service, :telehealth_option, :is_home_visit, :home_visit_option, :aditional_services,
+        :min_price, :max_price, :min_patients, :max_patients, :access, :appointments, :consultation,
+        :free_consultation_time, :about_clinic, :about_doctor, :email, :phone, :address_line_1,
+        :state, :city, :zipcode, :fax, :website_url, :disciplinary_action_taken, :fmdd_score, :image, :status,
+        other_specialities: [], active_licenses: [], prices: [[:name]], social_profiles: [[:social_link]],
+        education: [[:year], [:name]], certifications: [[:year], [:name]], achievements: [[:year], [:name]])
     end
   end
 end

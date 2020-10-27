@@ -31,3 +31,7 @@ Style/ClassAndModuleChildren:
 Lint/SuppressedException:
   Exclude:
     - '**/jobs/**.rb'
+
+Lint/UselessAssignment:
+  Exclude:
+    - 'app/models/doctor.rb'
