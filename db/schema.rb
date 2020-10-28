@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_27_143656) do
+ActiveRecord::Schema.define(version: 2020_10_28_071403) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -87,6 +87,8 @@ ActiveRecord::Schema.define(version: 2020_10_27_143656) do
     t.text "about_clinic"
     t.string "active_licenses", array: true
     t.text "disciplinary_action_taken"
+    t.string "lat"
+    t.string "lng"
     t.index ["user_id"], name: "index_doctors_on_user_id"
   end
 
