@@ -3,7 +3,7 @@
     <div class="text-gray-600 text-md font-bold">Contact Information</div>
     <p class="text-gray-600 text-sm"> About contact information </p>
   </div>
-  <div class="w-2/3">
+  <div class="w-2/3" data-controller="places">
     <div class="input-group">
       <%= form.label :email, :class => "label text-gray-500" %>
       <%= form.text_field :email, :class => "input bg-white", :autocomplete => "off" %>
@@ -14,7 +14,7 @@
     </div>
     <div class="input-group">
       <label class="label text-gray-600" for="doctor_Practice/Clinic name">Business Address</label>
-      <%= form.text_field :address_line_1, :class => "input bg-white", :autocomplete => "off" %>
+      <%= form.search_field :address_line_1, :class => "input bg-white" %>
     </div>
     <div class="w-full flex">
       <div class="w-1/3">
@@ -33,6 +33,20 @@
         <div class="input-group">
           <%= form.label :zip_code, :class => "label text-gray-500" %>
           <%= form.text_field :zipcode, :class => "input bg-white", :autocomplete => "off" %>
+        </div>
+      </div>
+    </div>
+    <div class="w-full flex">
+      <div class="w-1/2">
+        <div class="input-group">
+          <%= form.label :latitude, :class => "label text-gray-500" %>
+          <%= form.text_field :lat, :class => "input bg-white", :autocomplete => "off" %>
+        </div>
+      </div>
+      <div class="w-1/2 ml-2">
+        <div class="input-group">
+          <%= form.label :longitude, :class => "label text-gray-500" %>
+          <%= form.text_field :lng, :class => "input bg-white", :autocomplete => "off" %>
         </div>
       </div>
     </div>

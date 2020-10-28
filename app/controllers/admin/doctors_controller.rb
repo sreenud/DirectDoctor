@@ -77,7 +77,7 @@ module Admin
         :min_price, :max_price, :min_patients, :max_patients, :access, :appointments, :consultation,
         :free_consultation_time, :about_clinic, :about_doctor, :email, :phone, :address_line_1,
         :state, :city, :zipcode, :fax, :website_url, :disciplinary_action_taken, :fmdd_score, :image, :status,
-        other_specialities: [], active_licenses: [], prices: [[:name]], social_profiles: [[:social_link]],
+        :lat, :lng, other_specialities: [], active_licenses: [], prices: [[:name]], social_profiles: [[:social_link]],
         education: [[:year], [:name]], certifications: [[:year], [:name]], achievements: [[:year], [:name]])
     end
   end

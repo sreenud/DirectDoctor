@@ -13,6 +13,7 @@
     "choices.js": "devkral/Choices#feature/add_select_options",
     "cropperjs": "^1.5.9",
     "jquery": "^3.5.1",
+    "places.js": "^1.19.0",
     "stimulus": "^1.1.1",
     "tailwindcss": "^1.6.1",
     "tinymce": "^5.4.2",
