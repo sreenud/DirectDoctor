@@ -1,0 +1,72 @@
+<section class="grid grid-cols-12 md:w-full mt-16">
+  <div class="col-start-2 col-span-10">
+    <div class="flex w-full flex-wrap justify-between">
+      <div class="md:w-9/12 mt-24  md:px-16 w-full">
+        <h1 class=" text-heading font-hurmebold text-doctor-blue">Tips</h1>
+        <div class="flex mt-6 border shadow sm:w-2/3 px-6 py-2 rounded-full w-full">
+          <div class="md:w-5/6 w-full">
+            <input type="text" placeholder="Search Keyword" class="focus:outline-none w-full">
+          </div>
+          <div class="flex items-center justify-end w-1/6">
+            <label class="ml-6">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-5 text-gray-600">
+                <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd"></path>
+              </svg>
+            </label>
+          </div>
+        </div>
+        <div class="w-ful">
+          <div class="flex flex-wrap mt-12">
+            <div class="w-full pb-3">
+              <h4 class="font-glacialbold text-2xl">
+                Direct Primary Care and Concierge Medicine
+              </h4>
+            </div>
+            <% if @tips.present? %>
+              <% @tips&.each do |tip| %>
+                <div class="w-full mt-3 border-b-2 border-doctor-blue">
+                  <div>
+                    <a href="/blogs/<%=tip&.topic&.slug %>/<%=tip.code%>" class="hover:underline"><%=tip.name%></a>
+                  </div>
+                  <div class="text-sm py-2">
+                    <span class="font-hurmebold">Author:</span> <%=tip&.topic&.author&.full_name%>, <%=tip&.topic&.author&.title%>
+                  </div>
+                </div>
+              <% end %>
+            <% else %>
+              <div class="w-full mt-3">
+                No tips found
+              </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+      <!--<div class="md:w-3/12 text-md mt-12 w-full text-sm">
+        <div class="blog-bg-gray px-6 py-8 rounded-3lg mt-8">
+          <div class="w-full">
+            <h4 class="text-px20 font-hurmebold text-center">Most Popular Blog Posts</h4>
+            <% @popular_topics&.each do |popular_topic| %>
+              <div class="mt-1 border-b-2 border-doctor-blue">
+                <a href="<%=popular_topic.slug%>" class="hover:underline">
+                  <p class="py-2"><%=popular_topic.name%> </p>
+                </a>
+              </div>
+            <% end %>
+          </div>
+        </div>
+        <div class="blog-bg-gray px-6 py-8 rounded-3lg mt-8">
+          <div class="w-full">
+            <h4 class="text-px20 font-hurmebold text-center">What Are Others Reading</h4>
+            <% (1..4).each do |index| %>
+              <div class="mt-1 border-b-2 border-doctor-blue">
+                <a href="#" class="hover:underline">
+                  <p class="py-2">How Physicians Can Reduce Tax Bill by Using Cost Segregation and Bonus Depreciation </p>
+                </a>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      </div>-->
+    </div>
+  </div>
+</section>
