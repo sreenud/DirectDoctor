@@ -14,6 +14,19 @@
     <div class="flex w-full flex-wrap sm:justify-between justify-center">
       <div class="md:w-9/12 mt-24 sm:px-16 w-full">
         <div class="w-full">
+          <nav class="mb-5 text-sm" aria-label="breadcrumb">
+            <ul class="flex leading-none divide-x divide-indigo-400 list-none">
+              <li class="pr-2"><a href="/" class="text-doctor-yellow">Home</a></li>
+              <span class="text-gray-600">></span>
+              <li class="px-2"><a href="/blogs/<%=@tip&.topic&.slug%>" class="text-doctor-yellow"><%=@tip&.topic&.name%></a></li>
+              <span class="text-gray-600">></span>
+              <li class="px-2"><a href="/tips" class="text-doctor-yellow">Tips</a></li>
+              <span class="text-gray-600">></span>
+              <li class="px-2 text-gray-700" aria-current="page"><%=@tip.name%></li>
+            </ul>
+          </nav>
+        </div>
+        <div class="w-full">
           <span class="text-px14 border bg-doctor-yellow rounded-full text-gray-100 font-bold border-doctor-yellow px-2 py-1 font-hurmebold"><%=@tip&.topic&.category&.name%></span>
           <h1 class="mt-5 text-heading font-hurmebold text-doctor-blue leading-tight">
             <%= @tip&.name %>
