@@ -8,7 +8,7 @@ class Doctor < ApplicationRecord
   validates :title, :gender, :name, :practice_name, :style, :primary_speciality,
     :language, :is_holistic_medicine, :is_telehealth_service, :is_home_visit,
     :aditional_services, :access, :appointments, :consultation, :about_clinic,
-    :about_doctor, presence: true
+    :about_doctor, :address_line_1, :state, :city, :zipcode, :lat, :lng, presence: true
 
   validate :validate_holistic_option, :validate_telehealth_option, :validate_home_visit_option
 
