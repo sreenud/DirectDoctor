@@ -6,7 +6,7 @@ Rails.application.routes.draw do
 
   resources :blogs, only: [:index, :show]
   resources :tips, only: [:index]
-  get "/blogs/:blog_id/:id", to: "tips#show"
+  get "/blogs/:tip_slug/:id", to: "tips#show"
 
   resources :surveys, only: [:index, :create]
   mount Shrine.upload_endpoint(:cache) => "/images/upload"

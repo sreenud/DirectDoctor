@@ -1,5 +1,4 @@
 class TipsController < ApplicationController
-  before_action :set_topic
   before_action :set_tip, only: [:show]
   before_action :set_meta_data, only: [:show]
 
@@ -12,10 +11,6 @@ class TipsController < ApplicationController
   end
 
   private
-
-  def set_topic
-    @topic = Topic.find_by_slug(params[:topic_id])
-  end
 
   def set_tip
     @tip = Tip.find_by_code(params[:id])

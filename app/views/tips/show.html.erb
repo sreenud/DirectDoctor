@@ -38,7 +38,7 @@
               <div class="col-span-5">
                 <p class="font-hurmebold text-doctor-blue px-4 py-4 border-b-2 border-doctor-blue">Previous Post</p>
                 <div class="mt-6 text-base">
-                  <a href="/blogs/<%=@tip&.topic&.slug%>/<%=@tip&.previous&.code%>" class="hover:underline">
+                  <a href="/blogs/<%=@tip&.previous&.slug%>/<%=@tip&.previous&.code%>" class="hover:underline">
                     <%=@tip&.previous&.name%>
                   </a>
                 </div>
@@ -49,7 +49,7 @@
               <div class="col-span-5 ">
                 <p class="font-hurmebold text-doctor-blue px-4 py-4 border-b-2 border-doctor-blue">Next Post</p>
                 <div class="mt-6 text-base">
-                  <a href="/blogs/<%=@tip&.topic&.slug%>/<%=@tip&.next&.code%>" class="hover:underline">
+                  <a href="/blogs/<%=@tip&.next&.slug%>/<%=@tip&.next&.code%>" class="hover:underline">
                     <%=@tip&.next&.name%>
                   </a>
                 </div>
@@ -75,7 +75,7 @@
             <h4 class="text-px20 font-hurmebold text-center">What Are Others Reading</h4>
             <% @other_readings.each do |other_reading| %>
               <div class="mt-4 border-b-2 border-doctor-blue">
-                <a href="/blogs/<%=other_reading&.topic&.slug%>/<%=other_reading.code%>" class="hover:underline">
+                <a href="/blogs/<%=other_reading&.slug%>/<%=other_reading.code%>" class="hover:underline">
                   <p class="py-2"><%=other_reading.name%> </p>
                 </a>
               </div>
