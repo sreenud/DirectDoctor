@@ -26,7 +26,7 @@
               <% @tips&.each do |tip| %>
                 <div class="w-full mt-3 border-b-2 border-doctor-blue">
                   <div>
-                    <a href="/blogs/<%=tip&.topic&.slug %>/<%=tip.code%>" class="hover:underline"><%=tip.name%></a>
+                    <a href="/blogs/<%=tip&.slug %>/<%=tip.code%>" class="hover:underline"><%=tip.name%></a>
                   </div>
                   <div class="text-sm py-2">
                     <span class="font-hurmebold">Author:</span> <%=tip&.topic&.author&.full_name%>, <%=tip&.topic&.author&.title%>
