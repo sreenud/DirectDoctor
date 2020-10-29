@@ -18,7 +18,7 @@
             <ul class="flex leading-none divide-x divide-indigo-400 list-none">
               <li class="pr-2"><a href="/" class="text-doctor-yellow">Home</a></li>
               <span class="text-gray-600">></span>
-              <li class="px-2"><a href="/blogs/<%=@tip&.topic&.slug%>" class="text-doctor-yellow"><%=@tip&.topic&.name%></a></li>
+              <li class="px-2"><a href="/blogs/<%=@tip&.topic&.slug%>" class="text-doctor-yellow"><%=@tip&.topic&.primary_keyword&.humanize%></a></li>
               <span class="text-gray-600">></span>
               <li class="px-2"><a href="/tips" class="text-doctor-yellow">Tips</a></li>
               <span class="text-gray-600">></span>
