@@ -39,7 +39,7 @@ export default class extends Controller {
     const input = document.querySelector('input[name="doctor[access]"]');
     const access = new Tagify(input, {
       mode: 'select',
-      whitelist: ['Yes', 'No'],
+      whitelist: ['Yes', 'No', 'Not available'],
       keepInvalidTags: true, // do not auto-remove invalid tags
       dropdown: {
         // closeOnSelect: false
@@ -54,6 +54,7 @@ export default class extends Controller {
         'Same day appointments',
         'Next day appointments',
         '2 - 3 day appointments',
+        'Not available',
       ],
       dropdown: {
         maxItems: 20, // <- mixumum allowed rendered suggestions
@@ -67,7 +68,7 @@ export default class extends Controller {
     );
     const consultation = new Tagify(consultationInput, {
       mode: 'select',
-      whitelist: ['Yes', 'No'],
+      whitelist: ['Yes', 'No', 'Not available'],
       keepInvalidTags: true, // do not auto-remove invalid tags
       dropdown: {
         // closeOnSelect: false
@@ -79,7 +80,13 @@ export default class extends Controller {
     );
     const freeConsultationTime = new Tagify(timeInput, {
       mode: 'select',
-      whitelist: ['15 minutes', '30 minutes', '45 minutes', '1 hour'],
+      whitelist: [
+        '15 minutes',
+        '30 minutes',
+        '45 minutes',
+        '1 hour',
+        'Not available',
+      ],
       keepInvalidTags: true, // do not auto-remove invalid tags
       dropdown: {
         // closeOnSelect: false
