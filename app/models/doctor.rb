@@ -35,6 +35,7 @@ class Doctor < ApplicationRecord
   enum holistic_medicine: {
     "yes": "Yes",
     "no": "No",
+    'not_available': 'Not available',
   }
 
   def self.experiences
