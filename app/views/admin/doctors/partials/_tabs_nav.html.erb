@@ -2,9 +2,6 @@
   <div @click.prevent="tab = 'doctor'; window.location.hash = 'doctor'" :class="{ '-mb-px': tab === 'doctor' }">
     <a :class="tab === 'doctor' ? 'border-l border-t border-r rounded-t text-blue-700' : 'text-blue-500 hover:text-blue-800'" href="#" class="bg-white inline-block py-2 px-4 font-semibold">Practice</a>
   </div>
-  <div @click.prevent="tab = 'pricing'; window.location.hash = 'pricing'" :class="{ '-mb-px': tab === 'pricing' }">
-    <a :class="tab === 'pricing' ? 'border-l border-t border-r rounded-t text-blue-700' : 'text-blue-500 hover:text-blue-800'" href="#" class="bg-white inline-block py-2 px-4 font-semibold">Pricing</a>
-  </div>
   <div @click.prevent="tab = 'contact'; window.location.hash = 'contact'" :class="{ '-mb-px': tab === 'contact' }">
     <a :class="tab === 'contact' ? 'border-l border-t border-r rounded-t text-blue-700' : 'text-blue-500 hover:text-blue-800'" href="#" class="bg-white inline-block py-2 px-4 font-semibold">Contact</a>
   </div>

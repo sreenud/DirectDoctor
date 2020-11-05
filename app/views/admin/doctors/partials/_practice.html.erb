@@ -4,10 +4,6 @@
     <p class="text-gray-600 text-sm"> About basic information </p>
   </div>
   <div class="w-2/3">
-    <div class="input-group">
-      <label class="label text-gray-600" for="title">Degree<span class="text-red-700 pl-1">*</span></label>
-      <%= form.text_field :title, :class => "", :placeholder => "Select"%>
-    </div>
     <div class="full flex">
       <div class="w-1/3">
         <div class="input-group">
@@ -21,6 +17,10 @@
           <%= form.text_field :name, :class => "input bg-white", :autocomplete => "off", data: {action: "keyup->slug#updateSlug", record: form.object.new_record?} %>
         </div>
       </div>
+    </div>
+    <div class="input-group">
+      <label class="label text-gray-600" for="title">Degree<span class="text-red-700 pl-1">*</span></label>
+      <%= form.text_field :title, :class => "", :placeholder => "Select"%>
     </div>
     <div class="input-group">
       <label class="label text-gray-600" for="doctor_Practice/Clinic name">Practice / Clinic name<span class="text-red-700 pl-1">*</span></label>
@@ -46,7 +46,7 @@
     <div class="input-group">
       <label class="label text-gray-600" for="doctor_Practice/Clinic name">Doctor's Experience - Years in Practice<span class="text-red-700 pl-1">*</span></label>
       <div class="inline-block relative w-full">
-        <%= select_tag nil, options_for_select(experience_options(Doctor.experiences), experience_string(form.object)), class: 'select', data: { action: "change->doctor#experienceChange" } %>
+        <%= select_tag nil, options_for_select(experience_options(experiences), experience_string(form.object)), class: 'select', data: { action: "change->doctor#experienceChange" } %>
         <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
           <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
         </div>
@@ -112,9 +112,18 @@
       </div>
       <div class="input-group">
         <label class="label text-gray-600" for="patients_in_panel">Monthly Membership Fee for Patient<span class="text-red-700 pl-1">*</span></label>
-        <%= select_tag nil, options_for_select(price_options(Doctor.price_ranges), price_string(form.object)), class: 'select', data: { action: "change->doctor#priceChange" } %>
+        <div class="inline-block relative w-full">
+          <%= select_tag "doctor[price_options]", options_for_select(price_options(price_ranges), price_string(form.object)), class: 'select', data: { action: "change->doctor#priceChange" }%>
+          <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+            <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
+          </div>
+        </div>
         <%= form.hidden_field :min_price, class: 'form-control', data: { target: "doctor.minPrice" } %>
         <%= form.hidden_field :max_price, class: 'form-control', data: { target: "doctor.maxPrice" } %>
+      </div>
+      <div class="input-group" data-target="doctor.otherPriceInput">
+        <label class="label text-gray-600" for="patients_in_panel">Price details</label>
+        <%= form.text_area :prices, :class => "input bg-white tinymce" %>
       </div>
     </div>
   </div>
@@ -128,9 +137,18 @@
     <div class="w-2/3">
       <div class="input-group">
         <label class="label text-gray-600" for="patients_in_panel">Maximum Patient Limit in Your Panel<span class="text-red-700 pl-1">*</span></label>
-        <%= select_tag nil, options_for_select(patient_options(Doctor.patients_in_panels), patient_string(form.object)), class: 'select', data: { action: "change->doctor#patientChange" } %>
+        <div class="inline-block relative w-full">
+          <%= select_tag "doctor[patients_options]", options_for_select(patient_options(patients_in_panel), patient_string(form.object)), class: 'select', data: { action: "change->doctor#patientChange" } %>
+          <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+            <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
+          </div>
+        </div>
         <%= form.hidden_field :min_patients, class: 'form-control', data: { target: "doctor.minPatients" } %>
         <%= form.hidden_field :max_patients, class: 'form-control', data: { target: "doctor.maxPatients" } %>
+      </div>
+      <div class="input-group" data-target="doctor.otherPatientsInput">
+        <label class="label text-gray-600" for="patients_in_panel">Patients in Your Panel</label>
+        <%= form.text_area :patients_in_panel, :class => "input bg-white tinymce" %>
       </div>
       <div class="input-group">
         <label class="label text-gray-600" for="access">24/7 Direct Phone Access to Doctor<span class="text-red-700 pl-1">*</span></label>

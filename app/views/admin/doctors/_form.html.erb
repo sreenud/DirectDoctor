@@ -5,10 +5,7 @@
         <%=render partial: 'admin/doctors/partials/tabs_nav'%>
         <div class="w-full pt-4">
           <div x-show="tab === 'doctor'">
-            <%=render partial: 'admin/doctors/partials/practice', locals: {form: form, doctor_degrees: doctor_degrees, specialities: specialities}%>
-          </div>
-          <div x-show="tab === 'pricing'">
-            <%=render partial: 'admin/doctors/partials/pricing', locals: {form: form}%>
+            <%=render partial: 'admin/doctors/partials/practice', locals: {form: form, doctor_degrees: doctor_degrees, specialities: specialities, patients_in_panel: patients_in_panel, price_ranges: price_ranges, experiences: experiences}%>
           </div>
           <div x-show="tab === 'contact'">
             <%=render partial: 'admin/doctors/partials/contact', locals: {form: form}%>

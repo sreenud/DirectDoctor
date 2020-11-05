@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_28_071403) do
+ActiveRecord::Schema.define(version: 2020_11_04_123831) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -46,7 +46,7 @@ ActiveRecord::Schema.define(version: 2020_10_28_071403) do
     t.string "primary_speciality"
     t.integer "min_price", default: 0
     t.integer "max_price", default: 0
-    t.jsonb "prices", default: {}
+    t.text "prices", default: ""
     t.string "style"
     t.string "access"
     t.jsonb "additional_features", default: {}
@@ -66,7 +66,7 @@ ActiveRecord::Schema.define(version: 2020_10_28_071403) do
     t.string "status", default: "draft"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "patients_in_panel"
+    t.text "patients_in_panel", default: ""
     t.integer "min_patients"
     t.integer "max_patients"
     t.string "free_consultation_time"
@@ -86,9 +86,10 @@ ActiveRecord::Schema.define(version: 2020_10_28_071403) do
     t.text "about_doctor"
     t.text "about_clinic"
     t.string "active_licenses", array: true
-    t.text "disciplinary_action_taken"
+    t.string "disciplinary_action_taken"
     t.string "lat"
     t.string "lng"
+    t.text "disciplinary_action_details"
     t.index ["user_id"], name: "index_doctors_on_user_id"
   end
 

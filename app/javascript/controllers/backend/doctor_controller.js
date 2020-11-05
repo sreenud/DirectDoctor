@@ -14,6 +14,10 @@ export default class extends Controller {
     'maxPatients',
     'minPrice',
     'maxPrice',
+    'otherPriceInput',
+    'otherPatientsInput',
+    'disciplinaryAction',
+    'disciplinaryActionInput',
   ];
 
   connect() {
@@ -76,18 +80,6 @@ export default class extends Controller {
     const freeConsultationTime = new Tagify(timeInput, {
       mode: 'select',
       whitelist: ['15 minutes', '30 minutes', '45 minutes', '1 hour'],
-      keepInvalidTags: true, // do not auto-remove invalid tags
-      dropdown: {
-        // closeOnSelect: false
-      },
-    });
-
-    const disciplinaryActionInput = document.querySelector(
-      'input[name="doctor[disciplinary_action_taken]"]'
-    );
-    const disciplinaryAction = new Tagify(disciplinaryActionInput, {
-      mode: 'select',
-      whitelist: ['Yes', 'No', 'None'],
       keepInvalidTags: true, // do not auto-remove invalid tags
       dropdown: {
         // closeOnSelect: false
@@ -269,5 +261,36 @@ export default class extends Controller {
     const option = select[select.selectedIndex];
     this.minPriceTarget.value = option.dataset.minPrice;
     this.maxPriceTarget.value = option.dataset.maxPrice;
+  }
+
+  disciplinaryActionChange(event) {
+    this.disciplinaryActionInput(this.disciplinaryActionTarget.value);
+  }
+
+  displayOtherPriceInput(display) {
+    const otherPriceInput = this.otherPriceInputTarget;
+    if (display == 'show') {
+      otherPriceInput.classList.remove('hidden');
+    } else {
+      otherPriceInput.classList.add('hidden');
+    }
+  }
+
+  displayOtherPatientsInput(display) {
+    const otherPatientsInput = this.otherPatientsInputTarget;
+    if (display == 'show') {
+      otherPatientsInput.classList.remove('hidden');
+    } else {
+      otherPatientsInput.classList.add('hidden');
+    }
+  }
+
+  disciplinaryActionInput(display) {
+    const disciplinaryActionInput = this.disciplinaryActionInputTarget;
+    if (display == 'Yes') {
+      disciplinaryActionInput.classList.remove('hidden');
+    } else {
+      disciplinaryActionInput.classList.add('hidden');
+    }
   }
 }

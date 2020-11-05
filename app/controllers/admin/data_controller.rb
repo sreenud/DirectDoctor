@@ -5,7 +5,9 @@ module Admin
 
     def degree
       @degree = DoctorDegree.pluck(:code)
-
+      if current_user.has_role?(:admin) || current_user.has_role?(:data_entry)
+        @degree += ['Not available']
+      end
       respond_to do |format|
         format.json do
           render json: @degree.as_json
@@ -26,6 +28,10 @@ module Admin
     def services
       @services = Service.pluck(:name)
 
+      if current_user.has_role?(:admin) || current_user.has_role?(:data_entry)
+        @services += ['Not available']
+      end
+
       respond_to do |format|
         format.json do
           render json: @services.as_json
@@ -35,6 +41,10 @@ module Admin
 
     def languages
       @languages = Language.pluck(:name)
+
+      if current_user.has_role?(:admin) || current_user.has_role?(:data_entry)
+        @languages += ['Not available']
+      end
 
       respond_to do |format|
         format.json do

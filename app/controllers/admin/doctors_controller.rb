@@ -1,6 +1,7 @@
 module Admin
   class DoctorsController < Admin::BaseController
-    before_action :set_doctor, only: [:show, :edit, :update, :destroy, :skills]
+    before_action :set_doctor, only: [:show, :edit, :update, :destroy]
+    before_action :set_master_data, only: [:edit, :new]
 
     def index
       @q = Doctor.ransack(params[:q])
@@ -21,17 +22,9 @@ module Admin
         min_price: Doctor.default_price&.first,
         max_price: Doctor.default_price&.last,
       )
-      @statuses = Doctor.statuses
-      @doctor_degrees = DoctorDegree.latest
-      @specialities = Speciality.latest
-      @states = State.by_name
     end
 
     def edit
-      @statuses = Doctor.statuses
-      @doctor_degrees = DoctorDegree.latest
-      @specialities = Speciality.latest
-      @states = State.by_name
     end
 
     def create
@@ -66,6 +59,28 @@ module Admin
 
     private
 
+    def set_master_data
+      @statuses = Doctor.statuses
+      @doctor_degrees = DoctorDegree.latest
+      @specialities = Speciality.latest
+      @states = State.by_name
+
+      @patients_in_panel = Doctor.patients_in_panels
+      if current_user.has_role?(:admin) || current_user.has_role?(:data_entry)
+        @patients_in_panel = @patients_in_panel.merge!({ '0-0' => 'Not available' })
+      end
+
+      @price_ranges = Doctor.price_ranges
+      if current_user.has_role?(:admin) || current_user.has_role?(:data_entry)
+        @price_ranges = @price_ranges.merge!({ '0-0' => 'Not available' })
+      end
+
+      @experiences = Doctor.experiences
+      if current_user.has_role?(:admin) || current_user.has_role?(:data_entry)
+        @experiences = @experiences.merge!({ '0-0' => 'Not available' })
+      end
+    end
+
     def set_doctor
       @doctor = Doctor.find(params[:id])
     end
@@ -77,8 +92,9 @@ module Admin
         :min_price, :max_price, :min_patients, :max_patients, :access, :appointments, :consultation,
         :free_consultation_time, :about_clinic, :about_doctor, :email, :phone, :address_line_1,
         :state, :city, :zipcode, :fax, :website_url, :disciplinary_action_taken, :fmdd_score, :image, :status,
-        :lat, :lng, other_specialities: [], active_licenses: [], prices: [[:name]], social_profiles: [[:social_link]],
-        education: [[:year], [:name]], certifications: [[:year], [:name]], achievements: [[:year], [:name]])
+        :lat, :lng, :price_options, :patients_options, :prices, :patients_in_panel, :disciplinary_action_details,
+        other_specialities: [], active_licenses: [], social_profiles: [[:social_link]], education: [[:year], [:name]],
+        certifications: [[:year], [:name]], achievements: [[:year], [:name]])
     end
   end
 end

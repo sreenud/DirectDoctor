@@ -1,7 +1,7 @@
 class Doctor < ApplicationRecord
   include ImageUploader::Attachment(:image)
 
-  attr_accessor :cost, :experience
+  attr_accessor :cost, :experience, :patients_options, :price_options
 
   scope :latest, -> { order(created_at: :desc) }
 
@@ -11,6 +11,7 @@ class Doctor < ApplicationRecord
     :about_doctor, :address_line_1, :state, :city, :zipcode, :lat, :lng, presence: true
 
   validate :validate_holistic_option, :validate_telehealth_option, :validate_home_visit_option
+  # ,:validate_patients_options, :validate_price_options
 
   before_save :set_language, :set_degree, :set_additional_service, :set_appointments,
     :set_holistic_option, :set_telehealth_option, :set_home_visit_option, :set_free_consultation_time,
@@ -31,50 +32,60 @@ class Doctor < ApplicationRecord
     both: "Both",
   }
 
-  enum patients_in_panel: {
-    "0-50": "<50 patients",
-    "51-200": "51 - 200 patients",
-    "201-500": "201 - 500 patients",
-    "501-1000": "501 - 1000 patients",
-    "1000": ">1000 patients",
-  }
-
-  enum experience: {
-    "0-5": "0 - 5 years",
-    "6-10": "6 - 10 years",
-    "11-20": "11 - 20 years",
-    "20": ">20 years",
-  }
-
   enum holistic_medicine: {
     "yes": "Yes",
     "no": "No",
   }
 
-  enum price_range: {
-    "25-100": "$25 - $100",
-    "101-250": "$101 - $250",
-    "251-500": "$251 - $500",
-    "500": ">$500",
-  }
+  def self.experiences
+    {
+      "0-5" => "0 - 5 years",
+      "6-10" => "6 - 10 years",
+      "11-20" => "11 - 20 years",
+      "20" => ">20 years",
+    }
+  end
+
+  def self.price_ranges
+    {
+      "25-100" => "$25 - $100",
+      "101-250" => "$101 - $250",
+      "251-500" => "$251 - $500",
+      "500" => ">$500",
+    }
+  end
+
+  def self.patients_in_panels
+    {
+      "0-50" => "<50 patients",
+      "51-200" => "51 - 200 patients",
+      "201-500" => "201 - 500 patients",
+      "501-1000" => "501 - 1000 patients",
+      "1000" => ">1000 patients",
+    }
+  end
 
   def self.default_experience
-    experiences&.first&.first&.split("-")
+    Doctor.experiences&.first&.first&.split("-")
   end
 
   def self.default_patient
-    patients_in_panels&.first&.first&.split("-")
+    Doctor.patients_in_panels&.first&.first&.split("-")
   end
 
   def self.default_price
-    price_ranges&.first&.first&.split("-")
+    Doctor.price_ranges&.first&.first&.split("-")
   end
 
   private
 
   def set_fdd_id
-    self.fdd_id = "#{state}-#{primary_speciality}-#{zipcode}-#{format('%04d', id)}"
+    self.fdd_id = "#{state_code}-#{primary_speciality}-#{zipcode}-#{format('%04d', id)}"
     save
+  end
+
+  def state_code
+    State.find_by_name(state)&.code
   end
 
   def set_language
@@ -134,6 +145,18 @@ class Doctor < ApplicationRecord
   def validate_home_visit_option
     if is_home_visit == 'yes' && home_visit_option.blank?
       errors.add(:home_visit_option, 'should be present')
+    end
+  end
+
+  def validate_patients_options
+    if patients_options == 'other' && prices.blank?
+      errors.add(:patients_in_panel, 'should be present')
+    end
+  end
+
+  def validate_price_options
+    if price_options == 'other' && patients_in_panel.blank?
+      errors.add(:prices, 'should be present')
     end
   end
 
