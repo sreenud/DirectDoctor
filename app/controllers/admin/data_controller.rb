@@ -39,6 +39,16 @@ module Admin
       end
     end
 
+    def doctor_names
+      @doctors = Doctor.pluck(:name)
+
+      respond_to do |format|
+        format.json do
+          render json: @doctors.as_json
+        end
+      end
+    end
+
     def languages
       @languages = Language.pluck(:name)
 

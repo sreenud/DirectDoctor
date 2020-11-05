@@ -23,6 +23,7 @@ namespace :admin do
       get :holistic_medicine
       get :services
       get :languages
+      get :doctor_names
     end
   end
 end

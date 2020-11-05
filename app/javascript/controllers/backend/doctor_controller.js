@@ -99,6 +99,27 @@ export default class extends Controller {
     this.homeVisit();
     this.aditionalService();
     this.language();
+    this.doctorNames();
+  }
+
+  doctorNames() {
+    var that = this;
+    const url = '/admin/data/doctor_names.json';
+    const titleInput = document.querySelector('input[name="doctor[name]"]');
+    const doctorName = new Tagify(titleInput, {
+      whitelist: [],
+      maxTags: 10,
+      dropdown: {
+        maxItems: 10, // <- mixumum allowed rendered suggestions
+        classname: 'tags-look', // <- custom classname for this dropdown, so it could be targeted
+        enabled: 0, // <- show suggestions on focus
+        closeOnSelect: false, // <- do not hide the suggestions dropdown once an item has been selected
+      },
+    });
+
+    doctorName.on('input', function (e) {
+      that.loadWhiteList(e, doctorName, url);
+    });
   }
 
   doctorDegree() {
