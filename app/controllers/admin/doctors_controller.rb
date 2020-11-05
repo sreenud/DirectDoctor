@@ -1,6 +1,6 @@
 module Admin
   class DoctorsController < Admin::BaseController
-    before_action :set_doctor, only: [:show, :edit, :update, :destroy]
+    before_action :set_doctor, only: [:show, :edit, :update]
     before_action :set_master_data, only: [:edit, :new]
 
     def index
@@ -48,13 +48,6 @@ module Admin
           format.html { render(partial: "shared/partials/errors", locals: { object: @doctor }, status: :bad_request) }
         end
       end
-    end
-
-    def destroy
-      @doctor = Doctor.find(params[:id])
-      @doctor.destroy
-
-      redirect_to(admin_doctors_url)
     end
 
     private
