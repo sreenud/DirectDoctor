@@ -6,7 +6,7 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-roles = ['admin', 'doctor', 'patient', 'author']
+roles = ['admin', 'doctor', 'patient', 'author', 'data_entry']
 existing_roles = Role.all.map(&:name)
 
 roles.each do |role|

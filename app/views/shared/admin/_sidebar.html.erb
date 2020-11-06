@@ -25,6 +25,7 @@
         <span class="font-medium leading-tight pl-2 text-gray-700 text-md">Doctors</span>
       </div>
     </a>
+    <% if current_user.has_role?('admin') %>
     <% menu_classes = admin_menu_classes(controller: "users") %>
     <a href="<%=admin_users_url%>" class="flex items-center mt-3 pl-2 relative pt-2">
       <div class="<%=menu_classes[:active_class]%> flex pl-2">
@@ -34,6 +35,8 @@
         <span class="font-medium leading-tight pl-2 text-gray-700 text-md">Users</span>
       </div>
     </a>
+    <% end %>
+    <% if current_user.has_role?('admin') %>
     <a href="" class="flex items-center mt-3 pl-4 pt-2 relative">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="fill-current h-5 text-gray-500">
         <path d="M5 3a1 1 0 000 2c5.523 0 10 4.477 10 10a1 1 0 102 0C17 8.373 11.627 3 5 3z" />
@@ -47,7 +50,8 @@
       <% menu_classes = admin_menu_classes(controller: "tips") %>
       <a href="<%=admin_tips_url%>" class="block leading-tight ml-10 mb-2 mt-2 text-sm text-gray-600 px-2 hover:text-indigo-900 <%=menu_classes[:active_class]%>">Tips</a>
     </nav>
-    <a href="" class="flex items-center mt-3 pl-4 relative">
+    <% end %>
+    <a href="" class="flex items-center pt-6 pl-4 relative">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="fill-current h-5 text-gray-500">
         <path d="M3 12v3c0 1.657 3.134 3 7 3s7-1.343 7-3v-3c0 1.657-3.134 3-7 3s-7-1.343-7-3z" />
         <path d="M3 7v3c0 1.657 3.134 3 7 3s7-1.343 7-3V7c0 1.657-3.134 3-7 3S3 8.657 3 7z" />
@@ -68,9 +72,11 @@
           admin_menu_classes(controller: "locations")
         end
       %>
-      <a href="<%=admin_states_url%>" class="block leading-tight ml-10 mb-2 mt-2 text-sm px-2 <%=menu_classes[:active_class]%>">States</a>
-      <% menu_classes = admin_menu_classes(controller: "page_redirects") %>
-      <a href="<%=admin_page_redirects_url%>" class="block leading-tight ml-10 mb-2 mt-2 text-sm text-gray-600 px-2 hover:text-indigo-900 <%=menu_classes[:active_class]%>">Page Redirects</a>
+      <% if current_user.has_role?('admin') %>
+        <a href="<%=admin_states_url%>" class="block leading-tight ml-10 mb-2 mt-2 text-sm px-2 <%=menu_classes[:active_class]%>">States</a>
+        <% menu_classes = admin_menu_classes(controller: "page_redirects") %>
+        <a href="<%=admin_page_redirects_url%>" class="block leading-tight ml-10 mb-2 mt-2 text-sm text-gray-600 px-2 hover:text-indigo-900 <%=menu_classes[:active_class]%>">Page Redirects</a>
+      <% end %>
     </nav>
   </nav>
   <a href="" class="absolute bottom-0 flex items-center mb-5 pl-4">
