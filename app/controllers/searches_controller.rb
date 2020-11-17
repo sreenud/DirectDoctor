@@ -4,6 +4,9 @@ class SearchesController < ApplicationController
   def index
   end
 
+  def index_two
+  end
+
   private
 
   def set_meta_data
