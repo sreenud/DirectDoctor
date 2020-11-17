@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   devise_for :users
   root 'home#index'
-
+  get 'search', to: "searches#index"
   get "/*any", to: "redirects#index", constraints: RedirectConstraint.new
 
   resources :blogs, only: [:index, :show]

@@ -1,0 +1,136 @@
+<div class="lg:grid lg:w-full lg:mt-24 lg:grid-cols-12 flex mt-32">
+  <div class="lg:mt-32 lg:col-span-1"></div>
+  <div class="lg:col-span-10 flex mt-4">
+    <div class="w-full">
+      <!-- component -->
+      <nav aria-label="Breadcrumb" class="text-sm">
+        <ul class="list-none p-0 inline-flex">
+          <li class="flex items-left">
+            <a href="#" class="text-doctor-yellow pr-2">Home</a>
+            <span class="text-gray-500 pr-2">></span>
+          </li>
+          <li class="flex items-left">
+            <a href="#" class="text-doctor-yellow pr-2">Find a doctor</a>
+            <span class="text-gray-500 pr-2">></span>
+          </li>
+          <li class="text-gray-500" aria-current="page">
+            State
+          </li>
+        </ul>
+      </nav>
+      <div class="w-full text-left">
+        <h1 class="font-hurmebold text-md inline-block">Chicago, Internal Medical Doctors </h1>
+        <span class="text-gray-600">(18048 results)</span>
+      </div>
+      <div class="lg:w-full flex mt-4">
+        <div class="lg:w-3/12">
+          <%= render partial: 'searches/partials/left_filter'%>
+        </div>
+        <div class="lg:w-9/12 ml-4">
+          <div class="w-full text-right">
+            <label class="text-sm">Sort by:</label>
+            <div class="inline-block relative text-sm mt-1">
+              <select class="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-2 py-1 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline">
+                <option>Best Match</option>
+                <option>Option 2</option>
+                <option>Option 3</option>
+              </select>
+              <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+                <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
+              </div>
+            </div>
+          </div>
+          <div class="w-full">
+            <% (1..6).each do |index| %>
+              <div class="w-full flex border-b pb-6 mt-6">
+                <div class="w-1/4">
+                  <%= image_pack_tag 'doctor_PNG15987.png', class: 'h-48 w-full object-cover border-2 rounded-lg'%>
+                </div>
+                <div class="w-1/4 ml-4">
+                  <div class="tracking-wide font-hurmebold">
+                    <h1 class="text-2xl">John Doe</h1>
+                  </div>
+                  <div class="mt-2">Internal Medicine</div>
+                  <div class="mt-2 w-full flex">
+                    <div class="flex items-center">
+                      <svg class="w-5 h-5 fill-current text-doctor-yellow" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg>
+                      <svg class="w-5 h-5 fill-current text-doctor-yellow" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg>
+                      <svg class="w-5 h-5 fill-current text-doctor-yellow" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg>
+                      <svg class="w-5 h-5 fill-current text-doctor-yellow" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg>
+                      <svg class="w-5 h-5 fill-current text-gray-400" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg>
+                    </div>
+                    <div class="text-sm">
+                      <a href="#" class="text-blue-500"> (300 Reviews)</a>
+                    </div>
+                  </div>
+                  <div class="mt-2">Max no. of Patients: 300</div>
+                  <div class="w-full flex mt-2">
+                    <div><%=image_pack_tag 'icons/medal.svg', class: "w-6 h-6 mt-1 text-green-500"%></div>
+                    <div class="pl-2">Telehealth</div>
+                  </div>
+                </div>
+                <div class="w-1/4">
+                  <div>24/7 Direct Phone Access</div>
+                  <div class="mt-2">Direct Primary Care</div>
+                  <div class="mt-2">Fee $10,0000</div>
+                  <div class="mt-2">Apt: Same day</div>
+                  <div class="w-full flex mt-2">
+                    <div><%=image_pack_tag 'icons/medal.svg', class: "w-6 h-6 mt-1 text-green-500"%></div>
+                    <div class="pl-2">Home Visit Book</div>
+                  </div>
+                </div>
+                <div class="w-1/4">
+                  <div class="w-full flex">
+                    <div class="border-doctor-yellow rounded-lg px-2 bg-doctor-yellow text-white cursor-pointer hover:bg-doctor-yellow">
+                      Book Appointment
+                    </div>
+                    <div><%=image_pack_tag 'icons/favorite.svg', class: "w-6 h-6 mt-1 ml-2"%></div>
+                  </div>
+                  <div class="mt-2">13 years experience</div>
+                  <div class="mt-2">FMDD Score: 9/10</div>
+                  <div class="w-full flex mt-2">
+                    <div><%=image_pack_tag 'icons/medal.svg', class: "w-6 h-6 mt-1 text-green-500"%></div>
+                    <div class="pl-2">Free Consultation</div>
+                  </div>
+                  <div class="w-full flex mt-2">
+                    <div><%=image_pack_tag 'icons/medal.svg', class: "w-6 h-6 mt-1 text-green-500"%></div>
+                    <div class="pl-2">Holistic/Lifestyle Med</div>
+                  </div>
+                </div>
+              </div>
+            <% end %>
+            <div class="w-full flex">
+              <div class="w-1/4">
+                <div class="text-md tracking-wide font-hurmebold mt-4 text-center">
+                  MDVIP Group
+                </div>
+              </div>
+              <div class="w-1/4 ml-6">
+                <div class="w-full flex mt-4">
+                  <div><%=image_pack_tag 'icons/email.svg', class: "w-5 h-5 mt-1"%></div>
+                  <div class="pl-2">Message</div>
+                </div>
+              </div>
+              <div class="w-1/4">
+                <div class="w-full flex mt-4">
+                  <div><%=image_pack_tag 'icons/phone.svg', class: "w-5 h-5 mt-1"%></div>
+                  <div class="pl-2">090078601</div>
+                </div>
+              </div>
+              <div class="w-1/4">
+                <div class="w-full flex mt-4">
+                  <div><%=image_pack_tag 'icons/web.svg', class: "w-5 h-5 mt-1"%></div>
+                  <div class="pl-2">www.johndoe.com</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!--<div class="lg:w-3/12 ml-4">
+          Map
+        </div>-->
+      </div>
+    </div>
+  </div>
+  <div class="lg:col-span-1"></div>
+</div>
