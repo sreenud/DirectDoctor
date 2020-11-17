@@ -100,6 +100,7 @@
 .toggle-checkbox:checked {
   @apply right-0 border-doctor-yellow;
 }
+
 .toggle-checkbox:checked + .toggle-label {
   @apply bg-doctor-yellow;
 }
