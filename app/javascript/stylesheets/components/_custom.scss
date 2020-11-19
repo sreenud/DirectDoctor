@@ -75,20 +75,20 @@
   @apply bg-doctor-yellow text-gray-100;
 }
 
-.filter-radio-button input[type="radio"] {
+.filter-checkbox-button input[type="checkbox"] {
   @apply opacity-0 fixed w-0;
 }
-.filter-radio-button label {
+.filter-checkbox-button label {
   @apply inline-block border-2 px-2 py-1 rounded-md text-center bg-white w-full;
 }
-.filter-radio-button label:hover {
+.filter-checkbox-button label:hover {
   @apply bg-gray-500 text-gray-100 cursor-pointer;
 }
-.filter-radio-button input[type="radio"]:focus + label {
+.filter-checkbox-button input[type="checkbox"]:focus + label {
   @apply bg-gray-500 text-gray-100 shadow-2xl;
 }
-.filter-radio-button input[type="radio"]:checked + label {
-  @apply bg-gray-500 text-gray-100 border-gray-800;
+.filter-checkbox-button input[type="checkbox"]:checked + label {
+  @apply bg-gray-500 text-gray-800 border-gray-800;
 }
 
 .about .a {
@@ -108,7 +108,7 @@
   height: 700px;
 
   /* The height is 400 pixels */
-  width: 320px;
+  width: 100%;
 
   /* The width is the width of the web page */
 }
