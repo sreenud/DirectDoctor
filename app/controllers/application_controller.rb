@@ -1,6 +1,10 @@
 class ApplicationController < ActionController::Base
   before_action :menu_details, only: %i[index show], unless: proc { request.xhr? }
 
+  def load_gmap
+    @load_gmaps = true
+  end
+
   private
 
   def menu_details

@@ -24,15 +24,12 @@
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
-      
+
       gtag('config', 'UA-151952917-2');
     </script>
     <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
     <script src="https://cdn.rawgit.com/nnattawat/flip/master/dist/jquery.flip.min.js"></script>
-    <script
-      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBmxDr3-x_KEHARd7d1AH-9aOpgNPKoYSI&callback=initMap&libraries=&v=weekly"
-      defer
-    ></script>
+    <%= gmaps_script %>
   </head>
   <body class="font-glacial text-px18">
     <%= render partial: 'shared/header' %>
@@ -54,7 +51,7 @@
         speed: 1000,
         reverse: true
       });
-      
+
       setInterval(function(){
         $('.flip-card').flip('toggle');
       },2000)

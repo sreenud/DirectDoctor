@@ -12,6 +12,7 @@
     "animate.css": "^4.1.1",
     "choices.js": "devkral/Choices#feature/add_select_options",
     "cropperjs": "^1.5.9",
+    "gmaps": "^0.4.25",
     "jquery": "^3.5.1",
     "places.js": "^1.19.0",
     "stimulus": "^1.1.1",

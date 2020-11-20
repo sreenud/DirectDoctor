@@ -1,4 +1,6 @@
 class Doctor < ApplicationRecord
+  extend CoordinateQuery
+
   include ImageUploader::Attachment(:image)
 
   attr_accessor :cost, :experience, :patients_options, :price_options
