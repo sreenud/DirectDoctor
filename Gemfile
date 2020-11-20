@@ -44,8 +44,6 @@ group :development do
   gem 'rails_best_practices'
   gem 'better_errors'
   gem 'brakeman'
-  gem 'spring'
-  gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'rubocop', require: false
   gem 'rubocop-shopify', require: false
 
