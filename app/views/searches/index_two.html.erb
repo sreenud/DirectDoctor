@@ -133,7 +133,11 @@
                 </div>
               <% end %>
             </div>
-            <div class="lg:w-4/12 ml-4">
+            <div
+              class="lg:w-4/12 ml-4"
+              data-controller="maps"
+              data-maps-pins="40.7128,-74.0060"
+            >
               <div id="map" class="google-map rounded-lg"></div>
             </div>
           </div>
@@ -142,20 +146,3 @@
     </div>
   </div>
 </div>
-<script>
-  // Initialize and add the map
-  function initMap() {
-  // The location of Uluru
-  const new_york = { lat: 40.730610, lng: -73.935242 };
-  // The map, centered at Uluru
-  const map = new google.maps.Map(document.getElementById("map"), {
-    zoom: 4,
-    center: new_york,
-  });
-  // The marker, positioned at Uluru
-  const marker = new google.maps.Marker({
-    position: new_york,
-    map: map,
-  });
-  }
-</script>
