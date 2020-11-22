@@ -30,8 +30,8 @@ module DoctorSearch
   def apply_ratings_filter
     return @default_scope unless @params[:ratings].present?
 
-    more_than = @params[:ratings].match(/\d/).to_i
-    more_than = more_than <= 5 ? more_than : 5
+    # more_than = @params[:ratings].match(/\d/).to_i
+    # more_than = more_than <= 5 ? more_than : 5
     # TODO: insert a logic once ratings is added to platform
     @default_scope
   end
