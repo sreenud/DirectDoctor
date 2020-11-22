@@ -9,4 +9,8 @@ module ApplicationHelper
       defer: true
     )
   end
+
+  def current_location
+    @current_location
+  end
 end

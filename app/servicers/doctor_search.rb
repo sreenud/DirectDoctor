@@ -2,8 +2,12 @@
 
 # a module for generating results for doctor search through parameters
 module DoctorSearch
-  def search(params)
+  SEARCH_RADIUS = 100
+  SEARCH_UNITS = :km
+  DEFAULT_LOCATION = ApplicationController::DEFUALT_LOCATION
+  def search(params, current_location: DEFAULT_LOCATION)
     @params = params
+    @current_location = to_coordinates(current_location)
     @default_scope = Doctor
     apply_filters
   end
@@ -19,11 +23,11 @@ module DoctorSearch
   end
 
   def apply_location_filter
-    return @default_scope unless @params[:near].present? || @params[:place].present?
+    return @default_scope unless @params[:near].present? || @params[:place].present? || @current_location.present?
     @default_scope.near(
-      to_coordinates(@params[:near]) || @params[:place],
-      10,
-      units: :km
+      to_coordinates(@params[:near] || '') || @params[:place] || @current_location,
+      SEARCH_RADIUS,
+      units: SEARCH_UNITS
     )
   end
 

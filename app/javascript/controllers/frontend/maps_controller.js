@@ -5,16 +5,13 @@ import MapPopup from './map_popup';
 export default class extends Controller {
   connect() {
     // defaults to new york
-    this.currentLocation = {
-      lat: 40.73061,
-      lng: -73.935242,
-    };
+    this.currentLocation = { ...this.defaultLocation() };
     this.locationParams();
     this.maps = new GMaps({
       div: '#map',
       lat: this.currentLocation.lat,
       lng: this.currentLocation.lng,
-      zoom: 12,
+      zoom: 8,
       // zoomControl: false,
       fullscreenControl: false,
       dragend: (e) => {
@@ -46,6 +43,7 @@ export default class extends Controller {
     const pins = this.data
       .get('pins')
       .split('|')
+      .filter((a) => a.length > 1)
       .map((a) => {
         const coord = a.split(',');
         return {
@@ -107,5 +105,13 @@ export default class extends Controller {
         <div class="popup-bubble">${price}</div>
       </div>
     </div>`;
+  }
+
+  defaultLocation() {
+    const coord = this.data
+      .get('defaultlocation')
+      .split(',')
+      .map((a) => parseFloat(a));
+    return { lat: coord[0], lng: coord[1] };
   }
 }

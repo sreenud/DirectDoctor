@@ -6,7 +6,9 @@ class SearchesController < ApplicationController
   end
 
   def index_two
-    @pagy, @doctors = pagy(Doctor.search(search_params))
+    @pagy, @doctors = pagy(
+      Doctor.search(search_params, current_location: current_location)
+    )
   end
 
   private
