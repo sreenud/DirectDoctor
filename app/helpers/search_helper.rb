@@ -18,7 +18,9 @@ module SearchHelper
   end
 
   def render_doctor_cards
-    @doctors.map { |doc| doctor_card(doc) + doctor_contact_info(doc) }.join('').html_safe
+    @doctors.map do |doc|
+      tag.div(doctor_card(doc) + doctor_contact_info(doc), class: 'w-full box-bottom-shadow')
+    end.join('').html_safe
   end
 
   def doctor_card(doctor, **props)
@@ -134,7 +136,7 @@ module SearchHelper
 
   def star(variant: 'filled')
     fill_class = variant == 'filled' ? 'text-doctor-yellow' : 'text-gray-400'
-    content_tag(:svg, class: "w-4 h-4 fill-current #{fill_class}") do
+    content_tag(:svg, class: "w-4 h-4 fill-current #{fill_class}", viewBox: '0 0 20 20') do
       concat(star_shape)
     end
   end
