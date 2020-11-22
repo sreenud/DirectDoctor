@@ -101,7 +101,8 @@ module SearchHelper
     content_tag(:div, class: 'mt-2 w-full flex') do
       concat(render_star_rating(4))
       concat(tag.div(
-        link_to('(300 Reviews)', '#', class: 'text-blue-500')
+        link_to('(300 Reviews)', '#', class: 'text-blue-500'),
+        class: 'text-sm'
       ))
     end
   end
