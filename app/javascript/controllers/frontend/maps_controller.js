@@ -1,6 +1,6 @@
-import gmaps from 'gmaps';
 import { Controller } from 'stimulus';
 import * as GMaps from 'gmaps/gmaps.min';
+import MapPopup from './map_popup';
 
 export default class extends Controller {
   connect() {
@@ -30,7 +30,8 @@ export default class extends Controller {
       //   this.redirect({ lat, lng });
       // },
     });
-    this.setPins();
+    // this.setPins();
+    this.setPopups();
   }
 
   redirect({ lat, lng }) {
@@ -39,6 +40,30 @@ export default class extends Controller {
     delete params.place;
     const query = new URLSearchParams(params).toString();
     Turbolinks.visit(`/search-map?${query}`);
+  }
+
+  generatePopups() {
+    const pins = this.data
+      .get('pins')
+      .split('|')
+      .map((a) => {
+        const coord = a.split(',');
+        return {
+          lat: coord[0],
+          lng: coord[1],
+          content: this.popup(coord[2] || 'no price'),
+          click: (overlay) => {
+            const popup = new MapPopup(overlay.el, coord);
+            popup.show();
+          },
+        };
+      });
+    return pins;
+  }
+
+  setPopups() {
+    const pins = this.generatePopups();
+    pins.forEach((pin) => this.maps.drawOverlay(pin));
   }
 
   setPins() {
@@ -50,10 +75,11 @@ export default class extends Controller {
         return {
           lat: coord[0],
           lng: coord[1],
-          title: `Result ${index}`,
+          label: coord[2] || 'no price',
         };
       });
     this.maps.addMarkers(pins);
+    // pins.forEach((pin) => this.addMarker(pin));
     this.maps.fitZoom();
   }
 
@@ -73,5 +99,13 @@ export default class extends Controller {
       };
     }
     return params;
+  }
+
+  popup(price) {
+    return `<div class="popup-container" tab-index="1">
+      <div class="popup-bubble-anchor">
+        <div class="popup-bubble">${price}</div>
+      </div>
+    </div>`;
   }
 }

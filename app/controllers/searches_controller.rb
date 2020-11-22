@@ -6,9 +6,14 @@ class SearchesController < ApplicationController
   end
 
   def index_two
+    @pagy, @doctors = pagy(Doctor.search(search_params))
   end
 
   private
+
+  def search_params
+    params.permit(:near, :place, :ratings, :experience, :price)
+  end
 
   def set_meta_data
     @allow_robots = true

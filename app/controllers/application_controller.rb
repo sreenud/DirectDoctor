@@ -1,4 +1,6 @@
 class ApplicationController < ActionController::Base
+  include Pagy::Backend
+
   before_action :menu_details, only: %i[index show], unless: proc { request.xhr? }
 
   def load_gmap

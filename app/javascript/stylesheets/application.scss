@@ -42,3 +42,141 @@
 .ap-input {
   border: none !important;
 }
+
+.ap-footer {
+  display: none !important;
+}
+
+/* The popup bubble styling. */
+.popup-bubble {
+  /* Position the bubble centred-above its parent. */
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform: translate(-50%, -100%);
+
+  /* Style the bubble. */
+  background-color: white;
+  padding: 5px;
+  border-radius: 7px;
+  font-family: sans-serif;
+  overflow-y: auto;
+  max-height: 60px;
+  box-shadow: 0 2px 10px 1px rgba(0, 0, 0, 0.5);
+  font-weight: 800;
+  white-space: nowrap;
+}
+
+.popup-bubble-anchor {
+  position: absolute;
+  // width: 100%;
+  // bottom: 8px;
+  // left: 0;
+  &:hover {
+    .popup-bubble {
+      background-color: #222;
+      color: white;
+    }
+    &::after {
+      border-top-color: #222;
+    }
+  }
+}
+
+.popup-bubble-anchor::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform: translate(-50%, 0);
+  width: 0;
+  height: 0;
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+  border-top: 8px solid white;
+}
+
+.popup-container {
+  cursor: pointer;
+  height: 0;
+  position: absolute;
+  width: 200px;
+  display: flex;
+  justify-content: center;
+}
+
+.popup-info-window {
+  position: absolute;
+  box-shadow: 0 2px 10px 1px rgba(0, 0, 0, 0.5);
+  padding: 5px;
+  width: 200px;
+  bottom: 30px;
+  background-color: white;
+  border-radius: 7px;
+  display: none;
+  transition: 300ms all ease-in;
+  z-index: 2;
+  &.show {
+    display: block;
+  }
+}
+
+.pagy-nav,
+.pagy-nav-js,
+.pagy-combo-nav-js {
+  margin-top: 10px;
+  @apply inline-flex;
+  @apply shadow-md;
+}
+
+.pagy-nav.pagination,
+.pagy-nav-js.pagination,
+.pagy-combo-nav-js.pagination {
+  @apply border;
+  @apply border-gray-600;
+  @apply rounded-sm;
+}
+
+.pagy-nav .page,
+.pagy-nav-js .page,
+.pagy-combo-nav-js .page,
+.pagy-combo-nav-js .pagy-combo-input {
+  @apply text-gray-700;
+  @apply border-r;
+  @apply border-gray-600;
+  @apply px-3;
+  @apply py-2;
+  @apply text-sm;
+  @apply leading-tight;
+  @apply font-medium;
+}
+
+.pagy-nav .page:hover,
+.pagy-nav-js .page:hover {
+  @apply text-gray-900;
+}
+
+.pagy-nav .disabled,
+.pagy-nav-js .disabled,
+.pagy-combo-nav-js .disabled {
+  @apply cursor-not-allowed;
+}
+
+.pagy-nav .active,
+.pagy-nav-js .active {
+  @apply text-blue-500;
+}
+
+.pagy-nav .prev,
+.pagy-nav-js .prev,
+.pagy-combo-nav-js .prev {
+  @apply text-gray-900;
+}
+
+.pagy-nav .next,
+.pagy-nav-js .next,
+.pagy-combo-nav-js .next {
+  @apply text-gray-900;
+  @apply border-r;
+  @apply border-transparent;
+}

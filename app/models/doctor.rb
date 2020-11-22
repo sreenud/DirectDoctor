@@ -1,6 +1,5 @@
 class Doctor < ApplicationRecord
-  extend CoordinateQuery
-
+  extend DoctorSearch
   include ImageUploader::Attachment(:image)
 
   attr_accessor :cost, :experience, :patients_options, :price_options
@@ -20,6 +19,10 @@ class Doctor < ApplicationRecord
     :set_consultation
 
   after_create :set_fdd_id
+
+  geocoded_by :address, latitude: :lat, longitude: :lng
+
+  reverse_geocoded_by :lat, :lng
 
   enum status: {
     draft: "draft",
@@ -78,6 +81,14 @@ class Doctor < ApplicationRecord
 
   def self.default_price
     Doctor.price_ranges&.first&.first&.split("-")
+  end
+
+  def address
+    [address_line_1, city, state, zipcode].compact.join(', ')
+  end
+
+  def price
+    "$#{min_price} - #{max_price}"
   end
 
   private

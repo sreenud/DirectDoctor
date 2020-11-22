@@ -53,7 +53,8 @@
           </div>
           <div class="w-full flex mt-6">
             <div class="lg:w-8/12">
-              <% (1..6).each do |index| %>
+              <%= render_doctor_cards %>
+              <% 1.times do |index| %>
                 <div class="w-full flex mt-6">
                   <div class="w-40">
                     <%= image_pack_tag 'doctor_PNG15987.png', class: 'h-40 w-full object-cover border rounded-lg'%>
@@ -132,11 +133,14 @@
                   </div>
                 </div>
               <% end %>
+              <div class="w-full text-center">
+                <%== pagy_nav @pagy %>
+              </div>
             </div>
             <div
               class="lg:w-4/12 ml-4"
               data-controller="maps"
-              data-maps-pins="40.7128,-74.0060|40.762933,-73.973910"
+              data-maps-pins="<%= doctor_pins %>"
             >
               <div id="map" class="google-map rounded-lg"></div>
             </div>
