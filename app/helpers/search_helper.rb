@@ -59,6 +59,10 @@ module SearchHelper
     end
   end
 
+  def max_distance
+    @max_distance ||= @doctors.map(&:distance).max
+  end
+
   private
 
   def doctor_avatar(doctor)

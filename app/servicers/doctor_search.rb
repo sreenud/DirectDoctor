@@ -22,11 +22,20 @@ module DoctorSearch
     apply_location_filter
   end
 
+  # tries to find a doctor in 50 km radius first and then fallbacks to 10000km radius
+  # results are ordered in the order of distance to the selected location
   def apply_location_filter
     return @default_scope unless @params[:near].present? || @params[:place].present? || @current_location.present?
+    near = @default_scope.near(
+      to_coordinates(@params[:near]) || @params[:place] || @current_location,
+      SEARCH_RADIUS,
+      units: SEARCH_UNITS
+    )
+    return near if near.present?
+
     @default_scope.near(
       to_coordinates(@params[:near] || '') || @params[:place] || @current_location,
-      SEARCH_RADIUS,
+      10000, # maximum can be around 41000
       units: SEARCH_UNITS
     )
   end
@@ -53,6 +62,8 @@ module DoctorSearch
   end
 
   def to_coordinates(near)
+    return unless near.present?
+
     near.split(',').map(&:to_f)
   end
 end

@@ -11,7 +11,7 @@ export default class extends Controller {
       div: '#map',
       lat: this.currentLocation.lat,
       lng: this.currentLocation.lng,
-      zoom: 8,
+      zoom: this.defaultZoom(),
       // zoomControl: false,
       fullscreenControl: false,
       dragend: (e) => {
@@ -113,5 +113,26 @@ export default class extends Controller {
       .split(',')
       .map((a) => parseFloat(a));
     return { lat: coord[0], lng: coord[1] };
+  }
+
+  defaultZoom() {
+    const distance = parseFloat(this.data.get('distance') || '0') || 20;
+    let zoom = 8;
+    if (distance > 20 && distance <= 50) {
+      zoom = 7;
+    } else if (distance > 50 && distance <= 100) {
+      zoom = 6;
+    } else if (distance > 100 && distance <= 200) {
+      zoom = 5;
+    } else if (distance > 200 && distance <= 500) {
+      zoom = 4;
+    } else if (distance > 500 && distance <= 1000) {
+      zoom = 3;
+    } else if (distance > 1000 && distance <= 2000) {
+      zoom = 2;
+    } else if (distance > 2000) {
+      zoom = 1;
+    }
+    return zoom;
   }
 }
