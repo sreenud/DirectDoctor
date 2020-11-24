@@ -1,0 +1,165 @@
+<%= form_tag(search_map_path, method: 'get', data: {controller: 'filter'}) do%>
+  <div class="w-full mt-2">
+    <span class="border border-gray-400 font-hurmebold text-sm tracking-wide p-1 rounded">Filter by</span>
+  </div>
+  <div class="w-full border-r pr-4 border-gray-200">
+    <div class="w-full mt-4 border-b pb-6 text-sm  border-gray-200">
+      <label class="tracking-wide font-hurmebold">Specialist</label>
+      <div class="relative mt-1">
+        <%= select_tag(:speciality, options_for_select(['Specialist Dropdown', 'Option 2', 'Option 3'], 'Specialist Dropdown'), class: 'block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded-lg shadow leading-tight focus:outline-none focus:shadow-outline text-gray-600')%>
+        <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2">
+          <svg class="fill-current h-4 w-4  text-gray-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
+        </div>
+      </div>
+    </div>
+    <div class="w-full mt-4 border-b pb-6 text-sm border-gray-200">
+      <label class="tracking-wide font-hurmebold">Patient Reviwes</label>
+      <div class="mt-2">
+        <div class="inline-flex items-center">
+          <%= radio_button_tag(:rating, 5) %>
+          <%= label_tag(:rating_5, render(StarRatingComponent.new(rating: 5, class: 'ml-1')))%>
+        </div>
+        <div class="inline-flex items-center">
+          <%= radio_button_tag(:rating, 4) %>
+          <%= label_tag(:rating_4, render(StarRatingComponent.new(rating: 4, class: 'ml-1 mr-1')))%>
+          & up
+        </div>
+        <div class="inline-flex items-center">
+          <%= radio_button_tag(:rating, 3) %>
+          <%= label_tag(:rating_3, render(StarRatingComponent.new(rating: 3, class: 'ml-1 mr-1')))%>
+          & up
+        </div>
+        <div class="inline-flex items-center">
+          <%= radio_button_tag(:rating, 2) %>
+          <%= label_tag(:rating_2, render(StarRatingComponent.new(rating: 2, class: 'ml-1 mr-1')))%>
+          & up
+        </div>
+        <div class="inline-flex items-center">
+          <%= radio_button_tag(:rating, 1) %>
+          <%= label_tag(:rating_1, render(StarRatingComponent.new(rating: 1, class: 'ml-1 mr-1')))%>
+          & up
+        </div>
+      </div>
+    </div>
+    <div class="w-full mt-4 border-b pb-6 text-sm  border-gray-200">
+      <label class="tracking-wide font-hurmebold">Practice Type</label>
+      <div class="mt-2">
+        <div class="w-full flex">
+          <div class="w-3/4">
+            DPC Doctor
+          </div>
+          <div class="w-1/4">
+            <input type="radio" class="form-radio" name="accountType" value="personal">
+          </div>
+        </div>
+        <div class="w-full flex mt-1">
+          <div class="w-3/4">
+            Concierge Doctor
+          </div>
+          <div class="w-1/4">
+            <input type="radio" class="form-radio" name="accountType" value="personal">
+          </div>
+        </div>
+        <div class="w-full flex mt-1">
+          <div class="w-3/4">
+            Both
+          </div>
+          <div class="w-1/4">
+            <input type="radio" class="form-radio" name="accountType" value="personal">
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="w-full mt-4 border-b pb-6 text-sm  border-gray-200">
+      <label class="tracking-wide font-hurmebold">FMDD Rating</label>
+      <div class="mt-2">
+      </div>
+    </div>
+    <div class="w-full mt-4 border-b pb-6 text-sm">
+      <label class="tracking-wide font-hurmebold">Years in Experience</label>
+      <div class="mt-2  text-gray-600">
+        <div class="grid gap-1 grid-cols-2">
+          <div class="filter-checkbox-button">
+            <input type="checkbox" id="experience1" name="experience" value="0-5">
+            <label for="experience1">0-5 Years</label>
+          </div>
+          <div class="filter-checkbox-button">
+            <input type="checkbox" id="experience2" name="experience" value="6-10">
+            <label for="experience2">6-10 Years</label>
+          </div>
+          <div class="filter-checkbox-button">
+            <input type="checkbox" id="experience3" name="experience" value="11-20">
+            <label for="experience3">11-20 Years</label>
+          </div>
+          <div class="filter-checkbox-button">
+            <input type="checkbox" id="experience4" name="experience" value="20">
+            <label for="experience4">> 20 Years</label>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="w-full mt-4 border-b pb-6 text-sm  border-gray-200">
+      <label class="tracking-wide font-hurmebold">Monthly Membership Fee</label>
+      <div class="mt-2  text-gray-600">
+        <div class="grid gap-1 grid-cols-2">
+          <div class="filter-checkbox-button">
+            <input type="checkbox" id="price1" name="price" value="25-100">
+            <label for="price1">$25-$100</label>
+          </div>
+          <div class="filter-checkbox-button">
+            <input type="checkbox" id="price2" name="price" value="101-250">
+            <label for="price2">$101-$250</label>
+          </div>
+          <div class="filter-checkbox-button">
+            <input type="checkbox" id="price3" name="price" value="250-500">
+            <label for="price3">$250-$500</label>
+          </div>
+          <div class="filter-checkbox-button">
+            <input type="checkbox" id="price4" name="price" value="500">
+            <label for="price4">> $500</label>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="w-full mt-4 border-b pb-6 text-sm  border-gray-200">
+      <div class="mt-2 w-full flex">
+        <div class="w-3/4">
+          <label class="tracking-wide font-hurmebold pr-2">Holistic Medicine</label>
+        </div>
+        <div class="w-1/4">
+          <div class="relative inline-block w-12 mr-2 align-middle select-none transition duration-200 ease-in">
+            <input type="checkbox" name="holistic_medicine" id="holistic_medicine" class="toggle-checkbox absolute block w-5 h-5 rounded-full bg-white border-4 appearance-none cursor-pointer focus:outline-none"/>
+            <label for="holistic_medicine" class="toggle-label block overflow-hidden h-5 rounded-full bg-gray-300 cursor-pointer"></label>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="w-full mt-4 border-b pb-6 text-sm border-gray-200">
+      <div class="mt-2 w-full flex">
+        <div class="w-3/4">
+          <label class="tracking-wide font-hurmebold pr-6">Telehealth</label>
+        </div>
+        <div class="w-1/4">
+          <div class="relative inline-block w-12 mr-2 align-middle select-none transition duration-200 ease-in">
+            <input type="checkbox" name="telehealth" id="telehealth" class="toggle-checkbox absolute block w-5 h-5 rounded-full bg-white border-4 appearance-none cursor-pointer focus:outline-none" checked/>
+            <label for="telehealth" class="toggle-label block overflow-hidden h-5 rounded-full bg-gray-300 cursor-pointer"></label>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="w-full mt-4 pb-6 text-sm">
+      <div class="mt-2 w-full flex">
+        <div class="w-3/4">
+          <label class="tracking-wide font-hurmebold pr-2">Lifestyle Medicine</label>
+        </div>
+        <div class="w-1/4">
+          <div class="relative inline-block w-12 mr-2 align-middle select-none transition duration-200 ease-in">
+            <input type="checkbox" name="life_style_meicine" id="life_style_meicine" class="toggle-checkbox absolute block w-5 h-5 rounded-full bg-white border-4 appearance-none cursor-pointer focus:outline-none"/>
+            <label for="life_style_meicine" class="toggle-label block overflow-hidden h-5 rounded-full bg-gray-300 cursor-pointer"></label>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<% end %>

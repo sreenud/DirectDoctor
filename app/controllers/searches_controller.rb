@@ -14,7 +14,7 @@ class SearchesController < ApplicationController
   private
 
   def search_params
-    params.permit(:near, :place, :ratings, :experience, :price)
+    @search_params ||= params.permit(:near, :place, :ratings, :experience, :price)
   end
 
   def set_meta_data

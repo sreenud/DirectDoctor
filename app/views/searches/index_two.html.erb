@@ -25,7 +25,7 @@
       </div>
       <div class="lg:w-full flex mt-4">
         <div class="lg:w-2/12">
-          <%= render partial: 'searches/partials/left_filter_two'%>
+          <%= render(DoctorFilterComponent.new(**@search_params))%>
         </div>
         <div class="lg:w-10/12 ml-3 text-sm">
           <div class="w-full flex">
