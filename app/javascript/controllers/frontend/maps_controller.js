@@ -38,8 +38,7 @@ export default class extends Controller {
   redirect({ lat, lng }) {
     const near = `${lat},${lng}`;
     ParamRedirect({
-      param: 'near',
-      value: near,
+      changeParams: { near },
       removeParams: ['place'],
       route: '/search-map',
     });

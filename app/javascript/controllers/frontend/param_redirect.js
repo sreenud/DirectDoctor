@@ -1,12 +1,10 @@
 export default function ParamRedirect({
-  param,
-  value,
+  changeParams = {},
   turbolinks = true,
   removeParams = [],
   route = window.location.pathname,
 }) {
-  const params = locationParams();
-  params[param] = value;
+  const params = { ...locationParams(), ...changeParams };
   removeParams.forEach((key) => {
     delete params[key];
   });
@@ -32,13 +30,11 @@ export function locationParams() {
 }
 
 export function URIPush({
-  param,
-  value,
+  changeParams = {},
   removeParams = [],
   route = window.location.pathname,
 }) {
-  const params = locationParams();
-  params[param] = value;
+  const params = { ...locationParams(), ...changeParams };
   removeParams.forEach((key) => {
     delete params[key];
   });
