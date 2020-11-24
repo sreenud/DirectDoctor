@@ -1,12 +1,16 @@
 import { Controller } from 'stimulus';
 import * as GMaps from 'gmaps/gmaps.min';
 import MapPopup from './map_popup';
+import ParamRedirect, { locationParams } from './param_redirect';
 
 export default class extends Controller {
   connect() {
+    window.map_helpers = {
+      renderPins: this.renderPins.bind(this),
+    };
     // defaults to new york
     this.currentLocation = { ...this.defaultLocation() };
-    this.locationParams();
+    this.paramters();
     this.maps = new GMaps({
       div: '#map',
       lat: this.currentLocation.lat,
@@ -32,31 +36,38 @@ export default class extends Controller {
   }
 
   redirect({ lat, lng }) {
-    const params = this.locationParams();
-    params.near = `${lat},${lng}`;
-    delete params.place;
-    const query = new URLSearchParams(params).toString();
-    Turbolinks.visit(`/search-map?${query}`);
+    const near = `${lat},${lng}`;
+    ParamRedirect({
+      param: 'near',
+      value: near,
+      removeParams: ['place'],
+      route: '/search-map',
+    });
   }
 
   generatePopups() {
-    const pins = this.data
-      .get('pins')
-      .split('|')
-      .filter((a) => a.length > 1)
-      .map((a) => {
-        const coord = a.split(',');
-        return {
-          lat: coord[0],
-          lng: coord[1],
-          content: this.popup(coord[2] || 'no price'),
-          click: (overlay) => {
-            const popup = new MapPopup(overlay.el, coord);
-            popup.show();
-          },
-        };
-      });
+    const pins = this.pinData(
+      this.data
+        .get('pins')
+        .split('|')
+        .filter((a) => a.length > 1)
+    );
     return pins;
+  }
+
+  pinData(pinArray = []) {
+    return pinArray.map((a) => {
+      const coord = a.split(',');
+      return {
+        lat: coord[0],
+        lng: coord[1],
+        content: this.popup(coord[2] || 'no price'),
+        click: (overlay) => {
+          const popup = new MapPopup(overlay.el, coord);
+          popup.show();
+        },
+      };
+    });
   }
 
   setPopups() {
@@ -81,14 +92,8 @@ export default class extends Controller {
     this.maps.fitZoom();
   }
 
-  locationParams() {
-    const query = window.location.search;
-    const paramStore = new URLSearchParams(query);
-    const paramKeys = Array.from(paramStore.keys());
-    const params = {};
-    paramKeys.forEach((key) => {
-      params[key] = paramStore.get(key);
-    });
+  paramters() {
+    const params = locationParams();
     if (params.near !== undefined && params.near !== null) {
       const coord = params.near.split(',').map((p) => parseFloat(p));
       this.currentLocation = {
@@ -134,5 +139,11 @@ export default class extends Controller {
       zoom = 1;
     }
     return zoom;
+  }
+
+  renderPins(pinArray = ["0.0, 0.0, '', ''"]) {
+    this.maps.removeOverlays();
+    const pins = this.pinData(pinArray);
+    pins.forEach((pin) => this.maps.drawOverlay(pin));
   }
 }

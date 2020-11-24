@@ -9,6 +9,11 @@ class SearchesController < ApplicationController
     @pagy, @doctors = pagy(
       Doctor.search(search_params, current_location: current_location)
     )
+
+    respond_to do |format|
+      format.html
+      format.json { render json: @doctors } # for limiting the usage of map render calls
+    end
   end
 
   private

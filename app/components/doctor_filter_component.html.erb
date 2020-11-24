@@ -80,20 +80,20 @@
       <div class="mt-2  text-gray-600">
         <div class="grid gap-1 grid-cols-2">
           <div class="filter-checkbox-button">
-            <input type="checkbox" id="experience1" name="experience" value="0-5">
-            <label for="experience1">0-5 Years</label>
+            <%= check_box_tag("experience[]", '0_5', nil,id: :experience_0_5)%>
+            <%= label_tag(:experience_0_5, '0-5 Years')%>
           </div>
           <div class="filter-checkbox-button">
-            <input type="checkbox" id="experience2" name="experience" value="6-10">
-            <label for="experience2">6-10 Years</label>
+            <%= check_box_tag("experience[]", '6_10', nil,id: :experience_6_10)%>
+            <%= label_tag(:experience_6_10, '6-10 Years')%>
           </div>
           <div class="filter-checkbox-button">
-            <input type="checkbox" id="experience3" name="experience" value="11-20">
-            <label for="experience3">11-20 Years</label>
+            <%= check_box_tag("experience[]", '11_20', nil,id: :experience_11_20)%>
+            <%= label_tag(:experience_11_20, '11-20 Years')%>
           </div>
           <div class="filter-checkbox-button">
-            <input type="checkbox" id="experience4" name="experience" value="20">
-            <label for="experience4">> 20 Years</label>
+            <%= check_box_tag("experience[]", :gt_20, nil,id: :experience_gt_20)%>
+            <%= label_tag(:experience_gt_20, '> 20 Years')%>
           </div>
         </div>
       </div>
@@ -103,20 +103,20 @@
       <div class="mt-2  text-gray-600">
         <div class="grid gap-1 grid-cols-2">
           <div class="filter-checkbox-button">
-            <input type="checkbox" id="price1" name="price" value="25-100">
-            <label for="price1">$25-$100</label>
+            <%= check_box_tag("price[]", '25_100', nil, id: :price_25_100)%>
+            <%= label_tag(:price_25_100, '$25-100')%>
           </div>
           <div class="filter-checkbox-button">
-            <input type="checkbox" id="price2" name="price" value="101-250">
-            <label for="price2">$101-$250</label>
+            <%= check_box_tag("price[]", '101_250', nil, id: :price_101_250)%>
+            <%= label_tag(:price_101_250, '$101-250')%>
           </div>
           <div class="filter-checkbox-button">
-            <input type="checkbox" id="price3" name="price" value="250-500">
-            <label for="price3">$250-$500</label>
+            <%= check_box_tag("price[]", '250_500', nil, id: :price_250_500)%>
+            <%= label_tag(:price_250_500, '$250-500')%>
           </div>
           <div class="filter-checkbox-button">
-            <input type="checkbox" id="price4" name="price" value="500">
-            <label for="price4">> $500</label>
+            <%= check_box_tag("price[]", 'gt_500', nil, id: :price_gt_500)%>
+            <%= label_tag(:price_gt_500, '> $500')%>
           </div>
         </div>
       </div>
