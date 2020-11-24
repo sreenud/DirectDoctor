@@ -44,5 +44,6 @@ export function URIPush({
   });
   const query = new URLSearchParams(params).toString();
   const url = `${route}?${query}`;
-  window.history.pushState('', '', url);
+  const { page } = params;
+  window.history.pushState({ page }, `Search Page ${page}`, url);
 }
