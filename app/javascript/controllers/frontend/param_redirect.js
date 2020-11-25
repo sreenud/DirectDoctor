@@ -43,3 +43,17 @@ export function URIPush({
   const { page } = params;
   window.history.pushState({ page }, `Search Page ${page}`, url);
 }
+
+export function ParamUrl({
+  changeParams = {},
+  removeParams = [],
+  route = window.location.pathname,
+}) {
+  const params = { ...locationParams(), ...changeParams };
+  removeParams.forEach((key) => {
+    delete params[key];
+  });
+  const query = new URLSearchParams(params).toString();
+  const url = `${route}?${query}`;
+  return url;
+}

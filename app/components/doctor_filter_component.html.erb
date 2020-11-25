@@ -128,7 +128,7 @@
         </div>
         <div class="w-1/4">
           <div class="relative inline-block w-12 mr-2 align-middle select-none transition duration-200 ease-in">
-            <input type="checkbox" name="holistic_medicine" id="holistic_medicine" class="toggle-checkbox absolute block w-5 h-5 rounded-full bg-white border-4 appearance-none cursor-pointer focus:outline-none"/>
+            <%= check_box_tag(:holistic_medicine, true, filters['holistic_medicine'].to_s == 'true', class: 'toggle-checkbox absolute block w-5 h-5 rounded-full bg-white border-4 appearance-none cursor-pointer focus:outline-none')%>
             <label for="holistic_medicine" class="toggle-label block overflow-hidden h-5 rounded-full bg-gray-300 cursor-pointer"></label>
           </div>
         </div>
@@ -141,7 +141,7 @@
         </div>
         <div class="w-1/4">
           <div class="relative inline-block w-12 mr-2 align-middle select-none transition duration-200 ease-in">
-            <input type="checkbox" name="telehealth" id="telehealth" class="toggle-checkbox absolute block w-5 h-5 rounded-full bg-white border-4 appearance-none cursor-pointer focus:outline-none" checked/>
+            <%= check_box_tag(:telehealth, true, filters['telehealth'].to_s == 'true', class: 'toggle-checkbox absolute block w-5 h-5 rounded-full bg-white border-4 appearance-none cursor-pointer focus:outline-none')%>
             <label for="telehealth" class="toggle-label block overflow-hidden h-5 rounded-full bg-gray-300 cursor-pointer"></label>
           </div>
         </div>
@@ -154,8 +154,8 @@
         </div>
         <div class="w-1/4">
           <div class="relative inline-block w-12 mr-2 align-middle select-none transition duration-200 ease-in">
-            <input type="checkbox" name="life_style_meicine" id="life_style_meicine" class="toggle-checkbox absolute block w-5 h-5 rounded-full bg-white border-4 appearance-none cursor-pointer focus:outline-none"/>
-            <label for="life_style_meicine" class="toggle-label block overflow-hidden h-5 rounded-full bg-gray-300 cursor-pointer"></label>
+            <%= check_box_tag(:life_style_medicine, true, filters['life_style_medicine'].to_s == 'true', class: 'toggle-checkbox absolute block w-5 h-5 rounded-full bg-white border-4 appearance-none cursor-pointer focus:outline-none')%>
+            <label for="life_style_medicine" class="toggle-label block overflow-hidden h-5 rounded-full bg-gray-300 cursor-pointer"></label>
           </div>
         </div>
       </div>

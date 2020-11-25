@@ -12,9 +12,7 @@ module SearchHelper
   end
 
   def render_doctor_cards
-    @doctors.map do |doc|
-      render(DoctorComponent.new(doctor: doc))
-    end.join('').html_safe
+    render(DoctorComponent.with_collection(@doctors))
   end
 
   def max_distance

@@ -1,4 +1,5 @@
 class DoctorComponent < ViewComponent::Base
+  with_collection_parameter :doctor
   attr_reader :doctor
   def initialize(doctor:, **props)
     @doctor = doctor

@@ -12,17 +12,36 @@ class SearchesController < ApplicationController
 
     respond_to do |format|
       format.html
-      format.json { render json: @doctors } # for limiting the usage of map render calls
+      format.json { render json: json_results } # for limiting the usage of map render calls
     end
   end
 
   private
 
   def search_params
-    @search_params ||= params.permit(:near, :place, :rating, :experience, :price)
+    @search_params ||= params.permit(
+      :near,
+      :place,
+      :rating,
+      :experience,
+      :price,
+      :holistic_medicine,
+      :telehealth,
+      :life_style_medicine
+    )
   end
 
   def set_meta_data
     @allow_robots = true
+  end
+
+  def json_results
+    {
+      results: render_component_to_string(DoctorComponent.with_collection(@doctors)),
+      pins: @doctors.map { |d| "#{d.lat},#{d.lng},$#{d.min_price} - #{d.max_price},#{d.id}" },
+      next: @pagy.next,
+      prev: @pagy.prev,
+      page: @pagy.page,
+    }
   end
 end
