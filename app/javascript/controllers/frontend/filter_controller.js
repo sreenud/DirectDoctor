@@ -23,6 +23,7 @@ export default class FilterController extends Controller {
               window.map_helpers !== null
             ) {
               window.map_helpers.renderPins(data.pins || []);
+              window.map_helpers.adjustZoomLevel(data.max_distance);
             }
             URIPush({
               changeParams: formValues,

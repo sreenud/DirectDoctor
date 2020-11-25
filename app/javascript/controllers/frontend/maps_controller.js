@@ -7,6 +7,7 @@ export default class extends Controller {
   connect() {
     window.map_helpers = {
       renderPins: this.renderPins.bind(this),
+      adjustZoomLevel: this.adjustZoomLevel.bind(this),
     };
     // defaults to new york
     this.currentLocation = { ...this.defaultLocation() };
@@ -119,8 +120,7 @@ export default class extends Controller {
     return { lat: coord[0], lng: coord[1] };
   }
 
-  defaultZoom() {
-    const distance = parseFloat(this.data.get('distance') || '0') || 20;
+  defaultZoom(distance = parseFloat(this.data.get('distance') || '0') || 20) {
     let zoom = 8;
     if (distance > 20 && distance <= 50) {
       zoom = 7;
@@ -144,5 +144,10 @@ export default class extends Controller {
     this.maps.removeOverlays();
     const pins = this.pinData(pinArray);
     pins.forEach((pin) => this.maps.drawOverlay(pin));
+  }
+
+  adjustZoomLevel(distance = 20) {
+    const target = this.defaultZoom(distance);
+    this.maps.setZoom(target);
   }
 }

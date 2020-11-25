@@ -42,6 +42,7 @@ class SearchesController < ApplicationController
       next: @pagy.next,
       prev: @pagy.prev,
       page: @pagy.page,
+      max_distance: @doctors.map(&:distance).max,
     }
   end
 end
