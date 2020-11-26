@@ -1,7 +1,7 @@
-<%= content_tag(:div, id: "doc-#{doctor.id}", **@props, class: "w-full box-bottom-shadow #{@props[:class]}") do %>
+<%= content_tag(:div, id: "doc-#{doctor.id}", **@props, class: "doctor-card w-full box-bottom-shadow #{@props[:class]}", data: {name: doctor.name, price: doctor.price, rating: 4, image: doctor.image || asset_pack_path('media/images/doctor_PNG15987.png')}) do %>
   <div class="w-full flex mt-6">
     <div class="w-40">
-      <%= doctor_avatar(class: 'h-40 w-full object-cover border rounded-lg') %>
+      <%= doctor_avatar(class: 'h-40 w-full object-cover border rounded-lg doc-avatar') %>
     </div>
     <div class="w-3/12 ml-4">
       <div class="tracking-wide font-hurmebold">
@@ -9,7 +9,7 @@
       </div>
       <div class="mt-2">Internal Medicine</div>
       <div class="mt-2 w-full flex">
-        <%= render(StarRatingComponent.new(rating: 4)) %>
+        <%= render(StarRatingComponent.new(rating: 4, class: 'doc-rating')) %>
         <div class="text-sm">
           <a href="#" class="text-blue-500"> (300 Reviews)</a>
         </div>

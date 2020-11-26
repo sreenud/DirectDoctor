@@ -1,6 +1,10 @@
 import { Controller } from 'stimulus';
 import { ajax } from 'jquery';
-import ParamRedirect, { ParamUrl, URIPush } from './param_redirect';
+import ParamRedirect, {
+  AddHoverHighlight,
+  ParamUrl,
+  URIPush,
+} from './param_redirect';
 
 export default class FilterController extends Controller {
   static targets = ['form'];
@@ -30,6 +34,7 @@ export default class FilterController extends Controller {
               route: '/search-map',
               removeParams: ['page'],
             });
+            AddHoverHighlight();
             // reset pagination using a controller
             return null;
           },

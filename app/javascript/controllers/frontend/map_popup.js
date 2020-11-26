@@ -24,8 +24,32 @@ export default class MapPopup {
     const infoWindow = document.createElement('div');
     infoWindow.setAttribute('tab-index', this.data.id);
     infoWindow.classList.add('popup-info-window');
-    infoWindow.innerHTML = this.data.id;
+    infoWindow.appendChild(this.doctorPopup());
     this.container.appendChild(infoWindow);
     this.popup = infoWindow;
+  }
+
+  fetchDoctorData() {
+    const card = document.querySelector(`#doc-${this.data.id}`);
+    this.doctorData = {
+      name: card.getAttribute('data-name'),
+      rating: card.getAttribute('data-rating'),
+      price: card.getAttribute('data-price'),
+      image: card.getAttribute('data-image'),
+    };
+  }
+
+  doctorPopup() {
+    this.fetchDoctorData();
+    const { name, rating, price, image } = this.doctorData;
+    const cont = document.createElement('div');
+    cont.classList.add('info-window-container');
+    cont.innerHTML = `
+      <img src="${image}" />
+      <p class="info-window-heading">${name}</p>
+      <p class="info-window-price-range">${price}</p>
+      <p class="info-window-rating">${rating}</p>
+    `;
+    return cont;
   }
 }

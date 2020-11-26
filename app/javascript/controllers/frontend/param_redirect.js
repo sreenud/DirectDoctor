@@ -57,3 +57,40 @@ export function ParamUrl({
   const url = `${route}?${query}`;
   return url;
 }
+
+export function AddHoverHighlight() {
+  const highlight = (selector) => {
+    return () => {
+      const ele = document.querySelector(selector);
+      if (!ele) {
+        return null;
+      }
+      ele.classList.add('highlight');
+      return null;
+    };
+  };
+
+  const unHighlight = (selector) => {
+    return () => {
+      const ele = document.querySelector(selector);
+      if (!ele) {
+        return null;
+      }
+      ele.classList.remove('highlight');
+      return null;
+    };
+  };
+
+  const cards = document.querySelectorAll('.doctor-card');
+  cards.forEach((card) => {
+    const id = card.getAttribute('id');
+    card.addEventListener(
+      'mouseenter',
+      highlight(`#${id}-popup .popup-bubble-anchor`)
+    );
+    card.addEventListener(
+      'mouseleave',
+      unHighlight(`#${id}-popup .popup-bubble-anchor`)
+    );
+  });
+}

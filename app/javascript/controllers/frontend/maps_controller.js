@@ -3,6 +3,7 @@ import * as GMaps from 'gmaps/gmaps.min';
 import { ajax } from 'jquery';
 import MapPopup from './map_popup';
 import ParamRedirect, {
+  AddHoverHighlight,
   locationParams,
   ParamUrl,
   URIPush,
@@ -10,6 +11,7 @@ import ParamRedirect, {
 
 export default class extends Controller {
   connect() {
+    AddHoverHighlight();
     window.map_helpers = {
       renderPins: this.renderPins.bind(this),
       adjustZoomLevel: this.adjustZoomLevel.bind(this),
@@ -66,7 +68,7 @@ export default class extends Controller {
       return {
         lat: coord[0],
         lng: coord[1],
-        content: this.popup(coord[2] || 'no price'),
+        content: this.popup(coord[2] || 'no price', coord[3]),
         click: (overlay) => {
           const popup = new MapPopup(overlay.el, coord);
           popup.show();
@@ -109,8 +111,8 @@ export default class extends Controller {
     return params;
   }
 
-  popup(price) {
-    return `<div class="popup-container" tab-index="1">
+  popup(price, id) {
+    return `<div class="popup-container" id="doc-${id}-popup" tab-index="1">
       <div class="popup-bubble-anchor">
         <div class="popup-bubble">${price}</div>
       </div>
@@ -182,6 +184,7 @@ export default class extends Controller {
           route: '/search-map',
           removeParams: ['place', 'page'],
         });
+        AddHoverHighlight();
         return null;
       },
       (err) => {
