@@ -1,6 +1,6 @@
 export default class MapPopup {
   constructor(container, data) {
-    this.container = container;
+    this.container = container.querySelector('.popup-container');
     this.data = {
       lat: data[0],
       lng: data[1],
@@ -22,6 +22,7 @@ export default class MapPopup {
 
   build() {
     const infoWindow = document.createElement('div');
+    infoWindow.setAttribute('tab-index', this.data.id);
     infoWindow.classList.add('popup-info-window');
     infoWindow.innerHTML = this.data.id;
     this.container.appendChild(infoWindow);

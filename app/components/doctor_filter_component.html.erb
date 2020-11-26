@@ -6,7 +6,7 @@
     <div class="w-full mt-4 border-b pb-6 text-sm  border-gray-200">
       <label class="tracking-wide font-hurmebold">Specialist</label>
       <div class="relative mt-1">
-        <%= select_tag(:speciality, options_for_select(['Specialist Dropdown', 'Option 2', 'Option 3'], 'Specialist Dropdown'), class: 'block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded-lg shadow leading-tight focus:outline-none focus:shadow-outline text-gray-600')%>
+        <%= select_tag(:speciality, options_for_select(['All', 'Specialist Dropdown', 'Option 2', 'Option 3'], filters['speciality']), class: 'block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded-lg shadow leading-tight focus:outline-none focus:shadow-outline text-gray-600')%>
         <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2">
           <svg class="fill-current h-4 w-4  text-gray-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
         </div>
@@ -46,26 +46,26 @@
       <div class="mt-2">
         <div class="w-full flex">
           <div class="w-3/4">
-            DPC Doctor
+            <%= label_tag(:account_type_dpc, 'DPC Doctor')%>
           </div>
           <div class="w-1/4">
-            <input type="radio" class="form-radio" name="accountType" value="personal">
+            <%= radio_button_tag(:account_type, :dpc, filters['account_type'] == 'dpc', class: 'form-radio')%>
           </div>
         </div>
         <div class="w-full flex mt-1">
           <div class="w-3/4">
-            Concierge Doctor
+            <%= label_tag(:account_type_concierge, 'Concierge Doctor')%>
           </div>
           <div class="w-1/4">
-            <input type="radio" class="form-radio" name="accountType" value="personal">
+            <%= radio_button_tag(:account_type, :concierge, filters['account_type'] == 'concierge', class: 'form-radio')%>
           </div>
         </div>
         <div class="w-full flex mt-1">
           <div class="w-3/4">
-            Both
+            <%= label_tag(:account_type_both, 'Both')%>
           </div>
           <div class="w-1/4">
-            <input type="radio" class="form-radio" name="accountType" value="personal">
+            <%= radio_button_tag(:account_type, :both, filters['account_type'] == 'both', class: 'form-radio')%>
           </div>
         </div>
       </div>

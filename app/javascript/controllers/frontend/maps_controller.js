@@ -1,7 +1,12 @@
 import { Controller } from 'stimulus';
 import * as GMaps from 'gmaps/gmaps.min';
+import { ajax } from 'jquery';
 import MapPopup from './map_popup';
-import ParamRedirect, { locationParams } from './param_redirect';
+import ParamRedirect, {
+  locationParams,
+  ParamUrl,
+  URIPush,
+} from './param_redirect';
 
 export default class extends Controller {
   connect() {
@@ -23,7 +28,7 @@ export default class extends Controller {
         const { center } = e;
         const lat = center.lat();
         const lng = center.lng();
-        this.redirect({ lat, lng });
+        this.getResults({ lat, lng });
       },
       // zoom_changed: (e) => {
       //   const { center } = e;
@@ -149,5 +154,39 @@ export default class extends Controller {
   adjustZoomLevel(distance = 20) {
     const target = this.defaultZoom(distance);
     this.maps.setZoom(target);
+  }
+
+  getResults({ lat, lng }) {
+    const near = `${lat},${lng}`;
+
+    ajax({
+      url: ParamUrl({
+        changeParams: { near },
+        route: '/search-map.json',
+        removeParams: ['place', 'page'],
+      }),
+    }).then(
+      // eslint-disable-next-line camelcase
+      ({ results, pins, max_distance }) => {
+        const container = document.querySelector('#result-container');
+        if (!container) {
+          return null;
+        }
+        container.innerHTML = results;
+        if (window.map_helpers !== undefined && window.map_helpers !== null) {
+          window.map_helpers.renderPins(pins || []);
+          window.map_helpers.adjustZoomLevel(max_distance);
+        }
+        URIPush({
+          changeParams: { near },
+          route: '/search-map',
+          removeParams: ['place', 'page'],
+        });
+        return null;
+      },
+      (err) => {
+        console.log(err);
+      }
+    );
   }
 }

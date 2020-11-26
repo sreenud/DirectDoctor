@@ -27,7 +27,8 @@ class SearchesController < ApplicationController
       :price,
       :holistic_medicine,
       :telehealth,
-      :life_style_medicine
+      :life_style_medicine,
+      :speciality,
     )
   end
 
