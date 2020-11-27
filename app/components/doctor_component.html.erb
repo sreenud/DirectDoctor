@@ -1,0 +1,79 @@
+<%= content_tag(:div, id: "doc-#{doctor.id}", **@props, class: "doctor-card w-full box-bottom-shadow #{@props[:class]}", data: {name: doctor.name, price: doctor.price, rating: 4, image: doctor.image || asset_pack_path('media/images/doctor_PNG15987.png')}) do %>
+  <div class="w-full flex mt-6">
+    <div class="w-40">
+      <%= doctor_avatar(class: 'h-40 w-full object-cover border rounded-lg doc-avatar') %>
+    </div>
+    <div class="w-3/12 ml-4">
+      <div class="tracking-wide font-hurmebold">
+        <h2 class="text-2xl"><%= doctor.name %></h2>
+      </div>
+      <div class="mt-2">Internal Medicine</div>
+      <div class="mt-2 w-full flex">
+        <%= render(StarRatingComponent.new(rating: 4, class: 'doc-rating')) %>
+        <div class="text-sm">
+          <a href="#" class="text-blue-500"> (300 Reviews)</a>
+        </div>
+      </div>
+      <div class="mt-2 text-base text-gray-600">Max no. of Patients: 300</div>
+      <div class="w-full flex mt-2 text-base text-gray-600">
+        <div>
+          <%=image_pack_tag 'icons/medal.svg', class: "w-5 h-5 text-green-500"%>
+        </div>
+        <div class="pl-2">Telehealth</div>
+      </div>
+    </div>
+    <div class="w-3/12 mt-4">
+      <div>24/7 Direct Phone Access</div>
+      <div class="mt-2">Direct Primary Care</div>
+      <div class="mt-2 text-base text-gray-600">Fee $10,0000</div>
+      <div class="mt-2 text-base text-gray-600">Apt: Same day</div>
+      <div class="w-full flex mt-2 text-base text-gray-600">
+        <div><%=image_pack_tag 'icons/medal.svg', class: "w-5 h-5 text-green-500"%></div>
+        <div class="pl-2">Home Visit Book</div>
+      </div>
+    </div>
+    <div class="w-3/12 mt-4">
+      <div class="w-full flex">
+        <a class="border-doctor-yellow rounded-lg px-2 bg-doctor-yellow text-white cursor-pointer hover:bg-doctor-yellow pt-1" href="#">
+          Book Appointment
+        </a>
+        <div><%=image_pack_tag 'icons/favorite.svg', class: "w-5 h-5 ml-2"%></div>
+      </div>
+      <div class="mt-2">13 years experience</div>
+      <div class="mt-2 text-base text-gray-600">FMDD Score: 9/10</div>
+      <div class="w-full flex mt-2 text-base text-gray-600">
+        <div><%=image_pack_tag 'icons/medal.svg', class: "w-5 h-5 text-green-500"%></div>
+        <div class="pl-2">Free Consultation</div>
+      </div>
+      <div class="w-full flex mt-2 text-base text-gray-600">
+        <div><%=image_pack_tag 'icons/medal.svg', class: "w-5 h-5 text-green-500"%></div>
+        <div class="pl-2">Holistic/Lifestyle Med</div>
+      </div>
+    </div>
+  </div>
+  <div class="w-full flex pb-6 ">
+    <div class="w-1/2">
+      <div class="text-md tracking-wide font-hurmebold mt-4 text-center">
+        MDVIP Group
+      </div>
+    </div>
+    <div class="w-1/2 ml-6">
+      <div class="w-full flex mt-4 text-base">
+        <div><%=image_pack_tag 'icons/email.svg', class: "w-5 h-5"%></div>
+        <div class="pl-2">Message<span class=" ml-10 border-r border-gray-800"></span></div>
+      </div>
+    </div>
+    <div class="w-1/2">
+      <div class="w-full flex mt-4 text-base">
+        <div><%=image_pack_tag 'icons/phone.svg', class: "w-5 h-5"%></div>
+        <div class="pl-2">090078601 <span class=" ml-10 border-r border-gray-800"></span></div>
+      </div>
+    </div>
+    <div class="w-1/2">
+      <div class="w-full flex mt-4 text-base">
+        <div><%=image_pack_tag 'icons/web.svg', class: "w-5 h-5"%></div>
+        <div class="pl-2">www.johndoe.com</div>
+      </div>
+    </div>
+  </div>
+<% end %>

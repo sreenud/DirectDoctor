@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_05_165727) do
+ActiveRecord::Schema.define(version: 2020_11_20_123038) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -86,9 +86,9 @@ ActiveRecord::Schema.define(version: 2020_11_05_165727) do
     t.text "about_doctor"
     t.text "about_clinic"
     t.string "active_licenses", array: true
-    t.string "disciplinary_action_taken"
-    t.string "lat"
-    t.string "lng"
+    t.text "disciplinary_action_taken"
+    t.decimal "lat"
+    t.decimal "lng"
     t.text "disciplinary_action_details"
     t.string "address_suite"
     t.index ["user_id"], name: "index_doctors_on_user_id"
@@ -224,15 +224,15 @@ ActiveRecord::Schema.define(version: 2020_11_05_165727) do
     t.string "code"
     t.text "summary"
     t.text "content"
-    t.integer "authour_id"
+    t.integer "author_id"
     t.string "meta_title"
     t.jsonb "meta_keywords"
     t.text "meta_description"
     t.string "h1_tag"
     t.text "image_data"
+    t.string "status"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "status"
     t.integer "related_topics", array: true
     t.bigint "topic_id"
     t.index ["code"], name: "index_tips_on_code", unique: true
@@ -261,14 +261,14 @@ ActiveRecord::Schema.define(version: 2020_11_05_165727) do
     t.text "meta_description"
     t.string "h1_tag"
     t.text "image_data"
+    t.string "status"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "meta_keywords"
-    t.string "status"
     t.bigint "category_id"
     t.integer "read_time"
     t.string "primary_keyword"
-    t.index ["category_id"], name: "index_topics_on_caregory_id"
+    t.index ["category_id"], name: "index_topics_on_category_id"
     t.index ["primary_keyword"], name: "index_topics_on_primary_keyword", unique: true
     t.index ["slug"], name: "index_topics_on_slug", unique: true
   end

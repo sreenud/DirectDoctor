@@ -1,0 +1,165 @@
+<%= form_tag(search_map_path, method: 'get', data: {controller: 'filter', target: 'filter.form'}) do%>
+  <div class="w-full mt-2">
+    <span class="border border-gray-400 font-hurmebold text-sm tracking-wide p-1 rounded">Filter by</span>
+  </div>
+  <div class="w-full border-r pr-4 border-gray-200">
+    <div class="w-full mt-4 border-b pb-6 text-sm  border-gray-200">
+      <label class="tracking-wide font-hurmebold">Specialist</label>
+      <div class="relative mt-1">
+        <%= select_tag(:speciality, options_for_select(['All', 'Specialist Dropdown', 'Option 2', 'Option 3'], filters['speciality']), class: 'block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded-lg shadow leading-tight focus:outline-none focus:shadow-outline text-gray-600')%>
+        <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2">
+          <svg class="fill-current h-4 w-4  text-gray-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
+        </div>
+      </div>
+    </div>
+    <div class="w-full mt-4 border-b pb-6 text-sm border-gray-200">
+      <label class="tracking-wide font-hurmebold">Patient Reviwes</label>
+      <div class="mt-2">
+        <div class="inline-flex items-center">
+          <%= radio_button_tag(:rating, 5, filters['rating'].to_i == 5) %>
+          <%= label_tag(:rating_5, render(StarRatingComponent.new(rating: 5, class: 'ml-1')))%>
+        </div>
+        <div class="inline-flex items-center">
+          <%= radio_button_tag(:rating, 4, filters['rating'].to_i == 4) %>
+          <%= label_tag(:rating_4, render(StarRatingComponent.new(rating: 4, class: 'ml-1 mr-1')))%>
+          & up
+        </div>
+        <div class="inline-flex items-center">
+          <%= radio_button_tag(:rating, 3, filters['rating'].to_i == 3) %>
+          <%= label_tag(:rating_3, render(StarRatingComponent.new(rating: 3, class: 'ml-1 mr-1')))%>
+          & up
+        </div>
+        <div class="inline-flex items-center">
+          <%= radio_button_tag(:rating, 2, filters['rating'].to_i == 2) %>
+          <%= label_tag(:rating_2, render(StarRatingComponent.new(rating: 2, class: 'ml-1 mr-1')))%>
+          & up
+        </div>
+        <div class="inline-flex items-center">
+          <%= radio_button_tag(:rating, 1, filters['rating'].to_i == 1) %>
+          <%= label_tag(:rating_1, render(StarRatingComponent.new(rating: 1, class: 'ml-1 mr-1')))%>
+          & up
+        </div>
+      </div>
+    </div>
+    <div class="w-full mt-4 border-b pb-6 text-sm  border-gray-200">
+      <label class="tracking-wide font-hurmebold">Practice Type</label>
+      <div class="mt-2">
+        <div class="w-full flex">
+          <div class="w-3/4">
+            <%= label_tag(:account_type_dpc, 'DPC Doctor')%>
+          </div>
+          <div class="w-1/4">
+            <%= radio_button_tag(:account_type, :dpc, filters['account_type'] == 'dpc', class: 'form-radio')%>
+          </div>
+        </div>
+        <div class="w-full flex mt-1">
+          <div class="w-3/4">
+            <%= label_tag(:account_type_concierge, 'Concierge Doctor')%>
+          </div>
+          <div class="w-1/4">
+            <%= radio_button_tag(:account_type, :concierge, filters['account_type'] == 'concierge', class: 'form-radio')%>
+          </div>
+        </div>
+        <div class="w-full flex mt-1">
+          <div class="w-3/4">
+            <%= label_tag(:account_type_both, 'Both')%>
+          </div>
+          <div class="w-1/4">
+            <%= radio_button_tag(:account_type, :both, filters['account_type'] == 'both', class: 'form-radio')%>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="w-full mt-4 border-b pb-6 text-sm  border-gray-200">
+      <label class="tracking-wide font-hurmebold">FMDD Rating</label>
+      <div class="mt-2">
+      </div>
+    </div>
+    <div class="w-full mt-4 border-b pb-6 text-sm">
+      <label class="tracking-wide font-hurmebold">Years in Experience</label>
+      <div class="mt-2  text-gray-600">
+        <div class="grid gap-1 grid-cols-2">
+          <div class="filter-checkbox-button">
+            <%= check_box_tag(:experience, '0_5', check_box_checked?('experience', '0_5'),id: :experience_0_5)%>
+            <%= label_tag(:experience_0_5, '0-5 Years')%>
+          </div>
+          <div class="filter-checkbox-button">
+            <%= check_box_tag(:experience, '6_10', check_box_checked?('experience', '6_10'),id: :experience_6_10)%>
+            <%= label_tag(:experience_6_10, '6-10 Years')%>
+          </div>
+          <div class="filter-checkbox-button">
+            <%= check_box_tag(:experience, '11_20', check_box_checked?('experience', '11_20'),id: :experience_11_20)%>
+            <%= label_tag(:experience_11_20, '11-20 Years')%>
+          </div>
+          <div class="filter-checkbox-button">
+            <%= check_box_tag(:experience, :gt_20, check_box_checked?('experience', 'gt_20'),id: :experience_gt_20)%>
+            <%= label_tag(:experience_gt_20, '> 20 Years')%>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="w-full mt-4 border-b pb-6 text-sm  border-gray-200">
+      <label class="tracking-wide font-hurmebold">Monthly Membership Fee</label>
+      <div class="mt-2  text-gray-600">
+        <div class="grid gap-1 grid-cols-2">
+          <div class="filter-checkbox-button">
+            <%= check_box_tag(:price, '25_100', check_box_checked?('price', '25_100'), id: :price_25_100)%>
+            <%= label_tag(:price_25_100, '$25-100')%>
+          </div>
+          <div class="filter-checkbox-button">
+            <%= check_box_tag(:price, '101_250', check_box_checked?('price', '101_250'), id: :price_101_250)%>
+            <%= label_tag(:price_101_250, '$101-250')%>
+          </div>
+          <div class="filter-checkbox-button">
+            <%= check_box_tag(:price, '250_500', check_box_checked?('price', '250_500'), id: :price_250_500)%>
+            <%= label_tag(:price_250_500, '$250-500')%>
+          </div>
+          <div class="filter-checkbox-button">
+            <%= check_box_tag(:price, 'gt_500', check_box_checked?('price', 'gt_500'), id: :price_gt_500)%>
+            <%= label_tag(:price_gt_500, '> $500')%>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="w-full mt-4 border-b pb-6 text-sm  border-gray-200">
+      <div class="mt-2 w-full flex">
+        <div class="w-3/4">
+          <label class="tracking-wide font-hurmebold pr-2">Holistic Medicine</label>
+        </div>
+        <div class="w-1/4">
+          <div class="relative inline-block w-12 mr-2 align-middle select-none transition duration-200 ease-in">
+            <%= check_box_tag(:holistic_medicine, true, filters['holistic_medicine'].to_s == 'true', class: 'toggle-checkbox absolute block w-5 h-5 rounded-full bg-white border-4 appearance-none cursor-pointer focus:outline-none')%>
+            <label for="holistic_medicine" class="toggle-label block overflow-hidden h-5 rounded-full bg-gray-300 cursor-pointer"></label>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="w-full mt-4 border-b pb-6 text-sm border-gray-200">
+      <div class="mt-2 w-full flex">
+        <div class="w-3/4">
+          <label class="tracking-wide font-hurmebold pr-6">Telehealth</label>
+        </div>
+        <div class="w-1/4">
+          <div class="relative inline-block w-12 mr-2 align-middle select-none transition duration-200 ease-in">
+            <%= check_box_tag(:telehealth, true, filters['telehealth'].to_s == 'true', class: 'toggle-checkbox absolute block w-5 h-5 rounded-full bg-white border-4 appearance-none cursor-pointer focus:outline-none')%>
+            <label for="telehealth" class="toggle-label block overflow-hidden h-5 rounded-full bg-gray-300 cursor-pointer"></label>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="w-full mt-4 pb-6 text-sm">
+      <div class="mt-2 w-full flex">
+        <div class="w-3/4">
+          <label class="tracking-wide font-hurmebold pr-2">Lifestyle Medicine</label>
+        </div>
+        <div class="w-1/4">
+          <div class="relative inline-block w-12 mr-2 align-middle select-none transition duration-200 ease-in">
+            <%= check_box_tag(:life_style_medicine, true, filters['life_style_medicine'].to_s == 'true', class: 'toggle-checkbox absolute block w-5 h-5 rounded-full bg-white border-4 appearance-none cursor-pointer focus:outline-none')%>
+            <label for="life_style_medicine" class="toggle-label block overflow-hidden h-5 rounded-full bg-gray-300 cursor-pointer"></label>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<% end %>

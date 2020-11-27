@@ -91,6 +91,26 @@
   @apply bg-gray-500 text-gray-800 border-gray-800;
 }
 
+.filter-radio-button input[type="radio"] {
+  @apply opacity-0 fixed w-0;
+}
+
+.filter-radio-button label {
+  @apply inline-block border-2 px-2 py-1 rounded-md text-center bg-white w-full;
+}
+
+.filter-radio-button label:hover {
+  @apply bg-gray-500 text-gray-100 cursor-pointer;
+}
+
+.filter-radio-button input[type="radio"]:focus + label {
+  @apply bg-gray-500 text-gray-100 shadow-2xl;
+}
+
+.filter-radio-button input[type="radio"]:checked + label {
+  @apply bg-gray-500 text-gray-800 border-gray-800;
+}
+
 .about .a {
   @apply text-doctor-yellow;
 }
