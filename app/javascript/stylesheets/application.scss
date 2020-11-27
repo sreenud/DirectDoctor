@@ -47,6 +47,13 @@
   display: none !important;
 }
 
+.map-container {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 99px;
+  height: calc(100vh - 99px);
+}
+
 /* The popup bubble styling. */
 .popup-bubble {
   /* Position the bubble centred-above its parent. */

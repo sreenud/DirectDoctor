@@ -94,3 +94,15 @@ export function AddHoverHighlight() {
     });
   });
 }
+
+export function showLoading() {
+  if (window.loading_helper !== undefined && window.loading_helper !== null) {
+    window.loading_helper.showLoading();
+  }
+}
+
+export function hideLoading() {
+  if (window.loading_helper !== undefined && window.loading_helper !== null) {
+    window.loading_helper.hideLoading();
+  }
+}

@@ -58,12 +58,12 @@
               <div class="w-full" id="result-container">
                 <%= render_doctor_cards %>
               </div>
-              <div class="w-full text-center">
+              <div class="w-full text-center" id="pagination-container">
                 <%== pagy_nav @pagy %>
               </div>
             </div>
             <div
-              class="lg:w-4/12 ml-4"
+              class="lg:w-4/12 ml-4 map-container"
               data-controller="maps"
               data-maps-defaultlocation="<%= current_location %>"
               data-maps-distance="<%= max_distance %>"

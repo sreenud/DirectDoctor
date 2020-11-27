@@ -1,8 +1,18 @@
 import MapInfoWindow from './map_info_window';
 import MapPopup from './map_popup';
 
+// normal marker
 const ICON_PATH =
   'M32 2a20 20 0 0 0-20 20c0 18 20 40 20 40s20-22 20-40A20 20 0 0 0 32 2z';
+
+// more wider marker
+const ICON_TWO_PATH =
+  'M55.9 28.3c.1-.8.1-1.5.1-2.3a24 24 0 1 0-48 0c0 .8 0 1.6.1 2.3v.3C10.1 47.6 32 62 32 62s21.9-14.6 23.8-33.3z';
+
+// circle on pole
+const ICON_THREE_PATH =
+  'M44 21a12 12 0 1 0-14 11.8V53a2 2 0 1 0 4 0V32.8A12 12 0 0 0 44 21z';
+
 const icon = (color = 'white') => ({
   path: ICON_PATH,
   fillColor: color,

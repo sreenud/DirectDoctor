@@ -2,8 +2,10 @@ import { Controller } from 'stimulus';
 import { ajax } from 'jquery';
 import ParamRedirect, {
   AddHoverHighlight,
+  hideLoading,
   locationParams,
   ParamUrl,
+  showLoading,
   URIPush,
 } from './param_redirect';
 import MapPinGenerator, { customIcon } from './map_pin_generator';
@@ -159,7 +161,7 @@ export default class extends Controller {
 
   getResults({ lat, lng }) {
     const near = `${lat},${lng}`;
-
+    showLoading();
     ajax({
       url: ParamUrl({
         changeParams: { near },
@@ -168,12 +170,16 @@ export default class extends Controller {
       }),
     }).then(
       // eslint-disable-next-line camelcase
-      ({ results, pins, max_distance }) => {
+      ({ results, pins, max_distance, pagination }) => {
         const container = document.querySelector('#result-container');
+        const paginationContainer = document.querySelector(
+          '#pagination-container'
+        );
         if (!container) {
           return null;
         }
         container.innerHTML = results;
+        paginationContainer.innerHTML = pagination;
         if (window.map_helpers !== undefined && window.map_helpers !== null) {
           window.map_helpers.renderPins(pins || []);
           window.map_helpers.adjustZoomLevel(max_distance);
@@ -184,10 +190,12 @@ export default class extends Controller {
           removeParams: ['place', 'page'],
         });
         AddHoverHighlight();
+        hideLoading();
         return null;
       },
       (err) => {
         console.log(err);
+        hideLoading();
       }
     );
   }
