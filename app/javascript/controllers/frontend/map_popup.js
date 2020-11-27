@@ -1,11 +1,13 @@
 export default class MapPopup {
-  constructor(container, data) {
-    this.container = container.querySelector('.popup-container');
+  constructor(container, { data = [], ids = [], variant = 'popup' }) {
+    this.variant = variant;
+    this.container = container.querySelector(`.${variant}-container`);
     this.data = {
       lat: data[0],
       lng: data[1],
       id: data[3],
     };
+    this.ids = ids;
   }
 
   show() {
@@ -24,13 +26,14 @@ export default class MapPopup {
     const infoWindow = document.createElement('div');
     infoWindow.setAttribute('tab-index', this.data.id);
     infoWindow.classList.add('popup-info-window');
+    this.fetchDoctorData();
     infoWindow.appendChild(this.doctorPopup());
     this.container.appendChild(infoWindow);
     this.popup = infoWindow;
   }
 
-  fetchDoctorData() {
-    const card = document.querySelector(`#doc-${this.data.id}`);
+  fetchDoctorData(id = this.data.id) {
+    const card = document.querySelector(`#doc-${id}`);
     this.doctorData = {
       name: card.getAttribute('data-name'),
       rating: card.getAttribute('data-rating'),
@@ -39,9 +42,8 @@ export default class MapPopup {
     };
   }
 
-  doctorPopup() {
-    this.fetchDoctorData();
-    const { name, rating, price, image } = this.doctorData;
+  doctorPopup(data = this.doctorData) {
+    const { name, rating, price, image } = data;
     const cont = document.createElement('div');
     cont.classList.add('info-window-container');
     cont.innerHTML = `

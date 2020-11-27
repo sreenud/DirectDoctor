@@ -1,13 +1,14 @@
 import { Controller } from 'stimulus';
-import * as GMaps from 'gmaps/gmaps.min';
 import { ajax } from 'jquery';
-import MapPopup from './map_popup';
 import ParamRedirect, {
   AddHoverHighlight,
   locationParams,
   ParamUrl,
   URIPush,
 } from './param_redirect';
+import MapPinGenerator, { customIcon } from './map_pin_generator';
+
+const { GMaps } = window;
 
 export default class extends Controller {
   connect() {
@@ -63,39 +64,36 @@ export default class extends Controller {
   }
 
   pinData(pinArray = []) {
-    return pinArray.map((a) => {
-      const coord = a.split(',');
-      return {
-        lat: coord[0],
-        lng: coord[1],
-        content: this.popup(coord[2] || 'no price', coord[3]),
-        click: (overlay) => {
-          const popup = new MapPopup(overlay.el, coord);
-          popup.show();
-        },
-      };
-    });
+    return new MapPinGenerator(pinArray).groupedMarkers();
   }
 
   setPopups() {
     const pins = this.generatePopups();
-    pins.forEach((pin) => this.maps.drawOverlay(pin));
+    this.setPins(pins);
+    // console.log(this.maps.addMarkers(pins));
+    // pins.forEach((pin) => this.maps.drawOverlay(pin));
   }
 
-  setPins() {
-    const pins = this.data
-      .get('pins')
-      .split('|')
-      .map((a, index) => {
-        const coord = a.split(',');
-        return {
-          lat: coord[0],
-          lng: coord[1],
-          label: coord[2] || 'no price',
-        };
+  setPins(pins = []) {
+    pins.forEach((pin) => {
+      const { ids, lat, lng, icon, label, infoWindow } = pin;
+      const marker = this.maps.addMarker({ lat, lng, icon, label, infoWindow });
+      ids.forEach((id) => {
+        const card = document.querySelector(`#doc-${id}`);
+        card.addEventListener('mouseenter', () => {
+          marker.setIcon(customIcon('#e7ab00'));
+        });
+        card.addEventListener('mouseleave', () => {
+          marker.setIcon(customIcon('white'));
+        });
       });
-    this.maps.addMarkers(pins);
-    // pins.forEach((pin) => this.addMarker(pin));
+      window.google.maps.event.addListener(marker, 'mouseover', () => {
+        marker.setIcon(customIcon('#e7ab00'));
+      });
+      window.google.maps.event.addListener(marker, 'mouseout', () => {
+        marker.setIcon(customIcon('white'));
+      });
+    });
     this.maps.fitZoom();
   }
 
@@ -148,9 +146,10 @@ export default class extends Controller {
   }
 
   renderPins(pinArray = ["0.0, 0.0, '', ''"]) {
-    this.maps.removeOverlays();
+    this.maps.removeMarkers();
     const pins = this.pinData(pinArray);
-    pins.forEach((pin) => this.maps.drawOverlay(pin));
+    // pins.forEach((pin) => this.maps.drawOverlay(pin));
+    this.setPins(pins);
   }
 
   adjustZoomLevel(distance = 20) {

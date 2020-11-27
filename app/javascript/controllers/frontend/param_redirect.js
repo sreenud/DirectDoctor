@@ -84,13 +84,13 @@ export function AddHoverHighlight() {
   const cards = document.querySelectorAll('.doctor-card');
   cards.forEach((card) => {
     const id = card.getAttribute('id');
-    card.addEventListener(
-      'mouseenter',
-      highlight(`#${id}-popup .popup-bubble-anchor`)
-    );
-    card.addEventListener(
-      'mouseleave',
-      unHighlight(`#${id}-popup .popup-bubble-anchor`)
-    );
+    card.addEventListener('mouseenter', () => {
+      highlight(`.${id}-popup .popup-bubble-anchor`)();
+      highlight(`.${id}-popup .pin-bubble-anchor`)();
+    });
+    card.addEventListener('mouseleave', () => {
+      unHighlight(`.${id}-popup .popup-bubble-anchor`)();
+      unHighlight(`.${id}-popup .pin-bubble-anchor`)();
+    });
   });
 }
