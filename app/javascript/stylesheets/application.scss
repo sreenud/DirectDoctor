@@ -186,6 +186,7 @@
     background-color: transparent;
     box-shadow: none;
     padding: 0;
+    overflow: unset;
   }
   .gm-style-iw-d {
     overflow: initial;
@@ -203,6 +204,18 @@
     width: 8px;
     border-radius: 50%;
     background: #e7ab00;
+  }
+  .gm-style-iw.gm-style-iw-c {
+    button.gm-ui-hover-effect {
+      z-index: 3;
+      background-color: rgb(198, 40, 40) !important;
+      opacity: 0.6 !important;
+      border-radius: 50%;
+      color: white;
+      &:hover {
+        opacity: 0.95 !important;
+      }
+    }
   }
 }
 
@@ -225,6 +238,7 @@
     position: relative;
     display: block;
     bottom: 0;
+    margin: auto 25px;
   }
   .info-window-container {
     img {
@@ -273,6 +287,7 @@
     .popup-info-window.marker-edition {
       min-width: 200px;
       box-shadow: none;
+      margin: 0;
     }
   }
   .info-window-carousel-buttons {
