@@ -1,4 +1,5 @@
 class SearchesController < ApplicationController
+  include Pagy::Frontend
   before_action :set_meta_data, only: [:index]
   before_action :load_gmap, only: [:index_two]
 
@@ -44,6 +45,7 @@ class SearchesController < ApplicationController
       prev: @pagy.prev,
       page: @pagy.page,
       max_distance: @doctors.map(&:distance).max,
+      pagination: pagy_nav(@pagy),
     }
   end
 end

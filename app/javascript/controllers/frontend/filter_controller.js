@@ -2,7 +2,9 @@ import { Controller } from 'stimulus';
 import { ajax } from 'jquery';
 import ParamRedirect, {
   AddHoverHighlight,
+  hideLoading,
   ParamUrl,
+  showLoading,
   URIPush,
 } from './param_redirect';
 
@@ -18,10 +20,12 @@ export default class FilterController extends Controller {
         this.getResults().then(
           (data) => {
             const container = document.querySelector('#result-container');
+            const pagination = document.querySelector('#pagination-container');
             if (!container) {
               return null;
             }
             container.innerHTML = data.results;
+            pagination.innerHTML = data.pagination;
             if (
               window.map_helpers !== undefined &&
               window.map_helpers !== null
@@ -35,11 +39,13 @@ export default class FilterController extends Controller {
               removeParams: ['page'],
             });
             AddHoverHighlight();
+            hideLoading();
             // reset pagination using a controller
             return null;
           },
           (rej) => {
             console.log(rej);
+            hideLoading();
           }
         );
       }, 1000);
@@ -58,6 +64,7 @@ export default class FilterController extends Controller {
   }
 
   getResults() {
+    showLoading();
     return ajax({
       url: ParamUrl({
         changeParams: this.formValue(this.formTarget),
