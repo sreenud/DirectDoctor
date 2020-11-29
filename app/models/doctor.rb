@@ -14,7 +14,7 @@ class Doctor < ApplicationRecord
   validate :validate_holistic_option, :validate_telehealth_option, :validate_home_visit_option
   # ,:validate_patients_options, :validate_price_options
 
-  before_save :set_language, :set_degree, :set_additional_service, :set_appointments,
+  before_save :set_language, :set_degree, :set_name, :set_additional_service, :set_appointments,
     :set_holistic_option, :set_telehealth_option, :set_home_visit_option, :set_free_consultation_time,
     :set_consultation
 
@@ -108,6 +108,10 @@ class Doctor < ApplicationRecord
 
   def set_degree
     self.title = hash_to_string(JSON.parse(title)) if validate_json(title)
+  end
+
+  def set_name
+    self.name = hash_to_string(JSON.parse(name)) if validate_json(name)
   end
 
   def set_additional_service

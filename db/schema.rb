@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_20_123038) do
+ActiveRecord::Schema.define(version: 2020_11_28_132658) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -91,6 +91,10 @@ ActiveRecord::Schema.define(version: 2020_11_20_123038) do
     t.decimal "lng"
     t.text "disciplinary_action_details"
     t.string "address_suite"
+    t.jsonb "alternate_emails", default: {}
+    t.jsonb "alternate_phones", default: {}
+    t.string "old_fdd_id"
+    t.string "contact_us_url"
     t.index ["user_id"], name: "index_doctors_on_user_id"
   end
 
