@@ -25,7 +25,7 @@ append(:linked_files, "config/database.yml", "config/credentials.yml.enc", "conf
 
 # Default value for linked_dirs is []
 append(:linked_dirs, "log", "tmp/pids", "tmp/cache", "tmp/sockets", "public/system", "node_modules", "public/packs",
-  "public/seo", "public/system/doctor_import")
+  "public/seo")
 
 # Default value for default_env is {}
 # set :default_env, { path: "/opt/ruby/bin:$PATH" }
