@@ -18,6 +18,11 @@
     </div>
     <div class="bg-white border mb-6 rounded shadow">
       <%= render partial: 'list', locals: {locations: @locations} %>
+      <div class="px-5 py-5 bg-white border-t flex flex-col xs:flex-row items-center xs:justify-between">
+        <div class="inline-flex mt-2 xs:mt-0">
+          <%= pagy_nav(@pagy).html_safe %>
+        </div>
+      </div>
     </div>
   </div>
 </section>
