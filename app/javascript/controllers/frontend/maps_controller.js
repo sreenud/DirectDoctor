@@ -14,6 +14,7 @@ const { GMaps } = window;
 
 export default class extends Controller {
   connect() {
+    this.infoWindow = null;
     AddHoverHighlight();
     window.map_helpers = {
       renderPins: this.renderPins.bind(this),
@@ -44,6 +45,11 @@ export default class extends Controller {
     });
     // this.setPins();
     this.setPopups();
+    window.google.maps.event.addListener(this.maps.map, 'click', () => {
+      if (this.infoWindow) {
+        this.infoWindow.close();
+      }
+    });
   }
 
   redirect({ lat, lng }) {
@@ -94,6 +100,9 @@ export default class extends Controller {
       });
       window.google.maps.event.addListener(marker, 'mouseout', () => {
         marker.setIcon(customIcon('white'));
+      });
+      window.google.maps.event.addListener(marker, 'click', () => {
+        this.infoWindow = marker.infoWindow;
       });
     });
     this.maps.fitZoom();
