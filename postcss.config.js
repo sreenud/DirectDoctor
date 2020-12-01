@@ -34,8 +34,10 @@ if (
         /tagify/,
         /pagy-nav/,
         /ap-footer/,
+        /algolia-places/,
+        /ap-/,
       ],
-      whitelistPatternsChildren: [/choices/, /tagify/, /pagy-nav/],
+      whitelistPatternsChildren: [/choices/, /tagify/, /pagy-nav/, /ap-/],
       defaultExtractor: (content) => content.match(/[A-Za-z0-9-_:/]+/g) || [],
     })
   );
