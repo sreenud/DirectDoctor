@@ -9,6 +9,10 @@ class DoctorFilterComponent < ViewComponent::Base
     selected.include?(value)
   end
 
+  def speciality_list
+    @speciality_list ||= [['All', 'all']] + Speciality.all.pluck(:name, :code)
+  end
+
   private
 
   def make_array(value)

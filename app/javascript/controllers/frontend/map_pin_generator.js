@@ -13,13 +13,13 @@ const ICON_TWO_PATH =
 const ICON_THREE_PATH =
   'M44 21a12 12 0 1 0-14 11.8V53a2 2 0 1 0 4 0V32.8A12 12 0 0 0 44 21z';
 
-const icon = (color = 'white') => ({
-  path: ICON_PATH,
+const icon = ({ color = 'white', multiple = false }) => ({
+  path: multiple ? ICON_PATH : ICON_THREE_PATH,
   fillColor: color,
   scale: 0.5,
   fillOpacity: 0.9,
   strokeColor: 'grey',
-  strokeWidth: 2,
+  strokeWidth: 3,
   anchor: { x: 33, y: 62 },
   labelOrigin: { x: 30, y: 25 },
 });
@@ -53,8 +53,8 @@ export default class MapPinGenerator {
       return {
         lat,
         lng,
-        icon: icon(),
-        label: count > 1 ? count.toString() : '•',
+        icon: icon({ multiple: count > 1 }),
+        label: count > 1 ? count.toString() : '',
         ids: ids,
         infoWindow: new MapInfoWindow(ids).content({
           maxWidth: width,

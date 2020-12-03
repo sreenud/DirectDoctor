@@ -2,7 +2,7 @@
 
 # a module for generating results for doctor search through parameters
 module DoctorSearch
-  SEARCH_RADIUS = 100
+  SEARCH_RADIUS = 2000
   SEARCH_UNITS = :km
   DEFAULT_LOCATION = ApplicationController::DEFUALT_LOCATION
   def search(params, current_location: DEFAULT_LOCATION)
@@ -15,10 +15,12 @@ module DoctorSearch
   private
 
   def apply_filters
+    apply_speciality_filter
     apply_ratings_filter
     apply_practice_filter
     apply_experience_filter
     apply_fee_filter
+    apply_other_filters
     apply_location_filter
   end
 
@@ -50,20 +52,50 @@ module DoctorSearch
   end
 
   def apply_practice_filter
-    @default_scope
+    return @default_scope unless @params[:practice_type].present?
+    return @default_scope if @params[:practice_type] == 'both'
+
+    @default_scope = @default_scope.where(style: @params[:practice_type])
   end
 
   def apply_experience_filter
-    @default_scope
+    return @default_scope unless @params[:experience].present?
+
+    ranges = build_range(@params[:experience])
+    @default_scope = @default_scope.where(max_experience: ranges, min_experience: ranges)
   end
 
   def apply_fee_filter
-    @default_scope
+    return @default_scope unless @params[:price].present?
+
+    ranges = build_range(@params[:price])
+    @default_scope = @default_scope.where(min_price: ranges, max_price: ranges)
+  end
+
+  def apply_speciality_filter
+    return @default_scope unless @params[:speciality].present?
+    return @default_scope if @params[:speciality] == 'all'
+
+    @default_scope = @default_scope.where(primary_speciality: @params[:speciality])
+  end
+
+  def apply_other_filters
+    @default_scope = @default_scope.where(is_holistic_medicine: 'yes') if @params[:holistic_medicine].present?
+    @default_scope = @default_scope.where(is_telehealth_service: 'yes') if @params[:holistic_medicine].present?
   end
 
   def to_coordinates(near)
     return unless near.present?
 
     near.split(',').map(&:to_f)
+  end
+
+  def build_range(value)
+    array_value = value.split(',').map { |a| a.split('_') }
+    array_value = array_value.map do |a|
+      mx = a[1].to_i
+      a[0] == 'gt' ? (mx..) : (a[0].to_i..mx)
+    end
+    array_value
   end
 end

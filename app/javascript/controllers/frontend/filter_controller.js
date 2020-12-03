@@ -31,12 +31,12 @@ export default class FilterController extends Controller {
               window.map_helpers !== null
             ) {
               window.map_helpers.renderPins(data.pins || []);
-              window.map_helpers.adjustZoomLevel(data.max_distance);
+              // window.map_helpers.adjustZoomLevel(data.max_distance);
             }
             URIPush({
               changeParams: formValues,
               route: '/search-map',
-              removeParams: ['page'],
+              removeParams: ['page', ...this.removedFilters(formValues)],
             });
             AddHoverHighlight();
             hideLoading();
@@ -61,6 +61,23 @@ export default class FilterController extends Controller {
       formHash[key] = val.length > 1 ? val : val[0];
     });
     return formHash;
+  }
+
+  removedFilters(formValue) {
+    // REMEMBER: make sure to change this when doctor filters are updated
+    const allFields = [
+      'speciality',
+      'practice_type',
+      'rating',
+      'holistic_medicine',
+      'experience',
+      'telehealth',
+      'life_style_medicine',
+      'price',
+    ];
+    const keys = Object.keys(formValue);
+
+    return allFields.filter((a) => keys.indexOf(a) < 0);
   }
 
   getResults() {

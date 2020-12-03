@@ -44,7 +44,7 @@ export default class extends Controller {
                 window.map_helpers !== null
               ) {
                 window.map_helpers.renderPins(pins || []);
-                window.map_helpers.adjustZoomLevel(max_distance);
+                // window.map_helpers.adjustZoomLevel(max_distance);
               }
               URIPush({
                 changeParams: { page },

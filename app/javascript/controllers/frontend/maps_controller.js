@@ -86,20 +86,21 @@ export default class extends Controller {
     pins.forEach((pin) => {
       const { ids, lat, lng, icon, label, infoWindow } = pin;
       const marker = this.maps.addMarker({ lat, lng, icon, label, infoWindow });
+      const multiple = ids.length > 1;
       ids.forEach((id) => {
         const card = document.querySelector(`#doc-${id}`);
         card.addEventListener('mouseenter', () => {
-          marker.setIcon(customIcon('#e7ab00'));
+          marker.setIcon(customIcon({ color: '#e7ab00', multiple }));
         });
         card.addEventListener('mouseleave', () => {
-          marker.setIcon(customIcon('white'));
+          marker.setIcon(customIcon({ color: 'white', multiple }));
         });
       });
       window.google.maps.event.addListener(marker, 'mouseover', () => {
-        marker.setIcon(customIcon('#e7ab00'));
+        marker.setIcon(customIcon({ color: '#e7ab00', multiple }));
       });
       window.google.maps.event.addListener(marker, 'mouseout', () => {
-        marker.setIcon(customIcon('white'));
+        marker.setIcon(customIcon({ color: 'white', multiple }));
       });
       window.google.maps.event.addListener(marker, 'click', () => {
         this.infoWindow = marker.infoWindow;
