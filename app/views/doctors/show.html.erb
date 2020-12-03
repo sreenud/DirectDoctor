@@ -211,15 +211,15 @@
                     Address of the doctor should go here
                   </div>
                   <div class="w-full flex mt-3">
-                    <div class="pt-1"><img class="w-5 h-5" src="/packs/media/images/icons/email-98b67078e8d1d9a4fb8b88d71c45bfd1.svg"></div>
+                    <div class="pt-1"><%= image_pack_tag "icons/email.svg", class: "w-5 h-5" %></div>
                     <div class="ml-4">Message</div>
                   </div>
                   <div class="w-full flex mt-1">
-                    <div class="pt-1"><img class="w-5 h-5" src="/packs/media/images/icons/phone-c975b34b7993663c0d4be8b4094eb876.svg"></div>
+                    <div class="pt-1"><%= image_pack_tag "icons/phone.svg", class: "w-5 h-5" %></div>
                     <div class="ml-4">090078601</div>
                   </div>
                   <div class="w-full flex mt-1">
-                    <div class="pt-1"><img class="w-5 h-5" src="/packs/media/images/icons/web-a53d82918e5174221ce48033ea78f409.svg"></div>
+                    <div class="pt-1"><%= image_pack_tag "icons/web.svg", class: "w-5 h-5" %></div>
                     <div class="ml-4">www.johndoe.com</div>
                   </div>
                 </div>
@@ -432,10 +432,9 @@
                       <div class="w-2/12 ml-4 -mt-4">
                         <div class="w-full text-base bg-doctor-gray-100 pt-4 pb-8 rounded-tl-2lg rounded-br-2lg">
                           <div class="flex items-center justify-center text-gray-800">
-                            <svg class="w-5 h-5 fill-current text-gray-400"
-                            viewBox="0 0 20 20">
-                              <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z">
-                              </svg>
+                            <svg viewBox="0 0 20 20" fill="currentColor" stroke="currentColor" class="w-5 h-5 fill-current text-gray-400">
+                              <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"></path>
+                            </svg>
                             </div>
                             <div class="text-xs flex justify-center px-6 text-center mt-2">
                               Recommend this Doctor if you are a Physician
@@ -464,3 +463,6 @@
     <div class="lg:mt-32 lg:col-span-1">
     </div>
   </div>
+  <section class="lg:mt-32 bg-no-repeat bg-cover" style="background-image: url(system/light_grey_background.png);">
+
+  </section>
