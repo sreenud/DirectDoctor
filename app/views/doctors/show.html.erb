@@ -23,7 +23,7 @@
         <div class="w-4/12 mr-8">
           <div class="w-full flex">
             <div class="w-1/2 bg-doctor-gray-100 pl-2 rounded-2lg">
-              <img class="w-48" src="/packs/media/images/doctor_full-f8dd969e90270a768808995891a58a36.png">
+              <%= image_pack_tag "doctor_full.png", class: "w-48" %>
             </div>
             <div class="w-1/2 ml-4">
               <h2 class="text-2xl font-glacialbold">John Doe</h2>
@@ -197,7 +197,7 @@
                 </div>
               </div>
             </div>
-            <div class="w-full shadow rounded-lg border border-gray-300 mt-2">
+            <div class="w-full shadow rounded-lg border border-gray-300 mt-4">
               <div class="text-lg font-glacialbold tracking-wide pl-4 pt-3">
                 Contact
               </div>
@@ -225,7 +225,7 @@
                 </div>
               </div>
             </div>
-            <div class="w-full shadow rounded-lg border border-gray-300 mt-2">
+            <div class="w-full shadow rounded-lg border border-gray-300 mt-4">
               <div class="text-lg font-glacialbold tracking-wide pl-4 pt-3">
                 Credentials
               </div>
@@ -279,14 +279,14 @@
                 </div>
               </div>
             </div>
-            <div class="w-full h-32 shadow rounded-lg border border-gray-300 mt-2">
+            <div class="w-full h-32 shadow rounded-lg border border-gray-300 mt-4">
               <div class="text-lg font-glacialbold tracking-wide pl-4 pt-3">
                 Professional Background Information
               </div>
               <div class="py-3 pl-4 w-full ">
               </div>
             </div>
-            <div class="w-full shadow rounded-lg border border-gray-300 mt-2">
+            <div class="w-full shadow rounded-lg border border-gray-300 mt-4">
               <div class="text-lg font-glacialbold tracking-wide pl-4 pt-3">
                 Patient Reviews
               </div>
@@ -380,25 +380,87 @@
                 <a href="#" class=" text-blue-400 underline text-sm">View all reviews</a>
               </div>
             </div>
-            <div class="w-full shadow rounded-lg border border-gray-300 mt-2">
+            <div class="w-full shadow rounded-lg border border-gray-300 mt-4 pb-4">
               <div class="text-lg font-glacialbold tracking-wide pl-4 pt-3">
                 FMDD Score
               </div>
-              <div class="py-3 pl-4 w-full ">
+              <div class="py-3 pl-2 w-full flex ">
+                <div class="w-3/12 flex justify-center items-center">
+                  <div class="text-6xl text-center">10/10</div>
+                </div>
+                <div class="w-8/12 ml-4">
+                  <div>
+                    What does that mean?
+                  </div>
+                  <div class="text-sm">
+                    Description about FMDD Mode comes here. Description about FMDD Mode comes here. Description about FMDD Mode comes here. Description about FMDD Mode comes here. Description about FMDD Mode comes here.
+                  </div>
+                </div>
               </div>
             </div>
-            <div class="w-full h-32 shadow rounded-lg border border-gray-300 mt-2">
+            <div class="w-full shadow rounded-lg border border-gray-300 mt-4">
               <div class="text-lg font-glacialbold tracking-wide pl-4 pt-3">
                 Physician Peer Recommendation
               </div>
-              <div class="py-3 pl-4 w-full ">
+              <div class="py-3 pl-4 w-full flex">
+                <div class="w-2/12 bg-doctor-gray-100 pl-2 rounded-2lg h-32">
+                  <%= image_pack_tag "doctor.png", class: "w-32 pr-2 h-32 pb-1" %>
+                </div>
+                <div class="w-9/12">
+                  <div class="w-full">
+                    <div class="w-full flex">
+                      <div class="w-4/12 mt-2 pl-6">
+                        <div>
+                          <div class="text-gray-600 text-sm">Doctor Name:</div>
+                          <div class="text-sm">Graydon Ursel</div>
+                        </div>
+                        <div class="mt-2">
+                          <div class="text-gray-600 text-sm">Speciality:</div>
+                          <div class="text-sm">IM/AMDP</div>
+                        </div>
+                      </div>
+                      <div class="w-7/12 mt-2">
+                        <div>
+                          <div class="text-gray-600 text-sm">Date:</div>
+                          <div class="text-sm">Posted on: 02-12-2020</div>
+                        </div>
+                        <div class="mt-2">
+                          <div class="text-gray-600 text-sm">Location:</div>
+                          <div class="text-sm">Florida</div>
+                        </div>
+                      </div>
+                      <div class="w-2/12 ml-4 -mt-4">
+                        <div class="w-full text-base bg-doctor-gray-100 pt-4 pb-8 rounded-tl-2lg rounded-br-2lg">
+                          <div class="flex items-center justify-center text-gray-800">
+                            <svg class="w-5 h-5 fill-current text-gray-400"
+                            viewBox="0 0 20 20">
+                              <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z">
+                              </svg>
+                            </div>
+                            <div class="text-xs flex justify-center px-6 text-center mt-2">
+                              Recommend this Doctor if you are a Physician
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="w-full ml-6">
+                      <div>How do I know this Physician?</div>
+                      <div class="text-sm">
+                        Description about FMDD Mode comes here. Description about FMDD Mode comes here. Description about FMDD Mode comes here. Description about FMDD Mode comes here. Description about FMDD Mode comes here.
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="w-full flex justify-end pr-6 pb-4">
+                  <a href="#" class=" text-blue-400 underline text-sm">View all recommendations</a>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
     </div>
+    <div class="lg:mt-32 lg:col-span-1">
+    </div>
   </div>
-  <div class="lg:mt-32 lg:col-span-1">
-  </div>
-</div>
