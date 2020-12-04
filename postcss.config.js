@@ -36,8 +36,17 @@ if (
         /ap-footer/,
         /algolia-places/,
         /ap-/,
+        /glide/,
+        /slider/,
       ],
-      whitelistPatternsChildren: [/choices/, /tagify/, /pagy-nav/, /ap-/],
+      whitelistPatternsChildren: [
+        /choices/,
+        /tagify/,
+        /pagy-nav/,
+        /ap-/,
+        /glide/,
+        /slider/,
+      ],
       defaultExtractor: (content) => content.match(/[A-Za-z0-9-_:/]+/g) || [],
     })
   );

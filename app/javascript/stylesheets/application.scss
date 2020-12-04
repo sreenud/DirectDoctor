@@ -7,6 +7,9 @@
 
 @import "tailwindcss/utilities";
 
+@import "node_modules/@glidejs/glide/src/assets/sass/glide.core";
+@import "custom/slider";
+
 .a2a_s_facebook {
   background-color: white !important;
 }
