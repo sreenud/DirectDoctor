@@ -7,6 +7,8 @@ module.exports = {
         'doctor-yellow': '#e7ab00',
         'doctor-yellow-500': '#EEC44D',
         'hyperlink-blue': '#13347f',
+        'doctor-gray-100': '#efeff1',
+        'doctor-yellow-100': '#fdf7ea',
       },
       fontFamily: {
         hurmebold: ['HurmeBold'],
@@ -26,6 +28,12 @@ module.exports = {
       },
     },
   },
-  variants: {},
+  variants: {
+    extend: {
+      // ...
+      fill: ['hover', 'focus'],
+      transitionDuration: ['hover', 'focus'],
+    },
+  },
   plugins: [],
 };

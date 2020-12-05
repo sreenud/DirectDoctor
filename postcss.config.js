@@ -19,7 +19,7 @@ const environment = {
 if (
   process.env.RAILS_ENV === 'production' ||
   process.env.RAILS_ENV === 'staging' ||
-  process.env.RAILS_ENV === 'development'
+  process.env.RAILS_ENV === 'development1'
 ) {
   environment.plugins.push(
     require('@fullhuman/postcss-purgecss')({
@@ -36,8 +36,17 @@ if (
         /ap-footer/,
         /algolia-places/,
         /ap-/,
+        /glide/,
+        /slider/,
       ],
-      whitelistPatternsChildren: [/choices/, /tagify/, /pagy-nav/, /ap-/],
+      whitelistPatternsChildren: [
+        /choices/,
+        /tagify/,
+        /pagy-nav/,
+        /ap-/,
+        /glide/,
+        /slider/,
+      ],
       defaultExtractor: (content) => content.match(/[A-Za-z0-9-_:/]+/g) || [],
     })
   );
