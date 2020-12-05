@@ -30,6 +30,7 @@ class SearchesController < ApplicationController
       :telehealth,
       :life_style_medicine,
       :speciality,
+      :practice_type
     )
   end
 
@@ -45,7 +46,7 @@ class SearchesController < ApplicationController
       prev: @pagy.prev,
       page: @pagy.page,
       max_distance: @doctors.map(&:distance).max,
-      pagination: pagy_nav(@pagy),
+      pagination: @pagy.next || @pagy.prev ? pagy_nav(@pagy) : 'No results found',
     }
   end
 end
