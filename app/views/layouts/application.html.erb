@@ -25,13 +25,13 @@
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
-
+      
       gtag('config', 'UA-151952917-2');
     </script>
     <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
     <script src="https://cdn.rawgit.com/nnattawat/flip/master/dist/jquery.flip.min.js"></script>
   </head>
-  <body class="font-glacial text-px18">
+  <body class="font-glacial text-px18 overflow-x-hidden">
     <%= render partial: 'shared/header' %>
     <div class="absolute top-0">
       <div class="absolute">
@@ -51,7 +51,7 @@
         speed: 1000,
         reverse: true
       });
-
+      
       setInterval(function(){
         $('.flip-card').flip('toggle');
       },2000)
