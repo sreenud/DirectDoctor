@@ -79,12 +79,21 @@
           </div>
         </div>
         <div class="w-8/12">
-          <div class="w-full flex justify-between border rounded-lg border-gray-600 px-2 py-1 shadow-lg text-gray-700">
+          <div class=" relative w-full flex justify-between border rounded-lg border-gray-600 px-2 py-1 shadow-lg text-gray-700">
             <div class="w-full text-center">Practice</div>
             <div class="w-full text-center">Contact</div>
             <div class="w-full text-center">Credentials</div>
             <div class="w-full text-center">Background</div>
             <div class="w-full text-center">Reviews</div>
+            <div class="absolute right-0 -mr-32 -mt-48 z-50">
+              <%=image_pack_tag "yellow_circle_outline_opacity_right.png", class: "w-24" %>
+            </div>
+            <div class="absolute right-0 -mr-32 -mt-8 z-50">
+              <%=image_pack_tag "light_grey_2_lines_vertical.svg", class: "w-16" %>
+            </div>
+            <div class="absolute right-0 -mr-32 mt-24 z-50">
+              <%=image_pack_tag "light_grey_round_edge_sides.svg", class: "w-16 h-64" %>
+            </div>
           </div>
           <div class="w-full text-gray-800">
             <div class="w-full shadow rounded-lg border border-gray-300 mt-4">
@@ -224,12 +233,27 @@
                   </div>
                 </div>
               </div>
+              <div class="absolute right-0 -mr-24 -mt-40 z-50">
+                <%=image_pack_tag "yellow_circle_big_shadow.svg", class: "w-16" %>
+              </div>
+              <div class="absolute right-0 -mr-32 -mt-48">
+                <%=image_pack_tag "light_yellow_slant.svg", class: "w-16" %>
+              </div>
+              <div class="absolute right-0 -mr-32 z-50 -mt-32">
+                <%=image_pack_tag "off_white_half_full_circle.svg", class: "w-16" %>
+              </div>
             </div>
             <div class="w-full shadow rounded-lg border border-gray-300 mt-4">
               <div class="text-lg font-glacialbold tracking-wide pl-4 pt-3">
                 Credentials
               </div>
               <div class="py-3 pl-4 w-full ">
+                <div class="absolute left-0 -ml-24 z-50 mt-20">
+                  <%=image_pack_tag "yellow_half_circle_thick.svg", class: "w-24" %>
+                </div>
+                <div class="absolute left-0 -ml-12 mt-12">
+                  <%=image_pack_tag "yellow_circle_big_shadow.svg", class: "w-16" %>
+                </div>
                 <div class="w-full flex">
                   <div class="w-1/3 text-right text-gray-600 text-sm">
                     Education:
@@ -291,6 +315,18 @@
                 Patient Reviews
               </div>
               <div class="py-3 pl-4 w-full box-bottom-shadow flex">
+                <div class="absolute right-0 z-50 -mt-8" style="margin-right: -7rem;">
+                  <%=image_pack_tag "yellow_circle_big_shadow.svg", class: "w-16" %>
+                </div>
+                <div class="absolute right-0 z-50 mt-6" style="margin-right: -7rem;">
+                  <%=image_pack_tag "off_white_circle_full.svg", class: "w-16" %>
+                </div>
+                <div class="absolute left-0 z-50 mt-16" style="margin-left: -7rem;">
+                  <%=image_pack_tag "yellow_circle_outline_opacity.svg", class: "w-24" %>
+                </div>
+                <div class="absolute left-0 z-50 mt-56" style="margin-left: -7rem;">
+                  <%=image_pack_tag "light_grey_3_lines_horizontal.svg", class: "w-32" %>
+                </div>
                 <div class="w-3/12 items-center justify-center box-right-shadow">
                   <div class="text-6xl text-center">4.5</div>
                   <div class="w-full justify-center flex">
@@ -385,6 +421,9 @@
                 FMDD Score
               </div>
               <div class="py-3 pl-2 w-full flex ">
+                <div class="absolute left-0 mt-6 -ml-32">
+                  <%=image_pack_tag "light_yellow_slant.svg", class: "w-16" %>
+                </div>
                 <div class="w-3/12 flex justify-center items-center">
                   <div class="text-6xl text-center">10/10</div>
                 </div>
@@ -441,6 +480,15 @@
                           </div>
                         </div>
                       </div>
+                    </div>
+                    <div class="absolute right-0 -mt-12 -mr-32">
+                      <%=image_pack_tag "light_yellow_slant.svg", class: "w-16" %>
+                    </div>
+                    <div class="absolute left-0 -mt-16 ml-16">
+                      <%=image_pack_tag "yellow_circle_full.svg", class: "w-12" %>
+                    </div>
+                    <div class="absolute left-0 -mt-12 -ml-32">
+                      <%=image_pack_tag "yellow_circle_chipped.png", class: "w-64" %>
                     </div>
                   </div>
                   <div class="w-full ml-6">
@@ -544,5 +592,29 @@
       </div>
     </div>
     <div class="col-span-2 grid"></div>
+  </div>
+</section>
+<section class="">
+  <div class="lg:grid lg:w-full grid-cols-12">
+    <div class="col-span-1 relative">
+      <div class="absolute left-0 -mt-16 ml-10">
+        <%=image_pack_tag "yellow_circle_full.svg", class: "w-4" %>
+      </div>
+      <div class="absolute left-0 -mt-12">
+        <%=image_pack_tag "yellow_half_circle_thick.svg", class: "w-16" %>
+      </div>
+    </div>
+    <div class="col-span-10 flex flex-wrap -mt-16 lg:-mt-1"></div>
+    <div class="col-span-1 grid">
+      <div class="absolute right-0">
+        <%=image_pack_tag "vector_plus_with_side_dots.svg", class: "w-40 -mr-20 -mt-48" %>
+      </div>
+      <div class="absolute right-0 -mt-12">
+        <%=image_pack_tag "yellow_circle_full.svg", class:"w-12 mr-24 -mt-24" %>
+      </div>
+      <div class="absolute right-0">
+        <%=image_pack_tag "off_white_1_4_circle_left.png", class: "w-16 -mt-56"%>
+      </div>
+    </div>
   </div>
 </section>
