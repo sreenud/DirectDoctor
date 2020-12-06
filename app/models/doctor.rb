@@ -91,6 +91,10 @@ class Doctor < ApplicationRecord
     "$#{min_price} - #{max_price}"
   end
 
+  def formated_phone_number
+    phone.gsub(/[^0-9]/, '')
+  end
+
   private
 
   def set_fdd_id
@@ -183,4 +187,6 @@ class Doctor < ApplicationRecord
   rescue JSON::ParserError => e
     false
   end
+
+
 end

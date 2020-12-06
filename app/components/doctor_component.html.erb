@@ -5,7 +5,7 @@
     </div>
     <div class="w-3/12 ml-4">
       <div class="tracking-wide font-hurmebold">
-        <a href="/doctor/profile/<%=doctor.fdd_id%>" class="hover:text-doctor-yellow">
+        <a href="/doctor/profile/<%=doctor.fdd_id%>" class="hover:text-doctor-yellow focus:outline-none">
           <h2 class="text-2xl"><%= doctor.name %></h2>
         </a>
       </div>
@@ -66,22 +66,30 @@
       </div>
     </div>
     <div class="w-1/2 ml-6">
-      <div class="w-full flex mt-4 text-base">
-        <div><%=image_pack_tag 'icons/email.svg', class: "w-5 h-5"%></div>
-        <div class="pl-2">Message<span class=" ml-10 border-r border-gray-800"></span></div>
-      </div>
+      <a href="mailto:<%=doctor.email%>" class="hover:underline hover:text-blue-400">
+        <div class="w-full flex mt-4 text-base">
+          <div><%=image_pack_tag 'icons/email.svg', class: "w-5 h-5"%></div>
+          <div class="pl-2">Message<span class=" ml-10 border-r border-gray-800"></span></div>
+        </div>
+      </a>
     </div>
     <div class="w-1/2">
-      <div class="w-full flex mt-4 text-base">
-        <div><%=image_pack_tag 'icons/phone.svg', class: "w-5 h-5"%></div>
-        <div class="pl-2">090078601 <span class=" ml-10 border-r border-gray-800"></span></div>
-      </div>
+      <a href="tel:<%=doctor.formated_phone_number%>" class="hover:underline hover:text-blue-400">
+        <div class="w-full flex mt-4 text-base">
+          <div><%=image_pack_tag 'icons/phone.svg', class: "w-5 h-5"%></div>
+          <div class="pl-2"><%=doctor.phone%> <span class=" ml-10 border-r border-gray-800"></span></div>
+        </div>
+      </a>
     </div>
     <div class="w-1/2">
-      <div class="w-full flex mt-4 text-base">
-        <div><%=image_pack_tag 'icons/web.svg', class: "w-5 h-5"%></div>
-        <div class="pl-2">www.johndoe.com</div>
-      </div>
+      <a href="<%=doctor.website_url%>" target="_blank" class="hover:underline hover:text-blue-400" >
+        <div class="w-full flex mt-4 text-base">
+          <div><%=image_pack_tag 'icons/web.svg', class: "w-5 h-5"%></div>
+          <div class="pl-2">
+            Website
+          </div>
+        </div>
+      </a>
     </div>
   </div>
 <% end %>
