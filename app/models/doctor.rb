@@ -187,6 +187,4 @@ class Doctor < ApplicationRecord
   rescue JSON::ParserError => e
     false
   end
-
-
 end
