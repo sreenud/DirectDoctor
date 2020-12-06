@@ -5,7 +5,9 @@
     </div>
     <div class="w-3/12 ml-4">
       <div class="tracking-wide font-hurmebold">
-        <h2 class="text-2xl"><%= doctor.name %></h2>
+        <a href="/doctor/profile/<%=doctor.fdd_id%>" class="hover:text-doctor-yellow">
+          <h2 class="text-2xl"><%= doctor.name %></h2>
+        </a>
       </div>
       <div class="mt-2"><%=doctor.primary_speciality%></div>
       <div class="mt-2 w-full flex">
