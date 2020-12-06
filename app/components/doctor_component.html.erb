@@ -7,28 +7,34 @@
       <div class="tracking-wide font-hurmebold">
         <h2 class="text-2xl"><%= doctor.name %></h2>
       </div>
-      <div class="mt-2">Internal Medicine</div>
+      <div class="mt-2"><%=doctor.primary_speciality%></div>
       <div class="mt-2 w-full flex">
         <%= render(StarRatingComponent.new(rating: 4, class: 'doc-rating')) %>
         <div class="text-sm">
           <a href="#" class="text-blue-500"> (300 Reviews)</a>
         </div>
       </div>
-      <div class="mt-2 text-base text-gray-600">Max no. of Patients: 300</div>
+      <div class="mt-2 text-base text-gray-600">
+        Max no. of Patients: <%=doctor.max_patients%>
+      </div>
       <div class="w-full flex mt-2 text-base text-gray-600">
-        <div>
-          <%=image_pack_tag 'icons/medal.svg', class: "w-5 h-5 text-green-500"%>
-        </div>
+        <div><%= render(MedalComponent.new(width: 20, height: 20)) %></div>
         <div class="pl-2">Telehealth</div>
       </div>
     </div>
     <div class="w-3/12 mt-4">
-      <div>24/7 Direct Phone Access</div>
-      <div class="mt-2">Direct Primary Care</div>
-      <div class="mt-2 text-base text-gray-600">Fee $10,0000</div>
-      <div class="mt-2 text-base text-gray-600">Apt: Same day</div>
+      <% if doctor.access == 'Yes' %>
+        <div>24/7 Direct Phone Access</div>
+      <% else %>
+        <div>NA</div>
+      <% end %>
+      <div class="mt-2"><%=doctor.style%></div>
+      <div class="mt-2 text-base text-gray-600">
+        Fee $<%=doctor.min_price%>
+      </div>
+      <div class="mt-2 text-base text-gray-600">Apt: <%=doctor.appointments%></div>
       <div class="w-full flex mt-2 text-base text-gray-600">
-        <div><%=image_pack_tag 'icons/medal.svg', class: "w-5 h-5 text-green-500"%></div>
+        <div><%= render(MedalComponent.new(width: 20, height: 20)) %></div>
         <div class="pl-2">Home Visit Book</div>
       </div>
     </div>
@@ -39,14 +45,14 @@
         </a>
         <div><%=image_pack_tag 'icons/favorite.svg', class: "w-5 h-5 ml-2"%></div>
       </div>
-      <div class="mt-2">13 years experience</div>
-      <div class="mt-2 text-base text-gray-600">FMDD Score: 9/10</div>
+      <div class="mt-2"><%=doctor.max_experience%> years experience</div>
+      <div class="mt-2 text-base text-gray-600">FMDD Score: <%=doctor.fmdd_score%>/10</div>
       <div class="w-full flex mt-2 text-base text-gray-600">
-        <div><%=image_pack_tag 'icons/medal.svg', class: "w-5 h-5 text-green-500"%></div>
+        <div><%= render(MedalComponent.new(width: 20, height: 20)) %></div>
         <div class="pl-2">Free Consultation</div>
       </div>
       <div class="w-full flex mt-2 text-base text-gray-600">
-        <div><%=image_pack_tag 'icons/medal.svg', class: "w-5 h-5 text-green-500"%></div>
+        <div><%= render(MedalComponent.new(width: 20, height: 20)) %></div>
         <div class="pl-2">Holistic/Lifestyle Med</div>
       </div>
     </div>
@@ -54,7 +60,7 @@
   <div class="w-full flex pb-6 ">
     <div class="w-1/2">
       <div class="text-md tracking-wide font-hurmebold mt-4 text-center">
-        MDVIP Group
+        <%=doctor.practice_name%>
       </div>
     </div>
     <div class="w-1/2 ml-6">
