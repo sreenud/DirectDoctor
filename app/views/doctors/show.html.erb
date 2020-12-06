@@ -1,4 +1,5 @@
-<div class="lg:grid lg:w-full lg:mt-24 lg:grid-cols-12 flex mt-32">
+<% @remove_sticky_header = true %>
+<div class="lg:grid lg:w-full lg:grid-cols-12 flex">
   <div class="lg:mt-32 lg:col-span-1">
   </div>
   <div class="lg:col-span-10 mt-4 relative -ml-4 -mr-4">
@@ -21,27 +22,28 @@
       </nav>
       <div class="lg:w-full flex mt-10 w-4">
         <div class="w-4/12 mr-8">
-          <div class="w-full flex">
-            <div class="w-1/2 bg-doctor-gray-100 pl-2 rounded-2lg">
-              <%= image_pack_tag "doctor_full.png", class: "w-48" %>
-            </div>
-            <div class="w-1/2 ml-4">
-              <h2 class="text-2xl font-glacialbold">John Doe</h2>
-              <div class="w-full flex">
-                <%= render(StarRatingComponent.new(rating: 4, class: 'doc-rating', width: '5', height: '5')) %>
-                <div class=" text-xs ml-2">
-                  <a href="#" class="text-blue-500"> (300 Reviews)</a>
+          <div class="w-full sticky top-0">
+            <div class="w-full flex">
+              <div class="w-1/2 bg-doctor-gray-100 pl-2 rounded-2lg">
+                <%= image_pack_tag "doctor_full.png", class: "w-48" %>
+              </div>
+              <div class="w-1/2 ml-4">
+                <h2 class="text-2xl font-glacialbold">John Doe</h2>
+                <div class="w-full flex">
+                  <%= render(StarRatingComponent.new(rating: 4, class: 'doc-rating', width: '5', height: '5')) %>
+                  <div class=" text-xs ml-2">
+                    <a href="#" class="text-blue-500"> (300 Reviews)</a>
+                  </div>
                 </div>
-              </div>
-              <div class="w-full text-base py-1 text-gray-700">
-                FMDD Score: 9/10
-              </div>
-              <div class="w-full flex">
-                <div class="">
-                  <a href="#" class="flex items-center justify-center">
-                    <svg version="1.0" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 642.000000 533.000000" preserveAspectRatio="xMidYMid meet" fill="currentColor" class="text-gray-600 hover:text-green-500 transition duration-300 transform hover:scale-125" stroke="none">
-                      <g transform="translate(0.000000,533.000000) scale(0.100000,-0.100000)">
-                        <path d="M1790 5103 c-86 -10 -290 -57 -378 -88 -225 -78 -399 -176 -592 -329
+                <div class="w-full text-base py-1 text-gray-700">
+                  FMDD Score: 9/10
+                </div>
+                <div class="w-full flex">
+                  <div class="">
+                    <a href="#" class="flex items-center justify-center">
+                      <svg version="1.0" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 642.000000 533.000000" preserveAspectRatio="xMidYMid meet" fill="currentColor" class="text-gray-600 hover:text-green-500 transition duration-300 transform hover:scale-125" stroke="none">
+                        <g transform="translate(0.000000,533.000000) scale(0.100000,-0.100000)">
+                          <path d="M1790 5103 c-86 -10 -290 -57 -378 -88 -225 -78 -399 -176 -592 -329
                         -214 -171 -363 -361 -489 -620 -120 -247 -170 -459 -178 -756 -13 -458 94
                         -802 383 -1231 408 -607 846 -1051 1406 -1427 294 -197 587 -340 953 -465
                         l150 -51 185 1 185 1 150 50 c571 191 1043 474 1540 923 312 282 709 766 920
@@ -55,36 +57,32 @@
                         -1663 -1517 -268 -134 -550 -238 -672 -247 -72 -6 -156 12 -318 69 -505 177
                         -1016 506 -1434 923 -430 428 -803 957 -909 1290 -99 308 -99 657 0 945 35
                         102 120 270 181 355 215 305 562 533 927 610 132 28 375 33 520 11z"></path>
-                      </g>
-                    </svg>
-                  </a>
-                </div>
-                <div class=" ml-2">
-                  <a href="#" class="flex items-center justify-center">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="text-gray-700 hover:text-green-500 transition duration-300 transform hover:scale-125">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z"></path>
-                    </svg>
-                  </a>
+                        </g>
+                      </svg>
+                    </a>
+                  </div>
+                  <div class=" ml-2">
+                    <a href="#" class="flex items-center justify-center">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="text-gray-700 hover:text-green-500 transition duration-300 transform hover:scale-125">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z"></path>
+                      </svg>
+                    </a>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-          <div class="w-full text-base bg-doctor-gray-100 mt-5 py-4 rounded-tl-2lg rounded-br-2lg">
-            <div class="flex items-center justify-center text-gray-800">
-              Are you doctor John Doe?
-            </div>
-            <div class=" flex items-center justify-center">
-              <a href="#" class=" text-blue-500 hover:underline"> Claim Your Profile </a>
+            <div class="w-full text-base bg-doctor-gray-100 mt-5 py-4 rounded-tl-2lg rounded-br-2lg">
+              <div class="flex items-center justify-center text-gray-800">
+                Are you doctor John Doe?
+              </div>
+              <div class=" flex items-center justify-center">
+                <a href="#" class=" text-blue-500 hover:underline"> Claim Your Profile </a>
+              </div>
             </div>
           </div>
         </div>
         <div class="w-8/12">
-          <div class=" relative w-full flex justify-between border rounded-lg border-gray-600 px-2 py-1 shadow-lg text-gray-700">
-            <div class="w-full text-center">Practice</div>
-            <div class="w-full text-center">Contact</div>
-            <div class="w-full text-center">Credentials</div>
-            <div class="w-full text-center">Background</div>
-            <div class="w-full text-center">Reviews</div>
+          <div>
             <div class="absolute right-0 -mr-32 -mt-48 z-50">
               <%=image_pack_tag "yellow_circle_outline_opacity_right.png", class: "w-24" %>
             </div>
@@ -95,8 +93,25 @@
               <%=image_pack_tag "light_grey_round_edge_sides.svg", class: "w-16 h-64" %>
             </div>
           </div>
+          <div class="w-full flex justify-between border-2 rounded-lg border-gray-600 px-2 py-2 shadow-lg text-gray-700 sticky top-0 bg-white">
+            <div class="active w-full text-center">
+              <a href="#practice" class="transition-all scroll-to">Practice</a>
+            </div>
+            <div class="w-full text-center transition-all scroll-to">
+              <a href="#contact" class="transition-all scroll-to">Contact</a>
+            </div>
+            <div class="w-full text-center transition-all scroll-to">
+              <a href="#credentials" class="transition-all scroll-to">Credentials</a>
+            </div>
+            <div class="w-full text-center transition-all scroll-to">
+              <a href="#background" class="transition-all scroll-to">Background</a>
+            </div>
+            <div class="w-full text-center transition-all scroll-to">
+              <a href="#reviews" class="transition-all scroll-to">Reviews</a>
+            </div>
+          </div>
           <div class="w-full text-gray-800">
-            <div class="w-full shadow rounded-lg border border-gray-300 mt-4">
+            <div class="w-full shadow rounded-lg border border-gray-300 mt-4" id="practice">
               <div class="text-lg font-glacialbold tracking-wide pl-4 pt-3">
                 Practice
               </div>
@@ -206,7 +221,7 @@
                 </div>
               </div>
             </div>
-            <div class="w-full shadow rounded-lg border border-gray-300 mt-4">
+            <div class="w-full shadow rounded-lg border border-gray-300 mt-4" id="contact">
               <div class="text-lg font-glacialbold tracking-wide pl-4 pt-3">
                 Contact
               </div>
@@ -243,7 +258,7 @@
                 <%=image_pack_tag "off_white_half_full_circle.svg", class: "w-16" %>
               </div>
             </div>
-            <div class="w-full shadow rounded-lg border border-gray-300 mt-4">
+            <div class="w-full shadow rounded-lg border border-gray-300 mt-4" id="credentials">
               <div class="text-lg font-glacialbold tracking-wide pl-4 pt-3">
                 Credentials
               </div>
@@ -303,14 +318,14 @@
                 </div>
               </div>
             </div>
-            <div class="w-full h-32 shadow rounded-lg border border-gray-300 mt-4">
+            <div class="w-full h-32 shadow rounded-lg border border-gray-300 mt-4" id="background">
               <div class="text-lg font-glacialbold tracking-wide pl-4 pt-3">
                 Professional Background Information
               </div>
               <div class="py-3 pl-4 w-full ">
               </div>
             </div>
-            <div class="w-full shadow rounded-lg border border-gray-300 mt-4">
+            <div class="w-full shadow rounded-lg border border-gray-300 mt-4" id="reviews">
               <div class="text-lg font-glacialbold tracking-wide pl-4 pt-3">
                 Patient Reviews
               </div>
