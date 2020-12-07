@@ -95,6 +95,16 @@ class Doctor < ApplicationRecord
     phone.gsub(/[^0-9]/, '')
   end
 
+  def display_practice_name
+    if style == 'dpc'
+      "Direct Primary Care"
+    elsif style == 'concierge'
+      "Concierge"
+    else
+      "Direct Primary Care/Concierge"
+    end
+  end
+
   private
 
   def set_fdd_id

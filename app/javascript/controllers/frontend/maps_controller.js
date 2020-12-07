@@ -2,10 +2,8 @@ import { Controller } from 'stimulus';
 import { ajax } from 'jquery';
 import ParamRedirect, {
   AddHoverHighlight,
-  hideLoading,
   locationParams,
   ParamUrl,
-  showLoading,
   URIPush,
 } from './param_redirect';
 import MapPinGenerator, { customIcon } from './map_pin_generator';
@@ -78,6 +76,7 @@ export default class extends Controller {
   setPopups() {
     const pins = this.generatePopups();
     this.setPins(pins);
+    this.maps.fitZoom();
     // console.log(this.maps.addMarkers(pins));
     // pins.forEach((pin) => this.maps.drawOverlay(pin));
   }
@@ -106,7 +105,6 @@ export default class extends Controller {
         this.infoWindow = marker.infoWindow;
       });
     });
-    this.maps.fitZoom();
   }
 
   paramters() {
@@ -158,7 +156,7 @@ export default class extends Controller {
   }
 
   renderPins(pinArray = ["0.0, 0.0, '', ''"]) {
-    this.maps.removeMarkers();
+    // this.maps.removeMarkers();
     const pins = this.pinData(pinArray);
     // pins.forEach((pin) => this.maps.drawOverlay(pin));
     this.setPins(pins);
@@ -171,7 +169,7 @@ export default class extends Controller {
 
   getResults({ lat, lng }) {
     const near = `${lat},${lng}`;
-    showLoading();
+    // showLoading();
     ajax({
       url: ParamUrl({
         changeParams: { near },
@@ -200,12 +198,12 @@ export default class extends Controller {
           removeParams: ['place', 'page'],
         });
         AddHoverHighlight();
-        hideLoading();
+        // hideLoading();
         return null;
       },
       (err) => {
         console.log(err);
-        hideLoading();
+        // hideLoading();
       }
     );
   }

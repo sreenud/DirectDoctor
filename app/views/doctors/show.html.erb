@@ -1,49 +1,50 @@
 <% @remove_sticky_header = true %>
-<div class="lg:grid lg:w-full lg:grid-cols-12 flex">
-  <div class="lg:mt-32 lg:col-span-1">
-  </div>
-  <div class="lg:col-span-10 mt-4 relative -ml-4 -mr-4">
-    <div class="w-full">
-      <!-- component -->
-      <nav aria-label="Breadcrumb" class="text-sm">
-        <ul class="list-none p-0 inline-flex">
-          <li class="flex items-left">
-            <a href="#" class="text-doctor-yellow pr-2">Home</a>
-            <span class="text-gray-500 pr-2">&gt;</span>
-          </li>
-          <li class="flex items-left">
-            <a href="#" class="text-doctor-yellow pr-2">Find a doctor</a>
-            <span class="text-gray-500 pr-2">&gt;</span>
-          </li>
-          <li class="text-gray-500" aria-current="page">
-            State
-          </li>
-        </ul>
-      </nav>
-      <div class="lg:w-full flex mt-10 w-4">
-        <div class="w-4/12 mr-8">
-          <div class="w-full sticky top-0">
-            <div class="w-full flex">
-              <div class="w-1/2 bg-doctor-gray-100 pl-2 rounded-2lg">
-                <%= image_pack_tag "doctor_full.png", class: "w-48" %>
-              </div>
-              <div class="w-1/2 ml-4">
-                <h2 class="text-2xl font-glacialbold">John Doe</h2>
-                <div class="w-full flex">
-                  <%= render(StarRatingComponent.new(rating: 4, class: 'doc-rating', width: '5', height: '5')) %>
-                  <div class=" text-xs ml-2">
-                    <a href="#" class="text-blue-500"> (300 Reviews)</a>
+<% if @doctor.present? %>
+  <div class="lg:grid lg:w-full lg:grid-cols-12 flex">
+    <div class="lg:mt-32 lg:col-span-1">
+    </div>
+    <div class="lg:col-span-10 mt-4 relative -ml-4 -mr-4">
+      <div class="w-full">
+        <!-- component -->
+        <nav aria-label="Breadcrumb" class="text-sm">
+          <ul class="list-none p-0 inline-flex">
+            <li class="flex items-left">
+              <a href="#" class="text-doctor-yellow pr-2">Home</a>
+              <span class="text-gray-500 pr-2">&gt;</span>
+            </li>
+            <li class="flex items-left">
+              <a href="#" class="text-doctor-yellow pr-2">Find a doctor</a>
+              <span class="text-gray-500 pr-2">&gt;</span>
+            </li>
+            <li class="text-gray-500" aria-current="page">
+              State
+            </li>
+          </ul>
+        </nav>
+        <div class="lg:w-full flex mt-10 w-4">
+          <div class="w-4/12 mr-8">
+            <div class="w-full sticky top-0">
+              <div class="w-full flex">
+                <div class="w-1/2 bg-doctor-gray-100 pl-2 rounded-2lg">
+                  <%= image_pack_tag "doctor_full.png", class: "w-48" %>
+                </div>
+                <div class="w-1/2 ml-4">
+                  <h2 class="text-2xl font-glacialbold"><%=@doctor&.name%></h2>
+                  <div class="w-full flex">
+                    <%= render(StarRatingComponent.new(rating: 4, class: 'doc-rating', width: '5', height: '5')) %>
+                    <div class=" text-xs ml-2">
+                      <a href="#" class="text-blue-500"> (300 Reviews)</a>
+                    </div>
                   </div>
-                </div>
-                <div class="w-full text-base py-1 text-gray-700">
-                  FMDD Score: 9/10
-                </div>
-                <div class="w-full flex">
-                  <div class="">
-                    <a href="#" class="flex items-center justify-center">
-                      <svg version="1.0" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 642.000000 533.000000" preserveAspectRatio="xMidYMid meet" fill="currentColor" class="text-gray-600 hover:text-green-500 transition duration-300 transform hover:scale-125" stroke="none">
-                        <g transform="translate(0.000000,533.000000) scale(0.100000,-0.100000)">
-                          <path d="M1790 5103 c-86 -10 -290 -57 -378 -88 -225 -78 -399 -176 -592 -329
+                  <div class="w-full text-base py-1 text-gray-700">
+                    FMDD Score: <%=@doctor.fmdd_score%>/10
+                  </div>
+                  <div class="w-full flex">
+                    <div class="">
+                      <a href="#" class="flex items-center justify-center">
+                        <svg version="1.0" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 642.000000 533.000000" preserveAspectRatio="xMidYMid meet" fill="currentColor" class="text-gray-600 hover:text-green-500 transition duration-300 transform hover:scale-125" stroke="none">
+                          <g transform="translate(0.000000,533.000000) scale(0.100000,-0.100000)">
+                            <path d="M1790 5103 c-86 -10 -290 -57 -378 -88 -225 -78 -399 -176 -592 -329
                         -214 -171 -363 -361 -489 -620 -120 -247 -170 -459 -178 -756 -13 -458 94
                         -802 383 -1231 408 -607 846 -1051 1406 -1427 294 -197 587 -340 953 -465
                         l150 -51 185 1 185 1 150 50 c571 191 1043 474 1540 923 312 282 709 766 920
@@ -57,583 +58,588 @@
                         -1663 -1517 -268 -134 -550 -238 -672 -247 -72 -6 -156 12 -318 69 -505 177
                         -1016 506 -1434 923 -430 428 -803 957 -909 1290 -99 308 -99 657 0 945 35
                         102 120 270 181 355 215 305 562 533 927 610 132 28 375 33 520 11z"></path>
-                        </g>
-                      </svg>
-                    </a>
-                  </div>
-                  <div class=" ml-2">
-                    <a href="#" class="flex items-center justify-center">
-                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="text-gray-700 hover:text-green-500 transition duration-300 transform hover:scale-125">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z"></path>
-                      </svg>
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="w-full text-base bg-doctor-gray-100 mt-5 py-4 rounded-tl-2lg rounded-br-2lg">
-              <div class="flex items-center justify-center text-gray-800">
-                Are you doctor John Doe?
-              </div>
-              <div class=" flex items-center justify-center">
-                <a href="#" class=" text-blue-500 hover:underline"> Claim Your Profile </a>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="w-8/12">
-          <div>
-            <div class="absolute right-0 -mr-32 -mt-48 z-50">
-              <%=image_pack_tag "yellow_circle_outline_opacity_right.png", class: "w-24" %>
-            </div>
-            <div class="absolute right-0 -mr-32 -mt-8 z-50">
-              <%=image_pack_tag "light_grey_2_lines_vertical.svg", class: "w-16" %>
-            </div>
-            <div class="absolute right-0 -mr-32 mt-24 z-50">
-              <%=image_pack_tag "light_grey_round_edge_sides.svg", class: "w-16 h-64" %>
-            </div>
-          </div>
-          <div class="w-full flex justify-between border-2 rounded-lg border-gray-500 px-2 py-2 shadow-lg text-gray-700 sticky top-0 bg-white">
-            <div class="active w-full text-center">
-              <a href="#practice" class="transition-all scroll-to">Practice</a>
-            </div>
-            <div><%=image_pack_tag "vertical_side_shadow_for_big_box.svg", class: "w-10 h-8"%></div>
-            <div class="w-full text-center transition-all scroll-to">
-              <a href="#contact" class="transition-all scroll-to">Contact</a>
-            </div>
-            <div><%=image_pack_tag "vertical_side_shadow_for_big_box.svg", class: "w-10 h-8"%></div>
-            <div class="w-full text-center transition-all scroll-to">
-              <a href="#credentials" class="transition-all scroll-to">Credentials</a>
-            </div>
-            <div><%=image_pack_tag "vertical_side_shadow_for_big_box.svg", class: "w-10 h-8"%></div>
-            <div class="w-full text-center transition-all scroll-to">
-              <a href="#background" class="transition-all scroll-to">Background</a>
-            </div>
-            <div><%=image_pack_tag "vertical_side_shadow_for_big_box.svg", class: "w-10 h-8"%></div>
-            <div class="w-full text-center transition-all scroll-to">
-              <a href="#reviews" class="transition-all scroll-to">Reviews</a>
-            </div>
-          </div>
-          <div class="w-full text-gray-800">
-            <div class="w-full shadow rounded-lg border border-gray-300 mt-4" id="practice">
-              <div class="text-lg font-glacialbold tracking-wide pl-4 pt-3">
-                Practice
-              </div>
-              <div class="py-3 pl-8 w-full">
-                <div class="w-full flex">
-                  <div class="w-full flex justify-between">
-                    <div class=" w-5/12 text-gray-600 text-sm">Doctor Name:</div>
-                    <div class=" w-7/12 text-base"><%=@doctor&.name%></div>
-                  </div>
-                  <div class="w-full flex">
-                    <div class="w-full flex justify-between">
-                      <div class=" w-5/12 text-gray-600 text-sm">Practice Name:</div>
-                      <div class=" w-7/12 text-base"><%=@doctor&.style%></div>
+                          </g>
+                        </svg>
+                      </a>
+                    </div>
+                    <div class=" ml-2">
+                      <a href="#" class="flex items-center justify-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="text-gray-700 hover:text-green-500 transition duration-300 transform hover:scale-125">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z"></path>
+                        </svg>
+                      </a>
                     </div>
                   </div>
                 </div>
-                <div class="w-full flex mt-2">
-                  <div class="w-full flex justify-between">
-                    <div class=" w-5/12 text-gray-600 text-sm">Speciality:</div>
-                    <div class=" w-7/12 text-base">IM/FM/PCP</div>
-                  </div>
+              </div>
+              <div class="w-full text-base bg-doctor-gray-100 mt-5 py-4 rounded-tl-2lg rounded-br-2lg">
+                <div class="flex items-center justify-center text-gray-800">
+                  Are you doctor John Doe?
+                </div>
+                <div class=" flex items-center justify-center">
+                  <a href="#" class=" text-blue-500 hover:underline"> Claim Your Profile </a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="w-8/12">
+            <div>
+              <div class="absolute right-0 -mr-32 -mt-48 z-50">
+                <%=image_pack_tag "yellow_circle_outline_opacity_right.png", class: "w-24" %>
+              </div>
+              <div class="absolute right-0 -mr-32 -mt-8 z-50">
+                <%=image_pack_tag "light_grey_2_lines_vertical.svg", class: "w-16" %>
+              </div>
+              <div class="absolute right-0 -mr-32 mt-24 z-50">
+                <%=image_pack_tag "light_grey_round_edge_sides.svg", class: "w-16 h-64" %>
+              </div>
+            </div>
+            <div class="w-full flex justify-between border-2 rounded-lg border-gray-500 px-2 py-2 shadow-lg text-gray-700 sticky top-0 bg-white">
+              <div class="active w-full text-center">
+                <a href="#practice" class="transition-all scroll-to">Practice</a>
+              </div>
+              <div><%=image_pack_tag "vertical_side_shadow_for_big_box.svg", class: "w-10 h-8"%></div>
+              <div class="w-full text-center transition-all scroll-to">
+                <a href="#contact" class="transition-all scroll-to">Contact</a>
+              </div>
+              <div><%=image_pack_tag "vertical_side_shadow_for_big_box.svg", class: "w-10 h-8"%></div>
+              <div class="w-full text-center transition-all scroll-to">
+                <a href="#credentials" class="transition-all scroll-to">Credentials</a>
+              </div>
+              <div><%=image_pack_tag "vertical_side_shadow_for_big_box.svg", class: "w-10 h-8"%></div>
+              <div class="w-full text-center transition-all scroll-to">
+                <a href="#background" class="transition-all scroll-to">Background</a>
+              </div>
+              <div><%=image_pack_tag "vertical_side_shadow_for_big_box.svg", class: "w-10 h-8"%></div>
+              <div class="w-full text-center transition-all scroll-to">
+                <a href="#reviews" class="transition-all scroll-to">Reviews</a>
+              </div>
+            </div>
+            <div class="w-full text-gray-800">
+              <div class="w-full shadow rounded-lg border border-gray-300 mt-4" id="practice">
+                <div class="text-lg font-glacialbold tracking-wide pl-4 pt-3">
+                  Practice
+                </div>
+                <div class="py-3 pl-8 w-full">
                   <div class="w-full flex">
                     <div class="w-full flex justify-between">
-                      <div class=" w-5/12 text-gray-600 text-sm">Style:</div>
-                      <div class=" w-7/12 text-base">MD/DO/NP/ARMP/FMP</div>
+                      <div class=" w-5/12 text-gray-600 text-sm">Doctor Name:</div>
+                      <div class=" w-7/12 text-base"><%=@doctor&.name%></div>
                     </div>
-                  </div>
-                </div>
-                <div class="w-full flex mt-2">
-                  <div class="w-full flex justify-between">
-                    <div class=" w-5/12 text-gray-600 text-sm">Access:</div>
-                    <div class=" w-7/12 text-base">24/7 365 Direct Access</div>
-                  </div>
-                  <div class="w-full flex">
-                    <div class="w-full flex justify-between">
-                      <div class=" w-5/12 text-gray-600 text-sm">Appointments:</div>
-                      <div class=" w-7/12 text-base">Next Day Appointments</div>
-                    </div>
-                  </div>
-                </div>
-                <div class="w-full flex mt-2">
-                  <div class="w-1/2 flex justify-between">
-                    <div class=" w-5/12 text-gray-600 text-sm">Max Patients in Panel:</div>
-                    <div class=" w-7/12 text-base text-left">600</div>
-                  </div>
-                </div>
-                <div class="w-full flex mt-2">
-                  <div class="w-full flex justify-between">
-                    <div class=" w-5/12 text-gray-600 text-sm">Additional Features:</div>
-                    <div class="w-7/12 text-base">
-                      <div class="w-full flex">
-                        <div> <%= render partial: "doctors/medal"%> </div>
-                        <div class="pl-2 text-base">Telehealth</div>
-                      </div>
-                      <div class="w-full flex mt-2">
-                        <div> <%= render partial: "doctors/medal"%> </div>
-                        <div class="pl-2 text-base">Hospital Affiliation</div>
+                    <div class="w-full flex">
+                      <div class="w-full flex justify-between">
+                        <div class=" w-5/12 text-gray-600 text-sm">Practice Name:</div>
+                        <div class=" w-7/12 text-base"><%=@doctor&.display_practice_name%></div>
                       </div>
                     </div>
                   </div>
-                  <div class="w-full flex">
+                  <div class="w-full flex mt-2">
                     <div class="w-full flex justify-between">
+                      <div class=" w-5/12 text-gray-600 text-sm">Speciality:</div>
+                      <div class=" w-7/12 text-base">IM/FM/PCP</div>
+                    </div>
+                    <div class="w-full flex">
+                      <div class="w-full flex justify-between">
+                        <div class=" w-5/12 text-gray-600 text-sm">Style:</div>
+                        <div class=" w-7/12 text-base">MD/DO/NP/ARMP/FMP</div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="w-full flex mt-2">
+                    <div class="w-full flex justify-between">
+                      <div class=" w-5/12 text-gray-600 text-sm">Access:</div>
+                      <div class=" w-7/12 text-base">24/7 365 Direct Access</div>
+                    </div>
+                    <div class="w-full flex">
+                      <div class="w-full flex justify-between">
+                        <div class=" w-5/12 text-gray-600 text-sm">Appointments:</div>
+                        <div class=" w-7/12 text-base">Next Day Appointments</div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="w-full flex mt-2">
+                    <div class="w-1/2 flex justify-between">
+                      <div class=" w-5/12 text-gray-600 text-sm">Max Patients in Panel:</div>
+                      <div class=" w-7/12 text-base text-left">600</div>
+                    </div>
+                  </div>
+                  <div class="w-full flex mt-2">
+                    <div class="w-full flex justify-between">
+                      <div class=" w-5/12 text-gray-600 text-sm">Additional Features:</div>
                       <div class="w-7/12 text-base">
                         <div class="w-full flex">
                           <div> <%= render partial: "doctors/medal"%> </div>
-                          <div class="pl-2 text-base">Home Health</div>
+                          <div class="pl-2 text-base">Telehealth</div>
                         </div>
                         <div class="w-full flex mt-2">
                           <div> <%= render partial: "doctors/medal"%> </div>
-                          <div class="pl-2 text-base">Holistic/Lifestyle Medicine</div>
+                          <div class="pl-2 text-base">Hospital Affiliation</div>
                         </div>
                       </div>
                     </div>
-                  </div>
-                </div>
-                <div class="w-full flex mt-3">
-                  <div class="w-1/2 flex justify-between">
-                    <div class=" w-5/12 text-gray-600 text-sm">Languages:</div>
-                    <div class=" w-7/12 text-base text-left items-center flex ">
-                      English, French
+                    <div class="w-full flex">
+                      <div class="w-full flex justify-between">
+                        <div class="w-7/12 text-base">
+                          <div class="w-full flex">
+                            <div> <%= render partial: "doctors/medal"%> </div>
+                            <div class="pl-2 text-base">Home Health</div>
+                          </div>
+                          <div class="w-full flex mt-2">
+                            <div> <%= render partial: "doctors/medal"%> </div>
+                            <div class="pl-2 text-base">Holistic/Lifestyle Medicine</div>
+                          </div>
+                        </div>
+                      </div>
                     </div>
-                  </div>
-                </div>
-                <div class="w-full flex mt-3">
-                  <div class="w-1/2 flex justify-between">
-                    <div class=" w-5/12 text-gray-600 text-sm">Cost:</div>
-                    <div class=" w-7/12 text-base text-left items-center flex ">
-                      $ 374,000
-                    </div>
-                  </div>
-                </div>
-                <div class="w-full flex mt-3">
-                  <div class="w-1/2 flex justify-between">
-                    <div class=" w-5/12 text-gray-600 text-sm">Consultation:</div>
-                    <div class=" w-7/12 text-base text-left items-center flex ">
-                      15 min
-                    </div>
-                  </div>
-                </div>
-                <div class="w-full mt-5">
-                  <div class="w-full justify-left">
-                    <div class=" w-5/12 text-gray-600 text-sm">Practice Details:</div>
-                    <div class=" w-7/12 text-base text-left justify-left">
-                      Description for the practice detailswill go here.
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="w-full shadow rounded-lg border border-gray-300 mt-4" id="contact">
-              <div class="text-lg font-glacialbold tracking-wide pl-4 pt-3">
-                Contact
-              </div>
-              <div class="py-3 pl-4 w-full flex">
-                <div class="w-4/12">
-                  Map will go here
-                </div>
-                <div class="w-8/12">
-                  <div class=" text-gray-600 text-sm">Address</div>
-                  <div>
-                    Address of the doctor should go here
                   </div>
                   <div class="w-full flex mt-3">
-                    <div class="pt-1"><%= image_pack_tag "icons/email.svg", class: "w-5 h-5" %></div>
-                    <div class="ml-4">Message</div>
+                    <div class="w-1/2 flex justify-between">
+                      <div class=" w-5/12 text-gray-600 text-sm">Languages:</div>
+                      <div class=" w-7/12 text-base text-left items-center flex ">
+                        English, French
+                      </div>
+                    </div>
                   </div>
-                  <div class="w-full flex mt-1">
-                    <div class="pt-1"><%= image_pack_tag "icons/phone.svg", class: "w-5 h-5" %></div>
-                    <div class="ml-4">090078601</div>
+                  <div class="w-full flex mt-3">
+                    <div class="w-1/2 flex justify-between">
+                      <div class=" w-5/12 text-gray-600 text-sm">Cost:</div>
+                      <div class=" w-7/12 text-base text-left items-center flex ">
+                        $ 374,000
+                      </div>
+                    </div>
                   </div>
-                  <div class="w-full flex mt-1">
-                    <div class="pt-1"><%= image_pack_tag "icons/web.svg", class: "w-5 h-5" %></div>
-                    <div class="ml-4">www.johndoe.com</div>
+                  <div class="w-full flex mt-3">
+                    <div class="w-1/2 flex justify-between">
+                      <div class=" w-5/12 text-gray-600 text-sm">Consultation:</div>
+                      <div class=" w-7/12 text-base text-left items-center flex ">
+                        15 min
+                      </div>
+                    </div>
+                  </div>
+                  <div class="w-full mt-5">
+                    <div class="w-full justify-left">
+                      <div class=" w-5/12 text-gray-600 text-sm">Practice Details:</div>
+                      <div class=" w-7/12 text-base text-left justify-left">
+                        Description for the practice detailswill go here.
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
-              <div class="absolute right-0 -mr-24 -mt-40 z-50">
-                <%=image_pack_tag "yellow_circle_big_shadow.svg", class: "w-16" %>
-              </div>
-              <div class="absolute right-0 -mr-32 -mt-48">
-                <%=image_pack_tag "light_yellow_slant.svg", class: "w-16" %>
-              </div>
-              <div class="absolute right-0 -mr-32 z-50 -mt-32">
-                <%=image_pack_tag "off_white_half_full_circle.svg", class: "w-16" %>
-              </div>
-            </div>
-            <div class="w-full shadow rounded-lg border border-gray-300 mt-4" id="credentials">
-              <div class="text-lg font-glacialbold tracking-wide pl-4 pt-3">
-                Credentials
-              </div>
-              <div class="py-3 pl-4 w-full ">
-                <div class="absolute left-0 -ml-24 z-50 mt-20">
-                  <%=image_pack_tag "yellow_half_circle_thick.svg", class: "w-24" %>
+              <div class="w-full shadow rounded-lg border border-gray-300 mt-4" id="contact">
+                <div class="text-lg font-glacialbold tracking-wide pl-4 pt-3">
+                  Contact
                 </div>
-                <div class="absolute left-0 -ml-12 mt-12">
+                <div class="py-3 pl-4 w-full flex">
+                  <div
+                  class="w-4/12"
+                  data-controller="profiles"
+                  data-profiles-location="<%= @doctor.to_coordinates.join(',') %>"
+                >
+                    <div id="map" style="height: 160px"></div>
+                  </div>
+                  <div class="w-8/12">
+                    <div class=" text-gray-600 text-sm">Address</div>
+                    <div>
+                      Address of the doctor should go here
+                    </div>
+                    <div class="w-full flex mt-3">
+                      <div class="pt-1"><%= image_pack_tag "icons/email.svg", class: "w-5 h-5" %></div>
+                      <div class="ml-4">Message</div>
+                    </div>
+                    <div class="w-full flex mt-1">
+                      <div class="pt-1"><%= image_pack_tag "icons/phone.svg", class: "w-5 h-5" %></div>
+                      <div class="ml-4">090078601</div>
+                    </div>
+                    <div class="w-full flex mt-1">
+                      <div class="pt-1"><%= image_pack_tag "icons/web.svg", class: "w-5 h-5" %></div>
+                      <div class="ml-4">www.johndoe.com</div>
+                    </div>
+                  </div>
+                </div>
+                <div class="absolute right-0 -mr-24 -mt-40 z-50">
                   <%=image_pack_tag "yellow_circle_big_shadow.svg", class: "w-16" %>
                 </div>
-                <div class="w-full flex">
-                  <div class="w-1/3 text-right text-gray-600 text-sm">
-                    Education:
-                  </div>
-                  <div class="w-2/3 relative ml-8">
-                    <div class="border-r border-gray-800 absolute h-full top-0 mt-2" style="left: 5px"></div>
-                    <ul class="list-none m-0 p-0">
-                      <li class="mb-2">
-                        <div class="flex items-center mb-1">
-                          <div class="bg-gray-800 rounded-full h-3 w-3"></div>
-                          <div class="flex-1 ml-4 font-medium">1996 Medical School - Harvard</div>
-                        </div>
-                      </li>
-                      <li class="mt-5">
-                        <div class="flex items-center mb-1">
-                          <div class="bg-gray-800 rounded-full h-3 w-3"></div>
-                          <div class="flex-1 ml-4 font-medium">2005 IM Recidency - Stanford</div>
-                        </div>
-                      </li>
-                      <li class="mt-5">
-                        <div class="flex items-center mb-1">
-                          <div class="bg-gray-800 rounded-full h-3 w-3"></div>
-                          <div class="flex-1 ml-4 font-medium">2010 IM Recidency - Stanford</div>
-                        </div>
-                      </li>
-                    </ul>
-                  </div>
+                <div class="absolute right-0 -mr-32 -mt-48">
+                  <%=image_pack_tag "light_yellow_slant.svg", class: "w-16" %>
                 </div>
-                <div class="w-full flex mt-6">
-                  <div class="w-1/3 text-right text-gray-600 text-sm">
-                    Certification:
-                  </div>
-                  <div class="w-2/3 ml-8">
-                    2015 - IBAM
-                  </div>
-                </div>
-                <div class="w-full flex mt-6">
-                  <div class="w-1/3 text-right text-gray-600 text-sm">
-                    Achievements:
-                  </div>
-                  <div class="w-2/3 ml-8">
-                    <div class="mb-2">Reasearch</div>
-                    <div class="mb-2">Publications</div>
-                    <div class="mb-2">Community Abcd</div>
-                    <div class="mb-2">Media Appearance</div>
-                  </div>
+                <div class="absolute right-0 -mr-32 z-50 -mt-32">
+                  <%=image_pack_tag "off_white_half_full_circle.svg", class: "w-16" %>
                 </div>
               </div>
-            </div>
-            <div class="w-full h-32 shadow rounded-lg border border-gray-300 mt-4" id="background">
-              <div class="text-lg font-glacialbold tracking-wide pl-4 pt-3">
-                Professional Background Information
-              </div>
-              <div class="py-3 pl-4 w-full ">
-              </div>
-            </div>
-            <div class="w-full shadow rounded-lg border border-gray-300 mt-4" id="reviews">
-              <div class="text-lg font-glacialbold tracking-wide pl-4 pt-3">
-                Patient Reviews
-              </div>
-              <div class="py-3 pl-4 w-full box-bottom-shadow flex">
-                <div class="absolute right-0 z-50 -mt-8" style="margin-right: -7rem;">
-                  <%=image_pack_tag "yellow_circle_big_shadow.svg", class: "w-16" %>
+              <div class="w-full shadow rounded-lg border border-gray-300 mt-4" id="credentials">
+                <div class="text-lg font-glacialbold tracking-wide pl-4 pt-3">
+                  Credentials
                 </div>
-                <div class="absolute right-0 z-50 mt-6" style="margin-right: -7rem;">
-                  <%=image_pack_tag "off_white_circle_full.svg", class: "w-16" %>
-                </div>
-                <div class="absolute left-0 z-50 mt-16" style="margin-left: -7rem;">
-                  <%=image_pack_tag "yellow_circle_outline_opacity.svg", class: "w-24" %>
-                </div>
-                <div class="absolute left-0 z-50 mt-56" style="margin-left: -7rem;">
-                  <%=image_pack_tag "light_grey_3_lines_horizontal.svg", class: "w-32" %>
-                </div>
-                <div class="w-3/12 items-center justify-center box-right-shadow">
-                  <div class="text-6xl text-center">4.5</div>
-                  <div class="w-full justify-center flex">
-                    <%= render(StarRatingComponent.new(rating: 4, class: 'doc-rating', width: '5', height: '5')) %>
+                <div class="py-3 pl-4 w-full ">
+                  <div class="absolute left-0 -ml-24 z-50 mt-20">
+                    <%=image_pack_tag "yellow_half_circle_thick.svg", class: "w-24" %>
                   </div>
-                  <div class="w-full flex justify-center mt-3">
-                    <a href="#" class=" text-blue-500">13 (Reviews)</a>
+                  <div class="absolute left-0 -ml-12 mt-12">
+                    <%=image_pack_tag "yellow_circle_big_shadow.svg", class: "w-16" %>
                   </div>
-                </div>
-                <div class="w-9/12 flex ml-8">
-                  <div class="w-1/2">
-                    <div class="w-full flex items-center">
-                      <div class="w-2/12 text-sm ">5 Star</div>
-                      <div class="w-8/12 bg-gray-400 h-5"></div>
-                      <div class="w-2/12 text-blue-400 mx-2 text-sm">0%</div>
-                    </div>
-                    <div class="w-full flex items-center mt-2">
-                      <div class="w-2/12 text-sm ">4 Star</div>
-                      <div class="w-8/12 bg-doctor-yellow h-5"></div>
-                      <div class="w-2/12 text-blue-400 mx-2 text-sm">95%</div>
-                    </div>
-                    <div class="w-full flex items-center mt-2">
-                      <div class="w-2/12 text-sm ">3 Star</div>
-                      <div class="w-8/12 bg-gray-400 h-5"></div>
-                      <div class="w-2/12 text-blue-400 mx-2 text-sm">0%</div>
-                    </div>
-                    <div class="w-full flex items-center mt-2">
-                      <div class="w-2/12 text-sm ">2 Star</div>
-                      <div class="w-8/12 bg-gray-400 h-5"></div>
-                      <div class="w-2/12 text-blue-400 mx-2 text-sm">0%</div>
-                    </div>
-                    <div class="w-full flex items-center mt-2">
-                      <div class="w-2/12 text-sm ">1 Star</div>
-                      <div class="w-8/12 bg-gray-400 h-5"></div>
-                      <div class="w-2/12 text-blue-400 mx-2 text-sm">0%</div>
-                    </div>
-                  </div>
-                  <div class="w-1/2 pl-6 pr-8">
-                    <div class="w-full text-base bg-doctor-yellow-100 pt-4 pb-8 rounded-tl-2lg rounded-br-2lg">
-                      <div class="flex items-center justify-center text-gray-800">
-                        <%= render(StarRatingComponent.new(rating: 0, class: 'doc-rating', width: '5', height: '5')) %>
-                      </div>
-                      <div class=" text-xs flex justify-center">
-                        Write a Review
-                      </div>
-                      <div class="flex justify-center">
-                        <textarea></textarea>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <% (1..2).each do |index| %>
-                <% bottom_shadow = (index < 2) ? "box-bottom-shadow" : ""  %>
-                <div class="py-6 pl-6 w-full <%=bottom_shadow%> flex">
                   <div class="w-full flex">
-                    <div class="w-3/12">
-                      <%= render(StarRatingComponent.new(rating: 5, class: 'doc-rating', width: '6', height: '6')) %>
-                      <div class="text-sm mt-2">Posted by Anna Kelina</div>
-                      <div class="text-gray-600 text-sm">October 02, 2020</div>
+                    <div class="w-1/3 text-right text-gray-600 text-sm">
+                      Education:
                     </div>
-                    <div class="w-8/12">
-                      <div>Knowledgeable and Professional </div>
-                      <div class="text-sm pt-1">
-                        Review of patient comes here. Review of patient comes here. Review of patient comes here. Review of patient comes here. Review of patient comes here. Review of patient comes here.
+                    <div class="w-2/3 relative ml-8">
+                      <div class="border-r border-gray-800 absolute h-full top-0 mt-2" style="left: 5px"></div>
+                      <ul class="list-none m-0 p-0">
+                        <li class="mb-2">
+                          <div class="flex items-center mb-1">
+                            <div class="bg-gray-800 rounded-full h-3 w-3"></div>
+                            <div class="flex-1 ml-4 font-medium">1996 Medical School - Harvard</div>
+                          </div>
+                        </li>
+                        <li class="mt-5">
+                          <div class="flex items-center mb-1">
+                            <div class="bg-gray-800 rounded-full h-3 w-3"></div>
+                            <div class="flex-1 ml-4 font-medium">2005 IM Recidency - Stanford</div>
+                          </div>
+                        </li>
+                        <li class="mt-5">
+                          <div class="flex items-center mb-1">
+                            <div class="bg-gray-800 rounded-full h-3 w-3"></div>
+                            <div class="flex-1 ml-4 font-medium">2010 IM Recidency - Stanford</div>
+                          </div>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                  <div class="w-full flex mt-6">
+                    <div class="w-1/3 text-right text-gray-600 text-sm">
+                      Certification:
+                    </div>
+                    <div class="w-2/3 ml-8">
+                      2015 - IBAM
+                    </div>
+                  </div>
+                  <div class="w-full flex mt-6">
+                    <div class="w-1/3 text-right text-gray-600 text-sm">
+                      Achievements:
+                    </div>
+                    <div class="w-2/3 ml-8">
+                      <div class="mb-2">Reasearch</div>
+                      <div class="mb-2">Publications</div>
+                      <div class="mb-2">Community Abcd</div>
+                      <div class="mb-2">Media Appearance</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="w-full h-32 shadow rounded-lg border border-gray-300 mt-4" id="background">
+                <div class="text-lg font-glacialbold tracking-wide pl-4 pt-3">
+                  Professional Background Information
+                </div>
+                <div class="py-3 pl-4 w-full ">
+                </div>
+              </div>
+              <div class="w-full shadow rounded-lg border border-gray-300 mt-4" id="reviews">
+                <div class="text-lg font-glacialbold tracking-wide pl-4 pt-3">
+                  Patient Reviews
+                </div>
+                <div class="py-3 pl-4 w-full box-bottom-shadow flex">
+                  <div class="absolute right-0 z-50 -mt-8" style="margin-right: -7rem;">
+                    <%=image_pack_tag "yellow_circle_big_shadow.svg", class: "w-16" %>
+                  </div>
+                  <div class="absolute right-0 z-50 mt-6" style="margin-right: -7rem;">
+                    <%=image_pack_tag "off_white_circle_full.svg", class: "w-16" %>
+                  </div>
+                  <div class="absolute left-0 z-50 mt-16" style="margin-left: -7rem;">
+                    <%=image_pack_tag "yellow_circle_outline_opacity.svg", class: "w-24" %>
+                  </div>
+                  <div class="absolute left-0 z-50 mt-56" style="margin-left: -7rem;">
+                    <%=image_pack_tag "light_grey_3_lines_horizontal.svg", class: "w-32" %>
+                  </div>
+                  <div class="w-3/12 items-center justify-center box-right-shadow">
+                    <div class="text-6xl text-center">4.5</div>
+                    <div class="w-full justify-center flex">
+                      <%= render(StarRatingComponent.new(rating: 4, class: 'doc-rating', width: '5', height: '5')) %>
+                    </div>
+                    <div class="w-full flex justify-center mt-3">
+                      <a href="#" class=" text-blue-500">13 (Reviews)</a>
+                    </div>
+                  </div>
+                  <div class="w-9/12 flex ml-8">
+                    <div class="w-1/2">
+                      <div class="w-full flex items-center">
+                        <div class="w-2/12 text-sm ">5 Star</div>
+                        <div class="w-8/12 bg-gray-400 h-5"></div>
+                        <div class="w-2/12 text-blue-400 mx-2 text-sm">0%</div>
                       </div>
-                      <div class="w-full flex mt-2 items-center">
-                        <div class="w-1/12">
-                          <div class="w-8 h-8 rounded-full bg-doctor-gray-100"></div>
+                      <div class="w-full flex items-center mt-2">
+                        <div class="w-2/12 text-sm ">4 Star</div>
+                        <div class="w-8/12 bg-doctor-yellow h-5"></div>
+                        <div class="w-2/12 text-blue-400 mx-2 text-sm">95%</div>
+                      </div>
+                      <div class="w-full flex items-center mt-2">
+                        <div class="w-2/12 text-sm ">3 Star</div>
+                        <div class="w-8/12 bg-gray-400 h-5"></div>
+                        <div class="w-2/12 text-blue-400 mx-2 text-sm">0%</div>
+                      </div>
+                      <div class="w-full flex items-center mt-2">
+                        <div class="w-2/12 text-sm ">2 Star</div>
+                        <div class="w-8/12 bg-gray-400 h-5"></div>
+                        <div class="w-2/12 text-blue-400 mx-2 text-sm">0%</div>
+                      </div>
+                      <div class="w-full flex items-center mt-2">
+                        <div class="w-2/12 text-sm ">1 Star</div>
+                        <div class="w-8/12 bg-gray-400 h-5"></div>
+                        <div class="w-2/12 text-blue-400 mx-2 text-sm">0%</div>
+                      </div>
+                    </div>
+                    <div class="w-1/2 pl-6 pr-8">
+                      <div class="w-full text-base bg-doctor-yellow-100 pt-4 pb-8 rounded-tl-2lg rounded-br-2lg">
+                        <div class="flex items-center justify-center text-gray-800">
+                          <%= render(StarRatingComponent.new(rating: 0, class: 'doc-rating', width: '5', height: '5')) %>
                         </div>
-                        <div class="w-10/12 ml-2">
-                          <div class="flex justify-center items-center w-full bg-white rounded-lg shadow-md border border-gray-300">
-                            <input class="w-full focus:outline-none bg-white text-sm mx-4 my-2" autocomplete="off" placeholder="Write a Comment">
-                            <!--<label class="ml-3 mr-5">
+                        <div class=" text-xs flex justify-center">
+                          Write a Review
+                        </div>
+                        <div class="flex justify-center">
+                          <textarea></textarea>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <% (1..2).each do |index| %>
+                  <% bottom_shadow = (index < 2) ? "box-bottom-shadow" : ""  %>
+                  <div class="py-6 pl-6 w-full <%=bottom_shadow%> flex">
+                    <div class="w-full flex">
+                      <div class="w-3/12">
+                        <%= render(StarRatingComponent.new(rating: 5, class: 'doc-rating', width: '6', height: '6')) %>
+                        <div class="text-sm mt-2">Posted by Anna Kelina</div>
+                        <div class="text-gray-600 text-sm">October 02, 2020</div>
+                      </div>
+                      <div class="w-8/12">
+                        <div>Knowledgeable and Professional </div>
+                        <div class="text-sm pt-1">
+                          Review of patient comes here. Review of patient comes here. Review of patient comes here. Review of patient comes here. Review of patient comes here. Review of patient comes here.
+                        </div>
+                        <div class="w-full flex mt-2 items-center">
+                          <div class="w-1/12">
+                            <div class="w-8 h-8 rounded-full bg-doctor-gray-100"></div>
+                          </div>
+                          <div class="w-10/12 ml-2">
+                            <div class="flex justify-center items-center w-full bg-white rounded-lg shadow-md border border-gray-300">
+                              <input class="w-full focus:outline-none bg-white text-sm mx-4 my-2" autocomplete="off" placeholder="Write a Comment">
+                              <!--<label class="ml-3 mr-5">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" class="w-5 text-gray-600" viewBox="0 0 24 24" stroke="currentColor">
                               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
                             </svg>
                           </label>-->
+                            </div>
                           </div>
                         </div>
                       </div>
                     </div>
                   </div>
+                <% end %>
+                <div class="w-full flex justify-end pr-6 pb-4">
+                  <a href="#" class=" text-blue-400 underline text-sm">View all reviews</a>
                 </div>
-              <% end %>
-              <div class="w-full flex justify-end pr-6 pb-4">
-                <a href="#" class=" text-blue-400 underline text-sm">View all reviews</a>
               </div>
-            </div>
-            <div class="w-full shadow rounded-lg border border-gray-300 mt-4 pb-4">
-              <div class="text-lg font-glacialbold tracking-wide pl-4 pt-3">
-                FMDD Score
-              </div>
-              <div class="py-3 pl-2 w-full flex ">
-                <div class="absolute left-0 mt-6 -ml-32">
-                  <%=image_pack_tag "light_yellow_slant.svg", class: "w-16" %>
+              <div class="w-full shadow rounded-lg border border-gray-300 mt-4 pb-4">
+                <div class="text-lg font-glacialbold tracking-wide pl-4 pt-3">
+                  FMDD Score
                 </div>
-                <div class="w-3/12 flex justify-center items-center">
-                  <div class="text-6xl text-center">10/10</div>
-                </div>
-                <div class="w-8/12 ml-4">
-                  <div>
-                    What does that mean?
+                <div class="py-3 pl-2 w-full flex ">
+                  <div class="absolute left-0 mt-6 -ml-32">
+                    <%=image_pack_tag "light_yellow_slant.svg", class: "w-16" %>
                   </div>
-                  <div class="text-sm">
-                    Description about FMDD Mode comes here. Description about FMDD Mode comes here. Description about FMDD Mode comes here. Description about FMDD Mode comes here. Description about FMDD Mode comes here.
+                  <div class="w-3/12 flex justify-center items-center">
+                    <div class="text-6xl text-center">10/10</div>
                   </div>
-                </div>
-              </div>
-            </div>
-            <div class="w-full shadow rounded-lg border border-gray-300 mt-4">
-              <div class="text-lg font-glacialbold tracking-wide pl-4 pt-3">
-                Physician Peer Recommendation
-              </div>
-              <div class="py-3 pl-4 w-full flex">
-                <div class="w-2/12 bg-doctor-gray-100 rounded-2lg overflow-hidden h-32">
-                  <%= image_pack_tag "doctor.png", class: "w-32 h-32 object-cover" %>
-                </div>
-                <div class="w-9/12">
-                  <div class="w-full">
-                    <div class="w-full flex">
-                      <div class="w-4/12 mt-2 pl-6">
-                        <div>
-                          <div class="text-gray-600 text-sm">Doctor Name:</div>
-                          <div class="text-sm">Graydon Ursel</div>
-                        </div>
-                        <div class="mt-2">
-                          <div class="text-gray-600 text-sm">Speciality:</div>
-                          <div class="text-sm">IM/AMDP</div>
-                        </div>
-                      </div>
-                      <div class="w-7/12 mt-2">
-                        <div>
-                          <div class="text-gray-600 text-sm">Date:</div>
-                          <div class="text-sm">Posted on: 02-12-2020</div>
-                        </div>
-                        <div class="mt-2">
-                          <div class="text-gray-600 text-sm">Location:</div>
-                          <div class="text-sm">Florida</div>
-                        </div>
-                      </div>
-                      <div class="w-2/12 ml-4 -mt-4">
-                        <div class="w-full text-base bg-doctor-gray-100 pt-4 pb-8 rounded-tl-2lg rounded-br-2lg">
-                          <div class="flex items-center justify-center text-gray-800">
-                            <svg viewBox="0 0 20 20" fill="currentColor" stroke="currentColor" class="w-5 h-5 fill-current text-gray-400">
-                              <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"></path>
-                            </svg>
-                          </div>
-                          <div class="text-xs flex justify-center px-6 text-center mt-2">
-                            Recommend this Doctor if you are a Physician
-                          </div>
-                        </div>
-                      </div>
+                  <div class="w-8/12 ml-4">
+                    <div>
+                      What does that mean?
                     </div>
-                    <div class="absolute right-0 -mt-12 -mr-32">
-                      <%=image_pack_tag "light_yellow_slant.svg", class: "w-16" %>
-                    </div>
-                    <div class="absolute left-0 -mt-16 ml-16">
-                      <%=image_pack_tag "yellow_circle_full.svg", class: "w-12" %>
-                    </div>
-                    <div class="absolute left-0 -mt-12 -ml-32">
-                      <%=image_pack_tag "yellow_circle_chipped.png", class: "w-64" %>
-                    </div>
-                  </div>
-                  <div class="w-full ml-6">
-                    <div>How do I know this Physician?</div>
                     <div class="text-sm">
                       Description about FMDD Mode comes here. Description about FMDD Mode comes here. Description about FMDD Mode comes here. Description about FMDD Mode comes here. Description about FMDD Mode comes here.
                     </div>
                   </div>
                 </div>
               </div>
-              <div class="w-full flex justify-end pr-6 pb-4">
-                <a href="#" class=" text-blue-400 underline text-sm">View all recommendations</a>
+              <div class="w-full shadow rounded-lg border border-gray-300 mt-4">
+                <div class="text-lg font-glacialbold tracking-wide pl-4 pt-3">
+                  Physician Peer Recommendation
+                </div>
+                <div class="py-3 pl-4 w-full flex">
+                  <div class="w-2/12 bg-doctor-gray-100 rounded-2lg overflow-hidden h-32">
+                    <%= image_pack_tag "doctor.png", class: "w-32 h-32 object-cover" %>
+                  </div>
+                  <div class="w-9/12">
+                    <div class="w-full">
+                      <div class="w-full flex">
+                        <div class="w-4/12 mt-2 pl-6">
+                          <div>
+                            <div class="text-gray-600 text-sm">Doctor Name:</div>
+                            <div class="text-sm">Graydon Ursel</div>
+                          </div>
+                          <div class="mt-2">
+                            <div class="text-gray-600 text-sm">Speciality:</div>
+                            <div class="text-sm">IM/AMDP</div>
+                          </div>
+                        </div>
+                        <div class="w-7/12 mt-2">
+                          <div>
+                            <div class="text-gray-600 text-sm">Date:</div>
+                            <div class="text-sm">Posted on: 02-12-2020</div>
+                          </div>
+                          <div class="mt-2">
+                            <div class="text-gray-600 text-sm">Location:</div>
+                            <div class="text-sm">Florida</div>
+                          </div>
+                        </div>
+                        <div class="w-2/12 ml-4 -mt-4">
+                          <div class="w-full text-base bg-doctor-gray-100 pt-4 pb-8 rounded-tl-2lg rounded-br-2lg">
+                            <div class="flex items-center justify-center text-gray-800">
+                              <svg viewBox="0 0 20 20" fill="currentColor" stroke="currentColor" class="w-5 h-5 fill-current text-gray-400">
+                                <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"></path>
+                              </svg>
+                            </div>
+                            <div class="text-xs flex justify-center px-6 text-center mt-2">
+                              Recommend this Doctor if you are a Physician
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="absolute right-0 -mt-12 -mr-32">
+                        <%=image_pack_tag "light_yellow_slant.svg", class: "w-16" %>
+                      </div>
+                      <div class="absolute left-0 -mt-16 ml-16">
+                        <%=image_pack_tag "yellow_circle_full.svg", class: "w-12" %>
+                      </div>
+                      <div class="absolute left-0 -mt-12 -ml-32">
+                        <%=image_pack_tag "yellow_circle_chipped.png", class: "w-64" %>
+                      </div>
+                    </div>
+                    <div class="w-full ml-6">
+                      <div>How do I know this Physician?</div>
+                      <div class="text-sm">
+                        Description about FMDD Mode comes here. Description about FMDD Mode comes here. Description about FMDD Mode comes here. Description about FMDD Mode comes here. Description about FMDD Mode comes here.
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="w-full flex justify-end pr-6 pb-4">
+                  <a href="#" class=" text-blue-400 underline text-sm">View all recommendations</a>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
     </div>
+    <div class="lg:mt-32 lg:col-span-1">
+    </div>
   </div>
-  <div class="lg:mt-32 lg:col-span-1">
-  </div>
-</div>
-<section class=" bg-no-repeat bg-cover" style="background-image: url(/system/light_grey_background.png);">
-  <div class="lg:grid lg:w-full grid-cols-12" style="padding-bottom: 18rem;">
-    <div class="lg:mt-32 col-span-2 relative"></div>
-    <div class="col-span-8 flex flex-wrap -mt-16 lg:-mt-1">
-      <div class="w-full mt-32">
-        <div class="w-full pt-2">
-          <h3 class="text-2xl font-hurmebold text-doctor-blue">Sponsored Listing</h3>
-        </div>
-        <div id="options-start-at" class="slider glide relative mt-6">
-          <div class="slider__track glide__track" data-glide-el="track">
-            <ul class="slider__slides glide__slides">
-              <% (1..6).each do |index| %>
-                <li class="slider__frame glide__slide rounded-lg mb-8">
-                  <div class="border border-gray-300 shadow-mdrounded-lg rounded-lg shadow-md">
-                    <div class="w-full bg-doctor-yellow-100 h-3 rounded-tl-md rounded-tr-md"></div>
-                    <div class="w-full p-3">
-                      <div class="w-full flex">
-                        <div class="w-5/12  bg-doctor-gray-100 rounded-lg overflow-hidden">
-                          <%= image_pack_tag "doctor.png", class: "w-32 h-32 object-cover" %>
+  <section class=" bg-no-repeat bg-cover" style="background-image: url(/system/light_grey_background.png);">
+    <div class="lg:grid lg:w-full grid-cols-12" style="padding-bottom: 18rem;">
+      <div class="lg:mt-32 col-span-2 relative"></div>
+      <div class="col-span-8 flex flex-wrap -mt-16 lg:-mt-1">
+        <div class="w-full mt-32">
+          <div class="w-full pt-2">
+            <h3 class="text-2xl font-hurmebold text-doctor-blue">Sponsored Listing</h3>
+          </div>
+          <div id="options-start-at" class="slider glide relative mt-6">
+            <div class="slider__track glide__track" data-glide-el="track">
+              <ul class="slider__slides glide__slides">
+                <% (1..6).each do |index| %>
+                  <li class="slider__frame glide__slide rounded-lg mb-8">
+                    <div class="border border-gray-300 shadow-mdrounded-lg rounded-lg shadow-md">
+                      <div class="w-full bg-doctor-yellow-100 h-3 rounded-tl-md rounded-tr-md"></div>
+                      <div class="w-full p-3">
+                        <div class="w-full flex">
+                          <div class="w-5/12  bg-doctor-gray-100 rounded-lg overflow-hidden">
+                            <%= image_pack_tag "doctor.png", class: "w-32 h-32 object-cover" %>
+                          </div>
+                          <div class="w-8/12 pl-3 mt-2">
+                            <div class=" text-sm font-glacialbold">Graydon Ursel</div>
+                            <div class="text-sm">FMDD Score: 10/10</div>
+                            <div class="text-xs mt-3">13 years of experience</div>
+                          </div>
                         </div>
-                        <div class="w-8/12 pl-3 mt-2">
-                          <div class=" text-sm font-glacialbold">Graydon Ursel</div>
-                          <div class="text-sm">FMDD Score: 10/10</div>
-                          <div class="text-xs mt-3">13 years of experience</div>
+                        <div class="w-full mt-4">
+                          <%= render(StarRatingComponent.new(rating: 5, class: 'doc-rating', width: '6', height: '6')) %>
+                          <div><a href="#" class=" text-blue-400 text-sm">300 reviews</a></div>
                         </div>
-                      </div>
-                      <div class="w-full mt-4">
-                        <%= render(StarRatingComponent.new(rating: 5, class: 'doc-rating', width: '6', height: '6')) %>
-                        <div><a href="#" class=" text-blue-400 text-sm">300 reviews</a></div>
-                      </div>
-                      <div class="w-full flex text-sm">
-                        <div class="w-1/2">IM/AMDP/FM</div>
-                        <div class="w-1/2">DPC/Con Doc</div>
-                      </div>
-                      <div class="w-full">
-                        <div class="w-full flex mt-2">
-                          <div> <%= render partial: "doctors/medal", locals:{ width: '15', height: '15'}%> </div>
-                          <div class="pl-2 text-xs">Telehealth</div>
+                        <div class="w-full flex text-sm">
+                          <div class="w-1/2">IM/AMDP/FM</div>
+                          <div class="w-1/2">DPC/Con Doc</div>
                         </div>
-                        <div class="w-full flex mt-1">
-                          <div> <%= render partial: "doctors/medal", locals:{ width: '15', height: '15'}%> </div>
-                          <div class="pl-2 text-xs">Holistic/Lifestyle Medicine</div>
+                        <div class="w-full">
+                          <div class="w-full flex mt-2">
+                            <div> <%= render partial: "doctors/medal", locals:{ width: '15', height: '15'}%> </div>
+                            <div class="pl-2 text-xs">Telehealth</div>
+                          </div>
+                          <div class="w-full flex mt-1">
+                            <div> <%= render partial: "doctors/medal", locals:{ width: '15', height: '15'}%> </div>
+                            <div class="pl-2 text-xs">Holistic/Lifestyle Medicine</div>
+                          </div>
                         </div>
-                      </div>
-                      <div class="w-full flex justify-end pr-4 mt-2">
-                        <a href="#" class="text-xs text-blue-400">View more...</a>
+                        <div class="w-full flex justify-end pr-4 mt-2">
+                          <a href="#" class="text-xs text-blue-400">View more...</a>
+                        </div>
                       </div>
                     </div>
-                  </div>
-                </li>
-              <% end %>
-            </ul>
-          </div>
-          <div data-glide-el="controls">
-            <button class="slider__arrow slider__arrow--prev glide__arrow glide__arrow--prev focus:outline-none" data-glide-dir="<">
-              <svg version="1.1" x="0px" y="0px" viewBox="0 0 40 40" enable-background="new 0 0 40 40" xml:space="preserve" fill="currentColor" class=" text-gray-500">
-                <g>
+                  </li>
+                <% end %>
+              </ul>
+            </div>
+            <div data-glide-el="controls">
+              <button class="slider__arrow slider__arrow--prev glide__arrow glide__arrow--prev focus:outline-none" data-glide-dir="<">
+                <svg version="1.1" x="0px" y="0px" viewBox="0 0 40 40" enable-background="new 0 0 40 40" xml:space="preserve" fill="currentColor" class=" text-gray-500">
                   <g>
                     <g>
-                      <path d="M22,26.5c-0.1,0-0.3,0-0.4-0.1l-4.6-4.6c-0.5-0.5-0.7-1.1-0.7-1.8s0.3-1.3,0.7-1.8l4.6-4.6c0.2-0.2,0.5-0.2,0.7,0s0.2,0.5,0,0.7l-4.6,4.6c-0.6,0.6-0.6,1.5,0,2.1l4.6,4.6c0.2,0.2,0.2,0.5,0,0.7C22.3,26.5,22.1,26.5,22,26.5z"/>
+                      <g>
+                        <path d="M22,26.5c-0.1,0-0.3,0-0.4-0.1l-4.6-4.6c-0.5-0.5-0.7-1.1-0.7-1.8s0.3-1.3,0.7-1.8l4.6-4.6c0.2-0.2,0.5-0.2,0.7,0s0.2,0.5,0,0.7l-4.6,4.6c-0.6,0.6-0.6,1.5,0,2.1l4.6,4.6c0.2,0.2,0.2,0.5,0,0.7C22.3,26.5,22.1,26.5,22,26.5z"/>
+                      </g>
                     </g>
                   </g>
-                </g>
-              </svg>
-            </button>
-            <button class="slider__arrow slider__arrow--next glide__arrow glide__arrow--next focus:outline-none" data-glide-dir=">">
-              <svg version="1.1" x="0px" y="0px" viewBox="0 0 40 40" enable-background="new 0 0 40 40" xml:space="preserve" fill="currentColor" class=" text-gray-500" >
-                <g>
+                </svg>
+              </button>
+              <button class="slider__arrow slider__arrow--next glide__arrow glide__arrow--next focus:outline-none" data-glide-dir=">">
+                <svg version="1.1" x="0px" y="0px" viewBox="0 0 40 40" enable-background="new 0 0 40 40" xml:space="preserve" fill="currentColor" class=" text-gray-500" >
                   <g>
                     <g>
-                      <path d="M18,26.5c-0.1,0-0.3,0-0.4-0.1c-0.2-0.2-0.2-0.5,0-0.7l4.6-4.6c0.6-0.6,0.6-1.5,0-2.1l-4.6-4.6c-0.2-0.2-0.2-0.5,0-0.7s0.5-0.2,0.7,0l4.6,4.6c0.5,0.5,0.7,1.1,0.7,1.8s-0.3,1.3-0.7,1.8l-4.6,4.6C18.3,26.5,18.1,26.5,18,26.5z"/>
+                      <g>
+                        <path d="M18,26.5c-0.1,0-0.3,0-0.4-0.1c-0.2-0.2-0.2-0.5,0-0.7l4.6-4.6c0.6-0.6,0.6-1.5,0-2.1l-4.6-4.6c-0.2-0.2-0.2-0.5,0-0.7s0.5-0.2,0.7,0l4.6,4.6c0.5,0.5,0.7,1.1,0.7,1.8s-0.3,1.3-0.7,1.8l-4.6,4.6C18.3,26.5,18.1,26.5,18,26.5z"/>
+                      </g>
                     </g>
                   </g>
-                </g>
-              </svg>
-            </button>
+                </svg>
+              </button>
+            </div>
           </div>
         </div>
       </div>
+      <div class="col-span-2 grid"></div>
     </div>
-    <div class="col-span-2 grid"></div>
-  </div>
-</section>
-<section class="">
-  <div class="lg:grid lg:w-full grid-cols-12">
-    <div class="col-span-1 relative">
-      <div class="absolute left-0 -mt-16 ml-10">
-        <%=image_pack_tag "yellow_circle_full.svg", class: "w-4" %>
+  </section>
+  <section class="">
+    <div class="lg:grid lg:w-full grid-cols-12">
+      <div class="col-span-1 relative">
+        <div class="absolute left-0 -mt-16 ml-10">
+          <%=image_pack_tag "yellow_circle_full.svg", class: "w-4" %>
+        </div>
+        <div class="absolute left-0 -mt-12">
+          <%=image_pack_tag "yellow_half_circle_thick.svg", class: "w-16" %>
+        </div>
       </div>
-      <div class="absolute left-0 -mt-12">
-        <%=image_pack_tag "yellow_half_circle_thick.svg", class: "w-16" %>
+      <div class="col-span-10 flex flex-wrap -mt-16 lg:-mt-1"></div>
+      <div class="col-span-1 grid">
+        <div class="absolute right-0">
+          <%=image_pack_tag "vector_plus_with_side_dots.svg", class: "w-40 -mr-20 -mt-48" %>
+        </div>
+        <div class="absolute right-0 -mt-12">
+          <%=image_pack_tag "yellow_circle_full.svg", class:"w-12 mr-24 -mt-24" %>
+        </div>
+        <div class="absolute right-0">
+          <%=image_pack_tag "off_white_1_4_circle_left.png", class: "w-16 -mt-56"%>
+        </div>
       </div>
     </div>
-    <div class="col-span-10 flex flex-wrap -mt-16 lg:-mt-1"></div>
-    <div class="col-span-1 grid">
-      <div class="absolute right-0">
-        <%=image_pack_tag "vector_plus_with_side_dots.svg", class: "w-40 -mr-20 -mt-48" %>
-      </div>
-      <div class="absolute right-0 -mt-12">
-        <%=image_pack_tag "yellow_circle_full.svg", class:"w-12 mr-24 -mt-24" %>
-      </div>
-      <div class="absolute right-0">
-        <%=image_pack_tag "off_white_1_4_circle_left.png", class: "w-16 -mt-56"%>
-      </div>
-    </div>
-  </div>
-</section>
+  </section>
+<% end %>
