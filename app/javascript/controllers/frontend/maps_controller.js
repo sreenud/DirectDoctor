@@ -30,12 +30,12 @@ export default class extends Controller {
       zoom: this.defaultZoom(),
       // zoomControl: false,
       fullscreenControl: false,
-      dragend: (e) => {
-        const { center } = e;
-        const lat = center.lat();
-        const lng = center.lng();
-        this.getResults({ lat, lng });
-      },
+      // dragend: (e) => {
+      //   const { center } = e;
+      //   const lat = center.lat();
+      //   const lng = center.lng();
+      //   this.getResults({ lat, lng });
+      // },
       // zoom_changed: (e) => {
       //   const { center } = e;
       //   const lat = center.lat();
