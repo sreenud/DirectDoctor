@@ -180,7 +180,7 @@ export default class extends Controller {
       }),
     }).then(
       // eslint-disable-next-line camelcase
-      ({ results, pins, max_distance, pagination }) => {
+      ({ results, pins, pagination }) => {
         const container = document.querySelector('#result-container');
         const paginationContainer = document.querySelector(
           '#pagination-container'
@@ -192,7 +192,7 @@ export default class extends Controller {
         paginationContainer.innerHTML = pagination;
         if (window.map_helpers !== undefined && window.map_helpers !== null) {
           window.map_helpers.renderPins(pins || []);
-          window.map_helpers.adjustZoomLevel(max_distance);
+          // window.map_helpers.adjustZoomLevel(max_distance);
         }
         URIPush({
           changeParams: { near },
