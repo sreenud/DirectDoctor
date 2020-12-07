@@ -2,10 +2,8 @@ import { Controller } from 'stimulus';
 import { ajax } from 'jquery';
 import ParamRedirect, {
   AddHoverHighlight,
-  hideLoading,
   locationParams,
   ParamUrl,
-  showLoading,
   URIPush,
 } from './param_redirect';
 import MapPinGenerator, { customIcon } from './map_pin_generator';
@@ -171,7 +169,7 @@ export default class extends Controller {
 
   getResults({ lat, lng }) {
     const near = `${lat},${lng}`;
-    showLoading();
+    // showLoading();
     ajax({
       url: ParamUrl({
         changeParams: { near },
@@ -200,12 +198,12 @@ export default class extends Controller {
           removeParams: ['place', 'page'],
         });
         AddHoverHighlight();
-        hideLoading();
+        // hideLoading();
         return null;
       },
       (err) => {
         console.log(err);
-        hideLoading();
+        // hideLoading();
       }
     );
   }
