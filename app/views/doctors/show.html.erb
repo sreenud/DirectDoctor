@@ -1,6 +1,6 @@
 <% @remove_sticky_header = true %>
 <% if @doctor.present? %>
-  <div class="lg:grid lg:w-full lg:grid-cols-12 flex">
+  <div class="lg:grid lg:w-full lg:grid-cols-12 flex" data-controller="doctor">
     <div class="lg:mt-32 lg:col-span-1">
     </div>
     <div class="lg:col-span-10 mt-4 relative -ml-4 -mr-4">
@@ -23,7 +23,7 @@
         </nav>
         <div class="lg:w-full flex mt-10 w-4">
           <div class="w-4/12 mr-8">
-            <div class="w-full sticky top-0">
+            <div class="w-full sticky top-0 z-50">
               <div class="w-full flex">
                 <div class="w-1/2 bg-doctor-gray-100 pl-2 rounded-2lg">
                   <%= image_pack_tag "doctor_full.png", class: "w-48" %>
@@ -94,7 +94,7 @@
                 <%=image_pack_tag "light_grey_round_edge_sides.svg", class: "w-16 h-64" %>
               </div>
             </div>
-            <div class="w-full flex justify-between border-2 rounded-lg border-gray-500 px-2 py-2 shadow-lg text-gray-700 sticky top-0 bg-white">
+            <div class="w-full flex justify-between border-2 rounded-lg border-gray-500 px-2 py-2 shadow-lg text-gray-700 sticky top-0 bg-white z-50">
               <div class="active w-full text-center">
                 <a href="#practice" class="transition-all scroll-to">Practice</a>
               </div>
@@ -129,38 +129,40 @@
                     <div class="w-full flex">
                       <div class="w-full flex justify-between">
                         <div class=" w-5/12 text-gray-600 text-sm">Practice Name:</div>
-                        <div class=" w-7/12 text-base"><%=@doctor&.display_practice_name%></div>
+                        <div class=" w-7/12 text-base"><%=@doctor&.practice_name%></div>
                       </div>
                     </div>
                   </div>
                   <div class="w-full flex mt-2">
                     <div class="w-full flex justify-between">
                       <div class=" w-5/12 text-gray-600 text-sm">Speciality:</div>
-                      <div class=" w-7/12 text-base">IM/FM/PCP</div>
+                      <div class=" w-7/12 text-base"><%=@doctor&.primary_speciality%></div>
                     </div>
                     <div class="w-full flex">
                       <div class="w-full flex justify-between">
                         <div class=" w-5/12 text-gray-600 text-sm">Style:</div>
-                        <div class=" w-7/12 text-base">MD/DO/NP/ARMP/FMP</div>
+                        <div class=" w-7/12 text-base"><%=@doctor&.display_practice_name%></div>
                       </div>
                     </div>
                   </div>
                   <div class="w-full flex mt-2">
                     <div class="w-full flex justify-between">
                       <div class=" w-5/12 text-gray-600 text-sm">Access:</div>
-                      <div class=" w-7/12 text-base">24/7 365 Direct Access</div>
+                      <div class=" w-7/12 text-base">
+                        <%=@doctor&.display_access%>
+                      </div>
                     </div>
                     <div class="w-full flex">
                       <div class="w-full flex justify-between">
                         <div class=" w-5/12 text-gray-600 text-sm">Appointments:</div>
-                        <div class=" w-7/12 text-base">Next Day Appointments</div>
+                        <div class=" w-7/12 text-base"><%=@doctor.display_appointments%></div>
                       </div>
                     </div>
                   </div>
                   <div class="w-full flex mt-2">
                     <div class="w-1/2 flex justify-between">
                       <div class=" w-5/12 text-gray-600 text-sm">Max Patients in Panel:</div>
-                      <div class=" w-7/12 text-base text-left">600</div>
+                      <div class=" w-7/12 text-base text-left"><%=@doctor.max_patients%></div>
                     </div>
                   </div>
                   <div class="w-full flex mt-2">
@@ -196,7 +198,7 @@
                     <div class="w-1/2 flex justify-between">
                       <div class=" w-5/12 text-gray-600 text-sm">Languages:</div>
                       <div class=" w-7/12 text-base text-left items-center flex ">
-                        English, French
+                        <%=@doctor&.language%>
                       </div>
                     </div>
                   </div>
@@ -204,7 +206,7 @@
                     <div class="w-1/2 flex justify-between">
                       <div class=" w-5/12 text-gray-600 text-sm">Cost:</div>
                       <div class=" w-7/12 text-base text-left items-center flex ">
-                        $ 374,000
+                        <%=@doctor&.prices.html_safe%>
                       </div>
                     </div>
                   </div>
@@ -212,17 +214,33 @@
                     <div class="w-1/2 flex justify-between">
                       <div class=" w-5/12 text-gray-600 text-sm">Consultation:</div>
                       <div class=" w-7/12 text-base text-left items-center flex ">
-                        15 min
+                        <%=@doctor.display_free_consultation_time%>
                       </div>
                     </div>
                   </div>
                   <div class="w-full mt-5">
                     <div class="w-full justify-left">
                       <div class=" w-5/12 text-gray-600 text-sm">Practice Details:</div>
-                      <div class=" w-7/12 text-base text-left justify-left">
-                        Description for the practice detailswill go here.
+                      <div class=" w-11/12 text-base text-left justify-left read-more-block" data-target="doctor.readFull" style="max-height: 120px; position: relative; overflow: hidden;">
+                        <%=@doctor&.about_doctor&.html_safe%>
+                        <div data-target="doctor.readMoreBackground" style="position: absolute; bottom: 0px; left: 0px; width: 100%; padding: 30px 0px; background-image: linear-gradient(rgba(255, 255, 255, 0), white);"></div>
                       </div>
                     </div>
+                  </div>
+                  <div class="w-full flex justify-center text-sm">
+                    <a class=" w-full text-blue-400 text-center cursor-pointer" data-target="doctor.readMoreIcon" data-action="click->doctor#readMore">Read More<svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="chevron-down" class="w-4 h-4 inline-block" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" style="padding-left: 5px;"><path fill="currentColor" d="M207.029 381.476L12.686 187.132c-9.373-9.373-9.373-24.569 0-33.941l22.667-22.667c9.357-9.357 24.522-9.375 33.901-.04L224 284.505l154.745-154.021c9.379-9.335 24.544-9.317 33.901.04l22.667 22.667c9.373 9.373 9.373 24.569 0 33.941L240.971 381.476c-9.373 9.372-24.569 9.372-33.942 0z"></path></svg></a>
+                  </div>
+                  <div class="w-full mt-5">
+                    <div class="w-full justify-left">
+                      <div class=" w-5/12 text-gray-600 text-sm">Clinic Details:</div>
+                      <div class=" w-11/12 text-base text-left justify-left read-more-block" style="max-height: 120px; position: relative; overflow: hidden;">
+                        <%=@doctor&.about_clinic&.html_safe%>
+                        <div style="position: absolute; bottom: 0px; left: 0px; width: 100%; padding: 30px 0px; background-image: linear-gradient(rgba(255, 255, 255, 0), white);"></div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="w-full flex justify-center text-sm">
+                    <a class="w-full text-blue-400 text-center">Read More<svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="chevron-down" class="w-4 h-4 inline-block" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" style="padding-left: 5px;"><path fill="currentColor" d="M207.029 381.476L12.686 187.132c-9.373-9.373-9.373-24.569 0-33.941l22.667-22.667c9.357-9.357 24.522-9.375 33.901-.04L224 284.505l154.745-154.021c9.379-9.335 24.544-9.317 33.901.04l22.667 22.667c9.373 9.373 9.373 24.569 0 33.941L240.971 381.476c-9.373 9.372-24.569 9.372-33.942 0z"></path></svg></a>
                   </div>
                 </div>
               </div>
@@ -232,28 +250,35 @@
                 </div>
                 <div class="py-3 pl-4 w-full flex">
                   <div
-                  class="w-4/12"
-                  data-controller="profiles"
-                  data-profiles-location="<%= @doctor.to_coordinates.join(',') %>"
-                >
+                    class="w-4/12"
+                    data-controller="profiles"
+                    data-profiles-location="<%= @doctor.to_coordinates.join(',') %>"
+                  >
                     <div id="map" style="height: 160px"></div>
                   </div>
-                  <div class="w-8/12">
+                  <div class="w-8/12 ml-6">
                     <div class=" text-gray-600 text-sm">Address</div>
                     <div>
-                      Address of the doctor should go here
+                      <%=@doctor&.address_line_1%>, <%=@doctor&.address_suite%>, <%=@doctor&.city%>, <%=@doctor&.state%>
+                      ,  <%=@doctor&.zipcode%>
                     </div>
                     <div class="w-full flex mt-3">
                       <div class="pt-1"><%= image_pack_tag "icons/email.svg", class: "w-5 h-5" %></div>
-                      <div class="ml-4">Message</div>
+                      <a href="mailto:<%=@doctor&.email%>" class="hover:underline hover:text-blue-400">
+                        <div class="ml-4">Message</div>
+                      </a>
                     </div>
                     <div class="w-full flex mt-1">
                       <div class="pt-1"><%= image_pack_tag "icons/phone.svg", class: "w-5 h-5" %></div>
-                      <div class="ml-4">090078601</div>
+                      <a href="tel:<%=@doctor.formated_phone_number%>" class="hover:underline hover:text-blue-400">
+                        <div class="ml-4"><%=@doctor.phone%></div>
+                      </a>
                     </div>
                     <div class="w-full flex mt-1">
                       <div class="pt-1"><%= image_pack_tag "icons/web.svg", class: "w-5 h-5" %></div>
-                      <div class="ml-4">www.johndoe.com</div>
+                      <a href="<%=@doctor.website_url%>" target="_blank" class="hover:underline hover:text-blue-400" >
+                        <div class="ml-4">Website</div>
+                      </a>
                     </div>
                   </div>
                 </div>
@@ -285,24 +310,19 @@
                     <div class="w-2/3 relative ml-8">
                       <div class="border-r border-gray-800 absolute h-full top-0 mt-2" style="left: 5px"></div>
                       <ul class="list-none m-0 p-0">
-                        <li class="mb-2">
-                          <div class="flex items-center mb-1">
-                            <div class="bg-gray-800 rounded-full h-3 w-3"></div>
-                            <div class="flex-1 ml-4 font-medium">1996 Medical School - Harvard</div>
-                          </div>
-                        </li>
-                        <li class="mt-5">
-                          <div class="flex items-center mb-1">
-                            <div class="bg-gray-800 rounded-full h-3 w-3"></div>
-                            <div class="flex-1 ml-4 font-medium">2005 IM Recidency - Stanford</div>
-                          </div>
-                        </li>
-                        <li class="mt-5">
-                          <div class="flex items-center mb-1">
-                            <div class="bg-gray-800 rounded-full h-3 w-3"></div>
-                            <div class="flex-1 ml-4 font-medium">2010 IM Recidency - Stanford</div>
-                          </div>
-                        </li>
+                        <% @index = 1 %>
+                        <% @doctor&.education.each do |education| %>
+                          <% if education['year'].present? %>
+                            <% margin = (@index == 1) ? 'mb-2' : 'mt-5' %>
+                            <li class="<%=margin%>">
+                              <div class="flex items-center mb-1">
+                                <div class="bg-gray-800 rounded-full h-3 w-3"></div>
+                                <div class="flex-1 ml-4 font-medium"><%=education['year']%> <%=education['name']%></div>
+                              </div>
+                            </li>
+                            <% @index += 1 %>
+                          <% end %>
+                        <% end %>
                       </ul>
                     </div>
                   </div>
@@ -311,7 +331,9 @@
                       Certification:
                     </div>
                     <div class="w-2/3 ml-8">
-                      2015 - IBAM
+                      <% @doctor&.certifications.each do |certification| %>
+                        <div><%=certification['year']%> - <%=certification['name']%></div>
+                      <% end %>
                     </div>
                   </div>
                   <div class="w-full flex mt-6">
@@ -319,10 +341,9 @@
                       Achievements:
                     </div>
                     <div class="w-2/3 ml-8">
-                      <div class="mb-2">Reasearch</div>
-                      <div class="mb-2">Publications</div>
-                      <div class="mb-2">Community Abcd</div>
-                      <div class="mb-2">Media Appearance</div>
+                      <% @doctor&.achievements.each do |achievement| %>
+                        <div class="mb-2"><%=achievement['year']%> - <%=achievement['name']%></div>
+                      <% end %>
                     </div>
                   </div>
                 </div>
@@ -449,7 +470,7 @@
                     <%=image_pack_tag "light_yellow_slant.svg", class: "w-16" %>
                   </div>
                   <div class="w-3/12 flex justify-center items-center">
-                    <div class="text-6xl text-center">10/10</div>
+                    <div class="text-6xl text-center"><%=@doctor&.fmdd_score%>/10</div>
                   </div>
                   <div class="w-8/12 ml-4">
                     <div>

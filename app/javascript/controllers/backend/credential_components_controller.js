@@ -11,6 +11,7 @@ export default class extends Controller {
   ];
 
   addComponent(event) {
+    console.log('asdasd');
     event.preventDefault();
     const textCount = this.validateTargets(this.componentTextTargets);
     const yearCount = this.validateTargets(this.componentYearTargets);

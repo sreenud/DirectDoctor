@@ -105,6 +105,34 @@ class Doctor < ApplicationRecord
     end
   end
 
+  def display_access
+    if access.downcase == "yes"
+      "24/7 365 Direct Access"
+    elsif access.downcase == "no"
+      "No"
+    else
+      "Not Available"
+    end
+  end
+
+  def display_appointments
+    if !appointments.present?
+      "NA"
+    elsif appointments.downcase == "not available"
+      "Not Available"
+    else
+      appointments
+    end
+  end
+
+  def display_free_consultation_time
+    if !free_consultation_time.present?
+      "NA"
+    else
+      "#{free_consultation_time} min"
+    end
+  end
+
   private
 
   def set_fdd_id
