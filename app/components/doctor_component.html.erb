@@ -27,12 +27,10 @@
     <div class="w-3/12 mt-4">
       <% if doctor.access == 'Yes' %>
         <div>24/7 Direct Phone Access</div>
-      <% else %>
-        <div>NA</div>
       <% end %>
       <div class="mt-2"><%=doctor&.display_practice_name%></div>
       <div class="mt-2 text-base text-gray-600">
-        Fee $<%=doctor.min_price%>
+        Fee $<%=doctor.min_price%> - $<%=doctor.max_price%>
       </div>
       <div class="mt-2 text-base text-gray-600">Apt: <%=doctor.appointments%></div>
       <div class="w-full flex mt-2 text-base text-gray-600">
