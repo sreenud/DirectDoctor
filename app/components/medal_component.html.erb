@@ -1,7 +1,7 @@
 <%= content_tag(:div, **@props, class: "flex items-center #{@props[:class]}") do %>
   <svg version="1.0" xmlns="http://www.w3.org/2000/svg"
  width="<%=@width%>" height="<%=@height%>" viewBox="0 0 525.000000 773.000000"
- preserveAspectRatio="xMidYMid meet" class=" text-green-500" fill="currentColor">
+ preserveAspectRatio="xMidYMid meet" class="<%=@badge_color%>" fill="currentColor">
     <g transform="translate(0.000000,773.000000) scale(0.100000,-0.100000)" stroke="none">
       <path d="M1590 7618 c-39 -23 -64 -48 -86 -84 -16 -29 -115 -232 -220 -452
 l-189 -399 -250 -119 c-585 -277 -649 -309 -682 -347 -64 -73 -65 -68 121

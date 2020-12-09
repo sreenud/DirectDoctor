@@ -16,4 +16,19 @@ namespace :specialities do
 
     puts "States and cities import is completed"
   end
+
+  desc "Import Specialities"
+  task update_speciality_id: :environment do
+    doctors = Doctor.all
+
+    doctors.each do |doctor|
+      doctor_obj = Speciality.find_by_code(doctor.primary_speciality)
+      if doctor_obj.present?
+        doctor.speciality_id = doctor_obj.id
+        doctor.save
+      end
+    end
+
+    puts "Speciality id is updated in doctors"
+  end
 end

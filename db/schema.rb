@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_28_132658) do
+ActiveRecord::Schema.define(version: 2020_12_09_065131) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -95,6 +95,7 @@ ActiveRecord::Schema.define(version: 2020_11_28_132658) do
     t.jsonb "alternate_phones", default: {}
     t.string "old_fdd_id"
     t.string "contact_us_url"
+    t.integer "speciality_id"
     t.index ["user_id"], name: "index_doctors_on_user_id"
   end
 

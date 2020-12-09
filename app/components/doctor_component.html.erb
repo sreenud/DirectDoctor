@@ -1,7 +1,10 @@
-<%= content_tag(:div, id: "doc-#{doctor.id}", **@props, class: "doctor-card w-full box-bottom-shadow #{@props[:class]}", data: {name: doctor.name, price: doctor.price, rating: 4, image: doctor.image || asset_pack_path('media/images/doctor_PNG15987.png')}) do %>
+<%= content_tag(:div, id: "doc-#{doctor.id}", **@props, class: " pr-1 doctor-card w-full box-bottom-shadow #{@props[:class]}", data: {name: doctor.name, price: doctor.price, rating: 4, image: doctor.image || asset_pack_path('media/images/doctor_PNG15987.png')}) do %>
   <div class="w-full flex mt-6">
     <div class="w-40">
       <%= doctor_avatar(class: 'h-40 w-full object-cover border rounded-lg doc-avatar') %>
+      <div class="text-md tracking-wide font-hurmebold mt-4 text-center">
+        <%=doctor.practice_name%>
+      </div>
     </div>
     <div class="w-3/12 ml-4">
       <div class="tracking-wide font-hurmebold">
@@ -9,7 +12,7 @@
           <h2 class="text-2xl"><%= doctor.name %></h2>
         </a>
       </div>
-      <div class="mt-2"><%=doctor.primary_speciality%></div>
+      <div class="mt-2"><%=doctor&.speciality&.name%></div>
       <div class="mt-2 w-full flex">
         <%= render(StarRatingComponent.new(rating: 4, class: 'doc-rating')) %>
         <div class="text-sm">
@@ -20,8 +23,8 @@
         Max no. of Patients: <%=doctor.max_patients%>
       </div>
       <div class="w-full flex mt-2 text-base text-gray-600">
-        <div><%= render(MedalComponent.new(width: 20, height: 20)) %></div>
-        <div class="pl-2">Telehealth</div>
+        <div><%= render(MedalComponent.new(width: 20, height: 20, badge_color: doctor.telehealth_class)) %></div>
+        <div class="pl-2"><%=doctor.display_telehealth%></div>
       </div>
     </div>
     <div class="w-3/12 mt-4">
@@ -32,10 +35,12 @@
       <div class="mt-2 text-base text-gray-600">
         Fee $<%=doctor.min_price%> - $<%=doctor.max_price%>
       </div>
-      <div class="mt-2 text-base text-gray-600">Apt: <%=doctor.appointments%></div>
+      <div class="mt-2 text-base text-gray-600">Apt:
+        <%=doctor&.display_appointments%>
+      </div>
       <div class="w-full flex mt-2 text-base text-gray-600">
-        <div><%= render(MedalComponent.new(width: 20, height: 20)) %></div>
-        <div class="pl-2">Home Visit Book</div>
+        <div><%= render(MedalComponent.new(width: 20, height: 20, badge_color: doctor.home_visit_class)) %></div>
+        <div class="pl-2"><%=doctor.display_home_visit%></div>
       </div>
     </div>
     <div class="w-3/12 mt-4">
@@ -76,20 +81,20 @@
       <div class="mt-2"><%=doctor.max_experience%> years experience</div>
       <div class="mt-2 text-base text-gray-600">FMDD Score: <%=doctor.fmdd_score%>/10</div>
       <div class="w-full flex mt-2 text-base text-gray-600">
-        <div><%= render(MedalComponent.new(width: 20, height: 20)) %></div>
-        <div class="pl-2">Free Consultation</div>
+        <div><%= render(MedalComponent.new(width: 20, height: 20, badge_color: doctor.free_consultation_class)) %></div>
+        <div class="pl-2"><%=doctor.display_free_consultation%></div>
       </div>
       <div class="w-full flex mt-2 text-base text-gray-600">
-        <div><%= render(MedalComponent.new(width: 20, height: 20)) %></div>
-        <div class="pl-2">Holistic/Lifestyle Med</div>
+        <div><%= render(MedalComponent.new(width: 20, height: 20, badge_color: doctor.holistic_lifestyle_class)) %></div>
+        <div class="pl-2"><%=doctor.display_holistic_lifestyle%></div>
       </div>
     </div>
   </div>
   <div class="w-full flex pb-6 ">
     <div class="w-1/2">
-      <div class="text-md tracking-wide font-hurmebold mt-4 text-center">
+      <!--<div class="text-md tracking-wide font-hurmebold mt-4 text-center">
         <%=doctor.practice_name%>
-      </div>
+      </div>-->
     </div>
     <div class="w-1/2">
       <div class="w-full flex mt-4 text-base">

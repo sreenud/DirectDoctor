@@ -136,7 +136,7 @@
                   <div class="w-full flex mt-2">
                     <div class="w-full flex justify-between">
                       <div class=" w-5/12 text-gray-600 text-sm">Speciality:</div>
-                      <div class=" w-7/12 text-base"><%=@doctor&.primary_speciality%></div>
+                      <div class=" w-7/12 text-base"><%=@doctor&.speciality&.name%></div>
                     </div>
                     <div class="w-full flex">
                       <div class="w-full flex justify-between">
@@ -170,12 +170,12 @@
                       <div class=" w-5/12 text-gray-600 text-sm">Additional Features:</div>
                       <div class="w-7/12 text-base">
                         <div class="w-full flex">
-                          <div> <%= render partial: "doctors/medal"%> </div>
-                          <div class="pl-2 text-base">Telehealth</div>
+                          <div><%= render(MedalComponent.new(width: 20, height: 20, badge_color: @doctor.telehealth_class)) %> </div>
+                          <div class="pl-2 text-base"><%=@doctor.display_telehealth%></div>
                         </div>
                         <div class="w-full flex mt-2">
-                          <div> <%= render partial: "doctors/medal"%> </div>
-                          <div class="pl-2 text-base">Hospital Affiliation</div>
+                          <div> <%= render(MedalComponent.new(width: 20, height: 20, badge_color: @doctor.home_visit_class)) %> </div>
+                          <div class="pl-2 text-base"><%=@doctor.display_home_visit%></div>
                         </div>
                       </div>
                     </div>
@@ -183,12 +183,12 @@
                       <div class="w-full flex justify-between">
                         <div class="w-7/12 text-base">
                           <div class="w-full flex">
-                            <div> <%= render partial: "doctors/medal"%> </div>
-                            <div class="pl-2 text-base">Home Health</div>
+                            <div> <%= render(MedalComponent.new(width: 20, height: 20, badge_color: @doctor.free_consultation_class)) %> </div>
+                            <div class="pl-2 text-base"><%=@doctor.display_free_consultation%></div>
                           </div>
                           <div class="w-full flex mt-2">
-                            <div> <%= render partial: "doctors/medal"%> </div>
-                            <div class="pl-2 text-base">Holistic/Lifestyle Medicine</div>
+                            <div> <%= render(MedalComponent.new(width: 20, height: 20, badge_color: @doctor.holistic_lifestyle_class)) %> </div>
+                            <div class="pl-2 text-base"><%=@doctor.display_holistic_lifestyle%></div>
                           </div>
                         </div>
                       </div>
@@ -484,7 +484,7 @@
               </div>
               <div class="w-full shadow rounded-lg border border-gray-300 mt-4">
                 <div class="text-lg font-glacialbold tracking-wide pl-4 pt-3">
-                  Physician Peer Recommendation
+                  Testimonials from other Physicians
                 </div>
                 <div class="py-3 pl-4 w-full flex">
                   <div class="w-2/12 bg-doctor-gray-100 rounded-2lg overflow-hidden h-32">

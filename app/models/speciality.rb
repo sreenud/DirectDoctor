@@ -1,5 +1,6 @@
 class Speciality < ApplicationRecord
   has_many :speciality_aliases
+  has_many :doctors
   scope :latest, -> { order(created_at: :desc) }
 
   validates :code, :name, presence: true
