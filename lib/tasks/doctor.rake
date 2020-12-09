@@ -70,6 +70,35 @@ namespace :doctor do
     puts 'imported'
   end
 
+  task update_other_specialities: :environment do
+    file_name = "#{ENV['state_code']}.xlsx"
+    spreadsheet = Roo::Excelx.new("#{Rails.root}/public/system/doctor_import/#{file_name}")
+    header = spreadsheet.row(1)
+    # header = header.map { |h| h.parameterize.gsub('-', '_') }
+    records = []
+
+    (2..spreadsheet.last_row).each_with_index do |i, _j|
+      row = Hash[[header, spreadsheet.row(i)].transpose]
+      records << {
+        'other_specialities' => other_specialities(row['Tags']),
+        'aditional_services' => process_aditional_services(row),
+        'old_fdd_id' => row['FDD-ID'],
+      }
+    end
+
+    if records.present?
+      records.each do |record|
+        doctor = Doctor.find_by_old_fdd_id(record['old_fdd_id'])
+        doctor.other_specialities = [""] + record["other_specialities"].split(',')
+        doctor.aditional_services = record["aditional_services"]
+        doctor.save
+      end
+    end
+
+    puts records
+    puts ActiveRecord::Base.connection.current_database
+  end
+
   def address_line_1(text)
     if text.present?
       text
