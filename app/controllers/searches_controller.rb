@@ -1,6 +1,6 @@
 class SearchesController < ApplicationController
   include Pagy::Frontend
-  before_action :set_meta_data, only: [:index]
+  # before_action :set_meta_data, only: [:index]
   before_action :load_gmap, only: [:index_two]
 
   def index
