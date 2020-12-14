@@ -7,6 +7,7 @@ class BlogsController < ApplicationController
       .where(topics: { status: 'published' }).active.latest
 
     @popular_topics = Topic.popular
+    @no_directory = true
   end
 
   def show

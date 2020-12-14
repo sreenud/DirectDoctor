@@ -4,6 +4,8 @@ class TipsController < ApplicationController
 
   def index
     @tips = Tip.includes(topic: :author).published
+
+    @no_directory = true
   end
 
   def show

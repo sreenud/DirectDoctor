@@ -22,6 +22,8 @@ module SeoHelper
   def allow_crawler
     if @allow_robots
       "INDEX, FOLLOW"
+    elsif @no_directory.present?
+      "NOODP, NOYDIR"
     else
       "NOINDEX, NOFOLLOW"
     end
