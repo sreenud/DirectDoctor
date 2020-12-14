@@ -414,11 +414,11 @@
                         <div class="flex items-center justify-center text-gray-800">
                           <%= render(StarRatingComponent.new(rating: 0, class: 'doc-rating', width: '5', height: '5')) %>
                         </div>
-                        <div class=" text-xs flex justify-center">
-                          Write a Review
-                        </div>
-                        <div class="flex justify-center">
-                          <textarea></textarea>
+                        <div class=" text-xs flex justify-center mt-4 p4 " data-controller="modal" >
+                          <button class="border-doctor-yellow bg-doctor-yellow-500 px-4 py-2 rounded shadow text-gray-100 text-base hover:bg-doctor-yellow" data-action="click->modal#modalOpen" data-modal="open_modal">
+                            Write a Review
+                          </button>
+                          <%= render partial: 'doctors/review_modal'%>
                         </div>
                       </div>
                     </div>
