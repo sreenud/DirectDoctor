@@ -2,7 +2,7 @@
 
 # a module for generating results for doctor search through parameters
 module DoctorSearch
-  SEARCH_RADIUS = 2000
+  SEARCH_RADIUS = 500
   SEARCH_UNITS = :km
   DEFAULT_LOCATION = ApplicationController::DEFUALT_LOCATION
   def search(params, current_location: DEFAULT_LOCATION)
@@ -43,12 +43,11 @@ module DoctorSearch
   end
 
   def apply_ratings_filter
-    return @default_scope unless @params[:ratings].present?
+    return @default_scope unless @params[:rating].present?
 
-    # more_than = @params[:ratings].match(/\d/).to_i
-    # more_than = more_than <= 5 ? more_than : 5
-    # TODO: insert a logic once ratings is added to platform
-    @default_scope
+    more_than = @params[:rating].match(/\d/).to_a[0].to_i
+    more_than = more_than <= 5 ? more_than..5 : 5
+    @default_scope = @default_scope.where(avg_rating: more_than)
   end
 
   def apply_practice_filter

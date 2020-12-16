@@ -106,3 +106,14 @@ export function hideLoading() {
     window.loading_helper.hideLoading();
   }
 }
+
+export function setLocationString(location) {
+  if (location === null || location === undefined || location === '') {
+    return;
+  }
+  const h1 = document.querySelector('#near-location');
+  if (!h1) {
+    return;
+  }
+  h1.innerHTML = location;
+}

@@ -2,6 +2,7 @@ class SearchesController < ApplicationController
   include Pagy::Frontend
   # before_action :set_meta_data, only: [:index]
   before_action :load_gmap, only: [:index_two]
+  before_action :set_location_string, only: [:index_two]
 
   def index
   end
@@ -10,7 +11,6 @@ class SearchesController < ApplicationController
     @pagy, @doctors = pagy(
       Doctor.includes(:speciality, :reviews).search(search_params, current_location: current_location)
     )
-
     respond_to do |format|
       format.html
       format.json { render json: json_results } # for limiting the usage of map render calls
@@ -47,6 +47,7 @@ class SearchesController < ApplicationController
       page: @pagy.page,
       max_distance: @doctors.map(&:distance).max,
       pagination: @pagy.next || @pagy.prev ? pagy_nav(@pagy) : 'No results found',
+      location_string: location_string,
     }
   end
 end
