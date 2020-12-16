@@ -1,0 +1,111 @@
+<div class="w-full shadow rounded-lg border border-gray-300 mt-4 section-position" id="reviews">
+  <div class="text-lg font-glacialbold tracking-wide pl-4 pt-3">
+    Patient Reviews
+  </div>
+  <div class="py-3 pl-4 w-full box-bottom-shadow flex">
+    <div class="absolute right-0 z-50 -mt-8" style="margin-right: -7rem;">
+      <%=image_pack_tag "yellow_circle_big_shadow.svg", class: "w-16" %>
+    </div>
+    <div class="absolute right-0 z-50 mt-6" style="margin-right: -7rem;">
+      <%=image_pack_tag "off_white_circle_full.svg", class: "w-16" %>
+    </div>
+    <div class="absolute left-0 z-50 mt-16" style="margin-left: -7rem;">
+      <%=image_pack_tag "yellow_circle_outline_opacity.svg", class: "w-24" %>
+    </div>
+    <div class="absolute left-0 z-50 mt-56" style="margin-left: -7rem;">
+      <%=image_pack_tag "light_grey_3_lines_horizontal.svg", class: "w-32" %>
+    </div>
+    <div class="w-3/12 items-center justify-center box-right-shadow">
+      <div class="text-6xl text-center"><%=doctor.avg_rating%></div>
+      <div class="w-full justify-center flex">
+        <%= render(StarRatingComponent.new(rating: doctor.avg_rating, class: 'doc-rating', width: '5', height: '5')) %>
+      </div>
+      <div class="w-full flex justify-center mt-3">
+        <a href="#" class=" text-blue-500"><%=reviews.count%> (Reviews)</a>
+      </div>
+    </div>
+    <div class="w-9/12 flex ml-8">
+      <div class="w-1/2">
+        <div class="w-full flex items-center">
+          <div class="w-2/12 text-sm ">5 Star</div>
+          <div class=" relative w-8/12">
+            <div class="overflow-hidden h-5 text-xs flex bg-gray-400">
+              <div style="width:<%=doctor.star_percentage(5)%>%" class="shadow-none flex flex-col text-center whitespace-nowrap justify-center bg-doctor-yellow"></div>
+            </div>
+          </div>
+          <div class="w-2/12 text-blue-400 mx-2 text-sm"><%=doctor.star_percentage(5)%>%</div>
+        </div>
+        <div class="w-full flex items-center mt-2">
+          <div class="w-2/12 text-sm ">4 Star</div>
+          <div class=" relative w-8/12">
+            <div class="overflow-hidden h-5 text-xs flex bg-gray-400">
+              <div style="width:<%=doctor.star_percentage(4)%>%" class="shadow-none flex flex-col text-center whitespace-nowrap justify-center bg-doctor-yellow"></div>
+            </div>
+          </div>
+          <div class="w-2/12 text-blue-400 mx-2 text-sm"><%=doctor.star_percentage(4)%>%</div>
+        </div>
+        <div class="w-full flex items-center mt-2">
+          <div class="w-2/12 text-sm ">3 Star</div>
+          <div class=" relative w-8/12">
+            <div class="overflow-hidden h-5 text-xs flex bg-gray-400">
+              <div style="width:<%=doctor.star_percentage(3)%>%" class="shadow-none flex flex-col text-center whitespace-nowrap justify-center bg-doctor-yellow"></div>
+            </div>
+          </div>
+          <div class="w-2/12 text-blue-400 mx-2 text-sm"><%=doctor.star_percentage(3)%>%</div>
+        </div>
+        <div class="w-full flex items-center mt-2">
+          <div class="w-2/12 text-sm ">2 Star</div>
+          <div class=" relative w-8/12">
+            <div class="overflow-hidden h-5 text-xs flex bg-gray-400">
+              <div style="width:<%=doctor.star_percentage(2)%>%" class="shadow-none flex flex-col text-center whitespace-nowrap justify-center bg-doctor-yellow"></div>
+            </div>
+          </div>
+          <div class="w-2/12 text-blue-400 mx-2 text-sm"><%=doctor.star_percentage(2)%>%</div>
+        </div>
+        <div class="w-full flex items-center mt-2">
+          <div class="w-2/12 text-sm ">1 Star</div>
+          <div class=" relative w-8/12">
+            <div class="overflow-hidden h-5 text-xs flex bg-gray-400">
+              <div style="width:<%=doctor.star_percentage(1)%>%" class="shadow-none flex flex-col text-center whitespace-nowrap justify-center bg-doctor-yellow"></div>
+            </div>
+          </div>
+          <div class="w-2/12 text-blue-400 mx-2 text-sm"><%=doctor.star_percentage(1)%>%</div>
+        </div>
+      </div>
+      <div class="w-1/2 pl-6 pr-8">
+        <div class="w-full text-base bg-doctor-yellow-100 pt-4 pb-8 rounded-tl-2lg rounded-br-2lg">
+          <div class="flex items-center justify-center text-gray-800">
+            <%= render(StarRatingComponent.new(rating: 0, class: 'doc-rating', width: '5', height: '5')) %>
+          </div>
+          <div class=" text-xs flex justify-center mt-4 p4 " data-controller="modal" >
+            <button class="border-doctor-yellow bg-doctor-yellow-500 px-4 py-2 rounded shadow text-gray-100 text-base hover:bg-doctor-yellow" data-action="click->modal#modalOpen" data-modal="open_modal">
+              Write a Review
+            </button>
+            <%= render partial: 'doctors/review_modal', locals: {review: @review, doctor: @doctor}%>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <% reviews.limit(5).each_with_index do |review, index| %>
+    <% bottom_shadow = (reviews.limit(5).count - 1 == index) ? "" : "box-bottom-shadow" %>
+    <div class="py-6 pl-6 w-full <%=bottom_shadow%> flex">
+      <div class="w-full flex pb-16">
+        <div class="w-3/12">
+          <%= render(StarRatingComponent.new(rating: review.rating, class: 'doc-rating', width: '6', height: '6')) %>
+          <div class="text-sm mt-2">Posted by <%=review.name%></div>
+          <div class="text-gray-600 text-sm"><%=review.display_date%></div>
+        </div>
+        <div class="w-8/12">
+          <div><%=review.title%> </div>
+          <div class="text-sm pt-1">
+            <%= review.review %>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+  <div class="w-full flex justify-end pr-6 pb-4">
+    <a href="#" class=" text-blue-400 underline text-sm">View all reviews</a>
+  </div>
+</div>

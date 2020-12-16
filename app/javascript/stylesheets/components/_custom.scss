@@ -140,3 +140,7 @@
 .box-right-shadow {
   box-shadow: 60px 0 80px -70px black;
 }
+
+.tab-active {
+  @apply border-t-4 rounded py-1 border-doctor-yellow;
+}

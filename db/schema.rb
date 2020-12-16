@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_09_065131) do
+ActiveRecord::Schema.define(version: 2020_12_15_021827) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -96,6 +96,7 @@ ActiveRecord::Schema.define(version: 2020_12_09_065131) do
     t.string "old_fdd_id"
     t.string "contact_us_url"
     t.integer "speciality_id"
+    t.decimal "avg_rating", precision: 6, scale: 1
     t.index ["user_id"], name: "index_doctors_on_user_id"
   end
 
@@ -143,6 +144,22 @@ ActiveRecord::Schema.define(version: 2020_12_09_065131) do
     t.text "comments"
     t.bigint "user_id"
     t.index ["user_id"], name: "index_page_redirects_on_user_id"
+  end
+
+  create_table "reviews", force: :cascade do |t|
+    t.bigint "doctor_id", null: false
+    t.string "name"
+    t.string "email"
+    t.integer "rating"
+    t.string "title"
+    t.text "review"
+    t.string "treated_by_doctor"
+    t.string "will_you_recommend"
+    t.string "anonymous"
+    t.string "status", default: "draft"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["doctor_id"], name: "index_reviews_on_doctor_id"
   end
 
   create_table "roles", force: :cascade do |t|
@@ -311,6 +328,7 @@ ActiveRecord::Schema.define(version: 2020_12_09_065131) do
 
   add_foreign_key "doctors", "users"
   add_foreign_key "locations", "states"
+  add_foreign_key "reviews", "doctors"
   add_foreign_key "speciality_aliases", "specialities"
   add_foreign_key "taggings", "tags"
   add_foreign_key "topic_tips", "tips"

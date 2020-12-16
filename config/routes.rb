@@ -8,6 +8,9 @@ Rails.application.routes.draw do
 
   resources :blogs, only: [:index, :show]
   resources :tips, only: [:index]
+  resources :doctors do
+    resources :reviews, only: [:index, :create]
+  end
   get "/blogs/:tip_slug/:id", to: "tips#show"
 
   resources :surveys, only: [:index, :create]

@@ -1,0 +1,128 @@
+<div class="w-full shadow rounded-lg border border-gray-300 mt-4 section-position" id="practice" >
+  <div class="text-lg font-glacialbold tracking-wide pl-4 pt-3">
+    Practice
+  </div>
+  <div class="py-3 pl-8 w-full">
+    <div class="w-full flex">
+      <div class="w-full flex justify-between">
+        <div class=" w-5/12 text-gray-600 text-sm">Doctor Name:</div>
+        <div class=" w-7/12 text-base"><%=doctor&.name%></div>
+      </div>
+      <div class="w-full flex">
+        <div class="w-full flex justify-between">
+          <div class=" w-5/12 text-gray-600 text-sm">Practice Name:</div>
+          <div class=" w-7/12 text-base"><%=doctor&.practice_name%></div>
+        </div>
+      </div>
+    </div>
+    <div class="w-full flex mt-2">
+      <div class="w-full flex justify-between">
+        <div class=" w-5/12 text-gray-600 text-sm">Speciality:</div>
+        <div class=" w-7/12 text-base"><%=doctor&.speciality&.name%></div>
+      </div>
+      <div class="w-full flex">
+        <div class="w-full flex justify-between">
+          <div class=" w-5/12 text-gray-600 text-sm">Style:</div>
+          <div class=" w-7/12 text-base"><%=doctor&.display_practice_name%></div>
+        </div>
+      </div>
+    </div>
+    <div class="w-full flex mt-2">
+      <div class="w-full flex justify-between">
+        <div class=" w-5/12 text-gray-600 text-sm">Access:</div>
+        <div class=" w-7/12 text-base">
+          <%=doctor&.display_access%>
+        </div>
+      </div>
+      <div class="w-full flex">
+        <div class="w-full flex justify-between">
+          <div class=" w-5/12 text-gray-600 text-sm">Appointments:</div>
+          <div class=" w-7/12 text-base"><%=doctor.display_appointments%></div>
+        </div>
+      </div>
+    </div>
+    <div class="w-full flex mt-2">
+      <div class="w-1/2 flex justify-between">
+        <div class=" w-5/12 text-gray-600 text-sm">Max Patients in Panel:</div>
+        <div class=" w-7/12 text-base text-left"><%=doctor.max_patients%></div>
+      </div>
+    </div>
+    <div class="w-full flex mt-2">
+      <div class="w-full flex justify-between">
+        <div class=" w-5/12 text-gray-600 text-sm">Additional Features:</div>
+        <div class="w-7/12 text-base">
+          <div class="w-full flex">
+            <div><%= render(MedalComponent.new(width: 20, height: 20, badge_color: doctor.telehealth_class)) %> </div>
+            <div class="pl-2 text-base"><%=doctor.display_telehealth%></div>
+          </div>
+          <div class="w-full flex mt-2">
+            <div> <%= render(MedalComponent.new(width: 20, height: 20, badge_color: doctor.home_visit_class)) %> </div>
+            <div class="pl-2 text-base"><%=doctor.display_home_visit%></div>
+          </div>
+        </div>
+      </div>
+      <div class="w-full flex">
+        <div class="w-full flex justify-between">
+          <div class="w-7/12 text-base">
+            <div class="w-full flex">
+              <div> <%= render(MedalComponent.new(width: 20, height: 20, badge_color: doctor.free_consultation_class)) %> </div>
+              <div class="pl-2 text-base"><%=doctor.display_free_consultation%></div>
+            </div>
+            <div class="w-full flex mt-2">
+              <div> <%= render(MedalComponent.new(width: 20, height: 20, badge_color: doctor.holistic_lifestyle_class)) %> </div>
+              <div class="pl-2 text-base"><%=doctor.display_holistic_lifestyle%></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="w-full flex mt-3">
+      <div class="w-1/2 flex justify-between">
+        <div class=" w-5/12 text-gray-600 text-sm">Languages:</div>
+        <div class=" w-7/12 text-base text-left items-center flex ">
+          <%=doctor&.language%>
+        </div>
+      </div>
+    </div>
+    <div class="w-full flex mt-3">
+      <div class="w-1/2 flex justify-between">
+        <div class=" w-5/12 text-gray-600 text-sm">Cost:</div>
+        <div class=" w-7/12 text-base text-left items-center flex ">
+          <%=doctor&.prices.html_safe%>
+        </div>
+      </div>
+    </div>
+    <div class="w-full flex mt-3">
+      <div class="w-1/2 flex justify-between">
+        <div class=" w-5/12 text-gray-600 text-sm">Consultation:</div>
+        <div class=" w-7/12 text-base text-left items-center flex ">
+          <%=doctor.display_free_consultation_time%>
+        </div>
+      </div>
+    </div>
+    <div class="w-full mt-5">
+      <div class="w-full justify-left">
+        <div class=" w-5/12 text-gray-600 text-sm">Practice Details:</div>
+        <div class=" w-11/12 text-base text-left justify-left read-more-block" data-target="doctor.readFull" style="max-height: 120px; position: relative; overflow: hidden;">
+          <%=doctor&.about_doctor&.html_safe%>
+          <div data-target="doctor.readMoreBackground" style="position: absolute; bottom: 0px; left: 0px; width: 100%; padding: 30px 0px; background-image: linear-gradient(rgba(255, 255, 255, 0), white);"></div>
+        </div>
+      </div>
+    </div>
+    <div class="w-full flex justify-center text-sm">
+      <a class=" w-full text-blue-400 text-center cursor-pointer" data-target="doctor.readMoreIcon" data-action="click->doctor#readMore">Read More<svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="chevron-down" class="w-4 h-4 inline-block" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" style="padding-left: 5px;"><path fill="currentColor" d="M207.029 381.476L12.686 187.132c-9.373-9.373-9.373-24.569 0-33.941l22.667-22.667c9.357-9.357 24.522-9.375 33.901-.04L224 284.505l154.745-154.021c9.379-9.335 24.544-9.317 33.901.04l22.667 22.667c9.373 9.373 9.373 24.569 0 33.941L240.971 381.476c-9.373 9.372-24.569 9.372-33.942 0z"></path></svg></a>
+    </div>
+    <div class="w-full mt-5">
+      <div class="w-full justify-left">
+        <div class=" w-5/12 text-gray-600 text-sm">Clinic Details:</div>
+        <div class=" w-11/12 text-base text-left justify-left read-more-block" style="max-height: 120px; position: relative; overflow: hidden;" data-target="doctor.readCFull">
+          <%=doctor&.about_clinic&.html_safe%>
+          <div data-target="doctor.readCMoreBackground" style="position: absolute; bottom: 0px; left: 0px; width: 100%; padding: 30px 0px; background-image: linear-gradient(rgba(255, 255, 255, 0), white);"></div>
+        </div>
+      </div>
+    </div>
+    <div class="w-full flex justify-center text-sm">
+      <a class="w-full text-blue-400 text-center cursor-pointer" data-target="doctor.readCMoreIcon" data-action="click->doctor#readCMore">Read More<svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="chevron-down" class="w-4 h-4 inline-block" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" style="padding-left: 5px;"><path fill="currentColor" d="M207.029 381.476L12.686 187.132c-9.373-9.373-9.373-24.569 0-33.941l22.667-22.667c9.357-9.357 24.522-9.375 33.901-.04L224 284.505l154.745-154.021c9.379-9.335 24.544-9.317 33.901.04l22.667 22.667c9.373 9.373 9.373 24.569 0 33.941L240.971 381.476c-9.373 9.372-24.569 9.372-33.942 0z"></path></svg></a>
+    </div>
+  </div>
+</div>

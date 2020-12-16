@@ -1,88 +1,130 @@
-<div class="modal opacity-0 pointer-events-none fixed w-full h-full top-0 left-0 flex items-center justify-center z-50" id="open_modal">
-  <div class="modal-overlay absolute w-full h-full bg-gray-900 opacity-75"></div>
-  <div class="modal-container bg-white w-8/12 rounded shadow-lg z-50 overflow-y-auto"  style="min-width:600px;min-height:400px">
-    <!-- Add margin if you want to see some of the overlay behind the modal-->
-    <div class="modal-content py-4 text-left px-6">
-      <!--Title-->
-      <div class="flex justify-between items-center pb-3">
-        <p class="text-2xl font-bold">Review your Doctor</p>
-        <div class="modal-close cursor-pointer z-50" data-action="click->modal#modalClose">
-          <svg class="fill-current text-black" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18">
-            <path d="M14.53 4.53l-1.06-1.06L9 7.94 4.53 3.47 3.47 4.53 7.94 9l-4.47 4.47 1.06 1.06L9 10.06l4.47 4.47 1.06-1.06L10.06 9z"></path>
-          </svg>
+<div data-controller="reviews">
+  <%= form_with(model: [review], url: doctor_reviews_url(@doctor.fdd_id), data: {type: "html", action: "ajax:error->reviews#errorHandler ajax:success->reviews#success", target: "form" }) do |form| %>
+    <div class="modal opacity-0 pointer-events-none fixed w-full h-full top-0 left-0 flex items-center justify-center z-50" id="open_modal">
+      <div class="modal-overlay absolute w-full h-full bg-gray-900 opacity-75"></div>
+      <div class="modal-container bg-white w-8/12 rounded shadow-lg z-50 overflow-y-auto h-full" style="min-width:600px;">
+        <!-- Add margin if you want to see some of the overlay behind the modal-->
+        <div class="modal-content py-4 text-left px-6">
+          <!--Title-->
+          <div class="flex justify-between items-center pb-3">
+            <p class="text-2xl font-bold">Review your Doctor</p>
+            <div class="modal-close cursor-pointer z-50" data-action="click->modal#modalClose">
+              <svg class="fill-current text-black" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18">
+                <path d="M14.53 4.53l-1.06-1.06L9 7.94 4.53 3.47 3.47 4.53 7.94 9l-4.47 4.47 1.06 1.06L9 10.06l4.47 4.47 1.06-1.06L10.06 9z"></path>
+              </svg>
+            </div>
+          </div>
+          <!--Body-->
+          <div class="p-2" data-target="reviews.success">
+            <div class="w-full z-10" data-target="reviews.errors"></div>
+            <div class="w-6/12 justify-center bg-grey-lighter">
+              <div class="mb-2">
+                <label class="block text-grey-darker text-base font-glacialbold mb-1" for="title">
+                  <span class="text-red-500 pr-1">*</span>Select a rating for your doctor
+                </label>
+                <div class="flex items-center mr-4 mb-4">
+                  <input id="review_rating" type="radio" name="review[rating]" value="1" />
+                  <label for="review_rating" class="flex items-center cursor-pointer">Poor</label>
+                  <input id="review_rating" type="radio" name="review[rating]" value="2" />
+                  <label for="review_rating" class="flex items-center cursor-pointer">Fair</label>
+                  <input id="review_rating" type="radio" name="review[rating]" value="3" />
+                  <label for="review_rating" class="flex items-center cursor-pointer">Average</label>
+                  <input id="review_rating" type="radio" name="review[rating]" value="4" />
+                  <label for="review_rating" class="flex items-center cursor-pointer">Good</label>
+                  <input id="review_rating" type="radio" name="review[rating]" value="5" />
+                  <label for="review_rating" class="flex items-center cursor-pointer">Excellent</label>
+                </div>
+                <div class="text-red-500" id="error_review_rating"></div>
+              </div>
+              <div class="mb-2">
+                <div class="w-full flex">
+                  <div class="w-2/3">
+                    <label class="block text-grey-darker text-base font-glacialbold mb-1" for="title">
+                      <span class="text-red-500 pr-1">*</span>Add a title
+                    </label>
+                  </div>
+                  <div class="w-1/3 flex justify-end items-center pr-2">
+                    <span data-target="reviews.titleCount"></span>
+                  </div>
+                </div>
+                <%= form.text_field :title, :class => "shadow appearance-none border rounded w-full py-2 px-3 text-base", :autocomplete => "off", data: { target: "reviews.title", action: "keyup->reviews#titleCharCount" }%>
+                <div class="text-red-500" id="error_review_title"></div>
+              </div>
+              <div class="mb-2">
+                <div class="w-full flex">
+                  <div class="w-2/3">
+                    <label class="block text-grey-darker text-base font-glacialbold mb-1" for="title">
+                      <span class="text-red-500 pr-1">*</span>Write your review
+                    </label>
+                  </div>
+                  <div class="w-1/3 flex justify-end items-center pr-2">
+                    <span data-target="reviews.reviewCount"></span>
+                  </div>
+                </div>
+                <%= form.text_area :review, :class => "shadow appearance-none border rounded w-full py-2 px-3 text-base", data: { target: "reviews.review", action: "keyup->reviews#reviewCharCount" }%>
+                <div class="text-red-500" id="error_review_review"></div>
+              </div>
+              <div class="mb-2">
+                <label class="block text-grey-darker font-glacialbold mb-1 text-base" for="title">
+                  <span class="text-red-500 pr-1">*</span>Were you ever treated by this doctor?
+                </label>
+                <div class="flex items-center mr-4 text-base">
+                  <input id="review_treated_by_doctor" type="radio" name="review[treated_by_doctor]" value="yes" />
+                  <label for="review_treated_by_doctor" class="flex items-center cursor-pointer ml-2">Yes</label>
+                  <input id="review_treated_by_doctor" type="radio" name="review[treated_by_doctor]" class="ml-4" value="no" />
+                  <label for="review_treated_by_doctor" class="flex items-center cursor-pointer ml-2">No</label>
+                </div>
+                <div class="text-red-500" id="error_review_treated_by_doctor"></div>
+              </div>
+              <div class="mb-2 mt-4">
+                <label class="block text-grey-darker font-glacialbold mb-1 text-base" for="title">
+                  <span class="text-red-500 pr-1">*</span>Would you recommend this doctor?
+                </label>
+                <div class="flex items-center mr-4 text-base">
+                  <input id="review_will_you_recommend" type="radio" name="review[will_you_recommend]" value="yes" />
+                  <label for="review_will_you_recommend" class="flex items-center cursor-pointer ml-2">Yes</label>
+                  <input id="review_will_you_recommend" type="radio" name="review[will_you_recommend]" class="ml-4" value="no"/>
+                  <label for="review_will_you_recommend" class="flex items-center cursor-pointer ml-2">No</label>
+                </div>
+                <div class="text-red-500" id="error_review_will_you_recommend"></div>
+              </div>
+              <div class="mb-2 mt-4">
+                <label class="block text-grey-darker font-glacialbold mb-1 text-base" for="title">
+                  <span class="text-red-500 pr-1">*</span>Would you preferred to be  anonymous?
+                </label>
+                <div class="flex items-center mr-4 text-base">
+                  <input id="review_anonymous" type="radio" name="review[anonymous]" value="yes" />
+                  <label for="review_anonymous" class="flex items-center cursor-pointer ml-2">Yes</label>
+                  <input id="review_anonymous" type="radio" name="review[anonymous]" value="no" class="ml-4" />
+                  <label for="review_anonymous" class="flex items-center cursor-pointer ml-2">No</label>
+                </div>
+                <div class="text-red-500" id="error_review_anonymous"></div>
+              </div>
+              <div class="mb-2">
+                <label class="block text-grey-darker text-base font-glacialbold mb-1" for="title">
+                  <span class="text-red-500 pr-1">*</span>Your first name
+                </label>
+                <%= form.text_field :name, :class => "shadow appearance-none border rounded w-full py-2 px-3 text-base", :autocomplete => "off"%>
+                <div class="text-red-500" id="error_review_name"></div>
+              </div>
+              <div class="mb-2">
+                <label class="block text-grey-darker text-base font-glacialbold mb-1" for="email">
+                  <span class="text-red-500 pr-1">*</span>Your email
+                </label>
+                <%= form.email_field :email, :class => "shadow appearance-none border rounded w-full py-2 px-3 text-base", :autocomplete => "off"%>
+                <div class="text-red-500" id="error_review_email"></div>
+              </div>
+              <div class="mt-4">
+                <button class="border-doctor-yellow bg-doctor-yellow-500 px-4 py-2 rounded shadow text-gray-100 text-base hover:bg-doctor-yellow focus:outline-none">
+                  Submit
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="text-center">
+          </div>
         </div>
-      </div>
-      <!--Body-->
-      <div class="p-2">
-        <div class="w-full z-10" data-target="message.errors"></div>
-        <div class="w-6/12 justify-center bg-grey-lighter py-3">
-          <div class="mb-2">
-            <label class="block text-grey-darker text-base font-glacialbold mb-2" for="title">Select a rating for your doctor</label>
-            <div class="flex items-center mr-4 mb-4">
-              <input id="radio1" type="radio" name="radio" />
-              <label for="radio1" class="flex items-center cursor-pointer">Poor</label>
-              <input id="radio1" type="radio" name="radio" />
-              <label for="radio1" class="flex items-center cursor-pointer">Fair</label>
-              <input id="radio1" type="radio" name="radio" />
-              <label for="radio1" class="flex items-center cursor-pointer">Average</label>
-              <input id="radio1" type="radio" name="radio" />
-              <label for="radio1" class="flex items-center cursor-pointer">Good</label>
-              <input id="radio1" type="radio" name="radio" />
-              <label for="radio1" class="flex items-center cursor-pointer">Excellent</label>
-            </div>
-          </div>
-          <div class="mb-2">
-            <label class="block text-grey-darker text-base font-glacialbold mb-2" for="title">Add a title</label>
-            <input autofocus="autofocus" autocomplete="title" class="shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker" type="title" value="" name="review[title]" id="title">
-          </div>
-          <div class="mb-2">
-            <label class="block text-grey-darker text-base font-glacialbold mb-2" for="title">Write your review</label>
-            <textarea class="shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker" name="review[summary]" id="summary"></textarea>
-          </div>
-          <div class="mb-2">
-            <label class="block text-grey-darker text-base font-glacialbold mb-2" for="title">Were you ever treated by this doctor?</label>
-            <div class="flex items-center mr-4 mb-4">
-              <input id="radio1" type="radio" name="radio" />
-              <label for="radio1" class="flex items-center cursor-pointer">Yes</label>
-              <input id="radio1" type="radio" name="radio" />
-              <label for="radio1" class="flex items-center cursor-pointer">No</label>
-            </div>
-          </div>
-          <div class="mb-2">
-            <label class="block text-grey-darker text-base font-glacialbold mb-2" for="title">Would you recommend this doctor?</label>
-            <div class="flex items-center mr-4 mb-4">
-              <input id="radio2" type="radio" name="radio" />
-              <label for="radio2" class="flex items-center cursor-pointer">Yes</label>
-              <input id="radio2" type="radio" name="radio" />
-              <label for="radio2" class="flex items-center cursor-pointer">No</label>
-            </div>
-          </div>
-          <div class="mb-2">
-            <label class="block text-grey-darker text-base font-glacialbold mb-2" for="title">Would you preferred to be  anonymous?</label>
-            <div class="flex items-center mr-4 mb-4">
-              <input id="radio3" type="radio" name="radio" />
-              <label for="radio3" class="flex items-center cursor-pointer">Yes</label>
-              <input id="radio3" type="radio" name="radio" />
-              <label for="radio3" class="flex items-center cursor-pointer">No</label>
-            </div>
-          </div>
-          <div class="mb-2">
-            <label class="block text-grey-darker text-base font-glacialbold mb-2" for="title">Your first name</label>
-            <input autofocus="autofocus" autocomplete="first_name" class="shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker" type="first_name" value="" name="review[first_name]" id="first_name">
-          </div>
-          <div class="mb-2">
-            <label class="block text-grey-darker text-base font-glacialbold mb-2" for="email">Your email</label>
-            <input autofocus="autofocus" autocomplete="email" class="shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker" type="email" value="" name="review[email]" id="email">
-          </div>
-          <div class="mb-2">
-            <button class="border-doctor-yellow bg-doctor-yellow-500 px-4 py-2 rounded shadow text-gray-100 text-base hover:bg-doctor-yellow" data-action="click->modal#modalOpen" data-modal="open_modal">
-              Submit
-            </button>
-          </div>
-        </div>
-      </div>
-      <div class="text-center">
       </div>
     </div>
-  </div>
+  <% end %>
 </div>
