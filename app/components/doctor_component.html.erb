@@ -14,9 +14,9 @@
       </div>
       <div class="mt-2"><%=doctor&.speciality&.name%></div>
       <div class="mt-2 w-full flex">
-        <%= render(StarRatingComponent.new(rating: doctor.avg_rating, class: 'doc-rating')) %>
+        <%= render(StarRatingComponent.new(rating: doctor.average_rating, class: 'doc-rating')) %>
         <div class="text-sm">
-          <a href="#" class="text-blue-500"> (<%=doctor&.reviews&.count%> Reviews)</a>
+          <a href="#" class="text-blue-500"> (<%=doctor&.review_count%> Reviews)</a>
         </div>
       </div>
       <div class="mt-2 text-base text-gray-600">

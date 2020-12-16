@@ -27,7 +27,8 @@ class ApplicationController < ActionController::Base
   end
 
   def set_location_string
-    return location_string if location_string.present?
+    return if location_string.present?
+    return @location_string = params[:place] if params[:place].present?
     coords = (params[:near].presence || DEFUALT_LOCATION).split(',').map(&:to_f)
     result = Geocoder.search(coords).first
     @location_string = (result.data['address'] || {})['city']

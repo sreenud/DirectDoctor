@@ -27,6 +27,7 @@ gem('jbuilder', '~> 2.7')
 gem('bootsnap', '>= 1.4.2', require: false)
 gem('geocoder', '~> 1.6', '>= 1.6.4')
 gem('view_component', require: 'view_component/engine')
+gem('scenic')
 
 
 group :development, :test do
