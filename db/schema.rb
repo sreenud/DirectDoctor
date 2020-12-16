@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_15_021827) do
+ActiveRecord::Schema.define(version: 2020_12_16_124408) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -333,4 +333,12 @@ ActiveRecord::Schema.define(version: 2020_12_15_021827) do
   add_foreign_key "taggings", "tags"
   add_foreign_key "topic_tips", "tips"
   add_foreign_key "topic_tips", "topics"
+
+  create_view "review_datas", materialized: true, sql_definition: <<-SQL
+      SELECT reviews.doctor_id,
+      count(*) AS total,
+      avg(reviews.rating) AS avg_rating
+     FROM reviews
+    GROUP BY reviews.doctor_id;
+  SQL
 end

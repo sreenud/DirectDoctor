@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
 
   DEFUALT_LOCATION = '40.73061,-73.935242'
 
-  attr_reader :current_location
+  attr_reader :current_location, :location_string
 
   before_action :menu_details, only: %i[index show], unless: proc { request.xhr? }
   before_action :set_approximate_location
@@ -24,6 +24,14 @@ class ApplicationController < ActionController::Base
 
   def to_coordinates(lat_lng)
     lat_lng.split(',').map(&:to_f)
+  end
+
+  def set_location_string
+    return if location_string.present?
+    return @location_string = params[:place] if params[:place].present?
+    coords = (params[:near].presence || DEFUALT_LOCATION).split(',').map(&:to_f)
+    result = Geocoder.search(coords).first
+    @location_string = (result.data['address'] || {})['city']
   end
 
   private

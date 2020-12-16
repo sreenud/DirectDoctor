@@ -4,6 +4,7 @@ import ParamRedirect, {
   AddHoverHighlight,
   locationParams,
   ParamUrl,
+  setLocationString,
   URIPush,
 } from './param_redirect';
 import MapPinGenerator, { customIcon } from './map_pin_generator';
@@ -178,7 +179,7 @@ export default class extends Controller {
       }),
     }).then(
       // eslint-disable-next-line camelcase
-      ({ results, pins, pagination }) => {
+      ({ results, pins, pagination, location_string }) => {
         const container = document.querySelector('#result-container');
         const paginationContainer = document.querySelector(
           '#pagination-container'
@@ -187,6 +188,7 @@ export default class extends Controller {
           return null;
         }
         container.innerHTML = results;
+        setLocationString(location_string);
         paginationContainer.innerHTML = pagination;
         if (window.map_helpers !== undefined && window.map_helpers !== null) {
           window.map_helpers.renderPins(pins || []);

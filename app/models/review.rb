@@ -6,6 +6,10 @@ class Review < ApplicationRecord
 
   scope :published, -> { where(status: "published") }
 
+  after_commit do
+    ReviewData.refresh
+  end
+
   def display_date
     created_at.strftime("%B %d, %Y")
   end

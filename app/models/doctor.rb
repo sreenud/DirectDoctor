@@ -8,6 +8,7 @@ class Doctor < ApplicationRecord
 
   belongs_to :speciality
   has_many :reviews
+  has_one :review_data, class_name: 'ReviewData'
 
   scope :latest, -> { order(created_at: :desc) }
 
@@ -98,6 +99,14 @@ class Doctor < ApplicationRecord
 
   def formated_phone_number
     phone.gsub(/[^0-9]/, '')
+  end
+
+  def review_count
+    review_data.present? ? review_data.total : 0
+  end
+
+  def average_rating
+    review_data.present? ? review_data.avg_rating : 0
   end
 
   private

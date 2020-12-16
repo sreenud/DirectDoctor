@@ -21,8 +21,8 @@
         </ul>
       </nav>
       <div class="w-full text-left">
-        <h1 class="font-hurmebold text-md inline-block">Chicago, Internal Medical Doctors </h1>
-        <span class="text-gray-600">(18048 results)</span>
+        <h1 class="font-hurmebold text-md inline-block" id="near-location"><%= @location_string %></h1>
+        <span class="text-gray-600">(<%= @pagy.count %> results)</span>
       </div>
       <div class="lg:w-full flex mt-4">
         <div class="lg:w-2/12">
@@ -59,7 +59,11 @@
                 <%= render_doctor_cards %>
               </div>
               <div class="w-full text-center" id="pagination-container" data-controller="pagination" data-target="pagination.container">
-                <%== pagy_nav @pagy %>
+                <% if @pagy.count.positive? %>
+                  <%== pagy_nav @pagy %>
+                <% else %>
+                  No Results found
+                <% end %>
               </div>
             </div>
             <div
