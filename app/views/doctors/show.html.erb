@@ -9,7 +9,7 @@
         <%=render partial: 'doctors/profile/breadcrumb'%>
         <div class="lg:w-full flex mt-10 w-4">
           <div class="w-4/12 mr-8">
-            <%=render partial: 'doctors/profile/doctor_card', locals: { doctor: @doctor }%>
+            <%=render partial: 'doctors/profile/doctor_card', locals: { doctor: @doctor, reviews: @reviews }%>
           </div>
           <div class="w-8/12">
             <%=render partial: 'doctors/profile/left_bubble_design'%>
