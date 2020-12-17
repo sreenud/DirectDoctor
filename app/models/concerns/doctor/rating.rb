@@ -4,7 +4,11 @@ class Doctor
 
     def star_percentage(number)
       five_ratings = ratings(number)
-      ((five_ratings.to_f / total_reviews.to_f) * 100).round
+      if total_reviews.to_f > 0
+        ((five_ratings.to_f / total_reviews.to_f) * 100).round
+      else
+        total_reviews.to_f
+      end
     end
 
     def total_reviews
