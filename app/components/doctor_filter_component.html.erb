@@ -14,7 +14,7 @@
     </div>
     <div class="w-full mt-4 border-b pb-6 text-sm border-gray-200">
       <label class="tracking-wide font-hurmebold">Patient Reviwes</label>
-      <div class="mt-2">
+      <div class="mt-2 w-full">
         <div class="inline-flex items-center">
           <%= radio_button_tag(:rating, 5, filters['rating'].to_i == 5) %>
           <%= label_tag(:rating_5, render(StarRatingComponent.new(rating: 5, class: 'ml-1')))%>
@@ -161,5 +161,4 @@
       </div>
     </div>
   </div>
-
 <% end %>

@@ -1,5 +1,5 @@
 <div data-controller="reviews">
-  <%= form_with(model: [review], url: doctor_reviews_url(@doctor.fdd_id), data: {type: "html", action: "ajax:error->reviews#errorHandler ajax:success->reviews#success", target: "form" }) do |form| %>
+  <%= form_with(model: [review], url: doctor_reviews_url(@doctor.fdd_id), class: "form-stars", data: {type: "html", action: "ajax:error->reviews#errorHandler ajax:success->reviews#success", target: "form" }) do |form| %>
     <div class="modal opacity-0 pointer-events-none fixed w-full h-full top-0 left-0 flex items-center justify-center z-50" id="open_modal">
       <div class="modal-overlay absolute w-full h-full bg-gray-900 opacity-75"></div>
       <div class="modal-container bg-white w-8/12 rounded shadow-lg z-50 overflow-y-auto h-full" style="min-width:600px;">
@@ -17,107 +17,127 @@
           <!--Body-->
           <div class="p-2" data-target="reviews.success">
             <div class="w-full z-10" data-target="reviews.errors"></div>
-            <div class="w-6/12 justify-center bg-grey-lighter">
-              <div class="mb-2">
-                <label class="block text-grey-darker text-base font-glacialbold mb-1" for="title">
-                  <span class="text-red-500 pr-1">*</span>Select a rating for your doctor
-                </label>
-                <div class="flex items-center mr-4 mb-4">
-                  <input id="review_rating" type="radio" name="review[rating]" value="1" />
-                  <label for="review_rating" class="flex items-center cursor-pointer">Poor</label>
-                  <input id="review_rating" type="radio" name="review[rating]" value="2" />
-                  <label for="review_rating" class="flex items-center cursor-pointer">Fair</label>
-                  <input id="review_rating" type="radio" name="review[rating]" value="3" />
-                  <label for="review_rating" class="flex items-center cursor-pointer">Average</label>
-                  <input id="review_rating" type="radio" name="review[rating]" value="4" />
-                  <label for="review_rating" class="flex items-center cursor-pointer">Good</label>
-                  <input id="review_rating" type="radio" name="review[rating]" value="5" />
-                  <label for="review_rating" class="flex items-center cursor-pointer">Excellent</label>
-                </div>
-                <div class="text-red-500" id="error_review_rating"></div>
-              </div>
-              <div class="mb-2">
-                <div class="w-full flex">
-                  <div class="w-2/3">
-                    <label class="block text-grey-darker text-base font-glacialbold mb-1" for="title">
-                      <span class="text-red-500 pr-1">*</span>Add a title
-                    </label>
+            <div class=" w-full flex">
+              <div class="w-6/12 justify-center bg-grey-lighter">
+                <div class="mb-2">
+                  <label class="block text-grey-darker text-base font-glacialbold mb-1" for="title">
+                    <span class="text-red-500 pr-1">*</span>Select a rating for your doctor
+                  </label>
+                  <div class="flex items-center mr-4 mb-4">
+                    <div class="stars">
+                      <input type="radio" name="review[rating]" value="1" class="star-1" id="review_rating-1">
+                      <label class="star-1" for="review_rating-1">1</label>
+                      <input type="radio" name="review[rating]" value="2" class="star-2" id="review_rating-2">
+                      <label class="star-2" for="review_rating-2">2</label>
+                      <input type="radio" name="review[rating]" value="3" class="star-3" id="review_rating-3">
+                      <label class="star-3" for="review_rating-3">3</label>
+                      <input type="radio" name="review[rating]" value="4" class="star-4" id="review_rating-4">
+                      <label class="star-4" for="review_rating-4">4</label>
+                      <input type="radio" name="review[rating]" value="5" class="star-5" id="review_rating-5">
+                      <label class="star-5" for="review_rating-5">5</label>
+                      <span></span>
+                    </div>
                   </div>
-                  <div class="w-1/3 flex justify-end items-center pr-2">
-                    <span data-target="reviews.titleCount"></span>
+                  <div class="text-red-500" id="error_review_rating"></div>
+                </div>
+                <div class="mb-2">
+                  <div class="w-full flex">
+                    <div class="w-2/3">
+                      <label class="block text-grey-darker text-base font-glacialbold mb-1" for="title">
+                        <span class="text-red-500 pr-1">*</span>Add a title
+                      </label>
+                    </div>
+                    <div class="w-1/3 flex justify-end items-center pr-2">
+                      <span data-target="reviews.titleCount"></span>
+                    </div>
+                  </div>
+                  <%= form.text_field :title, :class => "shadow appearance-none border rounded w-full py-2 px-3 text-base", :autocomplete => "off", data: { target: "reviews.title", action: "keyup->reviews#titleCharCount" }%>
+                  <div class="text-red-500" id="error_review_title"></div>
+                </div>
+                <div class="mb-2">
+                  <div class="w-full flex">
+                    <div class="w-2/3">
+                      <label class="block text-grey-darker text-base font-glacialbold mb-1" for="title">
+                        <span class="text-red-500 pr-1">*</span>Write your review
+                      </label>
+                    </div>
+                    <div class="w-1/3 flex justify-end items-center pr-2">
+                      <span data-target="reviews.reviewCount"></span>
+                    </div>
+                  </div>
+                  <%= form.text_area :review, :class => "shadow appearance-none border rounded w-full py-2 px-3 text-base", data: { target: "reviews.review", action: "keyup->reviews#reviewCharCount" }%>
+                  <div class="text-red-500" id="error_review_review"></div>
+                </div>
+                <div class="mb-2">
+                  <label class="block text-grey-darker font-glacialbold mb-1 text-base" for="title">
+                    <span class="text-red-500 pr-1">*</span>Were you ever treated by this doctor?
+                  </label>
+                  <div class="flex items-center mr-4 text-base">
+                    <input id="review_treated_by_doctor" type="radio" name="review[treated_by_doctor]" value="yes" />
+                    <label for="review_treated_by_doctor" class="flex items-center cursor-pointer ml-2">Yes</label>
+                    <input id="review_treated_by_doctor" type="radio" name="review[treated_by_doctor]" class="ml-4" value="no" />
+                    <label for="review_treated_by_doctor" class="flex items-center cursor-pointer ml-2">No</label>
+                  </div>
+                  <div class="text-red-500" id="error_review_treated_by_doctor"></div>
+                </div>
+                <div class="mb-2 mt-4">
+                  <label class="block text-grey-darker font-glacialbold mb-1 text-base" for="title">
+                    <span class="text-red-500 pr-1">*</span>Would you recommend this doctor?
+                  </label>
+                  <div class="flex items-center mr-4 text-base">
+                    <input id="review_will_you_recommend" type="radio" name="review[will_you_recommend]" value="yes" />
+                    <label for="review_will_you_recommend" class="flex items-center cursor-pointer ml-2">Yes</label>
+                    <input id="review_will_you_recommend" type="radio" name="review[will_you_recommend]" class="ml-4" value="no"/>
+                    <label for="review_will_you_recommend" class="flex items-center cursor-pointer ml-2">No</label>
+                  </div>
+                  <div class="text-red-500" id="error_review_will_you_recommend"></div>
+                </div>
+                <div class="mb-2 mt-4">
+                  <label class="block text-grey-darker font-glacialbold mb-1 text-base" for="title">
+                    <span class="text-red-500 pr-1">*</span>Would you preferred to be  anonymous?
+                  </label>
+                  <div class="flex items-center mr-4 text-base">
+                    <input id="review_anonymous" type="radio" name="review[anonymous]" value="yes" />
+                    <label for="review_anonymous" class="flex items-center cursor-pointer ml-2">Yes</label>
+                    <input id="review_anonymous" type="radio" name="review[anonymous]" value="no" class="ml-4" />
+                    <label for="review_anonymous" class="flex items-center cursor-pointer ml-2">No</label>
+                  </div>
+                  <div class="text-red-500" id="error_review_anonymous"></div>
+                </div>
+                <div class="mb-2">
+                  <label class="block text-grey-darker text-base font-glacialbold mb-1" for="title">
+                    <span class="text-red-500 pr-1">*</span>Your first name
+                  </label>
+                  <%= form.text_field :name, :class => "shadow appearance-none border rounded w-full py-2 px-3 text-base", :autocomplete => "off"%>
+                  <div class="text-red-500" id="error_review_name"></div>
+                </div>
+                <div class="mb-2">
+                  <label class="block text-grey-darker text-base font-glacialbold mb-1" for="email">
+                    <span class="text-red-500 pr-1">*</span>Your email
+                  </label>
+                  <%= form.email_field :email, :class => "shadow appearance-none border rounded w-full py-2 px-3 text-base", :autocomplete => "off"%>
+                  <div class="text-red-500" id="error_review_email"></div>
+                </div>
+                <div class="mt-4">
+                  <button class="border-doctor-yellow bg-doctor-yellow-500 px-4 py-2 rounded shadow text-gray-100 text-base hover:bg-doctor-yellow focus:outline-none">
+                    Submit
+                  </button>
+                </div>
+              </div>
+              <div class="w-5/12 ml-20 mt-12 text-base">
+                <div class=" w-full border border-gray-400 pt-12 px-8 pb-8  bg-gray-100">
+                  <div class=" font-glacialbold text-lg mb-4">Review guidelines</div>
+                  <div class="border border-gray-400 p-2">
+                    <div class="w-full pt-1">
+                      <span class="font-glacialbold">FindMyDirectDoctor only allows reviews for your doctor.</span>
+                      Please do not leave a review for a doctor you did not consult with.
+                    </div>
+                    <div class="w-full mt-4">
+                      <span class="font-glacialbold">Be specific.</span>
+                      Explain what your doctor did (or failed to do) with your case. We will only accept reviews that clearly indicate that you contacted, consulted with doctor.
+                    </div>
                   </div>
                 </div>
-                <%= form.text_field :title, :class => "shadow appearance-none border rounded w-full py-2 px-3 text-base", :autocomplete => "off", data: { target: "reviews.title", action: "keyup->reviews#titleCharCount" }%>
-                <div class="text-red-500" id="error_review_title"></div>
-              </div>
-              <div class="mb-2">
-                <div class="w-full flex">
-                  <div class="w-2/3">
-                    <label class="block text-grey-darker text-base font-glacialbold mb-1" for="title">
-                      <span class="text-red-500 pr-1">*</span>Write your review
-                    </label>
-                  </div>
-                  <div class="w-1/3 flex justify-end items-center pr-2">
-                    <span data-target="reviews.reviewCount"></span>
-                  </div>
-                </div>
-                <%= form.text_area :review, :class => "shadow appearance-none border rounded w-full py-2 px-3 text-base", data: { target: "reviews.review", action: "keyup->reviews#reviewCharCount" }%>
-                <div class="text-red-500" id="error_review_review"></div>
-              </div>
-              <div class="mb-2">
-                <label class="block text-grey-darker font-glacialbold mb-1 text-base" for="title">
-                  <span class="text-red-500 pr-1">*</span>Were you ever treated by this doctor?
-                </label>
-                <div class="flex items-center mr-4 text-base">
-                  <input id="review_treated_by_doctor" type="radio" name="review[treated_by_doctor]" value="yes" />
-                  <label for="review_treated_by_doctor" class="flex items-center cursor-pointer ml-2">Yes</label>
-                  <input id="review_treated_by_doctor" type="radio" name="review[treated_by_doctor]" class="ml-4" value="no" />
-                  <label for="review_treated_by_doctor" class="flex items-center cursor-pointer ml-2">No</label>
-                </div>
-                <div class="text-red-500" id="error_review_treated_by_doctor"></div>
-              </div>
-              <div class="mb-2 mt-4">
-                <label class="block text-grey-darker font-glacialbold mb-1 text-base" for="title">
-                  <span class="text-red-500 pr-1">*</span>Would you recommend this doctor?
-                </label>
-                <div class="flex items-center mr-4 text-base">
-                  <input id="review_will_you_recommend" type="radio" name="review[will_you_recommend]" value="yes" />
-                  <label for="review_will_you_recommend" class="flex items-center cursor-pointer ml-2">Yes</label>
-                  <input id="review_will_you_recommend" type="radio" name="review[will_you_recommend]" class="ml-4" value="no"/>
-                  <label for="review_will_you_recommend" class="flex items-center cursor-pointer ml-2">No</label>
-                </div>
-                <div class="text-red-500" id="error_review_will_you_recommend"></div>
-              </div>
-              <div class="mb-2 mt-4">
-                <label class="block text-grey-darker font-glacialbold mb-1 text-base" for="title">
-                  <span class="text-red-500 pr-1">*</span>Would you preferred to be  anonymous?
-                </label>
-                <div class="flex items-center mr-4 text-base">
-                  <input id="review_anonymous" type="radio" name="review[anonymous]" value="yes" />
-                  <label for="review_anonymous" class="flex items-center cursor-pointer ml-2">Yes</label>
-                  <input id="review_anonymous" type="radio" name="review[anonymous]" value="no" class="ml-4" />
-                  <label for="review_anonymous" class="flex items-center cursor-pointer ml-2">No</label>
-                </div>
-                <div class="text-red-500" id="error_review_anonymous"></div>
-              </div>
-              <div class="mb-2">
-                <label class="block text-grey-darker text-base font-glacialbold mb-1" for="title">
-                  <span class="text-red-500 pr-1">*</span>Your first name
-                </label>
-                <%= form.text_field :name, :class => "shadow appearance-none border rounded w-full py-2 px-3 text-base", :autocomplete => "off"%>
-                <div class="text-red-500" id="error_review_name"></div>
-              </div>
-              <div class="mb-2">
-                <label class="block text-grey-darker text-base font-glacialbold mb-1" for="email">
-                  <span class="text-red-500 pr-1">*</span>Your email
-                </label>
-                <%= form.email_field :email, :class => "shadow appearance-none border rounded w-full py-2 px-3 text-base", :autocomplete => "off"%>
-                <div class="text-red-500" id="error_review_email"></div>
-              </div>
-              <div class="mt-4">
-                <button class="border-doctor-yellow bg-doctor-yellow-500 px-4 py-2 rounded shadow text-gray-100 text-base hover:bg-doctor-yellow focus:outline-none">
-                  Submit
-                </button>
               </div>
             </div>
           </div>
