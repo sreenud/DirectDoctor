@@ -127,38 +127,40 @@
     </div>
   </div>
   <div class="w-full flex pb-6 ">
-    <div class="w-1/2">
+    <div class="w-40">
       <!--<div class="text-md tracking-wide font-hurmebold mt-4 text-center">
         <%=doctor.practice_name%>
       </div>-->
     </div>
-    <div class="w-1/2">
-      <div class="w-full flex mt-4 text-base">
-        <div><%=image_pack_tag 'icons/email.svg', class: "w-5 h-5"%></div>
-        <a href="mailto:<%=doctor.email%>" class="hover:underline hover:text-blue-400">
-          <div class="pl-2">Message</div>
-        </a>
-        <div class="pl-6"><%=image_pack_tag "vertical_side_shadow_for_big_box.svg", class: "w-10 h-8"%></div>
-      </div>
-    </div>
-    <div class="w-1/2">
-      <div class="w-full flex mt-4 text-base">
-        <div><%=image_pack_tag 'icons/phone.svg', class: "w-5 h-5"%></div>
-        <a href="tel:<%=doctor.formated_phone_number%>" class="hover:underline hover:text-blue-400 w-full">
-          <div class="pl-2"><%=doctor.phone%></div>
-        </a>
-        <div class="pl-4 pr-4"><%=image_pack_tag "vertical_side_shadow_for_big_box.svg", class: "w-10 h-8"%></div>
-      </div>
-    </div>
-    <div class="w-1/2">
-      <a href="<%=doctor.website_url%>" target="_blank" class="hover:underline hover:text-blue-400" >
-        <div class="w-full flex mt-4 text-base">
-          <div><%=image_pack_tag 'icons/web.svg', class: "w-5 h-5"%></div>
-          <div class="pl-2">
-            Website
-          </div>
+    <div class="w-full flex pl-4">
+      <div class="w-4/12">
+        <div class="w-full flex mt-4 text-base justify-center">
+          <div class="pr-2"><%=image_pack_tag 'icons/email.svg', class: "w-5 h-5 pt-1"%></div>
+          <a href="mailto:<%=doctor.email%>" class="hover:underline hover:text-blue-400">
+            <div >Message</div>
+          </a>
         </div>
-      </a>
+      </div>
+      <div class="w-4/12">
+        <div class="w-full flex mt-4 text-base">
+          <div class=" -ml-4 mr-4"><%=image_pack_tag "vertical_side_shadow_for_big_box.svg", class: "w-2 h-8"%></div>
+          <div class="pr-2"><%=image_pack_tag 'icons/phone.svg', class: "w-5 h-5 pt-1"%></div>
+          <a href="tel:<%=doctor.formated_phone_number%>" class="hover:underline hover:text-blue-400 w-full">
+            <div ><%=doctor.phone%></div>
+          </a>
+        </div>
+      </div>
+      <div class="w-4/12">
+        <a href="<%=doctor.website_url%>" target="_blank" class="hover:underline hover:text-blue-400" >
+          <div class="w-full flex mt-4 text-base">
+            <div class=" -ml-4 mr-4"><%=image_pack_tag "vertical_side_shadow_for_big_box.svg", class: "w-2 h-8"%></div>
+            <div><%=image_pack_tag 'icons/web.svg', class: "w-5 h-5 pt-1"%></div>
+            <div>
+              Website
+            </div>
+          </div>
+        </a>
+      </div>
     </div>
   </div>
 <% end %>
