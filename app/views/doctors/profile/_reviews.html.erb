@@ -105,7 +105,9 @@
       </div>
     </div>
   <% end %>
-  <div class="w-full flex justify-end pr-6 pb-4">
-    <a href="#" class=" text-blue-400 underline text-sm">View all reviews</a>
-  </div>
+  <% if reviews.count > 5 %>
+    <div class="w-full flex justify-end pr-6 pb-4">
+      <a href="#" class=" text-blue-400 underline text-sm">View all reviews</a>
+    </div>
+  <% end %>
 </div>
