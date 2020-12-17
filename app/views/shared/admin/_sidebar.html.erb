@@ -26,30 +26,30 @@
       </div>
     </a>
     <% if current_user.has_role?('admin') %>
-    <% menu_classes = admin_menu_classes(controller: "users") %>
-    <a href="<%=admin_users_url%>" class="flex items-center mt-3 pl-2 relative pt-2">
-      <div class="<%=menu_classes[:active_class]%> flex pl-2">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="fill-current h-5 text-gray-500">
-          <path d="M9 6a3 3 0 11-6 0 3 3 0 016 0zM17 6a3 3 0 11-6 0 3 3 0 016 0zM12.93 17c.046-.327.07-.66.07-1a6.97 6.97 0 00-1.5-4.33A5 5 0 0119 16v1h-6.07zM6 11a5 5 0 015 5v1H1v-1a5 5 0 015-5z" />
-        </svg>
-        <span class="font-medium leading-tight pl-2 text-gray-700 text-md">Users</span>
-      </div>
-    </a>
+      <% menu_classes = admin_menu_classes(controller: "users") %>
+      <a href="<%=admin_users_url%>" class="flex items-center mt-3 pl-2 relative pt-2">
+        <div class="<%=menu_classes[:active_class]%> flex pl-2">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="fill-current h-5 text-gray-500">
+            <path d="M9 6a3 3 0 11-6 0 3 3 0 016 0zM17 6a3 3 0 11-6 0 3 3 0 016 0zM12.93 17c.046-.327.07-.66.07-1a6.97 6.97 0 00-1.5-4.33A5 5 0 0119 16v1h-6.07zM6 11a5 5 0 015 5v1H1v-1a5 5 0 015-5z" />
+          </svg>
+          <span class="font-medium leading-tight pl-2 text-gray-700 text-md">Users</span>
+        </div>
+      </a>
     <% end %>
     <% if current_user.has_role?('admin') %>
-    <a href="" class="flex items-center mt-3 pl-4 pt-2 relative">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="fill-current h-5 text-gray-500">
-        <path d="M5 3a1 1 0 000 2c5.523 0 10 4.477 10 10a1 1 0 102 0C17 8.373 11.627 3 5 3z" />
-        <path d="M4 9a1 1 0 011-1 7 7 0 017 7 1 1 0 11-2 0 5 5 0 00-5-5 1 1 0 01-1-1zM3 15a2 2 0 114 0 2 2 0 01-4 0z" />
-      </svg>
-      <span class="font-medium leading-tight pl-2 text-gray-700 text-md">Blog</span>
-    </a>
-    <nav class="block py-1">
-      <% menu_classes = admin_menu_classes(controller: "topics") %>
-      <a href="<%=admin_topics_url%>" class="block leading-tight ml-10 mb-2 mt-2 text-sm px-2 <%=menu_classes[:active_class]%>">Topics</a>
-      <% menu_classes = admin_menu_classes(controller: "tips") %>
-      <a href="<%=admin_tips_url%>" class="block leading-tight ml-10 mb-2 mt-2 text-sm text-gray-600 px-2 hover:text-indigo-900 <%=menu_classes[:active_class]%>">Tips</a>
-    </nav>
+      <a href="" class="flex items-center mt-3 pl-4 pt-2 relative">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="fill-current h-5 text-gray-500">
+          <path d="M5 3a1 1 0 000 2c5.523 0 10 4.477 10 10a1 1 0 102 0C17 8.373 11.627 3 5 3z" />
+          <path d="M4 9a1 1 0 011-1 7 7 0 017 7 1 1 0 11-2 0 5 5 0 00-5-5 1 1 0 01-1-1zM3 15a2 2 0 114 0 2 2 0 01-4 0z" />
+        </svg>
+        <span class="font-medium leading-tight pl-2 text-gray-700 text-md">Blog</span>
+      </a>
+      <nav class="block py-1">
+        <% menu_classes = admin_menu_classes(controller: "topics") %>
+        <a href="<%=admin_topics_url%>" class="block leading-tight ml-10 mb-2 mt-2 text-sm px-2 <%=menu_classes[:active_class]%>">Topics</a>
+        <% menu_classes = admin_menu_classes(controller: "tips") %>
+        <a href="<%=admin_tips_url%>" class="block leading-tight ml-10 mb-2 mt-2 text-sm text-gray-600 px-2 hover:text-indigo-900 <%=menu_classes[:active_class]%>">Tips</a>
+      </nav>
     <% end %>
     <a href="" class="flex items-center pt-6 pl-4 relative">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="fill-current h-5 text-gray-500">
@@ -76,6 +76,10 @@
         <a href="<%=admin_states_url%>" class="block leading-tight ml-10 mb-2 mt-2 text-sm px-2 <%=menu_classes[:active_class]%>">States</a>
         <% menu_classes = admin_menu_classes(controller: "page_redirects") %>
         <a href="<%=admin_page_redirects_url%>" class="block leading-tight ml-10 mb-2 mt-2 text-sm text-gray-600 px-2 hover:text-indigo-900 <%=menu_classes[:active_class]%>">Page Redirects</a>
+      <% end %>
+      <% if current_user.has_role?('admin') %>
+        <% menu_classes = admin_menu_classes(controller: "reviews") %>
+        <a href="<%=admin_reviews_url%>" class="block leading-tight ml-10 mb-2 mt-2 text-sm text-gray-600 px-2 hover:text-indigo-900 <%=menu_classes[:active_class]%>">Reviews</a>
       <% end %>
     </nav>
   </nav>

@@ -7,12 +7,6 @@ class ReviewsController < ApplicationController
     respond_to do |format|
       if @review.save
 
-        # doctor save average rating
-        total_reviews = @doctor&.reviews ? @doctor&.reviews&.count : 0
-        review_sum = @doctor&.reviews ? @doctor&.reviews&.sum(:rating) : 0
-        @doctor.avg_rating = review_sum / total_reviews
-        @doctor.save(validate: false)
-
         format.html do
           render(partial: "doctors/thankyou", locals: { object: @review }, status: :ok)
         end

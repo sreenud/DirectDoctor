@@ -12,11 +12,11 @@ class Doctor
     end
 
     def total_reviews
-      reviews.count
+      reviews.published.count
     end
 
     def ratings(number)
-      reviews.where(rating: number)&.count
+      reviews.published.where(rating: number)&.count
     end
   end
 end

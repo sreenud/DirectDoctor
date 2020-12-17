@@ -12,6 +12,7 @@ namespace :admin do
   resources :specialities
   resources :doctor_degrees
   resources :services
+  resources :reviews
   resources :languages
   resources :states do
     resources :locations

@@ -3,6 +3,6 @@ class DoctorsController < ApplicationController
     @doctor = Doctor.find_by_fdd_id(params[:fdd_id])
 
     @review = Review.new
-    @reviews = @doctor.reviews
+    @reviews = @doctor.reviews.published
   end
 end

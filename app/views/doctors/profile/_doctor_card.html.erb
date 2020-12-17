@@ -8,7 +8,7 @@
       <div class="w-full flex">
         <%= render(StarRatingComponent.new(rating: doctor.avg_rating, class: 'doc-rating', width: '5', height: '5')) %>
         <div class=" text-xs ml-2">
-          <a href="#" class="text-blue-500"> (<%=doctor.reviews.count%> Reviews)</a>
+          <a href="#" class="text-blue-500"> (<%=reviews.count%> Reviews)</a>
         </div>
       </div>
       <div class="w-full text-base py-1 text-gray-700">

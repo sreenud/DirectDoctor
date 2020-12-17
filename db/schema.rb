@@ -339,6 +339,7 @@ ActiveRecord::Schema.define(version: 2020_12_16_124408) do
       count(*) AS total,
       avg(reviews.rating) AS avg_rating
      FROM reviews
+    WHERE ((reviews.status)::text = 'published'::text)
     GROUP BY reviews.doctor_id;
   SQL
 end
