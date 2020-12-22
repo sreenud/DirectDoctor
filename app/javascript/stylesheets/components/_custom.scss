@@ -144,3 +144,25 @@
 .tab-active {
   @apply border-t-4 rounded py-1 border-doctor-yellow;
 }
+
+.about-gray-background-light {
+  background-image: url("../images/about_top_header.svg");
+  background-size: contain;
+}
+
+.about-background-1 {
+  background-image: url("../images/1-01.svg");
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.about-background-2 {
+  background-image: url("../images/2-01.svg");
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+.about-background-3 {
+  background-image: url("../images/3-01.svg");
+  background-size: cover;
+  background-repeat: no-repeat;
+}

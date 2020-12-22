@@ -8,6 +8,7 @@ Rails.application.routes.draw do
 
   resources :blogs, only: [:index, :show]
   resources :tips, only: [:index]
+  get 'about-us', to: "abouts#index"
   resources :doctors do
     resources :reviews, only: [:index, :create]
   end
