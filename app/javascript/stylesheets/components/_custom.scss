@@ -163,6 +163,26 @@
 }
 .mission-background-1 {
   background-image: url("../images/mission_bg_1.svg");
-  background-size: contain;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+.mission-background-2 {
+  background-image: url("../images/mission_bg_2.svg");
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+.mission-background-3 {
+  background-image: url("../images/mission_bg_3.svg");
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+.mission-background-4 {
+  background-image: url("../images/mission_bg_4.svg");
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+.mission-background-5 {
+  background-image: url("../images/mission_bg_5.svg");
+  background-size: cover;
   background-repeat: no-repeat;
 }
