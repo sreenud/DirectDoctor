@@ -9,6 +9,9 @@ module.exports = {
         'hyperlink-blue': '#13347f',
         'doctor-gray-100': '#efeff1',
         'doctor-yellow-100': '#fdf7ea',
+        'doctor-grayb-100': '#fbfbfb',
+        'doctor-grayb-200': '#f5f5f5',
+        'doctor-grayb-300': '#d9d9d9',
       },
       fontFamily: {
         hurmebold: ['HurmeBold'],
