@@ -9,13 +9,13 @@ class DoctorComponent < ViewComponent::Base
   def doctor_avatar(**props)
     if doctor.image.present?
       tag.img(
-        src: doctor.image,
+        src: doctor.image_url,
         alt: "#{doctor.name} - #{doctor.address}",
         **props
       )
     else
       image_pack_tag(
-        'doctor_PNG15987.png',
+        'doctor_default.svg',
         alt: "#{doctor.name} - #{doctor.address}",
         **props
       )
