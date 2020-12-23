@@ -30,7 +30,8 @@ class SearchesController < ApplicationController
       :telehealth,
       :life_style_medicine,
       :speciality,
-      :practice_type
+      :practice_type,
+      :speciality_name
     )
   end
 
