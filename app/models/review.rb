@@ -7,9 +7,7 @@ class Review < ApplicationRecord
   scope :published, -> { where(status: "published") }
   scope :latest, -> { order(created_at: :desc) }
 
-  after_commit do
-    ReviewData.refresh
-  end
+  after_commit :refresh_view, on: [:update]
 
   enum status: {
     draft: "draft",
@@ -19,5 +17,11 @@ class Review < ApplicationRecord
 
   def display_date
     created_at.strftime("%B %d, %Y")
+  end
+
+  private
+
+  def refresh_view
+    ReviewData.refresh if published?
   end
 end

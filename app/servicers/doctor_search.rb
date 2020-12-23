@@ -15,6 +15,7 @@ module DoctorSearch
   private
 
   def apply_filters
+    convert_speciality_name_to_speciality
     apply_speciality_filter
     apply_ratings_filter
     apply_practice_filter
@@ -40,6 +41,12 @@ module DoctorSearch
       10000, # maximum can be around 41000
       units: SEARCH_UNITS
     )
+  end
+
+  def convert_speciality_name_to_speciality
+    return if @params[:speciality].present? || !@params[:speciality_name].present?
+
+    @params[:speciality] = Speciality.where("name ilike '%#{@params[:speciality_name].downcase}%'").pluck(:code)
   end
 
   def apply_ratings_filter

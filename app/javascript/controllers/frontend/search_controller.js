@@ -19,10 +19,10 @@ export default class extends Controller {
     nearAutoComplete.on('change', (e) => {
       const { latlng, name } = e.suggestion;
       const near = `${latlng.lat},${latlng.lng}`;
-      const { value } = this.nameTarget.value;
+      const { value } = this.nameTarget;
       const paramHash = { near, place: name };
       if (value !== undefined && value !== null && value !== '') {
-        paramHash.name = value;
+        paramHash.speciality_name = value;
       }
       const params = new URLSearchParams(paramHash).toString();
       const url = `/search-map?${params}`;
