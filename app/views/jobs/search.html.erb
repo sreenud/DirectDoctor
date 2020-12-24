@@ -1,7 +1,5 @@
-<%= render(LoadingComponent.new) %>
 <div class="lg:grid lg:w-full lg:mt-24 lg:grid-cols-12 flex mt-32">
-  <div class="lg:mt-32 lg:col-span-1">
-  </div>
+  <div class="lg:mt-32 lg:col-span-1"></div>
   <div class="lg:col-span-11 flex mt-4 relative -ml-4">
     <div class="w-full">
       <!-- component -->
@@ -12,7 +10,7 @@
             <span class="text-gray-500 pr-2">></span>
           </li>
           <li class="flex items-left">
-            <a href="#" class="text-doctor-yellow pr-2">Find a doctor</a>
+            <a href="#" class="text-doctor-yellow pr-2">Find a Job</a>
             <span class="text-gray-500 pr-2">></span>
           </li>
           <li class="text-gray-500" aria-current="page">
@@ -20,13 +18,13 @@
           </li>
         </ul>
       </nav>
-      <div class="w-full text-left">
-        <h1 class="font-hurmebold text-md inline-block" id="near-location"><%= @location_string %></h1>
-        <span class="text-gray-600">(<%= @pagy.count %> results)</span>
+      <div class="w-full text-left text-2xl mt-4">
+        <h1 class="font-hurmebold inline-block">Find a Job, Internal Medicine Jobs (1840 results) </h1>
+        <span class="text-gray-600">(18048 results)</span>
       </div>
       <div class="lg:w-full flex mt-4">
         <div class="lg:w-2/12">
-          <%= render(DoctorFilterComponent.new(**@search_params))%>
+          <%= render(JobFilterComponent.new) %>
         </div>
         <div class="lg:w-10/12 ml-3 text-sm">
           <div class="w-full flex">
@@ -55,25 +53,12 @@
           </div>
           <div class="w-full flex mt-6">
             <div class="lg:w-8/12">
-              <div class="w-full" id="result-container" data-controller="modal">
-                <%= render_doctor_cards %>
-              </div>
-              <div class="w-full text-center" id="pagination-container" data-controller="pagination" data-target="pagination.container">
-                <% if @pagy.count.positive? %>
-                  <%== pagy_nav @pagy %>
-                <% else %>
-                  No Results found
-                <% end %>
-              </div>
+              <% (1..6).each do |index| %>
+                <%= render(JobComponent.new(title: 'Job Component'))%>
+              <% end %>
             </div>
-            <div
-              class="lg:w-4/12 ml-4 map-container"
-              data-controller="maps"
-              data-maps-defaultlocation="<%= current_location %>"
-              data-maps-distance="<%= max_distance %>"
-              data-maps-pins="<%= doctor_pins %>"
-            >
-              <div id="map" class="google-map rounded-lg"></div>
+            <div class="lg:w-4/12 ml-4 map-container" data-controller="jobs-map">
+              <div id="job_map" class="google-map rounded-lg"></div>
             </div>
           </div>
         </div>
