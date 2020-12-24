@@ -30,6 +30,9 @@ module.exports = {
       boxShadow: {
         'outline-yellow': '0 0 0 3px rgba(231, 171, 0, 1)',
       },
+      borderRadius: {
+        '2lg': '1rem',
+      },
     },
   },
   variants: {

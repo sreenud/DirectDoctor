@@ -15,6 +15,12 @@ Rails.application.routes.draw do
   get "/blogs/:tip_slug/:id", to: "tips#show"
 
   resources :surveys, only: [:index, :create]
+  resources :jobs, only: [:index, :show] do
+    collection do
+      get :search
+    end
+  end
+
   mount Shrine.upload_endpoint(:cache) => "/images/upload"
   mount ProfilePicUploader.derivation_endpoint => "/derivations/image"
 
