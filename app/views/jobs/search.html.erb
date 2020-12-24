@@ -1,0 +1,83 @@
+<%= render(LoadingComponent.new) %>
+<div class="lg:grid lg:w-full lg:mt-24 lg:grid-cols-12 flex mt-32">
+  <div class="lg:mt-32 lg:col-span-1">
+  </div>
+  <div class="lg:col-span-11 flex mt-4 relative -ml-4">
+    <div class="w-full">
+      <!-- component -->
+      <nav aria-label="Breadcrumb" class="text-sm">
+        <ul class="list-none p-0 inline-flex">
+          <li class="flex items-left">
+            <a href="#" class="text-doctor-yellow pr-2">Home</a>
+            <span class="text-gray-500 pr-2">></span>
+          </li>
+          <li class="flex items-left">
+            <a href="#" class="text-doctor-yellow pr-2">Find a doctor</a>
+            <span class="text-gray-500 pr-2">></span>
+          </li>
+          <li class="text-gray-500" aria-current="page">
+            State
+          </li>
+        </ul>
+      </nav>
+      <div class="w-full text-left">
+        <h1 class="font-hurmebold text-md inline-block" id="near-location"><%= @location_string %></h1>
+        <span class="text-gray-600">(<%= @pagy.count %> results)</span>
+      </div>
+      <div class="lg:w-full flex mt-4">
+        <div class="lg:w-2/12">
+          <%= render(DoctorFilterComponent.new(**@search_params))%>
+        </div>
+        <div class="lg:w-10/12 ml-3 text-sm">
+          <div class="w-full flex">
+            <div class="w-8/12 text-right pr-6">
+              <label class="text-sm">Sort by:</label>
+              <div class="inline-block relative text-sm mt-1">
+                <select class="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-2 py-1 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline  text-gray-600">
+                  <option>Best Match</option>
+                  <option>Option 2</option>
+                  <option>Option 3</option>
+                </select>
+                <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+                  <svg class="fill-current h-4 w-4 text-gray-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
+                </div>
+              </div>
+            </div>
+            <div class="w-4/12">
+              <div class="w-full text-center">
+                <span class="mr-2">Map</span>
+                <div class="relative inline-block w-12 mr-2 align-middle select-none transition duration-200 ease-in">
+                  <input type="checkbox" name="map_toggle" id="map_toggle" class="toggle-checkbox absolute block w-5 h-5 rounded-full bg-white border-4 appearance-none cursor-pointer focus:outline-none" checked/>
+                  <label for="map_toggle" class="toggle-label block overflow-hidden h-5 rounded-full bg-gray-300 cursor-pointer"></label>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="w-full flex mt-6">
+            <div class="lg:w-8/12">
+              <div class="w-full" id="result-container" data-controller="modal">
+                <%= render_doctor_cards %>
+              </div>
+              <div class="w-full text-center" id="pagination-container" data-controller="pagination" data-target="pagination.container">
+                <% if @pagy.count.positive? %>
+                  <%== pagy_nav @pagy %>
+                <% else %>
+                  No Results found
+                <% end %>
+              </div>
+            </div>
+            <div
+              class="lg:w-4/12 ml-4 map-container"
+              data-controller="maps"
+              data-maps-defaultlocation="<%= current_location %>"
+              data-maps-distance="<%= max_distance %>"
+              data-maps-pins="<%= doctor_pins %>"
+            >
+              <div id="map" class="google-map rounded-lg"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
