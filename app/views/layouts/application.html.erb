@@ -21,11 +21,12 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload', :async => "async" %>
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-151952917-2"></script>
+    <script async src="https://static.addtoany.com/menu/page.js"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
-      
+
       gtag('config', 'UA-151952917-2');
     </script>
     <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
@@ -51,7 +52,7 @@
         speed: 1000,
         reverse: true
       });
-      
+
       setInterval(function(){
         $('.flip-card').flip('toggle');
       },2000)
