@@ -78,7 +78,17 @@
           </div>
         </div>
         <div class="w-8/12">
-          <%=render partial: 'doctors/profile/left_bubble_design'%>
+          <div>
+            <div class="absolute right-0 -mr-32 -mt-48 z-50">
+              <%=image_pack_tag "yellow_circle_outline_opacity_right.png", class: "w-24" %>
+            </div>
+            <div class="absolute right-0 -mr-24 -mt-20 z-50">
+              <%=image_pack_tag "light_grey_2_lines_vertical.svg", class: "w-16" %>
+            </div>
+            <div class="absolute right-0 -mr-32 mt-56 z-50">
+              <%=image_pack_tag "light_grey_round_edge_sides.svg", class: "w-16 h-64" %>
+            </div>
+          </div>
           <div class="w-full">
             <div class="w-full shadow rounded-lg border border-gray-300 mt-4 section-position px-8" id="practice" >
               <div class=" text-2xl pt-3 text-gray-500">
@@ -223,5 +233,20 @@
     </div>
   </div>
   <div class="lg:mt-32 lg:col-span-1">
+  </div>
+</section>
+<section class="lg:w-full flex mt-24">
+  <div class="w-6/12 relative">
+    <div class="absolute left-0 -mt-40 ml-20">
+      <%=image_pack_tag "yellow_circle_full.svg", class: "w-10" %>
+    </div>
+    <div class="absolute left-0 -mt-32">
+      <%=image_pack_tag "yellow_half_circle_thick.svg", class: "w-24" %>
+    </div>
+  </div>
+  <div class="w-6/12 flex justify-end">
+    <div class="absolute right-0 -mt-12 -mr-6">
+      <%=image_pack_tag "yellow_circle_full.svg", class:"w-12" %>
+    </div>
   </div>
 </section>
