@@ -3,9 +3,10 @@ import { Controller } from 'stimulus';
 const places = require('places.js');
 
 export default class extends Controller {
-  static targets = ['name', 'near'];
+  static targets = ['name', 'near', 'search'];
 
   connect() {
+    this.params = {};
     const nearAutoComplete = places({
       appId: 'plDTKKNHYONE',
       apiKey: 'bf33910f52286f325ea02b9d06f14f53',
@@ -24,8 +25,17 @@ export default class extends Controller {
       if (value !== undefined && value !== null && value !== '') {
         paramHash.speciality_name = value;
       }
-      const params = new URLSearchParams(paramHash).toString();
-      const url = `/search-map?${params}`;
+      this.params = paramHash;
+    });
+
+    this.nameTarget.addEventListener('change', (e) => {
+      this.params.speciality_name = this.nameTarget.value;
+    });
+
+    this.searchTarget.addEventListener('click', (e) => {
+      e.preventDefault();
+      const queryString = new URLSearchParams(this.params || {}).toString();
+      const url = `/search-map?${queryString}`;
       Turbolinks.visit(url);
     });
   }
