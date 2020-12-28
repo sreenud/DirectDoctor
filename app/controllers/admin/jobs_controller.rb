@@ -20,7 +20,6 @@ module Admin
     end
 
     def edit
-
       @doctors = Doctor.all
       @specialities = Speciality.all
     end
