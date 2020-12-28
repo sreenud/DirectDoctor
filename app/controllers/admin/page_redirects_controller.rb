@@ -1,6 +1,6 @@
 module Admin
   class PageRedirectsController < Admin::BaseController
-    before_action :set_page_redirect, only: [:show, :edit, :update, :destroy, :skills]
+    before_action :set_page_redirect, only: [:show, :edit, :update, :destroy]
 
     def index
       @q = PageRedirect.ransack(params[:q])

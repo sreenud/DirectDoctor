@@ -1,7 +1,7 @@
 module Admin
   module Blog
     class TipsController < Admin::BaseController
-      before_action :set_tip, only: [:show, :edit, :update, :destroy, :skills]
+      before_action :set_tip, only: [:show, :edit, :update, :destroy]
 
       def index
         @q = Tip.ransack(params[:q])

@@ -1,6 +1,6 @@
 module Admin
   class SpecialitiesController < Admin::BaseController
-    before_action :set_speciality, only: [:show, :edit, :update, :destroy, :skills]
+    before_action :set_speciality, only: [:show, :edit, :update, :destroy]
 
     def index
       @q = Speciality.ransack(params[:q])

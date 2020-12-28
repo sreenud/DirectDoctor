@@ -1,6 +1,6 @@
 module Admin
   class ServicesController < Admin::BaseController
-    before_action :set_service, only: [:show, :edit, :update, :destroy, :skills]
+    before_action :set_service, only: [:show, :edit, :update, :destroy]
 
     def index
       @q = Service.ransack(params[:q])

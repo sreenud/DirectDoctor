@@ -1,6 +1,6 @@
 module Admin
   class DoctorDegreesController < Admin::BaseController
-    before_action :set_doctor_degree, only: [:show, :edit, :update, :destroy, :skills]
+    before_action :set_doctor_degree, only: [:show, :edit, :update, :destroy]
 
     def index
       @q = DoctorDegree.ransack(params[:q])

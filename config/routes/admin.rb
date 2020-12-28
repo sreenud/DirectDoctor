@@ -9,6 +9,7 @@ namespace :admin do
   resources :media_storages, only: %i[create destroy]
   resources :page_redirects
   resources :doctors
+  resources :jobs
   resources :specialities
   resources :doctor_degrees
   resources :services

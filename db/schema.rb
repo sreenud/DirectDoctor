@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_16_124408) do
+ActiveRecord::Schema.define(version: 2020_12_28_093313) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -98,6 +98,28 @@ ActiveRecord::Schema.define(version: 2020_12_16_124408) do
     t.integer "speciality_id"
     t.decimal "avg_rating", precision: 6, scale: 1
     t.index ["user_id"], name: "index_doctors_on_user_id"
+  end
+
+  create_table "jobs", force: :cascade do |t|
+    t.bigint "doctor_id", null: false
+    t.integer "specialities", array: true
+    t.string "name"
+    t.string "board_certification"
+    t.string "hours"
+    t.string "experience"
+    t.integer "salary"
+    t.integer "sign_on_bonus"
+    t.string "paid_time_off"
+    t.string "loan_assistance"
+    t.string "health_insurence"
+    t.string "medical_insurence"
+    t.string "visa_sponsorship"
+    t.text "resume_data"
+    t.jsonb "degree", default: {}
+    t.string "status"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["doctor_id"], name: "index_jobs_on_doctor_id"
   end
 
   create_table "languages", force: :cascade do |t|
@@ -327,6 +349,7 @@ ActiveRecord::Schema.define(version: 2020_12_16_124408) do
   end
 
   add_foreign_key "doctors", "users"
+  add_foreign_key "jobs", "doctors"
   add_foreign_key "locations", "states"
   add_foreign_key "reviews", "doctors"
   add_foreign_key "speciality_aliases", "specialities"

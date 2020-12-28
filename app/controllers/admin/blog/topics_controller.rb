@@ -1,7 +1,7 @@
 module Admin
   module Blog
     class TopicsController < Admin::BaseController
-      before_action :set_topic, only: [:show, :edit, :update, :destroy, :skills]
+      before_action :set_topic, only: [:show, :edit, :update, :destroy]
 
       def index
         @q = Topic.ransack(params[:q])

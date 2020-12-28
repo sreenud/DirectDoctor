@@ -9,6 +9,7 @@ class Doctor < ApplicationRecord
   belongs_to :speciality
   has_many :reviews
   has_one :review_data, class_name: 'ReviewData'
+  has_many :jobs
 
   scope :latest, -> { order(created_at: :desc) }
 

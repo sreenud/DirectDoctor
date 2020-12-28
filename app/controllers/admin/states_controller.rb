@@ -1,6 +1,6 @@
 module Admin
   class StatesController < Admin::BaseController
-    before_action :set_state, only: [:show, :edit, :update, :destroy, :skills]
+    before_action :set_state, only: [:show, :edit, :update, :destroy]
 
     def index
       @q = State.ransack(params[:q])

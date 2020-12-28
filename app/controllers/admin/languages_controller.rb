@@ -1,6 +1,6 @@
 module Admin
   class LanguagesController < Admin::BaseController
-    before_action :set_language, only: [:show, :edit, :update, :destroy, :skills]
+    before_action :set_language, only: [:show, :edit, :update, :destroy]
 
     def index
       @q = Language.ransack(params[:q])
