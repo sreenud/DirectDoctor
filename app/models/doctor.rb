@@ -18,7 +18,7 @@ class Doctor < ApplicationRecord
     :aditional_services, :access, :appointments, :consultation, :about_clinic,
     :about_doctor, :address_line_1, :state, :city, :zipcode, :lat, :lng, presence: true
 
-  validate :validate_holistic_option, :validate_telehealth_option, :validate_home_visit_option
+  # validate :validate_holistic_option, :validate_telehealth_option, :validate_home_visit_option
   # ,:validate_patients_options, :validate_price_options
 
   before_save :set_language, :set_degree, :set_name, :set_additional_service, :set_appointments,

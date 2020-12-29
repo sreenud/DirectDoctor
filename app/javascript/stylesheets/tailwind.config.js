@@ -12,6 +12,10 @@ module.exports = {
         'doctor-grayb-100': '#fbfbfb',
         'doctor-grayb-200': '#f5f5f5',
         'doctor-grayb-300': '#d9d9d9',
+        'facebook-blue': '#39589c',
+        'google-red': '#e25345',
+        'twitter-blue': '#00b3f3',
+        'linkedin-blue': '#007ab8',
       },
       fontFamily: {
         hurmebold: ['HurmeBold'],
