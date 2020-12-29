@@ -80,7 +80,7 @@ module Admin
 
     def doctor_params
       params.require(:doctor).permit(:title, :gender, :name, :slug, :practice_name, :style, :primary_speciality,
-        :min_experience, :max_experience, :language, :is_holistic_medicine, :holistic_option,
+        :speciality_id, :min_experience, :max_experience, :language, :is_holistic_medicine, :holistic_option,
         :is_telehealth_service, :telehealth_option, :is_home_visit, :home_visit_option, :aditional_services,
         :min_price, :max_price, :min_patients, :max_patients, :access, :appointments, :consultation,
         :free_consultation_time, :about_clinic, :about_doctor, :email, :phone, :address_line_1, :address_suite,

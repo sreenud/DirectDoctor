@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   root 'home#index'
   get 'search', to: "searches#index"
   get 'search-map', to: "searches#index_two"
+  get 'job-search', to: "jobs#search"
   get 'doctor/profile/:fdd_id', to: "doctors#show"
   get "/*any", to: "redirects#index", constraints: RedirectConstraint.new
 

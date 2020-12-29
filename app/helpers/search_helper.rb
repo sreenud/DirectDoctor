@@ -15,6 +15,10 @@ module SearchHelper
     render(DoctorComponent.with_collection(@doctors))
   end
 
+  def render_job_cards
+    render(JobComponent.with_collection(@doctors))
+  end
+
   def max_distance
     @max_distance ||= @doctors.map(&:distance).max
   end

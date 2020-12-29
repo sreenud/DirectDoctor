@@ -21,7 +21,7 @@ export default class extends Controller {
   ];
 
   connect() {
-    const primarySpeciality = new Choices('#doctor_primary_speciality', {
+    const primarySpeciality = new Choices('#doctor_speciality_id', {
       removeItemButton: true,
       addItems: false,
     });

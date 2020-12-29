@@ -1,5 +1,6 @@
 class Doctor < ApplicationRecord
   extend DoctorSearch
+  extend JobSearch
   include ImageUploader::Attachment(:image)
   include Doctor::DisplayContent
   include Doctor::Rating

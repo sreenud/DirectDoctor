@@ -20,12 +20,14 @@ export default class extends Controller {
         const query = link.split('?')[1];
         const paramObj = new URLSearchParams(query);
         const page = paramObj.get('page');
+        const url = this.data.get('url');
+
         if (page !== undefined && page !== null && page !== '') {
           showLoading();
           ajax({
             url: ParamUrl({
               changeParams: { page },
-              route: '/search-map.json',
+              route: url,
             }),
           }).then(
             // eslint-disable-next-line camelcase

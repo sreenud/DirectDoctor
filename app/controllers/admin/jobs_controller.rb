@@ -4,7 +4,7 @@ module Admin
 
     def index
       @q = Job.ransack(params[:q])
-      @jobs = @q.result.latest
+      @jobs = @q.result.includes(:doctor).latest
 
       @pagy, @jobs = pagy(@jobs)
     end

@@ -1,7 +1,7 @@
 <%= content_tag(:div, id: "job", class: " pr-1 doctor-card w-full box-bottom-shadow") do %>
   <div class="w-full mt-6 flex">
     <div class="w-40">
-      <%= job_avatar(class: 'h-40 w-full object-cover border rounded-lg doc-avatar') %>
+      <%= doctor_avatar(class: 'h-40 w-full object-cover border rounded-lg doc-avatar') %>
       <div class="text-md tracking-wide mt-4 text-center">
         Posted: 20-02-20
       </div>
@@ -10,8 +10,8 @@
       <div class="w-full flex items-center">
         <div class="w-4/12 pl-4">
           <div class="tracking-wide font-hurmebold">
-            <a href="<%=job_path(1)%>" target="_blank" class="hover:text-doctor-yellow focus:outline-none">
-              <h2 class="text-2xl">John Doe</h2>
+            <a href="<%=job_path(doctor.job_id)%>" target="_blank" class="hover:text-doctor-yellow focus:outline-none">
+              <h2 class="text-2xl"><%=doctor.name%></h2>
             </a>
           </div>
         </div>

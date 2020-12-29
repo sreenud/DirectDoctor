@@ -71,9 +71,16 @@
           </div>
           <div class="w-full flex mt-6">
             <div class="lg:w-8/12">
-              <% (1..6).each do |index| %>
-                <%= render(JobComponent.new(title: 'Job Component'))%>
-              <% end %>
+              <div class="w-full" id="result-container" data-controller="modal">
+                <%= render_job_cards %>
+              </div>
+              <div class="w-full text-center" id="pagination-container" data-controller="pagination" data-target="pagination.container" data-pagination-url="job-search.json">
+                <% if @pagy.count.positive? %>
+                  <%== pagy_nav @pagy %>
+                <% else %>
+                  No Results found
+                <% end %>
+              </div>
             </div>
             <div class="lg:w-4/12 ml-4 map-container" data-controller="jobs-map">
               <div id="job_map" class="google-map rounded-lg"></div>
