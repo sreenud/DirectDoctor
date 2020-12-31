@@ -27,15 +27,15 @@
                 <%= image_pack_tag "doctor_full.png", class: "w-48" %>
               </div>
               <div class="w-1/2 ml-4">
-                <h2 class="text-3xl font-glacialbold">John Doe</h2>
+                <h2 class="text-3xl font-glacialbold"><%=@job.doctor&.name%></h2>
                 <div class="w-full flex">
-                  <%= render(StarRatingComponent.new(rating: 4, class: 'doc-rating', width: '5', height: '5')) %>
+                  <%= render(StarRatingComponent.new(rating: @doctor_rating&.avg_rating.round, class: 'doc-rating', width: '5', height: '5')) %>
                   <div class=" text-xs ml-2">
-                    <a href="#" class="text-blue-500"> (100 Reviews)</a>
+                    <a href="#" class="text-blue-500"> (<%=@doctor_rating&.total%> Reviews)</a>
                   </div>
                 </div>
                 <div class="w-full text-base py-1 text-gray-700">
-                  FMDD Score: 8/10
+                  FMDD Score: <%=@job&.doctor&.fmdd_score%>/10
                 </div>
                 <div class="w-full flex">
                   <div class="">
@@ -72,7 +72,7 @@
             </div>
             <div class="w-full text-xl">
               <div class="flex text-gray-800 mx-4 mt-3">
-                Posted: 20-02-20
+                Posted: <%=@job.posted_on%>
               </div>
             </div>
           </div>
@@ -95,25 +95,25 @@
                 Job Title:
               </div>
               <div class="text-3xl font-glacialbold">
-                Internal Medicine Job/DPC Doctor
+                <%=@job.name%>
               </div>
               <div class="py-3 w-full">
                 <div class="w-full flex">
                   <div class=" w-3/12 text-gray-600 text-base">Practice Details:</div>
                   <div class=" w-9/12 text-base">
-                    Description of current practice goes her. Description of current practice goes her. Description of current practice goes her. Description of current practice goes her. Description of current practice goes her
+                    <%=@job&.doctor&.about_clinic.html_safe%>
                   </div>
                 </div>
                 <div class="w-full flex mt-4">
                   <div class=" w-3/12 text-gray-600 text-base">Practice Name:</div>
                   <div class=" w-9/12 text-base">
-                    Dummy text etc.
+                    <%=@job&.doctor&.practice_name%>
                   </div>
                 </div>
                 <div class="w-full flex mt-4">
                   <div class=" w-3/12 text-gray-600 text-base">Name of Job:</div>
                   <div class=" w-9/12 text-base">
-                    Personality traits, Skills required etc.
+                    <%=@job.name%>
                   </div>
                 </div>
                 <div class="w-full flex mt-6">
@@ -125,11 +125,7 @@
                     </div>
                     <div class="w-full flex mt-2">
                       <div class="w-4/12">Board Certification:</div>
-                      <div class="w-8/12">BE/BC</div>
-                    </div>
-                    <div class="w-full flex mt-2">
-                      <div class="w-4/12">Degree:</div>
-                      <div class="w-8/12">MD/DO/NP/ARMP/FMP</div>
+                      <div class="w-8/12"><%=@job.board_certification%></div>
                     </div>
                     <div class="w-full flex mt-2">
                       <div class="w-4/12">Degree:</div>
@@ -138,10 +134,16 @@
                     <div class="w-full flex mt-2">
                       <div class="w-4/12">Hours:</div>
                       <div class="w-8/12 flex">
-                        <div class="mr-2"><input type="radio" checked class="form-radio h-3 w-3 text-gray-800 focus:outline-none">
-                          <label class="pl-1">Part time</label></div>
-                        <div><input type="radio" checked class="form-radio h-3 w-3 text-doctor-yellow focus:outline-none">
-                          <label class="pl-1">Full time</label></div>
+                        <% part_time = @job.hours == 'part_time' ? "text-doctor-yellow" : "text-gray-800" %>
+                        <div class="mr-2">
+                          <input type="radio" checked class="form-radio h-3 w-3 <%=part_time%> focus:outline-none">
+                          <label class="pl-1">Part time</label>
+                        </div>
+                        <% full_time =  @job.hours == 'full_time' ? "text-doctor-yellow" : "text-gray-800" %>
+                        <div>
+                          <input type="radio" checked class="form-radio h-3 w-3 <%=full_time%> focus:outline-none">
+                          <label class="pl-1">Full time</label>
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -151,34 +153,34 @@
                   <div class=" w-9/12 text-base">
                     <div class="w-full flex">
                       <div class="w-4/12">Salary:</div>
-                      <div class="w-8/12">$ 300k</div>
+                      <div class="w-8/12">$ <%=format_currency(@job.salary)%></div>
                     </div>
                     <div class="w-full flex mt-2">
                       <div class="w-4/12">Sign on bonus:</div>
-                      <div class="w-8/12">$ 20,000</div>
+                      <div class="w-8/12">$ <%=format_currency(@job.sign_on_bonus)%></div>
                     </div>
                     <div class="w-full flex mt-2">
                       <div class="w-4/12">Paid time off:</div>
-                      <div class="w-8/12">2 weeks</div>
+                      <div class="w-8/12"><%=@job.paid_time_off%></div>
                     </div>
                     <div class="w-full flex mt-2">
                       <div class="w-4/12">Loan Assistance:</div>
-                      <div class="w-8/12">Yes</div>
+                      <div class="w-8/12"><%=@job.loan_assistance.capitalize%></div>
                     </div>
                     <div class="w-full flex mt-2">
                       <div class="w-4/12">Health Insurance:</div>
-                      <div class="w-8/12">Yes</div>
+                      <div class="w-8/12"><%=@job.health_insurence.capitalize%></div>
                     </div>
                     <div class="w-full flex mt-2">
                       <div class="w-4/12">Medical Insurance:</div>
-                      <div class="w-8/12">Yes</div>
+                      <div class="w-8/12"><%=@job.medical_insurence.capitalize%></div>
                     </div>
                   </div>
                 </div>
                 <div class="w-full flex mt-6">
                   <div class=" w-3/12 text-gray-600 text-base">Visa Sponsership:</div>
                   <div class=" w-9/12 text-base">
-                    Not Defined
+                    <%=@job.visa_sponsorship.capitalize%>
                   </div>
                 </div>
                 <div class="w-full flex mt-6">
@@ -188,7 +190,7 @@
                       <div class="w-3/12">
                         <div class="w-full flex justify-start">
                           <div class="pr-2"><%=image_pack_tag 'icons/email.svg', class: "w-4 h-4 pt-1"%></div>
-                          <a href="#" class="hover:underline hover:text-blue-400">
+                          <a href="mailto:<%=@job.doctor.email%>" class="hover:underline hover:text-blue-400">
                             <div >Message</div>
                           </a>
                           <div class="ml-6"><%=image_pack_tag "vertical_side_shadow_for_big_box.svg", class: "w-2 h-6"%></div>
@@ -206,8 +208,8 @@
                       <div class="w-3/12">
                         <div class="w-full flex justify-start">
                           <div class="px-2"><%=image_pack_tag 'icons/phone.svg', class: "w-4 h-4 pt-1"%></div>
-                          <a href="#" class="hover:underline hover:text-blue-400 w-full">
-                            <div>9999999999</div>
+                          <a href="tel:<%=@job.doctor.formated_phone_number%>" class="hover:underline hover:text-blue-400 w-full">
+                            <div><%=@job.doctor.phone%></div>
                           </a>
                           <div class="mr-4"><%=image_pack_tag "vertical_side_shadow_for_big_box.svg", class: "w-2 h-6"%></div>
                         </div>
@@ -215,7 +217,7 @@
                       <div class="w-3/12">
                         <div class="w-full flex justify-start">
                           <div><%=image_pack_tag 'icons/web.svg', class: "w-4 h-4 pt-1"%></div>
-                          <a href="#" target="_blank" class="hover:underline hover:text-blue-400" >
+                          <a href="<%=@job.doctor.website_url%>" target="_blank" class="hover:underline hover:text-blue-400" >
                             <div>
                               Website
                             </div>

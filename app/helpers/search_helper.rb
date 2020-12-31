@@ -16,7 +16,7 @@ module SearchHelper
   end
 
   def render_job_cards
-    render(JobComponent.with_collection(@doctors))
+    render(JobComponent.with_collection(@doctors, reviews_data: @reviews_data))
   end
 
   def max_distance

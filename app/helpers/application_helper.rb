@@ -17,4 +17,8 @@ module ApplicationHelper
   def current_location
     @current_location
   end
+
+  def format_currency(amount, precision = 0)
+    number_to_currency(amount, precision: precision, unit: "")
+  end
 end

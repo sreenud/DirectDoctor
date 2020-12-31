@@ -3,7 +3,7 @@
     <div class="w-40">
       <%= doctor_avatar(class: 'h-40 w-full object-cover border rounded-lg doc-avatar') %>
       <div class="text-md tracking-wide mt-4 text-center">
-        Posted: 20-02-20
+        Posted: <%=job_posted%>
       </div>
     </div>
     <div class="w-full">
@@ -16,11 +16,11 @@
           </div>
         </div>
         <div class="w-4/12 pl-2">
-          <div>Internal Medicine</div>
+          <div><%=doctor.speciality_name%></div>
         </div>
         <div class="w-4/12 pl-2">
           <div class="w-full flex">
-            <a class="border-doctor-yellow rounded-lg px-2 bg-doctor-yellow text-white cursor-pointer hover:bg-doctor-yellow pt-1" href="#" target="_blank">
+            <a class="border-doctor-yellow rounded-lg px-2 bg-doctor-yellow text-white cursor-pointer hover:bg-doctor-yellow pt-1" href="<%=job_path(doctor.job_id)%>" target="_blank">
               Full View Listing
             </a>
             <div class="pl-2 flex items-center">
@@ -57,10 +57,10 @@
       </div>
       <div class="w-full flex items-start">
         <div class="w-4/12 pl-4">
-          <div class="mt-1">Miami, Florida</div>
+          <div class="mt-1"><%=doctor.city%>, <%=doctor.state%></div>
         </div>
         <div class="w-4/12 pl-2">
-          <div class="mt-1">DPC/Concierge Practice</div>
+          <div class="mt-1"><%=doctor.display_practice_name%></div>
         </div>
       </div>
       <div class="w-full flex items-start">
@@ -81,27 +81,27 @@
       </div>
       <div class="w-full flex items-start text-gray-600">
         <div class="w-4/12 pl-4">
-          <div class="mt-1">Salary $ 374,000</div>
+          <div class="mt-1">Salary $ <%=doctor.salary%></div>
         </div>
         <div class="w-4/12 pl-2">
-          <div class="mt-1">Bonus</div>
+          <div class="mt-1">Bonus $ <%=doctor.sign_on_bonus%></div>
         </div>
         <div class="w-4/12 pl-2">
-          <div class="mt-1">Loan Assistance</div>
+          <div class="mt-1">Loan Assistance: <%=doctor.loan_assistance&.capitalize%></div>
         </div>
       </div>
       <div class="w-full flex items-start mt-2">
         <div class="w-8/12 pl-4">
           <div class="w-full flex text-base">
             <div class="mr-2">Patient ratings</div>
-            <%= render(StarRatingComponent.new(rating: 4, class: 'doc-rating')) %>
+            <%= render(StarRatingComponent.new(rating: doctor_avg_review, class: 'doc-rating')) %>
             <div class="text-sm">
-              <a href="#" class="text-blue-500"> (100 Reviews)</a>
+              <a href="#" class="text-blue-500"> (<%=doctor_total_reviews%> Reviews)</a>
             </div>
           </div>
         </div>
         <div class="w-4/12 pl-2">
-          <div class="text-base">FMDD Score:05/10</div>
+          <div class="text-base">FMDD Score:<%=doctor.fmdd_score%>/10</div>
         </div>
       </div>
     </div>
@@ -113,7 +113,7 @@
       <div class="w-3/12">
         <div class="w-full flex mt-4 text-sm justify-start">
           <div class="pr-2"><%=image_pack_tag 'icons/email.svg', class: "w-4 h-4 pt-1"%></div>
-          <a href="#" class="hover:underline hover:text-blue-400">
+          <a href="mailto:<%=doctor.email%>" class="hover:underline hover:text-blue-400">
             <div >Message</div>
           </a>
           <div class="ml-8"><%=image_pack_tag "vertical_side_shadow_for_big_box.svg", class: "w-2 h-6"%></div>
@@ -131,8 +131,8 @@
       <div class="w-3/12">
         <div class="w-full flex mt-4 text-sm justify-start">
           <div class="pr-2"><%=image_pack_tag 'icons/phone.svg', class: "w-4 h-4 pt-1"%></div>
-          <a href="#" class="hover:underline hover:text-blue-400 w-full">
-            <div >9999999999</div>
+          <a href="tel:<%=doctor.formated_phone_number%>" class="hover:underline hover:text-blue-400 w-full">
+            <div ><%=doctor.phone%></div>
           </a>
           <div class="mr-6"><%=image_pack_tag "vertical_side_shadow_for_big_box.svg", class: "w-2 h-6"%></div>
         </div>
@@ -140,7 +140,7 @@
       <div class="w-3/12">
         <div class="w-full flex mt-4 text-sm justify-start">
           <div><%=image_pack_tag 'icons/web.svg', class: "w-4 h-4 pt-1"%></div>
-          <a href="#" target="_blank" class="hover:underline hover:text-blue-400" >
+          <a href="<%=doctor.website_url%>" target="_blank" class="hover:underline hover:text-blue-400" >
             <div>
               Website
             </div>

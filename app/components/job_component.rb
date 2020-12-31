@@ -2,8 +2,9 @@ class JobComponent < ViewComponent::Base
   with_collection_parameter :doctor
   attr_reader :doctor
 
-  def initialize(doctor:, **props)
+  def initialize(doctor:, reviews_data:, **props)
     @doctor = doctor
+    @reviews_data = reviews_data
     @props = props
   end
 
@@ -21,5 +22,25 @@ class JobComponent < ViewComponent::Base
         **props
       )
     end
+  end
+
+  def doctor_total_reviews
+    if @reviews_data[doctor.id].present?
+      review = @reviews_data[doctor.id]&.first
+      review[:total]
+    else
+      0
+    end
+  end
+
+  def doctor_avg_review
+    if @reviews_data[doctor.id].present?
+      review = @reviews_data[doctor.id]&.first
+      review[:avg_rating]&.round
+    end
+  end
+
+  def job_posted
+    doctor.job_posted_on.strftime("%b %d, %y")
   end
 end
