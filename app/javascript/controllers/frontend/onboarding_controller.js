@@ -1,108 +1,87 @@
 /* eslint-disable no-param-reassign */
+/* eslint-disable new-cap */
+/* eslint-disable no-shadow */
 import { Controller } from 'stimulus';
-import Tagify from '@yaireo/tagify';
+import autoComplete from '@tarekraafat/autocomplete.js';
 
 export default class extends Controller {
-  static targets = ['userType', 'submitButton'];
+  static targets = ['userType', 'submitButton', 'doctorForm'];
 
   connect() {
-    this.findMyProfileInfo();
-  }
+    // The autoComplete.js Engine instance creator
+    const autoCompleteJS = new autoComplete({
+      name: 'Doctor names',
+      data: {
+        src: async function () {
+          // Loading placeholder text
+          document
+            .querySelector('#autoComplete')
+            .setAttribute('placeholder', 'Loading...');
+          // Fetch External Data Source
+          const source = await fetch('/data/doctor_names.json');
+          const data = await source.json();
+          // Post Loading placeholder text
+          document
+            .querySelector('#autoComplete')
+            .setAttribute('placeholder', autoCompleteJS.placeHolder);
+          // Returns Fetched data
+          return data;
+        },
+        key: ['name'],
+        results: (list) => {
+          // Filter duplicates
+          const filteredResults = Array.from(
+            new Set(list.map((value) => value.match))
+          ).map((food) => {
+            return list.find((value) => value.match === food);
+          });
 
-  findMyProfileInfo() {
-    var that = this;
-    const url = '/admin/data/doctor_names.json';
-    const titleInput = document.querySelector('input[name=users-list-tags]');
-
-    // initialize Tagify on the above input node reference
-    const findMyProfile = new Tagify(titleInput, {
-      tagTextProp: 'name', // very important since a custom template is used with this property as text
-      enforceWhitelist: true,
-      skipInvalid: true, // do not remporarily add invalid tags
-      dropdown: {
-        closeOnSelect: false,
-        enabled: 0,
-        classname: 'users-list',
-        searchKeys: ['name', 'email'], // very important to set by which keys to search for suggesttions when typing
+          return filteredResults;
+        },
       },
-      templates: {
-        tag: tagTemplate,
-        dropdownItem: suggestionItemTemplate,
+      trigger: {
+        event: ['input', 'focus'],
       },
-      whitelist: [
-        {
-          value: 1,
-          name: 'Justinian Hattersley',
-          avatar: 'https://i.pravatar.cc/80?img=1',
-          email: 'jhattersley0@ucsd.edu',
+      placeHolder: 'Search for your profile!',
+      searchEngine: 'strict',
+      highlight: true,
+      maxResults: 5,
+      resultItem: {
+        content: (data, element) => {
+          // Prepare Value's Key
+          const key = Object.keys(data.value).find(
+            (key) => data.value[key] === element.innerText
+          );
+          // Modify Results Item
+          element.style = 'display: flex; justify-content: space-between;';
+          element.innerHTML = `<span style="text-overflow: ellipsis; white-space: nowrap; overflow: hidden;">
+            ${element.innerHTML}</span>
+            <span style="display: flex; align-items: center; font-size: 13px; font-weight: 100; text-transform: uppercase; color: rgba(0,0,0,.2);">
+          ${key}</span>`;
         },
-        {
-          value: 2,
-          name: 'Antons Esson',
-          avatar: 'https://i.pravatar.cc/80?img=2',
-          email: 'aesson1@ning.com',
-        },
-        {
-          value: 3,
-          name: 'Ardeen Batisse',
-          avatar: 'https://i.pravatar.cc/80?img=3',
-          email: 'abatisse2@nih.gov',
-        },
-        {
-          value: 4,
-          name: 'Graeme Yellowley',
-          avatar: 'https://i.pravatar.cc/80?img=4',
-          email: 'gyellowley3@behance.net',
-        },
-        {
-          value: 5,
-          name: 'Dido Wilford',
-          avatar: 'https://i.pravatar.cc/80?img=5',
-          email: 'dwilford4@jugem.jp',
-        },
-        {
-          value: 6,
-          name: 'Celesta Orwin',
-          avatar: 'https://i.pravatar.cc/80?img=6',
-          email: 'corwin5@meetup.com',
-        },
-        {
-          value: 7,
-          name: 'Sally Main',
-          avatar: 'https://i.pravatar.cc/80?img=7',
-          email: 'smain6@techcrunch.com',
-        },
-        {
-          value: 8,
-          name: 'Grethel Haysman',
-          avatar: 'https://i.pravatar.cc/80?img=8',
-          email: 'ghaysman7@mashable.com',
-        },
-        {
-          value: 9,
-          name: 'Marvin Mandrake',
-          avatar: 'https://i.pravatar.cc/80?img=9',
-          email: 'mmandrake8@sourceforge.net',
-        },
-        {
-          value: 10,
-          name: 'Corrie Tidey',
-          avatar: 'https://i.pravatar.cc/80?img=10',
-          email: 'ctidey9@youtube.com',
-        },
-        {
-          value: 11,
-          name: 'foo',
-          avatar: 'https://i.pravatar.cc/80?img=11',
-          email: 'foo@bar.com',
-        },
-        {
-          value: 12,
-          name: 'foo',
-          avatar: 'https://i.pravatar.cc/80?img=12',
-          email: 'foo.aaa@foo.com',
-        },
-      ],
+      },
+      noResults: (dataFeedback, generateList) => {
+        // Generate autoComplete List
+        generateList(autoCompleteJS, dataFeedback, dataFeedback.results);
+        // No Results List Item
+        const result = document.createElement('li');
+        result.setAttribute('class', 'no_result');
+        result.setAttribute('tabindex', '1');
+        result.innerHTML = `<span style="display: flex; align-items: center; font-weight: 100; color: rgba(0,0,0,.2);">Found No Results for "${dataFeedback.query}"</span>`;
+        document
+          .querySelector(`#${autoCompleteJS.resultsList.idName}`)
+          .appendChild(result);
+      },
+      onSelection: (feedback) => {
+        document.querySelector('#autoComplete').blur();
+        // Prepare User's Selected Value
+        const selection = feedback.selection.value[feedback.selection.key];
+        // Render selected choice to selection div
+        // Replace Input value with the selected value
+        document.querySelector('#autoComplete').value = selection;
+        // Console log autoComplete data feedback
+        console.log(feedback);
+      },
     });
   }
 
@@ -110,23 +89,14 @@ export default class extends Controller {
     this.userTypeTargets.forEach((el, i) => {
       if (event.target == el) {
         console.log(event.target.value);
+        if (event.target.value == 'doctor') {
+          this.doctorFormTarget.classList.remove('hidden');
+        } else {
+          document.querySelector('#autoComplete').value = '';
+          this.doctorFormTarget.classList.add('hidden');
+        }
       }
     });
     this.submitButtonTarget.classList.remove('hidden');
   }
-}
-
-function tagTemplate(tagData) {
-  return `${tagData.name}`;
-}
-
-function suggestionItemTemplate(tagData) {
-  return `${
-    tagData.avatar
-      ? `
-            `
-      : ''
-  }
-            ${tagData.name}
-            ${tagData.email}`;
 }

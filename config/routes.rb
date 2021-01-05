@@ -24,6 +24,12 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :data do
+    collection do
+      get :doctor_names
+    end
+  end
+
   mount Shrine.upload_endpoint(:cache) => "/images/upload"
   mount ProfilePicUploader.derivation_endpoint => "/derivations/image"
 

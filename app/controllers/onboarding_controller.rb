@@ -1,4 +1,4 @@
-class OnboardingController < ApplicationController
+class OnboardingController < BaseController
   before_action :authenticate_user!
   before_action :set_meta_data, only: [:index]
   skip_before_action :validate_role

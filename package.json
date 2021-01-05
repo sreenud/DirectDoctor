@@ -8,6 +8,7 @@
     "@rails/activestorage": "^6.0.0",
     "@rails/ujs": "^6.0.0",
     "@rails/webpacker": "4.2.2",
+    "@tarekraafat/autocomplete.js": "^8.2.1",
     "@yaireo/tagify": "^3.20.0",
     "alpinejs": "^2.6.0",
     "animate.css": "^4.1.1",

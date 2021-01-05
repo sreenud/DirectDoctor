@@ -4,7 +4,7 @@
 module JobSearch
   SEARCH_RADIUS = 500
   SEARCH_UNITS = :km
-  DEFAULT_LOCATION = ApplicationController::DEFUALT_LOCATION
+  DEFAULT_LOCATION = BaseController::DEFUALT_LOCATION
   def job_search(params, current_location: DEFAULT_LOCATION)
     @params = params
     @current_location = to_coordinates(current_location)

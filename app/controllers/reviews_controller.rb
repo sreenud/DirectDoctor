@@ -1,4 +1,4 @@
-class ReviewsController < ApplicationController
+class ReviewsController < BaseController
   before_action :set_doctor
 
   def create

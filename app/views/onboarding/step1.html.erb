@@ -32,15 +32,15 @@
               <span>Doctor</span>
             </label>
           </div>
-          <div class="w-full mt-10">
+          <div class="w-full mt-10 hidden" data-target="onboarding.doctorForm">
             <div class="text-center">
               <div class=" font-glacialbold text-2xl">Varification of Claim your Profile</div>
               <div class="text-xl text-gray-600">
                 Please submit any of the following documents for us to verify your account
               </div>
             </div>
-            <div class="flex w-full items-center justify-center bg-grey-lighter mt-6 px-4">
-              <input autofocus="autofocus" autocomplete="full_name" class="shadow-md border rounded-2lg w-full py-3 px-5 text-gray-700 focus:outline-none" placeholder="Choose your profile" type="text" value="" name="users-list-tags" >
+            <div class="flex w-full items-center justify-center mt-6 px-4 autoComplete_wrapper">
+              <input id="autoComplete" autocomplete="full_name" class="shadow-md border rounded-2lg w-full py-3 px-5 text-gray-700 focus:outline-none" type="text" value="" >
             </div>
             <div class="flex w-full items-center justify-center bg-grey-lighter mt-6">
               <label class="w-full flex flex-row items-center px-2 py-2 mx-4 bg-white text-blue rounded-lg shadow-lg tracking-wide uppercase border border-blue cursor-pointer hover:bg-blue hover:text-doctor-yellow">
@@ -70,8 +70,8 @@
               </label>
             </div>
           </div>
-          <div class="w-full mt-20 hidden" data-target="onboarding.submitButton">
-            <div class="flex items-center justify-end mt-6">
+          <div class="w-full mt-12 hidden" data-target="onboarding.submitButton">
+            <div class="flex items-center justify-end mt-4">
               <%= f.submit "Continue", class: "text-gray-100 border rounded-lg px-12 py-3 border-doctor-yellow hover:bg-doctor-yellow hover:text-gray-100 bg-white cursor-pointer bg-doctor-yellow shadow-lg", data: {disable_with: "Continue" } %>
             </div>
           </div>
