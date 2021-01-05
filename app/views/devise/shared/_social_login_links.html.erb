@@ -1,0 +1,26 @@
+<%- if devise_mapping.omniauthable? %>
+  <div class="w-6/12 max-w-xl mx-auto mt-10 pb-4">
+    <div class="w-full flex justify-between">
+      <%= link_to omniauth_authorize_path(resource_name, 'facebook') do %>
+        <div class="1/2 rounded-lg bg-facebook-blue px-4 py-2 text-gray-100 flex items-center">
+          <div class="pr-4"><%=image_pack_tag 'icons/facebook_white_login.svg', class: "w-3"%></div>
+          <div><%=button_text%> with facebook</div>
+        </div>
+      <% end %>
+      <div class="1/2 rounded-lg  bg-google-red px-4 py-2 text-gray-100 flex items-center">
+        <div class="pr-4"><%=image_pack_tag 'icons/google_white.svg', class: "w-8"%></div>
+        <div><%=button_text%> with google</div>
+      </div>
+    </div>
+    <div class="w-full flex justify-between mt-4">
+      <div class="1/2 rounded-lg bg-twitter-blue px-4 py-2 pr-10 text-gray-100 flex items-center">
+        <div class="pr-4"><%=image_pack_tag 'icons/twitter_white_login.svg', class: "w-6"%></div>
+        <div><%=button_text%> with twitter</div>
+      </div>
+      <div class="1/2 rounded-lg bg-linkedin-blue px-4 py-2 text-gray-100 flex items-center">
+        <div class="pr-4"><%=image_pack_tag 'icons/linkedin_white_login.svg', class: "w-6"%></div>
+        <div><%=button_text%> with linkedin</div>
+      </div>
+    </div>
+  </div>
+<% end %>

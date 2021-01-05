@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_28_093313) do
+ActiveRecord::Schema.define(version: 2021_01_03_091142) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -201,6 +201,20 @@ ActiveRecord::Schema.define(version: 2020_12_28_093313) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "social_connects", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.string "provider"
+    t.string "uid"
+    t.string "access_token"
+    t.string "access_token_secret"
+    t.string "refresh_token"
+    t.datetime "expires_at"
+    t.text "auth"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_social_connects_on_user_id"
+  end
+
   create_table "specialities", force: :cascade do |t|
     t.string "name"
     t.string "code"
@@ -336,6 +350,7 @@ ActiveRecord::Schema.define(version: 2020_12_28_093313) do
     t.text "image_data"
     t.text "about"
     t.string "title"
+    t.text "profile_pic"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
@@ -352,6 +367,7 @@ ActiveRecord::Schema.define(version: 2020_12_28_093313) do
   add_foreign_key "jobs", "doctors"
   add_foreign_key "locations", "states"
   add_foreign_key "reviews", "doctors"
+  add_foreign_key "social_connects", "users"
   add_foreign_key "speciality_aliases", "specialities"
   add_foreign_key "taggings", "tags"
   add_foreign_key "topic_tips", "tips"

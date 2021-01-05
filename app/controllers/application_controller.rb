@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
   attr_reader :current_location, :location_string
 
   before_action :menu_details, only: %i[index show], unless: proc { request.xhr? }
-  before_action :set_approximate_location
+  before_action :set_approximate_location, :validate_role
 
   def load_gmap
     @load_gmaps = true
@@ -32,6 +32,12 @@ class ApplicationController < ActionController::Base
     coords = (params[:near].presence || DEFUALT_LOCATION).split(',').map(&:to_f)
     result = Geocoder.search(coords).first
     @location_string = (result.data['address'] || {})['city']
+  end
+
+  def validate_role
+    if current_user.present? && current_user.has_role?('guest')
+      redirect_to(onboarding_step1_url) && return
+    end
   end
 
   private
