@@ -44,4 +44,20 @@ module AdminHelper
       false
     end
   end
+
+  def doctor_role?
+    current_user_roles = current_user.roles.pluck(:name)
+
+    if current_user_roles.include?('doctor')
+      true
+    else
+      false
+    end
+  end
+
+  def profile_approved?
+    claim_request = ClaimProfileRequest.find_by_user_id(current_user.id)
+
+    return true unless claim_request
+  end
 end

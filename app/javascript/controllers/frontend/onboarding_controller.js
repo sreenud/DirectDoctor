@@ -1,9 +1,12 @@
 /* eslint-disable no-param-reassign */
 /* eslint-disable new-cap */
 /* eslint-disable no-shadow */
+/* eslint-disable dot-notation */
+/* eslint-disable no-restricted-syntax */
 import { Controller } from 'stimulus';
 import autoComplete from '@tarekraafat/autocomplete.js';
 
+const onboardingInputFields = ['profile_name', 'document'];
 export default class extends Controller {
   static targets = ['userType', 'submitButton', 'doctorForm'];
 
@@ -73,7 +76,7 @@ export default class extends Controller {
           .appendChild(result);
       },
       onSelection: (feedback) => {
-        document.querySelector('#autoComplete').blur();
+        // document.querySelector('#autoComplete').blur();
         // Prepare User's Selected Value
         const selection = feedback.selection.value[feedback.selection.key];
         // Render selected choice to selection div
@@ -98,5 +101,30 @@ export default class extends Controller {
       }
     });
     this.submitButtonTarget.classList.remove('hidden');
+  }
+
+  success(event) {
+    const [data, status, xhr] = event.detail;
+    this.successTarget.innerHTML = xhr.response;
+    this.errorsTarget.innerHTML = '';
+  }
+
+  errorHandler(event) {
+    const [data, status, xhr] = event.detail;
+    const errors = JSON.parse(xhr.response);
+
+    console.log(errors['messages']);
+    this.showErrors(errors['messages'] || {});
+    // this.errorsTarget.innerHTML = xhr.response;
+  }
+
+  showErrors(errors) {
+    for (const input of onboardingInputFields) {
+      if (errors[input]) {
+        document.getElementById(`error_${input}`).textContent = errors[input];
+      } else {
+        document.getElementById(`error_${input}`).textContent = '';
+      }
+    }
   }
 }

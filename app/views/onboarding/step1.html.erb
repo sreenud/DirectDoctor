@@ -1,6 +1,6 @@
 <section class="lg:grid lg:w-full lg:mt-24 lg:grid-cols-12 flex mt-24">
   <div class="lg:col-span-1 w-full"></div>
-  <div class="lg:col-span-10 flex px-16">
+  <div class="lg:col-span-10 flex px-16" data-controller="onboarding">
     <div class="w-full mx-10">
       <div class="w-8/12 max-w-xl mx-auto mt-8">
         <div class="text-center">
@@ -10,10 +10,10 @@
           </div>
         </div>
       </div>
-      <div class="w-8/12 max-w-xl mx-auto mt-10 text-gray-900" data-controller="onboarding">
-        <%= form_for(:onboarding, url: onboarding_step1_url) do |f| %>
+      <%= form_with(model: @claim_profile, url: onboarding_step1_url, class: "flex w-full", data: {type: "html", action: "ajax:error->onboarding#errorHandler ajax:success->onboarding#success" }) do |form| %>
+        <div class="w-8/12 max-w-xl mx-auto mt-10 text-gray-900">
           <div class="w-full flex radio-box">
-            <input type="radio" name="user_type" id="patient" value="patient" data-action="onboarding#userChoice" data-target="onboarding.userType">
+            <%=form.radio_button :user_type, 'patient', :id => 'patient', data: {action: 'onboarding#userChoice', target: 'onboarding.userType'}%>
             <label for="patient" class="cursor-pointer">
               <div class=" flex justify-center items-center mt-8">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-16 h-16">
@@ -22,7 +22,7 @@
               </div>
               <span>Patient</span>
             </label>
-            <input type="radio" name="user_type" id="doctor" value="doctor" data-action="onboarding#userChoice" data-target="onboarding.userType">
+            <%=form.radio_button :user_type, 'doctor', :id => 'doctor', data: {action: 'onboarding#userChoice', target: 'onboarding.userType'}%>
             <label for="doctor" class="cursor-pointer">
               <div class=" flex justify-center items-center mt-8">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-16 h-16">
@@ -32,51 +32,45 @@
               <span>Doctor</span>
             </label>
           </div>
-          <div class="w-full mt-10 hidden" data-target="onboarding.doctorForm">
+          <div class="w-full mt-20 hidden" data-target="onboarding.doctorForm">
             <div class="text-center">
               <div class=" font-glacialbold text-2xl">Varification of Claim your Profile</div>
               <div class="text-xl text-gray-600">
                 Please submit any of the following documents for us to verify your account
               </div>
             </div>
-            <div class="flex w-full items-center justify-center mt-6 px-4 autoComplete_wrapper">
-              <input id="autoComplete" autocomplete="full_name" class="shadow-md border rounded-2lg w-full py-3 px-5 text-gray-700 focus:outline-none" type="text" value="" >
+            <div class="w-full mt-6 px-4 flex justify-center">
+              <div>
+                <div class="autoComplete_wrapper ">
+                  <%= form.text_field :profile_name, :class => "shadow-md border rounded-2lg w-full py-3 px-5 text-gray-700 focus:outline-none", :autocomplete => "off", :id => "autoComplete" %>
+                </div>
+                <div class="text-red-500 mt-4 text-center" id="error_profile_name"></div>
+              </div>
             </div>
-            <div class="flex w-full items-center justify-center bg-grey-lighter mt-6">
-              <label class="w-full flex flex-row items-center px-2 py-2 mx-4 bg-white text-blue rounded-lg shadow-lg tracking-wide uppercase border border-blue cursor-pointer hover:bg-blue hover:text-doctor-yellow">
-                <svg class="w-8 h-8" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
-                  <path d="M16.88 9.1A4 4 0 0 1 16 17H5a5 5 0 0 1-1-9.9V7a3 3 0 0 1 4.52-2.59A4.98 4.98 0 0 1 17 8c0 .38-.04.74-.12 1.1zM11 11h3l-4-4-4 4h3v3h2v-3z" />
-                </svg>
-                <span class="ml-4 text-base leading-normal text-left">Upload Driving License</span>
-                <input type='file' class="hidden" />
-              </label>
+            <div class="flex w-full items-center justify-center mt-6">
+              <div class="text-xl text-gray-600">Upload Driving License or NIP or Doctor Certificate</div>
             </div>
-            <div class="flex w-full items-center justify-center bg-grey-lighter mt-6">
-              <label class="w-full flex flex-row items-center px-2 py-2 mx-4 bg-white text-blue rounded-lg shadow-lg tracking-wide uppercase border border-blue cursor-pointer hover:bg-blue hover:text-doctor-yellow">
-                <svg class="w-8 h-8" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
-                  <path d="M16.88 9.1A4 4 0 0 1 16 17H5a5 5 0 0 1-1-9.9V7a3 3 0 0 1 4.52-2.59A4.98 4.98 0 0 1 17 8c0 .38-.04.74-.12 1.1zM11 11h3l-4-4-4 4h3v3h2v-3z" />
-                </svg>
-                <span class="ml-4 text-base leading-normal text-left">Upload NIP</span>
-                <input type='file' class="hidden" />
-              </label>
-            </div>
-            <div class="flex w-full items-center justify-center bg-grey-lighter mt-6">
-              <label class="w-full flex flex-row items-center px-2 py-2 mx-4 bg-white text-blue rounded-lg shadow-lg tracking-wide uppercase border border-blue cursor-pointer hover:bg-blue hover:text-doctor-yellow">
-                <svg class="w-8 h-8" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
-                  <path d="M16.88 9.1A4 4 0 0 1 16 17H5a5 5 0 0 1-1-9.9V7a3 3 0 0 1 4.52-2.59A4.98 4.98 0 0 1 17 8c0 .38-.04.74-.12 1.1zM11 11h3l-4-4-4 4h3v3h2v-3z" />
-                </svg>
-                <span class="ml-4 text-base leading-normal text-left">Upload Doctor Certificate</span>
-                <input type='file' class="hidden" />
-              </label>
+            <div class="bg-grey-lighter ml-40 mt-6 flex w-64 items-center justify-center">
+              <div class="w-full">
+                <label class="w-full flex flex-row items-center px-2 py-2 mx-4 bg-white text-blue rounded-lg shadow-lg tracking-wide uppercase border border-blue cursor-pointer hover:bg-blue hover:text-doctor-yellow">
+                  <svg class="w-8 h-8" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                    <path d="M16.88 9.1A4 4 0 0 1 16 17H5a5 5 0 0 1-1-9.9V7a3 3 0 0 1 4.52-2.59A4.98 4.98 0 0 1 17 8c0 .38-.04.74-.12 1.1zM11 11h3l-4-4-4 4h3v3h2v-3z" />
+                  </svg>
+                  <span class="ml-4 text-base leading-normal text-left">Choose File</span>
+                  <%= form.hidden_field :document, value: form.object.cached_document_data %>
+                  <%= form.file_field :document, class: 'hidden' %>
+                </label>
+                <div class="text-red-500 mt-4 text-center" id="error_document"></div>
+              </div>
             </div>
           </div>
           <div class="w-full mt-12 hidden" data-target="onboarding.submitButton">
-            <div class="flex items-center justify-end mt-4">
-              <%= f.submit "Continue", class: "text-gray-100 border rounded-lg px-12 py-3 border-doctor-yellow hover:bg-doctor-yellow hover:text-gray-100 bg-white cursor-pointer bg-doctor-yellow shadow-lg", data: {disable_with: "Continue" } %>
+            <div class="flex items-center justify-center mt-4">
+              <%= form.submit "Continue", class: "text-gray-100 border rounded-lg px-12 py-3 border-doctor-yellow hover:bg-doctor-yellow hover:text-gray-100 bg-white cursor-pointer bg-doctor-yellow shadow-lg", data: { disable_with: "Saving in..." } %>
             </div>
           </div>
-        <% end %>
-      </div>
+        </div>
+      <% end %>
     </div>
   </div>
   <div class="lg:col-span-1 relative">

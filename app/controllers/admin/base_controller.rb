@@ -1,6 +1,7 @@
 module Admin
   class BaseController < ApplicationController
     include Pundit
+    include Pagy::Backend
 
     layout "admin"
     before_action :authenticate_admin!
