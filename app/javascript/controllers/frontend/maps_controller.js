@@ -78,8 +78,6 @@ export default class extends Controller {
     const pins = this.generatePopups();
     this.setPins(pins);
     this.maps.fitZoom();
-    // console.log(this.maps.addMarkers(pins));
-    // pins.forEach((pin) => this.maps.drawOverlay(pin));
   }
 
   setPins(pins = []) {

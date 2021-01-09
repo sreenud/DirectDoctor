@@ -45,7 +45,7 @@ export default class MapPinGenerator {
     });
   }
 
-  groupedMarkers() {
+  groupedMarkers(skipInfoWindow = false) {
     const groups = this.groupData();
     return Object.keys(groups).map((key) => {
       const { count, lat, lng, ids } = groups[key];
@@ -56,10 +56,12 @@ export default class MapPinGenerator {
         icon: icon({ multiple: count > 1 }),
         label: count > 1 ? count.toString() : '',
         ids: ids,
-        infoWindow: new MapInfoWindow(ids).content({
-          maxWidth: width,
-          minWidth: width,
-        }),
+        infoWindow: skipInfoWindow
+          ? ''
+          : new MapInfoWindow(ids).content({
+              maxWidth: width,
+              minWidth: width,
+            }),
       };
     });
   }
@@ -98,6 +100,17 @@ export default class MapPinGenerator {
       groups[key] = content;
     });
     return groups;
+  }
+
+  data() {
+    return this.pinData.map((a) => {
+      const coord = a.split(',');
+      return {
+        lat: coord[0],
+        lng: coord[1],
+        id: coord[3],
+      };
+    });
   }
 
   popup(content, { ids = [], variant = 'popup' }) {
