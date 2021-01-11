@@ -95,6 +95,10 @@ class Doctor < ApplicationRecord
     [address_line_1, city, state, zipcode].compact.join(', ')
   end
 
+  def full_address
+    [address_line_1, address_suite, city, state, zipcode].compact.join(', ')
+  end
+
   def price
     "$#{min_price} - #{max_price}"
   end

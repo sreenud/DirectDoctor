@@ -7,10 +7,12 @@
           <div><%=button_text%> with facebook</div>
         </div>
       <% end %>
-      <div class="1/2 rounded-lg  bg-google-red px-4 py-2 text-gray-100 flex items-center">
-        <div class="pr-4"><%=image_pack_tag 'icons/google_white.svg', class: "w-8"%></div>
-        <div><%=button_text%> with google</div>
-      </div>
+      <%= link_to omniauth_authorize_path(resource_name, 'google_oauth2') do %>
+        <div class="1/2 rounded-lg  bg-google-red px-4 py-2 text-gray-100 flex items-center">
+          <div class="pr-4"><%=image_pack_tag 'icons/google_white.svg', class: "w-8"%></div>
+          <div><%=button_text%> with google</div>
+        </div>
+      <% end %>
     </div>
     <div class="w-full flex justify-between mt-4">
       <div class="1/2 rounded-lg bg-twitter-blue px-4 py-2 pr-10 text-gray-100 flex items-center">

@@ -1,0 +1,89 @@
+<header class="w-full flex">
+  <div class="inline-flex text-gray-600 w-8/12">
+    <h1 class="font-semibold text-2xl">Approve requested doctor's profile</h1>
+  </div>
+  <div class="w-4/12 flex justify-end items-center">
+    <a href="<%=admin_dashboard_index_url%>" class=" text-blue-500 underline">Go back to Dashboard</a>
+  </div>
+</header>
+<div class="grid grid-cols-12 gap-6">
+  <div class="col-span-12 lg:col-span-5 xxl:col-span-4 flex lg:block flex-col-reverse rounded-lg">
+    <div class="w-full bg-white shadow-md mt-6">
+      <div class="border-b py-4 px-3 text-lg text-gray-100 bg-gray-700 rounded-tl-lg rounded-tr-lg">
+        Requested by
+      </div>
+      <div class="w-full px-3 py-3 text-gray-700">
+        <div class="w-full flex">
+          <div class="w-2/6">
+            <% if @claim_profile_request&.user&.profile_pic %>
+              <img alt="" class="h-32 w-full object-cover border rounded-lg doc-avatar" src="<%=@claim_profile_request&.user&.profile_pic%>">
+            <% else %>
+              <%= image_pack_tag 'doctor_default.svg', class: "h-32 w-full object-cover border rounded-lg doc-avatar" %>
+            <% end %>
+          </div>
+          <div class="w-4/6 text-md tracking-wide mt-4 pl-2">
+            <div><%= @claim_profile_request&.user&.full_name %></div>
+            <div class=" text-sm"><%= @claim_profile_request&.user&.email %></div>
+            <div class="pt-2">Requested on <%= @claim_profile_request&.posted_on%></div>
+          </div>
+        </div>
+        <div class="w-full pl-1">
+          <div class="mt-4">Documents:</div>
+          <div class="mt-2">
+            <a href="<%=@claim_profile_request.document_url%>" target="_blank" class=" text-blue-500 underline">
+              Attachment 1
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-span-12 lg:col-span-7 xxl:col-span-8">
+    <div class="w-full bg-white shadow-md mt-6 rounded">
+      <div class="border-b py-4 px-3 text-lg text-gray-100 bg-gray-700 rounded-tl-lg rounded-tr-lg">
+        Doctor's profiles found in our database
+      </div>
+      <% if @doctors %>
+        <% @doctors.each do |doctor| %>
+          <div class="w-full px-2 py-4 text-gray-700 border-b" data-controller="claim-profile" data-claim-profile-doctor-id="<%=doctor.id%>" data-claim-profile-user-id="<%=@claim_profile_request.user_id%>" data-claim-profile-id="<%=@claim_profile_request.id%>">
+            <div class="w-full flex">
+              <div class="w-2/6">
+                <% if doctor&.image_data %>
+                  <img alt="" class="h-32 w-full object-cover border rounded-lg doc-avatar" src="<%=doctor&.image_url%>">
+                <% else %>
+                  <%= image_pack_tag 'doctor_default.svg', class: "h-40 w-full border rounded-lg doc-avatar" %>
+                <% end %>
+              </div>
+              <div class="w-4/6 text-md tracking-wide pl-4">
+                <div class="w-full flex">
+                  <div class="text-sm font-bold w-3/12">Name:</div>
+                  <div class="w-9/12">
+                    <div><%= doctor&.name %></div>
+                    <div class=" text-sm"><%= doctor&.email %></div>
+                  </div>
+                </div>
+                <div class="w-full flex pt-2">
+                  <div class="text-sm font-bold w-3/12">Phone:</div>
+                  <div class="w-9/12"><%= doctor&.phone%></div>
+                </div>
+                <div class="w-full flex pt-1">
+                  <div class="text-sm font-bold w-3/12">FDD ID:</div>
+                  <div class="w-9/12"><%= doctor&.fdd_id%></div>
+                </div>
+                <div class="w-full flex pt-1">
+                  <div class="text-sm font-bold w-3/12">Address:</div>
+                  <div class="w-9/12"><%=doctor.full_address%></div>
+                </div>
+              </div>
+            </div>
+            <div class="w-full flex justify-end mt-4">
+              <button class="px-4 py-2 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-purple-600 border border-transparent rounded-lg active:bg-purple-600 hover:bg-purple-700 focus:outline-none focus:shadow-outline-purple" data-action="claim-profile#claimProfile" onclick="return confirm('Are you sure you want to approve this profile?');">
+                Approve
+              </button>
+            </div>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>
