@@ -14,7 +14,7 @@ class Doctor < ApplicationRecord
 
   scope :latest, -> { order(created_at: :desc) }
 
-  validates :title, :gender, :name, :practice_name, :style, :primary_speciality,
+  validates :title, :gender, :name, :practice_name, :style, :speciality_id,
     :language, :is_holistic_medicine, :is_telehealth_service, :is_home_visit,
     :aditional_services, :access, :appointments, :consultation, :about_clinic,
     :about_doctor, :address_line_1, :state, :city, :zipcode, :lat, :lng, presence: true
