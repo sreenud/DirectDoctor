@@ -2,7 +2,7 @@ class DataController < ApplicationController
   def doctor_names
     @doctors = Doctor.all.map do |doctor|
       {
-        "name" => "#{doctor.name}",
+        "name" => doctor&.name&.to_s,
       }
     end
 
