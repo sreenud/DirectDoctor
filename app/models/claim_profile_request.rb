@@ -5,7 +5,7 @@ class ClaimProfileRequest < ApplicationRecord
 
   belongs_to :user
 
-  validates :profile_name, :user_type, :document, presence: true, if: :doctor?
+  validates :user_type, :document, presence: true, if: :doctor?
 
   scope :latest, -> { order(created_at: :desc) }
 

@@ -34,7 +34,9 @@ module Admin
 
     def set_fdd_profile
       doctor_name = @claim_profile_request&.doctor_name
-      @doctors = Doctor.where("name LIKE ?", "%#{doctor_name}%")
+      if doctor_name
+        @doctors = Doctor.where("name LIKE ?", "%#{doctor_name}%")
+      end
     end
 
     def claim_profile_request_params

@@ -4,10 +4,7 @@
     <div class="w-full mx-10">
       <div class="w-8/12 max-w-xl mx-auto mt-8">
         <div class="text-center">
-          <div class=" font-glacialbold text-2xl">Are you a Doctor?</div>
-          <div class="text-xl text-gray-600">If you want to sign up, the first step is to
-            <span class="items-end justify-end text-blue-400 inline-block">find your FMDD profile.</span>
-          </div>
+          <div class=" font-glacialbold text-2xl">Are you a Patient or a Provider?</div>
         </div>
       </div>
       <%= form_with(model: @claim_profile, url: onboarding_step1_url, class: "flex w-full", data: {type: "html", action: "ajax:error->onboarding#errorHandler ajax:success->onboarding#success" }) do |form| %>
@@ -29,15 +26,13 @@
                   <path d="M17 10.27V4.99a1 1 0 0 0-2 0V15a5 5 0 0 1-10 0v-1.08A6 6 0 0 1 0 8V2C0 .9.9 0 2 0h1a1 1 0 0 1 1 1 1 1 0 0 1-1 1H2v6a4 4 0 1 0 8 0V2H9a1 1 0 0 1-1-1 1 1 0 0 1 1-1h1a2 2 0 0 1 2 2v6a6 6 0 0 1-5 5.92V15a3 3 0 0 0 6 0V5a3 3 0 0 1 6 0v5.27a2 2 0 1 1-2 0z"/>
                 </svg>
               </div>
-              <span>Doctor</span>
+              <span>Provider</span>
             </label>
           </div>
           <div class="w-full mt-20 hidden" data-target="onboarding.doctorForm">
-            <div class="text-center">
-              <div class=" font-glacialbold text-2xl">Varification of Claim your Profile</div>
-              <div class="text-xl text-gray-600">
-                Please submit any of the following documents for us to verify your account
-              </div>
+            <div class="text-left font-glacialbold text-2xl flex w-full mx-6">
+              <div class="w-1/6">Step 1: </div>
+              <div class="w-5/6">Please check if we already created a profile for you.</div>
             </div>
             <div class="w-full mt-6 px-4 flex justify-center">
               <div>
@@ -47,8 +42,19 @@
                 <div class="text-red-500 mt-4 text-center" id="error_profile_name"></div>
               </div>
             </div>
+            <div class="w-full items-center justify-center mt-4 mx-6">
+              <div class="text-md text-gray-600">Found your profile?</div>
+              <div class="text-sm text-gray-600">If yes, great news! Go ahead and select it. Then go to Step 2 to claim your profile.</div>
+              <div class="text-sm text-gray-600">If no, no worries! Still go to Step 2 to create a new profile.</div>
+            </div>
             <div class="flex w-full items-center justify-center mt-6">
-              <div class="text-xl text-gray-600">Upload Driving License or NIP or Doctor Certificate</div>
+              <div class="text-left font-glacialbold text-2xl flex w-full mx-6">
+                <div class="w-1/6">Step 2: </div>
+                <div class="w-5/6">Verify your identity.</div>
+              </div>
+            </div>
+            <div class="w-full items-center justify-center mt-4 mx-6">
+              <div class="text-sm text-gray-600">Upload Driver's License or Medical Training Certificate or Workplace Identification Card or Medical License Certificate or other valid forms of identification</div>
             </div>
             <div class="bg-grey-lighter ml-40 mt-6 flex w-64 items-center justify-center">
               <div class="w-full">
