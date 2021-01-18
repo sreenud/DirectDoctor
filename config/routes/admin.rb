@@ -15,6 +15,7 @@ namespace :admin do
   resources :services
   resources :reviews
   resources :languages
+  resources :claim_profiles
   resources :states do
     resources :locations
   end

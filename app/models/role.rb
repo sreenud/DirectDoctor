@@ -11,5 +11,5 @@ class Role < ApplicationRecord
 
   scopify
 
-  scope :master_roles, -> { where.not(name: ["patient", "doctor"]) }
+  scope :master_roles, -> { where.not(name: ["patient", "doctor", "guest"]) }
 end

@@ -1,0 +1,28 @@
+.radio-box input[type="radio"] {
+  -webkit-appearance: none;
+}
+.radio-box label {
+  height: 180px;
+  width: 240px;
+  border: 6px solid #e7ab00;
+  position: relative;
+  margin: auto;
+  border-radius: 10px;
+  color: #e7ab00;
+  transition: 0.5s;
+}
+
+.radio-box label > span {
+  font-size: 25px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, 80%);
+  font-family: "Poppins", sans-serif;
+  font-weight: 500;
+}
+.radio-box input[type="radio"]:checked + label {
+  background-color: #e7ab00;
+  color: white;
+  box-shadow: 0 15px 45px rgba(231, 171, 0, 1);
+}

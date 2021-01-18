@@ -1,4 +1,4 @@
-class JobsController < ApplicationController
+class JobsController < BaseController
   before_action :set_meta_data, only: [:show]
   before_action :load_gmap, only: [:search]
   before_action :set_location_string, only: [:search]

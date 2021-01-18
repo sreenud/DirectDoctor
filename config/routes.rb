@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  devise_for :users
+  devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
   root 'home#index'
   get 'search', to: "searches#index"
   get 'search-map', to: "searches#index_two"
@@ -10,6 +10,9 @@ Rails.application.routes.draw do
   resources :blogs, only: [:index, :show]
   resources :tips, only: [:index]
   get 'about-us', to: "abouts#index"
+  get 'onboarding/step1', to: "onboarding#step1"
+  post 'onboarding/step1', to: "onboarding#create_step1"
+  get 'onboarding/thankyou', to: "onboarding#thankyou"
   resources :doctors do
     resources :reviews, only: [:index, :create]
   end
@@ -19,6 +22,12 @@ Rails.application.routes.draw do
   resources :jobs, only: [:index, :show] do
     collection do
       get :search
+    end
+  end
+
+  resources :data do
+    collection do
+      get :doctor_names
     end
   end
 

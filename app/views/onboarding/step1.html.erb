@@ -1,0 +1,105 @@
+<section class="lg:grid lg:w-full lg:mt-24 lg:grid-cols-12 flex mt-24">
+  <div class="lg:col-span-1 w-full"></div>
+  <div class="lg:col-span-10 flex px-16" data-controller="onboarding">
+    <div class="w-full mx-10">
+      <div class="w-8/12 max-w-xl mx-auto mt-8">
+        <div class="text-center">
+          <div class=" font-glacialbold text-2xl">Are you a Patient or a Provider?</div>
+        </div>
+      </div>
+      <%= form_with(model: @claim_profile, url: onboarding_step1_url, class: "flex w-full", data: {type: "html", action: "ajax:error->onboarding#errorHandler ajax:success->onboarding#success" }) do |form| %>
+        <div class="w-8/12 max-w-xl mx-auto mt-10 text-gray-900">
+          <div class="w-full flex radio-box">
+            <%=form.radio_button :user_type, 'patient', :id => 'patient', data: {action: 'onboarding#userChoice', target: 'onboarding.userType'}%>
+            <label for="patient" class="cursor-pointer">
+              <div class=" flex justify-center items-center mt-8">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-16 h-16">
+                  <path d="M2 6H0v2h2v2h2V8h2V6H4V4H2v2zm7 0a3 3 0 0 1 6 0v2a3 3 0 0 1-6 0V6zm11 9.14A15.93 15.93 0 0 0 12 13c-2.91 0-5.65.78-8 2.14V18h16v-2.86z"/>
+                </svg>
+              </div>
+              <span>Patient</span>
+            </label>
+            <%=form.radio_button :user_type, 'doctor', :id => 'doctor', data: {action: 'onboarding#userChoice', target: 'onboarding.userType'}%>
+            <label for="doctor" class="cursor-pointer">
+              <div class=" flex justify-center items-center mt-8">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-16 h-16">
+                  <path d="M17 10.27V4.99a1 1 0 0 0-2 0V15a5 5 0 0 1-10 0v-1.08A6 6 0 0 1 0 8V2C0 .9.9 0 2 0h1a1 1 0 0 1 1 1 1 1 0 0 1-1 1H2v6a4 4 0 1 0 8 0V2H9a1 1 0 0 1-1-1 1 1 0 0 1 1-1h1a2 2 0 0 1 2 2v6a6 6 0 0 1-5 5.92V15a3 3 0 0 0 6 0V5a3 3 0 0 1 6 0v5.27a2 2 0 1 1-2 0z"/>
+                </svg>
+              </div>
+              <span>Provider</span>
+            </label>
+          </div>
+          <div class="w-full mt-20 hidden" data-target="onboarding.doctorForm">
+            <div class="text-left font-glacialbold text-2xl flex w-full mx-6">
+              <div class="w-1/6">Step 1: </div>
+              <div class="w-5/6">Please check if we already created a profile for you.</div>
+            </div>
+            <div class="w-full mt-6 px-4 flex justify-center">
+              <div>
+                <div class="autoComplete_wrapper ">
+                  <%= form.text_field :profile_name, :class => "shadow-md border rounded-2lg w-full py-3 px-5 text-gray-700 focus:outline-none", :autocomplete => "off", :id => "autoComplete" %>
+                </div>
+                <div class="text-red-500 mt-4 text-center" id="error_profile_name"></div>
+              </div>
+            </div>
+            <div class="w-full items-center justify-center mt-4 mx-6">
+              <div class="text-md text-gray-600">Found your profile?</div>
+              <div class="text-sm text-gray-600">If yes, great news! Go ahead and select it. Then go to Step 2 to claim your profile.</div>
+              <div class="text-sm text-gray-600">If no, no worries! Still go to Step 2 to create a new profile.</div>
+            </div>
+            <div class="flex w-full items-center justify-center mt-6">
+              <div class="text-left font-glacialbold text-2xl flex w-full mx-6">
+                <div class="w-1/6">Step 2: </div>
+                <div class="w-5/6">Verify your identity.</div>
+              </div>
+            </div>
+            <div class="w-full items-center justify-center mt-4 mx-6">
+              <div class="text-sm text-gray-600">Upload Driver's License or Medical Training Certificate or Workplace Identification Card or Medical License Certificate or other valid forms of identification</div>
+            </div>
+            <div class="bg-grey-lighter ml-40 mt-6 flex w-64 items-center justify-center">
+              <div class="w-full">
+                <label class="w-full flex flex-row items-center px-2 py-2 mx-4 bg-white text-blue rounded-lg shadow-lg tracking-wide uppercase border border-blue cursor-pointer hover:bg-blue hover:text-doctor-yellow">
+                  <svg class="w-8 h-8" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                    <path d="M16.88 9.1A4 4 0 0 1 16 17H5a5 5 0 0 1-1-9.9V7a3 3 0 0 1 4.52-2.59A4.98 4.98 0 0 1 17 8c0 .38-.04.74-.12 1.1zM11 11h3l-4-4-4 4h3v3h2v-3z" />
+                  </svg>
+                  <span class="ml-4 text-base leading-normal text-left">Choose File</span>
+                  <%= form.hidden_field :document, value: form.object.cached_document_data %>
+                  <%= form.file_field :document, class: 'hidden' %>
+                </label>
+                <div class="text-red-500 mt-4 text-center" id="error_document"></div>
+              </div>
+            </div>
+          </div>
+          <div class="w-full mt-12 hidden" data-target="onboarding.submitButton">
+            <div class="flex items-center justify-center mt-4">
+              <%= form.submit "Continue", class: "text-gray-100 border rounded-lg px-12 py-3 border-doctor-yellow hover:bg-doctor-yellow hover:text-gray-100 bg-white cursor-pointer bg-doctor-yellow shadow-lg", data: { disable_with: "Saving in..." } %>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+  <div class="lg:col-span-1 relative">
+    <div class="absolute right-0 mr-8">
+      <%=image_pack_tag 'light_grey_2_lines_vertical.svg', class: "h-56" %>
+    </div>
+    <div class="right-0 absolute -mr-4 -mt-32 z-50">
+      <%= image_pack_tag 'yellow_circle_outline_opacity_right.png' %>
+    </div>
+  </div>
+</section>
+<section class="lg:w-full flex mt-24">
+  <div class="w-6/12 relative">
+    <div class="absolute left-0 ml-20">
+      <%=image_pack_tag "yellow_circle_full.svg", class: "w-10" %>
+    </div>
+    <div class="absolute left-0 top-0 -mt-64">
+      <%=image_pack_tag "yellow_half_circle_thick.svg", class: "w-24" %>
+    </div>
+  </div>
+  <div class="w-6/12 flex justify-end">
+    <div class="absolute right-0 -mt-12 -mr-6">
+      <%=image_pack_tag "yellow_circle_full.svg", class:"w-12" %>
+    </div>
+  </div>
+</section>

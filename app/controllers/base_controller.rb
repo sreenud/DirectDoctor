@@ -1,10 +1,12 @@
-class ApplicationController < ActionController::Base
-  before_action :configure_permitted_parameters, if: :devise_controller?
+class BaseController < ApplicationController
+  include Pagy::Backend
+
+  DEFUALT_LOCATION = '40.73061,-73.935242'
 
   attr_reader :current_location, :location_string
 
   before_action :menu_details, only: %i[index show], unless: proc { request.xhr? }
-  before_action :set_approximate_location
+  before_action :set_approximate_location, :validate_role
 
   def load_gmap
     @load_gmaps = true
@@ -29,7 +31,13 @@ class ApplicationController < ActionController::Base
     return @location_string = params[:place] if params[:place].present?
     coords = (params[:near].presence || DEFUALT_LOCATION).split(',').map(&:to_f)
     result = Geocoder.search(coords).first
-    @location_string = ((result&.data || {})['address'] || {})['city']
+    @location_string = (result.data['address'] || {})['city']
+  end
+
+  def validate_role
+    if current_user.present? && current_user.has_role?('guest')
+      redirect_to(onboarding_step1_url) && return
+    end
   end
 
   private
@@ -40,11 +48,5 @@ class ApplicationController < ActionController::Base
 
   def menu_blog_categories
     @menu_categories = Category.latest.limit(5)
-  end
-  
-  protected
-
-  def configure_permitted_parameters
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:email, :full_name])
   end
 end

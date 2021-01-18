@@ -5,11 +5,13 @@
 @import "components/mega_menu";
 @import "components/custom";
 @import "components/star_rating";
+@import "components/radio_boxes";
 
 @import "tailwindcss/utilities";
 
 @import "node_modules/@glidejs/glide/src/assets/sass/glide.core";
 @import "custom/slider";
+@import "components/autoComplete";
 
 .a2a_s_facebook {
   background-color: white !important;

@@ -1,5 +1,70 @@
-<header class="flex">
+<header class="w-full">
   <div class="inline-flex text-gray-600">
     <h1 class="font-semibold text-2xl">Home</h1>
   </div>
 </header>
+<div class="w-full bg-white shadow-md mt-6 rounded">
+  <div class="w-full overflow-hidden rounded-lg shadow-xs">
+    <div class="w-full overflow-x-auto">
+      <div class="h-12 flex items-center pl-4 text-xl  text-gray-100 bg-gray-800">
+        Claim Profile Requests
+      </div>
+      <table class="w-full whitespace-no-wrap">
+        <thead>
+          <tr class="text-xs font-semibold tracking-wide text-left text-gray-500 uppercase border-b dark:border-gray-700 bg-gray-50 dark:text-gray-400 dark:bg-gray-800">
+            <th class="px-4 py-3">Doctor</th>
+            <th class="px-4 py-3">FDD Profile</th>
+            <th class="px-4 py-3">Document</th>
+            <th class="px-4 py-3">Date</th>
+            <th class="px-4 py-3">Action</th>
+          </tr>
+        </thead>
+        <tbody class="bg-white divide-y dark:divide-gray-700 dark:bg-gray-800">
+          <% if @claim_profile_requests.present? %>
+            <% @claim_profile_requests.each do |claim_profile_request| %>
+              <tr class="text-gray-700 dark:text-gray-400">
+                <td class="px-4 py-3">
+                  <div class="flex items-center text-sm">
+                    <!-- Avatar with inset shadow -->
+                    <div class="relative hidden w-8 h-8 mr-3 rounded-full md:block">
+                      <img class="object-cover w-full h-full rounded-full" src="<%=claim_profile_request.user.profile_pic%>" alt="" loading="lazy">
+                      <div class="absolute inset-0 rounded-full shadow-inner" aria-hidden="true"></div>
+                    </div>
+                    <div>
+                      <p class="font-semibold"><%=claim_profile_request.user.full_name%></p>
+                      <p class="text-xs text-gray-600 dark:text-gray-400">
+                        <%=claim_profile_request.user.email%>
+                      </p>
+                    </div>
+                  </div>
+                </td>
+                <td class="px-4 py-3 text-sm">
+                  <%=claim_profile_request.profile_name%>
+                </td>
+                <td class="px-4 py-3 text-xs">
+                  <span class="px-2 py-1 font-semibold leading-tight text-blue-700 bg-blue-100 rounded-full dark:bg-blue-700 dark:text-blue-100">
+                    <a href="<%=claim_profile_request.document_url%>" target="_blank">
+                      Document
+                    </a>
+                  </span>
+                </td>
+                <td class="px-4 py-3 text-sm">
+                  <%=claim_profile_request.posted_on%>
+                </td>
+                <td class="px-4 py-3 text-sm">
+                  <a href="<%=admin_claim_profile_url(claim_profile_request)%>" class="px-3 py-1 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-purple-600 border border-transparent rounded-md active:bg-purple-600 hover:bg-purple-700 focus:outline-none focus:shadow-outline-purple">
+                    Approve
+                  </a>
+                </td>
+              </tr>
+            <% end %>
+          <% else %>
+            <tr class="text-gray-700 dark:text-gray-400">
+              <td class="px-4 py-3 text-sm">No claim requests found</td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

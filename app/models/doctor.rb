@@ -14,7 +14,7 @@ class Doctor < ApplicationRecord
 
   scope :latest, -> { order(created_at: :desc) }
 
-  validates :title, :gender, :name, :practice_name, :style, :primary_speciality,
+  validates :title, :gender, :name, :practice_name, :style, :speciality_id,
     :language, :is_holistic_medicine, :is_telehealth_service, :is_home_visit,
     :aditional_services, :access, :appointments, :consultation, :about_clinic,
     :about_doctor, :address_line_1, :state, :city, :zipcode, :lat, :lng, presence: true
@@ -95,6 +95,10 @@ class Doctor < ApplicationRecord
     [address_line_1, city, state, zipcode].compact.join(', ')
   end
 
+  def full_address
+    [address_line_1, address_suite, city, state, zipcode].compact.join(', ')
+  end
+
   def price
     "$#{min_price} - #{max_price}"
   end
@@ -114,7 +118,8 @@ class Doctor < ApplicationRecord
   private
 
   def set_fdd_id
-    self.fdd_id = "#{state_code}-#{primary_speciality}-#{zipcode}-#{format('%05d', id)}"
+    primary_speciality = Speciality.find(speciality_id)
+    self.fdd_id = "#{state_code}-#{primary_speciality&.code}-#{zipcode}-#{format('%05d', id)}"
     save
   end
 

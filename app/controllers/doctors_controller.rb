@@ -1,4 +1,4 @@
-class DoctorsController < ApplicationController
+class DoctorsController < BaseController
   def show
     @doctor = Doctor.find_by_fdd_id(params[:fdd_id])
 

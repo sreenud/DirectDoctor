@@ -41,7 +41,9 @@
       </div>
       <div class="px-3 lg:px-0">
         <% if user_signed_in? %>
-          <%= link_to " Logout".html_safe, destroy_user_session_path, method: :delete, class: "block text-gray-800 border rounded-lg px-6 py-1 border-doctor-yellow lg:ml-4 hover:bg-doctor-yellow hover:text-gray-100 mt-3 lg:mt-0" %>
+          <div class="block border rounded-lg px-5 py-1 border-doctor-yellow lg:ml-4 hover:text-gray-100 mt-3 lg:mt-0">
+            <%=render 'shared/profile_menu'%>
+          </div>
         <% else %>
           <a href="<%= new_user_session_path %>" class="block text-gray-800 border rounded-lg px-6 py-1 border-doctor-yellow lg:ml-4 hover:bg-doctor-yellow hover:text-gray-100 mt-3 lg:mt-0">
             Login
