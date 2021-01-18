@@ -1,5 +1,5 @@
-module Admin
-  class DoctorsController < Admin::BaseController
+module Doctor
+  class ProfilesController < Doctor::BaseController
     include DoctorParams
     include DoctorFormData
 
