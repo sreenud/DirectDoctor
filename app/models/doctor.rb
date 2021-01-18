@@ -118,7 +118,8 @@ class Doctor < ApplicationRecord
   private
 
   def set_fdd_id
-    self.fdd_id = "#{state_code}-#{primary_speciality}-#{zipcode}-#{format('%05d', id)}"
+    primary_speciality = Speciality.find(speciality_id)
+    self.fdd_id = "#{state_code}-#{primary_speciality&.code}-#{zipcode}-#{format('%05d', id)}"
     save
   end
 
