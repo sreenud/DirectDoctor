@@ -1,4 +1,4 @@
-class TipsController < ApplicationController
+class TipsController < BaseController
   before_action :set_tip, only: [:show]
   before_action :set_meta_data, only: [:show]
 
