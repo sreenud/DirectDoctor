@@ -9,6 +9,7 @@ class User < ApplicationRecord
          :omniauthable, omniauth_providers: %i[facebook google_oauth2]
 
   has_many :social_connects
+  has_one :doctor
 
   after_create :assign_default_role
 

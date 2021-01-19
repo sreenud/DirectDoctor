@@ -34,5 +34,6 @@ Rails.application.routes.draw do
   mount Shrine.upload_endpoint(:cache) => "/images/upload"
   mount ProfilePicUploader.derivation_endpoint => "/derivations/image"
 
+  draw :provider
   draw :admin
 end

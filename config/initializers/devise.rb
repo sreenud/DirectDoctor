@@ -274,11 +274,11 @@ Devise.setup do |config|
   # config.omniauth :github, 'APP_ID', 'APP_SECRET', scope: 'user,public_repo'
 
   # production
-  facebook_client_id = "152277136419171"
-  facebook_client_secret = "a0c76c97eb356b0dad8d400422545585"
+  # facebook_client_id = "152277136419171"
+  # facebook_client_secret = "a0c76c97eb356b0dad8d400422545585"
   # development
-  # facebook_client_id = "786702638609860"
-  # facebook_client_secret = "6b6c17e49bc448b58f8dcb694a13a5f4"
+  facebook_client_id = "786702638609860"
+  facebook_client_secret = "6b6c17e49bc448b58f8dcb694a13a5f4"
   config.omniauth(:facebook, facebook_client_id, facebook_client_secret, scope: 'email')
 
   google_client_id = "84296835572-8vkpesqehl8h431282a62lvhorduapqn.apps.googleusercontent.com"

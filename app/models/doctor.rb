@@ -204,8 +204,12 @@ class Doctor < ApplicationRecord
   end
 
   def validate_json(json_data)
-    JSON.parse(json_data)
-  rescue JSON::ParserError => e
-    false
+    if json_data.present?
+      begin
+        JSON.parse(json_data)
+      rescue JSON::ParserError => e
+        false
+      end
+    end
   end
 end

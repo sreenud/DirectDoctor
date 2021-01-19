@@ -1,9 +1,9 @@
-module Doctor
+module Provider
   class BaseController < ApplicationController
     include Pundit
     include Pagy::Backend
 
-    layout "admin"
+    layout "provider"
     before_action :authenticate_doctor!
     rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
 

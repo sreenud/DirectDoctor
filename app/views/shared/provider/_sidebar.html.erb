@@ -1,0 +1,13 @@
+<section class="border-r relative w-1/6">
+  <nav class="pt-6">
+    <% menu_classes = admin_menu_classes(controller: "profiles") %>
+    <a href="<%=edit_provider_profile_url(current_user&.doctor&.id)%>" class="flex items-center pl-2">
+      <div class="<%=menu_classes[:active_class]%> flex pl-2">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="fill-current h-5 text-gray-500">
+          <path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z" />
+        </svg>
+        <span class="font-medium leading-tight pl-2 text-gray-700 text-md">My Profile</span>
+      </div>
+    </a>
+  </nav>
+</section>

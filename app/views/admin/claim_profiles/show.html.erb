@@ -84,7 +84,11 @@
           </div>
         <% end %>
       <% else %>
-        <div class="p-4 text-gray-700">Doctor profile not found in our database</div>
+        <div class="p-4 text-gray-700"><span class=" font-glacialbold"> <%=@claim_profile_request.name%></span> profile not found in the database, you can create this profile by providing some additional information.</div>
+        <div class="p-4 justify-center"  data-controller="message" >
+          <div class="w-full z-10" data-target="message.errors"></div>
+          <%= render partial: "admin/claim_profiles/form", locals: {claim_profile_request: @claim_profile_request, specialities: @specialities, states: @states}%>
+        </div>
       <% end %>
     </div>
   </div>

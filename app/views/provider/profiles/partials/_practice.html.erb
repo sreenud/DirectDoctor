@@ -1,0 +1,199 @@
+<div class="w-full flex mt-4">
+  <div class="w-1/3">
+    <div class="text-gray-600 text-md font-bold">Basic Information</div>
+    <p class="text-gray-600 text-sm"> About basic information </p>
+  </div>
+  <div class="w-2/3">
+    <div class="full flex">
+      <div class="w-1/3">
+        <div class="input-group">
+          <label class="label text-gray-600" for="gender">Gender<span class="text-red-700 pl-1">*</span></label>
+          <%= form.select(:gender,['Male', 'Female'], {:prompt => "Select..."}, {class: "select bg-white"}) %>
+        </div>
+      </div>
+      <div class="w-2/3 ml-2">
+        <div class="input-group">
+          <label class="label text-gray-600" for="doctor_Practice/Clinic name">Doctor's Name<span class="text-red-700 pl-1">*</span></label>
+          <%= form.text_field :name, :class => "input bg-white" %>
+        </div>
+      </div>
+    </div>
+    <div class="input-group">
+      <label class="label text-gray-600" for="title">Degree<span class="text-red-700 pl-1">*</span></label>
+      <%= form.text_field :title, :class => "", :placeholder => "Select"%>
+    </div>
+    <div class="input-group">
+      <label class="label text-gray-600" for="doctor_Practice/Clinic name">Practice / Clinic name<span class="text-red-700 pl-1">*</span></label>
+      <%= form.text_field :practice_name, :class => "input bg-white", :autocomplete => "off"%>
+    </div>
+    <div class="input-group">
+      <label class="label text-gray-600" for="doctor_parctice_style">Parctice style<span class="text-red-700 pl-1">*</span></label>
+      <div class="inline-block relative w-full">
+        <%= form.select(:style, Doctor.practices.map {|k, v| [v, k]}, {}, {class: "select"}) %>
+        <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+          <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
+        </div>
+      </div>
+    </div>
+    <div class="input-group">
+      <label class="label text-gray-600" for="doctor_primary_speciality">Primary speciality<span class="text-red-700 pl-1">*</span></label>
+      <%= form.select(:speciality_id, specialities.collect {|speciality| [speciality.name, speciality.id]}, {:prompt => "Select..."}, {class: "select"}) %>
+    </div>
+    <div class="input-group">
+      <%= form.label :other_specialities, :class => "label text-gray-600" %>
+      <%= form.select(:other_specialities, specialities.collect {|speciality| [speciality.name, speciality.code]}, {:prompt => "Select..."}, {class: "select", :multiple => true}) %>
+    </div>
+    <div class="input-group">
+      <label class="label text-gray-600" for="doctor_Practice/Clinic name">Doctor's Experience - Years in Practice<span class="text-red-700 pl-1">*</span></label>
+      <div class="inline-block relative w-full">
+        <%= select_tag nil, options_for_select(experience_options(experiences), experience_string(form.object)), class: 'select', data: { action: "change->doctor#experienceChange" } %>
+        <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+          <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
+        </div>
+      </div>
+      <%= form.hidden_field :min_experience, class: 'form-control', data: { target: "doctor.minExperience" } %>
+      <%= form.hidden_field :max_experience, class: 'form-control', data: { target: "doctor.maxExperience" } %>
+    </div>
+    <div class="input-group">
+      <label class="label text-gray-600" for="doctor_Practice/Clinic name">Languages Spoken<span class="text-red-700 pl-1">*</span></label>
+      <%= form.text_field :language, :class => "", :placeholder => "Select"%>
+    </div>
+  </div>
+</div>
+<div class="w-full flex mt-4 border-t border-doctor-blue">
+  <div class="w-full flex pt-6">
+    <div class="w-1/3">
+      <div class="text-gray-600 text-md font-bold">Healthcare Services Offered</div>
+      <p class="text-gray-600 text-sm"> About healthcare services offered </p>
+    </div>
+    <div class="w-2/3">
+      <div class="input-group">
+        <label class="label text-gray-600" for="holistic_lifestyle">Holistic/Lifestyle Medicine<span class="text-red-700 pl-1">*</span></label>
+        <div class="inline-block relative w-full">
+          <%= form.select(:is_holistic_medicine, Doctor.holistic_medicines.map {|k, v| [v, k]}, {:prompt => "Select..."}, {class: "select"}) %>
+          <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+            <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
+          </div>
+        </div>
+      </div>
+      <div class="input-group">
+        <label class="label text-gray-600" for="access">If you answered 'yes' to the previous question (Holistic/Lifestyle Medicine), please select one of the options below.</label>
+        <%= form.text_field :holistic_option, :class => "selectMode", :placeholder => "Choose or write"%>
+      </div>
+      <div class="input-group">
+        <label class="label text-gray-600" for="telehealth_service">Telehealth Services<span class="text-red-700 pl-1">*</span></label>
+        <div class="inline-block relative w-full">
+          <%= form.select(:is_telehealth_service, Doctor.holistic_medicines.map {|k, v| [v, k]}, {:prompt => "Select..."}, {class: "select"}) %>
+          <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+            <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
+          </div>
+        </div>
+      </div>
+      <div class="input-group">
+        <label class="label text-gray-600" for="access">If you answered 'yes' to the previous question (Telehealth Services), please select one of the options below.</label>
+        <%= form.text_field :telehealth_option, :class => "selectMode", :placeholder => "Choose or write"%>
+      </div>
+      <div class="input-group">
+        <label class="label text-gray-600" for="home_visits">Home Visits<span class="text-red-700 pl-1">*</span></label>
+        <div class="inline-block relative w-full">
+          <%= form.select(:is_home_visit, Doctor.holistic_medicines.map {|k, v| [v, k]}, {:prompt => "Select..."}, {class: "select"}) %>
+          <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+            <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
+          </div>
+        </div>
+      </div>
+      <div class="input-group">
+        <label class="label text-gray-600" for="access">If you answered 'yes' to the previous question (Home Visits), please select one of the options below.</label>
+        <%= form.text_field :home_visit_option, :class => "selectMode", :placeholder => "Choose or write"%>
+      </div>
+      <div class="input-group">
+        <label class="label text-gray-600" for="access">Additional Services (Check all that apply)<span class="text-red-700 pl-1">*</span></label>
+        <%= form.text_field :aditional_services, :class => "", :placeholder => "Choose or write"%>
+      </div>
+      <div class="input-group">
+        <label class="label text-gray-600" for="patients_in_panel">Monthly Membership Fee for Patient<span class="text-red-700 pl-1">*</span></label>
+        <div class="inline-block relative w-full">
+          <%= select_tag "doctor[price_options]", options_for_select(price_options(price_ranges), price_string(form.object)), class: 'select', data: { action: "change->doctor#priceChange" }%>
+          <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+            <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
+          </div>
+        </div>
+        <%= form.hidden_field :min_price, class: 'form-control', data: { target: "doctor.minPrice" } %>
+        <%= form.hidden_field :max_price, class: 'form-control', data: { target: "doctor.maxPrice" } %>
+      </div>
+      <div class="input-group" data-target="doctor.otherPriceInput">
+        <label class="label text-gray-600" for="patients_in_panel">Price details</label>
+        <%= form.text_area :prices, :class => "input bg-white tinymce" %>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="w-full flex mt-4 border-t border-doctor-blue">
+  <div class="w-full flex pt-6">
+    <div class="w-1/3">
+      <div class="text-gray-600 text-md font-bold">Patient Consultations</div>
+      <p class="text-gray-600 text-sm"> About Patient Consultations </p>
+    </div>
+    <div class="w-2/3">
+      <div class="input-group">
+        <label class="label text-gray-600" for="patients_in_panel">Maximum Patient Limit in Your Panel<span class="text-red-700 pl-1">*</span></label>
+        <div class="inline-block relative w-full">
+          <%= select_tag "doctor[patients_options]", options_for_select(patient_options(patients_in_panel), patient_string(form.object)), class: 'select', data: { action: "change->doctor#patientChange" } %>
+          <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+            <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
+          </div>
+        </div>
+        <%= form.hidden_field :min_patients, class: 'form-control', data: { target: "doctor.minPatients" } %>
+        <%= form.hidden_field :max_patients, class: 'form-control', data: { target: "doctor.maxPatients" } %>
+      </div>
+      <div class="input-group" data-target="doctor.otherPatientsInput">
+        <label class="label text-gray-600" for="patients_in_panel">Patients in Your Panel</label>
+        <%= form.text_area :patients_in_panel, :class => "input bg-white tinymce" %>
+      </div>
+      <div class="input-group">
+        <label class="label text-gray-600" for="access">24/7 Direct Phone Access to Doctor<span class="text-red-700 pl-1">*</span></label>
+        <%= form.text_field :access, :class => "selectMode", :placeholder => "Choose or write"%>
+      </div>
+      <div class="input-group">
+        <label class="label text-gray-600" for="appointments">Ability to See Patients<span class="text-red-700 pl-1">*</span></label>
+        <%= form.text_field :appointments, :class => "", :autocomplete => "off", :placeholder => "Choose or Write"%>
+      </div>
+      <div class="input-group">
+        <label class="label text-gray-600" for="appointments">Free Initial Consultation<span class="text-red-700 pl-1">*</span></label>
+        <%= form.text_field :consultation, :class => "selectMode", :autocomplete => "off", :placeholder => "Choose or write"%>
+      </div>
+      <div class="input-group">
+        <label class="label text-gray-600" for="appointments">
+          If you do offer a free initial consultation, how much time?
+        </label>
+        <%= form.text_field :free_consultation_time, :class => "selectMode", :autocomplete => "off", :placeholder => "Choose or write"%>
+      </div>
+    </div>
+  </div>
+</div>
+<!--<div class="w-full">
+  <div class="input-group">
+    <%= form.label :languages, :class => "label text-gray-600" %>
+    <%= form.text_field :language, :class => "", :autocomplete => "off", :placeholder => "Please select or write your own"%>
+  </div>
+</div>-->
+<div class="w-full flex mt-4 border-t border-doctor-blue">
+  <div class="w-full flex pt-6">
+    <div class="input-group">
+      <label class="label text-gray-600" for="appointments">
+        About Clinic<span class="text-red-700 pl-1">*</span>
+      </label>
+      <%= form.text_area :about_clinic, :class => "input bg-white tinymce" %>
+    </div>
+  </div>
+</div>
+<div class="w-full flex mt-4">
+  <div class="w-full flex pt-6">
+    <div class="input-group">
+      <label class="label text-gray-600" for="appointments">
+        About Doctor<span class="text-red-700 pl-1">*</span>
+      </label>
+      <%= form.text_area :about_doctor, :class => "input bg-white tinymce" %>
+    </div>
+  </div>
+</div>
