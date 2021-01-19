@@ -22,7 +22,7 @@ module Admin
         claim_profile_request.status = 'approved'
         if claim_profile_request.save
           respond_to do |format|
-            format.html { redirect_to admin_dashboard_index_url, notice: 'Doctor profile is created.'}
+            format.html { redirect_to admin_dashboard_index_url, notice: 'Doctor profile is created.' }
           end
         end
       else
