@@ -19,6 +19,43 @@ export default class MapInfoWindow {
     return this.singleWindow();
   }
 
+  appendData(oldInfoWindow, newIds = []) {
+    const oldNode =
+      typeof oldInfoWindow === 'object'
+        ? oldInfoWindow
+        : new DOMParser().parseFromString(oldInfoWindow);
+    const needConversion =
+      this.grouped && !oldNode.querySelector('.info-window-carousel');
+    if (needConversion) {
+      const {
+        container,
+        content,
+        arrowLeft,
+        arrowRight,
+      } = this.createCarousel();
+      this.setArrowEvents(arrowLeft, arrowRight, content);
+      content.appendChild(oldNode);
+      newIds.forEach((id) => {
+        const item = document.createElement('div');
+        item.classList.add('info-window-carousel-item');
+        item.appendChild(this.singleWindow(id));
+        content.appendChild(item);
+      });
+      return container;
+    }
+    const { container, content, arrowLeft, arrowRight } = this.extractNodes(
+      oldNode
+    );
+    this.setArrowEvents(arrowLeft, arrowRight, content);
+    newIds.forEach((id) => {
+      const item = document.createElement('div');
+      item.classList.add('info-window-carousel-item');
+      item.appendChild(this.singleWindow(id));
+      content.appendChild(item);
+    });
+    return container;
+  }
+
   singleWindow(id = this.ids[0]) {
     const ele = document.querySelector(`#doc-${id}`);
     const data = {
@@ -42,6 +79,39 @@ export default class MapInfoWindow {
   }
 
   groupedWindow() {
+    const { container, content, arrowLeft, arrowRight } = this.createCarousel();
+    this.setArrowEvents(arrowLeft, arrowRight, content);
+    this.ids.forEach((id) => {
+      const item = document.createElement('div');
+      item.classList.add('info-window-carousel-item');
+      item.appendChild(this.singleWindow(id));
+      content.appendChild(item);
+    });
+    return container;
+  }
+
+  /* eslint no-param-reassign: ["error", { "props": false }] */
+  setArrowEvents(
+    arrowLeft = document.createElement('button'),
+    arrowRight,
+    content = document.createElement('div')
+  ) {
+    const itemSize = 250;
+    const maxScroll = this.ids.length * 250;
+
+    arrowRight.addEventListener('click', () => {
+      const currentScroll = content.scrollLeft;
+      content.scrollLeft = (currentScroll + itemSize) % maxScroll;
+    });
+
+    arrowLeft.addEventListener('click', () => {
+      const currentScroll = content.scrollLeft;
+      content.scrollLeft =
+        maxScroll - ((currentScroll + itemSize) % (maxScroll + itemSize));
+    });
+  }
+
+  createCarousel() {
     const container = document.createElement('div');
     const content = document.createElement('div');
     const buttons = document.createElement('div');
@@ -53,34 +123,29 @@ export default class MapInfoWindow {
     buttons.classList.add('info-window-carousel-buttons');
     arrowLeft.classList.add('info-window-carousel-button');
     arrowRight.classList.add('info-window-carousel-button');
-
-    const itemSize = 250;
-
-    const maxScroll = this.ids.length * 250;
-
-    arrowRight.onclick = () => {
-      const currentScroll = content.scrollLeft;
-      content.scrollLeft = (currentScroll + itemSize) % maxScroll;
-    };
-
-    arrowLeft.onclick = () => {
-      const currentScroll = content.scrollLeft;
-      content.scrollLeft =
-        maxScroll - ((currentScroll + itemSize) % (maxScroll + itemSize));
-    };
-
     arrowLeft.append('⌫');
     arrowRight.append('⌦');
     container.appendChild(content);
     container.appendChild(buttons);
     buttons.appendChild(arrowLeft);
     buttons.appendChild(arrowRight);
-    this.ids.forEach((id) => {
-      const item = document.createElement('div');
-      item.classList.add('info-window-carousel-item');
-      item.appendChild(this.singleWindow(id));
-      content.appendChild(item);
-    });
-    return container;
+
+    return { container, content, buttons, arrowLeft, arrowRight };
+  }
+
+  extractNodes(oldNode = document.createElement('div')) {
+    const container = oldNode;
+    const content =
+      container.querySelector('.info-window-carousel-content') ||
+      document.createElement('div');
+    const buttons =
+      container.querySelector('.info-window-carousel-buttons') ||
+      document.createElement('div');
+    const arrowLeft =
+      buttons.querySelector('button') || document.createElement('button');
+    const arrowRight =
+      buttons.querySelectorAll('button')[1] || document.createElement('button');
+
+    return { container, content, buttons, arrowLeft, arrowRight };
   }
 }
