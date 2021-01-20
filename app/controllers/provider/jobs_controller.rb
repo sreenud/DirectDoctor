@@ -55,7 +55,6 @@ module Provider
     end
 
     def destroy
-
       valid_job = Job.where(id: params[:id]).where(doctor_id: @doctor.id)
       redirect_to(provider_jobs_url) unless valid_job.present?
 
