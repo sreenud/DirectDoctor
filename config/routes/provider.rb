@@ -1,5 +1,6 @@
 namespace :provider do
   resources :profiles
+  resources :jobs
 
   resources :data do
     collection do

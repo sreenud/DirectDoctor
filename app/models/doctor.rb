@@ -115,6 +115,11 @@ class Doctor < ApplicationRecord
     review_data.present? ? review_data.avg_rating : 0
   end
 
+  def json_to_string(json_data)
+    data = hash_to_string(JSON.parse(json_data)) if validate_json(json_data)
+    data.present? ? data : ""
+  end
+
   private
 
   def set_fdd_id

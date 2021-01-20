@@ -1,0 +1,28 @@
+<header class="flex">
+  <div class="inline-flex text-gray-600">
+    <h1 class="font-semibold text-2xl">Jobs</h1>
+  </div>
+</header>
+<section class="flex mt-2">
+  <div class="flex-1 mb-6 mr-4">
+    <div class="my-2 flex sm:flex-row flex-col">
+      <%= render partial: 'search', locals: {q: @q} %>
+      <div class="w-1/2">
+        <a href="<%=new_provider_job_url%>" class="btn btn-md btn-default btn-outline text-sm font-bold float-right text-gray-600">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-6 h-6 inline-block">
+            <path fillRule="evenodd" d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z" clipRule="evenodd" />
+          </svg>
+          <span class="leading-tight">Add Job</span>
+        </a>
+      </div>
+    </div>
+    <div class="bg-white border mb-6 rounded shadow">
+      <%= render partial: 'list', locals: {jobs: @jobs} %>
+      <div class="px-5 py-5 bg-white border-t flex flex-col xs:flex-row items-center xs:justify-between">
+        <div class="inline-flex mt-2 xs:mt-0">
+          <%= pagy_nav(@pagy).html_safe %>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
