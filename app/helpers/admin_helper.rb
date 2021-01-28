@@ -61,4 +61,10 @@ module AdminHelper
 
     return true unless claim_request
   end
+
+  def request_approval_check(field_name, approvel_request)
+    if approvel_request && approvel_request.params[field_name].present?
+      "bg-indigo-300"
+    end
+  end
 end

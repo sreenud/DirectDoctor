@@ -95,7 +95,9 @@
                       <div class="absolute inset-0 rounded-full shadow-inner" aria-hidden="true"></div>
                     </div>
                     <div>
-                      <p class="font-semibold"><%=profile_update_request&.user&.full_name%></p>
+                      <p class="font-semibold">
+                        <a href="<%=edit_admin_doctor_url(profile_update_request&.user&.doctor&.id, update_request: 'yes')%>" class="text-blue-500 underline"><%=profile_update_request&.user&.full_name%></a>
+                      </p>
                       <p class="text-xs text-gray-600 dark:text-gray-400">
                         <%=profile_update_request&.user&.email%>
                       </p>

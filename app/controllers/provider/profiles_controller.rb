@@ -63,17 +63,7 @@ module Provider
     end
 
     def restricted_fields
-      [
-        'title',
-        'language',
-        'holistic_option',
-        'telehealth_option',
-        'home_visit_option',
-        'aditional_services',
-        'appointments',
-        'consultation',
-        'free_consultation_time',
-      ]
+      Doctor.restricted_fields
     end
   end
 end

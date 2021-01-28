@@ -5,7 +5,7 @@ class Doctor < ApplicationRecord
   include Doctor::DisplayContent
   include Doctor::Rating
 
-  attr_accessor :cost, :experience, :patients_options, :price_options
+  attr_accessor :cost, :experience, :patients_options, :price_options, :update_request
 
   belongs_to :speciality
   has_many :reviews
@@ -50,6 +50,20 @@ class Doctor < ApplicationRecord
     "no": "No",
     'not_available': 'Not available',
   }
+
+  def self.restricted_fields
+    [
+      'title',
+      'language',
+      'holistic_option',
+      'telehealth_option',
+      'home_visit_option',
+      'aditional_services',
+      'appointments',
+      'consultation',
+      'free_consultation_time',
+    ]
+  end
 
   def self.experiences
     {

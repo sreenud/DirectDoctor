@@ -21,6 +21,7 @@ module Admin
     end
 
     def edit
+      @approvel_request = ApprovalRequest&.where(request_user_id: @doctor.user_id, status: 'pending')&.first
     end
 
     def create
@@ -38,6 +39,12 @@ module Admin
     def update
       respond_to do |format|
         if @doctor.update(doctor_params)
+          if doctor_params[:update_request] == "yes"
+            request = ApprovalRequest&.where(request_user_id: @doctor.user_id, status: 'pending')&.first
+            request.respond_user_id = current_user.id
+            request.status = ApprovalRequest.statuses[:approved]
+            request.save
+          end
           format.html { redirect_to admin_doctors_url, notice: 'Doctor is successfully updated.' }
           format.json { render :show, status: :ok, location: @doctor }
         else
