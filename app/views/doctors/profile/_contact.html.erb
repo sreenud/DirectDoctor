@@ -29,7 +29,7 @@
       <div class="w-full flex mt-1">
         <div class="pt-1"><%= image_pack_tag "icons/phone.svg", class: "w-5 h-5" %></div>
         <a href="tel:<%=doctor.formated_phone_number%>" class="hover:underline hover:text-blue-400">
-          <div class="ml-4"><%=doctor.phone%></div>
+          <div class="ml-4" itemprop="telephone"><%=doctor.phone%></div>
         </a>
       </div>
       <div class="w-full flex mt-1">
