@@ -24,7 +24,7 @@
         <a href="#" class=" text-blue-500"><%=reviews.count%> (Reviews)</a>
       </div>
     </div>
-    <div class="w-9/12 flex ml-8">
+    <div class="w-9/12 flex ml-8" >
       <div class="w-1/2">
         <div class="w-full flex items-center">
           <div class="w-2/12 text-sm ">5 Star</div>
@@ -89,16 +89,18 @@
   </div>
   <% reviews.limit(5).each_with_index do |review, index| %>
     <% bottom_shadow = (reviews.limit(5).count - 1 == index) ? "" : "box-bottom-shadow" %>
-    <div class="py-6 pl-6 w-full <%=bottom_shadow%> flex">
+    <div class="py-6 pl-6 w-full <%=bottom_shadow%> flex" itemprop="review" itemscope itemtype="http://schema.org/Review">
       <div class="w-full flex pb-16">
         <div class="w-3/12">
           <%= render(StarRatingComponent.new(rating: review.rating, class: 'doc-rating', width: '6', height: '6')) %>
-          <div class="text-sm mt-2">Posted by <%=review.name%></div>
+          <div class="text-sm mt-2" itemprop="author" itemscope itemtype="http://schema.org/Person">Posted by
+            <span itemprop="name"><%=review.name%></span>
+          </div>
           <div class="text-gray-600 text-sm"><%=review.display_date%></div>
         </div>
         <div class="w-8/12">
           <div><%=review.title%> </div>
-          <div class="text-sm pt-1">
+          <div class="text-sm pt-1" itemprop="reviewBody">
             <%= review.review %>
           </div>
         </div>

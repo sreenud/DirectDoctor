@@ -93,6 +93,14 @@ class Doctor < ApplicationRecord
     }
   end
 
+  def profile_url
+    state = state&.parameterize
+    doctor_name = "#{name}-#{speciality&.name}".parameterize
+    fdd_id = self.fdd_id&.downcase
+
+    "#{state}/doctor/#{doctor_name}/#{fdd_id}"
+  end
+
   def self.default_experience
     Doctor.experiences&.first&.first&.split("-")
   end

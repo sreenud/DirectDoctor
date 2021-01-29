@@ -6,6 +6,10 @@ class DoctorComponent < ViewComponent::Base
     @props = props
   end
 
+  def profile_url
+    @doctor.profile_url
+  end
+
   def doctor_avatar(**props)
     if doctor.image.present?
       tag.img(
