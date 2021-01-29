@@ -15,10 +15,10 @@
         <h2><span itemprop="addressRegion"><%=doctor&.state%></span></h2>
         ,
         <span itemprop="postalCode"><%=doctor&.zipcode%></span>
-        <span style="display: none;" itemprop="geo" itemscope itemtype="http://schema.org/GeoCoordinates">
-          <meta itemprop="longitude" content="<%=doctor.lat%>">
-          <meta itemprop="latitude" content="<%=doctor.lng%>">
-        </span>
+      </div>
+      <div style="display: none;" itemprop="geo" itemscope itemtype="http://schema.org/GeoCoordinates">
+        <meta itemprop="longitude" content="<%=doctor.lat%>">
+        <meta itemprop="latitude" content="<%=doctor.lng%>">
       </div>
       <div class="w-full flex mt-3">
         <div class="pt-1"><%= image_pack_tag "icons/email.svg", class: "w-5 h-5" %></div>
