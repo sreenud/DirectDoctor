@@ -1,6 +1,7 @@
 import Glide from '@glidejs/glide';
 
 document.addEventListener('turbolinks:load', function () {
+  console.log('tl loaded');
   const carousels = document.querySelectorAll('.glide');
   Object.values(carousels).map((carousel) => {
     console.log(carousel);

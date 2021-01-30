@@ -14,12 +14,12 @@ class DoctorsController < BaseController
   end
 
   def set_meta_data
-    @meta_title ||= "#{@doctor&.name} -  Book Appointment, View Fees, Contact Number,
+    @meta_title ||= "Dr.#{@doctor&.name} -  Book Appointment, View Fees, Contact Number,
       Reviews | #{@doctor&.speciality&.name} in #{@doctor&.state} | FMDD"
 
-    @meta_description ||= "#{@doctor&.name} is a  #{@doctor&.speciality&.name} in #{@doctor&.city} #{@doctor&.state}.
-      Consult #{@doctor&.name} Online, Book Appointment, View Doctor Fees, Contact Number, User Reviews and Ratings for,
-      #{@doctor&.name} | FMDD"
+    @meta_description ||= "Dr.#{@doctor&.name} is a  #{@doctor&.speciality&.name} in #{@doctor&.city} #{@doctor&.state}.
+      Consult Dr.#{@doctor&.name} Online, Book Appointment, View Doctor Fees, Contact Number, User Reviews and Ratings
+      for, Dr.#{@doctor&.name} | FMDD"
 
     @allow_robots = false
   end
