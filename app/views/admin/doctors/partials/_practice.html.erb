@@ -18,7 +18,7 @@
         </div>
       </div>
     </div>
-    <div class="input-group">
+    <div class="input-group <%=request_approval_check('title', @approvel_request)%>">
       <label class="label text-gray-600" for="title">Degree<span class="text-red-700 pl-1">*</span></label>
       <%= form.text_field :title, :class => "", :placeholder => "Select"%>
     </div>
@@ -54,7 +54,7 @@
       <%= form.hidden_field :min_experience, class: 'form-control', data: { target: "doctor.minExperience" } %>
       <%= form.hidden_field :max_experience, class: 'form-control', data: { target: "doctor.maxExperience" } %>
     </div>
-    <div class="input-group">
+    <div class="input-group <%=request_approval_check('language', @approvel_request)%>">
       <label class="label text-gray-600" for="doctor_Practice/Clinic name">Languages Spoken<span class="text-red-700 pl-1">*</span></label>
       <%= form.text_field :language, :class => "", :placeholder => "Select"%>
     </div>
@@ -76,7 +76,7 @@
           </div>
         </div>
       </div>
-      <div class="input-group">
+      <div class="input-group <%=request_approval_check('holistic_option', @approvel_request)%>">
         <label class="label text-gray-600" for="access">If you answered 'yes' to the previous question (Holistic/Lifestyle Medicine), please select one of the options below.</label>
         <%= form.text_field :holistic_option, :class => "selectMode", :placeholder => "Choose or write"%>
       </div>
@@ -89,7 +89,7 @@
           </div>
         </div>
       </div>
-      <div class="input-group">
+      <div class="input-group <%=request_approval_check('telehealth_option', @approvel_request)%>">
         <label class="label text-gray-600" for="access">If you answered 'yes' to the previous question (Telehealth Services), please select one of the options below.</label>
         <%= form.text_field :telehealth_option, :class => "selectMode", :placeholder => "Choose or write"%>
       </div>
@@ -102,11 +102,11 @@
           </div>
         </div>
       </div>
-      <div class="input-group">
+      <div class="input-group <%=request_approval_check('home_visit_option', @approvel_request)%>">
         <label class="label text-gray-600" for="access">If you answered 'yes' to the previous question (Home Visits), please select one of the options below.</label>
         <%= form.text_field :home_visit_option, :class => "selectMode", :placeholder => "Choose or write"%>
       </div>
-      <div class="input-group">
+      <div class="input-group <%=request_approval_check('aditional_services', @approvel_request)%>">
         <label class="label text-gray-600" for="access">Additional Services (Check all that apply)<span class="text-red-700 pl-1">*</span></label>
         <%= form.text_field :aditional_services, :class => "", :placeholder => "Choose or write"%>
       </div>
@@ -154,15 +154,15 @@
         <label class="label text-gray-600" for="access">24/7 Direct Phone Access to Doctor<span class="text-red-700 pl-1">*</span></label>
         <%= form.text_field :access, :class => "selectMode", :placeholder => "Choose or write"%>
       </div>
-      <div class="input-group">
+      <div class="input-group <%=request_approval_check('appointments', @approvel_request)%>">
         <label class="label text-gray-600" for="appointments">Ability to See Patients<span class="text-red-700 pl-1">*</span></label>
         <%= form.text_field :appointments, :class => "", :autocomplete => "off", :placeholder => "Choose or Write"%>
       </div>
-      <div class="input-group">
+      <div class="input-group <%=request_approval_check('consultation', @approvel_request)%>">
         <label class="label text-gray-600" for="appointments">Free Initial Consultation<span class="text-red-700 pl-1">*</span></label>
         <%= form.text_field :consultation, :class => "selectMode", :autocomplete => "off", :placeholder => "Choose or write"%>
       </div>
-      <div class="input-group">
+      <div class="input-group <%=request_approval_check('free_consultation_time', @approvel_request)%>">
         <label class="label text-gray-600" for="appointments">
           If you do offer a free initial consultation, how much time?
         </label>

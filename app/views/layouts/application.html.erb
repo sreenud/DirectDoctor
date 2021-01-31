@@ -26,13 +26,13 @@
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
-
+      
       gtag('config', 'UA-151952917-2');
     </script>
     <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
     <script src="https://cdn.rawgit.com/nnattawat/flip/master/dist/jquery.flip.min.js"></script>
   </head>
-  <body class="font-glacial text-px18 overflow-x-hidden">
+  <body class="font-glacial text-px18 overflow-x-hidden" itemscope itemtype="http://schema.org/WebPage">
     <%= render partial: 'shared/header' %>
     <div class="absolute top-0">
       <div class="absolute">
@@ -52,10 +52,32 @@
         speed: 1000,
         reverse: true
       });
-
+      
       setInterval(function(){
         $('.flip-card').flip('toggle');
       },2000)
     </script>
   </body>
+  <script type="application/ld+json">
+    {
+    "@context": "http://schema.org",
+    "@type": "Organization",
+    "name": "FindMyDirectDoctor ",
+    "logo": "https://www.findmydirectdoctor.com/logo.png",
+    "telephone": "+1 832-434-2628",
+    "url": "https://www.findmydirectdoctor.com/",
+    "email": "support@findmydirectdoctor.com",
+    "sameAs" : [
+        "https://twitter.com/FindMyDirectDoc",
+        "https://www.facebook.com/Find-My-Direct-Doctor-103928951413548",
+        "https://www.linkedin.com/company/findmydirectdoctor"
+      ],
+    "contactPoint" : {
+        "@type" : "ContactPoint",
+        "telephone" : "+1 832-434-2628",
+        "contactType" : "customer service"
+      }
+    
+    }
+  </script>
 </html>

@@ -29,10 +29,10 @@
         <% end %>
         <% if doctor_role? %>
           <% if profile_approved? %>
-            <a href="#" class="block px-4 py-2 text-sm capitalize text-gray-700 hover:bg-blue-500 hover:text-white">
+            <a href="<%=edit_provider_profile_url(current_user&.doctor&.id)%>" class="block px-4 py-2 text-sm capitalize text-gray-700 hover:bg-blue-500 hover:text-white">
               My Profile
             </a>
-            <a href="#" class="block px-4 py-2 text-sm capitalize text-gray-700 hover:bg-blue-500 hover:text-white">
+            <a href="<%=provider_jobs_url%>" class="block px-4 py-2 text-sm capitalize text-gray-700 hover:bg-blue-500 hover:text-white">
               Manage Jobs
             </a>
           <% else %>

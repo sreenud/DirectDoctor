@@ -12,8 +12,34 @@
 
 ActiveRecord::Schema.define(version: 2021_01_31_151816) do
 
+
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "approval_comments", force: :cascade do |t|
+    t.integer "request_id", null: false
+    t.integer "user_id", null: false
+    t.text "content", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["request_id"], name: "index_approval_comments_on_request_id"
+    t.index ["user_id"], name: "index_approval_comments_on_user_id"
+  end
+
+  create_table "approval_requests", force: :cascade do |t|
+    t.integer "request_user_id", null: false
+    t.integer "respond_user_id"
+    t.text "params"
+    t.integer "status", limit: 2, default: 0, null: false
+    t.datetime "requested_at", null: false
+    t.datetime "approved_at"
+    t.datetime "rejected_at"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["request_user_id"], name: "index_approval_requests_on_request_user_id"
+    t.index ["respond_user_id"], name: "index_approval_requests_on_respond_user_id"
+    t.index ["status"], name: "index_approval_requests_on_status"
+  end
 
   create_table "categories", force: :cascade do |t|
     t.string "name"

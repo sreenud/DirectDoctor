@@ -1,4 +1,5 @@
 <%= form_with(model: [:admin, doctor], class: "flex w-full", data: {type: "html", action: "ajax:error->message#errorHandler ajax:success->message#success" }) do |form| %>
+  <%= form.hidden_field :update_request, value: params[:update_request] %>
   <div class="flex-1 mr-4">
     <div class="bg-white border pb-16 rounded shadow p-5">
       <div class="tab_wrapper" x-data="{ tab: window.location.hash ? window.location.hash.substring(1) : 'doctor' }">

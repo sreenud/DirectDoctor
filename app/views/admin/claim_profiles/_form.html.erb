@@ -1,0 +1,35 @@
+<%= form_with(model: [:admin, claim_profile_request], url: admin_claim_profiles_url, class: "flex w-full", method: 'POST' ,data: {type: "html", action: "ajax:error->message#errorHandler ajax:success->message#success" }) do |form| %>
+  <%= form.hidden_field :user_id %>
+  <%= form.hidden_field :id %>
+  <div class="flex-1 mb-6 mr-4">
+    <div class="bg-white border pb-16 rounded shadow p-5">
+      <div class="w-full">
+        <div class="input-group ml-4">
+          <label class="label text-gray-600" for="doctor_name">Name<span class="text-red-700 pl-1">*</span></label>
+          <%= form.text_field :name, :class => "input bg-white", :autocomplete => "off" %>
+        </div>
+        <div class="input-group ml-4">
+          <label class="label text-gray-600" for="doctor_email">Email<span class="text-red-700 pl-1">*</span></label>
+          <%= form.text_field :email, :class => "input bg-white", :autocomplete => "off" %>
+        </div>
+        <div class="input-group ml-4">
+          <label class="label text-gray-600" for="doctor_primary_speciality">Primary speciality<span class="text-red-700 pl-1">*</span></label>
+          <%= form.select(:speciality_id, specialities.collect {|speciality| [speciality.name, speciality.id]}, {:prompt => "Select..."}, {class: "select"}) %>
+        </div>
+        <div class="input-group ml-4">
+          <label class="label text-gray-600" for="doctor_primary_speciality">State<span class="text-red-700 pl-1">*</span></label>
+          <%= form.select(:state, states.collect {|state| [state.name, state.name]}, {:prompt => "Select..."}, {class: "select"}) %>
+        </div>
+        <div class="input-group ml-4">
+          <label class="label text-gray-600" for="doctor_email">Zipcode<span class="text-red-700 pl-1">*</span></label>
+          <%= form.number_field :zipcode, :class => "input bg-white", :autocomplete => "off" %>
+        </div>
+      </div>
+      <div class="float-left pt-5">
+        <%= form.button(type: "submit", class: "btn btn-md btn-default btn-dd-blue btn-outline text-sm font-bold float-right", data: {disable_with: "<i class='fab fa fa-spinner fa-spin pr-2'></i> Saving in..." }) do %>
+          <span><i class='fab fa fa-floppy-o pr-2'></i>Create profile</span>
+        <% end %>
+      </div>
+    </div>
+  </div>
+<% end %>

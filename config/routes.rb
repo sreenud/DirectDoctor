@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   get 'search', to: "searches#index"
   get 'search-map', to: "searches#index_two"
   get 'job-search', to: "jobs#search"
-  get 'doctor/profile/:fdd_id', to: "doctors#show"
+  get ':state/doctor/:fdd_id/:doctor_name', to: "doctors#show"
   get "/*any", to: "redirects#index", constraints: RedirectConstraint.new
 
   resources :blogs, only: [:index, :show]
@@ -34,6 +34,10 @@ Rails.application.routes.draw do
   mount Shrine.upload_endpoint(:cache) => "/images/upload"
   mount ProfilePicUploader.derivation_endpoint => "/derivations/image"
 
+  draw :provider
   draw :admin
+
+  get "*path", to: "application#raise_route_not_found", via: :all,
+    constraints: lambda { |request| !request.fullpath.include?("/rails/active_storage/") }
   get '/:city_or_speciality(/:speciality_slug)', to: 'searches#specialized_search'
 end

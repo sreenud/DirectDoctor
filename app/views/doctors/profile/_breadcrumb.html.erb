@@ -1,15 +1,39 @@
-<nav aria-label="Breadcrumb" class="text-sm">
-  <ul class="list-none p-0 inline-flex">
-    <li class="flex items-left">
-      <a href="#" class="text-doctor-yellow pr-2">Home</a>
+<div itemscope itemtype="http://schema.org/BreadcrumbList">
+  <nav aria-label="Breadcrumb" class="text-sm">
+    <ul class="list-none p-0 inline-flex">
+      <li class="flex items-left" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+        <a href="<%=root_url%>" class="text-doctor-yellow pr-2" itemprop="item">
+        <span itemprop="name">Home</span>
+      </a>
       <span class="text-gray-500 pr-2">&gt;</span>
+      <meta itemprop="position" content="1" />
     </li>
-    <li class="flex items-left">
-      <a href="#" class="text-doctor-yellow pr-2">Find a doctor</a>
+    <li class="flex items-left" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+      <a href="<%=root_url%><%=doctor&.state&.parameterize%>" class="text-doctor-yellow pr-2" itemprop="item">
+        <span itemprop="name"><%=doctor&.state&.capitalize%></span>
+      </a>
       <span class="text-gray-500 pr-2">&gt;</span>
+      <meta itemprop="position" content="2" />
     </li>
-    <li class="text-gray-500" aria-current="page">
-      State
+    <li class="flex items-left" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+      <a href="<%=root_url%><%=doctor&.state&.parameterize%>/<%=doctor&.speciality&.name&.parameterize%>" class="text-doctor-yellow pr-2" itemprop="item">
+        <span itemprop="name"><%=doctor&.speciality&.name&.capitalize%></span>
+      </a>
+      <span class="text-gray-500 pr-2">&gt;</span>
+      <meta itemprop="position" content="3" />
     </li>
-  </ul>
-</nav>
+    <li class="flex items-left" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+      <a href="<%=root_url%><%=doctor&.state&.parameterize%>/<%=doctor&.speciality&.name&.parameterize%>/<%=doctor&.city&.parameterize%>" class="text-doctor-yellow pr-2" itemprop="item">
+        <span itemprop="name"><%=doctor&.city&.capitalize%></span>
+      </a>
+      <span class="text-gray-500 pr-2">&gt;</span>
+      <meta itemprop="position" content="4" />
+    </li>
+    <li class="text-gray-500" aria-current="page" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+      <link itemprop="item" href='<%="#{request.base_url}#{doctor&.profile_url}"%>' />
+        <span itemprop="name">Dr.<%=doctor&.name%></span>
+        <meta itemprop="position" content="5" />
+      </li>
+    </ul>
+  </nav>
+</div>

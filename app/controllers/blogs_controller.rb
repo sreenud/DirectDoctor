@@ -1,4 +1,4 @@
-class BlogsController < ApplicationController
+class BlogsController < BaseController
   before_action :set_topic, only: [:show]
   before_action :set_meta_data, only: [:show]
 
@@ -11,8 +11,12 @@ class BlogsController < ApplicationController
   end
 
   def show
-    @popular_topics = Topic.popular
-    @other_readings = Topic.where.not(id: @topic.id).limit(5)
+    if @topic.present?
+      @popular_topics = Topic.popular
+      @other_readings = Topic.where.not(id: @topic.id).limit(5)
+    else
+      raise_route_not_found
+    end
   end
 
   private
@@ -22,8 +26,8 @@ class BlogsController < ApplicationController
   end
 
   def set_meta_data
-    @meta_title ||= @topic.meta_title
-    @meta_description ||= @topic.meta_description
-    @allow_robots ||= @topic.status == 'published' ? true : false
+    @meta_title ||= @topic&.meta_title
+    @meta_description ||= @topic&.meta_description
+    @allow_robots ||= @topic&.status == 'published' ? true : false
   end
 end

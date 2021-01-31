@@ -6,8 +6,8 @@
     <div class="lg:col-span-10 mt-4 relative -ml-4 -mr-4">
       <div class="w-full">
         <!-- component -->
-        <%=render partial: 'doctors/profile/breadcrumb'%>
-        <div class="lg:w-full flex mt-10 w-4">
+        <%=render partial: 'doctors/profile/breadcrumb', locals: { doctor: @doctor}%>
+        <div class="lg:w-full flex mt-10 w-4" itemprop="mainEntity" itemscope itemtype="http://schema.org/Physician">
           <div class="w-4/12 mr-8">
             <%=render partial: 'doctors/profile/doctor_card', locals: { doctor: @doctor, reviews: @reviews }%>
           </div>

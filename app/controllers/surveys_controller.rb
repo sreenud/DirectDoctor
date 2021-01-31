@@ -1,4 +1,4 @@
-class SurveysController < ApplicationController
+class SurveysController < BaseController
   def index
   end
 
@@ -9,7 +9,7 @@ class SurveysController < ApplicationController
     respond_to do |format|
       if @survey.save
 
-        SurveyMailer.with(survey: @survey).thankyou.deliver_later
+        SurveyMailer.with(survey: @survey).thankyou.deliver_now
 
         format.html { render(partial: "shared/partials/success", locals: { object: @survey }, status: :ok) }
       else

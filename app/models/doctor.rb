@@ -5,7 +5,7 @@ class Doctor < ApplicationRecord
   include Doctor::DisplayContent
   include Doctor::Rating
 
-  attr_accessor :cost, :experience, :patients_options, :price_options
+  attr_accessor :cost, :experience, :patients_options, :price_options, :update_request
 
   belongs_to :speciality
   has_many :reviews
@@ -51,6 +51,20 @@ class Doctor < ApplicationRecord
     'not_available': 'Not available',
   }
 
+  def self.restricted_fields
+    [
+      'title',
+      'language',
+      'holistic_option',
+      'telehealth_option',
+      'home_visit_option',
+      'aditional_services',
+      'appointments',
+      'consultation',
+      'free_consultation_time',
+    ]
+  end
+
   def self.experiences
     {
       "0-5" => "0 - 5 years",
@@ -77,6 +91,14 @@ class Doctor < ApplicationRecord
       "501-1000" => "501 - 1000 patients",
       "1000" => ">1000 patients",
     }
+  end
+
+  def profile_url
+    state = self.state&.parameterize
+    doctor_name = "#{name}-#{speciality&.name}".parameterize
+    fdd_id = self.fdd_id&.downcase
+
+    "#{state}/doctor/#{fdd_id}/#{doctor_name}"
   end
 
   def self.default_experience
@@ -113,6 +135,11 @@ class Doctor < ApplicationRecord
 
   def average_rating
     review_data.present? ? review_data.avg_rating : 0
+  end
+
+  def json_to_string(json_data)
+    data = hash_to_string(JSON.parse(json_data)) if validate_json(json_data)
+    data.present? ? data : ""
   end
 
   private
@@ -204,8 +231,12 @@ class Doctor < ApplicationRecord
   end
 
   def validate_json(json_data)
-    JSON.parse(json_data)
-  rescue JSON::ParserError => e
-    false
+    if json_data.present?
+      begin
+        JSON.parse(json_data)
+      rescue JSON::ParserError => e
+        false
+      end
+    end
   end
 end

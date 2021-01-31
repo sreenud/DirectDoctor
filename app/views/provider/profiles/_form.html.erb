@@ -1,0 +1,51 @@
+<%= form_with(model: [:provider, doctor], url: provider_profile_url(doctor),  class: "flex w-full", data: {type: "html", action: "ajax:error->message#errorHandler ajax:success->message#success" }) do |form| %>
+  <div class="flex-1 mr-4">
+    <div class="bg-white border pb-16 rounded shadow p-5">
+      <div class="tab_wrapper" x-data="{ tab: window.location.hash ? window.location.hash.substring(1) : 'doctor' }">
+        <%=render partial: 'admin/doctors/partials/tabs_nav'%>
+        <div class="w-full pt-4">
+          <div x-show="tab === 'doctor'">
+            <%=render partial: 'provider/profiles/partials/practice', locals: {form: form, doctor_degrees: doctor_degrees, specialities: specialities, patients_in_panel: patients_in_panel, price_ranges: price_ranges, experiences: experiences}%>
+          </div>
+          <div x-show="tab === 'contact'">
+            <%=render partial: 'admin/doctors/partials/contact', locals: {form: form}%>
+          </div>
+          <div x-show="tab === 'credentials'">
+            <%=render partial: 'admin/doctors/partials/credentials', locals: {form: form}%>
+          </div>
+          <div x-show="tab === 'background'">
+            <%=render partial: 'admin/doctors/partials/background', locals: {form: form, states: states}%>
+          </div>
+        </div>
+      </div>
+      <div class="float-right pt-5 my-4">
+        <%= form.button(type: "submit", class: "btn btn-save btn-md btn-default btn-dd-blue btn-outline text-sm font-bold float-right", data: {disable_with: "<i class='fab fa fa-spinner fa-spin pr-2'></i> Saving in..." }) do %>
+          <span><i class='fab fa fa-floppy-o pr-2'></i><%=button_text%> Profile</span>
+        <% end %>
+      </div>
+      <div class="my-6"></div>
+    </div>
+  </div>
+  <div class="w-1/4">
+    <div class="bg-white border p-5 rounded shadow">
+      <% if form.object&.fdd_id %>
+        <div class="input-group">
+          <label class="label text-gray-500" for="doctor_FDD_ID">FDD ID</label>
+          <%= form.object&.fdd_id %>
+        </div>
+      <% end %>
+      <div class="input-group">
+        <%= form.label :display_image, :class => "label text-gray-500" %>
+        <%= image_tag form.object.image_url if form.object.cached_image_data %>
+        <%= form.hidden_field :image, value: form.object.cached_image_data %>
+        <%= form.file_field :image, class: 'finput-file label' %>
+        <%= image_tag form.object.image_url if form.object.image_url %>
+      </div>
+      <div class="flex mt-8">
+        <div class="px-2 py-2 text-sm font-medium leading-5 text-gray-600">
+          Your application is in <span class=" text-purple-600"><%=form.object.status.capitalize%></span> state
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>

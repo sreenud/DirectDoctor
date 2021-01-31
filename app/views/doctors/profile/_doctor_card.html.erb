@@ -1,11 +1,16 @@
 <div class="w-full sticky top-0 z-50 bg-white rounded-lg">
   <div class="w-full flex " data-controller="modal">
     <div class="w-1/2 bg-doctor-gray-100 rounded-2lg overflow-hidden">
-      <%= image_pack_tag "doctor_default.svg", class: "w-48 " %>
+      <%= image_pack_tag "doctor_default.svg", class: "w-48 ", itemprop: "image" %>
     </div>
     <div class="w-1/2 ml-4">
-      <h2 class="text-2xl font-glacialbold"><%=doctor&.name%></h2>
-      <div class="w-full flex">
+      <link itemprop="url" href='<%="#{request.base_url}/#{doctor&.profile_url}"%>'>
+      <link itemprop="mainEntityOfPage" href='<%="#{request.base_url}/#{doctor&.profile_url}"%>'>
+      <h1 class="text-2xl font-glacialbold" itemprop="name">Dr.<%=doctor&.name%></h1>
+      <div class=" text-sm text-gray-600">
+        <h2><%=doctor&.speciality&.name%>, <%=doctor&.state%></h2>
+      </div>
+      <div class="w-full flex mt-2">
         <%= render(StarRatingComponent.new(rating: doctor.avg_rating, class: 'doc-rating', width: '5', height: '5')) %>
         <div class=" text-xs ml-2">
           <a href="#" class="text-blue-500"> (<%=reviews.count%> Reviews)</a>
@@ -50,7 +55,7 @@
   </div>
   <div class="w-full text-base bg-doctor-gray-100 mt-5 py-4 rounded-tl-2lg rounded-br-2lg">
     <div class="flex items-center justify-center text-gray-800">
-      Are you doctor John Doe?
+      Are you doctor <%=doctor&.name%>?
     </div>
     <div class=" flex items-center justify-center">
       <a href="#" class=" text-blue-500 hover:underline"> Claim Your Profile </a>
