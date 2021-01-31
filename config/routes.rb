@@ -35,4 +35,5 @@ Rails.application.routes.draw do
   mount ProfilePicUploader.derivation_endpoint => "/derivations/image"
 
   draw :admin
+  get '/:city_or_speciality(/:speciality_slug)', to: 'searches#specialized_search'
 end

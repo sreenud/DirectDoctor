@@ -17,6 +17,16 @@ class SearchesController < BaseController
     end
   end
 
+  def specialized_search
+    @pagy, @doctors = pagy(
+      Doctor.includes(:speciality, :review_data).search(converted_params, current_location: current_location)
+    )
+    respond_to do |format|
+      format.html { render :index_two }
+      format.json { render json: json_results } # for limiting the usage of map render calls
+    end
+  end
+
   private
 
   def search_params
@@ -33,6 +43,24 @@ class SearchesController < BaseController
       :practice_type,
       :speciality_name
     )
+  end
+
+  def converted_params
+    slug_params = fetch_city_speciality
+    search_params.merge(slug_params)
+  end
+
+  def fetch_city_speciality
+    @special_near = City.where(
+      slug: params[:city_or_speciality]
+    ).first&.to_coordinates&.join || BaseController::DEFUALT_LOCATION
+    @special_speciality = Speciality.select(:code).where(
+      slug: @special_near.present? ? params[:speciality_slug] : params[:city_or_speciality]
+    ).first&.code
+    {}.tap do |h|
+      h[:near] = @special_near
+      h[:speciality] = @special_speciality
+    end
   end
 
   def set_meta_data

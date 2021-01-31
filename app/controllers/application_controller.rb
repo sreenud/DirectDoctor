@@ -6,6 +6,8 @@ class ApplicationController < ActionController::Base
   before_action :menu_details, only: %i[index show], unless: proc { request.xhr? }
   before_action :set_approximate_location
 
+  DEFUALT_LOCATION = '40.73061,-73.935242'
+
   def load_gmap
     @load_gmaps = true
   end
@@ -32,6 +34,11 @@ class ApplicationController < ActionController::Base
     @location_string = ((result&.data || {})['address'] || {})['city']
   end
 
+  def coordinates_by_city_name(city)
+    result = Geocoder.search(city).first
+    "#{result&.latitude},#{result&.longitude}"
+  end
+
   private
 
   def menu_details
@@ -41,7 +48,7 @@ class ApplicationController < ActionController::Base
   def menu_blog_categories
     @menu_categories = Category.latest.limit(5)
   end
-  
+
   protected
 
   def configure_permitted_parameters
