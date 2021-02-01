@@ -10,7 +10,8 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_01_19_085425) do
+ActiveRecord::Schema.define(version: 2021_01_31_151816) do
+
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -44,6 +45,15 @@ ActiveRecord::Schema.define(version: 2021_01_19_085425) do
     t.string "name"
     t.string "slug"
     t.string "status", default: "active"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "cities", force: :cascade do |t|
+    t.string "name"
+    t.string "slug"
+    t.float "lat"
+    t.float "lng"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -266,6 +276,7 @@ ActiveRecord::Schema.define(version: 2021_01_19_085425) do
     t.string "status", default: "active"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "slug"
     t.index ["code"], name: "index_specialities_on_code"
   end
 

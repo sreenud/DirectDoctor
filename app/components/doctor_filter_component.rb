@@ -1,7 +1,9 @@
 class DoctorFilterComponent < ViewComponent::Base
   attr_reader :filters
-  def initialize(**filters)
+  def initialize(special_near:, special_speciality:, **filters)
     @filters = filters
+    @special_near = special_near
+    @special_speciality = special_speciality
   end
 
   def check_box_checked?(name, value)

@@ -19,6 +19,14 @@ module SearchHelper
     render(JobComponent.with_collection(@doctors, reviews_data: @reviews_data))
   end
 
+  def render_special_near_field
+    hidden_field_tag(:near, @special_near)
+  end
+
+  def special_speciality_value
+    @special_speciality
+  end
+
   def max_distance
     @max_distance ||= @doctors.map(&:distance).max
   end

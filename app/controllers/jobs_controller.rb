@@ -17,7 +17,7 @@ class JobsController < BaseController
       .select("doctors.name AS doctor_name, doctors.city, doctors.state, doctors.style,
       doctors.fmdd_score, doctors.image_data, jobs.specialities, jobs.degree, jobs.hours, jobs.salary,
       jobs.sign_on_bonus, jobs.loan_assistance, jobs.id AS job_id, specialities.name AS speciality_name,
-      jobs.created_at AS job_posted_on")
+      jobs.created_at AS job_posted_on, doctors.lat, doctors.lng")
       .job_search(search_params, current_location: current_location)
     )
     doctor_ids = @doctors.map(&:id)
