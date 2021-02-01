@@ -25,8 +25,8 @@ module Admin
 
       respond_to do |format|
         if @review.save
-          format.html { redirect_to admin_reviews_url, notice: 'Review was successfully created.' }
-          format.json { render :show, status: :created, location: @review }
+          format.html { redirect_to(admin_reviews_url, notice: 'Review was successfully created.') }
+          format.json { render(:show, status: :created, location: @review) }
         else
           format.html do
             render(partial: "shared/partials/errors", locals: { object: @review }, status: :bad_request)
@@ -47,8 +47,8 @@ module Admin
           @doctor.avg_rating = review_sum / total_reviews
           @doctor.save(validate: false)
 
-          format.html { redirect_to admin_reviews_url, notice: 'Review is successfully updated.' }
-          format.json { render :show, status: :ok, location: @review }
+          format.html { redirect_to(admin_reviews_url, notice: 'Review is successfully updated.') }
+          format.json { render(:show, status: :ok, location: @review) }
         else
           format.html do
             render(partial: "shared/partials/errors", locals: { object: @review }, status: :bad_request)

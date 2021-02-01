@@ -8,7 +8,7 @@ module MasterData
     end
     respond_to do |format|
       format.json do
-        render json: @degree.as_json
+        render(json: @degree.as_json)
       end
     end
   end
@@ -18,7 +18,7 @@ module MasterData
 
     respond_to do |format|
       format.json do
-        render json: @holistic.as_json
+        render(json: @holistic.as_json)
       end
     end
   end
@@ -32,7 +32,7 @@ module MasterData
 
     respond_to do |format|
       format.json do
-        render json: @services.as_json
+        render(json: @services.as_json)
       end
     end
   end
@@ -46,7 +46,7 @@ module MasterData
 
     respond_to do |format|
       format.json do
-        render json: @languages.as_json
+        render(json: @languages.as_json)
       end
     end
   end

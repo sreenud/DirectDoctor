@@ -1,6 +1,6 @@
 class CreateSocialConnect < ActiveRecord::Migration[6.0]
   def change
-    create_table :social_connects do |t|
+    create_table(:social_connects) do |t|
       t.references(:user, null: false, foreign_key: true)
       t.string(:provider)
       t.string(:uid)

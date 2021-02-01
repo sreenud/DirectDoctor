@@ -1,7 +1,3 @@
-# FindMyDirectDoctor
-
-UPSKILL YOURSELF - STAY SKILLED, STAY AHEAD [FindMyDirectDoctor](#).
-
 ## Installation
 
 ##### Prerequisites
@@ -25,7 +21,7 @@ gem install htmlbeautifier
 ##### 1. Check out the repository
 
 ```bash
-git clone git@github.com:varmad/find_my_direct_doctor.git
+git clone https://varmad@bitbucket.org/varmad/doctor.git
 ```
 
 ##### 2. Install gem and package dependencies

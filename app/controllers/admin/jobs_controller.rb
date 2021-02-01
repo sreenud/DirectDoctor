@@ -29,8 +29,8 @@ module Admin
 
       respond_to do |format|
         if @job.save
-          format.html { redirect_to admin_jobs_url, notice: 'Job was successfully created.' }
-          format.json { render :show, status: :created, location: @job }
+          format.html { redirect_to(admin_jobs_url, notice: 'Job was successfully created.') }
+          format.json { render(:show, status: :created, location: @job) }
         else
           format.html do
             render(partial: "shared/partials/errors", locals: { object: @job }, status: :bad_request)
@@ -42,8 +42,8 @@ module Admin
     def update
       respond_to do |format|
         if @job.update(job_params)
-          format.html { redirect_to admin_jobs_url, notice: 'Job is successfully updated.' }
-          format.json { render :show, status: :ok, location: @job }
+          format.html { redirect_to(admin_jobs_url, notice: 'Job is successfully updated.') }
+          format.json { render(:show, status: :ok, location: @job) }
         else
           format.html do
             render(partial: "shared/partials/errors", locals: { object: @job }, status: :bad_request)

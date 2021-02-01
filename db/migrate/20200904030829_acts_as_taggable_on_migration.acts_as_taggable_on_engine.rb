@@ -6,12 +6,12 @@ else
 end
 ActsAsTaggableOnMigration.class_eval do
   def self.up
-    create_table ActsAsTaggableOn.tags_table do |t|
+    create_table(ActsAsTaggableOn.tags_table) do |t|
       t.string(:name)
       t.timestamps
     end
 
-    create_table ActsAsTaggableOn.taggings_table do |t|
+    create_table(ActsAsTaggableOn.taggings_table) do |t|
       t.references(:tag, foreign_key: { to_table: ActsAsTaggableOn.tags_table })
 
       # You should make sure that the column created is

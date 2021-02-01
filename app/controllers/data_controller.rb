@@ -8,7 +8,7 @@ class DataController < ApplicationController
 
     respond_to do |format|
       format.json do
-        render json: @doctors.as_json
+        render(json: @doctors.as_json)
       end
     end
   end

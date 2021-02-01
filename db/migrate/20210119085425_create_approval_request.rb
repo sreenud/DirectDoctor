@@ -1,6 +1,6 @@
 class CreateApprovalRequest < ActiveRecord::Migration[6.0]
   def change
-    create_table :approval_requests do |t|
+    create_table(:approval_requests) do |t|
       t.integer(:request_user_id, null: false)
       t.integer(:respond_user_id)
       t.text(:params)
@@ -16,7 +16,7 @@ class CreateApprovalRequest < ActiveRecord::Migration[6.0]
       t.index(:status)
     end
 
-    create_table :approval_comments do |t|
+    create_table(:approval_comments) do |t|
       t.integer(:request_id, null: false)
       t.integer(:user_id, null: false)
       t.text(:content, null: false)

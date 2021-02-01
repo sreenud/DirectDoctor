@@ -31,8 +31,8 @@ module Admin
       end
       respond_to do |format|
         if @user.save
-          format.html { redirect_to admin_users_url, notice: 'User was successfully created.' }
-          format.json { render :show, status: :created, location: @user }
+          format.html { redirect_to(admin_users_url, notice: 'User was successfully created.') }
+          format.json { render(:show, status: :created, location: @user) }
         else
           format.html { render(partial: "shared/partials/errors", locals: { object: @user }, status: :bad_request) }
         end
@@ -55,8 +55,8 @@ module Admin
             role = Role.find(role)
             @user.add_role(role.name)
           end
-          format.html { redirect_to admin_users_url, notice: 'User was successfully updated.' }
-          format.json { render :show, status: :ok, location: @user }
+          format.html { redirect_to(admin_users_url, notice: 'User was successfully updated.') }
+          format.json { render(:show, status: :ok, location: @user) }
         else
           format.html { render(partial: "shared/partials/errors", locals: { object: @user }, status: :bad_request) }
         end

@@ -24,8 +24,8 @@ module Admin
 
       respond_to do |format|
         if @language.save
-          format.html { redirect_to admin_languages_url, notice: 'Language was successfully created.' }
-          format.json { render :show, status: :created, location: @language }
+          format.html { redirect_to(admin_languages_url, notice: 'Language was successfully created.') }
+          format.json { render(:show, status: :created, location: @language) }
         else
           format.html do
             render(partial: "shared/partials/errors", locals: { object: @language }, status: :bad_request)
@@ -37,8 +37,8 @@ module Admin
     def update
       respond_to do |format|
         if @language.update(language_params)
-          format.html { redirect_to admin_languages_url, notice: 'Language is successfully updated.' }
-          format.json { render :show, status: :ok, location: @language }
+          format.html { redirect_to(admin_languages_url, notice: 'Language is successfully updated.') }
+          format.json { render(:show, status: :ok, location: @language) }
         else
           format.html do
             render(partial: "shared/partials/errors", locals: { object: @language }, status: :bad_request)

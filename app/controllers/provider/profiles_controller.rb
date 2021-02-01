@@ -33,7 +33,7 @@ module Provider
 
         respond_to do |format|
           if @approval_request.save
-            format.html { redirect_to edit_provider_profile_url(@doctor), alert: 'Profile is submitted for review.' }
+            format.html { redirect_to(edit_provider_profile_url(@doctor), alert: 'Profile is submitted for review.') }
           else
             format.html { render(partial: "shared/partials/errors", locals: { object: @doctor }, status: :bad_request) }
           end
@@ -41,8 +41,8 @@ module Provider
       else
         respond_to do |format|
           if @doctor.update(doctor_params)
-            format.html { redirect_to edit_provider_profile_url(@doctor), notice: 'Profile is successfully updated.' }
-            format.json { render :show, status: :ok, location: @doctor }
+            format.html { redirect_to(edit_provider_profile_url(@doctor), notice: 'Profile is successfully updated.') }
+            format.json { render(:show, status: :ok, location: @doctor) }
           else
             format.html { render(partial: "shared/partials/errors", locals: { object: @doctor }, status: :bad_request) }
           end

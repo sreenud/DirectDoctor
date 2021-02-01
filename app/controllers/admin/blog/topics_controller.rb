@@ -31,8 +31,8 @@ module Admin
 
         respond_to do |format|
           if @topic.save
-            format.html { redirect_to admin_topics_url, notice: 'Topic was successfully created.' }
-            format.json { render :show, status: :created, location: @topic }
+            format.html { redirect_to(admin_topics_url, notice: 'Topic was successfully created.') }
+            format.json { render(:show, status: :created, location: @topic) }
           else
             format.html { render(partial: "shared/partials/errors", locals: { object: @topic }, status: :bad_request) }
           end
@@ -42,8 +42,8 @@ module Admin
       def update
         respond_to do |format|
           if @topic.update(topic_params)
-            format.html { redirect_to admin_topics_url, notice: 'Topic is successfully updated.' }
-            format.json { render :show, status: :ok, location: @topic }
+            format.html { redirect_to(admin_topics_url, notice: 'Topic is successfully updated.') }
+            format.json { render(:show, status: :ok, location: @topic) }
           else
             format.html { render(partial: "shared/partials/errors", locals: { object: @topic }, status: :bad_request) }
           end

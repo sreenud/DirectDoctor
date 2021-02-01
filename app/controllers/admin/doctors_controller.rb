@@ -28,8 +28,8 @@ module Admin
       @doctor = Doctor.new(doctor_params)
       respond_to do |format|
         if @doctor.save
-          format.html { redirect_to admin_doctors_url, notice: 'Doctor was successfully created.' }
-          format.json { render :show, status: :created, location: @doctor }
+          format.html { redirect_to(admin_doctors_url, notice: 'Doctor was successfully created.') }
+          format.json { render(:show, status: :created, location: @doctor) }
         else
           format.html { render(partial: "shared/partials/errors", locals: { object: @doctor }, status: :bad_request) }
         end
@@ -45,8 +45,8 @@ module Admin
             request.status = ApprovalRequest.statuses[:approved]
             request.save
           end
-          format.html { redirect_to admin_doctors_url, notice: 'Doctor is successfully updated.' }
-          format.json { render :show, status: :ok, location: @doctor }
+          format.html { redirect_to(admin_doctors_url, notice: 'Doctor is successfully updated.') }
+          format.json { render(:show, status: :ok, location: @doctor) }
         else
           format.html { render(partial: "shared/partials/errors", locals: { object: @doctor }, status: :bad_request) }
         end

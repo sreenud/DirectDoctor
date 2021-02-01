@@ -24,8 +24,8 @@ module Admin
 
       respond_to do |format|
         if @service.save
-          format.html { redirect_to admin_services_url, notice: 'Service was successfully created.' }
-          format.json { render :show, status: :created, location: @service }
+          format.html { redirect_to(admin_services_url, notice: 'Service was successfully created.') }
+          format.json { render(:show, status: :created, location: @service) }
         else
           format.html do
             render(partial: "shared/partials/errors", locals: { object: @service }, status: :bad_request)
@@ -37,8 +37,8 @@ module Admin
     def update
       respond_to do |format|
         if @service.update(service_params)
-          format.html { redirect_to admin_services_url, notice: 'Service is successfully updated.' }
-          format.json { render :show, status: :ok, location: @service }
+          format.html { redirect_to(admin_services_url, notice: 'Service is successfully updated.') }
+          format.json { render(:show, status: :ok, location: @service) }
         else
           format.html do
             render(partial: "shared/partials/errors", locals: { object: @service }, status: :bad_request)

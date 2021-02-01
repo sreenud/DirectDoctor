@@ -35,3 +35,7 @@ Lint/SuppressedException:
 Lint/UselessAssignment:
   Exclude:
     - 'app/models/doctor.rb'
+
+Lint/MissingSuper:
+  Exclude:
+    - '**/components/**'

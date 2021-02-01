@@ -26,7 +26,7 @@ class JobsController < BaseController
 
     respond_to do |format|
       format.html
-      format.json { render json: json_results } # for limiting the usage of map render calls
+      format.json { render(json: json_results) } # for limiting the usage of map render calls
     end
   end
 

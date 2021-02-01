@@ -1,6 +1,6 @@
 class CreateReviews < ActiveRecord::Migration[6.0]
   def change
-    create_table :reviews do |t|
+    create_table(:reviews) do |t|
       t.references(:doctor, null: false, index: true, foreign_key: true)
       t.string(:name)
       t.string(:email)

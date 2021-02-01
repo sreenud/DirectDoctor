@@ -23,8 +23,8 @@ class OnboardingController < BaseController
           user.remove_role(:guest)
           user.add_role(:doctor)
 
-          format.html { redirect_to onboarding_thankyou_url, notice: 'Thank you for your interest.' }
-          format.json { render :show, status: :created, location: @claim_profile }
+          format.html { redirect_to(onboarding_thankyou_url, notice: 'Thank you for your interest.') }
+          format.json { render(:show, status: :created, location: @claim_profile) }
         else
           format.html do
             render(json: { messages: @claim_profile.errors.messages }, status: :bad_request)
