@@ -9,7 +9,7 @@ class SearchesController < BaseController
 
   def index_two
     @pagy, @doctors = pagy(
-      Doctor.includes(:speciality, :review_data).search(search_params, current_location: current_location)
+      Doctor.includes(:speciality, :review_data).published.search(search_params, current_location: current_location)
     )
     respond_to do |format|
       format.html

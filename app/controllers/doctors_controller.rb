@@ -10,7 +10,7 @@ class DoctorsController < BaseController
   private
 
   def set_doctor
-    @doctor = Doctor.find_by_fdd_id(params[:fdd_id]&.upcase)
+    @doctor = Doctor.published.where(fdd_id: params[:fdd_id]&.upcase)&.first
   end
 
   def set_meta_data

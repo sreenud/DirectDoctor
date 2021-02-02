@@ -53,7 +53,7 @@ module Provider
     private
 
     def set_doctor
-      @doctor = Doctor.find(params[:id])
+      @doctor = Doctor.published.where(id: params[:id])&.first
     end
 
     def valid_doctor?

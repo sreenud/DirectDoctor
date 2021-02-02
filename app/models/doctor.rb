@@ -13,6 +13,7 @@ class Doctor < ApplicationRecord
   has_many :jobs
 
   scope :latest, -> { order(created_at: :desc) }
+  scope :published, -> { where(status: "published") }
 
   validates :title, :gender, :name, :practice_name, :style, :speciality_id,
     :language, :is_holistic_medicine, :is_telehealth_service, :is_home_visit,
