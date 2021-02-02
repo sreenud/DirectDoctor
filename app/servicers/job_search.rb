@@ -2,19 +2,19 @@
 
 # a module for generating results for doctor search through parameters
 module JobSearch
-  SEARCH_RADIUS = 500
-  SEARCH_UNITS = :km
+  JOB_SEARCH_RADIUS = 20
+  JOB_SEARCH_UNITS = :km
   DEFAULT_LOCATION = BaseController::DEFUALT_LOCATION
   def job_search(params, current_location: DEFAULT_LOCATION)
     @params = params
     @current_location = to_coordinates(current_location)
     @default_scope = Doctor
-    apply_filters
+    job_apply_filters
   end
 
   private
 
-  def apply_filters
+  def job_apply_filters
     # convert_speciality_name_to_speciality
     # apply_speciality_filter
     # apply_ratings_filter
@@ -22,63 +22,42 @@ module JobSearch
     # apply_experience_filter
     # apply_fee_filter
     # apply_other_filters
-    apply_location_filter
+    apply_job_location_filter
   end
 
   # tries to find a doctor in 50 km radius first and then fallbacks to 10000km radius
   # results are ordered in the order of distance to the selected location
-  def apply_location_filter
+  def apply_job_location_filter
     return @default_scope unless @params[:near].present? || @params[:place].present? || @current_location.present?
     near = @default_scope.near(
       to_coordinates(@params[:near]) || @params[:place] || @current_location,
-      SEARCH_RADIUS,
-      units: SEARCH_UNITS
+      JOB_SEARCH_RADIUS,
+      units: JOB_SEARCH_UNITS
     )
     return near if near.present?
 
     @default_scope.near(
       to_coordinates(@params[:near] || '') || @params[:place] || @current_location,
       10000, # maximum can be around 41000
-      units: SEARCH_UNITS
+      units: JOB_SEARCH_UNITS
     )
   end
 
-  def convert_speciality_name_to_speciality
+  def convert_job_speciality_name_to_speciality
     return if @params[:speciality].present? || !@params[:speciality_name].present?
 
     @params[:speciality] = Speciality.where("name ilike '%#{@params[:speciality_name].downcase}%'").pluck(:code)
   end
 
-  def apply_ratings_filter
-    return @default_scope unless @params[:rating].present?
-
-    more_than = @params[:rating].match(/\d/).to_a[0].to_i
-    more_than = more_than <= 5 ? more_than..5 : 5
-    @default_scope = @default_scope.where(avg_rating: more_than)
-  end
-
-  def apply_practice_filter
+  def apply_job_practice_filter
     return @default_scope unless @params[:practice_type].present?
     return @default_scope if @params[:practice_type] == 'both'
 
     @default_scope = @default_scope.where(style: @params[:practice_type])
   end
 
-  def apply_experience_filter
-    return @default_scope unless @params[:experience].present?
 
-    ranges = build_range(@params[:experience])
-    @default_scope = @default_scope.where(max_experience: ranges, min_experience: ranges)
-  end
-
-  def apply_fee_filter
-    return @default_scope unless @params[:price].present?
-
-    ranges = build_range(@params[:price])
-    @default_scope = @default_scope.where(min_price: ranges, max_price: ranges)
-  end
-
-  def apply_speciality_filter
+  def apply_job_speciality_filter
     return @default_scope unless @params[:speciality].present?
     return @default_scope if @params[:speciality] == 'all'
 

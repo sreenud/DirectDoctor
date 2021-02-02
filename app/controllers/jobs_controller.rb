@@ -5,6 +5,9 @@ class JobsController < BaseController
   before_action :set_job, only: [:show]
 
   def index
+    @specialities = Speciality.all
+    @cities = Location.all.limit(100)
+    @states = State.all
   end
 
   def show
