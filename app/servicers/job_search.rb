@@ -56,7 +56,6 @@ module JobSearch
     @default_scope = @default_scope.where(style: @params[:practice_type])
   end
 
-
   def apply_job_speciality_filter
     return @default_scope unless @params[:speciality].present?
     return @default_scope if @params[:speciality] == 'all'

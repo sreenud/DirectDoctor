@@ -22,8 +22,8 @@ class SearchesController < BaseController
       Doctor.includes(:speciality, :review_data).search(converted_params, current_location: current_location)
     )
     respond_to do |format|
-      format.html { render :index_two }
-      format.json { render json: json_results } # for limiting the usage of map render calls
+      format.html { render(:index_two) }
+      format.json { render(json: json_results) } # for limiting the usage of map render calls
     end
   end
 
