@@ -1,4 +1,6 @@
 class SurveyMailer < ApplicationMailer
+  default from: "FindMyDirectDoctor <support@findmydirectdoctor.com>"
+
   def thankyou
     @survey = params[:survey]
 
