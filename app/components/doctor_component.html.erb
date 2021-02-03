@@ -236,7 +236,11 @@
         </svg>
       </div>
       <div class="text-sm text-gray-600 -mt-1">
-        Find My Direct Doctor, MC Design House, Rohini Layout, Hitech City, Madhapur, USA - 500081
+        <%=doctor&.address_line_1%>,
+        <%=doctor&.address_suite%>,
+        <%=doctor&.city%>,
+        <%=doctor&.state%>,
+        <%=doctor&.zipcode%>
       </div>
     </div>
     <div class="w-full flex pb-2 ">
