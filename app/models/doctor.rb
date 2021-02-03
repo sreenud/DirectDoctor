@@ -155,7 +155,7 @@ class Doctor < ApplicationRecord
   end
 
   def update_fdd_id
-    unless self.fdd_id
+    unless fdd_id
       set_fdd_id
     end
   end
