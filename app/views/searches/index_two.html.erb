@@ -26,7 +26,7 @@
           <span class="text-gray-600">(<%= @pagy.count %> results)</span>
         </div>
         <div class="lg:hidden" >
-          <div class="px-4 py-1 border border-gray-500 rounded-full text-sm bg-gray-200 text-center" data-action="click->customjs#filterClick">More Filters</div>
+          <div class="px-4 py-1 border border-gray-500 rounded-full text-sm bg-gray-200 text-center cursor-pointer" data-action="click->customjs#filterClick">More Filters</div>
         </div>
       </div>
       <div class="lg:w-full lg:flex mt-4 relative">
@@ -34,8 +34,8 @@
           <%= render(DoctorFilterComponent.new(special_near: @special_near, special_speciality: @special_speciality, **@search_params))%>
         </div>
         <div class="lg:w-10/12 ml-3 text-sm">
-          <div class="w-full flex">
-            <div class="w-8/12 text-right pr-6">
+          <div class="w-full lg:flex items-center hidden">
+            <div class="w-8/12 lg:text-right pr-6">
               <label class="text-sm">Sort by:</label>
               <div class="inline-block relative text-sm mt-1">
                 <select class="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-2 py-1 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline  text-gray-600">
@@ -72,7 +72,7 @@
               </div>
             </div>
             <div
-              class="lg:w-4/12 lg:ml-4 map-container"
+              class="lg:w-4/12 lg:ml-4 map-container mt-4 lg:mt-0"
               data-controller="maps"
               data-maps-defaultlocation="<%= current_location %>"
               data-maps-distance="<%= max_distance %>"

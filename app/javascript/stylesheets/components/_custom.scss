@@ -232,8 +232,12 @@
     top: 0;
     z-index: 99;
     border: 1px solid rgb(225, 225, 228);
-    height: 100vh;
+    height: 100%;
     overflow: auto;
     padding-left: 50px;
+  }
+  .form-radio {
+    width: 1.5em;
+    height: 1.5em;
   }
 }
