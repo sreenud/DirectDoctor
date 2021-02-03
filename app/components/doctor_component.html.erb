@@ -1,164 +1,290 @@
 <%= content_tag(:div, id: "doc-#{doctor.id}", **@props, class: " pr-1 doctor-card w-full box-bottom-shadow #{@props[:class]}", data: {name: doctor.name, price: doctor.price, rating: 4, image: doctor.image || asset_pack_path('media/images/doctor_PNG15987.png')}) do %>
-  <div class="w-full mt-6 flex">
-    <div class="w-40">
-      <%= doctor_avatar(class: 'h-40 w-full object-cover border rounded-lg doc-avatar') %>
-      <div class="text-md tracking-wide font-hurmebold mt-4 text-center">
-        <%=doctor.practice_name%>
+  <div class="hidden lg:block">
+    <div class="w-full mt-6 flex">
+      <div class="lg:w-40 w-20">
+        <%= doctor_avatar(class: 'md:h-40 w-full object-cover border rounded-lg doc-avatar') %>
+        <div class="text-md tracking-wide font-hurmebold mt-4 text-center">
+          <%=doctor.practice_name%>
+        </div>
+      </div>
+      <div class="w-full">
+        <div class="w-full lg:flex items-start">
+          <div class="lg:w-4/12 lg:pl-4 pl-2">
+            <div class="tracking-wide font-hurmebold">
+              <a href="<%=profile_url%>" target="_blank" class="hover:text-doctor-yellow focus:outline-none">
+                <h2 class="text-2xl"><%= doctor.name %></h2>
+              </a>
+            </div>
+          </div>
+          <div class="lg:w-4/12 pl-2">
+            <% if doctor.access == 'Yes' %>
+              <div>24/7 Direct Phone Access</div>
+            <% end %>
+          </div>
+          <div class="lg:w-4/12 pl-2">
+            <div class="w-full flex">
+              <a class="border-doctor-yellow rounded-lg px-2 bg-doctor-yellow text-white cursor-pointer hover:bg-doctor-yellow pt-1" href="<%=doctor.website_url%>" target="_blank">
+                Book Appointment
+              </a>
+              <div class="pl-2 flex items-center">
+                <a href="#" class="flex items-center justify-center">
+                  <svg version="1.0" xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 642.000000 533.000000" preserveAspectRatio="xMidYMid meet" fill="currentColor" class="text-gray-600 hover:text-green-500 transition duration-300 transform hover:scale-125" stroke="none">
+                    <g transform="translate(0.000000,533.000000) scale(0.100000,-0.100000)">
+                      <path d="M1790 5103 c-86 -10 -290 -57 -378 -88 -225 -78 -399 -176 -592 -329
+                          -214 -171 -363 -361 -489 -620 -120 -247 -170 -459 -178 -756 -13 -458 94
+                          -802 383 -1231 408 -607 846 -1051 1406 -1427 294 -197 587 -340 953 -465
+                          l150 -51 185 1 185 1 150 50 c571 191 1043 474 1540 923 312 282 709 766 920
+                          1124 105 179 203 431 243 630 60 292 55 616 -13 885 -134 536 -567 1016 -1113
+                          1236 -206 83 -428 124 -679 124 -440 0 -794 -119 -1185 -400 l-48 -34 -32 24
+                          c-285 210 -604 343 -950 395 -90 14 -364 18 -458 8z m435 -367 c316 -49 581
+                          -179 835 -411 93 -85 129 -105 190 -105 63 0 104 23 193 107 181 173 367 287
+                          582 357 144 47 212 58 405 63 163 5 200 3 298 -16 319 -61 603 -222 838 -474
+                          90 -97 149 -184 215 -315 57 -113 80 -180 111 -317 20 -86 23 -129 23 -310 0
+                          -183 -3 -225 -24 -325 -52 -249 -146 -469 -298 -693 -461 -680 -1032 -1202
+                          -1663 -1517 -268 -134 -550 -238 -672 -247 -72 -6 -156 12 -318 69 -505 177
+                          -1016 506 -1434 923 -430 428 -803 957 -909 1290 -99 308 -99 657 0 945 35
+                          102 120 270 181 355 215 305 562 533 927 610 132 28 375 33 520 11z"></path>
+                    </g>
+                  </svg>
+                </a>
+              </div>
+              <div class="pl-2 flex items-center" data-action="click->modal#modalOpen" data-modal="share_modal_<%=doctor.id%>">
+                <a class="flex items-center justify-center cursor-pointer">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="text-gray-700 hover:text-green-500 transition duration-300 transform hover:scale-125" data-modal="share_modal_<%=doctor.id%>">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z"></path>
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="w-full lg:flex items-start">
+          <div class="lg:w-4/12 lg:pl-4 pl-2">
+            <div class="mt-2"><%=doctor&.speciality&.name%></div>
+          </div>
+          <div class="lg:w-4/12 pl-2">
+            <div class="mt-2"><%=doctor&.display_practice_name%></div>
+          </div>
+          <div class="lg:w-4/12 pl-2">
+            <div class="mt-2"><%=doctor.max_experience%> years experience</div>
+          </div>
+        </div>
+        <div class="w-full lg:flex items-start mt-2">
+          <div class="lg:w-4/12 lg:pl-4 pl-2">
+            <div class="w-full flex">
+              <%= render(StarRatingComponent.new(rating: doctor.average_rating, class: 'doc-rating')) %>
+              <div class="text-sm">
+                <a href="#" class="text-blue-500"> (<%=doctor&.review_count%> Reviews)</a>
+              </div>
+            </div>
+          </div>
+          <div class="lg:w-4/12 pl-2">
+            <div class="text-base text-gray-600">
+              Fee $<%=doctor.min_price%> - $<%=doctor.max_price%>
+            </div>
+          </div>
+          <div class="lg:w-4/12 pl-2">
+            <div class="text-base text-gray-600">FMDD Score: <%=doctor.fmdd_score%>/10</div>
+          </div>
+        </div>
+        <div class="w-full lg:flex items-start mt-1">
+          <div class="lg:w-4/12 lg:pl-4 pl-2">
+            <div class="text-base text-gray-600">
+              Max no. of Patients: <%=doctor.max_patients%>
+            </div>
+          </div>
+          <div class="lg:w-4/12 pl-2">
+            <div class="text-base text-gray-600">Apt:
+              <%=doctor&.display_appointments%>
+            </div>
+          </div>
+          <div class="lg:w-4/12 pl-2">
+            <div class="w-full flex text-base text-gray-600 -ml-1">
+              <div class='pt-1'><%= render(MedalComponent.new(width: 20, height: 20, badge_color: doctor.free_consultation_class)) %></div>
+              <div class="pl-2"><%=doctor.display_free_consultation%></div>
+            </div>
+          </div>
+        </div>
+        <div class="w-full lg:flex items-start mt-1">
+          <div class="lg:w-4/12 lg:pl-4 pl-2">
+            <div class="w-full flex text-base text-gray-600 -ml-1">
+              <div class='pt-1'><%= render(MedalComponent.new(width: 20, height: 20, badge_color: doctor.telehealth_class)) %></div>
+              <div class="pl-2"><%=doctor.display_telehealth%></div>
+            </div>
+          </div>
+          <div class="lg:w-4/12 pl-2">
+            <div class="w-full flex text-base text-gray-600 -ml-1">
+              <div class='pt-1'><%= render(MedalComponent.new(width: 20, height: 20, badge_color: doctor.home_visit_class)) %></div>
+              <div class="pl-2"><%=doctor.display_home_visit%></div>
+            </div>
+          </div>
+          <div class="lg:w-4/12 pl-2">
+            <div class="w-full flex text-base text-gray-600 -ml-1">
+              <div class='pt-1'><%= render(MedalComponent.new(width: 20, height: 20, badge_color: doctor.holistic_lifestyle_class)) %></div>
+              <div class="pl-2"><%=doctor.display_holistic_lifestyle%></div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
-    <div class="w-full">
-      <div class="w-full flex items-start">
-        <div class="w-4/12 pl-4">
-          <div class="tracking-wide font-hurmebold">
-            <a href="<%=profile_url%>" target="_blank" class="hover:text-doctor-yellow focus:outline-none">
-              <h2 class="text-2xl"><%= doctor.name %></h2>
+    <div class="w-full flex pb-6 ">
+      <div class="lg:w-40">
+        <!--<div class="text-md tracking-wide font-hurmebold mt-4 text-center">
+          <%=doctor.practice_name%>
+        </div>-->
+      </div>
+      <div class="w-full flex lg:pl-4">
+        <div class="w-4/12">
+          <div class="w-full flex mt-4 text-base justify-center">
+            <div class="pr-2"><%=image_pack_tag 'icons/email.svg', class: "w-5 h-5 pt-1"%></div>
+            <a href="mailto:<%=doctor.email%>" class="hover:underline hover:text-blue-400">
+              <div >Message</div>
             </a>
           </div>
         </div>
-        <div class="w-4/12 pl-2">
-          <% if doctor.access == 'Yes' %>
-            <div>24/7 Direct Phone Access</div>
-          <% end %>
-        </div>
-        <div class="w-4/12 pl-2">
-          <div class="w-full flex">
-            <a class="border-doctor-yellow rounded-lg px-2 bg-doctor-yellow text-white cursor-pointer hover:bg-doctor-yellow pt-1" href="<%=doctor.website_url%>" target="_blank">
-              Book Appointment
+        <div class="w-4/12">
+          <div class="w-full flex mt-4 text-base">
+            <div class=" -ml-4 mr-4"><%=image_pack_tag "vertical_side_shadow_for_big_box.svg", class: "w-2 h-8"%></div>
+            <div class="pr-2"><%=image_pack_tag 'icons/phone.svg', class: "w-5 h-5 pt-1"%></div>
+            <a href="tel:<%=doctor.formated_phone_number%>" class="hover:underline hover:text-blue-400 w-full">
+              <div ><%=doctor.phone%></div>
             </a>
-            <div class="pl-2 flex items-center">
-              <a href="#" class="flex items-center justify-center">
-                <svg version="1.0" xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 642.000000 533.000000" preserveAspectRatio="xMidYMid meet" fill="currentColor" class="text-gray-600 hover:text-green-500 transition duration-300 transform hover:scale-125" stroke="none">
-                  <g transform="translate(0.000000,533.000000) scale(0.100000,-0.100000)">
-                    <path d="M1790 5103 c-86 -10 -290 -57 -378 -88 -225 -78 -399 -176 -592 -329
-                        -214 -171 -363 -361 -489 -620 -120 -247 -170 -459 -178 -756 -13 -458 94
-                        -802 383 -1231 408 -607 846 -1051 1406 -1427 294 -197 587 -340 953 -465
-                        l150 -51 185 1 185 1 150 50 c571 191 1043 474 1540 923 312 282 709 766 920
-                        1124 105 179 203 431 243 630 60 292 55 616 -13 885 -134 536 -567 1016 -1113
-                        1236 -206 83 -428 124 -679 124 -440 0 -794 -119 -1185 -400 l-48 -34 -32 24
-                        c-285 210 -604 343 -950 395 -90 14 -364 18 -458 8z m435 -367 c316 -49 581
-                        -179 835 -411 93 -85 129 -105 190 -105 63 0 104 23 193 107 181 173 367 287
-                        582 357 144 47 212 58 405 63 163 5 200 3 298 -16 319 -61 603 -222 838 -474
-                        90 -97 149 -184 215 -315 57 -113 80 -180 111 -317 20 -86 23 -129 23 -310 0
-                        -183 -3 -225 -24 -325 -52 -249 -146 -469 -298 -693 -461 -680 -1032 -1202
-                        -1663 -1517 -268 -134 -550 -238 -672 -247 -72 -6 -156 12 -318 69 -505 177
-                        -1016 506 -1434 923 -430 428 -803 957 -909 1290 -99 308 -99 657 0 945 35
-                        102 120 270 181 355 215 305 562 533 927 610 132 28 375 33 520 11z"></path>
-                  </g>
-                </svg>
-              </a>
+          </div>
+        </div>
+        <div class="w-4/12">
+          <a href="<%=doctor.website_url%>" target="_blank" class="hover:underline hover:text-blue-400" >
+            <div class="w-full flex mt-4 text-base">
+              <div class=" -ml-4 mr-4"><%=image_pack_tag "vertical_side_shadow_for_big_box.svg", class: "w-2 h-8"%></div>
+              <div><%=image_pack_tag 'icons/web.svg', class: "w-5 h-5 pt-1"%></div>
+              <div>
+                Website
+              </div>
             </div>
-            <div class="pl-2 flex items-center" data-action="click->modal#modalOpen" data-modal="share_modal_<%=doctor.id%>">
-              <a class="flex items-center justify-center cursor-pointer">
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="text-gray-700 hover:text-green-500 transition duration-300 transform hover:scale-125" data-modal="share_modal_<%=doctor.id%>">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z"></path>
-                </svg>
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="w-full flex items-start">
-        <div class="w-4/12 pl-4">
-          <div class="mt-2"><%=doctor&.speciality&.name%></div>
-        </div>
-        <div class="w-4/12 pl-2">
-          <div class="mt-2"><%=doctor&.display_practice_name%></div>
-        </div>
-        <div class="w-4/12 pl-2">
-          <div class="mt-2"><%=doctor.max_experience%> years experience</div>
-        </div>
-      </div>
-      <div class="w-full flex items-start mt-2">
-        <div class="w-4/12 pl-4">
-          <div class="w-full flex">
-            <%= render(StarRatingComponent.new(rating: doctor.average_rating, class: 'doc-rating')) %>
-            <div class="text-sm">
-              <a href="#" class="text-blue-500"> (<%=doctor&.review_count%> Reviews)</a>
-            </div>
-          </div>
-        </div>
-        <div class="w-4/12 pl-2">
-          <div class="text-base text-gray-600">
-            Fee $<%=doctor.min_price%> - $<%=doctor.max_price%>
-          </div>
-        </div>
-        <div class="w-4/12 pl-2">
-          <div class="text-base text-gray-600">FMDD Score: <%=doctor.fmdd_score%>/10</div>
-        </div>
-      </div>
-      <div class="w-full flex items-start mt-1">
-        <div class="w-4/12 pl-4">
-          <div class="text-base text-gray-600">
-            Max no. of Patients: <%=doctor.max_patients%>
-          </div>
-        </div>
-        <div class="w-4/12 pl-2">
-          <div class="text-base text-gray-600">Apt:
-            <%=doctor&.display_appointments%>
-          </div>
-        </div>
-        <div class="w-4/12 pl-2">
-          <div class="w-full flex text-base text-gray-600 -ml-1">
-            <div class='pt-1'><%= render(MedalComponent.new(width: 20, height: 20, badge_color: doctor.free_consultation_class)) %></div>
-            <div class="pl-2"><%=doctor.display_free_consultation%></div>
-          </div>
-        </div>
-      </div>
-      <div class="w-full flex items-start mt-1">
-        <div class="w-4/12 pl-4">
-          <div class="w-full flex text-base text-gray-600 -ml-1">
-            <div class='pt-1'><%= render(MedalComponent.new(width: 20, height: 20, badge_color: doctor.telehealth_class)) %></div>
-            <div class="pl-2"><%=doctor.display_telehealth%></div>
-          </div>
-        </div>
-        <div class="w-4/12 pl-2">
-          <div class="w-full flex text-base text-gray-600 -ml-1">
-            <div class='pt-1'><%= render(MedalComponent.new(width: 20, height: 20, badge_color: doctor.home_visit_class)) %></div>
-            <div class="pl-2"><%=doctor.display_home_visit%></div>
-          </div>
-        </div>
-        <div class="w-4/12 pl-2">
-          <div class="w-full flex text-base text-gray-600 -ml-1">
-            <div class='pt-1'><%= render(MedalComponent.new(width: 20, height: 20, badge_color: doctor.holistic_lifestyle_class)) %></div>
-            <div class="pl-2"><%=doctor.display_holistic_lifestyle%></div>
-          </div>
+          </a>
         </div>
       </div>
     </div>
   </div>
-  <div class="w-full flex pb-6 ">
-    <div class="w-40">
-      <!--<div class="text-md tracking-wide font-hurmebold mt-4 text-center">
-        <%=doctor.practice_name%>
-      </div>-->
-    </div>
-    <div class="w-full flex pl-4">
-      <div class="w-4/12">
-        <div class="w-full flex mt-4 text-base justify-center">
-          <div class="pr-2"><%=image_pack_tag 'icons/email.svg', class: "w-5 h-5 pt-1"%></div>
-          <a href="mailto:<%=doctor.email%>" class="hover:underline hover:text-blue-400">
-            <div >Message</div>
+  <div class="lg:hidden">
+    <div class="flex mt-6">
+      <div class="w-1/3">
+        <%= doctor_avatar(class: 'md:h-40 w-full object-cover border rounded-lg doc-avatar') %>
+      </div>
+      <div class="w-2/3 pl-4">
+        <div class="tracking-wide font-hurmebold">
+          <a href="<%=profile_url%>" target="_blank" class="hover:text-doctor-yellow focus:outline-none">
+            <h2 class="text-xl"><%= doctor.name %></h2>
           </a>
         </div>
-      </div>
-      <div class="w-4/12">
-        <div class="w-full flex mt-4 text-base">
-          <div class=" -ml-4 mr-4"><%=image_pack_tag "vertical_side_shadow_for_big_box.svg", class: "w-2 h-8"%></div>
-          <div class="pr-2"><%=image_pack_tag 'icons/phone.svg', class: "w-5 h-5 pt-1"%></div>
-          <a href="tel:<%=doctor.formated_phone_number%>" class="hover:underline hover:text-blue-400 w-full">
-            <div ><%=doctor.phone%></div>
-          </a>
-        </div>
-      </div>
-      <div class="w-4/12">
-        <a href="<%=doctor.website_url%>" target="_blank" class="hover:underline hover:text-blue-400" >
-          <div class="w-full flex mt-4 text-base">
-            <div class=" -ml-4 mr-4"><%=image_pack_tag "vertical_side_shadow_for_big_box.svg", class: "w-2 h-8"%></div>
-            <div><%=image_pack_tag 'icons/web.svg', class: "w-5 h-5 pt-1"%></div>
-            <div>
-              Website
-            </div>
+        <% if doctor.access == 'Yes' %>
+          <div>24/7 Direct Phone Access</div>
+        <% end %>
+        <div class="mt-1"><%=doctor.practice_name%></div>
+        <div class="-mt-1"><%=doctor&.speciality&.name%></div>
+        <div class="w-full flex justify-between">
+          <div class="flex">
+            <%= render(StarRatingComponent.new(rating: doctor.average_rating, class: 'doc-rating')) %>
+            <span class="text-xs">
+              <a href="#" class="text-blue-500"> (<%=doctor&.review_count%>)</a>
+            </span>
           </div>
+          <div class="text-xs text-gray-600">FMDD Score: <%=doctor.fmdd_score%>/10</div>
+        </div>
+        <div class="w-full flex justify-between">
+          <div class="text-xs text-gray-600"><%=doctor.max_experience%> years experience</div>
+          <div class="text-xs text-gray-600">Apt: <%=doctor&.display_appointments%></div>
+        </div>
+        <div class="w-full flex justify-between">
+          <div class="text-xs text-gray-600">Fee $<%=doctor.min_price%> - $<%=doctor.max_price%></div>
+          <div class="text-xs text-gray-600">Max no. of Patients: <%=doctor.max_patients%></div>
+        </div>
+      </div>
+    </div>
+    <div class="flex mt-6">
+      <div class="w-1/2">
+        <div class="w-full flex text-xs text-gray-600 -ml-1">
+          <div class='pt-1'><%= render(MedalComponent.new(width: 20, height: 20, badge_color: doctor.free_consultation_class)) %></div>
+          <div class="pl-2"><%=doctor.display_free_consultation%></div>
+        </div>
+        <div class="w-full flex text-xs text-gray-600 -ml-1">
+          <div class='pt-1'><%= render(MedalComponent.new(width: 20, height: 20, badge_color: doctor.telehealth_class)) %></div>
+          <div class="pl-2"><%=doctor.display_telehealth%></div>
+        </div>
+      </div>
+      <div class="w-1/2">
+        <div class="w-full flex text-xs text-gray-600 -ml-1">
+          <div class='pt-1'><%= render(MedalComponent.new(width: 20, height: 20, badge_color: doctor.home_visit_class)) %></div>
+          <div class="pl-2"><%=doctor.display_home_visit%></div>
+        </div>
+        <div class="w-full flex text-xs text-gray-600 -ml-1">
+          <div class='pt-1'><%= render(MedalComponent.new(width: 20, height: 20, badge_color: doctor.holistic_lifestyle_class)) %></div>
+          <div class="pl-2"><%=doctor.display_holistic_lifestyle%></div>
+        </div>
+      </div>
+    </div>
+    <div class="w-full flex pb-2 ">
+      <div class="w-full flex lg:pl-4">
+        <div class="w-4/12">
+          <div class="w-full flex mt-4 text-sm justify-center">
+            <div class="pr-1"><%=image_pack_tag 'icons/email.svg', class: "w-5 h-5 pt-1"%></div>
+            <a href="mailto:<%=doctor.email%>" class="hover:underline hover:text-blue-400">
+              <div >Message</div>
+            </a>
+          </div>
+        </div>
+        <div class="w-5/12">
+          <div class="w-full flex mt-4 text-sm">
+            <div class=" -ml-4 mr-4"><%=image_pack_tag "vertical_side_shadow_for_big_box.svg", class: "w-2 h-8"%></div>
+            <div class="pr-1"><%=image_pack_tag 'icons/phone.svg', class: "w-5 h-5 pt-1"%></div>
+            <a href="tel:<%=doctor.formated_phone_number%>" class="hover:underline hover:text-blue-400 w-full">
+              <div ><%=doctor.phone%></div>
+            </a>
+          </div>
+        </div>
+        <div class="w-3/12">
+          <a href="<%=doctor.website_url%>" target="_blank" class="hover:underline hover:text-blue-400" >
+            <div class="w-full flex mt-4 text-sm">
+              <div class=" -ml-4 mr-4"><%=image_pack_tag "vertical_side_shadow_for_big_box.svg", class: "w-2 h-8"%></div>
+              <div><%=image_pack_tag 'icons/web.svg', class: "w-5 h-5 pt-1"%></div>
+              <div>
+                Website
+              </div>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="w-full flex pb-3">
+      <a class="border-doctor-yellow rounded-lg px-2 bg-doctor-yellow text-white cursor-pointer hover:bg-doctor-yellow pt-1" href="<%=doctor.website_url%>" target="_blank">
+        Book Appointment
+      </a>
+      <div class="pl-2 flex items-center ml-auto">
+        <a href="#" class="flex items-center justify-center">
+          <svg version="1.0" xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 642.000000 533.000000" preserveAspectRatio="xMidYMid meet" fill="currentColor" class="text-gray-600 hover:text-green-500 transition duration-300 transform hover:scale-125" stroke="none">
+            <g transform="translate(0.000000,533.000000) scale(0.100000,-0.100000)">
+              <path d="M1790 5103 c-86 -10 -290 -57 -378 -88 -225 -78 -399 -176 -592 -329
+                  -214 -171 -363 -361 -489 -620 -120 -247 -170 -459 -178 -756 -13 -458 94
+                  -802 383 -1231 408 -607 846 -1051 1406 -1427 294 -197 587 -340 953 -465
+                  l150 -51 185 1 185 1 150 50 c571 191 1043 474 1540 923 312 282 709 766 920
+                  1124 105 179 203 431 243 630 60 292 55 616 -13 885 -134 536 -567 1016 -1113
+                  1236 -206 83 -428 124 -679 124 -440 0 -794 -119 -1185 -400 l-48 -34 -32 24
+                  c-285 210 -604 343 -950 395 -90 14 -364 18 -458 8z m435 -367 c316 -49 581
+                  -179 835 -411 93 -85 129 -105 190 -105 63 0 104 23 193 107 181 173 367 287
+                  582 357 144 47 212 58 405 63 163 5 200 3 298 -16 319 -61 603 -222 838 -474
+                  90 -97 149 -184 215 -315 57 -113 80 -180 111 -317 20 -86 23 -129 23 -310 0
+                  -183 -3 -225 -24 -325 -52 -249 -146 -469 -298 -693 -461 -680 -1032 -1202
+                  -1663 -1517 -268 -134 -550 -238 -672 -247 -72 -6 -156 12 -318 69 -505 177
+                  -1016 506 -1434 923 -430 428 -803 957 -909 1290 -99 308 -99 657 0 945 35
+                  102 120 270 181 355 215 305 562 533 927 610 132 28 375 33 520 11z"></path>
+            </g>
+          </svg>
+        </a>
+      </div>
+      <div class="pl-2 flex items-center" data-action="click->modal#modalOpen" data-modal="share_modal_<%=doctor.id%>">
+        <a class="flex items-center justify-center cursor-pointer">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="text-gray-700 hover:text-green-500 transition duration-300 transform hover:scale-125" data-modal="share_modal_<%=doctor.id%>">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z"></path>
+          </svg>
         </a>
       </div>
     </div>

@@ -22,6 +22,11 @@ module Admin
 
     def edit
       @approvel_request = ApprovalRequest&.where(request_user_id: @doctor.user_id, status: 'pending')&.first
+      if @approvel_request
+        @data_changes = @approvel_request.data_changes.map {|key, data| {key => data.last}  }.reduce(:merge)
+        @doctor.attributes = @data_changes
+      end
+
     end
 
     def create

@@ -5,9 +5,9 @@ class Doctor < ApplicationRecord
   include Doctor::DisplayContent
   include Doctor::Rating
 
-  attr_accessor :cost, :experience, :patients_options, :price_options, :update_request
+  attr_accessor :cost, :experience, :patients_options, :price_options, :update_request, :profile_source
 
-  belongs_to :speciality
+  belongs_to :speciality, optional: true
   has_many :reviews
   has_one :review_data, class_name: 'ReviewData'
   has_many :jobs
@@ -28,6 +28,7 @@ class Doctor < ApplicationRecord
     :set_consultation
 
   after_create :set_fdd_id
+  after_update :update_fdd_id
 
   geocoded_by :address, latitude: :lat, longitude: :lng
 
@@ -146,9 +147,17 @@ class Doctor < ApplicationRecord
   private
 
   def set_fdd_id
-    primary_speciality = Speciality.find(speciality_id)
-    self.fdd_id = "#{state_code}-#{primary_speciality&.code}-#{zipcode}-#{format('%05d', id)}"
-    save
+    unless profile_source
+      primary_speciality = Speciality.find(speciality_id)
+      self.fdd_id = "#{state_code}-#{primary_speciality&.code}-#{zipcode}-#{format('%05d', id)}"
+      save
+    end
+  end
+
+  def update_fdd_id
+    unless self.fdd_id
+      set_fdd_id
+    end
   end
 
   def state_code

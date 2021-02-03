@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_01_31_151816) do
+ActiveRecord::Schema.define(version: 2021_02_02_122225) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -35,6 +35,7 @@ ActiveRecord::Schema.define(version: 2021_01_31_151816) do
     t.datetime "rejected_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.jsonb "data_changes", default: {}
     t.index ["request_user_id"], name: "index_approval_requests_on_request_user_id"
     t.index ["respond_user_id"], name: "index_approval_requests_on_respond_user_id"
     t.index ["status"], name: "index_approval_requests_on_status"

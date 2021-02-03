@@ -135,6 +135,7 @@
 
 .box-bottom-shadow {
   box-shadow: 0 60px 42px -86px black;
+  border-bottom: 1px solid #f7f7f7;
 }
 
 .box-right-shadow {
@@ -155,9 +156,9 @@
 }
 
 .about-background-1 {
-  background-image: url("../images/1-01.svg");
-  background-size: cover;
-  background-repeat: no-repeat;
+  // background-image: url("../images/1-01.svg");
+  background: linear-gradient(to bottom, #f4f4f4, #efefef, #e0e0e0, #afb1b1);
+  border-radius: 40px;
 }
 
 .about-background-2 {
@@ -166,9 +167,9 @@
   background-repeat: no-repeat;
 }
 .mission-background-1 {
-  background-image: url("../images/mission_bg_1.svg");
-  background-size: cover;
-  background-repeat: no-repeat;
+  // background-image: url("../images/mission_bg_1.svg");
+  background: linear-gradient(to bottom, #fbfbfb, #e1e1e1);
+  border-radius: 40px;
 }
 .mission-background-2 {
   background-image: url("../images/mission_bg_2.svg");
@@ -221,4 +222,18 @@
   background-size: 100% 100%;
   background-position: center;
   background-repeat: no-repeat;
+}
+
+@media screen and (max-width: 540px) {
+  .sidebar {
+    position: fixed;
+    background: #f7f7f7;
+    left: -22px;
+    top: 0;
+    z-index: 99;
+    border: 1px solid rgb(225, 225, 228);
+    height: 100vh;
+    overflow: auto;
+    padding-left: 50px;
+  }
 }

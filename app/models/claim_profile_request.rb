@@ -1,12 +1,12 @@
 class ClaimProfileRequest < ApplicationRecord
   include DocumentUploader::Attachment(:document)
 
-  attr_accessor :user_type, :name, :email, :speciality_id, :zipcode, :state
+  attr_accessor :user_type, :name, :email
 
   belongs_to :user
 
   validates :user_type, :document, presence: true, if: :doctor?
-  validates :user_type, :name, :email, :speciality_id, :state, :zipcode, presence: true, if: :admin?
+  validates :user_type, :name, :email, presence: true, if: :admin?
 
   scope :latest, -> { order(created_at: :desc) }
 

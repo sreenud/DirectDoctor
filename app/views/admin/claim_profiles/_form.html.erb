@@ -12,18 +12,6 @@
           <label class="label text-gray-600" for="doctor_email">Email<span class="text-red-700 pl-1">*</span></label>
           <%= form.text_field :email, :class => "input bg-white", :autocomplete => "off" %>
         </div>
-        <div class="input-group ml-4">
-          <label class="label text-gray-600" for="doctor_primary_speciality">Primary speciality<span class="text-red-700 pl-1">*</span></label>
-          <%= form.select(:speciality_id, specialities.collect {|speciality| [speciality.name, speciality.id]}, {:prompt => "Select..."}, {class: "select"}) %>
-        </div>
-        <div class="input-group ml-4">
-          <label class="label text-gray-600" for="doctor_primary_speciality">State<span class="text-red-700 pl-1">*</span></label>
-          <%= form.select(:state, states.collect {|state| [state.name, state.name]}, {:prompt => "Select..."}, {class: "select"}) %>
-        </div>
-        <div class="input-group ml-4">
-          <label class="label text-gray-600" for="doctor_email">Zipcode<span class="text-red-700 pl-1">*</span></label>
-          <%= form.number_field :zipcode, :class => "input bg-white", :autocomplete => "off" %>
-        </div>
       </div>
       <div class="float-left pt-5">
         <%= form.button(type: "submit", class: "btn btn-md btn-default btn-dd-blue btn-outline text-sm font-bold float-right", data: {disable_with: "<i class='fab fa fa-spinner fa-spin pr-2'></i> Saving in..." }) do %>

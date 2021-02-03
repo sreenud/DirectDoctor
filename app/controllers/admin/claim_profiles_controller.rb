@@ -12,9 +12,7 @@ module Admin
           user_id: user.id,
           name: user.full_name,
           email: user.email,
-          speciality_id: @claim_profile_request.speciality_id,
-          zipcode: @claim_profile_request.zipcode,
-          state: @claim_profile_request.state,
+          profile_source: 'cliam_profile'
         )
         doctor.save(validate: false)
 
@@ -78,7 +76,7 @@ module Admin
     end
 
     def claim_profile_request_params
-      params.require(:claim_profile_request).permit(:id, :name, :user_id, :email, :speciality_id, :zipcode, :state)
+      params.require(:claim_profile_request).permit(:id, :name, :user_id, :email)
     end
   end
 end

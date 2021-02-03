@@ -1,8 +1,8 @@
 <%= render(LoadingComponent.new) %>
-<div class="lg:grid lg:w-full lg:mt-24 lg:grid-cols-12 flex mt-32">
+<div class="lg:grid lg:mt-24 lg:grid-cols-12 lg:flex mt-32" data-controller="customjs">
   <div class="lg:mt-32 lg:col-span-1">
   </div>
-  <div class="lg:col-span-11 flex mt-4 relative -ml-4">
+  <div class="lg:col-span-11 flex mt-4 relative lg:-ml-4 lg:px-0 px-6">
     <div class="w-full">
       <!-- component -->
       <nav aria-label="Breadcrumb" class="text-sm">
@@ -20,12 +20,17 @@
           </li>
         </ul>
       </nav>
-      <div class="w-full text-left">
-        <h1 class="font-hurmebold text-md inline-block" id="near-location"><%= @location_string %></h1>
-        <span class="text-gray-600">(<%= @pagy.count %> results)</span>
+      <div class="w-full text-left flex justify-between">
+        <div>
+          <h1 class="font-hurmebold text-md inline-block" id="near-location"><%= @location_string %></h1>
+          <span class="text-gray-600">(<%= @pagy.count %> results)</span>
+        </div>
+        <div class="lg:hidden" >
+          <div class="px-4 py-1 border border-gray-500 rounded-full text-sm bg-gray-200 text-center" data-action="click->customjs#filterClick">More Filters</div>
+        </div>
       </div>
-      <div class="lg:w-full flex mt-4">
-        <div class="lg:w-2/12">
+      <div class="lg:w-full lg:flex mt-4 relative">
+        <div class="lg:w-2/12 sidebar hidden lg:block">
           <%= render(DoctorFilterComponent.new(special_near: @special_near, special_speciality: @special_speciality, **@search_params))%>
         </div>
         <div class="lg:w-10/12 ml-3 text-sm">
@@ -53,7 +58,7 @@
               </div>
             </div>
           </div>
-          <div class="w-full flex mt-6">
+          <div class="w-full lg:flex mt-6">
             <div class="lg:w-8/12">
               <div class="w-full" id="result-container" data-controller="modal">
                 <%= render_doctor_cards %>
@@ -67,7 +72,7 @@
               </div>
             </div>
             <div
-              class="lg:w-4/12 ml-4 map-container"
+              class="lg:w-4/12 lg:ml-4 map-container"
               data-controller="maps"
               data-maps-defaultlocation="<%= current_location %>"
               data-maps-distance="<%= max_distance %>"

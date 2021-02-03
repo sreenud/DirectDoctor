@@ -28,6 +28,7 @@ module Provider
         @approval_request = ApprovalRequest.new(
           request_user_id: current_user.id,
           params: @doctor.changes,
+          data_changes: @doctor.changes,
           requested_at: Time.current,
         )
 
@@ -53,7 +54,7 @@ module Provider
     private
 
     def set_doctor
-      @doctor = Doctor.published.where(id: params[:id])&.first
+      @doctor = Doctor.where(id: params[:id])&.first
     end
 
     def valid_doctor?
