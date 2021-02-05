@@ -3,10 +3,10 @@
     Contact
   </div>
   <div class="py-3 pl-4 w-full flex">
-    <div class="w-4/12" data-controller="profiles" data-profiles-location="<%= doctor.to_coordinates.join(',') %>">
+    <div class="w-5/12 md:w-4/12" data-controller="profiles" data-profiles-location="<%= doctor.to_coordinates.join(',') %>">
       <div id="map" style="height: 160px"></div>
     </div>
-    <div class="w-8/12 ml-6">
+    <div class="w-7/12 md:w-8/12 ml-6">
       <div class=" text-gray-600 text-sm">Address</div>
       <div itemprop="address" itemscope itemtype="http://schema.org/PostalAddress">
         <span itemprop="streetAddress"><%=doctor&.address_line_1%></span>,
@@ -40,13 +40,13 @@
       </div>
     </div>
   </div>
-  <div class="absolute right-0 -mr-24 -mt-40 z-50">
+  <div class="absolute right-0 -mr-24 -mt-40 z-50 hidden md:block">
     <%=image_pack_tag "yellow_circle_big_shadow.svg", class: "w-16" %>
   </div>
-  <div class="absolute right-0 -mr-32 -mt-48">
+  <div class="absolute right-0 -mr-32 -mt-48 hidden md:block">
     <%=image_pack_tag "light_yellow_slant.svg", class: "w-16" %>
   </div>
-  <div class="absolute right-0 -mr-32 z-50 -mt-32">
+  <div class="absolute right-0 -mr-32 z-50 -mt-32 hidden md:block">
     <%=image_pack_tag "off_white_half_full_circle.svg", class: "w-16" %>
   </div>
 </div>

@@ -86,11 +86,16 @@ export default class FilterController extends Controller {
       (data) => {
         const container = document.querySelector('#result-container');
         const pagination = document.querySelector('#pagination-container');
+        const searchResultsCount = document.querySelector(
+          '#search_results_count'
+        );
         if (!container) {
           return null;
         }
         container.innerHTML = data.results;
         pagination.innerHTML = data.pagination;
+        searchResultsCount.innerHTML = data.total_records;
+
         if (window.map_helpers !== undefined && window.map_helpers !== null) {
           window.map_helpers.renderPins(data.pins || []);
           // window.map_helpers.adjustZoomLevel(data.max_distance);

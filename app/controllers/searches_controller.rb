@@ -19,7 +19,7 @@ class SearchesController < BaseController
 
   def specialized_search
     @pagy, @doctors = pagy(
-      Doctor.includes(:speciality, :review_data).search(converted_params, current_location: current_location)
+      Doctor.includes(:speciality, :review_data).published.search(converted_params, current_location: current_location)
     )
     respond_to do |format|
       format.html { render(:index_two) }
@@ -74,6 +74,7 @@ class SearchesController < BaseController
       next: @pagy.next,
       prev: @pagy.prev,
       page: @pagy.page,
+      total_records: @pagy.count,
       max_distance: @doctors.map(&:distance).max,
       pagination: @pagy.next || @pagy.prev ? pagy_nav(@pagy) : 'No results found',
       location_string: location_string,

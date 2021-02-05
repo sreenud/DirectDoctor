@@ -16,7 +16,9 @@ export default class extends Controller {
       if (tabs.hasOwnProperty(t)) {
         tabs[t].addEventListener('click', (e) => {
           e.preventDefault();
-          document.querySelector(tabs[t].hash).scrollIntoView({
+          const offsetTop = document.querySelector(tabs[t].hash).offsetTop;
+          scroll({
+            top: offsetTop + 55,
             behavior: 'smooth',
           });
         });

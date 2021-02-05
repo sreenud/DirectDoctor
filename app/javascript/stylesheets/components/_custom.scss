@@ -241,3 +241,20 @@
     height: 1.5em;
   }
 }
+
+@media screen and (max-width: 540px) {
+  .slider__arrow--prev {
+    left: -0.5rem !important;
+    background: white;
+    border-radius: 50%;
+    width: 40px !important;
+    height: 40px !important;
+  }
+  .slider__arrow--next {
+    right: -0.5rem !important;
+    background: white;
+    border-radius: 50%;
+    width: 40px !important;
+    height: 40px !important;
+  }
+}
