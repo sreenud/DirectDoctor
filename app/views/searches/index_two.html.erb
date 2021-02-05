@@ -30,7 +30,7 @@
         </div>
       </div>
       <div class="lg:w-full lg:flex mt-4 relative">
-        <div class="lg:w-2/12 sidebar hidden lg:block">
+        <div class="lg:w-2/12 sidebar hidden lg:block" id="search-side-bar">
           <%= render(DoctorFilterComponent.new(special_near: @special_near, special_speciality: @special_speciality, **@search_params))%>
         </div>
         <div class="lg:w-10/12 ml-3 text-sm">

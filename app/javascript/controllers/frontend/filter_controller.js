@@ -81,6 +81,7 @@ export default class FilterController extends Controller {
   }
 
   buildResults() {
+    document.querySelector('#search-side-bar').classList.add('hidden');
     const formValues = this.formValue(this.formTarget);
     this.getResults().then(
       (data) => {
