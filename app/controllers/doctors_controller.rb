@@ -18,7 +18,8 @@ class DoctorsController < BaseController
       Book Appointment, View Fees, Contact Number,
       Reviews | #{@doctor&.speciality&.name} in #{@doctor&.state} | FMDD"
 
-    @meta_description ||= "#{@doctor&.name}, #{@doctor.doctor_title} is a  #{@doctor&.speciality&.name} in #{@doctor&.city} #{@doctor&.state}.
+    @meta_description ||= "#{@doctor&.name}, #{@doctor.doctor_title} is a
+      #{@doctor&.speciality&.name} in #{@doctor&.city} #{@doctor&.state}.
       Consult #{@doctor&.name}, #{@doctor.doctor_title}
       Online, Book Appointment, View Doctor Fees, Contact Number, User Reviews and Ratings
       for, #{@doctor&.name}, #{@doctor.doctor_title} | FMDD"
