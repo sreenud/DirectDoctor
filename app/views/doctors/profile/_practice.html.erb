@@ -16,16 +16,16 @@
       </div>
     </div>
     <div class="w-full lg:flex mt-2">
-      <div class="w-full flex justify-between">
-        <div class=" w-5/12 text-gray-600 text-sm">Speciality:</div>
-        <div class=" w-7/12 text-base">
-          <h2><span itemprop="medicalSpecialty"><%=doctor&.speciality&.name%></span></h2>
-        </div>
-      </div>
       <div class="w-full flex">
         <div class="w-full flex justify-between">
           <div class=" w-5/12 text-gray-600 text-sm">Style:</div>
           <div class=" w-7/12 text-base"><%=doctor&.display_practice_name%></div>
+        </div>
+      </div>
+      <div class="w-full flex justify-between">
+        <div class=" w-5/12 text-gray-600 text-sm">Speciality:</div>
+        <div class=" w-7/12 text-base">
+          <h2><span itemprop="medicalSpecialty"><%=doctor&.speciality&.name%></span></h2>
         </div>
       </div>
     </div>

@@ -6,7 +6,7 @@
     <div class="w-full">
       <div class="hidden lg:block">
         <div class="flex">
-          <div class="search_width md:flex border justify-between items-center bg-gray-100 pb-2 md:py-2 mb-4" data-controller="search">
+          <div class="search_width md:flex border justify-between items-center bg-gray-100 pb-2 md:py-1 mb-4" data-controller="search">
             <div class="flex justify-center items-center w-full md:border-r border-b md:border-b-0 pr-4">
               <label class="ml-3 mr-5">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-5 text-gray-600">
@@ -19,7 +19,7 @@
               <input class="md:my-2 my-3 ml-3 w-full focus:outline-none bg-gray-100" id="near" data-target='search.near' type="text" name="near" placeholder="Zip/City/State">
             </div>
             <div class="text-center mt-4 md:text-left md:mt-0">
-              <button class="bg-doctor-yellow text-gray-100 md:mr-4 rounded-md px-8 py-2 w-11/12 md:w-auto" data-target="search.search">Search</button>
+              <button class="bg-doctor-yellow text-gray-100 md:mr-4 rounded-md px-4 py-1 w-11/12 md:w-auto" data-target="search.search">Search</button>
             </div>
           </div>
         </div>
@@ -43,15 +43,15 @@
       <div class="w-full text-left flex justify-between">
         <div>
           <h1 class="font-hurmebold text-md inline-block" id="near-location"><%= @location_string %></h1>
-          <span class="text-gray-600">(<%= @pagy.count %> results)</span>
+          <span class="text-gray-600">(<span id="search_results_count"><%= @pagy.count %></span> results)</span>
         </div>
         <div class="lg:hidden" >
           <div class="px-4 py-1 border border-gray-500 rounded-full text-sm bg-gray-200 text-center cursor-pointer" data-action="click->customjs#filterClick">More Filters</div>
         </div>
       </div>
       <div class="lg:w-full lg:flex mt-4 relative">
-        <div class="lg:w-2/12 sidebar hidden lg:block">
-          <%= render(DoctorFilterComponent.new(**@search_params))%>
+        <div class="lg:w-2/12 sidebar hidden lg:block" id="search-side-bar">
+          <%= render(DoctorFilterComponent.new(special_near: @special_near, special_speciality: @special_speciality, **@search_params))%>
         </div>
         <div class="lg:w-10/12 ml-3 text-sm">
           <div class="w-full lg:flex items-center hidden">

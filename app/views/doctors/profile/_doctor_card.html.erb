@@ -1,11 +1,15 @@
 <div class="w-full sticky top-0 z-50 bg-white rounded-lg">
   <div class="w-full flex " data-controller="modal">
     <div class="w-1/3 md:w-1/2 lg:w-1/2 overflow-hidden">
-      <%= image_pack_tag "doctor_default.svg", class: "w-48 bg-doctor-gray-100 rounded-2lg ", itemprop: "image" %>
+      <% if doctor.image.present? %>
+        <%= image_tag doctor.image_url, class: "w-48 bg-doctor-gray-100 rounded-2lg ", itemprop: "image"  %>
+      <% else %>
+        <%= image_pack_tag "doctor_default.svg", class: "w-48 bg-doctor-gray-100 rounded-2lg ", itemprop: "image" %>
+      <% end %>
     </div>
     <div class="w-2/3 md:w-1/2 lg:w-1/2 ml-4">
-      <link itemprop="url" href='<%="#{request.base_url}/#{doctor&.profile_url}"%>'>
-      <link itemprop="mainEntityOfPage" href='<%="#{request.base_url}/#{doctor&.profile_url}"%>'>
+      <link itemprop="url" href='<%="#{request.base_url}/#{doctor&.image_url}"%>'>
+      <link itemprop="mainEntityOfPage" href='<%="#{request.base_url}/#{doctor&.image_url}"%>'>
       <h1 class="text-2xl font-glacialbold" itemprop="name">Dr.<%=doctor&.name%></h1>
       <div class=" text-sm text-gray-600">
         <h2><%=doctor&.speciality&.name%>, <%=doctor&.state%></h2>
