@@ -6,7 +6,6 @@ module Admin
       else
         "#{doctor.min_experience}-#{doctor.max_experience}"
       end
-
     end
 
     def experience_options(experiences)
@@ -25,7 +24,6 @@ module Admin
       else
         "#{doctor.min_patients}-#{doctor.max_patients}"
       end
-
     end
 
     def patient_options(patiants)
@@ -44,7 +42,6 @@ module Admin
       else
         "#{doctor.min_price}-#{doctor.max_price}"
       end
-
     end
 
     def price_options(patiants)
