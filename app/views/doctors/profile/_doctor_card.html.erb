@@ -1,7 +1,7 @@
 <div class="w-full sticky top-0 z-50 bg-white rounded-lg">
   <div class="w-full flex " data-controller="modal">
-    <div class="w-1/3 md:w-1/2 lg:w-1/2 bg-doctor-gray-100 rounded-2lg overflow-hidden">
-      <%= image_pack_tag "doctor_default.svg", class: "w-48 ", itemprop: "image" %>
+    <div class="w-1/3 md:w-1/2 lg:w-1/2 overflow-hidden">
+      <%= image_pack_tag "doctor_default.svg", class: "w-48 bg-doctor-gray-100 rounded-2lg ", itemprop: "image" %>
     </div>
     <div class="w-2/3 md:w-1/2 lg:w-1/2 ml-4">
       <link itemprop="url" href='<%="#{request.base_url}/#{doctor&.profile_url}"%>'>

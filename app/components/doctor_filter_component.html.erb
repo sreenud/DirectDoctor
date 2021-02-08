@@ -6,14 +6,12 @@
         <polygon fill="#00234B" points="40,4 36,0 20,16 4,0 0,4 16,20 0,36 4,40 20,24 36,40 40,36 24,20"></polygon>
       </svg>
     </div>
-    <button class="hidden lg:block border border-gray-400 font-hurmebold text-sm tracking-wide p-1 rounded" data-target="filter.clear">Clear Filters</button>
   </div>
-  <%= hidden_field_tag(:near, @special_near, data: {target: 'filter.near'})%>
   <div class="w-full border-r pr-4 border-gray-200">
-    <div class="w-full mt-4 border-b pb-6 text-sm  border-gray-200 flex items-center lg:block">
+    <div class="w-full mt-4 border-b pb-6 text-sm  border-gray-200 flex items-center lg:block pr-4 md:pr-0">
       <label class="tracking-wide font-hurmebold">Specialist</label>
       <div class="relative mt-1 pl-4 lg:pl-0">
-        <%= select_tag(:speciality, options_for_select(speciality_list, @special_speciality || filters['speciality']), class: 'block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded-lg shadow leading-tight focus:outline-none focus:shadow-outline text-gray-600')%>
+        <%= select_tag(:speciality, options_for_select(speciality_list, filters['speciality']), class: 'block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded-lg shadow leading-tight focus:outline-none focus:shadow-outline text-gray-600')%>
         <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2">
           <svg class="fill-current h-4 w-4  text-gray-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
         </div>
@@ -22,26 +20,26 @@
     <div class="w-full mt-4 border-b pb-6 text-sm border-gray-200">
       <label class="tracking-wide font-hurmebold">Patient Reviwes</label>
       <div class="mt-2 w-full">
-        <div class="mb-1 inline-flex items-center">
+        <div class="mb-1 flex items-center">
           <%= radio_button_tag(:rating, 5, filters['rating'].to_i == 5, class:"form-radio") %>
           <%= label_tag(:rating_5, render(StarRatingComponent.new(rating: 5, class: 'ml-1')))%>
         </div>
-        <div class="mb-1 inline-flex items-center">
+        <div class="mb-1 flex items-center">
           <%= radio_button_tag(:rating, 4, filters['rating'].to_i == 4, class:"form-radio") %>
           <%= label_tag(:rating_4, render(StarRatingComponent.new(rating: 4, class: 'ml-1 mr-1')))%>
           & up
         </div>
-        <div class="mb-1 inline-flex items-center">
+        <div class="mb-1 flex items-center">
           <%= radio_button_tag(:rating, 3, filters['rating'].to_i == 3, class:"form-radio") %>
           <%= label_tag(:rating_3, render(StarRatingComponent.new(rating: 3, class: 'ml-1 mr-1')))%>
           & up
         </div>
-        <div class="mb-1 inline-flex items-center">
+        <div class="mb-1 flex items-center">
           <%= radio_button_tag(:rating, 2, filters['rating'].to_i == 2, class:"form-radio") %>
           <%= label_tag(:rating_2, render(StarRatingComponent.new(rating: 2, class: 'ml-1 mr-1')))%>
           & up
         </div>
-        <div class="mb-1 inline-flex items-center">
+        <div class="mb-1 flex items-center">
           <%= radio_button_tag(:rating, 1, filters['rating'].to_i == 1, class:"form-radio") %>
           <%= label_tag(:rating_1, render(StarRatingComponent.new(rating: 1, class: 'ml-1 mr-1')))%>
           & up
@@ -82,7 +80,7 @@
       <div class="mt-2">
       </div>
     </div>
-    <div class="w-full mt-4 border-b pb-6 text-sm">
+    <div class="w-full mt-4 border-b pb-6 text-sm pr-4 md:pr-0">
       <label class="tracking-wide font-hurmebold">Years in Experience</label>
       <div class="mt-2  text-gray-600">
         <div class="grid gap-1 grid-cols-2">
@@ -105,7 +103,7 @@
         </div>
       </div>
     </div>
-    <div class="w-full mt-4 border-b pb-6 text-sm  border-gray-200">
+    <div class="w-full mt-4 border-b pb-6 text-sm  border-gray-200 pr-4 md:pr-0">
       <label class="tracking-wide font-hurmebold">Monthly Membership Fee</label>
       <div class="mt-2  text-gray-600">
         <div class="grid gap-1 grid-cols-2">
@@ -165,6 +163,12 @@
             <label for="life_style_medicine" class="toggle-label block overflow-hidden h-5 rounded-full bg-gray-300 cursor-pointer"></label>
           </div>
         </div>
+      </div>
+    </div>
+    <div class="w-full px-6 py-3 -ml-8 sticky bottom-0 bg-white w-screen lg:hidden">
+      <div class="flex items-center justify-between">
+        <a class="text-doctor-yellow">Clear All</a>
+        <a class="bg-doctor-yellow text-gray-100 rounded-md px-8 py-2">Apply</a>
       </div>
     </div>
   </div>

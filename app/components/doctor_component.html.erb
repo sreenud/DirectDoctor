@@ -208,17 +208,17 @@
         <div class="mt-1"><%=doctor.practice_name%></div>
         <div class="-mt-1"><%=doctor&.speciality&.name%></div>
         <div class="mt-1 w-full flex justify-between">
-          <div class="flex">
+          <div class="flex w-1/2">
             <%= render(StarRatingComponent.new(rating: doctor.average_rating, class: 'doc-rating')) %>
             <span class="text-xs">
               <a href="#" class="text-blue-500"> (<%=doctor&.review_count%>)</a>
             </span>
           </div>
-          <div class="text-xs text-gray-600">FMDD Score: <%=doctor.fmdd_score%>/10</div>
+          <div class="text-xs text-gray-600 w-1/2">FMDD Score: <%=doctor.fmdd_score%>/10</div>
         </div>
         <div class="mt-1 w-full flex justify-between">
-          <div class="text-xs text-gray-600">Fee $<%=doctor.min_price%> - $<%=doctor.max_price%></div>
-          <div class="text-xs text-gray-600">Max no. of Patients: <%=doctor.max_patients%></div>
+          <div class="text-xs text-gray-600 w-1/2">Fee $<%=doctor.min_price%> - $<%=doctor.max_price%></div>
+          <div class="text-xs text-gray-600 w-1/2">Max no. of Patients: <%=doctor.max_patients%></div>
         </div>
       </div>
     </div>
@@ -236,35 +236,33 @@
         </svg>
       </div>
       <div class="text-sm text-gray-600 -mt-1">
-        <%=doctor&.address_line_1%>,
-        <%=doctor&.address_suite%>,
-        <%=doctor&.city%>,
-        <%=doctor&.state%>,
-        <%=doctor&.zipcode%>
+        Find My Direct Doctor, MC Design House, Rohini Layout, Hitech City, Madhapur, USA - 500081
       </div>
     </div>
     <div class="w-full flex pb-2 ">
       <div class="w-full flex lg:pl-4">
-        <div class="w-5/12">
-          <div class="w-full flex mt-4 text-sm justify-center">
+        <div class="w-4/12">
+          <div class="w-full flex mt-4 text-sm justify-start">
             <div class="pr-1"><%=image_pack_tag 'icons/email.svg', class: "w-5 h-5 pt-1"%></div>
             <a href="mailto:<%=doctor.email%>" class="hover:underline hover:text-blue-400">
               <div >Message</div>
             </a>
           </div>
         </div>
-        <div class="w-2/12">
-          <div class="w-full flex mt-4 text-sm justify-center">
-            <div class=" -ml-4 mr-4"><%=image_pack_tag "vertical_side_shadow_for_big_box.svg", class: "w-2 h-8"%></div>
-            <div class="pr-1"><%=image_pack_tag 'icons/phone.svg', class: "w-5 h-5 pt-1"%></div>
-            <a href="tel:<%=doctor.formated_phone_number%>" class="hover:underline hover:text-blue-400 w-full">
-              <div >Call</div>
-            </a>
-          </div>
-        </div>
-        <div class="w-5/12">
-          <a href="<%=doctor.website_url%>" target="_blank" class="hover:underline hover:text-blue-400" >
+        <div class="w-4/12">
+          <a href="tel:<%=doctor.formated_phone_number%>" target="_blank" class="hover:underline hover:text-blue-400" >
             <div class="w-full flex mt-4 text-sm justify-center">
+              <div class=" -ml-4 mr-4"><%=image_pack_tag "vertical_side_shadow_for_big_box.svg", class: "w-2 h-8"%></div>
+              <div><%=image_pack_tag 'icons/phone.svg', class: "w-5 h-5 pt-1"%></div>
+              <div>
+                call
+              </div>
+            </div>
+          </a>
+        </div>
+        <div class="w-4/12">
+          <a href="<%=doctor.website_url%>" target="_blank" class="hover:underline hover:text-blue-400" >
+            <div class="w-full flex mt-4 text-sm justify-end">
               <div class=" -ml-4 mr-4"><%=image_pack_tag "vertical_side_shadow_for_big_box.svg", class: "w-2 h-8"%></div>
               <div><%=image_pack_tag 'icons/web.svg', class: "w-5 h-5 pt-1"%></div>
               <div>

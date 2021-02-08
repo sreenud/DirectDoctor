@@ -20,22 +20,38 @@
         <meta itemprop="longitude" content="<%=doctor.lat%>">
         <meta itemprop="latitude" content="<%=doctor.lng%>">
       </div>
-      <div class="w-full flex mt-3">
-        <div class="pt-1"><%= image_pack_tag "icons/email.svg", class: "w-5 h-5" %></div>
-        <a href="mailto:<%=doctor&.email%>" class="hover:underline hover:text-blue-400">
-          <div class="ml-4">Message</div>
+    </div>
+  </div>
+  <div class="w-full flex py-3 px-4 justify-center">
+    <div class="w-full flex lg:pl-4 md:w-1/2">
+      <div class="w-4/12">
+        <div class="w-full flex mt-4 text-sm justify-start">
+          <div class="pr-1"><%=image_pack_tag 'icons/email.svg', class: "w-5 h-5 pt-1"%></div>
+          <a href="mailto:<%=doctor.email%>" class="hover:underline hover:text-blue-400">
+            <div >Message</div>
+          </a>
+        </div>
+      </div>
+      <div class="w-4/12">
+        <a href="tel:<%=doctor.formated_phone_number%>" target="_blank" class="hover:underline hover:text-blue-400" >
+          <div class="w-full flex mt-4 text-sm justify-center">
+            <div class=" -ml-4 mr-4"><%=image_pack_tag "vertical_side_shadow_for_big_box.svg", class: "w-2 h-8"%></div>
+            <div><%=image_pack_tag 'icons/phone.svg', class: "w-5 h-5 pt-1"%></div>
+            <div>
+              <%=doctor.phone%>
+            </div>
+          </div>
         </a>
       </div>
-      <div class="w-full flex mt-1">
-        <div class="pt-1"><%= image_pack_tag "icons/phone.svg", class: "w-5 h-5" %></div>
-        <a href="tel:<%=doctor.formated_phone_number%>" class="hover:underline hover:text-blue-400">
-          <div class="ml-4" itemprop="telephone"><%=doctor.phone%></div>
-        </a>
-      </div>
-      <div class="w-full flex mt-1">
-        <div class="pt-1"><%= image_pack_tag "icons/web.svg", class: "w-5 h-5" %></div>
+      <div class="w-4/12">
         <a href="<%=doctor.website_url%>" target="_blank" class="hover:underline hover:text-blue-400" >
-          <div class="ml-4">Website</div>
+          <div class="w-full flex mt-4 text-sm justify-end">
+            <div class=" -ml-4 mr-4"><%=image_pack_tag "vertical_side_shadow_for_big_box.svg", class: "w-2 h-8"%></div>
+            <div><%=image_pack_tag 'icons/web.svg', class: "w-5 h-5 pt-1"%></div>
+            <div>
+              Website
+            </div>
+          </div>
         </a>
       </div>
     </div>
