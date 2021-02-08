@@ -95,6 +95,10 @@ class Doctor < ApplicationRecord
     }
   end
 
+  def doctor_title
+    title&.split(',')&.first(2)&.join(',')
+  end
+
   def profile_url
     state = self.state&.parameterize
     doctor_name = "#{name}-#{speciality&.name}".parameterize
