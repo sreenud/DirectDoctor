@@ -10,7 +10,7 @@
     <div class="w-2/3 md:w-1/2 lg:w-1/2 ml-4">
       <link itemprop="url" href='<%="#{request.base_url}/#{doctor&.image_url}"%>'>
       <link itemprop="mainEntityOfPage" href='<%="#{request.base_url}/#{doctor&.image_url}"%>'>
-      <h1 class="text-2xl font-glacialbold" itemprop="name"><%=doctor.doctor_title%>.<%=doctor&.name%></h1>
+      <h1 class="text-2xl font-glacialbold" itemprop="name"><%=doctor&.name%>, <%=doctor.doctor_title%></h1>
       <div class=" text-sm text-gray-600">
         <h2><%=doctor&.speciality&.name%>, <%=doctor&.state%></h2>
       </div>
@@ -59,7 +59,7 @@
   </div>
   <div class="w-full text-base bg-doctor-gray-100 mt-5 py-4 rounded-tl-2lg rounded-br-2lg">
     <div class="flex items-center justify-center text-gray-800">
-      Are you doctor <%=doctor&.name%>?
+      Are you doctor <%=doctor&.name%>, <%=doctor.doctor_title%>?
     </div>
     <div class=" flex items-center justify-center">
       <a href="#" class=" text-blue-500 hover:underline"> Claim Your Profile </a>
