@@ -7,6 +7,14 @@ class Job < ApplicationRecord
   validate :custom_board_certification
 
   scope :latest, -> { order(created_at: :desc) }
+  scope :published, -> { where(status: "publish") }
+
+  enum status: {
+    draft: "draft",
+    review: "review",
+    publish: "publish",
+    archive: "archive",
+  }
 
   def posted_on
     created_at.strftime("%b %d, %y")

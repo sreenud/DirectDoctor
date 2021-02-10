@@ -17,11 +17,13 @@ module Admin
 
       @doctors = Doctor.all
       @specialities = Speciality.all
+      @statuses = Job.statuses
     end
 
     def edit
       @doctors = Doctor.all
       @specialities = Speciality.all
+      @statuses = Job.statuses
     end
 
     def create
@@ -68,7 +70,7 @@ module Admin
     def job_params
       params.require(:job).permit(:doctor_id, :title, :description, :desired_skills, :board_certification, :hours,
         :experience, :salary, :sign_on_bonus, :paid_time_off, :loan_assistance, :health_insurence,
-        :medical_insurence, :visa_sponsorship, specialities: [], degree: [[:name]])
+        :medical_insurence, :visa_sponsorship, :status, specialities: [], degree: [[:name]])
     end
   end
 end

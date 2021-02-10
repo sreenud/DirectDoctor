@@ -167,6 +167,10 @@
           </div>
         </div>
         <!-- components -->
+        <div class="input-group w-3/4">
+          <%= form.label :status, :class => "label text-gray-500" %>
+          <%= form.select(:status, statuses.map {|k, v| [k.humanize.capitalize, v]}, {}, {class: "select"}) %>
+        </div>
       </div>
       <div class="float-left pt-5">
         <%= form.button(type: "submit", class: "btn btn-save btn-md btn-default btn-dd-blue btn-outline text-sm font-bold float-right", data: {disable_with: "<i class='fab fa fa-spinner fa-spin pr-2'></i> Saving in..." }) do %>

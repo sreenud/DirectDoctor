@@ -30,6 +30,7 @@ module Provider
       @job = @doctor.jobs.build(job_params)
 
       respond_to do |format|
+        @job.status = Job.statuses[:draft]
         if @job.save
           format.html do
             redirect_to(provider_jobs_url,
