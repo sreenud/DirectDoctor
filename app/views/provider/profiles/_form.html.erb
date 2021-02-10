@@ -23,6 +23,11 @@
           <span><i class='fab fa fa-floppy-o pr-2'></i><%=button_text%> Profile</span>
         <% end %>
       </div>
+      <div class="float-left pt-5 my-4">
+        <%= form.button(type: "submit", class: "btn btn-md btn-default btn-dd-blue btn-outline text-sm font-bold float-left", data: {disable_with: "<i class='fab fa fa-spinner fa-spin pr-2'></i> Saving in..." }) do %>
+          <span><i class='fab fa fa-floppy-o pr-2'></i><%=button_text%> Profile</span>
+        <% end %>
+      </div>
       <div class="my-6"></div>
     </div>
   </div>
@@ -37,9 +42,13 @@
       <div class="input-group">
         <%= form.label :display_image, :class => "label text-gray-500" %>
         <%= image_tag form.object.image_url if form.object.cached_image_data %>
+        <% if form.object.image_url %>
+          <%= image_tag form.object.image_url, class: "w-48 bg-doctor-gray-100 rounded-2lg mb-4"  %>
+        <% else %>
+          <%= image_pack_tag "doctor_default.svg", class: "w-48 bg-doctor-gray-100 rounded-2lg mb-4" %>
+        <% end %>
         <%= form.hidden_field :image, value: form.object.cached_image_data %>
         <%= form.file_field :image, class: 'finput-file label' %>
-        <%= image_tag form.object.image_url if form.object.image_url %>
       </div>
       <div class="flex mt-8">
         <div class="px-2 py-2 text-sm font-medium leading-5 text-gray-600">

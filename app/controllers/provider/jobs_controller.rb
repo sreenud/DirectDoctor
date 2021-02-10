@@ -31,7 +31,11 @@ module Provider
 
       respond_to do |format|
         if @job.save
-          format.html { redirect_to(provider_jobs_url, notice: 'Job was successfully created.') }
+          format.html do
+            redirect_to(provider_jobs_url,
+           notice: 'Thank you for submitting your job requirements.
+            Our team will email you and publish the job posting after the review process (1-3days)')
+          end
           format.json { render(:show, status: :created, location: @job) }
         else
           format.html do
@@ -75,9 +79,9 @@ module Provider
     end
 
     def job_params
-      params.require(:job).permit(:name, :board_certification, :hours,
+      params.require(:job).permit(:title, :board_certification, :hours,
         :experience, :salary, :sign_on_bonus, :paid_time_off, :loan_assistance, :health_insurence,
-        :medical_insurence, :visa_sponsorship, specialities: [], degree: [[:name]])
+        :medical_insurence, :visa_sponsorship, :desired_skills, :description, specialities: [], degree: [[:name]])
     end
   end
 end

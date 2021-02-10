@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_02_122225) do
+ActiveRecord::Schema.define(version: 2021_02_10_042306) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -158,12 +158,12 @@ ActiveRecord::Schema.define(version: 2021_02_02_122225) do
   create_table "jobs", force: :cascade do |t|
     t.bigint "doctor_id", null: false
     t.integer "specialities", array: true
-    t.string "name"
+    t.string "title"
     t.string "board_certification"
     t.string "hours"
     t.string "experience"
-    t.integer "salary"
-    t.integer "sign_on_bonus"
+    t.text "salary"
+    t.text "sign_on_bonus"
     t.string "paid_time_off"
     t.string "loan_assistance"
     t.string "health_insurence"
@@ -174,6 +174,8 @@ ActiveRecord::Schema.define(version: 2021_02_02_122225) do
     t.string "status"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "desired_skills"
+    t.text "description"
     t.index ["doctor_id"], name: "index_jobs_on_doctor_id"
   end
 

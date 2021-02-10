@@ -7,8 +7,16 @@
           <%= form.select(:doctor_id, doctors.collect {|doctor| ["#{doctor.fdd_id} - #{doctor.name}", doctor.id]}, {:prompt => "Select..."}, {class: "select"}) %>
         </div>
         <div class="input-group w-3/4">
-          <label class="label text-gray-600" for="job_name">Name<span class="text-red-700 pl-1">*</span></label>
-          <%= form.text_field :name, :class => "input bg-white", :autocomplete => "off" %>
+          <label class="label text-gray-600" for="job_name">Job Title<span class="text-red-700 pl-1">*</span></label>
+          <%= form.text_field :title, :class => "input bg-white", :autocomplete => "off" %>
+        </div>
+        <div class="input-group w-3/4">
+          <label class="label text-gray-600" for="job_description">Description<span class="text-red-700 pl-1">*</span></label>
+          <%= form.text_area :description, :class => "input bg-white tinymce", :autocomplete => "off" %>
+        </div>
+        <div class="input-group w-3/4">
+          <label class="label text-gray-600" for="desired_skills">Desired Skills<span class="text-red-700 pl-1">*</span></label>
+          <%= form.text_field :desired_skills, :class => "input bg-white", :autocomplete => "off" %>
         </div>
         <div class="input-group w-3/4">
           <label class="label text-gray-600" for="job_specialities">Speciality<span class="text-red-700 pl-1">*</span></label>
@@ -17,7 +25,7 @@
         <div class="w-3/4 flex">
           <div class="w-1/2 mr-3">
             <div class="input-group">
-              <label class="label text-gray-600" for="gender">Board Certification<span class="text-red-700 pl-1">*</span></label>
+              <label class="label text-gray-600" for="gender">Board Eligible or Board Certified<span class="text-red-700 pl-1">*</span></label>
               <%= form.select(:board_certification,['BE', 'BC'], {:prompt => "Select..."}, {class: "select bg-white"}) %>
             </div>
           </div>
@@ -28,19 +36,17 @@
             </div>
           </div>
         </div>
-        <div class="w-full flex">
-          <div class="input-group w-3/12 mr-6">
-            <label class="label text-gray-600" for="job_salary">Salary<span class="text-red-700 pl-1">*</span></label>
-            <%= form.number_field :salary, :class => "input bg-white", :autocomplete => "off", placeholder: "" %>
-          </div>
-          <div class="input-group w-3/12 mr-6">
-            <label class="label text-gray-600" for="job_salary">Sign on Bonus <span class="text-red-700 pl-1">*</span></label>
-            <%= form.number_field :sign_on_bonus, :class => "input bg-white", :autocomplete => "off", placeholder: "" %>
-          </div>
-          <div class="input-group w-2/12 mr-4">
-            <label class="label text-gray-600" for="job_salary">Paid time off</label>
-            <%= form.text_field :paid_time_off, :class => "input bg-white", :autocomplete => "off", placeholder: "2 weeks" %>
-          </div>
+        <div class="input-group w-3/4">
+          <label class="label text-gray-600" for="job_name">Salary<span class="text-red-700 pl-1">*</span></label>
+          <%= form.text_area :salary, :class => "input bg-white tinymce", :autocomplete => "off" %>
+        </div>
+        <div class="input-group w-3/4">
+          <label class="label text-gray-600" for="job_name">Sign on Bonus<span class="text-red-700 pl-1">*</span></label>
+          <%= form.text_field :sign_on_bonus, :class => "input bg-white", :autocomplete => "off" %>
+        </div>
+        <div class="input-group w-3/4">
+          <label class="label text-gray-600" for="paid_time_off">Paid time off<span class="text-red-700 pl-1">*</span></label>
+          <%= form.text_field :paid_time_off, :class => "input bg-white", :autocomplete => "off" %>
         </div>
         <div class="input-group w-full flex mt-3">
           <div class="w-1/3">

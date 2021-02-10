@@ -3,8 +3,16 @@
     <div class="bg-white border pb-16 rounded shadow p-5 w-3/4">
       <div class="w-full pt-4 ml-4">
         <div class="input-group w-3/4">
-          <label class="label text-gray-600" for="job_name">Name<span class="text-red-700 pl-1">*</span></label>
-          <%= form.text_field :name, :class => "input bg-white", :autocomplete => "off" %>
+          <label class="label text-gray-600" for="job_name">Job Title<span class="text-red-700 pl-1">*</span></label>
+          <%= form.text_field :title, :class => "input bg-white", :autocomplete => "off" %>
+        </div>
+        <div class="input-group w-3/4">
+          <label class="label text-gray-600" for="job_salary">Job description<span class="text-red-700 pl-1">*</span></label>
+          <%= form.text_area :description, :class => "input bg-white tinymce", :autocomplete => "off", placeholder: "" %>
+        </div>
+        <div class="input-group w-3/4">
+          <label class="label text-gray-600" for="job_salary">Desired Skills <span class="text-red-700 pl-1">*</span></label>
+          <%= form.text_field :desired_skills, :class => "input bg-white", :autocomplete => "off", placeholder: "" %>
         </div>
         <div class="input-group w-3/4">
           <label class="label text-gray-600" for="job_specialities">Speciality<span class="text-red-700 pl-1">*</span></label>
@@ -13,7 +21,7 @@
         <div class="w-3/4 flex">
           <div class="w-1/2 mr-3">
             <div class="input-group">
-              <label class="label text-gray-600" for="gender">Board Certification<span class="text-red-700 pl-1">*</span></label>
+              <label class="label text-gray-600" for="gender">Board Eligible or Board Certified<span class="text-red-700 pl-1">*</span></label>
               <%= form.select(:board_certification,['BE', 'BC'], {:prompt => "Select..."}, {class: "select bg-white"}) %>
             </div>
           </div>
@@ -24,19 +32,17 @@
             </div>
           </div>
         </div>
-        <div class="w-full flex">
-          <div class="input-group w-3/12 mr-6">
-            <label class="label text-gray-600" for="job_salary">Salary<span class="text-red-700 pl-1">*</span></label>
-            <%= form.number_field :salary, :class => "input bg-white", :autocomplete => "off", placeholder: "" %>
-          </div>
-          <div class="input-group w-3/12 mr-6">
-            <label class="label text-gray-600" for="job_salary">Sign on Bonus <span class="text-red-700 pl-1">*</span></label>
-            <%= form.number_field :sign_on_bonus, :class => "input bg-white", :autocomplete => "off", placeholder: "" %>
-          </div>
-          <div class="input-group w-2/12 mr-4">
-            <label class="label text-gray-600" for="job_salary">Paid time off</label>
-            <%= form.text_field :paid_time_off, :class => "input bg-white", :autocomplete => "off", placeholder: "2 weeks" %>
-          </div>
+        <div class="input-group w-3/4">
+          <label class="label text-gray-600" for="job_salary">Salary<span class="text-red-700 pl-1">*</span></label>
+          <%= form.text_area :salary, :class => "input bg-white tinymce", :autocomplete => "off", placeholder: "" %>
+        </div>
+        <div class="input-group w-3/4">
+          <label class="label text-gray-600" for="job_salary">Sign on Bonus <span class="text-red-700 pl-1">*</span></label>
+          <%= form.text_field :sign_on_bonus, :class => "input bg-white", :autocomplete => "off", placeholder: "" %>
+        </div>
+        <div class="input-group w-3/4">
+          <label class="label text-gray-600" for="job_salary">Paid time off</label>
+          <%= form.text_field :paid_time_off, :class => "input bg-white", :autocomplete => "off", placeholder: "2 weeks" %>
         </div>
         <div class="input-group w-full flex mt-3">
           <div class="w-1/3">
@@ -160,6 +166,11 @@
       </div>
       <div class="float-left pt-5">
         <%= form.button(type: "submit", class: "btn btn-save btn-md btn-default btn-dd-blue btn-outline text-sm font-bold float-right", data: {disable_with: "<i class='fab fa fa-spinner fa-spin pr-2'></i> Saving in..." }) do %>
+          <span><i class='fab fa fa-floppy-o pr-2'></i><%=button_text%> Job</span>
+        <% end %>
+      </div>
+      <div class="float-left pt-6 mb-4 pb-4">
+        <%= form.button(type: "submit", class: "btn btn-md btn-default btn-dd-blue btn-outline text-sm font-bold float-right", data: {disable_with: "<i class='fab fa fa-spinner fa-spin pr-2'></i> Saving in..." }) do %>
           <span><i class='fab fa fa-floppy-o pr-2'></i><%=button_text%> Job</span>
         <% end %>
       </div>
