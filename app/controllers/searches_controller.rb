@@ -51,12 +51,14 @@ class SearchesController < BaseController
   end
 
   def fetch_city_speciality
-    @special_near = City.where(
-      slug: params[:city_or_speciality]
+    @special_near = State.where(
+      slug: params[:state]
     ).first&.to_coordinates&.join || BaseController::DEFUALT_LOCATION
+
     @special_speciality = Speciality.select(:code).where(
-      slug: @special_near.present? ? params[:speciality_slug] : params[:city_or_speciality]
+      slug: params[:speciality_slug]
     ).first&.code
+
     {}.tap do |h|
       h[:near] = @special_near
       h[:speciality] = @special_speciality
