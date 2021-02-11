@@ -41,5 +41,4 @@ Rails.application.routes.draw do
 
   get "*path", to: "application#raise_route_not_found", via: :all,
     constraints: lambda { |request| !request.fullpath.include?("/rails/active_storage/") }
-
 end
