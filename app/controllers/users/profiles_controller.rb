@@ -14,7 +14,7 @@ module Users
         redirect_to(edit_users_profile_url, notice: 'Password is updated successfully.')
         # redirect_to root_path
       else
-        render "edit"
+        render("edit")
       end
     end
 
