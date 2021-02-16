@@ -1,16 +1,47 @@
-<h2>Forgot your password?</h2>
-
-<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
-
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+<section class="lg:grid lg:w-full lg:mt-24 lg:grid-cols-12 flex mt-24">
+  <div class="lg:col-span-1 w-full"></div>
+  <div class="lg:col-span-10 flex px-16">
+    <div class="w-full mx-10">
+      <div class="w-6/12 max-w-xl mx-auto mt-10 text-gray-900 border-b">
+        <div class="font-glacialbold text-heading">Forgot your password?</div>
+        <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+          <div class="bg-white pt-6 pb-4 mb-4 flex flex-col">
+            <div class="mb-4">
+              <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "shadow-lg border rounded-2lg w-full py-3 px-5 text-gray-700 focus:outline-none", placeholder: "Your Email"%>
+            </div>
+            <div class="w-full flex">
+              <div class="w-6/12">
+                <div class="flex items-center justify-between mt-6">
+                  <%= f.submit "Send me reset password instructions", class: "text-gray-100 border rounded-lg px-12 py-3 border-doctor-yellow hover:bg-doctor-yellow hover:text-gray-100 bg-white cursor-pointer bg-doctor-yellow shadow-lg" %>
+                </div>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
   </div>
-
-  <div class="actions">
-    <%= f.submit "Send me reset password instructions" %>
+  <div class="lg:col-span-1 relative">
+    <div class="absolute right-0 mr-8">
+      <%=image_pack_tag 'light_grey_2_lines_vertical.svg', class: "h-56" %>
+    </div>
+    <div class="right-0 absolute -mr-4 -mt-32 z-50">
+      <%= image_pack_tag 'yellow_circle_outline_opacity_right.png' %>
+    </div>
   </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+</section>
+<section class="lg:w-full flex mt-24">
+  <div class="w-6/12 relative">
+    <div class="absolute left-0 ml-20">
+      <%=image_pack_tag "yellow_circle_full.svg", class: "w-10" %>
+    </div>
+    <div class="absolute left-0 top-0 -mt-64">
+      <%=image_pack_tag "yellow_half_circle_thick.svg", class: "w-24" %>
+    </div>
+  </div>
+  <div class="w-6/12 flex justify-end">
+    <div class="absolute right-0 -mt-12 -mr-6">
+      <%=image_pack_tag "yellow_circle_full.svg", class:"w-12" %>
+    </div>
+  </div>
+</section>

@@ -10,7 +10,7 @@
             </span>
           </div>
         <% end %>
-        <div class="font-glacialbold text-heading">Change Password</div>
+        <div class="font-glacialbold text-heading">Change your password</div>
         <% if @user.errors.any? %>
           <ul>
             <% @user.errors.full_messages.each do |message| %>
@@ -21,15 +21,15 @@
         <%= form_for(@user, :url => { :action => "update_password" } ) do |f| %>
           <div class="bg-white pt-6 pb-4 mb-4 flex flex-col">
             <div class="mb-4">
-              <%= f.password_field :password, autofocus: true, autocomplete: "passsword", class: "shadow-lg border rounded-2lg w-full py-3 px-5 text-gray-700 focus:outline-none", placeholder: "Password"%>
+              <%= f.password_field :password, autofocus: true, autocomplete: "passsword", class: "shadow-lg border rounded-2lg w-full py-3 px-5 text-gray-700 focus:outline-none", placeholder: "New password"%>
             </div>
             <div class="mb-3">
-              <%= f.password_field :password_confirmation, autofocus: true, autocomplete: "password_confirmation", class: "shadow-lg border rounded-2lg w-full py-3 px-5 text-gray-700 focus:outline-none", placeholder: "Password Confirmation"%>
+              <%= f.password_field :password_confirmation, autofocus: true, autocomplete: "password_confirmation", class: "shadow-lg border rounded-2lg w-full py-3 px-5 text-gray-700 focus:outline-none", placeholder: "Confirm new password"%>
             </div>
             <div class="w-full">
               <div class="w-6/12">
                 <div class="flex items-center justify-between mt-6">
-                  <%= f.submit "Update", class: "text-gray-100 border rounded-lg px-12 py-3 border-doctor-yellow hover:bg-doctor-yellow hover:text-gray-100 bg-white cursor-pointer bg-doctor-yellow shadow-lg" %>
+                  <%= f.submit "Change my password", class: "text-gray-100 border rounded-lg px-12 py-3 border-doctor-yellow hover:bg-doctor-yellow hover:text-gray-100 bg-white cursor-pointer bg-doctor-yellow shadow-lg" %>
                 </div>
               </div>
             </div>
