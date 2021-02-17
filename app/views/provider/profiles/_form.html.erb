@@ -1,17 +1,17 @@
 <%= form_with(model: [:provider, doctor], url: provider_profile_url(doctor),  class: "flex w-full", data: {type: "html", action: "ajax:error->message#errorHandler ajax:success->message#success" }) do |form| %>
-  <div class="flex-1 mr-4">
+  <div class="flex-1 mr-4" id="scroll_to_top">
     <div class="bg-white border pb-16 rounded shadow p-5">
       <div class="tab_wrapper" x-data="{ tab: window.location.hash ? window.location.hash.substring(1) : 'doctor' }">
         <%=render partial: 'admin/doctors/partials/tabs_nav'%>
         <div class="w-full pt-4">
           <div x-show="tab === 'doctor'">
-            <%=render partial: 'provider/profiles/partials/practice', locals: {form: form, doctor_degrees: doctor_degrees, specialities: specialities, patients_in_panel: patients_in_panel, price_ranges: price_ranges, experiences: experiences}%>
+            <%=render partial: 'provider/profiles/partials/practice', locals: {form: form, doctor_degrees: doctor_degrees, specialities: specialities, patients_in_panel: patients_in_panel, price_ranges: price_ranges, experiences: experiences, form_type: 'provider', form_type: 'provider', next_page_url: "#{edit_provider_profile_url(form.object.id)}#contact"}%>
           </div>
           <div x-show="tab === 'contact'">
-            <%=render partial: 'admin/doctors/partials/contact', locals: {form: form}%>
+            <%=render partial: 'admin/doctors/partials/contact', locals: {form: form, form_type: 'provider', next_page_url: "#{edit_provider_profile_url(form.object.id)}#credentials"}%>
           </div>
           <div x-show="tab === 'credentials'">
-            <%=render partial: 'admin/doctors/partials/credentials', locals: {form: form}%>
+            <%=render partial: 'admin/doctors/partials/credentials', locals: {form: form, form_type: 'provider', next_page_url: "#{edit_provider_profile_url(form.object.id)}#background"}%>
           </div>
           <div x-show="tab === 'background'">
             <%=render partial: 'admin/doctors/partials/background', locals: {form: form, states: states}%>

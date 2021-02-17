@@ -3,6 +3,13 @@
     <h1 class="font-semibold text-2xl">Jobs</h1>
   </div>
 </header>
+<%if !flash[:notice].blank? %>
+  <div class="text-white px-6 py-4 border-0 rounded relative mb-4 bg-green-500 mt-4">
+    <span class="inline-block align-middle mr-8">
+      <%= flash[:notice]%>
+    </span>
+  </div>
+<% end %>
 <section class="flex mt-2">
   <div class="flex-1 mb-6 mr-4">
     <div class="my-2 flex sm:flex-row flex-col">
