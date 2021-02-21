@@ -261,3 +261,34 @@
 .search_width {
   width: 72%;
 }
+.w-max {
+  width: max-content;
+}
+.circle-doctors {
+  background-image: url("../images/10,000_doctors.svg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 40rem;
+}
+.online-directory {
+  background-size: cover;
+  background-repeat: no-repeat;
+  display: flex;
+  align-items: center;
+  &-1 {
+    background-image: url("../images/1.svg");
+    height: 20rem;
+  }
+  &-2 {
+    background-image: url("../images/2.svg");
+    height: 22rem;
+  }
+  &-3 {
+    background-image: url("../images/3.svg");
+    height: 16rem;
+  }
+}
+.circle-padding {
+  padding-left: 8rem;
+  padding-right: 10rem;
+}

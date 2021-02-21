@@ -9,7 +9,7 @@ class SearchesController < BaseController
 
   def index_two
     @pagy, @doctors = pagy(
-      Doctor.includes(:speciality, :review_data).published.search(search_params, current_location: current_location)
+      Doctor.includes(:speciality, :review_data).published.search(search_params, current_location: current_location), items: 10
     )
     respond_to do |format|
       format.html
@@ -19,7 +19,7 @@ class SearchesController < BaseController
 
   def specialized_search
     @pagy, @doctors = pagy(
-      Doctor.includes(:speciality, :review_data).published.search(converted_params, current_location: current_location)
+      Doctor.includes(:speciality, :review_data).published.search(converted_params, current_location: current_location), items: 10
     )
     respond_to do |format|
       format.html { render(:index_two) }
