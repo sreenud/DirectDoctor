@@ -49,7 +49,10 @@ module Provider
     def update
       respond_to do |format|
         if @job.update(job_params)
-          format.html { redirect_to(provider_jobs_url, notice: 'Job is successfully updated.') }
+          format.html do
+            redirect_to(provider_jobs_url, notice: 'Thank you for submitting your job requirements.
+            Our team will email you and publish the job posting after the review process (1-3days)')
+          end
           format.json { render(:show, status: :ok, location: @job) }
         else
           format.html do

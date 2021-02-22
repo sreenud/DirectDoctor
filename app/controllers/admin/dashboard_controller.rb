@@ -6,6 +6,8 @@ module Admin
 
       @profile_update_requests = ApprovalRequest.includes(user: :doctor)
         .where(status: ApprovalRequest.statuses[:pending])
+
+      @reviews = Review.draft
     end
   end
 end

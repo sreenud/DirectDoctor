@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   get 'onboarding/step1', to: "onboarding#step1"
   post 'onboarding/step1', to: "onboarding#create_step1"
   get 'onboarding/thankyou', to: "onboarding#thankyou"
+  get 'list-your-practice', to: "list_your_practice#index"
   resources :doctors do
     resources :reviews, only: [:index, :create]
   end
@@ -33,6 +34,14 @@ Rails.application.routes.draw do
 
   mount Shrine.upload_endpoint(:cache) => "/images/upload"
   mount ProfilePicUploader.derivation_endpoint => "/derivations/image"
+
+  namespace :users do
+    resource :profile, only: [:edit] do
+      collection do
+        patch 'update_password'
+      end
+    end
+  end
 
   draw :provider
   draw :admin

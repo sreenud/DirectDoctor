@@ -25,8 +25,8 @@
         <div class="w-3/4 flex">
           <div class="w-1/2 mr-3">
             <div class="input-group">
-              <label class="label text-gray-600" for="gender">Board Eligible or Board Certified<span class="text-red-700 pl-1">*</span></label>
-              <%= form.select(:board_certification,['BE', 'BC'], {:prompt => "Select..."}, {class: "select bg-white"}) %>
+              <label class="label text-gray-600" for="gender">Board Certification<span class="text-red-700 pl-1">*</span></label>
+              <%= form.select(:board_certification,['Board Eligible', 'Board Certified', 'Board Eligible or Board Certified'], {:prompt => "Select..."}, {class: "select bg-white"}) %>
             </div>
           </div>
           <div class="w-1/2">
@@ -37,7 +37,7 @@
           </div>
         </div>
         <div class="input-group w-3/4">
-          <label class="label text-gray-600" for="job_name">Salary<span class="text-red-700 pl-1">*</span></label>
+          <label class="label text-gray-600" for="job_name">Annual Salary<span class="text-red-700 pl-1">*</span></label>
           <%= form.text_area :salary, :class => "input bg-white tinymce", :autocomplete => "off" %>
         </div>
         <div class="input-group w-3/4">

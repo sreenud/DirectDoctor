@@ -22,7 +22,7 @@ class Job < ApplicationRecord
 
   def custom_board_certification
     if board_certification.blank?
-      errors.add(:base, "Board Eligible or Board Certified can't be blank")
+      errors.add(:base, "Board certification can't be blank")
     end
   end
 end
