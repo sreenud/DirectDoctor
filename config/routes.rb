@@ -46,7 +46,8 @@ Rails.application.routes.draw do
   draw :provider
   draw :admin
 
-  get '/:state(/:speciality_slug)', to: 'searches#specialized_search'
+  # place is nothing but state here
+  get '/:place(/:speciality_slug)', to: 'searches#specialized_search'
 
   get "*path", to: "application#raise_route_not_found", via: :all,
     constraints: lambda { |request| !request.fullpath.include?("/rails/active_storage/") }

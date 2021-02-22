@@ -21,4 +21,14 @@ module ApplicationHelper
   def format_currency(amount, precision = 0)
     number_to_currency(amount, precision: precision, unit: "")
   end
+
+  def speciality_name(params)
+    if params[:speciality_slug].present?
+      params[:speciality_slug]&.titleize
+    elsif params[:speciality_name].present?
+      params[:speciality_name]
+    else
+      Speciality.find_by_code(params[:speciality])&.name
+    end
+  end
 end

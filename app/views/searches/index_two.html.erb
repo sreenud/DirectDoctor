@@ -13,10 +13,10 @@
                   <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd" />
                 </svg>
               </label>
-              <input class="md:my-2 my-3 w-full focus:outline-none bg-gray-100" type="text" data-target="search.name" name="speciality" placeholder="Name/Speciality">
+              <input class="md:my-2 my-3 w-full focus:outline-none bg-gray-100" type="text" data-target="search.name" name="speciality" placeholder="Name/Speciality" value="<%=speciality_name(params)%>">
             </div>
             <div class="flex justify-center items-center w-full pr-4 border-b md:border-b-0">
-              <input class="md:my-2 my-3 ml-3 w-full focus:outline-none bg-gray-100" id="near" data-target='search.near' type="text" name="near" placeholder="Zip/City/State">
+              <input class="md:my-2 my-3 ml-3 w-full focus:outline-none bg-gray-100" id="near" data-target='search.near' type="text" name="near" placeholder="Zip/City/State" value="<%=params[:place]&.titleize%>">
             </div>
             <div class="text-center mt-4 md:text-left md:mt-0">
               <button class="bg-doctor-yellow text-gray-100 md:mr-4 rounded-md px-4 py-1 w-11/12 md:w-auto" data-target="search.search">Search</button>
@@ -31,13 +31,27 @@
             <a href="#" class="text-doctor-yellow pr-2">Home</a>
             <span class="text-gray-500 pr-2">></span>
           </li>
-          <li class="flex items-left">
-            <a href="#" class="text-doctor-yellow pr-2">Find a doctor</a>
-            <span class="text-gray-500 pr-2">></span>
-          </li>
-          <li class="text-gray-500" aria-current="page">
-            State
-          </li>
+          <% if params["place"].present? %>
+            <% if params["speciality_slug"].present? %>
+              <li class="flex items-left">
+                <a href="/<%=params["place"]%>" class="text-doctor-yellow pr-2"><%=params["place"].titleize%></a>
+                <span class="text-gray-500 pr-2">></span>
+              </li>
+            <% else %>
+              <li class="text-gray-500" aria-current="page">
+                <%=params["place"].titleize%>
+              </li>
+            <% end %>
+          <% else %>
+            <li class="text-gray-500" aria-current="page">
+              <%= @location_string %>
+            </li>
+          <% end %>
+          <% if params["speciality_slug"].present? || params["speciality"].present? %>
+            <li class="text-gray-500" aria-current="page">
+              <%=speciality_name(params)%>
+            </li>
+          <% end %>
         </ul>
       </nav>
       <div class="w-full text-left flex justify-between">

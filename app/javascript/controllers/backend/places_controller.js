@@ -17,6 +17,7 @@ export default class extends Controller {
       },
     }).configure({
       type: 'address',
+      countries: ['us'],
     });
 
     placesAutocomplete.on('change', function resultSelected(e) {
