@@ -31,4 +31,14 @@ namespace :specialities do
 
     puts "Speciality id is updated in doctors"
   end
+  desc "Update Specialities slug"
+  task update_slug: :environment do
+    specialities = Speciality.all
+    specialities.each do |speciality|
+      speciality.slug = speciality.name.parameterize
+      speciality.save
+
+      puts "#{speciality.name} slug updated"
+    end
+  end
 end

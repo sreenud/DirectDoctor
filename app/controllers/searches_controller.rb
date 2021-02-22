@@ -53,16 +53,12 @@ current_location: current_location), items: 10
   end
 
   def fetch_city_speciality
-    @special_near = State.where(
-      slug: params[:state]
-    ).first&.to_coordinates&.join || BaseController::DEFUALT_LOCATION
-
     @special_speciality = Speciality.select(:code).where(
       slug: params[:speciality_slug]
     ).first&.code
 
     {}.tap do |h|
-      h[:near] = @special_near
+      h[:place] = params[:state].titleize
       h[:speciality] = @special_speciality
     end
   end
