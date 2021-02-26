@@ -56,6 +56,22 @@ module BreadCrumbHelper
       ]
     end
 
+    if params["speciality"].present?
+      speciality = Speciality.find_by_code(params["speciality"])
+
+      bread_crumbs.each do |bread_crumb|
+        next unless bread_crumb&.first["type"] == "place"
+        bread_crumb&.first.tap do |bread|
+          bread["url"] = "/search-map?near=#{params['near']}&place=#{params['place']}"
+        end
+      end
+
+      bread_crumbs << [
+        "name" => speciality.name,
+        "type" => 'speciality',
+      ]
+    end
+
     bread_crumbs
   end
 end

@@ -57,6 +57,13 @@ module ApplicationHelper
       h1_tag_text = "#{params[:speciality_slug].titleize} in #{params[:location].titleize}, #{place}"
     end
 
+    if params[:speciality].present?
+      speciality = Speciality.find_by_code(params["speciality"])
+
+      h1_tag_text = "#{speciality&.name} in #{params[:place]}"
+    end
+
+
     h1_tag_text
   end
 end
