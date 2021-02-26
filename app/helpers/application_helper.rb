@@ -63,7 +63,6 @@ module ApplicationHelper
       h1_tag_text = "#{speciality&.name} in #{params[:place]}"
     end
 
-
     h1_tag_text
   end
 end
