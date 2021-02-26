@@ -18,6 +18,14 @@ module ApplicationHelper
     @current_location
   end
 
+  def location_stinrg
+    if @location_string.present?
+      @location_string
+    else
+      params[:place]&.titleize
+    end
+  end
+
   def format_currency(amount, precision = 0)
     number_to_currency(amount, precision: precision, unit: "")
   end
