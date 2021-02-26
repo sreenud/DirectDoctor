@@ -122,7 +122,7 @@
                 </tr>
               </thead>
               <tbody class="bg-white">
-                <% top_doctors = @doctors.select(5) %>
+                <% top_doctors = @doctors.first(5) %>
                 <% if top_doctors.present? %>
                   <% top_doctors.each do |top_doctor| %>
                     <tr>
