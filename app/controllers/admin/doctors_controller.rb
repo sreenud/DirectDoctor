@@ -7,7 +7,7 @@ module Admin
     before_action :set_master_data, only: [:edit, :new]
 
     def index
-      @q = Doctor.ransack(params[:q])
+      @q = Doctor.includes(:created).ransack(params[:q])
       @doctors = @q.result.latest
 
       @pagy, @doctors = pagy(@doctors)
@@ -30,6 +30,7 @@ module Admin
 
     def create
       @doctor = Doctor.new(doctor_params)
+      @doctor.created_by = current_user.id
       respond_to do |format|
         if @doctor.save
           format.html { redirect_to(admin_doctors_url, notice: 'Doctor was successfully created.') }
@@ -42,6 +43,7 @@ module Admin
 
     def update
       respond_to do |format|
+         @doctor.updated_by = current_user.id
         if @doctor.update(doctor_params)
           if doctor_params[:update_request] == "yes"
             request = ApprovalRequest&.where(request_user_id: @doctor.user_id, status: 'pending')&.first

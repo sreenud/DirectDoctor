@@ -8,6 +8,8 @@ class Doctor < ApplicationRecord
   attr_accessor :cost, :experience, :patients_options, :price_options, :update_request, :profile_source
 
   belongs_to :speciality, optional: true
+  belongs_to :created, class_name: "User", foreign_key: "created_by", optional: true
+
   has_many :reviews
   has_one :review_data, class_name: 'ReviewData'
   has_many :jobs
