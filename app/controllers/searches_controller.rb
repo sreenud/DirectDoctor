@@ -58,6 +58,8 @@ current_location: current_location), items: 10
     ).first&.code
 
     {}.tap do |h|
+      h[:style] = params[:style]
+      h[:city] = params[:location]&.titleize
       h[:place] = params[:place].titleize
       h[:speciality] = @special_speciality
     end

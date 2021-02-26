@@ -31,4 +31,32 @@ module ApplicationHelper
       Speciality.find_by_code(params[:speciality])&.name
     end
   end
+
+  def search_page_h1_tag(location_string, params)
+    place = if location_string.present?
+      location_string
+    else
+      params[:place].titleize
+    end
+
+    h1_tag_text = "Concierge Doctors/Direct Primary Care Physicians in #{place}"
+
+    if params[:style].present?
+      h1_tag_text = if params[:style] == "direct-primary-care"
+        "Direct Primary Care Physicians in #{place}"
+      else
+        "Concierge Doctors in #{place}"
+      end
+    end
+
+    if params[:speciality_slug].present?
+      h1_tag_text = "#{params[:speciality_slug].titleize} in #{place}"
+    end
+
+    if params[:location].present?
+      h1_tag_text = "#{params[:speciality_slug].titleize} in #{params[:location].titleize}, #{place}"
+    end
+
+    h1_tag_text
+  end
 end

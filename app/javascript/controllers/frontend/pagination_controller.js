@@ -21,6 +21,7 @@ export default class extends Controller {
         const paramObj = new URLSearchParams(query);
         const page = paramObj.get('page');
         const url = this.data.get('url');
+        const currentURL = this.data.get('currentUrl');
 
         if (page !== undefined && page !== null && page !== '') {
           showLoading();
@@ -50,7 +51,7 @@ export default class extends Controller {
               }
               URIPush({
                 changeParams: { page },
-                route: '/search-map',
+                route: `${currentURL}`,
               });
               AddHoverHighlight();
               hideLoading();

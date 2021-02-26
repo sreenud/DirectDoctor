@@ -1,36 +1,10 @@
-<section class="lg:grid lg:w-full mt-24 grid-cols-12 relative z-20">
-  <div class="col-span-10 col-start-2">
-    <div class="lg:flex lg:w-full lg:mt-8 lg:justify-center">
-      <div class="w-full lg:w-3/4 border rounded-2lg shadow-2xl relative -mb-20 -mt-12 bg-white">
-        <div class="px-8 pt-2 pb-4 md:pt-0">
-          <label class="text-doctor-blue text-lg font-hurmebold">
-            Subscribe for our newsletter
-          </label>
-          <div class="flex justify-between items-center subscribe-bg-gray rounded-lg mt-3">
-            <div class="flex justify-center items-center w-full">
-              <label class="ml-3 mr-5">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" class="w-5 text-gray-600" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                </svg>
-              </label>
-              <input class="my-4 w-full focus:outline-none subscribe-bg-gray" type="text" name="" placeholder="Enter your Email">
-            </div>
-            <div>
-              <button class="bg-doctor-yellow text-gray-100 mr-4 rounded-md md:px-8 px-4 py-2 shadow">Subscribe</button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
 <section class="grid grid-cols-12 bg-doctor-blue rounded-tl-lg rounded-tr-lg tracking-wider relative z-10">
-  <div class="flex flex-wrap col-start-2 col-span-10">
-    <footer class="pt-20 w-full lg:mx-24">
-      <div class="flex w-full mt-20 mb-8 lg:ml-8">
+  <div class="flex flex-wrap col-span-12">
+    <footer class="pt-20 w-full lg:mx-16 px-6 lg:px-0">
+      <div class="flex w-full mb-8">
         <%= image_pack_tag 'logo_white.png', class: "h-8" %>
       </div>
-      <div class="lg:flex w-full text-gray-100 text-sm justify-between lg:ml-8">
+      <div class="lg:flex w-full text-gray-100 text-sm justify-between mb-10">
         <div class="lg:w-3/12 w-full">
           <div class="text-xl font-hurmebold">
             Resources
@@ -91,31 +65,55 @@
             </div>
           </div>
         </div>
+        <div class="lg:w-3/12 w-full mt-4">
+          <div class="lg:flex lg:w-full lg:justify-center">
+            <div class="w-full relative">
+              <div class="">
+                <label class="text-white text-lg font-hurmebold">
+                  Subscribe for our newsletter
+                </label>
+                <div class="flex justify-between items-center bg-white rounded-lg mt-3">
+                  <div class="flex justify-center items-center w-full">
+                    <label class="ml-3 mr-5">
+                      <svg xmlns="http://www.w3.org/2000/svg" fill="none" class="w-5 text-gray-600" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                      </svg>
+                    </label>
+                    <input class="my-4 w-full focus:outline-none bg-white text-gray-800" type="text" name="" placeholder="Enter your Email">
+                  </div>
+                  <div>
+                    <button class="bg-doctor-yellow text-gray-100 mr-2 rounded-md md:px-8 px-4 py-2 shadow">Subscribe</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="w-full">
+            <div class="mt-8 w-full">
+              <div class="w-6 inline-block">
+                <a href="https://www.facebook.com/Find-My-Direct-Doctor-103928951413548/" target="_blank">
+                  <%=image_pack_tag 'icons/facebook_white.svg', class: 'w-3'%>
+                </a>
+              </div>
+              <div class="w-8 inline-block">
+                <%=image_pack_tag 'icons/instagram_white.svg', class: 'w-6'%>
+              </div>
+              <div class="w-8 inline-block">
+                <a href="https://www.linkedin.com/company/findmydirectdoctor/" target="_blank">
+                  <%=image_pack_tag 'icons/linkedin_white.svg', class: 'w-6 ml-2'%>
+                </a>
+              </div>
+              <div class="w-8 inline-block">
+                <a href="https://twitter.com/FindMyDirectDoc" target="_blank">
+                  <%=image_pack_tag 'icons/twitter_white.svg', class: 'w-6 ml-2'%>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-      <div class="w-full lg:pl-10">
-        <div class="mt-12 w-full">
-          <div class="w-6 inline-block">
-            <a href="https://www.facebook.com/Find-My-Direct-Doctor-103928951413548/" target="_blank">
-              <%=image_pack_tag 'icons/facebook_white.svg', class: 'w-3'%>
-            </a>
-          </div>
-          <div class="w-8 inline-block">
-            <%=image_pack_tag 'icons/instagram_white.svg', class: 'w-6'%>
-          </div>
-          <div class="w-8 inline-block">
-            <a href="https://www.linkedin.com/company/findmydirectdoctor/" target="_blank">
-              <%=image_pack_tag 'icons/linkedin_white.svg', class: 'w-6 ml-2'%>
-            </a>
-          </div>
-          <div class="w-8 inline-block">
-            <a href="https://twitter.com/FindMyDirectDoc" target="_blank">
-              <%=image_pack_tag 'icons/twitter_white.svg', class: 'w-6 ml-2'%>
-            </a>
-          </div>
-        </div>
-        <div class="my-6 flex w-full text-xs text-gray-400">
-          All Rights Reserved 2020
-        </div>
+      <div class="my-6 w-full text-gray-400 text-center">
+        All Rights Reserved 2020
       </div>
     </footer>
   </div>

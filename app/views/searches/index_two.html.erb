@@ -6,7 +6,7 @@
     <div class="w-full">
       <div class="hidden lg:block">
         <div class="flex">
-          <div class="search_width md:flex border justify-between items-center bg-gray-100 pb-2 md:py-1 mb-4" data-controller="search">
+          <div class="search_width md:flex border justify-between items-center bg-gray-100 pb-2 md:py-1 mb-4" data-controller="search" data-search-render-url="<%=request.original_url%>">
             <div class="flex justify-center items-center w-full md:border-r border-b md:border-b-0 pr-4">
               <label class="ml-3 mr-5">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-5 text-gray-600">
@@ -27,36 +27,26 @@
       <!-- component -->
       <nav aria-label="Breadcrumb" class="text-sm">
         <ul class="list-none p-0 inline-flex">
-          <li class="flex items-left">
-            <a href="#" class="text-doctor-yellow pr-2">Home</a>
-            <span class="text-gray-500 pr-2">></span>
-          </li>
-          <% if params["place"].present? %>
-            <% if params["speciality_slug"].present? %>
+          <% bread_crumbs = search_page_bread_crumb(@location_string, params) %>
+          <% bread_crumbs.each do |bread_crumb| %>
+            <% if bread_crumb&.first["url"].present? %>
               <li class="flex items-left">
-                <a href="/<%=params["place"]%>" class="text-doctor-yellow pr-2"><%=params["place"].titleize%></a>
+                <a href="<%=bread_crumb&.first['url']%>" class="text-doctor-yellow pr-2"><%=bread_crumb&.first["name"]%></a>
                 <span class="text-gray-500 pr-2">></span>
               </li>
             <% else %>
               <li class="text-gray-500" aria-current="page">
-                <%=params["place"].titleize%>
+                <%=bread_crumb&.first["name"]%>
               </li>
             <% end %>
-          <% else %>
-            <li class="text-gray-500" aria-current="page">
-              <%= @location_string %>
-            </li>
-          <% end %>
-          <% if params["speciality_slug"].present? || params["speciality"].present? %>
-            <li class="text-gray-500" aria-current="page">
-              <%=speciality_name(params)%>
-            </li>
           <% end %>
         </ul>
       </nav>
       <div class="w-full text-left flex justify-between">
         <div>
-          <h1 class="font-hurmebold text-md inline-block" id="near-location"><%= @location_string %></h1>
+          <h1 class="font-hurmebold text-md inline-block" id="near-location">
+            <%= search_page_h1_tag(@location_string, params) %>
+          </h1>
           <span class="text-gray-600">(<span id="search_results_count"><%= @pagy.count %></span> results)</span>
         </div>
         <div class="lg:hidden" >
@@ -97,7 +87,7 @@
               <div class="w-full" id="result-container" data-controller="modal">
                 <%= render_doctor_cards %>
               </div>
-              <div class="w-full text-center" id="pagination-container" data-controller="pagination" data-target="pagination.container" data-pagination-url="search-map.json">
+              <div class="w-full text-center" id="pagination-container" data-controller="pagination" data-target="pagination.container" data-pagination-url="search-map.json" data-pagination-current-url="<%=request.path%>">
                 <% if @pagy.count.positive? %>
                   <%== pagy_nav @pagy %>
                 <% else %>

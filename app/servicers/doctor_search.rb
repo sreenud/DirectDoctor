@@ -22,6 +22,8 @@ module DoctorSearch
     apply_experience_filter
     apply_fee_filter
     apply_other_filters
+    apply_city_filter
+    apply_style_filter
     apply_location_filter
   end
 
@@ -41,6 +43,23 @@ module DoctorSearch
       10000, # maximum can be around 41000
       units: SEARCH_UNITS
     )
+  end
+
+  def apply_style_filter
+    return @default_scope unless @params[:style].present?
+
+    style = if @params[:style] == "direct-primary-care"
+      "dpc"
+    else
+      "concierge"
+    end
+    @default_scope = @default_scope.where(style: style)
+  end
+
+  def apply_city_filter
+    return @default_scope unless @params[:city].present?
+
+    @default_scope = @default_scope.where(city: @params[:city])
   end
 
   def convert_speciality_name_to_speciality

@@ -39,3 +39,7 @@ Lint/UselessAssignment:
 Lint/MissingSuper:
   Exclude:
     - '**/components/**'
+
+Lint/SafeNavigationChain:
+  Exclude:
+    - '**/helpers/**'
