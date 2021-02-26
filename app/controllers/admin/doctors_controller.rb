@@ -43,7 +43,7 @@ module Admin
 
     def update
       respond_to do |format|
-         @doctor.updated_by = current_user.id
+        @doctor.updated_by = current_user.id
         if @doctor.update(doctor_params)
           if doctor_params[:update_request] == "yes"
             request = ApprovalRequest&.where(request_user_id: @doctor.user_id, status: 'pending')&.first
