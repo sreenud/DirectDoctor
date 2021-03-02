@@ -8,7 +8,14 @@ import autoComplete from '@tarekraafat/autocomplete.js';
 
 const onboardingInputFields = ['profile_name', 'document'];
 export default class extends Controller {
-  static targets = ['userType', 'submitButton', 'doctorForm'];
+  static targets = [
+    'userType',
+    'submitButton',
+    'doctorForm',
+    'fileName',
+    'fileOriginalName',
+    'fileErrorMessage',
+  ];
 
   connect() {
     // The autoComplete.js Engine instance creator
@@ -101,6 +108,12 @@ export default class extends Controller {
       }
     });
     this.submitButtonTarget.classList.remove('hidden');
+  }
+
+  fileDisplayName(event) {
+    const fileName = event.target.value.split('\\').pop();
+    this.fileOriginalNameTarget.innerHTML = fileName;
+    this.fileErrorMessageTarget.innerHTML = '';
   }
 
   success(event) {
