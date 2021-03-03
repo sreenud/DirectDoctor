@@ -1,3 +1,3 @@
 class ClaimProfileAttachment < ApplicationRecord
-  include FileUploader::Attachment(:image)
+  include ImageUploader::Attachment(:image)
 end
