@@ -73,4 +73,12 @@ module ApplicationHelper
 
     h1_tag_text
   end
+
+  def doctor_display_image(doctor)
+    if doctor&.image_url.present? && doctor&.image&.metadata["crop"]
+      doctor&.image_url(:medium)
+    else
+      doctor&.image_url
+    end
+  end
 end

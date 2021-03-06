@@ -28,7 +28,7 @@
           <div class="flex items-center">
             <div class="flex-shrink-0 h-10 w-10">
               <% if doctor&.image_data %>
-                <img src="<%= doctor.image_url %>" width="150" class="img-thumbnail" />
+                <img src="<%= doctor_display_image(doctor) %>" width="150" class="w-full h-full rounded-full" />
               <% else %>
                 <%= image_pack_tag 'default_profile_pic.svg', class: 'w-full h-full rounded-full' %>
               <% end %>

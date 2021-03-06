@@ -51,9 +51,7 @@
       </div>
       <div class="upload-progress"></div>
       <div class="image-preview">
-        <% if form.object.image_url %>
-          <img src="<%= form.object.image_url(:medium) %>" height="300" class="rounded" \>
-        <% end %>
+        <img src="<%= doctor_display_image(form.object) %>" height="300" class="rounded" \>
       </div>
       <div class="input-group">
         <%= form.label :doctor_status, :class => "label text-gray-500" %>

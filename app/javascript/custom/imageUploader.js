@@ -49,14 +49,15 @@ function imageUploader(fileInput) {
     hiddenInput.value = uploadedFileData;
     var copper = new Cropper(imagePreview, {
       checkCrossOrigin: false,
-      dragMode: 'move',
+      viewMode: 3,
+      dragMode: 'none',
       aspectRatio: 1 / 1,
       autoCropArea: 0.65,
       restore: false,
       guides: false,
       center: false,
       highlight: false,
-      cropBoxMovable: false,
+      cropBoxMovable: true,
       cropBoxResizable: false,
       toggleDragModeOnDblclick: false,
       crop: function (event) {

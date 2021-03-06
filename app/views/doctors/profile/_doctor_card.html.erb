@@ -2,7 +2,7 @@
   <div class="w-full flex " data-controller="modal">
     <div class="w-1/3 md:w-1/2 lg:w-1/2 overflow-hidden">
       <% if doctor.image.present? %>
-        <%= image_tag doctor.image_url, class: "w-48 bg-doctor-gray-100 rounded-2lg ", itemprop: "image"  %>
+        <%= image_tag doctor_display_image(doctor), class: "w-48 bg-doctor-gray-100 rounded-2lg ", itemprop: "image"  %>
       <% else %>
         <%= image_pack_tag "doctor_default.svg", class: "w-48 bg-doctor-gray-100 rounded-2lg ", itemprop: "image" %>
       <% end %>
