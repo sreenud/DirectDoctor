@@ -39,6 +39,8 @@ if (
         /glide/,
         /slider/,
         /location-icon/,
+        /cropper/,
+        /uppy/,
       ],
       whitelistPatternsChildren: [
         /choices/,
@@ -48,6 +50,8 @@ if (
         /glide/,
         /slider/,
         /location-icon/,
+        /cropper/,
+        /uppy/,
       ],
       defaultExtractor: (content) => content.match(/[A-Za-z0-9-_:/]+/g) || [],
     })
