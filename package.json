@@ -13,7 +13,7 @@
     "alpinejs": "^2.6.0",
     "animate.css": "^4.1.1",
     "choices.js": "devkral/Choices#feature/add_select_options",
-    "cropperjs": "^1.5.9",
+    "cropperjs": "^1.5.11",
     "jquery": "^3.5.1",
     "places.js": "^1.19.0",
     "stimulus": "^1.1.1",
@@ -21,7 +21,7 @@
     "tailwindcss": "^1.6.1",
     "tinymce": "^5.4.2",
     "turbolinks": "^5.2.0",
-    "uppy": "^1.21.1"
+    "uppy": "^1.26.0"
   },
   "version": "0.1.0",
   "devDependencies": {

@@ -33,7 +33,7 @@ Rails.application.routes.draw do
   end
 
   mount Shrine.upload_endpoint(:cache) => "/images/upload"
-  mount ProfilePicUploader.derivation_endpoint => "/derivations/image"
+  mount ImageUploader.derivation_endpoint => "/derivations/image"
 
   namespace :users do
     resource :profile, only: [:edit] do

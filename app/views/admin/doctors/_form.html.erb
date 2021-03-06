@@ -28,7 +28,7 @@
     </div>
   </div>
   <div class="w-1/4">
-    <div class="bg-white border p-5 rounded shadow">
+    <div class="bg-white border p-5 rounded shadow doctor-profile-tags">
       <% if form.object&.fdd_id %>
         <div class="input-group">
           <label class="label text-gray-500" for="doctor_FDD_ID">FDD ID</label>
@@ -43,12 +43,17 @@
         <%= form.label :fmdd_score, :class => "label text-gray-500" %>
         <%= form.text_field :fmdd_score, :class => "input bg-white", :autocomplete => "off", data: {target: "slug.slug"} %>
       </div>
-      <div class="input-group">
-        <%= form.label :display_image, :class => "label text-gray-500" %>
+      <div class="input-group" data-controller="image-upload">
+        <%= form.label :image, :class => "label text-gray-500" %>
         <%= image_tag form.object.image_url if form.object.cached_image_data %>
-        <%= form.hidden_field :image, value: form.object.cached_image_data %>
-        <%= form.file_field :image, class: 'finput-file label' %>
-        <%= image_tag form.object.image_url if form.object.image_url %>
+        <%= form.hidden_field :image, value: form.object.cached_image_data, class: "upload-data" %>
+        <%= form.file_field :image, class: 'finput-file label', accept: ImageUploader::ALLOWED_TYPES.join(",") %>
+      </div>
+      <div class="upload-progress"></div>
+      <div class="image-preview">
+        <% if form.object.image_url %>
+          <img src="<%= form.object.image_url(:medium) %>" height="300" class="rounded" \>
+        <% end %>
       </div>
       <div class="input-group">
         <%= form.label :doctor_status, :class => "label text-gray-500" %>

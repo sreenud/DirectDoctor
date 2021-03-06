@@ -13,7 +13,9 @@
 
 @import "choices.js/public/assets/styles/choices";
 @import "uppy/dist/uppy.min.css";
+@import "@uppy/progress-bar/dist/style.css";
 @import "@yaireo/tagify/dist/tagify.css";
+@import "cropperjs/dist/cropper.css";
 
 .upload-preview img {
   display: block;
