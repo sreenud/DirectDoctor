@@ -1,5 +1,4 @@
 class LeadsController < BaseController
-
   def create
     @lead = Lead.new(lead_params)
 
