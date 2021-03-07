@@ -1,5 +1,4 @@
 class ExceptionMailer < ApplicationMailer
-
   def send_error_details(params_data)
     @params_data = params_data
     @time = Time.now.strftime("%d-%m-%Y %H:%M:%S %Z")
