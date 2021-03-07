@@ -32,23 +32,26 @@
     </div>
   </div>
   <div class="w-1/4">
-    <div class="bg-white border p-5 rounded shadow">
+    <div class="bg-white border p-5 rounded shadow doctor-profile-tags">
       <% if form.object&.fdd_id %>
         <div class="input-group">
           <label class="label text-gray-500" for="doctor_FDD_ID">FDD ID</label>
           <%= form.object&.fdd_id %>
         </div>
       <% end %>
-      <div class="input-group">
+      <div class="input-group" data-controller="image-upload">
         <%= form.label :display_image, :class => "label text-gray-500" %>
         <%= image_tag form.object.image_url if form.object.cached_image_data %>
-        <% if form.object.image_url %>
-          <%= image_tag form.object.image_url, class: "w-48 bg-doctor-gray-100 rounded-2lg mb-4"  %>
+        <%= form.hidden_field :image, value: form.object.cached_image_data, class: "upload-data" %>
+        <%= form.file_field :image, class: 'finput-file label', accept: ImageUploader::ALLOWED_TYPES.join(",") %>
+      </div>
+      <div class="upload-progress"></div>
+      <div class="image-preview">
+        <% if doctor_display_image(form.object).present? %>
+          <img src="<%= doctor_display_image(form.object) %>" height="300" class="rounded" \>
         <% else %>
           <%= image_pack_tag "doctor_default.svg", class: "w-48 bg-doctor-gray-100 rounded-2lg mb-4" %>
         <% end %>
-        <%= form.hidden_field :image, value: form.object.cached_image_data %>
-        <%= form.file_field :image, class: 'finput-file label' %>
       </div>
       <div class="flex mt-8">
         <div class="px-2 py-2 text-sm font-medium leading-5 text-gray-600">

@@ -41,6 +41,8 @@ class OnboardingController < BaseController
   end
 
   def thankyou
+    user = User.find_by_id(current_user.id)
+    SignupMailer.with(user: user).thankyou.deliver_now
   end
 
   private
