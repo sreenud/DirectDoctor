@@ -8,7 +8,7 @@ ActionMailer::Base.smtp_settings = {
   port: 587,
   user_name: Rails.application.credentials.dig(:mailgun, :user_name),
   password: Rails.application.credentials.dig(:mailgun, :password),
-  domain: "www.findmydirectdoctor.com",
+  domain: "findmydirectdoctor.com",
   authentication: :login,
   enable_starttls_auto: true,
   perform_deliveries: true,
