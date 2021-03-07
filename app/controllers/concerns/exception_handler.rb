@@ -61,8 +61,8 @@ module ExceptionHandler
       user: current_user,
       controller_name: controller_name,
       params: params,
-      location: "#{session[:loc_country]}, #{session[:loc_city]} - #{session[:loc_timezone]}",
-      browser: browser,
+      location: "N/A",
+      browser: "N/A",
       status_code: status_code || 404
     ).deliver
   end
