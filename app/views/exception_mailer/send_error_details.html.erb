@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <style type="text/css">
+    .ReadMsgBody {width: 100%; background-color: #ffffff;}
+    .ExternalClass {width: 100%; background-color: #ffffff;}
+    body     {width: 100%; background-color: #ffffff; margin:0; padding:0; -webkit-font-smoothing: antialiased;font-family:Trebuchet MS}
+    table {border-collapse: collapse;}
+    .tableBordered > tbody > tr > td
+    {
+      border: 1px solid #ccc;
+    }
+
+    @media only screen and (max-width: 640px)  {
+                    body[yahoo] .deviceWidth {width:440px!important; padding:0;}
+                    body[yahoo] .center {text-align: center!important;}
+            }
+
+    @media only screen and (max-width: 479px) {
+            body[yahoo] .deviceWidth {width:280px!important; padding:0;}
+            body[yahoo] .center {text-align: center!important;}
+
+    }
+    .list-inline {
+        list-style: outside none none;
+        margin-left: -5px;
+        padding-left: 0;
+    }
+
+    .list-inline > li {
+        display: inline-block;
+        color: #fff;
+        font-size: 20px;
+        font-weight: bold
+    }
+</style>
+</head>
+  <body leftmargin="0" topmargin="0" marginwidth="0" marginheight="0" yahoo="fix" style="font-family: Arial, Helvetica, sans-serif">
+    <!-- Wrapper -->
+    <h3>Exception raised below are the details</h3>
+    <table width="100%" border="1" cellpadding="0" cellspacing="0" align="center">
+      <tr>
+        <td><strong>Exception Message: </strong></td>
+        <td><%= (!@params_data[:exception].nil?) ? @params_data[:exception] : "" %></td>
+      </tr>
+      <tr>
+        <td><strong>Controller: </strong></td>
+        <td><%= @params_data[:controller_name] %></td>
+      </tr>
+      <tr>
+        <td><strong>Environment: </strong></td>
+        <td><%= "#{ Rails.env }".upcase %></td>
+      </tr>
+      <tr>
+        <td><strong>IP Address: </strong></td>
+        <td><%= @params_data[:request].remote_ip %></td>
+      </tr>
+      <tr>
+        <td><strong>Request From: </strong></td>
+        <td><%= @params_data[:request].fullpath %></td>
+      </tr>
+      <tr>
+        <td><strong>Request Type: </strong></td>
+        <td><%= @params_data[:request].headers['REQUEST_METHOD'] %></td>
+      </tr>
+      <tr>
+        <td><strong>XHR: </strong></td>
+        <td><%= (@params_data[:request].xhr?) ? "AJAX" : "" %></td>
+      </tr>
+      <tr>
+        <td><strong>Referer: </strong></td>
+        <td><%= @params_data[:request].referer %></td>
+      </tr>
+
+      <% if !@params_data[:user].nil? %>
+        <tr>
+          <td><strong>User Name: </strong></td>
+          <td><%= @params_data[:user].name %></td>
+        </tr>
+        <tr>
+          <td><strong>User Email: </strong></td>
+          <td><%= @params_data[:user].email %></td>
+        </tr>
+      <% end %>
+
+      <tr>
+        <td><strong>Location: </strong></td>
+        <td><%= @params_data[:location] %></td>
+      </tr>
+      <tr>
+        <td><strong>Browser: </strong></td>
+        <td><%= "#{ @params_data[:browser].name }  #{ @params_data[:browser].full_version }" %></td>
+      </tr>
+      <tr>
+        <td><strong>Device: </strong></td>
+        <td><%= "#{ @params_data[:browser].device.name }" %></td>
+      </tr>
+      <tr>
+        <td><strong>Platform: </strong></td>
+        <td><%= "#{ @params_data[:browser].platform.name } #{ @params_data[:browser].platform.version }" %></td>
+      </tr>
+      <tr>
+        <td><strong>Time: </strong></td>
+        <td><%= @time %></td>
+      </tr>
+    </table>
+
+    <strong>Params: </strong>
+    <%= @params_data[:params] %><br/>
+
+    <strong>Back Trace: </strong>
+    <%= (!@params_data[:exception].nil?) ? @params_data[:exception].backtrace : "" %>
+
+  </body>
+</html>
