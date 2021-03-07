@@ -5,7 +5,6 @@ class ClaimProfileRequest < ApplicationRecord
 
   belongs_to :user
 
-
   validates :user_type, :document, presence: true, if: :doctor?
   validates :user_type, :name, :email, presence: true, if: :admin?
 
