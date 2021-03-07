@@ -32,7 +32,7 @@ module Admin
       @doctor = Doctor.new(doctor_params)
       @doctor.created_by = current_user.id
       respond_to do |format|
-        @doctor.image_derivatives!
+        # @doctor.image_derivatives!
         if @doctor.save
           format.html { redirect_to(admin_doctors_url, notice: 'Doctor was successfully created.') }
           format.json { render(:show, status: :created, location: @doctor) }
@@ -46,7 +46,7 @@ module Admin
       respond_to do |format|
         @doctor.updated_by = current_user.id
         @doctor.attributes = doctor_params
-        @doctor.image_derivatives!
+        # @doctor.image_derivatives!
         if @doctor.save
           if doctor_params[:update_request] == "yes"
             request = ApprovalRequest&.where(request_user_id: @doctor.user_id, status: 'pending')&.first
