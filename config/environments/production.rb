@@ -103,6 +103,13 @@ Rails.application.configure do
   # config.active_record.database_selector = { delay: 2.seconds }
   # config.active_record.database_resolver = ActiveRecord::Middleware::DatabaseSelector::Resolver
   # config.active_record.database_resolver_context = ActiveRecord::Middleware::DatabaseSelector::Resolver::Session
-  config.action_mailer.delivery_method = :smtp
+
+  config.action_mailer.delivery_method = :mailgun
+  config.action_mailer.mailgun_settings = {
+    api_key: 'b818041aebc1b72bdd86612793dd9b42-e438c741-e208eea5',
+    domain: 'findmydirectdoctor.com',
+    # api_host: 'api.eu.mailgun.net'  # Uncomment this line for EU region domains
+  }
+
   config.action_mailer.default_url_options = { host: 'www.findmydirectdoctor.com', protocol: 'https' }
 end
