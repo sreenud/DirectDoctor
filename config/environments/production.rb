@@ -106,7 +106,7 @@ Rails.application.configure do
 
   config.action_mailer.delivery_method = :mailgun
   config.action_mailer.mailgun_settings = {
-    api_key: 'b818041aebc1b72bdd86612793dd9b42-e438c741-e208eea5',
+    api_key: Rails.application.credentials.dig(:mailgun, :api_key),,
     domain: 'findmydirectdoctor.com',
     # api_host: 'api.eu.mailgun.net'  # Uncomment this line for EU region domains
   }
