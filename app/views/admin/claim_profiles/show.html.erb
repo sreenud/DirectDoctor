@@ -35,6 +35,31 @@
             </a>
           </div>
         </div>
+        <div class="w-full pl-1 mt-8">
+          <%= form_with(model: [:admin, @claim_profile_request], url: admin_claim_profiles_url, class: "w-full", method: 'POST' ,data: {type: "html", action: "ajax:error->message#errorHandler ajax:success->message#success" }) do |form| %>
+            <%= form.hidden_field :user_id %>
+            <%= form.hidden_field :id %>
+            <div class="w-full flex radio-box">
+              <%=form.radio_button :status, 'approve', :id => 'approve', data: {action: 'onboarding#userChoice', target: 'onboarding.userType'}%>
+              <label for="approve" class="cursor-pointer">
+                <span>Approve</span>
+              </label>
+              <%=form.radio_button :status, 'request', :id => 'request', data: {action: 'onboarding#userChoice', target: 'onboarding.userType'}%>
+              <label for="request" class="cursor-pointer w-full">
+                <span>Follow up</span>
+              </label>
+              <%=form.radio_button :status, 'reject', :id => 'reject', data: {action: 'onboarding#userChoice', target: 'onboarding.userType'}%>
+              <label for="reject" class="cursor-pointer">
+                <span>Reject</span>
+              </label>
+            </div>
+            <div class="w-full mt-6">
+              <%= form.fields_for :claim_profile_comments do |claim_profile_comment| %>
+                <%= render "claim_profile_comment", form: claim_profile_comment %>
+              <% end %>
+            </div>
+          <% end %>
+        </div>
       </div>
     </div>
   </div>

@@ -39,6 +39,7 @@ module Admin
       @claim_profile_request.email = @user.email
       @specialities = Speciality.latest
       @states = State.by_name
+      @claim_profile_request.claim_profile_comments.build
     end
 
     def update
