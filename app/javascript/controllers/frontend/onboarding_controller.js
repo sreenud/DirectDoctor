@@ -133,6 +133,7 @@ export default class extends Controller {
 
   showErrors(errors) {
     for (const input of onboardingInputFields) {
+      console.log(input);
       if (errors[input]) {
         document.getElementById(`error_${input}`).textContent = errors[input];
       } else {

@@ -2,6 +2,7 @@ class ClaimProfileRequest < ApplicationRecord
   include DocumentUploader::Attachment(:document)
 
   attr_accessor :user_type, :name, :email
+  has_secure_token :request_token
 
   belongs_to :user
   has_many :claim_profile_comments

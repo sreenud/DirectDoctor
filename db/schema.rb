@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_07_123659) do
+ActiveRecord::Schema.define(version: 2021_03_11_172848) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -73,6 +73,7 @@ ActiveRecord::Schema.define(version: 2021_03_07_123659) do
     t.text "comment", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.text "document_data"
     t.index ["claim_profile_request_id"], name: "index_claim_profile_comments_on_claim_profile_request_id"
     t.index ["user_id"], name: "index_claim_profile_comments_on_user_id"
   end
@@ -85,6 +86,8 @@ ActiveRecord::Schema.define(version: 2021_03_07_123659) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.text "document_data"
+    t.string "request_token"
+    t.index ["request_token"], name: "index_claim_profile_requests_on_request_token", unique: true
     t.index ["user_id"], name: "index_claim_profile_requests_on_user_id"
   end
 

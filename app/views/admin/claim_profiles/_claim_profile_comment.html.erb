@@ -1,4 +1,7 @@
-<div class="input-group">
-  <label class="label text-gray-600" for="patients_in_panel">Comments</label>
-  <%= form.text_area :comment, :class => "input bg-white tinymce", :rows=> "6", :cols=> "50" %>
-</div>
+<% unless form.object.comment %>
+  <div class="input-group">
+    <label class="label text-gray-600" for="patients_in_panel">Message</label>
+    <%= form.hidden_field :user_id, value: current_user.id %>
+    <%= form.text_area :comment, :class => "input bg-white tinymce", :rows=> "6", :cols=> "50" %>
+  </div>
+<% end %>

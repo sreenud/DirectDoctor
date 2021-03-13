@@ -57,9 +57,9 @@ module AdminHelper
 
   def profile_approved?
     claim_request = ClaimProfileRequest.where(user_id: current_user.id)
-      .where(status: 'requested')&.first
+      .where(status: 'approved')&.first
 
-    return true unless claim_request
+    return true if claim_request
   end
 
   def request_approval_check(field_name, approvel_request)

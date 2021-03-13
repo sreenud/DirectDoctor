@@ -1,0 +1,21 @@
+<div class="w-full mt-6">
+  <% claim_profile_comments.each do |claim_profile_comment| %>
+    <div class="max-w-2xl bg-white border-2 border-gray-300 p-3 px-4 rounded-md tracking-wide shadow-lg mb-2">
+      <div id="body" class="flex flex-col ml-1">
+        <div class="text-base"><%=claim_profile_comment&.comment%></div>
+        <div class="flex mt-5">
+          <p class="ml-1 text-xs text-gray-500">
+            By <%=claim_profile_comment&.user&.full_name%> on <%=claim_profile_comment.display_date%>
+          </p>
+        </div>
+        <% if claim_profile_comment&.document_url %>
+          <div class="mt-2">
+            <a href="<%=claim_profile_comment.document_url%>" target="_blank" class=" text-blue-500 underline">
+              Attachment
+            </a>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+</div>

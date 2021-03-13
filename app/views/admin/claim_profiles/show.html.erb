@@ -6,6 +6,22 @@
     <a href="<%=admin_dashboard_index_url%>" class=" text-blue-500 underline">Go back to Dashboard</a>
   </div>
 </header>
+<div class="w-full">
+  <%if !flash[:notice].blank? %>
+    <div class="text-white px-6 py-4 border-0 rounded relative mb-4 bg-green-500 mt-4">
+      <span class="inline-block align-middle mr-8">
+        <%= flash[:notice]%>
+      </span>
+    </div>
+  <% end %>
+  <%if !flash[:alert].blank? %>
+    <div class="text-white px-6 py-4 border-0 rounded relative mb-4 bg-red-500 mt-4">
+      <span class="inline-block align-middle mr-8">
+        <%= flash[:alert]%>
+      </span>
+    </div>
+  <% end %>
+</div>
 <div class="grid grid-cols-12 gap-6">
   <div class="col-span-12 lg:col-span-5 xxl:col-span-4 flex lg:block flex-col-reverse rounded-lg">
     <div class="w-full bg-white shadow-md mt-6">
@@ -35,28 +51,43 @@
             </a>
           </div>
         </div>
-        <div class="w-full pl-1 mt-8">
-          <%= form_with(model: [:admin, @claim_profile_request], url: admin_claim_profiles_url, class: "w-full", method: 'POST' ,data: {type: "html", action: "ajax:error->message#errorHandler ajax:success->message#success" }) do |form| %>
-            <%= form.hidden_field :user_id %>
+        <div class="w-full pl-1 mt-8" data-controller="radio-button">
+          <%= form_with(model: [:admin, @claim_profile_request], url: admin_claim_profile_url(@claim_profile_request), class: "w-full", method: "PATCH", data: {type: "html", action: "ajax:error->radio-button#errorHandler ajax:success->radio-button#success" }) do |form| %>
+            <%= form.hidden_field :user_id, value: @claim_profile_request.user_id %>
+            <%= form.hidden_field :doctor_id, value: @doctor.id %>
             <%= form.hidden_field :id %>
+            <%= form.hidden_field :status, data: {target: "radio-button.status"} %>
             <div class="w-full flex radio-box">
-              <%=form.radio_button :status, 'approve', :id => 'approve', data: {action: 'onboarding#userChoice', target: 'onboarding.userType'}%>
+              <%=form.radio_button :status, 'approve', :id => 'approve', data: {action: 'radio-button#requestStatus', target: 'radio-button.buttonStatus'}%>
               <label for="approve" class="cursor-pointer">
                 <span>Approve</span>
               </label>
-              <%=form.radio_button :status, 'request', :id => 'request', data: {action: 'onboarding#userChoice', target: 'onboarding.userType'}%>
-              <label for="request" class="cursor-pointer w-full">
+              <%=form.radio_button :status, 'follow_up', :id => 'follow_up', data: {action: 'radio-button#requestStatus', target: 'radio-button.buttonStatus'}%>
+              <label for="follow_up" class="cursor-pointer w-full">
                 <span>Follow up</span>
               </label>
-              <%=form.radio_button :status, 'reject', :id => 'reject', data: {action: 'onboarding#userChoice', target: 'onboarding.userType'}%>
+              <%=form.radio_button :status, 'reject', :id => 'reject', data: {action: 'radio-button#requestStatus', target: 'radio-button.buttonStatus'}%>
               <label for="reject" class="cursor-pointer">
                 <span>Reject</span>
               </label>
             </div>
-            <div class="w-full mt-6">
+            <div id="comment_list" data-target="radio-button.commentList">
+              <% if @claim_profile_comments.present? %>
+                <%= render partial: 'comments', locals: {claim_profile_comments:  @claim_profile_comments} %>
+              <% end %>
+            </div>
+            <div class="w-full z-10 text-green-500 mt-4" data-target="radio-button.success"></div>
+            <% hidden = (@claim_profile_request.status == 'follow_up') ? "block" : "hidden" %>
+            <div class="w-full mt-6 <%=hidden%>" data-target="radio-button.doctorForm">
               <%= form.fields_for :claim_profile_comments do |claim_profile_comment| %>
                 <%= render "claim_profile_comment", form: claim_profile_comment %>
               <% end %>
+              <div class="w-full z-10 text-red-500" data-target="radio-button.errors"></div>
+              <div class="w-full mb-12 mt-4">
+                <%= form.button(type: "submit", class: "btn btn-md btn-default btn-dd-blue btn-outline text-sm font-bold float-left", data: {disable_with: "<i class='fab fa fa-spinner fa-spin pr-2'></i> Saving in..." }) do %>
+                  <span><i class='fab fa fa-floppy-o pr-2'></i>Submit</span>
+                <% end %>
+              </div>
             </div>
           <% end %>
         </div>
@@ -68,46 +99,39 @@
       <div class="border-b py-4 px-3 text-lg text-gray-100 bg-gray-700 rounded-tl-lg rounded-tr-lg">
         Doctor's profiles found in our database
       </div>
-      <% if @doctors %>
-        <% @doctors.each do |doctor| %>
-          <div class="w-full px-2 py-4 text-gray-700 border-b" data-controller="claim-profile" data-claim-profile-doctor-id="<%=doctor.id%>" data-claim-profile-user-id="<%=@claim_profile_request.user_id%>" data-claim-profile-id="<%=@claim_profile_request.id%>">
-            <div class="w-full flex">
-              <div class="w-2/6">
-                <% if doctor&.image_data %>
-                  <img alt="" class="h-32 w-full object-cover border rounded-lg doc-avatar" src="<%=doctor&.image_url%>">
-                <% else %>
-                  <%= image_pack_tag 'doctor_default.svg', class: "h-40 w-full border rounded-lg doc-avatar" %>
-                <% end %>
-              </div>
-              <div class="w-4/6 text-md tracking-wide pl-4">
-                <div class="w-full flex">
-                  <div class="text-sm font-bold w-3/12">Name:</div>
-                  <div class="w-9/12">
-                    <div><%= doctor&.name %></div>
-                    <div class=" text-sm"><%= doctor&.email %></div>
-                  </div>
-                </div>
-                <div class="w-full flex pt-2">
-                  <div class="text-sm font-bold w-3/12">Phone:</div>
-                  <div class="w-9/12"><%= doctor&.phone%></div>
-                </div>
-                <div class="w-full flex pt-1">
-                  <div class="text-sm font-bold w-3/12">FDD ID:</div>
-                  <div class="w-9/12"><%= doctor&.fdd_id%></div>
-                </div>
-                <div class="w-full flex pt-1">
-                  <div class="text-sm font-bold w-3/12">Address:</div>
-                  <div class="w-9/12"><%=doctor.full_address%></div>
-                </div>
-              </div>
+      <% if @doctor %>
+        <div class="w-full px-2 py-4 text-gray-700 border-b" data-controller="claim-profile" data-claim-profile-doctor-id="<%=@doctor.id%>" data-claim-profile-user-id="<%=@claim_profile_request.user_id%>" data-claim-profile-id="<%=@claim_profile_request.id%>">
+          <div class="w-full flex">
+            <div class="w-2/6">
+              <% if @doctor&.image_data %>
+                <img alt="" class="h-32 w-full object-cover border rounded-lg doc-avatar" src="<%=@doctor&.image_url%>">
+              <% else %>
+                <%= image_pack_tag 'doctor_default.svg', class: "h-40 w-full border rounded-lg doc-avatar" %>
+              <% end %>
             </div>
-            <div class="w-full flex justify-end mt-4">
-              <button class="px-4 py-2 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-purple-600 border border-transparent rounded-lg active:bg-purple-600 hover:bg-purple-700 focus:outline-none focus:shadow-outline-purple" data-action="claim-profile#claimProfile" onclick="return confirm('Are you sure you want to approve this profile?');">
-                Approve
-              </button>
+            <div class="w-4/6 text-md tracking-wide pl-4">
+              <div class="w-full flex">
+                <div class="text-sm font-bold w-3/12">Name:</div>
+                <div class="w-9/12">
+                  <div><%= @doctor&.name %></div>
+                  <div class=" text-sm"><%= @doctor&.email %></div>
+                </div>
+              </div>
+              <div class="w-full flex pt-2">
+                <div class="text-sm font-bold w-3/12">Phone:</div>
+                <div class="w-9/12"><%= @doctor&.phone%></div>
+              </div>
+              <div class="w-full flex pt-1">
+                <div class="text-sm font-bold w-3/12">FDD ID:</div>
+                <div class="w-9/12"><%= @doctor&.fdd_id%></div>
+              </div>
+              <div class="w-full flex pt-1">
+                <div class="text-sm font-bold w-3/12">Address:</div>
+                <div class="w-9/12"><%=@doctor.full_address%></div>
+              </div>
             </div>
           </div>
-        <% end %>
+        </div>
       <% else %>
         <div class="p-4 text-gray-700"><span class=" font-glacialbold"> <%=@claim_profile_request.name%></span> profile not found in the database, you can create this profile by providing some additional information.</div>
         <div class="p-4 justify-center"  data-controller="message" >

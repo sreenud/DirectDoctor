@@ -1,0 +1,21 @@
+<% unless form.object.comment %>
+  <div><label class="label text-gray-600" for="patients_in_panel">Message</label></div>
+  <div class="mt-2">
+    <%= form.hidden_field :user_id, value: current_user.id %>
+    <%= form.text_area :comment, :class => "input bg-white border p-2", :rows=> "4", :cols=> "53", data: {action: "input->claim-profile#messageBox"} %>
+  </div>
+  <div class="text-red-500 mt-2 text-left" id="error_claim_profile_comments_comment" data-target="claim-profile.fileErrorMessage"></div>
+  <div class="bg-grey-lighter mt-6 flex w-64" data-controller="claim-profile">
+    <div class="w-full">
+      <label class="w-full flex flex-row items-center px-2 py-2 bg-white text-blue rounded-lg shadow-lg tracking-wide uppercase border border-blue cursor-pointer hover:bg-blue hover:text-doctor-yellow">
+        <svg class="w-8 h-8" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+          <path d="M16.88 9.1A4 4 0 0 1 16 17H5a5 5 0 0 1-1-9.9V7a3 3 0 0 1 4.52-2.59A4.98 4.98 0 0 1 17 8c0 .38-.04.74-.12 1.1zM11 11h3l-4-4-4 4h3v3h2v-3z" />
+        </svg>
+        <span class="ml-4 text-base leading-normal text-left" >Choose File</span>
+        <%= form.hidden_field :document, value: form.object.cached_document_data %>
+        <%= form.file_field :document, class: 'hidden', data: {target: "claim-profile.fileName", action: "claim-profile#fileDisplayName"} %>
+      </label>
+      <div class="text-center mt-3" data-target="claim-profile.fileOriginalName"></div>
+    </div>
+  </div>
+<% end %>
