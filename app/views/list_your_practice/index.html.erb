@@ -6,170 +6,241 @@
   </div>
   <div class="lg:col-span-8 relative -ml-4 -mr-4  mt-40">
     <div class="w-full">
-      <div class="w-full flex justify-between">
-        <div class="-mb-8 ml-6"><%=image_pack_tag 'yellow_circle_full.svg', class: "w-20 h-20"%></div>
+      <div class="w-full flex justify-end">
         <div class="flex -mb-12 -mr-3">
           <div class="flex items-end pt-8 -mr-10"><%=image_pack_tag 'yellow_circle_big_shadow.svg', class: "w-16 h-16"%></div>
           <div><%=image_pack_tag 'light_yellow_slant.svg', class: "w-20 h-20"%></div>
         </div>
       </div>
-      <div class="lg:w-full flex w-4 about-gray-background-light" >
-        <div class="font-glacialbold text-2xl px-16 lg:px-24 text-center h-40 text-center tracking-normal flex items-center">
+      <div class="lg:w-full flex w-4 about-gray-background-light bg-no-repeat" >
+        <div class="font-glacialbold text-2xl px-16 lg:px-24 h-40 text-center tracking-normal flex items-center mx-auto">
           <div class="px-4">
-            Be present where your patients are. Get more patient sign-ups with
-            <span class="text-doctor-yellow">FindMyDirectDoctor.com</span>
-          </div>
+            Be present where your patients are. Get more patient </br>sign-ups with
+          <span class="text-doctor-yellow">FindMyDirectDoctor.com</span>
         </div>
       </div>
-      <div class="w-full flex -mt-24 -ml-24">
-        <div><%=image_pack_tag 'light_yellow_slant.svg', class: "w-48 h-48"%></div>
-        <div class="flex items-end -ml-16"><%=image_pack_tag 'yellow_circle_big_shadow.svg', class: "w-16 h-16"%></div>
-      </div>
     </div>
-  </div>
-  <div class="lg:mt-32 lg:col-span-2 relative">
-    <div class="absolute right-0 -mt-16 mr-8">
-      <%=image_pack_tag 'light_grey_2_lines_vertical.svg', class: "h-56" %>
-    </div>
-    <div class="right-0 absolute -mr-4 -mt-32 z-50">
-      <%= image_pack_tag 'yellow_circle_outline_opacity_right.png', class: "w-24 h-64" %>
+    <div class="w-full flex -mt-24 -ml-24">
+      <div><%=image_pack_tag 'light_yellow_slant.svg', class: "w-48 h-48"%></div>
+      <div class="flex items-end -ml-16"><%=image_pack_tag 'yellow_circle_big_shadow.svg', class: "w-16 h-16"%></div>
     </div>
   </div>
 </div>
+<div class="lg:mt-32 lg:col-span-2 relative">
+  <div class="absolute right-0 -mt-16 mr-8">
+    <%=image_pack_tag 'light_grey_2_lines_vertical.svg', class: "h-56" %>
+  </div>
+  <div class="right-0 absolute -mr-4 -mt-32 z-50">
+    <%= image_pack_tag 'yellow_circle_outline_opacity_right.png', class: "w-24 h-64" %>
+  </div>
+</div>
+</div>
+<%=image_pack_tag 'light_grey_3_lines_horizontal.svg', alt:"image", class:"pt-10 hidden lg:block" %>
 <div class="lg:grid lg:grid-cols-12 lg:flex md:mt-20 mt-10 text-gray-800">
-  <div class="lg:col-span-2 lg:mt-64 relative flex items-center">
+  <div class="lg:col-span-2 relative flex items-center">
     <div class="absolute left-0">
-      <%=image_pack_tag 'Ellipse.png', style:"height:80rem;margin-top: -9rem;", class:"hidden lg:block" %>
+      <%=image_pack_tag 'Ellipse.png', style:"height:80rem;margin-top:1rem;", class:"hidden lg:block" %>
     </div>
   </div>
-  <div class="lg:col-span-10 lg:-ml-8 flex">
-    <div class="lg:w-11/12 p-5">
-      <div class="online-directory online-directory-1">
-        <div class="ml-auto lg:pr-32 lg:w-4/5 pl-8 mt-3">
-          <div class="font-glacialbold text-lg uppercase">Largest online directory listing of direct care doctors. Showcase your practice to millions of our patient viewers.</div>
-          <div class="pt-2 text-xl pr-2 pl-4">
+  <div class="lg:col-span-10 lg:-ml-32 flex">
+    <div class="lg:w-12/12 p-5">
+      <div class="w-full font-glacialbold lg:text-4xl text-2xl text-black lg:hidden mb-6 lg:mb-0">Why List your Practice with us?</div>
+      <!-- component -->
+      <div class="container mx-auto w-full">
+        <div class="relative wrap overflow-hidden p-3 lg:p-10 lg:pl-12">
+          <div class="border-4 absolute border-opacity-20 border-doctor-yellow h-80 mt-2 line-pos hidden lg:block"></div>
+          <!-- right timeline -->
+          <div class="mb-8 flex justify-start items-start w-full right-timeline">
+            <div class="border-2 border-white rounded-full z-20 hidden lg:block">
+              <div class="directory-1 rounded-full">
+                <div class="z-20 flex items-center order-1 shadow-xl bg-white rounded-full justify-center directory-1-circle">
+                  <%= image_pack_tag 'contact-book.svg', alt:"image", class:"w-12" %>
+                </div>
+              </div>
+            </div>
+            <div class="order-1 practice-bg rounded-xl shadow-xl px-6 py-4 lg:-ml-20 lg:w-10/12">
+              <div class="font-glacialbold text-xl uppercase lg:pl-16">Largest online directory listing of direct care doctors. Showcase your practice to millions of our patient viewers.</div>
+              <div class="pt-2 text-xl pr-2 lg:pl-16">
+                <div class="flex">
+                  <div class="pr-3 pt-2 flex justify-start">
+                    <svg class="h-3 w-3 text-doctor-yellow" viewBox="0 0 8 8" fill="currentColor">
+                      <circle cx="4" cy="4" r="3" />
+                    </svg>
+                  </div>
+                  <div class="text-xl">
+                    FindMyDirectDoctor is the largest online directory listing website of Direct Primary Care (DPC) and Concierge Medicine doctors in the United States, your presence here at FindMyDirectDoctor.com is crucial to creating a better direct patient care landscape across America.
+                  </div>
+                </div>
+                <div class="flex mt-2">
+                  <div class="pr-3 pt-2 flex justify-start">
+                    <svg class="h-3 w-3 text-doctor-yellow" viewBox="0 0 8 8" fill="currentColor">
+                      <circle cx="4" cy="4" r="3" />
+                    </svg>
+                  </div>
+                  <div class="text-xl">
+                    Make yourself available to patients who are searching for a direct care physician they can trust.
+                  </div>
+                </div>
+                <div class="flex mt-2">
+                  <div class="pr-3 pt-2 flex justify-start">
+                    <svg class="h-3 w-3 text-doctor-yellow" viewBox="0 0 8 8" fill="currentColor">
+                      <circle cx="4" cy="4" r="3" />
+                    </svg>
+                  </div>
+                  <div class="text-xl">
+                    Your availability and accessibility could be the fuel behind a patient’s journey to long-term health and wellness.
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="mb-8 flex justify-start items-start w-full right-timeline relative lg:-ml-12">
+            <div class="directory-2 rounded-full relative hidden lg:block">
+              <div class="w-6 h-6 rounded-full bg-doctor-yellow absolute top-0 top-dot" ></div>
+              <div class="w-6 h-6 rounded-full bg-doctor-yellow absolute bottom-dot"></div>
+              <div class="w-6 h-6 rounded-full bg-doctor-yellow absolute right-dot"></div>
+              <div class="border-8 border-doctor-yellow rounded-full">
+                <div class="border-white rounded-full" style="border-width:20px;">
+                  <div class="z-20 flex items-center order-1 shadow-xl bg-white rounded-full justify-center directory-2-circle">
+                    <h1 class="mx-auto font-semibold uppercase text-center text-sm">Why List your</br> <b class="text-xl font-glacialbold">Practice</b> </br>with us?</h1>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="mb-8 flex justify-start items-start w-full right-timeline lg:ml-10 mt-10">
+          <div class="rounded-full z-20 line hidden lg:block">
+            <div class="directory-1 rounded-full">
+              <div class="z-20 flex items-center order-1 shadow-xl bg-white rounded-full justify-center directory-1-circle">
+                <%= image_pack_tag 'diamond.svg', alt:"image", class:"w-12" %>
+              </div>
+            </div>
+          </div>
+          <div class="order-1 practice-bg rounded-xl shadow-xl w-full px-6 py-4 lg:-ml-20 ">
+            <div class="font-glacialbold text-xl uppercase lg:pl-16">Physician owned, value-based platform. No corporate agenda. </div>
+            <div class="pt-2 text-xl pr-2 lg:pl-16">
+              <div class="flex">
+                <div class="pr-3 pt-2 flex justify-start">
+                  <svg class="h-3 w-3 text-doctor-yellow" viewBox="0 0 8 8" fill="currentColor">
+                    <circle cx="4" cy="4" r="3" />
+                  </svg>
+                </div>
+                <div class="text-xl">
+                  Founded by a medical professional who is frustrated with the country’s current broken health care system, FindMyDirectDoctor.com is owned and operated by Harsha Moole, MD, a strong advocate of direct patient care models.
+                </div>
+              </div>
+              <div class="flex mt-2">
+                <div class="pr-3 pt-2 flex justify-start">
+                  <svg class="h-3 w-3 text-doctor-yellow" viewBox="0 0 8 8" fill="currentColor">
+                    <circle cx="4" cy="4" r="3" />
+                  </svg>
+                </div>
+                <div class="text-xl">
+                  Being  a <a href="https://findmydirectdoctor.us10.list-manage.com/track/click?u=b24fb353281d19d5eed8b4acc&id=11eed38fa2&e=58bcc25579" class="underline text-blue-600">physician-scientist</a>, <a href="https://findmydirectdoctor.us10.list-manage.com/track/click?u=b24fb353281d19d5eed8b4acc&id=b7d0e6d58c&e=58bcc25579" class="underline text-blue-600">entrepreneur</a>, <a href="https://findmydirectdoctor.us10.list-manage.com/track/click?u=b24fb353281d19d5eed8b4acc&id=b7d0e6d58c&e=58bcc25579" class="underline text-blue-600">investor</a>, and author / principal investigator of more than 100 peer-reviewed research articles published in <a href="https://findmydirectdoctor.us10.list-manage.com/track/click?u=b24fb353281d19d5eed8b4acc&id=5b06de9627&e=58bcc25579" class="underline text-blue-600">NEJM</a>, <a href="https://findmydirectdoctor.us10.list-manage.com/track/click?u=b24fb353281d19d5eed8b4acc&id=0831e68aa0&e=58bcc25579" class="underline text-blue-600">US Department of Health</a>, and NHS, among others, Dr. Harsha Moole  believes that Direct Primary Care and Concierge Medicine can free patients and doctors from the shackles of corporate/insurance industries, thereby providing a highly efficient patient-centered form of health care.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="mb-8 flex justify-start items-start w-full right-timeline">
+        <div class="border-2 border-white rounded-full z-20 hidden lg:block">
+          <div class="directory-1 rounded-full">
+            <div class="z-20 flex items-center order-1 shadow-xl bg-white rounded-full justify-center directory-1-circle">
+              <%= image_pack_tag 'businessman.svg', alt:"image", class:"w-12" %>
+            </div>
+          </div>
+        </div>
+        <div class="order-1 practice-bg rounded-xl shadow-xl px-6 py-4 lg:-ml-20 lg:w-10/12">
+          <div class="font-glacialbold text-lg uppercase lg:pl-16">What Yelp is for restaurants/food reviews; FindMyDirectDoctor is for DPC/Concierge Medicine doctors. </div>
+          <div class="pt-2 text-xl pr-2 lg:pl-16">
             <div class="flex">
-              <div class="pr-6 pt-2 flex justify-start">
+              <div class="pr-3 pt-2 flex justify-start">
                 <svg class="h-3 w-3 text-doctor-yellow" viewBox="0 0 8 8" fill="currentColor">
                   <circle cx="4" cy="4" r="3" />
                 </svg>
               </div>
-              <div class="text-base">
-                FindMyDirectDoctor is the largest online directory listing website of Direct Primary Care (DPC) and Concierge Medicine doctors in the United States, your presence here at FindMyDirectDoctor.com is crucial to creating a better direct patient care landscape across America.
+              <div class="text-xl">
+                We strive to be the best in the business, and we cannot do this without your help.
               </div>
             </div>
             <div class="flex mt-2">
-              <div class="pr-6 pt-2 flex justify-start">
+              <div class="pr-3 pt-2 flex justify-start">
                 <svg class="h-3 w-3 text-doctor-yellow" viewBox="0 0 8 8" fill="currentColor">
                   <circle cx="4" cy="4" r="3" />
                 </svg>
               </div>
-              <div class="text-base">
-                Make yourself available to patients who are searching for a direct care physician they can trust.
+              <div class="text-xl">
+                Our overarching mission is to aggressively educate millions of patients about the benefits of DPC/Concierge Medicine, drastically increase awareness and access by connecting them to DPC/Concierge Medicine doctors like you, whom they can rely on and trust.
               </div>
             </div>
-            <div class="flex mt-2">
-              <div class="pr-6 pt-2 flex justify-start">
-                <svg class="h-3 w-3 text-doctor-yellow" viewBox="0 0 8 8" fill="currentColor">
-                  <circle cx="4" cy="4" r="3" />
-                </svg>
-              </div>
-              <div class="text-base">
-                Your availability and accessibility could be the fuel behind a patient’s journey to long-term health and wellness.
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="online-directory online-directory-2 -mt-1 relative pt-10 lg:pt-0">
-        <div class="uppercase absolute text-sm text-center hidden lg:block" style="left: 4rem;top: 5.5rem;">Why List your </br><b class="text-2xl font-bold text-black">Practice</b></br> with us?</div>
-    <div class="ml-auto  lg:pr-10 lg:w-3/5 pl-8 lg:pl-0" >
-      <div class="font-glacialbold text-lg uppercase">Physician owned, value-based platform. No corporate agenda.</div>
-      <div class="pt-2 text-xl pr-2 pl-4">
-        <div class="flex">
-          <div class="pr-6 pt-2 flex justify-start">
-            <svg class="h-3 w-3 text-doctor-yellow" viewBox="0 0 8 8" fill="currentColor">
-              <circle cx="4" cy="4" r="3" />
-            </svg>
-          </div>
-          <div class="text-base">
-            Founded by a medical professional who is frustrated with the country’s current broken health care system, FindMyDirectDoctor.com is owned and operated by Harsha Moole, MD, a strong advocate of direct patient care models.
-          </div>
-        </div>
-        <div class="flex mt-2">
-          <div class="pr-6 pt-2 flex justify-start">
-            <svg class="h-3 w-3 text-doctor-yellow" viewBox="0 0 8 8" fill="currentColor">
-              <circle cx="4" cy="4" r="3" />
-            </svg>
-          </div>
-          <div class="text-base">
-            Being  a <a href="https://findmydirectdoctor.us10.list-manage.com/track/click?u=b24fb353281d19d5eed8b4acc&id=11eed38fa2&e=58bcc25579" target="_blank" class="underline text-blue-600">physician-scientist</a>, <a href="https://findmydirectdoctor.us10.list-manage.com/track/click?u=b24fb353281d19d5eed8b4acc&id=b7d0e6d58c&e=58bcc25579" target="_blank" class="underline text-blue-600">entrepreneur</a>, <a href="https://findmydirectdoctor.us10.list-manage.com/track/click?u=b24fb353281d19d5eed8b4acc&id=b7d0e6d58c&e=58bcc25579" target="_blank" class="underline text-blue-600">investor</a>, and author / principal investigator of more than 100 peer-reviewed research articles published in <a href="https://findmydirectdoctor.us10.list-manage.com/track/click?u=b24fb353281d19d5eed8b4acc&id=5b06de9627&e=58bcc25579" target="_blank" class="underline text-blue-600">NEJM</a>, <a href="https://findmydirectdoctor.us10.list-manage.com/track/click?u=b24fb353281d19d5eed8b4acc&id=0831e68aa0&e=58bcc25579" target="_blank" class="underline text-blue-600">US Department of Health</a>, and NHS, among others, Dr. Harsha Moole  believes that Direct Primary Care and Concierge Medicine can free patients and doctors from the shackles of corporate/insurance industries, thereby providing a highly efficient patient-centered form of health care.
           </div>
         </div>
       </div>
     </div>
   </div>
-  <div class="online-directory online-directory-3 pt-10 lg:pt-0">
-    <div class="ml-auto lg:pr-40 lg:w-4/5 pl-8">
-      <div class="font-glacialbold text-lg uppercase">What Yelp is for restaurants/food reviews; FindMyDirectDoctor is for DPC/Concierge Medicine doctors. </div>
-      <div class="pt-2 text-xl pr-2 pl-4">
-        <div class="flex">
-          <div class="pr-6 pt-2 flex justify-start">
-            <svg class="h-3 w-3 text-doctor-yellow" viewBox="0 0 8 8" fill="currentColor">
-              <circle cx="4" cy="4" r="3" />
-            </svg>
-          </div>
-          <div class="text-base">
-            We strive to be the best in the business, and we cannot do this without your help.
-          </div>
-        </div>
-        <div class="flex mt-2">
-          <div class="pr-6 pt-2 flex justify-start">
-            <svg class="h-3 w-3 text-doctor-yellow" viewBox="0 0 8 8" fill="currentColor">
-              <circle cx="4" cy="4" r="3" />
-            </svg>
-          </div>
-          <div class="text-base">
-            Our overarching mission is to aggressively educate millions of patients about the benefits of DPC/Concierge Medicine, drastically increase awareness and access by connecting them to DPC/Concierge Medicine doctors like you, whom they can rely on and trust.
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="md:flex items-center justify-end mt-10 text-right">
+  <!--<div class="border-t-2 border-doctor-yellow-500 mt-2 w-7/12 mb-10 lg:hidden"></div>-->
+  <div class="md:flex items-center justify-end mt-4 text-right">
     <div class="mb-3">
-      <a class="bg-doctor-yellow text-gray-100 rounded-md px-8 py-2 text-xl md:mr-5">Claim Your Profile</a>
+      <a class="bg-doctor-yellow text-gray-100 rounded-md px-10 py-5 text-xl md:mr-20 shadow-lg">List Your Practice With Us</a>
     </div>
   </div>
 </div>
 </div>
+</div>
+<div class="lg:grid lg:grid-cols-12 lg:flex relative">
+  <div class="lg:col-span-2 relative flex">
+    <%=image_pack_tag 'light_grey_3_lines_horizontal.svg', alt:"image", class:"pt-10" %>
+  </div>
+  <div class="lg:col-span-2 relative flex">
+    <%=image_pack_tag 'yellow_circle_full.svg', alt:"image", class:" w-12 h-12" %>
+  </div>
+  <div class="lg:col-span-8 flex hidden lg:block">
+    <%=image_pack_tag 'off_white_circle_full.svg', alt:"image", class:"absolute" , style:"width: 20rem;right: -5rem;" %>
+    <%=image_pack_tag 'yellow_circle_full.svg', alt:"image", class:" absolute w-12 h-12 ml-auto", style:"top: 14rem;right: -1rem;"%>
+  </div>
 </div>
 <div class="lg:grid lg:grid-cols-12 lg:flex md:mt-48 mt-10 text-gray-800">
-  <div class="lg:col-span-2 lg:mt-64 relative flex items-center">
+  <div class="lg:col-span-2 lg:mt-40 relative flex">
     <div class="absolute left-0">
-      <%=image_pack_tag 'yellow_half_circle_thick.svg'%>
+      <%=image_pack_tag 'yellow_half_circle_thick.svg', style:"width:12rem;", alt:"image", class:"-ml-8"%>
+    </div>
+    <div class="absolute left-0" style="margin-top: 50rem;">
+      <%=image_pack_tag 'yellow_circle_big_shadow.svg', class: "w-10 h-10"%>
+    </div>
+    <div class="absolute left-0" style="margin-top: 53rem;margin-left: -3rem;">
+      <%=image_pack_tag 'light_gray_round_edges.svg', class: "w-24 h-24"%>
+    </div>
+    <div class="absolute left-0" style="margin-top: 80rem;">
+      <%=image_pack_tag 'yellow_circle_outline_opacity.svg', class: ""%>
+    </div>
+    <div class="absolute left-0" style="margin-top: 94rem;">
+      <%=image_pack_tag 'light_grey_3_lines_horizontal.svg', class: ""%>
+    </div>
+    <div class="absolute left-0" style="margin-top:110rem;">
+      <%=image_pack_tag 'yellow_circle_big_shadow.svg', class: "w-6 h-6 absolute", style:"left: 6rem;top: 6rem;"%>
+      <%=image_pack_tag 'off_white_half_full_circle.svg', class: "transform rotate-180"%>
     </div>
   </div>
   <div class="lg:col-span-10 lg:-ml-8 flex">
     <div class="lg:w-10/12 p-5">
       <div class="w-full font-glacialbold lg:text-4xl text-2xl">
         How You Can Get Benefit from <a href="/" target="_blank" class="text-doctor-yellow">FindMyDirectDoctor.com</a>
-        <div class="border-t-2 border-doctor-yellow-500 mt-2 w-2/12"></div>
+        <div class="border-t-2 border-doctor-yellow-500 mt-2 w-7/12"></div>
       </div>
-      <div class="my-5 text-xl">We understand the challenges of having your business/practice be visible and relevant in this fast-paced online era. Here are some reasons why listing your practice at FindMyDirectDoctor.com can boost your business and positively affect your patient advocacy:</div>
+      <div class="my-5 text-2xl">We understand the challenges of having your business/practice be visible and relevant in this fast-paced online era. Here are some reasons why listing your practice at FindMyDirectDoctor.com can boost your business and positively affect your patient advocacy:</div>
       <div class="lg:w-full mt-16 flex relative">
-        <div class="z-40 absolute"><%=image_pack_tag 'list_practice/1-01.svg', class: 'w-24 lg:w-40'%></div>
+        <div class="z-40 absolute"><%=image_pack_tag 'list_practice/1-01.svg', class: 'w-20 lg:w-40'%></div>
         <div class="mission-background-1 ml-16 lg:ml-24 w-full">
-          <div class="w-full pl-10 pr-5 pb-4">
-            <div class="font-glacialbold text-base lg:text-lg subscribe-bg-gray py-2 px-10 rounded-full -ml-6 lg:w-max uppercase">Utilize our SEO to land on 1st page of Google/Bing etc. online search engines</div>
-            <div class="pt-2 text-xl pr-2 pl-4">
+          <div class="w-full pl-3 lg:pl-10 pr-5 pb-4">
+            <div class="font-glacialbold text-base lg:text-lg subscribe-bg-gray py-2 pr-3 pl-6 lg:px-10 rounded-16px -ml-6 lg:w-max uppercase">Utilize our SEO to land on 1st page of Google/Bing etc. online search engines</div>
+            <div class="pt-2 text-xl pr-2 pl-2">
               <div class="flex">
-                <div class="pr-6 pt-2 flex justify-start">
+                <div class="pr-3 pt-2 flex justify-start">
                   <svg class="h-3 w-3 text-doctor-yellow" viewBox="0 0 8 8" fill="currentColor">
                     <circle cx="4" cy="4" r="3" />
                   </svg>
                 </div>
-                <div class="text-lg">
+                <div class="text-xl">
                   Our state-of-the-art Search Engine Optimization (SEO) system will radically improve your online presence, making your DPC/Concierge Medicine practice highly visible and, more importantly, accessible to millions of patients searching online for a boutique medical provider.
                 </div>
               </div>
@@ -178,29 +249,29 @@
         </div>
       </div>
       <div class="lg:w-full mt-16 flex relative">
-        <div class="z-40 absolute"><%=image_pack_tag 'list_practice/2-01.svg', class: 'w-24 lg:w-40'%></div>
+        <div class="z-40 absolute"><%=image_pack_tag 'list_practice/2-01.svg', class: 'w-20 lg:w-40'%></div>
         <div class="mission-background-1 ml-16 lg:ml-24 w-full">
-          <div class="w-full pl-10 pr-5 pb-4">
-            <div class="font-glacialbold text-base lg:text-lg subscribe-bg-gray py-2 px-10 rounded-full -ml-6 lg:w-max uppercase">Add your listing for FREE! Promote your business.</div>
-            <div class="pt-2 text-xl pr-2 pl-4">
+          <div class="w-full pl-3 lg:pl-10 pr-5 pb-4">
+            <div class="font-glacialbold text-base lg:text-lg subscribe-bg-gray py-2 pr-3 pl-6 lg:px-10 rounded-16px -ml-6 lg:w-max uppercase">Add your listing for FREE! Promote your business.</div>
+            <div class="pt-2 text-xl pr-2 pl-2">
               <div class="flex">
-                <div class="pr-6 pt-2 flex justify-start">
+                <div class="pr-3 pt-2 flex justify-start">
                   <svg class="h-3 w-3 text-doctor-yellow" viewBox="0 0 8 8" fill="currentColor">
                     <circle cx="4" cy="4" r="3" />
                   </svg>
                 </div>
-                <div class="text-lg">
+                <div class="text-xl">
                   We list DPC/Concierge Medicine practices for free.
                 </div>
               </div>
               <div class="flex mt-2">
-                <div class="pr-6 pt-2 flex justify-start">
+                <div class="pr-3 pt-2 flex justify-start">
                   <svg class="h-3 w-3 text-doctor-yellow" viewBox="0 0 8 8" fill="currentColor">
                     <circle cx="4" cy="4" r="3" />
                   </svg>
                 </div>
-                <div class="text-lg">
-                  It’s true, by simply <a href="/users/sign_up" target="_blank" class="underline text-blue-600">signing up</a>, we are able to create a customized online listing for you at zero cost.
+                <div class="text-xl">
+                  It’s true, by simply signing up, we are able to create a customized online listing for you at zero cost.
                 </div>
               </div>
             </div>
@@ -208,18 +279,18 @@
         </div>
       </div>
       <div class="lg:w-full mt-16 flex relative">
-        <div class="z-40 absolute"><%=image_pack_tag 'list_practice/3-01.svg', class: 'w-24 lg:w-40'%></div>
+        <div class="z-40 absolute"><%=image_pack_tag 'list_practice/3-01.svg', class: 'w-20 lg:w-40'%></div>
         <div class="mission-background-1 ml-16 lg:ml-24 w-full">
-          <div class="w-full pl-10 pr-5 pb-4">
-            <div class="font-glacialbold text-base lg:text-lg subscribe-bg-gray py-2 px-10 rounded-full -ml-6 lg:w-max uppercase">More patient signups! Increase your profits!</div>
-            <div class="pt-2 text-xl pr-2 pl-4">
+          <div class="w-full pl-3 lg:pl-10 pr-5 pb-4">
+            <div class="font-glacialbold text-base lg:text-lg subscribe-bg-gray py-2 pr-3 pl-6 lg:px-10 rounded-16px -ml-6 lg:w-max uppercase">More patient signups! Increase your profits!</div>
+            <div class="pt-2 text-xl pr-2 pl-2">
               <div class="flex">
-                <div class="pr-6 pt-2 flex justify-start">
+                <div class="pr-3 pt-2 flex justify-start">
                   <svg class="h-3 w-3 text-doctor-yellow" viewBox="0 0 8 8" fill="currentColor">
                     <circle cx="4" cy="4" r="3" />
                   </svg>
                 </div>
-                <div class="text-lg">
+                <div class="text-xl">
                   Increase your profits and improve your patient advocacy! Amplified online visibility brings you more leads and more patient sign-ups, thus, better-performing revenue outcomes.
                 </div>
               </div>
@@ -228,28 +299,28 @@
         </div>
       </div>
       <div class="lg:w-full mt-16 flex relative">
-        <div class="z-40 absolute"><%=image_pack_tag 'list_practice/4-01.svg', class: 'w-24 lg:w-40'%></div>
+        <div class="z-40 absolute"><%=image_pack_tag 'list_practice/4-01.svg', class: 'w-20 lg:w-40'%></div>
         <div class="mission-background-1 ml-16 lg:ml-24 w-full">
-          <div class="w-full pl-10 pr-5 pb-4">
-            <div class="font-glacialbold text-base lg:text-lg subscribe-bg-gray py-2 px-10 rounded-full -ml-6 lg:w-max uppercase">Beat your competition.</div>
-            <div class="pt-2 text-xl pr-2 pl-4">
+          <div class="w-full pl-3 lg:pl-10 pr-5 pb-4">
+            <div class="font-glacialbold text-base lg:text-lg subscribe-bg-gray py-2 pr-3 pl-6 lg:px-10 rounded-16px -ml-6 lg:w-max uppercase">Beat your competition.</div>
+            <div class="pt-2 text-xl pr-2 pl-2">
               <div class="flex">
-                <div class="pr-6 pt-2 flex justify-start">
+                <div class="pr-3 pt-2 flex justify-start">
                   <svg class="h-3 w-3 text-doctor-yellow" viewBox="0 0 8 8" fill="currentColor">
                     <circle cx="4" cy="4" r="3" />
                   </svg>
                 </div>
-                <div class="text-lg">
+                <div class="text-xl">
                   You get competitive advantage over other DPC/Concierge Medicine practices in your area.
                 </div>
               </div>
               <div class="flex mt-2">
-                <div class="pr-6 pt-2 flex justify-start">
+                <div class="pr-3 pt-2 flex justify-start">
                   <svg class="h-3 w-3 text-doctor-yellow" viewBox="0 0 8 8" fill="currentColor">
                     <circle cx="4" cy="4" r="3" />
                   </svg>
                 </div>
-                <div class="text-lg">
+                <div class="text-xl">
                   This can be achieved by increased online visibility in your zip codes and your neighboring zip codes.
                 </div>
               </div>
@@ -258,18 +329,18 @@
         </div>
       </div>
       <div class="lg:w-full mt-16 flex relative">
-        <div class="z-40 absolute"><%=image_pack_tag 'list_practice/5-01.svg', class: 'w-24 lg:w-40'%></div>
+        <div class="z-40 absolute"><%=image_pack_tag 'list_practice/5-01.svg', class: 'w-20 lg:w-40'%></div>
         <div class="mission-background-1 ml-16 lg:ml-24 w-full">
-          <div class="w-full pl-10 pr-5 pb-4">
-            <div class="font-glacialbold text-base lg:text-lg subscribe-bg-gray py-2 px-10 rounded-full -ml-6 lg:w-max uppercase">Turn health care shoppers into your patients.</div>
-            <div class="pt-2 text-xl pr-2 pl-4">
+          <div class="w-full pl-3 lg:pl-10 pr-5 pb-4">
+            <div class="font-glacialbold text-base lg:text-lg subscribe-bg-gray py-2 pr-3 pl-6 lg:px-10 rounded-16px -ml-6 lg:w-max uppercase">Turn health care shoppers into your patients.</div>
+            <div class="pt-2 text-xl pr-2 pl-2">
               <div class="flex">
-                <div class="pr-6 pt-2 flex justify-start">
+                <div class="pr-3 pt-2 flex justify-start">
                   <svg class="h-3 w-3 text-doctor-yellow" viewBox="0 0 8 8" fill="currentColor">
                     <circle cx="4" cy="4" r="3" />
                   </svg>
                 </div>
-                <div class="text-lg">
+                <div class="text-xl">
                   Having a FindMyDirectDoctor profile gives you a better hand at navigating and attracting millions of health care shoppers who are constantly online, equipping you with a stronger fighting chance to transform them into your life-long patients.
                 </div>
               </div>
@@ -278,18 +349,18 @@
         </div>
       </div>
       <div class="lg:w-full mt-16 flex relative">
-        <div class="z-40 absolute"><%=image_pack_tag 'list_practice/6-01.svg', class: 'w-24 lg:w-40'%></div>
+        <div class="z-40 absolute"><%=image_pack_tag 'list_practice/6-01.svg', class: 'w-20 lg:w-40'%></div>
         <div class="mission-background-1 ml-16 lg:ml-24 w-full">
-          <div class="w-full pl-10 pr-5 pb-4">
-            <div class="font-glacialbold text-base lg:text-lg subscribe-bg-gray py-2 px-10 rounded-full -ml-6 lg:w-max uppercase">Leverage online patient reviews to gain social trust. </div>
-            <div class="pt-2 text-xl pr-2 pl-4">
+          <div class="w-full pl-3 lg:pl-10 pr-5 pb-4">
+            <div class="font-glacialbold text-base lg:text-lg subscribe-bg-gray py-2 pr-3 pl-6 lg:px-10 rounded-16px -ml-6 lg:w-max uppercase">Leverage online patient reviews to gain social trust. </div>
+            <div class="pt-2 text-xl pr-2 pl-2">
               <div class="flex">
-                <div class="pr-6 pt-2 flex justify-start">
+                <div class="pr-3 pt-2 flex justify-start">
                   <svg class="h-3 w-3 text-doctor-yellow" viewBox="0 0 8 8" fill="currentColor">
                     <circle cx="4" cy="4" r="3" />
                   </svg>
                 </div>
-                <div class="text-lg">
+                <div class="text-xl">
                   We’re all for helping you gain social trust and we do this by promoting your boutique services and expertise as well as highlighting positive reviews from past and current patients.
                 </div>
               </div>
@@ -298,28 +369,28 @@
         </div>
       </div>
       <div class="lg:w-full mt-16 flex relative">
-        <div class="z-40 absolute"><%=image_pack_tag 'list_practice/7-01.svg', class: 'w-24 lg:w-40'%></div>
+        <div class="z-40 absolute"><%=image_pack_tag 'list_practice/7-01.svg', class: 'w-20 lg:w-40'%></div>
         <div class="mission-background-1 ml-16 lg:ml-24 w-full">
-          <div class="w-full pl-10 pr-5 pb-4">
-            <div class="font-glacialbold text-base lg:text-lg subscribe-bg-gray py-2 px-10 rounded-full -ml-6 lg:w-max uppercase">Amplify your online reputation and brand exposure.</div>
-            <div class="pt-2 text-xl pr-2 pl-4">
+          <div class="w-full pl-3 lg:pl-10 pr-5 pb-4">
+            <div class="font-glacialbold text-base lg:text-lg subscribe-bg-gray py-2 pr-3 pl-6 lg:px-10 rounded-16px -ml-6 lg:w-max uppercase">Amplify your online reputation and brand exposure.</div>
+            <div class="pt-2 text-xl pr-2 pl-2">
               <div class="flex">
-                <div class="pr-6 pt-2 flex justify-start">
+                <div class="pr-3 pt-2 flex justify-start">
                   <svg class="h-3 w-3 text-doctor-yellow" viewBox="0 0 8 8" fill="currentColor">
                     <circle cx="4" cy="4" r="3" />
                   </svg>
                 </div>
-                <div class="text-lg">
+                <div class="text-xl">
                   Another goal of ours as a platform is to bolster your online reputation via detailed listing page of your practice, voluntary blog post contributions, brand exposure, & patient reviews. We firmly believe that DPC/Concierge Medicine doctors deserve the limelight.
                 </div>
               </div>
               <div class="flex mt-2">
-                <div class="pr-6 pt-2 flex justify-start">
+                <div class="pr-3 pt-2 flex justify-start">
                   <svg class="h-3 w-3 text-doctor-yellow" viewBox="0 0 8 8" fill="currentColor">
                     <circle cx="4" cy="4" r="3" />
                   </svg>
                 </div>
-                <div class="text-lg">
+                <div class="text-xl">
                   We are relevant. We know exactly how to address the current broken health care system. There is inherent value in direct care practices, and we are morally inclined and immensely capable to grow the DPC / Concierge Medicine ecosystem in the US.
                 </div>
               </div>
@@ -328,87 +399,94 @@
         </div>
       </div>
       <div class="lg:w-full mt-16 flex relative">
-        <div class="z-40 absolute"><%=image_pack_tag 'list_practice/8-01.svg', class: 'w-24 lg:w-40'%></div>
+        <div class="z-40 absolute"><%=image_pack_tag 'list_practice/8-01.svg', class: 'w-20 lg:w-40'%></div>
         <div class="mission-background-1 ml-16 lg:ml-24 w-full">
-          <div class="w-full pl-10 pr-5 pb-4">
-            <div class="font-glacialbold text-base lg:text-lg subscribe-bg-gray py-2 px-10 rounded-full -ml-6 lg:w-max uppercase">Physician owned online platform – dedicated to direct care providers only. </div>
-            <div class="pt-2 text-xl pr-2 pl-4">
+          <div class="w-full pl-3 lg:pl-10 pr-5 pb-4">
+            <div class="font-glacialbold text-base lg:text-lg subscribe-bg-gray py-2 pr-3 pl-6 lg:px-10 rounded-16px -ml-6 lg:w-max uppercase">Physician owned online platform – dedicated to direct care providers only. </div>
+            <div class="pt-2 text-xl pr-2 pl-2">
               <div class="flex">
-                <div class="pr-6 pt-2 flex justify-start">
+                <div class="pr-3 pt-2 flex justify-start">
                   <svg class="h-3 w-3 text-doctor-yellow" viewBox="0 0 8 8" fill="currentColor">
                     <circle cx="4" cy="4" r="3" />
                   </svg>
                 </div>
-                <div class="text-lg">
+                <div class="text-xl">
                   All of this is fueled under the premise that we are physician-owned and operated. We are not a corporate company with a financial agenda.
                 </div>
               </div>
               <div class="flex mt-2">
-                <div class="pr-6 pt-2 flex justify-start">
+                <div class="pr-3 pt-2 flex justify-start">
                   <svg class="h-3 w-3 text-doctor-yellow" viewBox="0 0 8 8" fill="currentColor">
                     <circle cx="4" cy="4" r="3" />
                   </svg>
                 </div>
-                <div class="text-lg">
+                <div class="text-xl">
                   This platform is run by an internal medicine physician, bootstrapping to develop this value-based platform – which means no wall street, no VC, no corporate interest, just Direct Primary Care and Concierge Medicine physicians committed to providing better health care to their patients.
                 </div>
               </div>
               <div class="flex mt-2">
-                <div class="pr-6 pt-2 flex justify-start">
+                <div class="pr-3 pt-2 flex justify-start">
                   <svg class="h-3 w-3 text-doctor-yellow" viewBox="0 0 8 8" fill="currentColor">
                     <circle cx="4" cy="4" r="3" />
                   </svg>
                 </div>
-                <div class="text-lg">This is and will always be a physician-owned boutique online directory listing platform - DEDICATED to direct care providers ONLY.
+                <div class="text-xl">This is and will always be a physician-owned boutique online directory listing platform - DEDICATED to direct care providers ONLY.
                 </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-      <div class="md:flex items-center justify-end mt-10 text-right">
-        <div class="mb-3">
-          <a class="bg-doctor-yellow text-gray-100 rounded-md px-8 py-2 text-xl md:mr-5">Claim Your Profile</a>
+      <div class="md:flex items-center justify-end mt-20 text-right">
+        <div class="mb-12">
+          <a class="bg-doctor-yellow text-gray-100 rounded-md px-10 py-5 text-xl shadow-lg md:mr-5">Claim Your Profile</a>
         </div>
-        <div class="mb-3">
-          <a class="bg-doctor-yellow text-gray-100 rounded-md px-8 py-2 text-xl">List Your Practice With US</a>
+        <div class="mb-12">
+          <a class="bg-doctor-yellow text-gray-100 rounded-md px-10 py-5 text-xl shadow-lg">List Your Practice With US</a>
         </div>
       </div>
     </div>
     <div class="w-2/12 mt-64 hidden lg:block">
       <div class="w-full relative">
-        <div class="absolute right-0  row-span-3">
+        <div lass="absolute right-0" style="margin-top:20rem;">
+          <div class="absolute right-0 -mt-24 ml-20 -mr-10">
+            <%=image_pack_tag 'light_gray_lines_horizontal_big.svg', class: "h-10" %>
+          </div>
+          <div class="right-0 absolute -mt-32 z-50">
+            <%= image_pack_tag 'yellow_circle_outline_opacity_right.png', class: "w-12 h-28" %>
+          </div>
+        </div>
+        <div class="absolute right-0  row-span-3" style="top: 20rem;">
           <%=image_pack_tag 'light_yellow_edge.png'%>
-          <div class="absolute bottom-0 right-0 -mb-56"><%=image_pack_tag 'yellow_circle_big_shadow.svg', class:"w-12 h-12"%></div>
+          <%=image_pack_tag 'yellow_circle_big_shadow.svg', class:"w-20 h-20"%>
+          <%=image_pack_tag 'light_grey_2_lines_vertical.svg', class: "h-56", style:"margin-top: 20rem;" %>
+          <%=image_pack_tag 'yellow_circle_big_shadow.svg', class: "w-6 h-6", style:"margin-top: -3rem;margin-left: -4rem;"%>
         </div>
       </div>
     </div>
   </div>
   <div class="lg:col-start-2 lg:col-span-10 -ml-8 lg:flex lg:items-center md:mt-16">
     <div class="lg:w-1/2">
-      <div class="text-xl font-semibold text-center flex items-center w-full justify-center circle-doctors">
-        <div class="circle-padding font-bold text-black lg:mt-10 text-center ml-10 lg:ml-0 text-base">JOIN THE LARGEST ONLINE DIRECTORY OF </br>
-        <span class="text-6xl my-3">>10,000</span></br>
-      DIRECT CARE DOCTORS!</div>
-  </div>
+      <div class="text-heading font-semibold text-center flex items-center w-full justify-center circle-doctors">
+        <div class="circle-padding font-glacialbold text-black text-center ml-10 lg:ml-0 text-2xl mb-10">JOIN THE LARGEST ONLINE </br>DIRECTORY OF </br>
+      <span class="text-6xl my-3 font-glacialbold">> 10,000</span></br>
+    DIRECT CARE DOCTORS!</div>
 </div>
-<div class="lg:w-1/2">
-  <div class="font-glacialbold text-2xl mb-2 mt-10 ml-10 lg:ml-0 lg:mt-10">DO NOT MISS OUT ON ALL THE PERKS THAT COULD HELP FIND YOUR NEXT PATIENT.</div>
-  <div class="text-xl ml-10 lg:ml-0">Join the movement for better health care and follow this simple <a href="/users/sign_up" target="_blank" class="underline text-blue-600">Sign Up process</a> , so that we can set up a standard profile of your clinic in our directory listing service. </br>10,000+ DPC & Concierge doctors have already submitted their clinic listings. We are going live in a few months and would love for you to be a part of this direct care movement. </br>
+</div>
+<div class="lg:w-1/2 p-3">
+  <div class="font-glacialbold text-2xl mb-2 ml-10 lg:ml-0">DO NOT MISS OUT ON ALL THE PERKS THAT COULD HELP FIND YOUR NEXT PATIENT.</div>
+  <div class="text-2xl ml-10 lg:ml-0 mb-16">Join the movement for better health care and follow this simple Sign Up process, so that we can set up a standard profile of your clinic in our directory listing service. </br>10,000+ DPC & Concierge doctors have already submitted their clinic listings. We are going live in a few months and would love for you to be a part of this direct care movement. </br>
 Let us know if you have any questions, and we will be more than happy to connect with you. Contact Us here.</div>
 </div>
 </div>
 </div>
 <div class="lg:grid lg:grid-cols-12 flex mt-48 text-gray-800">
   <div class="lg:col-span-6 relative flex items-center -mb-6 -mt-12">
-    <div class="absolute left-0">
-      <%=image_pack_tag 'yellow_circle_outline_opacity.svg'%>
-    </div>
     <div><%=image_pack_tag 'light_grey_3_lines_horizontal.svg'%></div>
   </div>
   <div class="lg:col-span-6 relative">
-    <div class="absolute right-0">
-      <%=image_pack_tag 'yellow_circle_full.svg', class: "w-12 h-12"%>
+    <div class="absolute right-0" style="top: -20rem;">
+      <%=image_pack_tag 'light_yellow_edge.png', class: ""%>
     </div>
   </div>
 </div>
