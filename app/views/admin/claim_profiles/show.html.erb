@@ -54,7 +54,7 @@
         <div class="w-full pl-1 text-xs">
           <div class="mt-4">URL:</div>
           <div class="mt-2">
-            <%=claim_profile_url(@claim_profile_request.request_token)%>
+            <%=claim_profile_url(@claim_profile_request&.request_token)%>
           </div>
         </div>
         <div class="w-full pl-1 mt-8" data-controller="radio-button">
