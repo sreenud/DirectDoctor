@@ -51,10 +51,16 @@
             </a>
           </div>
         </div>
+        <div class="w-full pl-1 text-xs">
+          <div class="mt-4">URL:</div>
+          <div class="mt-2">
+            <%=claim_profile_url(@claim_profile_request.request_token)%>
+          </div>
+        </div>
         <div class="w-full pl-1 mt-8" data-controller="radio-button">
           <%= form_with(model: [:admin, @claim_profile_request], url: admin_claim_profile_url(@claim_profile_request), class: "w-full", method: "PATCH", data: {type: "html", action: "ajax:error->radio-button#errorHandler ajax:success->radio-button#success" }) do |form| %>
             <%= form.hidden_field :user_id, value: @claim_profile_request.user_id %>
-            <%= form.hidden_field :doctor_id, value: @doctor.id %>
+            <%= form.hidden_field :doctor_id, value: @doctor&.id %>
             <%= form.hidden_field :id %>
             <%= form.hidden_field :status, data: {target: "radio-button.status"} %>
             <div class="w-full flex radio-box">
