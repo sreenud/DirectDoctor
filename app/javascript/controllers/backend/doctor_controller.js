@@ -18,6 +18,7 @@ export default class extends Controller {
     'otherPatientsInput',
     'disciplinaryAction',
     'disciplinaryActionInput',
+    'profileImage',
   ];
 
   connect() {
@@ -320,5 +321,10 @@ export default class extends Controller {
     } else {
       disciplinaryActionInput.classList.add('hidden');
     }
+  }
+
+  uploadImage() {
+    const fileData = this.profileImageTarget.value;
+    console.log(fileData);
   }
 }
