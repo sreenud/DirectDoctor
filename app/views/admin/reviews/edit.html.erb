@@ -14,7 +14,7 @@
   </div>
 </header>
 <section class="flex mt-6">
-  <div class="w-full" data-controller="message">
+  <div class="w-full" data-controller="message review">
     <div class="w-full z-10" data-target="message.errors"></div>
     <%= render partial: 'form', locals: {review: @review, statuses: @statuses, button_text: 'Update'} %>
   </div>

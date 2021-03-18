@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   get 'search', to: "searches#index"
   get 'search-map', to: "searches#index_two"
   get 'job-search', to: "jobs#search"
+
   get ':state/doctor/:fdd_id/:doctor_name', to: "doctors#show"
   get "/*any", to: "redirects#index", constraints: RedirectConstraint.new
 
@@ -27,6 +28,7 @@ Rails.application.routes.draw do
       get :search
     end
   end
+  get 'job/post-a-job', to: "jobs#post_job"
 
   resources :data do
     collection do

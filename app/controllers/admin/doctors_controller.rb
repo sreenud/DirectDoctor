@@ -3,7 +3,7 @@ module Admin
     include DoctorParams
     include DoctorFormData
 
-    before_action :set_doctor, only: [:show, :edit, :update]
+    before_action :set_doctor, only: [:show, :edit, :update, :upload_image]
     before_action :set_master_data, only: [:edit, :new]
 
     def index
@@ -60,6 +60,13 @@ module Admin
           format.html { render(partial: "shared/partials/errors", locals: { object: @doctor }, status: :bad_request) }
         end
       end
+    end
+
+    def upload_image
+      @doctor.attributes = doctor_params
+      @doctor.save(validate: false)
+
+      render(json: { image_url: @doctor.image_url(:medium) }, status: :ok)
     end
 
     private

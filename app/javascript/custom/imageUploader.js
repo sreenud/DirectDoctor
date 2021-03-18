@@ -69,6 +69,7 @@ function imageUploader(fileInput) {
         hiddenInput.value = JSON.stringify(data);
       },
     });
+    document.getElementById('image-save-button').classList.remove('hidden');
   });
 }
 

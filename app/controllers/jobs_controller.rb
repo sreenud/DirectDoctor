@@ -33,6 +33,9 @@ class JobsController < BaseController
     end
   end
 
+  def post_job
+  end
+
   private
 
   def set_job

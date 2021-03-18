@@ -4,6 +4,7 @@ module Provider
     include Pagy::Backend
 
     layout "provider"
+    before_action :authenticate_user!
     before_action :authenticate_doctor!
     rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
 
