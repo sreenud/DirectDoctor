@@ -1,4 +1,4 @@
-module Provider
+module Patient
   class BaseController < ApplicationController
     include Pundit
     include Pagy::Backend
@@ -15,18 +15,18 @@ module Provider
     end
 
     def authenticate_doctor!
-      if current_user.present? && doctor_roles
+      if current_user.present? && patient_roles
         true
       else
         redirect_to(root_path)
       end
     end
 
-    def doctor_roles
-      doctor_roles = Role.doctor_roles.pluck(:name)
+    def patient_roles
+      patient_roles = Role.patient_roles.pluck(:name)
       current_user_roles = current_user.roles.pluck(:name)
 
-      if (doctor_roles & current_user_roles).present?
+      if (patient_roles & current_user_roles).present?
         true
       else
         false

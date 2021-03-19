@@ -45,10 +45,9 @@ module Admin
 
     def update
       @claim_profile_request.attributes = claim_profile_request_params
-
+      doctor = create_or_find(claim_profile_request_params)
       if @claim_profile_request.save
-        if @claim_profile_request.status == "approved"
-          doctor = Doctor.find_by_id(claim_profile_request_params[:doctor_id])
+        if @claim_profile_request.status == "approve"
           doctor.user_id = claim_profile_request_params[:user_id]
           doctor.save(validate: false)
 
@@ -82,6 +81,21 @@ module Admin
     end
 
     private
+
+    def create_or_find(claim_profile_request_params)
+      if claim_profile_request_params[:doctor_id].present?
+        Doctor.find_by_id(claim_profile_request_params[:doctor_id])
+      else
+        user = User.find_by_id(@claim_profile_request.user_id)
+        doctor = Doctor.new(
+          user_id: user.id,
+          name: user.full_name,
+          email: user.email,
+          profile_source: 'cliam_profile'
+        )
+        doctor.save(validate: false)
+      end
+    end
 
     def cliam_profile_comments
       ClaimProfileComment.includes(:user)

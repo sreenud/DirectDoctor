@@ -13,7 +13,7 @@ class ClaimProfilesController < BaseController
 
     1.times { @claim_profile_request.claim_profile_comments.build }
 
-    if @claim_profile_request.present?
+    if @claim_profile_request.present? && @claim_profile_request.profile_name.present?
       doctor_name = @claim_profile_request.profile_name
       @doctor = Doctor.where("name LIKE ?", "%#{doctor_name}%")&.first
     end

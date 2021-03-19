@@ -4,16 +4,16 @@
 .radio-box label {
   height: 50px;
   width: 130px;
-  border: 1px solid #805ad5;
+  border: 1px solid #e7ab00;
   position: relative;
   margin: auto;
   border-radius: 10px;
-  color: #805ad5;
+  color: #e7ab00;
   transition: 0.5s;
 }
 
 .radio-box label:hover {
-  background-color: #805ad5;
+  background-color: #e7ab00;
   color: #fff;
 }
 
@@ -27,7 +27,7 @@
   font-weight: 500;
 }
 .radio-box input[type="radio"]:checked + label {
-  background-color: #805ad5;
+  background-color: #e7ab00;
   color: white;
-  box-shadow: 0 10px 25px rgba(128, 90, 213, 1);
+  box-shadow: 0 10px 25px rgba(231, 171, 0, 1);
 }

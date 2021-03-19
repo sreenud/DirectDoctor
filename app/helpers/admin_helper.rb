@@ -55,6 +55,16 @@ module AdminHelper
     end
   end
 
+  def patient_role?
+    current_user_roles = current_user.roles.pluck(:name)
+
+    if current_user_roles.include?('patient')
+      true
+    else
+      false
+    end
+  end
+
   def profile_approved?
     claim_request = ClaimProfileRequest.where(user_id: current_user.id)
       .where(status: 'approved')&.first

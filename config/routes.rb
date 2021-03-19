@@ -47,6 +47,7 @@ Rails.application.routes.draw do
     end
   end
 
+  draw :patient
   draw :provider
   draw :admin
 

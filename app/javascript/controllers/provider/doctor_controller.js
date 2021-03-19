@@ -18,6 +18,9 @@ export default class extends Controller {
     'otherPatientsInput',
     'disciplinaryAction',
     'disciplinaryActionInput',
+    'profileImage',
+    'doctorId',
+    'imageUrl',
   ];
 
   connect() {
@@ -299,5 +302,34 @@ export default class extends Controller {
     } else {
       disciplinaryActionInput.classList.add('hidden');
     }
+  }
+
+  uploadImage() {
+    const fileData = this.profileImageTarget.value;
+    const doctorId = this.doctorIdTarget.value;
+
+    const formData = new FormData();
+    formData.append('doctor[image]', fileData);
+    formData.append('id', doctorId);
+
+    fetch('/provider/profile/upload-image', {
+      body: formData,
+      method: 'POST',
+      credentials: 'same-origin',
+      headers: {
+        'X-CSRF-Token': this.getMetaValue('csrf-token'),
+      },
+    })
+      .then((response) => response.json())
+      .then((result) => {
+        document.getElementById('image-save-button').classList.add('hidden');
+        const image = `<img src="${result.image_url}" height="300" class="rounded">`;
+        this.imageUrlTarget.innerHTML = image;
+      });
+  }
+
+  getMetaValue(name) {
+    const element = document.head.querySelector(`meta[name="${name}"]`);
+    return element.getAttribute('content');
   }
 }
