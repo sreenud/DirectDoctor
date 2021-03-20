@@ -11,6 +11,8 @@ Rails.application.routes.draw do
   resources :blogs, only: [:index, :show]
   resources :tips, only: [:index]
   get 'about-us', to: "abouts#index"
+  get 'terms-of-service', to: "terms_of_service#index"
+  get 'privacy-policy', to: "privacy_policy#index"
   get 'onboarding/step1', to: "onboarding#step1"
   post 'onboarding/step1', to: "onboarding#create_step1"
   get 'onboarding/thankyou', to: "onboarding#thankyou"
