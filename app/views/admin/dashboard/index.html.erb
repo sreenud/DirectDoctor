@@ -27,7 +27,7 @@
                   <div class="flex items-center text-sm">
                     <!-- Avatar with inset shadow -->
                     <div class="relative hidden w-8 h-8 mr-3 rounded-full md:block">
-                      <img class="object-cover w-full h-full rounded-full" src="<%=claim_profile_request.user.profile_pic%>" alt="" loading="lazy">
+                      <%= image_pack_tag "doctor_default.svg", class: "w-48 bg-doctor-gray-100 rounded-2lg mb-4" %>
                       <div class="absolute inset-0 rounded-full shadow-inner" aria-hidden="true"></div>
                     </div>
                     <div>
@@ -91,7 +91,11 @@
                   <div class="flex items-center text-sm">
                     <!-- Avatar with inset shadow -->
                     <div class="relative hidden w-8 h-8 mr-3 rounded-full md:block">
-                      <img class="object-cover w-full h-full rounded-full" src="<%=profile_update_request&.user&.profile_pic%>" alt="" loading="lazy">
+                      <% if doctor_display_image(profile_update_request&.user&.doctor).present? %>
+                        <img src="<%= doctor_display_image(profile_update_request&.user&.doctor) %>" height="300" class="rounded" \>
+                      <% else %>
+                        <%= image_pack_tag "doctor_default.svg", class: "w-48 bg-doctor-gray-100 rounded-2lg mb-4" %>
+                      <% end %>
                       <div class="absolute inset-0 rounded-full shadow-inner" aria-hidden="true"></div>
                     </div>
                     <div>
