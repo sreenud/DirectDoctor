@@ -44,6 +44,9 @@
     </div>
     <div class="w-full">
       <%= yield %>
+      <div class=" text-xs flex justify-center mt-4 p4 " data-controller="modal cookie-consent" >
+        <%= render partial: 'shared/cookie_policy'%>
+      </div>
     </div>
     <%= render partial: 'shared/footer' %>
     <script>

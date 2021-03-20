@@ -14,7 +14,7 @@
           </div>
         </div>
       </div>
-      <div class="w-7/12 max-w-xl mx-auto mt-10 text-gray-900 border-b">
+      <div class="w-7/12 max-w-xl mx-auto mt-10 text-gray-900 border-b" data-controller="sign-up">
         <div class="font-glacialbold text-heading">Sign Up</div>
         <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
           <div class="bg-white pt-6 pb-4 mb-4 flex flex-col">
@@ -31,10 +31,16 @@
             <div class="mb-3">
               <%= f.password_field :password_confirmation, autocomplete: "current-password", class: "shadow-lg border border-red rounded-2lg w-full py-3 px-5 text-gray-700 mb-3 focus:outline-none", placeholder: "Password confirmation" %>
             </div>
+            <div class="custom-check flex" >
+              <label class="checkbox-cont pl-8">By signing up, you agree to our <span><a class=" underline cursor-pointer" href="/terms-of-service" target="_blank"> Terms of Service </a></span> and <span><a class=" underline cursor-pointer" href="/privacy-policy" target="_blank">Privacy Policy</a></span>.
+                <input type="checkbox" data-action="click->sign-up#accept" data-target="sign-up.acceptCheck">
+                <span class="checkmark"></span>
+              </label>
+            </div>
             <div class="w-full">
               <div class="w-6/12">
                 <div class="flex items-center justify-between mt-6">
-                  <%= f.submit "Sign up", class: "text-gray-100 border rounded-lg px-12 py-3 border-doctor-yellow hover:bg-doctor-yellow hover:text-gray-100 bg-white cursor-pointer bg-doctor-yellow shadow-lg" %>
+                  <%= f.submit "Sign up", class: "text-gray-100 border rounded-lg px-12 py-3 border-doctor-yellow  bg-white cursor-pointer bg-doctor-yellow-500 shadow-lg", disabled: true, data: {target: "sign-up.signUpButton"} %>
                 </div>
               </div>
             </div>
@@ -44,7 +50,6 @@
       <%= render partial: "devise/shared/social_login_links", locals: {button_text: 'Sign up'} %>
       <div class="w-full mt-6 text-xl text-center text-gray-500">
         We won't auto-post to your social network
-        <p class="pt-4">By signing up, you agree to our <span class=" underline">Terms of Use</span>, <span class="underline">Community Guidelines</span> and <span class=" underline">Privacy Policy</span></p>
       </div>
     </div>
   </div>

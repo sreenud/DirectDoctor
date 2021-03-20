@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full">
+  <head>
+    <title>Find My Direct Doctor</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <%= stylesheet_pack_tag 'backend_style', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'patient', 'data-turbolinks-track': 'reload' %>
+  </head>
+  <body class="flex flex-col h-full overflow-hidden">
+    <%=render partial: 'shared/patient/header'%>
+    <div class="flex flex-1 overflow-auto bg-indigo-100">
+      <%= render partial: 'shared/patient/sidebar' %>
+      <main class="flex-1 pt-8 px-12 w-full overflow-auto bg-indigo-100">
+        <%= yield %>
+      </main>
+    </div>
+  </body>
+</html>

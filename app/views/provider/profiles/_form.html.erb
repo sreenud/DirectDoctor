@@ -1,4 +1,5 @@
 <%= form_with(model: [:provider, doctor], url: provider_profile_url(doctor),  class: "flex w-full", data: {type: "html", action: "ajax:error->message#errorHandler ajax:success->message#success" }) do |form| %>
+  <%= form.hidden_field :doctor_id, value: doctor.id, data: {target: "doctor.doctorId"} %>
   <div class="flex-1 mr-4" id="scroll_to_top">
     <div class="bg-white border pb-16 rounded shadow p-5">
       <div class="tab_wrapper" x-data="{ tab: window.location.hash ? window.location.hash.substring(1) : 'doctor' }">
@@ -42,16 +43,19 @@
       <div class="input-group" data-controller="image-upload">
         <%= form.label :display_image, :class => "label text-gray-500" %>
         <%= image_tag form.object.image_url if form.object.cached_image_data %>
-        <%= form.hidden_field :image, value: form.object.cached_image_data, class: "upload-data" %>
+        <%= form.hidden_field :image, value: form.object.cached_image_data, class: "upload-data", data: {target: "doctor.profileImage"} %>
         <%= form.file_field :image, class: 'finput-file label', accept: ImageUploader::ALLOWED_TYPES.join(",") %>
       </div>
       <div class="upload-progress"></div>
-      <div class="image-preview">
+      <div class="image-preview" data-target="doctor.imageUrl">
         <% if doctor_display_image(form.object).present? %>
           <img src="<%= doctor_display_image(form.object) %>" height="300" class="rounded" \>
         <% else %>
           <%= image_pack_tag "doctor_default.svg", class: "w-48 bg-doctor-gray-100 rounded-2lg mb-4" %>
         <% end %>
+      </div>
+      <div class="text-right hidden" id="image-save-button">
+        <button type="button" class="btn btn-md btn-default btn-dd-blue btn-outline text-sm font-bold mt-2" data-action="click->doctor#uploadImage">Save</button>
       </div>
       <div class="flex mt-8">
         <div class="px-2 py-2 text-sm font-medium leading-5 text-gray-600">

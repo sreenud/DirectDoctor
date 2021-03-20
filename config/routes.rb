@@ -4,12 +4,15 @@ Rails.application.routes.draw do
   get 'search', to: "searches#index"
   get 'search-map', to: "searches#index_two"
   get 'job-search', to: "jobs#search"
+
   get ':state/doctor/:fdd_id/:doctor_name', to: "doctors#show"
   get "/*any", to: "redirects#index", constraints: RedirectConstraint.new
 
   resources :blogs, only: [:index, :show]
   resources :tips, only: [:index]
   get 'about-us', to: "abouts#index"
+  get 'terms-of-service', to: "terms_of_service#index"
+  get 'privacy-policy', to: "privacy_policy#index"
   get 'onboarding/step1', to: "onboarding#step1"
   post 'onboarding/step1', to: "onboarding#create_step1"
   get 'onboarding/thankyou', to: "onboarding#thankyou"
@@ -27,6 +30,7 @@ Rails.application.routes.draw do
       get :search
     end
   end
+  get 'job/post-a-job', to: "jobs#post_job"
 
   resources :data do
     collection do
@@ -45,6 +49,7 @@ Rails.application.routes.draw do
     end
   end
 
+  draw :patient
   draw :provider
   draw :admin
 

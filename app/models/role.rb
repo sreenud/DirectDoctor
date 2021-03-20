@@ -13,4 +13,5 @@ class Role < ApplicationRecord
 
   scope :master_roles, -> { where.not(name: ["patient", "doctor", "guest"]) }
   scope :doctor_roles, -> { where(name: ["doctor"]) }
+  scope :patient_roles, -> { where(name: ["patient"]) }
 end

@@ -1,0 +1,42 @@
+<section class="border-r relative w-1/6">
+  <nav class="pt-6">
+    <% menu_classes = admin_menu_classes(controller: "profiles") %>
+    <a href="<%=edit_patient_profile_url(current_user&.id)%>" class="flex items-center pl-2">
+      <div class="<%=menu_classes[:active_class]%> flex pl-2">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="fill-current h-5 text-gray-500">
+          <path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z" />
+        </svg>
+        <span class="font-medium leading-tight pl-2 text-gray-700 text-md">My Profile</span>
+      </div>
+    </a>
+    <% menu_classes = admin_menu_classes(controller: "favourites") %>
+    <a href="#" class="flex items-center mt-3 pl-2 relative pt-2">
+      <div class="<%=menu_classes[:active_class]%> flex pl-2">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" class="fill-current h-5 text-gray-500"><path d="M17 10.27V4.99a1 1 0 0 0-2 0V15a5 5 0 0 1-10 0v-1.08A6 6 0 0 1 0 8V2C0 .9.9 0 2 0h1a1 1 0 0 1 1 1 1 1 0 0 1-1 1H2v6a4 4 0 1 0 8 0V2H9a1 1 0 0 1-1-1 1 1 0 0 1 1-1h1a2 2 0 0 1 2 2v6a6 6 0 0 1-5 5.92V15a3 3 0 0 0 6 0V5a3 3 0 0 1 6 0v5.27a2 2 0 1 1-2 0z"/></svg>
+        <span class="font-medium leading-tight pl-2 text-gray-700 text-md">Favourite Doctors</span>
+      </div>
+    </a>
+    <% menu_classes = admin_menu_classes(controller: "reviews") %>
+    <a href="#" class="flex items-center mt-3 pl-2 relative pt-2">
+      <div class="<%=menu_classes[:active_class]%> flex pl-2">
+        <svg xmlns="http://www.w3.org/2000/svg" class="fill-current h-5 text-gray-500" viewBox="0 0 20 20"><path d="M12.3 3.7l4 4L4 20H0v-4L12.3 3.7zm1.4-1.4L16 0l4 4-2.3 2.3-4-4z"/></svg>
+        <span class="font-medium leading-tight pl-2 text-gray-700 text-md">Write a Review</span>
+      </div>
+    </a>
+  </nav>
+  <div class="absolute bottom-0 items-center mb-5 pl-4">
+    <a href="<%=edit_users_profile_url%>" class="flex">
+      <% menu_classes = admin_menu_classes(path: "/users/profile/edit") %>
+      <div class="flex <%=menu_classes[:active_class]%>">
+        <svg xmlns="http://www.w3.org/2000/svg" class="fill-current h-5 text-gray-500" viewBox="0 0 20 20"><path d="M12.26 11.74L10 14H8v2H6v2l-2 2H0v-4l8.26-8.26a6 6 0 1 1 4 4zm4.86-4.62A3 3 0 0 0 15 2a3 3 0 0 0-2.12.88l4.24 4.24z"/></svg>
+        <span class="font-medium leading-tight pl-2 text-gray-700 text-sm">Change Password</span>
+      </div>
+    </a>
+    <div class="flex mt-4">
+      <a href="<%=destroy_user_session_path%>" class="flex">
+        <svg xmlns="http://www.w3.org/2000/svg" class="fill-current h-5 text-gray-500" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M4.16 4.16l1.42 1.42A6.99 6.99 0 0 0 10 18a7 7 0 0 0 4.42-12.42l1.42-1.42a9 9 0 1 1-11.69 0zM9 0h2v8H9V0z"/></svg>
+        <span class="font-medium leading-tight pl-2 text-gray-700 text-sm">Sign out</span>
+      </a>
+    </div>
+  </div>
+</section>

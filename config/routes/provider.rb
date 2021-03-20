@@ -1,4 +1,5 @@
 namespace :provider do
+  post 'profile/upload-image', to: "profiles#upload_image"
   resources :profiles
   resources :jobs
 

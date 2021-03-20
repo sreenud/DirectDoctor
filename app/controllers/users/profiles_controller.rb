@@ -1,6 +1,7 @@
 module Users
   class ProfilesController < ApplicationController
     before_action :authenticate_user!
+    layout "profile"
 
     def edit
       @user = current_user

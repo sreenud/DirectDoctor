@@ -1,0 +1,36 @@
+<header class="bg-white flex shadow z-10 top-0">
+  <div class="relative w-1/6">
+    <a href="<%=admin_dashboard_index_url%>"><%=image_pack_tag 'logo.png', class: "h-10 ml-2 mt-3"%></a>
+  </div>
+  <div class="flex flex-1 items-center bg-white">
+  </div>
+  <div class="flex relative items-center mr-10 pl-6" x-data="{ isOpen: false }" @click.away="isOpen = false">
+    <button id="userButton" class="flex items-center focus:outline-none mr-3" @click=" isOpen = !isOpen">
+      <%= image_pack_tag 'default_profile_pic.svg', alt: 'image', class: "h-12 w-12 rounded-full object-cover"%>
+      <div class="ml-4 py-4 text-left">
+        <p class="leading-none text-sm"><%=current_user.full_name%></p>
+        <span class="block leading-none mt-1 text-gray-500 text-sm">
+          <%=current_user&.roles&.first&.name&.humanize%> role
+        </span>
+      </div>
+      <svg class="pl-2 h-2" version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 129 129" xmlns:xlink="http://www.w3.org/1999/xlink" enable-background="new 0 0 129 129">
+        <g>
+          <path d="m121.3,34.6c-1.6-1.6-4.2-1.6-5.8,0l-51,51.1-51.1-51.1c-1.6-1.6-4.2-1.6-5.8,0-1.6,1.6-1.6,4.2 0,5.8l53.9,53.9c0.8,0.8 1.8,1.2 2.9,1.2 1,0 2.1-0.4 2.9-1.2l53.9-53.9c1.7-1.6 1.7-4.2 0.1-5.8z" />
+        </g>
+      </svg>
+    </button>
+    <div id="userMenu" class="bg-white rounded shadow-md absolute mt-16 top-0 right-0 min-w-full overflow-auto z-30  border border-gray-500" x-show="isOpen">
+      <ul class="list-reset">
+        <li>
+          <a href="<%=root_url%>" class="px-4 py-2 block text-gray-900 hover:bg-gray-400 no-underline hover:no-underline">Home</a>
+        </li>
+        <li>
+          <hr class="border-t mx-2 border-gray-400">
+        </li>
+        <li>
+          <%= link_to "Logout".html_safe, destroy_user_session_path, method: :delete, class: "px-4 py-2 block text-gray-900 hover:bg-gray-400 no-underline hover:no-underline" %>
+        </li>
+      </ul>
+    </div>
+  </div>
+</header>

@@ -51,7 +51,7 @@ function imageUploader(fileInput) {
       checkCrossOrigin: false,
       viewMode: 3,
       dragMode: 'none',
-      aspectRatio: 1 / 1,
+      aspectRatio: 14 / 16,
       autoCropArea: 0.65,
       restore: false,
       guides: false,
@@ -60,12 +60,16 @@ function imageUploader(fileInput) {
       cropBoxMovable: true,
       cropBoxResizable: false,
       toggleDragModeOnDblclick: false,
+      zoomable: true,
+      zoomOnTouch: true,
+      zoomOnWheel: true,
       crop: function (event) {
         let data = JSON.parse(hiddenInput.value);
         data['metadata']['crop'] = event.detail;
         hiddenInput.value = JSON.stringify(data);
       },
     });
+    document.getElementById('image-save-button').classList.remove('hidden');
   });
 }
 

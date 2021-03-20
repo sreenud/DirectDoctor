@@ -39,6 +39,10 @@ module Admin
       respond_to do |format|
         if @review.update(review_params)
           # doctor save average rating
+
+          ReviewMailer.with(review: @review).approved.deliver_now if @review.status == 'published'
+          ReviewMailer.with(review: @review).rejected.deliver_now if @review.status == 'archive'
+
           @doctor = Doctor.find(@review.doctor_id)
           reviews = @doctor&.reviews&.published
 

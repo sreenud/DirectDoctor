@@ -30,19 +30,19 @@
             </label>
           </div>
           <div class="w-full mt-20 hidden" data-target="onboarding.doctorForm">
-            <div class="text-left font-glacialbold text-2xl flex w-full mx-6">
+            <div class="text-left font-glacialbold text-2xl flex w-full px-6">
               <div class="w-1/6">Step 1: </div>
               <div class="w-5/6">Please check if we already created a profile for you.</div>
             </div>
             <div class="w-full mt-6 px-4 flex justify-center">
-              <div>
+              <div class="pl-5">
                 <div class="autoComplete_wrapper ">
-                  <%= form.text_field :profile_name, :class => "shadow-md border rounded-2lg w-full py-3 px-5 text-gray-700 focus:outline-none", :autocomplete => "off", :id => "autoComplete" %>
+                  <%= form.text_field :profile_name, :class => "flex justify-center items-center w-full bg-white rounded-lg shadow-md border border-gray-100 lg:ml-6 auto_complete", :autocomplete => "off", :id => "autoComplete" %>
                 </div>
                 <div class="text-red-500 mt-4 text-center" id="error_profile_name"></div>
               </div>
             </div>
-            <div class="w-full items-center justify-center mt-4 mx-6">
+            <div class="w-5/6 items-center justify-center mt-4 px-4 ml-auto">
               <div class="text-md text-gray-600">Found your profile?</div>
               <div class="text-sm text-gray-600">If yes, great news! Go ahead and select it. Then go to Step 2 to claim your profile.</div>
               <div class="text-sm text-gray-600">If no, no worries! Still go to Step 2 to create a new profile.</div>
@@ -53,41 +53,43 @@
                 <div class="w-5/6">Verify your identity.</div>
               </div>
             </div>
-            <div class="w-full items-center justify-center mt-4 mx-6">
+            <div class="w-5/6 items-center justify-center mt-4 px-5 ml-auto">
               <div class="text-sm text-gray-600">Upload Driver's License or Medical Training Certificate or Workplace Identification Card or Medical License Certificate or other valid forms of identification</div>
             </div>
-            <div class="bg-grey-lighter ml-40 mt-6 flex w-64 items-center justify-center">
-              <div class="w-full">
-                <label class="w-full flex flex-row items-center px-2 py-2 mx-4 bg-white text-blue rounded-lg shadow-lg tracking-wide uppercase border border-blue cursor-pointer hover:bg-blue hover:text-doctor-yellow">
-                  <svg class="w-8 h-8" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
-                    <path d="M16.88 9.1A4 4 0 0 1 16 17H5a5 5 0 0 1-1-9.9V7a3 3 0 0 1 4.52-2.59A4.98 4.98 0 0 1 17 8c0 .38-.04.74-.12 1.1zM11 11h3l-4-4-4 4h3v3h2v-3z" />
-                  </svg>
-                  <span class="ml-4 text-base leading-normal text-left" >Choose File</span>
-                  <%= form.hidden_field :document, value: form.object.cached_document_data %>
-                  <%= form.file_field :document, class: 'hidden', data: {target: "onboarding.fileName", action: "onboarding#fileDisplayName"} %>
-                </label>
-                <div class="text-center mt-3" data-target="onboarding.fileOriginalName"></div>
-                <div class="text-red-500 mt-4 text-center" id="error_document" data-target="onboarding.fileErrorMessage"></div>
+            <div class="w-5/6 ml-auto">
+              <div class="bg-grey-lighter mt-6 flex w-full items-center justify-center">
+                <div class="w-full">
+                  <label class="w-full flex flex-row items-center px-2 py-2 mx-4 bg-white text-blue rounded-lg shadow-lg tracking-wide uppercase border border-blue cursor-pointer hover:bg-blue hover:text-doctor-yellow">
+                    <svg class="w-8 h-8" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                      <path d="M16.88 9.1A4 4 0 0 1 16 17H5a5 5 0 0 1-1-9.9V7a3 3 0 0 1 4.52-2.59A4.98 4.98 0 0 1 17 8c0 .38-.04.74-.12 1.1zM11 11h3l-4-4-4 4h3v3h2v-3z" />
+                    </svg>
+                    <span class="ml-4 text-base leading-normal text-left">Choose File</span>
+                    <%= form.hidden_field :document, value: form.object.cached_document_data %>
+                    <%= form.file_field :document, class: 'hidden' %>
+                  </label>
+                  <div class="text-red-500 mt-4 text-center" id="error_document"></div>
+                </div>
               </div>
             </div>
           </div>
-          <div class="w-full mt-12 hidden" data-target="onboarding.submitButton">
-            <div class="flex items-center justify-center mt-4">
-              <%= form.submit "Continue", class: "text-gray-100 border rounded-lg px-12 py-3 border-doctor-yellow hover:bg-doctor-yellow hover:text-gray-100 bg-white cursor-pointer bg-doctor-yellow shadow-lg", data: { disable_with: "Saving in..." } %>
-            </div>
+        </div>
+        <div class="w-full mt-12 hidden" data-target="onboarding.submitButton">
+          <div class="flex items-center justify-center mt-4">
+            <%= form.submit "Continue", class: "text-gray-100 border rounded-lg px-12 py-3 border-doctor-yellow hover:bg-doctor-yellow hover:text-gray-100 bg-white cursor-pointer bg-doctor-yellow shadow-lg", data: { disable_with: "Saving in..." } %>
           </div>
         </div>
-      <% end %>
-    </div>
+      </div>
+    <% end %>
   </div>
-  <div class="lg:col-span-1 relative">
-    <div class="absolute right-0 mr-8">
-      <%=image_pack_tag 'light_grey_2_lines_vertical.svg', class: "h-56" %>
-    </div>
-    <div class="right-0 absolute -mr-4 -mt-32 z-50">
-      <%= image_pack_tag 'yellow_circle_outline_opacity_right.png' %>
-    </div>
+</div>
+<div class="lg:col-span-1 relative">
+  <div class="absolute right-0 mr-8">
+    <%=image_pack_tag 'light_grey_2_lines_vertical.svg', class: "h-56" %>
   </div>
+  <div class="right-0 absolute -mr-4 -mt-32 z-50">
+    <%= image_pack_tag 'yellow_circle_outline_opacity_right.png' %>
+  </div>
+</div>
 </section>
 <section class="lg:w-full flex mt-24">
   <div class="w-6/12 relative">

@@ -4,7 +4,7 @@ class ClaimProfileComment < ApplicationRecord
   belongs_to :user
   belongs_to :claim_profile_request
 
-  validates :comment, presence: true
+  # validates :comment, presence: true
 
   default_scope { order(created_at: :asc) }
 

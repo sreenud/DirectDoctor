@@ -1,0 +1,17 @@
+<div id="consent-popup" class="bg-white w-full shadow-lg z-50 overflow-y-auto border border-doctor-yellow hidden" data-target="cookie-consent.consentPopup">
+  <div class="text-left">
+    <div class="cursor-pointer z-50 flex justify-end p-2 bg-gray-300 rounded-full cookie_close absolute" data-action="click->modal#modalClose" >
+      <svg class="fill-current text-black" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18">
+        <path d="M14.53 4.53l-1.06-1.06L9 7.94 4.53 3.47 3.47 4.53 7.94 9l-4.47 4.47 1.06 1.06L9 10.06l4.47 4.47 1.06-1.06L10.06 9z"></path>
+      </svg>
+    </div>
+    <div class="text-lg mt-2">
+      By clicking “Accept”, you agree to the storing of cookies on your device to enhance site navigation, analyze site usage, and assist in our marketing efforts, pursuant to our <a href="/privacy-policy" class="underline">Privacy Policy</a>. Additionally, by utilizing this website, you are agreeing to the entirety of the <a href="/terms-of-service" class="underline">Terms of Service</a>, as relevant.
+    </div>
+    <div class="text-left">
+      <button class="border-doctor-yellow bg-doctor-yellow-500 px-3 py-2 rounded shadow text-gray-100 text-lg hover:bg-doctor-yellow mt-5" data-action="click->cookie-consent#accept" >
+        Accept
+      </button>
+    </div>
+  </div>
+</div>
