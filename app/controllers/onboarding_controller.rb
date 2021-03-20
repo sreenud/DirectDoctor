@@ -23,6 +23,7 @@ class OnboardingController < BaseController
           user.remove_role(:guest)
           user.add_role(:doctor)
 
+          SignupMailer.with(user: user).thankyou.deliver_now
           format.html { redirect_to(onboarding_thankyou_url, notice: 'Thank you for your interest.') }
           format.json { render(:show, status: :created, location: @claim_profile) }
         else
@@ -41,8 +42,6 @@ class OnboardingController < BaseController
   end
 
   def thankyou
-    user = User.find_by_id(current_user.id)
-    SignupMailer.with(user: user).thankyou.deliver_now
   end
 
   private

@@ -7,7 +7,7 @@ class ClaimProfileRequest < ApplicationRecord
   belongs_to :user
   has_many :claim_profile_comments
 
-  accepts_nested_attributes_for :claim_profile_comments, allow_destroy: true
+  accepts_nested_attributes_for :claim_profile_comments, reject_if: :all_blank, allow_destroy: true
 
   validates :user_type, :document, presence: true, if: :doctor?
   validates :user_type, :name, :email, presence: true, if: :admin?
