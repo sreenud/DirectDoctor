@@ -41,7 +41,7 @@ if (
         /location-icon/,
         /cropper-/,
         /uppy-/,
-        /autoComplete/,
+        /autoComplete_/,
       ],
       whitelistPatternsChildren: [
         /choices/,
@@ -53,7 +53,7 @@ if (
         /location-icon/,
         /cropper-/,
         /uppy-/,
-        /autoComplete/,
+        /autoComplete_/,
       ],
       defaultExtractor: (content) => content.match(/[A-Za-z0-9-_:/]+/g) || [],
     })
