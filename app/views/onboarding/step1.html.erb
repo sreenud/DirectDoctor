@@ -72,24 +72,23 @@
               </div>
             </div>
           </div>
-        </div>
-        <div class="w-full mt-12 hidden" data-target="onboarding.submitButton">
-          <div class="flex items-center justify-center mt-4">
-            <%= form.submit "Continue", class: "text-gray-100 border rounded-lg px-12 py-3 border-doctor-yellow hover:bg-doctor-yellow hover:text-gray-100 bg-white cursor-pointer bg-doctor-yellow shadow-lg", data: { disable_with: "Saving in..." } %>
+          <div class="w-full mt-12 hidden" data-target="onboarding.submitButton">
+            <div class="flex items-center justify-center mt-4">
+              <%= form.submit "Continue", class: "text-gray-100 border rounded-lg px-12 py-3 border-doctor-yellow hover:bg-doctor-yellow hover:text-gray-100 bg-white cursor-pointer bg-doctor-yellow shadow-lg", data: { disable_with: "Saving in..." } %>
+            </div>
           </div>
         </div>
-      </div>
-    <% end %>
+      <% end %>
+    </div>
   </div>
-</div>
-<div class="lg:col-span-1 relative">
-  <div class="absolute right-0 mr-8">
-    <%=image_pack_tag 'light_grey_2_lines_vertical.svg', class: "h-56" %>
+  <div class="lg:col-span-1 relative">
+    <div class="absolute right-0 mr-8">
+      <%=image_pack_tag 'light_grey_2_lines_vertical.svg', class: "h-56" %>
+    </div>
+    <div class="right-0 absolute -mr-4 -mt-32 z-50">
+      <%= image_pack_tag 'yellow_circle_outline_opacity_right.png' %>
+    </div>
   </div>
-  <div class="right-0 absolute -mr-4 -mt-32 z-50">
-    <%= image_pack_tag 'yellow_circle_outline_opacity_right.png' %>
-  </div>
-</div>
 </section>
 <section class="lg:w-full flex mt-24">
   <div class="w-6/12 relative">
