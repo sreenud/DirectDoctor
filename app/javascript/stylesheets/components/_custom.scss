@@ -271,6 +271,9 @@
   background-size: cover;
   background-repeat: no-repeat;
   height: 40rem;
+  @media only screen and (max-width: 768px) {
+    height: 52rem;
+  }
 }
 @media only screen and (min-width: 768px) {
   .online-directory {
@@ -341,7 +344,7 @@
 .line::before {
   content: "";
   height: 10px;
-  width: 48px;
+  width: 53px;
   float: left;
   background: #e7ab3f;
   top: 7rem;
@@ -417,7 +420,6 @@
   box-shadow: inset 0 0 2px rgba(255, 255, 255, 0.5),
     2px 2px 6px rgba(0, 0, 0, 0.6);
 }
-
 .rounded-20 {
   border-radius: 20px;
 }
@@ -435,17 +437,32 @@
   border-radius: 0.5rem !important;
   color: #718096 !important;
   font-size: 1rem;
-  padding: 0 1rem 0 1.2rem !important;
+  padding: 0 1rem 0 2.5rem !important;
+  width: 100% !important;
+}
+.autoComplete_wrapper {
+  position: relative;
+  width: 100% !important;
+  &::before {
+    content: "\1F50D";
+    position: absolute;
+    left: 0;
+    top: 13px;
+    height: 24px;
+    width: 24px;
+    margin-left: 0.5em;
+    overflow: visible;
+    display: inline-block;
+    line-height: 24px;
+    z-index: 1;
+  }
 }
 input::-webkit-input-placeholder {
   color: #718096 !important;
 }
-#consent-popup {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  padding: 1rem 4rem;
-  background-color: #fff;
-  transition: opacity 1s ease;
+
+@media not all and (min-resolution: 0.001dpcm) {
+  .ap-input-icon svg {
+    left: -7% !important;
+  }
 }
