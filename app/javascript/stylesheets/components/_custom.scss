@@ -466,3 +466,12 @@ input::-webkit-input-placeholder {
     left: -7% !important;
   }
 }
+#consent-popup {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 1rem 4rem;
+  background-color: #fff;
+  transition: opacity 1s ease;
+}
