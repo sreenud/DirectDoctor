@@ -6,10 +6,13 @@
   <div class="w-2/3" data-controller="components">
     <div class="input-group">
       <label class="label text-gray-600" for="title">Active Medical License</label>
-      <%= form.select(:active_licenses, states.collect {|state| [state.name, state.name]}, {:prompt => "Select..."}, {class: "select", :multiple => true}) %>
+      <% states =  states.collect {|state| [state.name, state.name] } %>
+      <% states =  states << ['Not Available', 'Not Available'] %>
+      <% states =  states << ['Unable to verify', 'Unable to verify'] %>
+      <%= form.select(:active_licenses, states, {:prompt => "Select..."}, {class: "select", :multiple => true}) %>
     </div>
     <div class="input-group">
-      <label class="label text-gray-600" for="title">Disciplinary Action Taken By Sates Medical Board</label>
+      <label class="label text-gray-600" for="title">Disciplinary Action Taken By States Medical Board</label>
       <div class="inline-block relative w-full">
         <%= form.select(:disciplinary_action_taken,['Yes', 'No', 'No Actions Found', 'Unable to verify'], {:prompt => "Select..."}, {class: "select bg-white",  data: { action: "change->doctor#disciplinaryActionChange", target: 'doctor.disciplinaryAction' }}) %>
         <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
