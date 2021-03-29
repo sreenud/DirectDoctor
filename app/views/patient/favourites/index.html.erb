@@ -1,0 +1,14 @@
+<header class="flex">
+  <div class="inline-flex text-gray-600">
+    <h1 class="font-semibold text-2xl">My favourite doctors</h1>
+  </div>
+</header>
+<section class="flex mt-2">
+  <div class="w-full">
+    <% if @likes.present? %>
+      <% @likes.each do |like| %>
+        <%= render(DoctorComponent.new(doctor: like.doctor, current_user: current_user)) %>
+      <% end %>
+    <% end %>
+  </div>
+</section>

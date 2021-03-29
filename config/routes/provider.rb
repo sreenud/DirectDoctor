@@ -1,6 +1,10 @@
 namespace :provider do
   post 'profile/upload-image', to: "profiles#upload_image"
-  resources :profiles
+  resources :profiles do
+    collection do
+      get 'account_delete'
+    end
+  end
   resources :jobs
 
   resources :data do

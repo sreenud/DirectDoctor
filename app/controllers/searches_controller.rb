@@ -71,7 +71,7 @@ current_location: current_location), items: 10
 
   def json_results
     {
-      results: render_component_to_string(DoctorComponent.with_collection(@doctors)),
+      results: render_component_to_string(DoctorComponent.with_collection(@doctors, current_user: current_user)),
       pins: @doctors.map { |d| "#{d.lat},#{d.lng},$#{d.min_price} - #{d.max_price},#{d.id}" },
       next: @pagy.next,
       prev: @pagy.prev,

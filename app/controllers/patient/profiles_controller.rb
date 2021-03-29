@@ -1,7 +1,7 @@
 module Patient
   class ProfilesController < Patient::BaseController
-    before_action :valid_patient?
-    before_action :set_patient, only: [:show, :edit, :update]
+    before_action :valid_patient?, only: [:show, :edit, :update]
+    before_action :set_patient, only: [:show, :edit, :update, :account_delete]
 
     def edit
     end
@@ -16,6 +16,14 @@ module Patient
             render(partial: "shared/partials/errors", locals: { object: @patient }, status: :bad_request)
           end
         end
+      end
+    end
+
+    def account_delete
+      if current_user
+        User.find(current_user.id).destroy
+
+        render(json: {success: true})
       end
     end
 

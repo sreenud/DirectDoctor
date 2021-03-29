@@ -12,7 +12,7 @@ module SearchHelper
   end
 
   def render_doctor_cards
-    render(DoctorComponent.with_collection(@doctors))
+    render(DoctorComponent.with_collection(@doctors, current_user: current_user))
   end
 
   def render_job_cards

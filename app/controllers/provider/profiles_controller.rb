@@ -3,7 +3,7 @@ module Provider
     include DoctorParams
     include DoctorFormData
 
-    before_action :valid_doctor?
+    before_action :valid_doctor?, only: [:show, :edit, :update, :upload_image]
     before_action :set_doctor, only: [:show, :edit, :update, :upload_image]
     before_action :set_master_data, only: [:edit, :new]
 
@@ -52,6 +52,14 @@ module Provider
       @doctor.save(validate: false)
 
       render(json: { image_url: @doctor.image_url(:medium) }, status: :ok)
+    end
+
+    def account_delete
+      if current_user
+        User.find(current_user.id).destroy
+
+        render(json: {success: true})
+      end
     end
 
     private

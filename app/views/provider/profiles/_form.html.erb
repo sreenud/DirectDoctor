@@ -63,5 +63,10 @@
         </div>
       </div>
     </div>
+     <div class="pt-6 mb-4 pb-4 mt-8 flex justify-center" data-controller="account" data-account-url-value="<%=account_delete_provider_profiles_url%>">
+        <button name="button" type="button" class="btn btn-md btn-default bg-red-400 hover:bg-red-600 text-white btn-outline text-sm font-bold" data-disable-with="<i class='fab fa fa-spinner fa-spin pr-2'></i> Saving in..." data-action="click->account#delete">
+        <span><i class="fab fa fa-floppy-o pr-2"></i>Delete My Profile</span>
+        </button>
+      </div>
   </div>
 <% end %>

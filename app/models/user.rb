@@ -8,10 +8,11 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable,
          :omniauthable, omniauth_providers: %i[facebook google_oauth2]
 
-  has_many :social_connects
+  has_many :social_connects, dependent: :destroy
   has_many :approval_requests
-  has_one :doctor
-  has_many :likes
+  has_one :doctor, dependent: :destroy
+  has_many :likes, dependent: :destroy
+  has_one :claim_profile_request, dependent: :destroy
 
   after_create :assign_default_role
 
