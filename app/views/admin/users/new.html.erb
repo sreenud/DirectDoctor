@@ -15,7 +15,7 @@
 </header>
 <section class="flex mt-6">
   <div class="w-full" data-controller="message user tinymce">
-    <div class="w-3/4 z-10" data-target="message.errors"></div>
+    <div class="w-3/4 z-10" data-message-target="errors"></div>
     <%= render partial: 'form', locals: {user: @user, roles: @roles, button_text: 'Create'} %>
   </div>
 </section>

@@ -15,7 +15,7 @@
           <div class="w-full mt-6">
             Hey <%=@claim_profile_request&.user&.full_name%>,
           </div>
-          <div id="comment_list" data-target="radio-button.commentList">
+          <div id="comment_list" data-radio-button-target="commentList">
             <% if @claim_profile_comments.present? %>
               <%= render partial: 'comments', locals: {claim_profile_comments:  @claim_profile_comments} %>
             <% end %>

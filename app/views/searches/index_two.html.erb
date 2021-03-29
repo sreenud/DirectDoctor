@@ -13,13 +13,13 @@
                   <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd" />
                 </svg>
               </label>
-              <input class="md:my-2 my-3 w-full focus:outline-none bg-gray-100" type="text" data-target="search.name" name="speciality" placeholder="Name/Speciality" value="<%=speciality_name(params)%>">
+              <input class="md:my-2 my-3 w-full focus:outline-none bg-gray-100" type="text" data-search-target="name" name="speciality" placeholder="Name/Speciality" value="<%=speciality_name(params)%>">
             </div>
             <div class="flex justify-center items-center w-full pr-4 border-b md:border-b-0">
-              <input class="md:my-2 my-3 ml-3 w-full focus:outline-none bg-gray-100" id="near" data-target='search.near' type="text" name="near" placeholder="Zip/City/State" value="<%=params[:place]&.titleize%>">
+              <input class="md:my-2 my-3 ml-3 w-full focus:outline-none bg-gray-100" id="near" data-search-target='near' type="text" name="near" placeholder="Zip/City/State" value="<%=params[:place]&.titleize%>">
             </div>
             <div class="text-center mt-4 md:text-left md:mt-0">
-              <button class="bg-doctor-yellow text-gray-100 md:mr-4 rounded-md px-4 py-1 w-11/12 md:w-auto" data-target="search.search">Search</button>
+              <button class="bg-doctor-yellow text-gray-100 md:mr-4 rounded-md px-4 py-1 w-11/12 md:w-auto" data-search-target="search">Search</button>
             </div>
           </div>
         </div>
@@ -87,7 +87,7 @@
               <div class="w-full" id="result-container" data-controller="modal">
                 <%= render_doctor_cards %>
               </div>
-              <div class="w-full text-center" id="pagination-container" data-controller="pagination" data-target="pagination.container" data-pagination-url="search-map.json" data-pagination-current-url="<%=request.path%>">
+              <div class="w-full text-center" id="pagination-container" data-controller="pagination" data-pagination-target="container" data-pagination-url-value="search-map.json" data-pagination-current-url-value="<%=request.path%>">
                 <% if @pagy.count.positive? %>
                   <%== pagy_nav @pagy %>
                 <% else %>

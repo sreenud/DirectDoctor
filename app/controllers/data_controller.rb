@@ -12,4 +12,9 @@ class DataController < ApplicationController
       end
     end
   end
+
+  def doctors
+    @doctors = Doctor.where("name ILIKE ?", "%#{params[:q]}%").published
+    render(layout: false)
+  end
 end

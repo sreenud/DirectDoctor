@@ -11,6 +11,7 @@ class User < ApplicationRecord
   has_many :social_connects
   has_many :approval_requests
   has_one :doctor
+  has_many :likes
 
   after_create :assign_default_role
 
@@ -22,5 +23,9 @@ class User < ApplicationRecord
 
   def roles_string
     roles.pluck(:name).map(&:humanize).join(", ")
+  end
+
+  def likes?(doctor)
+    doctor.likes.where(user_id: id).any?
   end
 end

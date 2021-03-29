@@ -11,6 +11,11 @@ import {
 export default class extends Controller {
   static targets = ['container'];
 
+  static values = {
+    url: String,
+    currentUrl: String,
+  };
+
   connect() {
     this.containerTarget.addEventListener('click', (e) => {
       const { target } = e;
@@ -20,9 +25,10 @@ export default class extends Controller {
         const query = link.split('?')[1];
         const paramObj = new URLSearchParams(query);
         const page = paramObj.get('page');
-        const url = this.data.get('url');
-        const currentURL = this.data.get('currentUrl');
+        const url = this.urlValue;
 
+        const currentURL = this.currentUrlValue;
+        console.log(currentURL);
         if (page !== undefined && page !== null && page !== '') {
           showLoading();
           ajax({

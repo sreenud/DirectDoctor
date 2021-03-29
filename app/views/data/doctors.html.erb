@@ -1,0 +1,3 @@
+<% @doctors.each do |doctor| %>
+  <%= content_tag :li, doctor.name, role: :option, data: { "autocomplete-value": doctor.id } %>
+<% end %>

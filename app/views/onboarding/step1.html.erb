@@ -10,7 +10,7 @@
       <%= form_with(model: @claim_profile, url: onboarding_step1_url, class: "flex w-full", data: {type: "html", action: "ajax:error->onboarding#errorHandler ajax:success->onboarding#success" }) do |form| %>
         <div class="lg:w-8/12 max-w-xl mx-auto mt-10 text-gray-900">
           <div class="w-full flex radio-box">
-            <%=form.radio_button :user_type, 'patient', :id => 'patient', data: {action: 'onboarding#userChoice', target: 'onboarding.userType'}%>
+            <%=form.radio_button :user_type, 'patient', :id => 'patient', data: {action: 'onboarding#userChoice', onboarding_target: 'userType'}%>
             <label for="patient" class="cursor-pointer">
               <div class=" flex justify-center items-center mt-8">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-16 h-16">
@@ -19,7 +19,7 @@
               </div>
               <span>Patient</span>
             </label>
-            <%=form.radio_button :user_type, 'doctor', :id => 'doctor', data: {action: 'onboarding#userChoice', target: 'onboarding.userType'}%>
+            <%=form.radio_button :user_type, 'doctor', :id => 'doctor', data: {action: 'onboarding#userChoice', onboarding_target: 'userType'}%>
             <label for="doctor" class="cursor-pointer">
               <div class=" flex justify-center items-center mt-8">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-16 h-16">
@@ -29,7 +29,7 @@
               <span>Provider</span>
             </label>
           </div>
-          <div class="w-full mt-20 hidden" data-target="onboarding.doctorForm">
+          <div class="w-full mt-20 hidden" data-onboarding-target="doctorForm">
             <div class="text-left font-glacialbold text-2xl flex w-full px-6">
               <div class="w-1/6">Step 1: </div>
               <div class="w-5/6">Please check if we already created a profile for you.</div>
@@ -72,7 +72,7 @@
               </div>
             </div>
           </div>
-          <div class="w-full mt-12 hidden" data-target="onboarding.submitButton">
+          <div class="w-full mt-12 hidden" data-onboarding-target="submitButton">
             <div class="flex items-center justify-center mt-4">
               <%= form.submit "Continue", class: "text-gray-100 border rounded-lg px-12 py-3 border-doctor-yellow hover:bg-doctor-yellow hover:text-gray-100 bg-white cursor-pointer bg-doctor-yellow shadow-lg", data: { disable_with: "Saving in..." } %>
             </div>

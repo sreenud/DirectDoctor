@@ -138,11 +138,11 @@
         <!-- components -->
         <div class="input-group w-3/4 mt-3" data-controller="components">
           <% degree = { 'name' => nil } %>
-          <template data-target="components.componentTemplate">
+          <template data-components-target="componentTemplate">
             <%= render "admin/jobs/partials/degree", value: degree %>
           </template>
           <%= form.label :degree, :class => "label text-gray-500" %>
-          <div class="mt-2 sortable" data-target="components.components">
+          <div class="mt-2 sortable" data-components-target="components">
             <% if form.object.degree.present? %>
               <% form.object.degree.each do |degree_data| %>
                 <div class="mb-3">

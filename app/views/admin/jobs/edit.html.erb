@@ -15,7 +15,7 @@
 </header>
 <section class="flex mt-6">
   <div class="w-full" data-controller="message jobs tinymce">
-    <div class="w-full z-10" data-target="message.errors"></div>
+    <div class="w-full z-10" data-message-target="errors"></div>
     <%= render partial: 'form', locals: {job: @job, doctors: @doctors, specialities: @specialities, statuses: @statuses, button_text: 'Update'} %>
   </div>
 </section>

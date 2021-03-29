@@ -64,33 +64,33 @@
             <%= form.hidden_field :user_id, value: @claim_profile_request.user_id %>
             <%= form.hidden_field :doctor_id, value: @doctor&.id %>
             <%= form.hidden_field :id %>
-            <%= form.hidden_field :status, data: {target: "radio-button.status"} %>
+            <%= form.hidden_field :status, data: {radio_button_target: "status"} %>
             <div class="w-full flex radio-box">
-              <%=form.radio_button :status, 'approve', :id => 'approve', data: {action: 'radio-button#requestStatus', target: 'radio-button.buttonStatus'}%>
+              <%=form.radio_button :status, 'approve', :id => 'approve', data: {action: 'radio-button#requestStatus', radio_button_target: 'buttonStatus'}%>
               <label for="approve" class="cursor-pointer">
                 <span>Approve</span>
               </label>
-              <%=form.radio_button :status, 'follow_up', :id => 'follow_up', data: {action: 'radio-button#requestStatus', target: 'radio-button.buttonStatus'}%>
+              <%=form.radio_button :status, 'follow_up', :id => 'follow_up', data: {action: 'radio-button#requestStatus', radio_button_target: 'buttonStatus'}%>
               <label for="follow_up" class="cursor-pointer w-full">
                 <span>Need Info</span>
               </label>
-              <%=form.radio_button :status, 'reject', :id => 'reject', data: {action: 'radio-button#requestStatus', target: 'radio-button.buttonStatus'}%>
+              <%=form.radio_button :status, 'reject', :id => 'reject', data: {action: 'radio-button#requestStatus', radio_button_target: 'buttonStatus'}%>
               <label for="reject" class="cursor-pointer">
                 <span>Reject</span>
               </label>
             </div>
-            <div id="comment_list" data-target="radio-button.commentList">
+            <div id="comment_list" data-radio-button-target="commentList">
               <% if @claim_profile_comments.present? %>
                 <%= render partial: 'comments', locals: {claim_profile_comments:  @claim_profile_comments} %>
               <% end %>
             </div>
-            <div class="w-full z-10 text-green-500 mt-4" data-target="radio-button.success"></div>
+            <div class="w-full z-10 text-green-500 mt-4" data-radio-button-target="success"></div>
             <% hidden = (@claim_profile_request.status == 'follow_up') ? "block" : "hidden" %>
-            <div class="w-full mt-6 <%=hidden%>" data-target="radio-button.doctorForm">
+            <div class="w-full mt-6 <%=hidden%>" data-radio-button-target="doctorForm">
               <%= form.fields_for :claim_profile_comments do |claim_profile_comment| %>
                 <%= render "claim_profile_comment", form: claim_profile_comment %>
               <% end %>
-              <div class="w-full z-10 text-red-500" data-target="radio-button.errors"></div>
+              <div class="w-full z-10 text-red-500" data-radio-button-target="errors"></div>
               <div class="w-full mb-12 mt-4">
                 <%= form.button(type: "submit", class: "btn btn-md btn-default btn-dd-blue btn-outline text-sm font-bold float-left", data: {disable_with: "<i class='fab fa fa-spinner fa-spin pr-2'></i> Saving in..." }) do %>
                   <span><i class='fab fa fa-floppy-o pr-2'></i>Submit</span>
@@ -143,7 +143,7 @@
       <% else %>
         <div class="p-4 text-gray-700"><span class=" font-glacialbold"> <%=@claim_profile_request.name%></span> profile not found in the database, you can create this profile by providing some additional information.</div>
         <div class="p-4 justify-center"  data-controller="message" >
-          <div class="w-full z-10" data-target="message.errors"></div>
+          <div class="w-full z-10" data-message-target="errors"></div>
           <%= render partial: "admin/claim_profiles/form", locals: {claim_profile_request: @claim_profile_request, specialities: @specialities, states: @states}%>
         </div>
       <% end %>

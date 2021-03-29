@@ -51,8 +51,8 @@
           <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
         </div>
       </div>
-      <%= form.hidden_field :min_experience, class: 'form-control', data: { target: "doctor.minExperience" } %>
-      <%= form.hidden_field :max_experience, class: 'form-control', data: { target: "doctor.maxExperience" } %>
+      <%= form.hidden_field :min_experience, class: 'form-control', data: { doctor_target: "minExperience" } %>
+      <%= form.hidden_field :max_experience, class: 'form-control', data: { doctor_target: "maxExperience" } %>
     </div>
     <div class="input-group <%=request_approval_check('language', @approvel_request)%>">
       <label class="label text-gray-600" for="doctor_Practice/Clinic name">Languages Spoken<span class="text-red-700 pl-1">*</span></label>
@@ -118,10 +118,10 @@
             <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
           </div>
         </div>
-        <%= form.hidden_field :min_price, class: 'form-control', data: { target: "doctor.minPrice" } %>
-        <%= form.hidden_field :max_price, class: 'form-control', data: { target: "doctor.maxPrice" } %>
+        <%= form.hidden_field :min_price, class: 'form-control', data: { doctor_target: "minPrice" } %>
+        <%= form.hidden_field :max_price, class: 'form-control', data: { doctor_target: "maxPrice" } %>
       </div>
-      <div class="input-group" data-target="doctor.otherPriceInput">
+      <div class="input-group" data-doctor-target="otherPriceInput">
         <label class="label text-gray-600" for="patients_in_panel">Price details</label>
         <%= form.text_area :prices, :class => "input bg-white tinymce" %>
       </div>
@@ -143,10 +143,10 @@
             <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
           </div>
         </div>
-        <%= form.hidden_field :min_patients, class: 'form-control', data: { target: "doctor.minPatients" } %>
-        <%= form.hidden_field :max_patients, class: 'form-control', data: { target: "doctor.maxPatients" } %>
+        <%= form.hidden_field :min_patients, class: 'form-control', data: { doctor_target: "minPatients" } %>
+        <%= form.hidden_field :max_patients, class: 'form-control', data: { doctor_target: "maxPatients" } %>
       </div>
-      <div class="input-group" data-target="doctor.otherPatientsInput">
+      <div class="input-group" data-doctor-target="otherPatientsInput">
         <label class="label text-gray-600" for="patients_in_panel">Patients in Your Panel</label>
         <%= form.text_area :patients_in_panel, :class => "input bg-white tinymce" %>
       </div>

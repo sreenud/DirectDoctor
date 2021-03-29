@@ -13,6 +13,7 @@ class Doctor < ApplicationRecord
   has_many :reviews
   has_one :review_data, class_name: 'ReviewData'
   has_many :jobs
+  has_many :likes
 
   scope :latest, -> { order(created_at: :desc) }
   scope :published, -> { where(status: "published") }

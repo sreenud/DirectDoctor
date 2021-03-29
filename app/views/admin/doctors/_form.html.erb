@@ -1,6 +1,6 @@
 <%= form_with(model: [:admin, doctor], class: "flex w-full", data: {type: "html", action: "ajax:error->message#errorHandler ajax:success->message#success" }) do |form| %>
   <%= form.hidden_field :update_request, value: params[:update_request] %>
-  <%= form.hidden_field :doctor_id, value: params[:id], data: {target: "doctor.doctorId"} %>
+  <%= form.hidden_field :doctor_id, value: params[:id], data: {doctor_target: "doctorId"} %>
   <div class="flex-1 mr-4">
     <div class="bg-white border pb-16 rounded shadow p-5">
       <div class="tab_wrapper" x-data="{ tab: window.location.hash ? window.location.hash.substring(1) : 'doctor' }">
@@ -38,20 +38,20 @@
       <% end %>
       <div class="input-group">
         <%= form.label :slug, :class => "label text-gray-500" %>
-        <%= form.text_field :slug, :class => "input bg-white", :autocomplete => "off", data: {target: "slug.slug"} %>
+        <%= form.text_field :slug, :class => "input bg-white", :autocomplete => "off", data: {slug_target: "slug"} %>
       </div>
       <div class="input-group">
         <%= form.label :fmdd_score, :class => "label text-gray-500" %>
-        <%= form.text_field :fmdd_score, :class => "input bg-white", :autocomplete => "off", data: {target: "slug.slug"} %>
+        <%= form.text_field :fmdd_score, :class => "input bg-white", :autocomplete => "off", data: {slug_target: "slug"} %>
       </div>
       <div class="input-group" data-controller="image-upload">
         <%= form.label :image, :class => "label text-gray-500" %>
         <%= image_tag form.object.image_url if form.object.cached_image_data %>
-        <%= form.hidden_field :image, value: form.object.cached_image_data, class: "upload-data", data: {target: "doctor.profileImage"} %>
+        <%= form.hidden_field :image, value: form.object.cached_image_data, class: "upload-data", data: {doctor_target: "profileImage"} %>
         <%= form.file_field :image, class: 'finput-file label', accept: ImageUploader::ALLOWED_TYPES.join(",") %>
       </div>
       <div class="upload-progress"></div>
-      <div class="image-preview" data-target="doctor.imageUrl">
+      <div class="image-preview" data-doctor-target="imageUrl">
         <img src="<%= doctor_display_image(form.object) %>" height="300" class="rounded" \>
       </div>
       <div class="text-right hidden" id="image-save-button">

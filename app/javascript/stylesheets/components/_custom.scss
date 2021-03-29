@@ -475,3 +475,26 @@ input::-webkit-input-placeholder {
   background-color: #fff;
   transition: opacity 1s ease;
 }
+.autocomplete-div {
+  /* the container must be positioned relative: */
+  position: relative;
+  display: inline-block;
+}
+
+ul.autocomplete {
+  list-style-type: none;
+  border: 1px gray solid;
+}
+
+.autocomplete li {
+  display: relative;
+  list-style: none;
+  padding: 10px;
+}
+
+.autocomplete li:hover {
+  background-color: bisque;
+}
+.autocomplete li .active {
+  background-color: bisque;
+}

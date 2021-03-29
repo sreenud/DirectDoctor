@@ -15,7 +15,7 @@
 </header>
 <section class="flex mt-6">
   <div class="w-full" data-controller="message tinymce slug tip">
-    <div class="w-full z-10" data-target="message.errors"></div>
+    <div class="w-full z-10" data-message-target="errors"></div>
     <%= render partial: 'form', locals: {tip: @tip, statuses: @statuses, topics: @topics, button_text: 'Create'} %>
   </div>
 </section>

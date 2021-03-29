@@ -73,12 +73,12 @@
     <div class="w-2/3" data-controller="components">
       <!-- components -->
       <% social_links = { 'social_link' => nil } %>
-      <template data-target="components.componentTemplate">
+      <template data-components-target="componentTemplate">
         <%= render "admin/doctors/partials/social_links", value: social_links %>
       </template>
       <div class="input-group">
         <%= form.label :social_profile, :class => "label text-gray-500" %>
-        <div class="mt-2 sortable" data-target="components.components">
+        <div class="mt-2 sortable" data-components-target="components">
           <% if form&.object&.social_profiles.present? && form&.object&.social_profiles != "NA" %>
             <% form&.object&.social_profiles.each do |social_links| %>
               <div class="mb-3">

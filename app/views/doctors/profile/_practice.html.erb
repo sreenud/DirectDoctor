@@ -107,26 +107,26 @@
     <div class="w-full mt-5">
       <div class="w-full justify-left">
         <div class=" w-5/12 text-gray-600 text-sm">Practice Details:</div>
-        <div class=" w-11/12 text-base text-left justify-left read-more-block" data-target="doctor.readFull" style="max-height: 120px; position: relative; overflow: hidden;" itemprop="description">
+        <div class=" w-11/12 text-base text-left justify-left read-more-block" data-doctor-target="readFull" style="max-height: 120px; position: relative; overflow: hidden;" itemprop="description">
           <%=doctor&.about_doctor&.html_safe%>
-          <div data-target="doctor.readMoreBackground" style="position: absolute; bottom: 0px; left: 0px; width: 100%; padding: 30px 0px; background-image: linear-gradient(rgba(255, 255, 255, 0), white);"></div>
+          <div data-doctor-target="readMoreBackground" style="position: absolute; bottom: 0px; left: 0px; width: 100%; padding: 30px 0px; background-image: linear-gradient(rgba(255, 255, 255, 0), white);"></div>
         </div>
       </div>
     </div>
     <div class="w-full flex justify-center text-sm">
-      <a class=" w-full text-blue-400 text-center cursor-pointer" data-target="doctor.readMoreIcon" data-action="click->doctor#readMore">Read More<svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="chevron-down" class="w-4 h-4 inline-block" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" style="padding-left: 5px;"><path fill="currentColor" d="M207.029 381.476L12.686 187.132c-9.373-9.373-9.373-24.569 0-33.941l22.667-22.667c9.357-9.357 24.522-9.375 33.901-.04L224 284.505l154.745-154.021c9.379-9.335 24.544-9.317 33.901.04l22.667 22.667c9.373 9.373 9.373 24.569 0 33.941L240.971 381.476c-9.373 9.372-24.569 9.372-33.942 0z"></path></svg></a>
+      <a class=" w-full text-blue-400 text-center cursor-pointer" data-doctor-target="readMoreIcon" data-action="click->doctor#readMore">Read More<svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="chevron-down" class="w-4 h-4 inline-block" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" style="padding-left: 5px;"><path fill="currentColor" d="M207.029 381.476L12.686 187.132c-9.373-9.373-9.373-24.569 0-33.941l22.667-22.667c9.357-9.357 24.522-9.375 33.901-.04L224 284.505l154.745-154.021c9.379-9.335 24.544-9.317 33.901.04l22.667 22.667c9.373 9.373 9.373 24.569 0 33.941L240.971 381.476c-9.373 9.372-24.569 9.372-33.942 0z"></path></svg></a>
     </div>
     <div class="w-full mt-5">
       <div class="w-full justify-left">
         <div class=" w-5/12 text-gray-600 text-sm">Clinic Details:</div>
-        <div class=" w-11/12 text-base text-left justify-left read-more-block" style="max-height: 120px; position: relative; overflow: hidden;" data-target="doctor.readCFull">
+        <div class=" w-11/12 text-base text-left justify-left read-more-block" style="max-height: 120px; position: relative; overflow: hidden;" data-doctor-target="readCFull">
           <%=doctor&.about_clinic&.html_safe%>
-          <div data-target="doctor.readCMoreBackground" style="position: absolute; bottom: 0px; left: 0px; width: 100%; padding: 30px 0px; background-image: linear-gradient(rgba(255, 255, 255, 0), white);"></div>
+          <div data-doctor-target="readCMoreBackground" style="position: absolute; bottom: 0px; left: 0px; width: 100%; padding: 30px 0px; background-image: linear-gradient(rgba(255, 255, 255, 0), white);"></div>
         </div>
       </div>
     </div>
     <div class="w-full flex justify-center text-sm">
-      <a class="w-full text-blue-400 text-center cursor-pointer" data-target="doctor.readCMoreIcon" data-action="click->doctor#readCMore">Read More<svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="chevron-down" class="w-4 h-4 inline-block" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" style="padding-left: 5px;"><path fill="currentColor" d="M207.029 381.476L12.686 187.132c-9.373-9.373-9.373-24.569 0-33.941l22.667-22.667c9.357-9.357 24.522-9.375 33.901-.04L224 284.505l154.745-154.021c9.379-9.335 24.544-9.317 33.901.04l22.667 22.667c9.373 9.373 9.373 24.569 0 33.941L240.971 381.476c-9.373 9.372-24.569 9.372-33.942 0z"></path></svg></a>
+      <a class="w-full text-blue-400 text-center cursor-pointer" data-doctor-target="readCMoreIcon" data-action="click->doctor#readCMore">Read More<svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="chevron-down" class="w-4 h-4 inline-block" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" style="padding-left: 5px;"><path fill="currentColor" d="M207.029 381.476L12.686 187.132c-9.373-9.373-9.373-24.569 0-33.941l22.667-22.667c9.357-9.357 24.522-9.375 33.901-.04L224 284.505l154.745-154.021c9.379-9.335 24.544-9.317 33.901.04l22.667 22.667c9.373 9.373 9.373 24.569 0 33.941L240.971 381.476c-9.373 9.372-24.569 9.372-33.942 0z"></path></svg></a>
     </div>
   </div>
 </div>

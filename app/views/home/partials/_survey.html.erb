@@ -34,16 +34,16 @@
             </div>
           <% end %>
           <div class="lg:flex w-full justify-between">
-            <div class="w-full lg:w-2/4 mt-8 lg:ml-12" data-target="survey.success">
+            <div class="w-full lg:w-2/4 mt-8 lg:ml-12" data-survey-target="success">
               <div class="flex justify-center items-center w-full bg-white rounded-lg shadow-md border border-gray-100 lg:ml-6">
                 <label class="ml-3 mr-5">
                   <svg xmlns="http://www.w3.org/2000/svg" fill="none" class="w-5 text-gray-600" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
                   </svg>
                 </label>
-                <%= form.text_field :email, :class => "my-3 w-full focus:outline-none bg-white", :autocomplete => "off", placeholder: "Enter Your Email Address", data: {target: "survey.email"} %>
+                <%= form.text_field :email, :class => "my-3 w-full focus:outline-none bg-white", :autocomplete => "off", placeholder: "Enter Your Email Address", data: {survey_target: "email"} %>
               </div>
-              <div class="pl-4 text-red-500 text-md" data-target="survey.emailError"></div>
+              <div class="pl-4 text-red-500 text-md" data-survey-target="emailError"></div>
             </div>
             <div class="w-full lg:w-1/4 mt-8 mb-20 text-center lg:text-left">
               <%= form.button(type: "submit", class: "bg-doctor-yellow px-8 py-2  rounded-lg text-gray-100 shadow hover:bg-doctor-yellow-500 font-hurmebold  tracking-normal", data: {disable_with: "<i class='fab fa fa-spinner fa-spin pr-2'></i> Submiting...." }) do %>

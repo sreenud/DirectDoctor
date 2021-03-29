@@ -20,6 +20,7 @@ Rails.application.routes.draw do
   get 'list-your-practice', to: "list_your_practice#index"
   resources :doctors do
     resources :reviews, only: [:index, :create]
+    resource :likes
   end
   get "/blogs/:tip_slug/:id", to: "tips#show"
 
@@ -35,6 +36,7 @@ Rails.application.routes.draw do
   resources :data do
     collection do
       get :doctor_names
+      get :doctors
     end
   end
 

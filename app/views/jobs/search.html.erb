@@ -74,7 +74,7 @@
               <div class="w-full" id="result-container" data-controller="modal">
                 <%= render_job_cards %>
               </div>
-              <div class="w-full text-center" id="pagination-container" data-controller="pagination" data-target="pagination.container" data-pagination-url="job-search.json">
+              <div class="w-full text-center" id="pagination-container" data-controller="pagination" data-pagination-target="container" data-pagination-url="job-search.json">
                 <% if @pagy.count.positive? %>
                   <%== pagy_nav @pagy %>
                 <% else %>
