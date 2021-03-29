@@ -5,13 +5,13 @@ class LikesController < ApplicationController
   def create
     @doctor.likes.where(user_id: current_user.id).first_or_create
 
-    render(json: {success: true})
+    render(json: { success: true })
   end
 
   def destroy
     @doctor.likes.where(user_id: current_user.id).destroy_all
 
-    render(json: {success: true})
+    render(json: { success: true })
   end
 
   private

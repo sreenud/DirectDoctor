@@ -23,7 +23,7 @@ module Patient
       if current_user
         User.find(current_user.id).destroy
 
-        render(json: {success: true})
+        render(json: { success: true })
       end
     end
 

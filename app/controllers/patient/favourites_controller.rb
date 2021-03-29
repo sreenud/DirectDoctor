@@ -9,8 +9,6 @@ module Patient
       @pagy, @likes = pagy(@likes)
     end
 
-
-
     private
 
     def set_patient

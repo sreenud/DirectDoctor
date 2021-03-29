@@ -36,5 +36,4 @@ class DoctorComponent < ViewComponent::Base
   def doctor_likes
     @current_user.likes?(@doctor)
   end
-
 end
