@@ -28,7 +28,6 @@ export default class extends Controller {
         const url = this.urlValue;
 
         const currentURL = this.currentUrlValue;
-        console.log(currentURL);
         if (page !== undefined && page !== null && page !== '') {
           showLoading();
           ajax({
@@ -48,6 +47,7 @@ export default class extends Controller {
               }
               container.innerHTML = results;
               paginationContainer.innerHTML = pagination;
+              window.scrollTo(0, 0);
               if (
                 window.map_helpers !== undefined &&
                 window.map_helpers !== null
@@ -59,8 +59,10 @@ export default class extends Controller {
                 changeParams: { page },
                 route: `${currentURL}`,
               });
+
               AddHoverHighlight();
               hideLoading();
+
               return null;
             },
             (_err) => {

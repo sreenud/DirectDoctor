@@ -11,6 +11,7 @@ module Admin
       @states = State.by_name
       1.times { @claim_profile_request.claim_profile_comments.build }
       @claim_profile_comments = cliam_profile_comments
+      update_claim_profile_comments_read_status
     end
 
     def update
@@ -58,6 +59,11 @@ module Admin
     end
 
     private
+
+    def update_claim_profile_comments_read_status
+      comment_ids = ClaimProfileComment.where(claim_profile_request_id: @claim_profile_request.id).pluck(:id)
+      ClaimProfileComment.where(id: comment_ids).update_all(is_read: true)
+    end
 
     def create_or_find(claim_profile_request_params)
       if claim_profile_request_params[:doctor_id].present?

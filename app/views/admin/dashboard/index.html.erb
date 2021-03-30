@@ -51,10 +51,17 @@
                 <td class="px-4 py-3 text-sm">
                   <%=claim_profile_request.posted_on%>
                 </td>
-                <td class="px-4 py-3 text-sm">
-                  <a href="<%=admin_claim_profile_url(claim_profile_request)%>" class="px-3 py-1 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-doctor-yellow border border-transparent rounded-md active:bg-purple-600 hover:bg-doctor-yellow focus:outline-none focus:shadow-outline-purple">
-                    Review
-                  </a>
+                <td class="px-4 py-3 text-sm flex items-center mt-2">
+                  <div>
+                    <a href="<%=admin_claim_profile_url(claim_profile_request)%>" class="px-3 py-1 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-doctor-yellow border border-transparent rounded-md active:bg-purple-600 hover:bg-doctor-yellow focus:outline-none focus:shadow-outline-purple">
+                      Review
+                    </a>
+                  </div>
+                  <div class="pl-4">
+                    <% if claim_profile_request&.claim_profile_comments_count > 0 %>
+                      <div class="rounded-full h-4 w-4 mt-1 bg-green-500"></div>
+                    <% end %>
+                  </div>
                 </td>
               </tr>
             <% end %>

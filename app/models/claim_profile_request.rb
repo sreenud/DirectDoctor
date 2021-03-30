@@ -39,4 +39,10 @@ class ClaimProfileRequest < ApplicationRecord
       end
     end
   end
+
+  def claim_profile_comments_count
+    claim_profile_comments.select do |claim_profile_comment|
+      claim_profile_comment.is_read == false
+    end.size
+  end
 end

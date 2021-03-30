@@ -11,4 +11,5 @@ class ClaimProfileComment < ApplicationRecord
   def display_date
     created_at.strftime("%B %d, %Y")
   end
+
 end

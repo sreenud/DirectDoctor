@@ -96,7 +96,7 @@ export default class FilterController extends Controller {
         container.innerHTML = data.results;
         pagination.innerHTML = data.pagination;
         searchResultsCount.innerHTML = data.total_records;
-
+        window.scrollTo(0, 0);
         if (window.map_helpers !== undefined && window.map_helpers !== null) {
           window.map_helpers.renderPins(data.pins || []);
           // window.map_helpers.adjustZoomLevel(data.max_distance);
