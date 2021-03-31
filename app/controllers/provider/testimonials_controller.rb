@@ -2,7 +2,7 @@ module Provider
   class TestimonialsController < Provider::BaseController
     before_action :valid_doctor?
     before_action :set_doctor
-    before_action :set_testimonial, only:[:show, :edit, :update]
+    before_action :set_testimonial, only: [:show, :edit, :update]
 
     def index
       @q = DoctorTestimonial.ransack(params[:q])
@@ -34,7 +34,7 @@ module Provider
       respond_to do |format|
         if @testimonal.save
           format.html do
-            redirect_to(provider_testimonials_url,  notice: 'Testimonial is submitted')
+            redirect_to(provider_testimonials_url, notice: 'Testimonial is submitted')
           end
         else
           format.html do
