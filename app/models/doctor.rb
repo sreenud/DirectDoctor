@@ -14,6 +14,7 @@ class Doctor < ApplicationRecord
   has_one :review_data, class_name: 'ReviewData'
   has_many :jobs
   has_many :likes
+  has_many :testimonials, foreign_key: "testimonial_to", class_name: "DoctorTestimonial"
 
   scope :latest, -> { order(created_at: :desc) }
   scope :published, -> { where(status: "published") }

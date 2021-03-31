@@ -5,6 +5,8 @@ namespace :provider do
       get 'account_delete'
     end
   end
+
+  resources :testimonials
   resources :jobs
 
   resources :data do

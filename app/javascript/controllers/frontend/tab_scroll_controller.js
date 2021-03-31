@@ -38,12 +38,13 @@ export default class extends Controller {
           sections[s].offsetTop <= scrollPosition
         ) {
           const id = sections[s].id;
+          if (document.getElementsByClassName('tab-active')[0]) {
+            document
+              .getElementsByClassName('tab-active')[0]
+              .classList.remove('tab-active');
+          }
           document
-            .querySelector('.tab.tab-active')
-            .classList.remove('tab-active');
-
-          document
-            .querySelector(`a[href*=${id}]`)
+            .querySelector(`[id="id_${id}"]`)
             .parentNode.classList.add('tab-active');
         }
       }

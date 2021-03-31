@@ -5,6 +5,7 @@ class DoctorsController < BaseController
   def show
     @review = Review.new
     @reviews = @doctor&.reviews&.published
+    @testimonials = @doctor&.testimonials
   end
 
   private

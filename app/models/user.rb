@@ -29,4 +29,8 @@ class User < ApplicationRecord
   def likes?(doctor)
     doctor.likes.where(user_id: id).any?
   end
+
+  def has_role?(role)
+    roles.any? { |k| k.name == role }
+  end
 end

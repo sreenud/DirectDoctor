@@ -65,9 +65,11 @@
                     </svg>
                     <span class="ml-4 text-base leading-normal text-left">Choose File</span>
                     <%= form.hidden_field :document, value: form.object.cached_document_data %>
-                    <%= form.file_field :document, class: 'hidden' %>
+                    <%= form.file_field :document, class: 'hidden', data: {onboarding_target: "fileName", action: "onboarding#fileDisplayName"} %>
                   </label>
                   <div class="text-red-500 mt-4 text-center" id="error_document"></div>
+                  <div class="text-center mt-3" data-target="onboarding.fileOriginalName"></div>
+                  <div class="text-red-500 mt-4 text-center" id="error_document" data-target="onboarding.fileErrorMessage"></div>
                 </div>
               </div>
             </div>

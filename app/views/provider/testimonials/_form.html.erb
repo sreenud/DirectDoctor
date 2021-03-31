@@ -1,0 +1,34 @@
+<% url = (button_text == "Post") ? provider_testimonials_url : provider_testimonial_url(testimonial) %>
+<%= form_with(model: [:provider, testimonial], url: url, class: "flex w-full", data: {type: "html", action: "ajax:error->message#errorHandler ajax:success->message#success" }) do |form| %>
+  <div class="flex-1 mb-6 mr-4  text-gray-600">
+    <div class="bg-white border pb-16 rounded shadow p-5 w-3/4">
+      <% if @to_doctor.present? %>
+        <div class="p-4 text-lg">
+          <%=@to_doctor.name%>
+        </div>
+        <%= form.hidden_field :testimonial_to, value: @to_doctor&.id %>
+      <% else %>
+        <div class="input-group w-3/4 ml-4" data-controller="testimonials">
+          <label class="label text-gray-600" for="job_specialities">Doctor<span class="text-red-700 pl-1">*</span></label>
+          <%= form.select(:testimonial_to, @doctors.collect {|doctor| [doctor.name, doctor.id]}, {:prompt => "Select..."}, {class: "select", id: "doctor_testimonials"}) %>
+        </div>
+      <% end %>
+      <div class="w-full pt-4 ml-4">
+        <div class="input-group w-3/4">
+          <label class="label text-gray-600" for="job_salary">Tetimonial<span class="text-red-700 pl-1">*</span></label>
+          <%= form.text_area :message, :class => "input bg-white tinymce", :autocomplete => "off", placeholder: "" %>
+        </div>
+      </div>
+      <div class="float-left pt-5">
+        <%= form.button(type: "submit", class: "btn btn-save btn-md btn-default btn-dd-blue btn-outline text-sm font-bold float-right", data: {disable_with: "<i class='fab fa fa-spinner fa-spin pr-2'></i> Saving in..." }) do %>
+          <span><i class='fab fa fa-floppy-o pr-2'></i><%=button_text%> Testimonial</span>
+        <% end %>
+      </div>
+      <div class="float-left pt-6 mb-4 pb-4">
+        <%= form.button(type: "submit", class: "btn btn-md btn-default btn-dd-blue btn-outline text-sm font-bold float-right", data: {disable_with: "<i class='fab fa fa-spinner fa-spin pr-2'></i> Saving in..." }) do %>
+          <span><i class='fab fa fa-floppy-o pr-2'></i><%=button_text%> Testimonial</span>
+        <% end %>
+      </div>
+    </div>
+  </div>
+<% end %>
