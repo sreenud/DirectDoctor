@@ -3,12 +3,12 @@ module DoctorFormData
 
   def new_doctor_object
     @doctor = Doctor.new(
-      min_experience: Doctor.default_experience&.first,
-      max_experience: Doctor.default_experience&.last,
-      min_patients: Doctor.default_patient&.first,
-      max_patients: Doctor.default_patient&.last,
-      min_price: Doctor.default_price&.first,
-      max_price: Doctor.default_price&.last,
+      min_experience: 0,
+      max_experience: 0,
+      min_patients: 0,
+      max_patients: 0,
+      min_price: 0,
+      max_price: 0,
     )
   end
 
