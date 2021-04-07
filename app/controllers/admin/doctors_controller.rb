@@ -21,7 +21,7 @@ module Admin
     end
 
     def edit
-      @approvel_request = ApprovalRequest&.where(request_user_id: @doctor.user_id, status: 'pending')&.first
+      @approvel_request = ApprovalRequest&.where(request_user_id: @doctor.user_id, status: "pending")&.first
       if @approvel_request
         @data_changes = @approvel_request.data_changes.map { |key, data| { key => data.last } }.reduce(:merge)
         @doctor.attributes = @data_changes
@@ -34,7 +34,7 @@ module Admin
       respond_to do |format|
         # @doctor.image_derivatives!
         if @doctor.save
-          format.html { redirect_to(admin_doctors_url, notice: 'Doctor was successfully created.') }
+          format.html { redirect_to(admin_doctors_url, notice: "Doctor was successfully created.") }
           format.json { render(:show, status: :created, location: @doctor) }
         else
           format.html { render(partial: "shared/partials/errors", locals: { object: @doctor }, status: :bad_request) }
@@ -49,12 +49,12 @@ module Admin
         # @doctor.image_derivatives!
         if @doctor.save
           if doctor_params[:update_request] == "yes"
-            request = ApprovalRequest&.where(request_user_id: @doctor.user_id, status: 'pending')&.first
+            request = ApprovalRequest&.where(request_user_id: @doctor.user_id, status: "pending")&.first
             request.respond_user_id = current_user.id
             request.status = ApprovalRequest.statuses[:approved]
             request.save
           end
-          format.html { redirect_to(admin_doctors_url, notice: 'Doctor is successfully updated.') }
+          format.html { redirect_to(admin_doctors_url, notice: "Doctor is successfully updated.") }
           format.json { render(:show, status: :ok, location: @doctor) }
         else
           format.html { render(partial: "shared/partials/errors", locals: { object: @doctor }, status: :bad_request) }

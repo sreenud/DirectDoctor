@@ -24,7 +24,7 @@ module Admin
 
       respond_to do |format|
         if @speciality.save
-          format.html { redirect_to(admin_specialities_url, notice: 'Speciality was successfully created.') }
+          format.html { redirect_to(admin_specialities_url, notice: "Speciality was successfully created.") }
           format.json { render(:show, status: :created, location: @speciality) }
         else
           format.html do
@@ -37,7 +37,7 @@ module Admin
     def update
       respond_to do |format|
         if @speciality.update(speciality_params)
-          format.html { redirect_to(admin_specialities_url, notice: 'Speciality is successfully updated.') }
+          format.html { redirect_to(admin_specialities_url, notice: "Speciality is successfully updated.") }
           format.json { render(:show, status: :ok, location: @speciality) }
         else
           format.html do

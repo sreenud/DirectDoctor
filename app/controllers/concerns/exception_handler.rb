@@ -69,18 +69,18 @@ module ExceptionHandler
 
   def store_404_details(request)
     path = "#{Rails.public_path}/system/error_404_logs"
-    file_name = "error_404_#{Date.today.strftime('%d_%m_%Y')}.txt"
+    file_name = "error_404_#{Date.today.strftime("%d_%m_%Y")}.txt"
     FileUtils.mkdir_p(path)
     File.open("#{path}/#{file_name}", "a+") do |f|
       f.puts "-----------*************--------------"
       f.puts ""
       f.puts "URL: #{request.base_url}/#{request.fullpath}"
-      f.puts "Request Method: #{request.headers['REQUEST_METHOD']}"
-      f.puts "Request Type: #{request.xhr? ? 'AJAX' : ''}"
+      f.puts "Request Method: #{request.headers["REQUEST_METHOD"]}"
+      f.puts "Request Type: #{request.xhr? ? "AJAX" : ""}"
       f.puts "IP Address: #{request.ip}"
       f.puts "Referer: #{request.referer}"
       f.puts "Location: #{session[:loc_country]}, #{session[:loc_city]} - #{session[:loc_timezone]}"
-      f.puts "Time: #{Time.now.strftime('%d-%b-%Y %H:%M:%S %p %Z')}"
+      f.puts "Time: #{Time.now.strftime("%d-%b-%Y %H:%M:%S %p %Z")}"
       f.puts ""
     end
   end

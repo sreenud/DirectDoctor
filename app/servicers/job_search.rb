@@ -37,7 +37,7 @@ module JobSearch
     return near if near.present?
 
     @default_scope.near(
-      to_coordinates(@params[:near] || '') || @params[:place] || @current_location,
+      to_coordinates(@params[:near] || "") || @params[:place] || @current_location,
       10000, # maximum can be around 41000
       units: JOB_SEARCH_UNITS
     )
@@ -51,34 +51,34 @@ module JobSearch
 
   def apply_job_practice_filter
     return @default_scope unless @params[:practice_type].present?
-    return @default_scope if @params[:practice_type] == 'both'
+    return @default_scope if @params[:practice_type] == "both"
 
     @default_scope = @default_scope.where(style: @params[:practice_type])
   end
 
   def apply_job_speciality_filter
     return @default_scope unless @params[:speciality].present?
-    return @default_scope if @params[:speciality] == 'all'
+    return @default_scope if @params[:speciality] == "all"
 
     @default_scope = @default_scope.where(primary_speciality: @params[:speciality])
   end
 
   def apply_other_filters
-    @default_scope = @default_scope.where(is_holistic_medicine: 'yes') if @params[:holistic_medicine].present?
-    @default_scope = @default_scope.where(is_telehealth_service: 'yes') if @params[:holistic_medicine].present?
+    @default_scope = @default_scope.where(is_holistic_medicine: "yes") if @params[:holistic_medicine].present?
+    @default_scope = @default_scope.where(is_telehealth_service: "yes") if @params[:holistic_medicine].present?
   end
 
   def to_coordinates(near)
     return unless near.present?
 
-    near.split(',').map(&:to_f)
+    near.split(",").map(&:to_f)
   end
 
   def build_range(value)
-    array_value = value.split(',').map { |a| a.split('_') }
+    array_value = value.split(",").map { |a| a.split("_") }
     array_value = array_value.map do |a|
       mx = a[1].to_i
-      a[0] == 'gt' ? (mx..) : (a[0].to_i..mx)
+      a[0] == "gt" ? (mx..) : (a[0].to_i..mx)
     end
     array_value
   end

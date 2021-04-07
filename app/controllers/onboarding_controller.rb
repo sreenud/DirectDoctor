@@ -15,7 +15,7 @@ class OnboardingController < BaseController
     @claim_profile = ClaimProfileRequest.new(claim_profile_request_params)
     if @claim_profile.user_type == "doctor"
       @claim_profile.user_id = current_user.id
-      @claim_profile.status = 'requested'
+      @claim_profile.status = "requested"
       respond_to do |format|
         if @claim_profile.save
           user = User.find_by_id(current_user.id)
@@ -24,7 +24,7 @@ class OnboardingController < BaseController
           user.add_role(:doctor)
 
           SignupMailer.with(user: user).thankyou.deliver_now
-          format.html { redirect_to(onboarding_thankyou_url, notice: 'Thank you for your interest.') }
+          format.html { redirect_to(onboarding_thankyou_url, notice: "Thank you for your interest.") }
           format.json { render(:show, status: :created, location: @claim_profile) }
         else
           format.html do
@@ -37,7 +37,7 @@ class OnboardingController < BaseController
       user.remove_role(:guest)
       user.add_role(:patient)
 
-      redirect_to(onboarding_thankyou_url, notice: 'Thank you for your interest.')
+      redirect_to(onboarding_thankyou_url, notice: "Thank you for your interest.")
     end
   end
 

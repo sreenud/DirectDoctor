@@ -13,7 +13,7 @@ module Admin
         [
           value,
           key,
-          { data: { 'min-experience': key&.split('-')&.first, 'max-experience': key&.split('-')&.last } },
+          { data: { 'min-experience': key&.split("-")&.first, 'max-experience': key&.split("-")&.last } },
         ]
       end
     end
@@ -31,7 +31,7 @@ module Admin
         [
           value,
           key,
-          { data: { 'min-patients': key&.split('-')&.first, 'max-patients': key&.split('-')&.last } },
+          { data: { 'min-patients': key&.split("-")&.first, 'max-patients': key&.split("-")&.last } },
         ]
       end
     end
@@ -49,7 +49,7 @@ module Admin
         [
           value,
           key,
-          { data: { 'min-price': key&.split('-')&.first, 'max-price': key&.split('-')&.last } },
+          { data: { 'min-price': key&.split("-")&.first, 'max-price': key&.split("-")&.last } },
         ]
       end
     end

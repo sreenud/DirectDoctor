@@ -37,7 +37,7 @@ class CreateDoctors < ActiveRecord::Migration[6.0]
       t.integer(:fmdd_score, default: 0)
       t.integer(:pear_recomendations, array: true)
       t.text(:image_data)
-      t.string(:status, default: 'draft')
+      t.string(:status, default: "draft")
 
       t.timestamps
     end

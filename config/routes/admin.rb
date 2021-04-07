@@ -1,7 +1,7 @@
 namespace :admin do
-  post 'doctors/upload-image', to: "doctors#upload_image"
+  post "doctors/upload-image", to: "doctors#upload_image"
   resources :dashboard, only: %i[index]
-  scope module: 'blog' do
+  scope module: "blog" do
     resources :topics
     resources :tips
     resources :tags

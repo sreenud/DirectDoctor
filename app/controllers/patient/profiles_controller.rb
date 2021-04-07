@@ -9,7 +9,7 @@ module Patient
     def update
       respond_to do |format|
         if @patient.update(user_params)
-          format.html { redirect_to(edit_patient_profile_url(@patient), notice: 'Profile is successfully updated.') }
+          format.html { redirect_to(edit_patient_profile_url(@patient), notice: "Profile is successfully updated.") }
           format.json { render(:show, status: :ok, location: @patient) }
         else
           format.html do

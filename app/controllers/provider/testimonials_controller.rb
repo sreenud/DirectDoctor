@@ -34,7 +34,7 @@ module Provider
       respond_to do |format|
         if @testimonal.save
           format.html do
-            redirect_to(provider_testimonials_url, notice: 'Testimonial is submitted')
+            redirect_to(provider_testimonials_url, notice: "Testimonial is submitted")
           end
         else
           format.html do
@@ -48,7 +48,7 @@ module Provider
       respond_to do |format|
         if @testimonial.update(testimonial_params)
           format.html do
-            redirect_to(provider_testimonials_url, notice: 'Testimonial is updated')
+            redirect_to(provider_testimonials_url, notice: "Testimonial is updated")
           end
         else
           format.html do
@@ -68,7 +68,7 @@ module Provider
     private
 
     def valid_doctor?
-      redirect_to(root_path) unless current_user.has_role?('doctor')
+      redirect_to(root_path) unless current_user.has_role?("doctor")
     end
 
     def set_doctor

@@ -10,7 +10,7 @@ class Topic < ApplicationRecord
 
   scope :latest, -> { order(created_at: :desc) }
   scope :popular, -> { where(is_popular: true) }
-  scope :published, -> { where(status: 'published') }
+  scope :published, -> { where(status: "published") }
 
   validates :name, :summary, :content, :meta_title, :read_time,
     :meta_description, :author_id, :primary_keyword, presence: true

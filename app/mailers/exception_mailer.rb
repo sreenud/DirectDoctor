@@ -4,6 +4,6 @@ class ExceptionMailer < ApplicationMailer
     @time = Time.now.strftime("%d-%m-%Y %H:%M:%S %Z")
     # rubocop:disable Layout/LineLength
     @subject = "#{@params_data[:controller_name].camelize} - #{@params_data[:status_code]} error raised in FindMyDirectDoctor #{Rails.env.capitalize}"
-    mail(to: 'srinivasavarma.d@gmail.com', subject: @subject)
+    mail(to: "srinivasavarma.d@gmail.com", subject: @subject)
   end
 end

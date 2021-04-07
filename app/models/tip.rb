@@ -6,7 +6,7 @@ class Tip < ApplicationRecord
   belongs_to :topic
 
   scope :latest, -> { order(created_at: :desc) }
-  scope :published, -> { where(status: 'published') }
+  scope :published, -> { where(status: "published") }
 
   validates :name, :summary, :content, :meta_title, :meta_description, presence: true
   validates :slug, uniqueness: true

@@ -22,7 +22,7 @@ class DoctorComponent < ViewComponent::Base
       )
     else
       image_pack_tag(
-        'doctor_default.svg',
+        "doctor_default.svg",
         alt: "#{doctor.name} - #{doctor.address}",
         **props
       )

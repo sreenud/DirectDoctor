@@ -26,12 +26,12 @@ SitemapGenerator::Sitemap.create do
   #   end
 
   # add root_path, priority: 0.5, changefreq: 'daily'
-  add blogs_path, priority: 0.5, changefreq: 'daily'
+  add blogs_path, priority: 0.5, changefreq: "daily"
   Topic.published.find_each do |topic|
     add blog_path(topic.slug), lastmod: topic.updated_at, priority: 0.5
   end
 
-  add tips_path, priority: 0.5, changefreq: 'daily'
+  add tips_path, priority: 0.5, changefreq: "daily"
   Tip.published.find_each do |tip|
     add "/blogs/#{tip&.slug}/#{tip&.code}", lastmod: tip.updated_at, priority: 0.5
   end

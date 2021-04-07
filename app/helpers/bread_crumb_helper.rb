@@ -10,7 +10,7 @@ module BreadCrumbHelper
     if params["place"].present?
       bread_crumbs << [
         "name" => params["place"].titleize,
-        "type" => 'place',
+        "type" => "place",
       ]
     end
 
@@ -18,13 +18,13 @@ module BreadCrumbHelper
       bread_crumbs.each do |bread_crumb|
         next unless bread_crumb&.first["type"] == "place"
         bread_crumb&.first.tap do |bread|
-          bread["url"] = "/#{params['place']}"
+          bread["url"] = "/#{params["place"]}"
         end
       end
 
       bread_crumbs << [
         "name" => params["style"].titleize,
-        "type" => 'style',
+        "type" => "style",
       ]
     end
 
@@ -32,13 +32,13 @@ module BreadCrumbHelper
       bread_crumbs.each do |bread_crumb|
         next unless bread_crumb&.first["type"] == "style"
         bread_crumb&.first.tap do |bread|
-          bread["url"] = "/#{params['place']}/#{params['style']}"
+          bread["url"] = "/#{params["place"]}/#{params["style"]}"
         end
       end
 
       bread_crumbs << [
         "name" => params["speciality_slug"].titleize,
-        "type" => 'speciality',
+        "type" => "speciality",
       ]
     end
 
@@ -46,13 +46,13 @@ module BreadCrumbHelper
       bread_crumbs.each do |bread_crumb|
         next unless bread_crumb&.first["type"] == "speciality"
         bread_crumb&.first.tap do |bread|
-          bread["url"] = "/#{params['place']}/#{params['style']}/#{params['speciality_slug']}"
+          bread["url"] = "/#{params["place"]}/#{params["style"]}/#{params["speciality_slug"]}"
         end
       end
 
       bread_crumbs << [
-        "name" => "#{params['location'].titleize}, #{params['place'].titleize}",
-        "type" => 'location',
+        "name" => "#{params["location"].titleize}, #{params["place"].titleize}",
+        "type" => "location",
       ]
     end
 
@@ -62,13 +62,13 @@ module BreadCrumbHelper
       bread_crumbs.each do |bread_crumb|
         next unless bread_crumb&.first["type"] == "place"
         bread_crumb&.first.tap do |bread|
-          bread["url"] = "/search-map?near=#{params['near']}&place=#{params['place']}"
+          bread["url"] = "/search-map?near=#{params["near"]}&place=#{params["place"]}"
         end
       end
 
       bread_crumbs << [
         "name" => speciality.name,
-        "type" => 'speciality',
+        "type" => "speciality",
       ]
     end
 

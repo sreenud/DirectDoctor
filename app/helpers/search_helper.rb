@@ -4,11 +4,11 @@ module SearchHelper
   end
 
   def doctor_pins
-    @doctors.map { |doc| doctor_pin_string(doc) }.join('|')
+    @doctors.map { |doc| doctor_pin_string(doc) }.join("|")
   end
 
   def doctor_pin_string(doctor)
-    [:lat, :lng, :price, :id].map { |a| doctor.send(a) || '' }.join(',')
+    [:lat, :lng, :price, :id].map { |a| doctor.send(a) || "" }.join(",")
   end
 
   def render_doctor_cards

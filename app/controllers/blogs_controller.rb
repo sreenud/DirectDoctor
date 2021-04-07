@@ -4,7 +4,7 @@ class BlogsController < BaseController
 
   def index
     @categories = Category.includes(:topics)
-      .where(topics: { status: 'published' }).active.latest
+      .where(topics: { status: "published" }).active.latest
 
     @popular_topics = Topic.popular
     @no_directory = true
@@ -28,6 +28,6 @@ class BlogsController < BaseController
   def set_meta_data
     @meta_title ||= @topic&.meta_title
     @meta_description ||= @topic&.meta_description
-    @allow_robots ||= @topic&.status == 'published' ? true : false
+    @allow_robots ||= @topic&.status == "published" ? true : false
   end
 end

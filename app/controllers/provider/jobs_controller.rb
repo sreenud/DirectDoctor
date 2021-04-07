@@ -34,7 +34,7 @@ module Provider
         if @job.save
           format.html do
             redirect_to(provider_jobs_url,
-           notice: 'Thank you for submitting your job requirements.
+              notice: 'Thank you for submitting your job requirements.
             Our team will email you and publish the job posting after the review process (1-3days)')
           end
           format.json { render(:show, status: :created, location: @job) }

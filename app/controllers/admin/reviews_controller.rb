@@ -25,7 +25,7 @@ module Admin
 
       respond_to do |format|
         if @review.save
-          format.html { redirect_to(admin_reviews_url, notice: 'Review was successfully created.') }
+          format.html { redirect_to(admin_reviews_url, notice: "Review was successfully created.") }
           format.json { render(:show, status: :created, location: @review) }
         else
           format.html do
@@ -40,8 +40,8 @@ module Admin
         if @review.update(review_params)
           # doctor save average rating
 
-          ReviewMailer.with(review: @review).approved.deliver_now if @review.status == 'published'
-          ReviewMailer.with(review: @review).rejected.deliver_now if @review.status == 'archive'
+          ReviewMailer.with(review: @review).approved.deliver_now if @review.status == "published"
+          ReviewMailer.with(review: @review).rejected.deliver_now if @review.status == "archive"
 
           @doctor = Doctor.find(@review.doctor_id)
           reviews = @doctor&.reviews&.published
@@ -51,7 +51,7 @@ module Admin
           @doctor.avg_rating = review_sum / total_reviews
           @doctor.save(validate: false)
 
-          format.html { redirect_to(admin_reviews_url, notice: 'Review is successfully updated.') }
+          format.html { redirect_to(admin_reviews_url, notice: "Review is successfully updated.") }
           format.json { render(:show, status: :ok, location: @review) }
         else
           format.html do

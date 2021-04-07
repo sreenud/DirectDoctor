@@ -6,7 +6,7 @@ class ClaimProfilesController < BaseController
 
   def show
     @claim_profile_request = ClaimProfileRequest.includes(:claim_profile_comments)
-      .where(status: 'follow_up').where(request_token: params[:id])&.first
+      .where(status: "follow_up").where(request_token: params[:id])&.first
 
     @claim_profile_comments = ClaimProfileComment.includes(:user)
       .where(claim_profile_request_id: @claim_profile_request.id)

@@ -14,13 +14,13 @@ Rails.application.configure do
 
   # Enable/disable caching. By default caching is disabled.
   # Run rails dev:cache to toggle caching.
-  if Rails.root.join('tmp', 'caching-dev.txt').exist?
+  if Rails.root.join("tmp", "caching-dev.txt").exist?
     config.action_controller.perform_caching = true
     config.action_controller.enable_fragment_cache_logging = true
 
     config.cache_store = :memory_store
     config.public_file_server.headers = {
-      'Cache-Control' => "public, max-age=#{2.days.to_i}",
+      "Cache-Control" => "public, max-age=#{2.days.to_i}",
     }
   else
     config.action_controller.perform_caching = false
@@ -55,9 +55,9 @@ Rails.application.configure do
   config.action_mailer.delivery_method = :mailgun
   config.action_mailer.mailgun_settings = {
     api_key: Rails.application.credentials.dig(:mailgun, :api_key),
-    domain: 'findmydirectdoctor.com',
+    domain: "findmydirectdoctor.com",
     # api_host: 'api.eu.mailgun.net'  # Uncomment this line for EU region domains
   }
 
-  config.action_mailer.default_url_options = { host: 'www.findmydirectdoctor.com' }
+  config.action_mailer.default_url_options = { host: "www.findmydirectdoctor.com" }
 end

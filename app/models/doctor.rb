@@ -11,7 +11,7 @@ class Doctor < ApplicationRecord
   belongs_to :created, class_name: "User", foreign_key: "created_by", optional: true
 
   has_many :reviews
-  has_one :review_data, class_name: 'ReviewData'
+  has_one :review_data, class_name: "ReviewData"
   has_many :jobs
   has_many :likes
   has_many :testimonials, foreign_key: "testimonial_to", class_name: "DoctorTestimonial"
@@ -54,20 +54,20 @@ class Doctor < ApplicationRecord
   enum holistic_medicine: {
     "yes": "Yes",
     "no": "No",
-    'not_available': 'Not available',
+    'not_available': "Not available",
   }
 
   def self.restricted_fields
     [
-      'title',
-      'language',
-      'holistic_option',
-      'telehealth_option',
-      'home_visit_option',
-      'aditional_services',
-      'appointments',
-      'consultation',
-      'free_consultation_time',
+      "title",
+      "language",
+      "holistic_option",
+      "telehealth_option",
+      "home_visit_option",
+      "aditional_services",
+      "appointments",
+      "consultation",
+      "free_consultation_time",
     ]
   end
 
@@ -100,7 +100,7 @@ class Doctor < ApplicationRecord
   end
 
   def doctor_title
-    title&.split(',')&.first(2)&.join(',')
+    title&.split(",")&.first(2)&.join(",")
   end
 
   def profile_url
@@ -124,11 +124,11 @@ class Doctor < ApplicationRecord
   end
 
   def address
-    [address_line_1, city, state, zipcode].compact.join(', ')
+    [address_line_1, city, state, zipcode].compact.join(", ")
   end
 
   def full_address
-    [address_line_1, address_suite, city, state, zipcode].compact.join(', ')
+    [address_line_1, address_suite, city, state, zipcode].compact.join(", ")
   end
 
   def price
@@ -136,7 +136,7 @@ class Doctor < ApplicationRecord
   end
 
   def formated_phone_number
-    phone.gsub(/[^0-9]/, '')
+    phone.gsub(/[^0-9]/, "")
   end
 
   def review_count
@@ -157,7 +157,7 @@ class Doctor < ApplicationRecord
   def set_fdd_id
     unless profile_source
       primary_speciality = Speciality.find(speciality_id)
-      self.fdd_id = "#{state_code}-#{primary_speciality&.code}-#{zipcode}-#{format('%05d', id)}"
+      self.fdd_id = "#{state_code}-#{primary_speciality&.code}-#{zipcode}-#{format("%05d", id)}"
       save
     end
   end
@@ -215,36 +215,36 @@ class Doctor < ApplicationRecord
   end
 
   def hash_to_string(hashes)
-    hashes.map { |hash| [hash['value']] }&.join(",")
+    hashes.map { |hash| [hash["value"]] }&.join(",")
   end
 
   def validate_holistic_option
-    if is_holistic_medicine == 'yes' && holistic_option.blank?
-      errors.add(:holistic_option, 'should be present')
+    if is_holistic_medicine == "yes" && holistic_option.blank?
+      errors.add(:holistic_option, "should be present")
     end
   end
 
   def validate_telehealth_option
-    if is_telehealth_service == 'yes' && telehealth_option.blank?
-      errors.add(:telehealth_option, 'should be present')
+    if is_telehealth_service == "yes" && telehealth_option.blank?
+      errors.add(:telehealth_option, "should be present")
     end
   end
 
   def validate_home_visit_option
-    if is_home_visit == 'yes' && home_visit_option.blank?
-      errors.add(:home_visit_option, 'should be present')
+    if is_home_visit == "yes" && home_visit_option.blank?
+      errors.add(:home_visit_option, "should be present")
     end
   end
 
   def validate_patients_options
-    if patients_options == 'other' && prices.blank?
-      errors.add(:patients_in_panel, 'should be present')
+    if patients_options == "other" && prices.blank?
+      errors.add(:patients_in_panel, "should be present")
     end
   end
 
   def validate_price_options
-    if price_options == 'other' && patients_in_panel.blank?
-      errors.add(:prices, 'should be present')
+    if price_options == "other" && patients_in_panel.blank?
+      errors.add(:prices, "should be present")
     end
   end
 

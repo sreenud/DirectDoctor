@@ -27,7 +27,7 @@ module Admin
 
       respond_to do |format|
         if @page_redirect.save
-          format.html { redirect_to(admin_page_redirects_url, notice: 'Topic was successfully created.') }
+          format.html { redirect_to(admin_page_redirects_url, notice: "Topic was successfully created.") }
           format.json { render(:show, status: :created, location: @page_redirect) }
         else
           format.html do
@@ -40,7 +40,7 @@ module Admin
     def update
       respond_to do |format|
         if @page_redirect.update(page_redirect_params)
-          format.html { redirect_to(admin_page_redirects_url, notice: 'Topic is successfully updated.') }
+          format.html { redirect_to(admin_page_redirects_url, notice: "Topic is successfully updated.") }
           format.json { render(:show, status: :ok, location: @page_redirect) }
         else
           format.html do

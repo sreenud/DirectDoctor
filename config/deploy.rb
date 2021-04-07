@@ -35,7 +35,7 @@ set(:branch, ENV["BRANCH"] || :master)
 
 # Default value for keep_releases is 5
 # set :keep_releases, 5
-set(:assets_prefix, 'packs')
+set(:assets_prefix, "packs")
 
 # Default branch is :master
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp

@@ -63,7 +63,7 @@ class JobsController < BaseController
       prev: @pagy.prev,
       page: @pagy.page,
       max_distance: @doctors.map(&:distance).max,
-      pagination: @pagy.next || @pagy.prev ? pagy_nav(@pagy) : 'No results found',
+      pagination: @pagy.next || @pagy.prev ? pagy_nav(@pagy) : "No results found",
       location_string: location_string,
     }
   end

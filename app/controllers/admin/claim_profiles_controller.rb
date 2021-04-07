@@ -22,18 +22,18 @@ module Admin
           doctor = create_or_find(claim_profile_request_params)
 
           doctor.user_id = claim_profile_request_params[:user_id]
-          doctor.status = 'published'
+          doctor.status = "published"
           doctor.save(validate: false)
 
           DoctorMailer.with(doctor: doctor).approved.deliver_now
           message = "Profile is approved"
           redirect_to(admin_claim_profile_url(@claim_profile_request), notice: message)
-        elsif @claim_profile_request.status == 'follow_up'
+        elsif @claim_profile_request.status == "follow_up"
           message = "Request is sent to provider for more details"
 
           DoctorMailer.with(claim_profile_request: @claim_profile_request).need_info.deliver_now
           render(json: {
-            html: render_to_string(partial: 'admin/claim_profiles/comments.html.erb',
+            html: render_to_string(partial: "admin/claim_profiles/comments.html.erb",
               locals: {
                 claim_profile_comments: cliam_profile_comments,
               }),
@@ -74,7 +74,7 @@ module Admin
           user_id: user.id,
           name: user.full_name,
           email: user.email,
-          profile_source: 'cliam_profile'
+          profile_source: "cliam_profile"
         )
         doctor.save(validate: false)
         doctor

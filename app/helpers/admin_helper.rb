@@ -48,7 +48,7 @@ module AdminHelper
   def doctor_role?
     current_user_roles = current_user.roles.pluck(:name)
 
-    if current_user_roles.include?('doctor')
+    if current_user_roles.include?("doctor")
       true
     else
       false
@@ -58,7 +58,7 @@ module AdminHelper
   def patient_role?
     current_user_roles = current_user.roles.pluck(:name)
 
-    if current_user_roles.include?('patient')
+    if current_user_roles.include?("patient")
       true
     else
       false
@@ -67,7 +67,7 @@ module AdminHelper
 
   def profile_approved?
     claim_request = ClaimProfileRequest.where(user_id: current_user.id)
-      .where(status: 'approve')&.first
+      .where(status: "approve")&.first
 
     return true if claim_request
   end

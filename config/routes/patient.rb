@@ -1,7 +1,7 @@
 namespace :patient do
   resources :profiles do
     collection do
-      get 'account_delete'
+      get "account_delete"
     end
   end
   resources :favourites

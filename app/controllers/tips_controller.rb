@@ -21,6 +21,6 @@ class TipsController < BaseController
   def set_meta_data
     @meta_title ||= @tip&.meta_title
     @meta_description ||= @tip&.meta_description
-    @allow_robots ||= @tip.status == 'published' ? true : false
+    @allow_robots ||= @tip.status == "published" ? true : false
   end
 end

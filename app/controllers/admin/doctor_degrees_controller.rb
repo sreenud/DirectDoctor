@@ -24,7 +24,7 @@ module Admin
 
       respond_to do |format|
         if @doctor_degree.save
-          format.html { redirect_to(admin_doctor_degrees_url, notice: 'Doctor degree was successfully created.') }
+          format.html { redirect_to(admin_doctor_degrees_url, notice: "Doctor degree was successfully created.") }
           format.json { render(:show, status: :created, location: @doctor_degree) }
         else
           format.html do
@@ -37,7 +37,7 @@ module Admin
     def update
       respond_to do |format|
         if @doctor_degree.update(doctor_degree_params)
-          format.html { redirect_to(admin_doctor_degrees_url, notice: 'Doctor degree is successfully updated.') }
+          format.html { redirect_to(admin_doctor_degrees_url, notice: "Doctor degree is successfully updated.") }
           format.json { render(:show, status: :ok, location: @doctor_degree) }
         else
           format.html do

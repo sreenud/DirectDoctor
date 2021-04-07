@@ -1,5 +1,5 @@
 class ReviewData < ApplicationRecord
-  self.table_name = 'review_datas'
+  self.table_name = "review_datas"
 
   def readonly?
     true

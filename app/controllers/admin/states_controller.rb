@@ -24,7 +24,7 @@ module Admin
 
       respond_to do |format|
         if @state.save
-          format.html { redirect_to(admin_states_url, notice: 'State was successfully created.') }
+          format.html { redirect_to(admin_states_url, notice: "State was successfully created.") }
           format.json { render(:show, status: :created, location: @state) }
         else
           format.html do
@@ -37,7 +37,7 @@ module Admin
     def update
       respond_to do |format|
         if @state.update(state_params)
-          format.html { redirect_to(admin_states_url, notice: 'State is successfully updated.') }
+          format.html { redirect_to(admin_states_url, notice: "State is successfully updated.") }
           format.json { render(:show, status: :ok, location: @state) }
         else
           format.html do

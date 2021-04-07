@@ -32,7 +32,7 @@ module Users
     end
 
     def auth
-      request.env['omniauth.auth']
+      request.env["omniauth.auth"]
     end
 
     def set_service

@@ -4,7 +4,7 @@ module MasterData
   def degree
     @degree = DoctorDegree.pluck(:code)
     if current_user.has_role?(:admin) || current_user.has_role?(:data_entry)
-      @degree += ['Not available']
+      @degree += ["Not available"]
     end
     respond_to do |format|
       format.json do
@@ -14,7 +14,7 @@ module MasterData
   end
 
   def holistic_medicine
-    @holistic = ['Payment included in membership', 'Available for an additional fee']
+    @holistic = ["Payment included in membership", "Available for an additional fee"]
 
     respond_to do |format|
       format.json do
@@ -27,7 +27,7 @@ module MasterData
     @services = Service.pluck(:name)
 
     if current_user.has_role?(:admin) || current_user.has_role?(:data_entry)
-      @services += ['Not available']
+      @services += ["Not available"]
     end
 
     respond_to do |format|
@@ -41,7 +41,7 @@ module MasterData
     @languages = Language.pluck(:name)
 
     if current_user.has_role?(:admin) || current_user.has_role?(:data_entry)
-      @languages += ['Not available']
+      @languages += ["Not available"]
     end
 
     respond_to do |format|

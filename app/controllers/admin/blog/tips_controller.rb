@@ -29,7 +29,7 @@ module Admin
 
         respond_to do |format|
           if @tip.save
-            format.html { redirect_to(admin_tips_url, notice: 'Tip was successfully created.') }
+            format.html { redirect_to(admin_tips_url, notice: "Tip was successfully created.") }
             format.json { render(:show, status: :created, location: @tip) }
           else
             format.html { render(partial: "shared/partials/errors", locals: { object: @tip }, status: :bad_request) }
@@ -40,7 +40,7 @@ module Admin
       def update
         respond_to do |format|
           if @tip.update(tip_params)
-            format.html { redirect_to(admin_tips_url, notice: 'Tip is successfully updated.') }
+            format.html { redirect_to(admin_tips_url, notice: "Tip is successfully updated.") }
             format.json { render(:show, status: :ok, location: @tip) }
           else
             format.html { render(partial: "shared/partials/errors", locals: { object: @tip }, status: :bad_request) }

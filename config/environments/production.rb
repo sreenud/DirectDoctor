@@ -20,7 +20,7 @@ Rails.application.configure do
 
   # Disable serving static files from the `/public` folder by default since
   # Apache or NGINX already handles this.
-  config.public_file_server.enabled = ENV['RAILS_SERVE_STATIC_FILES'].present?
+  config.public_file_server.enabled = ENV["RAILS_SERVE_STATIC_FILES"].present?
 
   # Enable serving of images, stylesheets, and JavaScripts from an asset server.
   # config.action_controller.asset_host = 'http://assets.example.com'
@@ -107,9 +107,9 @@ Rails.application.configure do
   config.action_mailer.delivery_method = :mailgun
   config.action_mailer.mailgun_settings = {
     api_key: Rails.application.credentials.dig(:mailgun, :api_key),
-    domain: 'findmydirectdoctor.com',
+    domain: "findmydirectdoctor.com",
     # api_host: 'api.eu.mailgun.net'  # Uncomment this line for EU region domains
   }
 
-  config.action_mailer.default_url_options = { host: 'www.findmydirectdoctor.com', protocol: 'https' }
+  config.action_mailer.default_url_options = { host: "www.findmydirectdoctor.com", protocol: "https" }
 end

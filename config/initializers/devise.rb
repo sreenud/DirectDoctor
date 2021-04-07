@@ -24,7 +24,7 @@ Devise.setup do |config|
   # Configure the e-mail address which will be shown in Devise::Mailer,
   # note that it will be overwritten if you use your own mailer class
   # with default "from" parameter.
-  config.mailer_sender = 'harsha@findmydirectdoctor.com'
+  config.mailer_sender = "harsha@findmydirectdoctor.com"
 
   # Configure the class responsible to send e-mails.
   # config.mailer = 'Devise::Mailer'
@@ -36,7 +36,7 @@ Devise.setup do |config|
   # Load and configure the ORM. Supports :active_record (default) and
   # :mongoid (bson_ext recommended) by default. Other ORMs may be
   # available as additional gems.
-  require 'devise/orm/active_record'
+  require "devise/orm/active_record"
 
   # ==> Configuration for any authentication mechanism
   # Configure which keys are used when authenticating a user. The default is
@@ -279,12 +279,12 @@ Devise.setup do |config|
   # development
   # facebook_client_id = "786702638609860"
   # facebook_client_secret = "6b6c17e49bc448b58f8dcb694a13a5f4"
-  config.omniauth(:facebook, facebook_client_id, facebook_client_secret, scope: 'email')
+  config.omniauth(:facebook, facebook_client_id, facebook_client_secret, scope: "email")
 
   google_client_id = "84296835572-8vkpesqehl8h431282a62lvhorduapqn.apps.googleusercontent.com"
   google_client_secret = "_jddYvjha9PDnP9L4bfdXsqw"
   config.omniauth(:google_oauth2, google_client_id, google_client_secret,
-    scope: 'userinfo.email,userinfo.profile', skip_jwt: true)
+    scope: "userinfo.email,userinfo.profile", skip_jwt: true)
 
   # ==> Warden configuration
   # If you want to use other strategies, that are not supported by Devise, or

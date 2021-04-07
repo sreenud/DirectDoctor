@@ -1,7 +1,7 @@
 class BaseController < ApplicationController
   include Pagy::Backend
 
-  DEFUALT_LOCATION = '40.73061,-73.935242'
+  DEFUALT_LOCATION = "40.73061,-73.935242"
 
   attr_reader :current_location, :location_string
 
@@ -17,25 +17,25 @@ class BaseController < ApplicationController
     return if @current_location.present?
 
     geo_result = Geocoder.search(request.remote_ip).first
-    coordinates = geo_result.data['loc'] || DEFUALT_LOCATION
+    coordinates = geo_result.data["loc"] || DEFUALT_LOCATION
     session[:current_location] = coordinates
     @current_location = coordinates
   end
 
   def to_coordinates(lat_lng)
-    lat_lng.split(',').map(&:to_f)
+    lat_lng.split(",").map(&:to_f)
   end
 
   def set_location_string
     return if location_string.present?
     return @location_string = params[:place] if params[:place].present?
-    coords = (params[:near].presence || DEFUALT_LOCATION).split(',').map(&:to_f)
+    coords = (params[:near].presence || DEFUALT_LOCATION).split(",").map(&:to_f)
     result = Geocoder.search(coords).first
-    @location_string = (result.data['address'] || {})['city']
+    @location_string = (result.data["address"] || {})["city"]
   end
 
   def validate_role
-    if current_user.present? && current_user.has_role?('guest')
+    if current_user.present? && current_user.has_role?("guest")
       redirect_to(onboarding_step1_url) && return
     end
   end

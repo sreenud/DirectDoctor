@@ -3,9 +3,9 @@ class Doctor
     extend ActiveSupport::Concern
 
     def display_practice_name
-      if style == 'dpc'
+      if style == "dpc"
         "Direct Primary Care"
-      elsif style == 'concierge'
+      elsif style == "concierge"
         "Concierge"
       else
         "Direct Primary Care/Concierge"
@@ -28,7 +28,7 @@ class Doctor
       elsif appointments.downcase == "not available"
         "Not Available"
       else
-        appointments&.gsub(' appointments', '')&.gsub(',', ', ')
+        appointments&.gsub(" appointments", "")&.gsub(",", ", ")
       end
     end
 
@@ -41,9 +41,9 @@ class Doctor
     end
 
     def free_consultation_class
-      if consultation.downcase == 'yes'
+      if consultation.downcase == "yes"
         "text-green-500"
-      elsif consultation.downcase == 'no'
+      elsif consultation.downcase == "no"
         "text-red-500"
       else
         "text-yellow-500"
@@ -51,7 +51,7 @@ class Doctor
     end
 
     def display_free_consultation
-      if consultation.downcase == 'not available'
+      if consultation.downcase == "not available"
         "Free Consultation - Pending"
       else
         "Free Consultation"
@@ -59,9 +59,9 @@ class Doctor
     end
 
     def holistic_lifestyle_class
-      if is_holistic_medicine.downcase == 'yes'
+      if is_holistic_medicine.downcase == "yes"
         "text-green-500"
-      elsif is_holistic_medicine.downcase == 'no'
+      elsif is_holistic_medicine.downcase == "no"
         "text-red-500"
       else
         "text-yellow-500"
@@ -69,7 +69,7 @@ class Doctor
     end
 
     def display_holistic_lifestyle
-      if is_holistic_medicine.downcase == 'not_available'
+      if is_holistic_medicine.downcase == "not_available"
         "Holistic/Lifestyle Med - Pending"
       else
         "Holistic/Lifestyle Med"
@@ -77,9 +77,9 @@ class Doctor
     end
 
     def telehealth_class
-      if is_telehealth_service.downcase == 'yes'
+      if is_telehealth_service.downcase == "yes"
         "text-green-500"
-      elsif is_telehealth_service.downcase == 'no'
+      elsif is_telehealth_service.downcase == "no"
         "text-red-500"
       else
         "text-yellow-500"
@@ -87,7 +87,7 @@ class Doctor
     end
 
     def display_telehealth
-      if is_telehealth_service.downcase == 'not_available'
+      if is_telehealth_service.downcase == "not_available"
         "Telehealth - Pending"
       else
         "Telehealth"
@@ -95,9 +95,9 @@ class Doctor
     end
 
     def home_visit_class
-      if is_home_visit.downcase == 'yes'
+      if is_home_visit.downcase == "yes"
         "text-green-500"
-      elsif is_home_visit.downcase == 'no'
+      elsif is_home_visit.downcase == "no"
         "text-red-500"
       else
         "text-yellow-500"
@@ -105,7 +105,7 @@ class Doctor
     end
 
     def display_home_visit
-      if is_home_visit.downcase == 'not_available'
+      if is_home_visit.downcase == "not_available"
         "Home Visit - Pending"
       else
         "Home Visit"

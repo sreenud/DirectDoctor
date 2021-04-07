@@ -1,8 +1,8 @@
 namespace :provider do
-  post 'profile/upload-image', to: "profiles#upload_image"
+  post "profile/upload-image", to: "profiles#upload_image"
   resources :profiles do
     collection do
-      get 'account_delete'
+      get "account_delete"
     end
   end
 

@@ -3,7 +3,7 @@ class CreateDoctorDegrees < ActiveRecord::Migration[6.0]
     create_table(:doctor_degrees) do |t|
       t.string(:name)
       t.string(:code, index: true, unique: true)
-      t.string(:status, default: 'active')
+      t.string(:status, default: "active")
 
       t.timestamps
     end

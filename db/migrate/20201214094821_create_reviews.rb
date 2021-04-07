@@ -10,7 +10,7 @@ class CreateReviews < ActiveRecord::Migration[6.0]
       t.string(:treated_by_doctor)
       t.string(:will_you_recommend)
       t.string(:anonymous)
-      t.string(:status, default: 'draft')
+      t.string(:status, default: "draft")
 
       t.timestamps
     end

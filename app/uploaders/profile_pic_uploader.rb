@@ -1,5 +1,5 @@
-require('fastimage')
-require 'vips'
+require("fastimage")
+require "vips"
 require "image_processing/vips"
 
 class ProfilePicUploader < Shrine

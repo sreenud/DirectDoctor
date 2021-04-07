@@ -4,7 +4,7 @@ class CreateDoctorTestimonials < ActiveRecord::Migration[6.0]
       t.integer(:testimonial_by)
       t.integer(:testimonial_to)
       t.text(:message)
-      t.string(:status, default: 'draft')
+      t.string(:status, default: "draft")
 
       t.timestamps
     end

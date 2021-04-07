@@ -6,7 +6,7 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-roles = ['admin', 'doctor', 'patient', 'author', 'data_entry', 'guest']
+roles = ["admin", "doctor", "patient", "author", "data_entry", "guest"]
 existing_roles = Role.all.map(&:name)
 
 roles.each do |role|
@@ -21,7 +21,7 @@ unless User.find_by_email("srinivasavarma.d@gmail.com")
     first_name: "Srinivasa",
     last_name: "Varma",
     email: "srinivasavarma.d@gmail.com",
-    password: 'varma123',
+    password: "varma123",
   )
   user.add_role(:admin)
   user.save!

@@ -68,7 +68,7 @@ class Locator
 
   def bound_check
     if rad_lat < MIN_LAT || rad_lat > MAX_LAT || rad_lon < MIN_LON || rad_lon > MAX_LON
-      raise(ArgumentError, 'Invalid coordinates are passed')
+      raise(ArgumentError, "Invalid coordinates are passed")
     end
   end
 

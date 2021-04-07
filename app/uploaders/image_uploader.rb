@@ -1,4 +1,4 @@
-require 'fastimage'
+require "fastimage"
 require "image_processing/vips"
 class ImageUploader < Shrine
   MAX_SIZE       = 10 * 1024 * 1024
