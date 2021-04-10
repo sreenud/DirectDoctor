@@ -273,12 +273,12 @@ Devise.setup do |config|
   # up on your models and hooks.
   # config.omniauth :github, 'APP_ID', 'APP_SECRET', scope: 'user,public_repo'
 
-  facebook_client_id = Rails.application.credentials.send(Rails.env)[:facebook][:client_id]
-  facebook_client_secret = Rails.application.credentials.send(Rails.env)[:facebook][:client_secret]
+  facebook_client_id = Rails.application.secrets.facebook_client_id
+  facebook_client_secret = Rails.application.secrets.facebook_client_secret
   config.omniauth(:facebook, facebook_client_id, facebook_client_secret, scope: "email")
 
-  google_client_id = Rails.application.credentials.send(Rails.env)[:google_oauth2][:client_id]
-  google_client_secret = Rails.application.credentials.send(Rails.env)[:google_oauth2][:client_secret]
+  google_client_id = Rails.application.secrets.google_client_id
+  google_client_secret = Rails.application.secrets.google_client_secret
   config.omniauth(:google_oauth2, google_client_id, google_client_secret,
     scope: "userinfo.email,userinfo.profile", skip_jwt: true)
 
