@@ -41,7 +41,7 @@
         <%= form.text_field :slug, :class => "input bg-white", :autocomplete => "off", data: {slug_target: "slug"} %>
       </div>
       <div class="input-group">
-        <%= form.label :fmdd_score, :class => "label text-gray-500" %>
+        <label class="label text-gray-500" for="doctor_fmdd_score">FMDD Score</label>
         <%= form.text_field :fmdd_score, :class => "input bg-white", :autocomplete => "off", data: {slug_target: "slug"} %>
       </div>
       <div class="input-group" data-controller="image-upload">
@@ -58,7 +58,7 @@
         <button type="button" class="btn btn-md btn-default btn-dd-blue btn-outline text-sm font-bold mt-2" data-action="click->doctor#uploadImage">Save</button>
       </div>
       <div class="input-group mt-3">
-        <%= form.label :doctor_status, :class => "label text-gray-500" %>
+        <label class="label text-gray-500" for="doctor_doctor_status">Doctor Status</label>
         <%= form.select(:status, statuses.map {|k, v| [k.humanize.capitalize, v]}, {}, {class: "select"}) %>
       </div>
     </div>
