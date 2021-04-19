@@ -9,7 +9,6 @@ class Review < ApplicationRecord
   scope :latest, -> { order(created_at: :desc) }
   scope :admin_list, -> { where(status: ["published", "draft", "archive"]) }
 
-
   after_commit :refresh_view, on: [:update]
 
   enum status: {
