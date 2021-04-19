@@ -75,7 +75,7 @@ module Users
     end
 
     def create_user
-      profile_pic = if auth.provider == 'linkedin'
+      profile_pic = if auth.provider == "linkedin"
         auth.info.picture_url
       else
         auth.info.image
