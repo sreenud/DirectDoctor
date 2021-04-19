@@ -256,6 +256,8 @@ GEM
       jwt (>= 2.0)
       omniauth (>= 1.1.1)
       omniauth-oauth2 (>= 1.6)
+    omniauth-linkedin-oauth2 (1.0.0)
+      omniauth-oauth2
     omniauth-oauth (1.2.0)
       oauth
       omniauth (>= 1.0, < 3)
@@ -508,6 +510,7 @@ DEPENDENCIES
   mailgun-ruby (~> 1.2.3)
   omniauth-facebook
   omniauth-google-oauth2
+  omniauth-linkedin-oauth2
   omniauth-twitter
   pagy (~> 3.5)
   pg (>= 0.18, < 2.0)

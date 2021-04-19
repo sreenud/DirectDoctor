@@ -17,6 +17,10 @@ module Users
       handle_auth("Twitter")
     end
 
+    def linkedin
+      handle_auth("LinkedIn")
+    end
+
     private
 
     def handle_auth(kind)
@@ -71,10 +75,16 @@ module Users
     end
 
     def create_user
+      profile_pic = if auth.provider == 'linkedin'
+        auth.info.picture_url
+      else
+        auth.info.image
+      end
+
       User.create(
         email: auth.info.email,
         full_name: auth.info.name,
-        profile_pic: auth.info.image,
+        profile_pic: profile_pic,
         password: Devise.friendly_token[0, 20]
       )
     end
