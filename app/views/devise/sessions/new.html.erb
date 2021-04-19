@@ -4,7 +4,15 @@
     <div class="w-full lg:mx-10">
       <div class="lg:w-7/12 lg:max-w-xl mx-5 lg:mx-auto mt-10 text-gray-900">
         <div class="font-glacialbold text-heading">Sign In</div>
-        <%= devise_error_messages! %>
+        <% flash.each do |msg_type, message| %>
+          <% if msg_type == "alert" %>
+            <div class="alert">
+              <div class="container">
+                <%= message %>
+              </div>
+            </div>
+          <% end %>
+        <% end %>
         <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
           <div class="bg-white pt-6 pb-4 mb-4 flex flex-col">
             <div class="mb-4">
