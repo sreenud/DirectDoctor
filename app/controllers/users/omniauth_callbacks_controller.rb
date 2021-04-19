@@ -13,6 +13,10 @@ module Users
       handle_auth("Google")
     end
 
+    def twitter
+      handle_auth("Twitter")
+    end
+
     private
 
     def handle_auth(kind)

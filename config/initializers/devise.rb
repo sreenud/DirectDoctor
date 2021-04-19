@@ -282,9 +282,9 @@ Devise.setup do |config|
   config.omniauth(:google_oauth2, google_client_id, google_client_secret,
     scope: "userinfo.email,userinfo.profile", skip_jwt: true)
 
-  # twitter_client_id = Rails.application.secrets.twitter_client_id
-  # twitter_client_secret = Rails.application.secrets.twitter_client_secret
-  # config.omniauth(:twitter, twitter_client_id, twitter_client_secret)
+  twitter_client_id = Rails.application.secrets.twitter_client_id
+  twitter_client_secret = Rails.application.secrets.twitter_client_secret
+  config.omniauth(:twitter, twitter_client_id, twitter_client_secret)
 
   # ==> Warden configuration
   # If you want to use other strategies, that are not supported by Devise, or

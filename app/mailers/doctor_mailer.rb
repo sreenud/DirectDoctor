@@ -23,4 +23,10 @@ class DoctorMailer < ApplicationMailer
 
     mail(to: email, subject: "Account update - FindMyDirectDoctor.com")
   end
+
+  def deleted
+    @doctor = params[:doctor]
+    @deleted_by = params[:by]
+    mail(to: "info@findmydirectdoctor.com", subject: "Doctor profile is deleted")
+  end
 end

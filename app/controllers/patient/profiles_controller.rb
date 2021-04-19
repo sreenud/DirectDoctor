@@ -21,7 +21,10 @@ module Patient
 
     def account_delete
       if current_user
+        @patient = User.find(current_user.id)
         User.find(current_user.id).destroy
+
+        PatientMailer.with(patient: @patient, by: current_user.full_name).deleted.deliver_now
 
         render(json: { success: true })
       end

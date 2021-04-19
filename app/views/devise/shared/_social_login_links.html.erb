@@ -15,12 +15,12 @@
       <% end %>
     </div>
     <div class="w-full flex justify-between mt-4">
-      <a class="w-full mr-2">
+      <%= link_to omniauth_authorize_path(resource_name, 'twitter'), class: "w-full mr-2"  do %>
         <div class="1/2 rounded-lg bg-twitter-blue px-4 py-2 pr-10 text-gray-100 flex items-center">
           <div class="pr-4"><%=image_pack_tag 'icons/twitter_white_login.svg', class: "w-6 h-5"%></div>
           <div><%=button_text%> with twitter</div>
         </div>
-      </a>
+      <% end %>
       <a class="w-full ml-2">
         <div class="1/2 rounded-lg bg-linkedin-blue px-4 py-2 text-gray-100 flex items-center">
           <div class="pr-4"><%=image_pack_tag 'icons/linkedin_white_login.svg', class: "w-6 h-5"%></div>

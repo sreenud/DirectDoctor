@@ -12,4 +12,9 @@ export default class extends Controller {
     this.statusTarget.value = 'archive';
     document.getElementById('admin_review_form').submit();
   }
+
+  trash() {
+    this.statusTarget.value = 'trash';
+    document.getElementById('admin_review_form').submit();
+  }
 }

@@ -34,7 +34,7 @@ class Doctor
 
     def display_free_consultation_time
       if !free_consultation_time.present?
-        "NA"
+        "Not Available"
       else
         "#{free_consultation_time} min"
       end

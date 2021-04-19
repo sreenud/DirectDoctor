@@ -7,6 +7,8 @@ class Review < ApplicationRecord
   scope :published, -> { where(status: "published") }
   scope :draft, -> { where(status: "draft") }
   scope :latest, -> { order(created_at: :desc) }
+  scope :admin_list, -> { where(status: ["published", "draft", "archive"]) }
+
 
   after_commit :refresh_view, on: [:update]
 
@@ -14,6 +16,7 @@ class Review < ApplicationRecord
     draft: "draft",
     published: "published",
     archive: "archive",
+    trash: "trash",
   }
 
   def display_date

@@ -76,6 +76,11 @@
             <span><i class="fab fa fa-floppy-o pr-2"></i>Reject</span>
           </a>
         </div>
+        <div class="float-left pt-5 ml-5">
+          <a class="btn btn-md btn-default bg-red-800 text-white btn-outline text-sm font-bold" data-action="click->review#trash">
+            <span><i class="fab fa fa-trash-o pr-2"></i>Trash</span>
+          </a>
+        </div>
       <% else %>
         <div class="float-left pt-5">
           <%= form.button(type: "submit", class: "btn btn-md btn-default btn-dd-blue btn-outline text-sm font-bold float-right", data: {disable_with: "<i class='fab fa fa-spinner fa-spin pr-2'></i> Saving in..." }) do %>

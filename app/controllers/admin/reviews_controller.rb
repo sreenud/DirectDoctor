@@ -3,7 +3,7 @@ module Admin
     before_action :set_review, only: [:show, :edit, :update, :destroy]
 
     def index
-      @q = Review.ransack(params[:q])
+      @q = Review.admin_list.ransack(params[:q])
       @reviews = @q.result.latest
 
       @pagy, @reviews = pagy(@reviews)

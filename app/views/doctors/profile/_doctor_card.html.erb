@@ -20,8 +20,13 @@
           <a href="#" class="text-blue-500"> (<%=reviews.count%> Reviews)</a>
         </div>
       </div>
-      <div class="w-full text-base py-1 text-gray-700">
-        FMDD Score: <%=doctor.fmdd_score%>/10
+      <div class="w-full flex text-base py-1 text-gray-700">
+        <div>FMDD Score: <%=doctor.fmdd_score%>/10</div>
+        <a class=" pt-1 ml-1 text-doctor-yellow-500" href="/fmdd-score" target="_blank">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-doctor-yellow-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+          </svg>
+        </a>
       </div>
       <div class="w-full flex">
         <div class="">

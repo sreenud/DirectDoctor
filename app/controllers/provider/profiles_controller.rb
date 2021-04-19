@@ -56,7 +56,9 @@ module Provider
 
     def account_delete
       if current_user
+        @doctor = Doctor.find_by_user_id(current_user.id)
         User.find(current_user.id).destroy
+        DoctorMailer.with(doctor: @doctor, by: current_user.full_name).deleted.deliver_now
 
         render(json: { success: true })
       end
