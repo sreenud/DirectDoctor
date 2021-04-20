@@ -40,6 +40,18 @@ module ApplicationHelper
     end
   end
 
+  def doctor_name(params)
+    if params[:doctor_name].present?
+      params[:doctor_name]
+    end
+  end
+
+  def clinic_name(params)
+    if params[:clinic_name].present?
+      params[:clinic_name]
+    end
+  end
+
   def search_page_h1_tag(location_string, params)
     place = if location_string.present?
       location_string

@@ -29,6 +29,16 @@ class SearchesController < BaseController
     end
   end
 
+  def global_search
+    @doctors  = Doctor.ransack(name_cont: params[:q]).result(distinct: true)
+      .where(status: "published").limit(5)
+    @clinics  = Doctor.ransack(practice_name_cont: params[:q]).result(distinct: true)
+      .where(status: "published").limit(5)
+    @spcialities = Speciality.ransack(name_cont: params[:q]).result(distinct: true).limit(5)
+
+    render(layout: false)
+  end
+
   private
 
   def search_params
@@ -43,7 +53,9 @@ class SearchesController < BaseController
       :life_style_medicine,
       :speciality,
       :practice_type,
-      :speciality_name
+      :speciality_name,
+      :doctor_name,
+      :clinic_name
     )
   end
 
@@ -62,6 +74,8 @@ class SearchesController < BaseController
       h[:city] = params[:location]&.titleize
       h[:place] = params[:place].titleize
       h[:speciality] = @special_speciality
+      h[:doctor_name] = params[:doctor_name]
+      h[:clinic_name] = params[:clinic_name]
     end
   end
 

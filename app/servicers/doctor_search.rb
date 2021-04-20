@@ -16,6 +16,8 @@ module DoctorSearch
 
   def apply_filters
     convert_speciality_name_to_speciality
+    apply_doctor_filter
+    apply_clinic_filter
     apply_speciality_filter
     apply_ratings_filter
     apply_practice_filter
@@ -102,6 +104,18 @@ module DoctorSearch
     return @default_scope if @params[:speciality] == "all"
 
     @default_scope = @default_scope.where(primary_speciality: @params[:speciality])
+  end
+
+  def apply_doctor_filter
+    return @default_scope unless @params[:doctor_name].present?
+
+    @default_scope = @default_scope.where("name ilike '%#{@params[:doctor_name].downcase}%'")
+  end
+
+  def apply_clinic_filter
+    return @default_scope unless @params[:clinic_name].present?
+
+    @default_scope = @default_scope.where("practice_name ilike '%#{@params[:clinic_name].downcase}%'")
   end
 
   def apply_other_filters

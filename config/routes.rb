@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   root "home#index"
   get "search", to: "searches#index"
   get "search-map", to: "searches#index_two"
+  get "global-search", to: "searches#global_search"
   get "job-search", to: "jobs#search"
 
   get ":state/doctor/:fdd_id/:doctor_name", to: "doctors#show"

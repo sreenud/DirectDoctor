@@ -7,13 +7,16 @@
       <div class="hidden lg:block">
         <div class="flex">
           <div class="search_width md:flex border justify-between items-center bg-gray-100 pb-2 md:py-1 mb-4 rounded-lg shadow" data-controller="search" data-search-render-url="<%=request.original_url%>">
-            <div class="flex justify-center items-center w-full md:border-r border-b md:border-b-0 pr-4">
+            <div class="flex justify-center items-center w-full md:border-r border-b md:border-b-0 pr-4 autocomplete-div" data-controller="autocomplete" data-autocomplete-url-value="<%=global_search_url%>">
               <label class="ml-3 mr-5">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-5 text-gray-600">
                   <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd" />
                 </svg>
               </label>
-              <input class="md:my-2 my-3 w-full focus:outline-none bg-gray-100" type="text" data-search-target="name" name="speciality" placeholder="Name/Speciality" value="<%=speciality_name(params)%>">
+              <input class="md:my-2 my-3 w-full focus:outline-none bg-gray-100" type="text" data-search-target="name" name="speciality" placeholder="Name/Speciality" data-autocomplete-target="input" id="searchTerm" value="<%=speciality_name(params) || doctor_name(params) || clinic_name(params) %>">
+              <ul data-autocomplete-target="results" class="autocomplete"></ul>
+              <input type="hidden" name="doctor_id" data-autocomplete-target="hidden"/>
+              <input type="hidden" name="search_term_type" data-search-target="searchTermType"/>
             </div>
             <div class="flex justify-center items-center w-full pr-4 border-b md:border-b-0">
               <input class="md:my-2 my-3 ml-3 w-full focus:outline-none bg-gray-100" id="near" data-search-target='near' type="text" name="near" placeholder="Zip/City/State" value="<%=params[:place]&.titleize%>">

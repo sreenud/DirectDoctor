@@ -1,0 +1,9 @@
+<% @doctors&.each do |doctor| %>
+  <%= content_tag :li, doctor.name, role: :option, data: { "autocomplete-value": "#{doctor.id}_doctor" } %>
+<% end %>
+<% @clinics&.each do |clinic| %>
+  <%= content_tag :li, clinic.practice_name, role: :option, data: { "autocomplete-value": "#{clinic.id}_clinic" } %>
+<% end %>
+<% @spcialities&.each do |speciality| %>
+  <%= content_tag :li, speciality.name, role: :option, data: { "autocomplete-value": "#{speciality.id}_speciality" } %>
+<% end %>
