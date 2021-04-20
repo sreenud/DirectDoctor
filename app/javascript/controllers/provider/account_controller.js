@@ -10,7 +10,8 @@ export default class extends Controller {
     Swal.fire({
       heightAuto: false,
       title: 'Are you sure?',
-      text: "You won't be able to revert this!",
+      text:
+        'Confirming this will permanently delete your profile and any associated profile information',
       icon: 'warning',
       showCancelButton: true,
       confirmButtonColor: '#3085d6',
