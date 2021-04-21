@@ -4,18 +4,19 @@
       <%= image_pack_tag 'grey_cross_vector.svg', class: "w-8" %>
     </div>
   </div>
-  <div class="lg:col-span-8 relative -ml-4 -mr-4  mt-40">
-    <div class="w-full">
+  <div class="lg:col-span-8 relative mt-40">
+    <div class="w-full px-4">
       <div class="hidden lg:block">
-        <div class="w-full flex justify-end">
+        <div class="w-full flex justify-between">
+          <div class="-mb-8 ml-6"><%=image_pack_tag 'yellow_circle_full.svg', class: "w-20 h-20"%></div>
           <div class="flex -mb-12 -mr-3">
             <div class="flex items-end pt-8 -mr-10"><%=image_pack_tag 'yellow_circle_big_shadow.svg', class: "w-16 h-16"%></div>
             <div><%=image_pack_tag 'light_yellow_slant.svg', class: "w-20 h-20"%></div>
           </div>
         </div>
       </div>
-      <div class="w-full flex w-4 about-gray-background-light bg-no-repeat" >
-        <div class="font-glacialbold text-2xl px-16 lg:px-24 h-40 text-center tracking-normal flex items-center mx-auto">
+      <div class="lg:w-full flex justify-center about-gray-background-light" >
+        <div class="font-glacialbold text-2xl md:px-24 h-40 text-center tracking-normal flex items-center">
           <div class="px-4">
             Be present where your patients are. Get more patient </br>sign-ups with
           <span class="text-doctor-yellow">FindMyDirectDoctor.com</span>
@@ -32,7 +33,7 @@
   <div class="absolute right-0 -mt-16 mr-8">
     <%=image_pack_tag 'light_grey_2_lines_vertical.svg', class: "h-56" %>
   </div>
-  <div class="right-0 absolute -mr-4 -mt-32 z-50">
+  <div class="right-0 absolute -mr-4 -mt-32 z-50 hidden lg:block">
     <%= image_pack_tag 'yellow_circle_outline_opacity_right.png', class: "w-24 h-64" %>
   </div>
 </div>
@@ -118,7 +119,7 @@
             </div>
           </div>
           <div class="order-1 practice-bg rounded-xl shadow-xl w-full px-6 py-4 lg:-ml-20 ">
-            <div class="font-glacialbold text-xl uppercase lg:pl-16">Physician-owned, value-based platform. No corporate agenda. </div>
+            <div class="font-glacialbold text-xl uppercase lg:pl-16">Physician owned, value-based platform. No corporate agenda. </div>
             <div class="pt-2 text-xl pr-2 lg:pl-16">
               <div class="flex">
                 <div class="pr-3 pt-2 flex justify-start">
@@ -144,11 +145,17 @@
           </div>
         </div>
       </div>
-      <div class="mb-8 flex justify-start items-start w-full right-timeline">
-        <div class="border-2 border-white rounded-full z-20 hidden lg:block">
-          <div class="directory-1 rounded-full">
-            <div class="z-20 flex items-center order-1 shadow-xl bg-white rounded-full justify-center directory-1-circle">
-              <%= image_pack_tag 'businessman.svg', alt:"image", class:"w-12" %>
+      <div class="order-1 practice-bg rounded-xl shadow-xl w-full px-6 py-4 lg:-ml-20 ">
+        <div class="font-glacialbold text-xl uppercase lg:pl-16">Physician-owned, value-based platform. No corporate agenda. </div>
+        <div class="pt-2 text-xl pr-2 lg:pl-16">
+          <div class="flex">
+            <div class="pr-3 pt-2 flex justify-start">
+              <svg class="h-3 w-3 text-doctor-yellow" viewBox="0 0 8 8" fill="currentColor">
+                <circle cx="4" cy="4" r="3" />
+              </svg>
+            </div>
+            <div class="text-xl">
+              Founded by a medical professional who is frustrated with the country’s current broken health care system, FindMyDirectDoctor.com is owned and operated by Harsha Moole, MD, a strong advocate of direct patient care models.
             </div>
           </div>
         </div>
@@ -202,25 +209,27 @@
   </div>
 </div>
 <div class="lg:grid lg:grid-cols-12 lg:flex md:mt-48 mt-10 text-gray-800">
-  <div class="lg:col-span-2 lg:mt-40 relative flex">
-    <div class="absolute left-0">
-      <%=image_pack_tag 'yellow_half_circle_thick.svg', style:"width:12rem;", alt:"image", class:"-ml-8"%>
-    </div>
-    <div class="absolute left-0" style="margin-top: 50rem;">
-      <%=image_pack_tag 'yellow_circle_big_shadow.svg', class: "w-10 h-10"%>
-    </div>
-    <div class="absolute left-0" style="margin-top: 53rem;margin-left: -3rem;">
-      <%=image_pack_tag 'light_gray_round_edges.svg', class: "w-24 h-24"%>
-    </div>
-    <div class="absolute left-0" style="margin-top: 80rem;">
-      <%=image_pack_tag 'yellow_circle_outline_opacity.svg', class: ""%>
-    </div>
-    <div class="absolute left-0" style="margin-top: 94rem;">
-      <%=image_pack_tag 'light_grey_3_lines_horizontal.svg', class: ""%>
-    </div>
-    <div class="absolute left-0" style="margin-top:110rem;">
-      <%=image_pack_tag 'yellow_circle_big_shadow.svg', class: "w-6 h-6 absolute", style:"left: 6rem;top: 6rem;"%>
-      <%=image_pack_tag 'off_white_half_full_circle.svg', class: "transform rotate-180"%>
+  <div class="lg:col-span-2 lg:mt-40 relative hidden lg:block">
+    <div class="flex">
+      <div class="absolute left-0 hidden lg:block">
+        <%=image_pack_tag 'yellow_half_circle_thick.svg', style:"width:12rem;", alt:"image", class:"-ml-8"%>
+      </div>
+      <div class="absolute left-0" style="margin-top: 50rem;">
+        <%=image_pack_tag 'yellow_circle_big_shadow.svg', class: "w-10 h-10"%>
+      </div>
+      <div class="absolute left-0" style="margin-top: 53rem;margin-left: -3rem;">
+        <%=image_pack_tag 'light_gray_round_edges.svg', class: "w-24 h-24"%>
+      </div>
+      <div class="absolute left-0" style="margin-top: 80rem;">
+        <%=image_pack_tag 'yellow_circle_outline_opacity.svg', class: ""%>
+      </div>
+      <div class="absolute left-0" style="margin-top: 94rem;">
+        <%=image_pack_tag 'light_grey_3_lines_horizontal.svg', class: ""%>
+      </div>
+      <div class="absolute left-0" style="margin-top:110rem;">
+        <%=image_pack_tag 'yellow_circle_big_shadow.svg', class: "w-6 h-6 absolute", style:"left: 6rem;top: 6rem;"%>
+        <%=image_pack_tag 'off_white_half_full_circle.svg', class: "transform rotate-180"%>
+      </div>
     </div>
   </div>
   <div class="lg:col-span-10 lg:-ml-8 flex">
@@ -467,18 +476,20 @@
       </div>
     </div>
   </div>
-  <div class="lg:col-start-2 lg:col-span-10 -ml-8 lg:flex lg:items-center md:mt-16">
+  <div class="lg:col-start-2 lg:col-span-10 lg:-ml-8 lg:flex lg:items-center md:mt-16">
     <div class="lg:w-1/2">
       <div class="text-xl font-glacialbold text-center flex items-center w-full justify-center circle-doctors">
-        <div class="circle-padding font-glacialbold text-black text-center ml-10 lg:ml-0 text-xl lg:text-2xl mb-10">JOIN THE LARGEST ONLINE </br>DIRECTORY OF </br>
+        <div class="circle-padding font-glacialbold text-black text-center -ml-8 lg:ml-0 text-xl lg:text-2xl mb-10">JOIN THE LARGEST ONLINE </br>DIRECTORY OF </br>
       <span class="text-6xl my-3">>10,000</span></br>
-    DIRECT CARE DOCTORS!</div>
+    DIRECT CARE DOCTORS!
+  </div>
 </div>
 </div>
 <div class="lg:w-1/2 p-3">
   <div class="font-glacialbold text-2xl mb-2 ml-10 lg:ml-0">DO NOT MISS OUT ON ALL THE PERKS THAT COULD HELP FIND YOUR NEXT PATIENT.</div>
   <div class="text-2xl ml-10 lg:ml-0 mb-16">Join the movement for better health care and follow this simple <a href="/users/sign_up" class="underline text-blue-600">Sign Up process</a>, so that we can set up a standard profile of your clinic in our directory listing service. </br>10,000+ DPC & Concierge doctors have already submitted their clinic listings. We are going live in a few months and would love for you to be a part of this direct care movement. </br>
-Let us know if you have any questions, and we will be more than happy to connect with you. Contact Us here.</div>
+Let us know if you have any questions, and we will be more than happy to connect with you. Contact Us here.
+</div>
 </div>
 </div>
 </div>

@@ -1,5 +1,5 @@
 <%= form_for(:review, url: patient_reviews_url, class: "flex w-full", html: {target: "_blank"}, data: {type: "html", action: "ajax:error->message#errorHandler ajax:success->message#success" }) do |form| %>
-  <div class="w-full">
+  <div class="w-full review">
     <label for="exampleInputEmail1" class="text-gray-600 text-lg">Write a review</label>
     <div class="w-full mt-4 autocomplete-div" data-controller="autocomplete" data-autocomplete-url-value="<%=doctors_data_path%>">
       <div class="relative my-2">

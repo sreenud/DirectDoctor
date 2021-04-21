@@ -1,36 +1,38 @@
 <section class="lg:grid lg:w-full lg:mt-24 lg:grid-cols-12 flex mt-32">
   <div class="lg:col-span-1 relative">
-    <div class="absolute mt-32">
+    <div class="absolute mt-32 hidden lg:block">
       <%= image_pack_tag 'grey_cross_vector.svg', class: "w-8" %>
     </div>
   </div>
-  <div class="lg:col-span-10 flex mt-16 px-16">
+  <div class="lg:col-span-10 flex mt-16 px-6 lg:px-16">
     <div class="w-full">
-      <div class=" font-glacialbold text-5xl w-3/6 pr-20 leading-none">
+      <div class=" font-glacialbold text-5xl lg:w-3/6 lg:pr-20 leading-none">
         Are you a provider looking for a job?
       </div>
       <p class="">
-        <h1 class="text-xl mt-1">Find your Direct Primary Care or Concierge Medicine Job </h1>
+        <h1 class="text-xl my-4">Find your Direct Primary Care or Concierge Medicine Job </h1>
       </p>
-      <div class="md:flex border rounded-lg mt-10 shadow justify-between items-center lg:mr-24 pb-2 md:py-2 w-8/12">
-        <div class="flex justify-center items-center w-full md:border-r border-b md:border-b-0 pr-4">
-          <label class="ml-3 mr-5">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-5 text-gray-600">
-              <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd" />
-            </svg>
-          </label>
-          <input class="md:my-2 my-3 w-full focus:outline-none" type="text" name="speciality" placeholder="Speciality">
-        </div>
-        <div class="flex justify-center items-center w-full pr-4 border-b md:border-b-0">
-          <input class="md:my-2 my-3 ml-3 w-full focus:outline-none" id="near" type="text" name="near" placeholder="Zip/City/State">
-        </div>
-        <div class="text-center mt-4 md:text-left md:mt-0">
-          <button class="bg-doctor-yellow text-gray-100 md:mr-4 rounded-md px-8 py-2 w-11/12 md:w-auto">Search</button>
+      <div class="flex mt-4">
+        <div class="search_width md:flex border justify-between items-center pb-2 md:py-1 mb-4 rounded-lg shadow w-full lg:w-2/3" data-controller="search" data-search-render-url="<%=request.original_url%>">
+          <div class="flex justify-center items-center w-full md:border-r border-b md:border-b-0 pr-4">
+            <label class="ml-3 mr-5">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-5 text-gray-600">
+                <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd" />
+              </svg>
+            </label>
+            <input class="md:my-2 my-3 w-full focus:outline-none" type="text" data-search-target="name" name="speciality" placeholder="Name/Speciality" value="<%=speciality_name(params)%>">
+          </div>
+          <div class="flex justify-center items-center w-full pr-4 border-b md:border-b-0 location-icon">
+            <input class="md:my-2 my-3 ml-3 w-full focus:outline-none" id="near" data-search-target='near' type="text" name="near" placeholder="Zip/City/State" value="<%=params[:place]&.titleize%>">
+          </div>
+          <div class="text-center mt-4 md:text-left md:mt-0">
+            <button class="bg-doctor-yellow text-gray-100 md:mr-4 rounded-md px-4 py-1 w-11/12 md:w-auto" data-search-target="search">Search</button>
+          </div>
         </div>
       </div>
     </div>
   </div>
-  <div class="lg:col-span-1 relative">
+  <div class="lg:col-span-1 relative hidden lg:block">
     <div class="absolute right-0 mt-8 mr-8">
       <%=image_pack_tag 'light_grey_2_lines_vertical.svg', class: "h-56" %>
     </div>
@@ -39,13 +41,15 @@
     </div>
   </div>
 </section>
-<section class="lg:grid lg:w-full lg:mt-24 lg:grid-cols-12 flex mt-32 relative">
-  <div class="absolute right-0">
-    <%=image_pack_tag 'light_grey_round_edge_sides.svg', class: "-mr-4"%>
-  </div>
-</section>
+<div class="hidden lg:block">
+  <section class="lg:grid lg:w-full lg:mt-24 lg:grid-cols-12 flex mt-32 relative">
+    <div class="absolute right-0">
+      <%=image_pack_tag 'light_grey_round_edge_sides.svg', class: "-mr-4"%>
+    </div>
+  </section>
+</div>
 <section class="lg:grid lg:w-full lg:grid-cols-12 flex">
-  <div class="lg:col-span-1 w-full mt-32">
+  <div class="lg:col-span-1 w-full mt-32 hidden lg:block">
     <div class="relative mt-56">
       <div class="absolute left-0 -ml-8">
         <%=image_pack_tag 'light_yellow_slant.svg'%>
@@ -55,40 +59,40 @@
       </div>
     </div>
   </div>
-  <div class="lg:col-span-10 flex mt-16 px-12 text-gray-800">
+  <div class="lg:col-span-10 flex mt-16 px-3 lg:px-12 text-gray-800">
     <div class="w-full">
       <div class=" font-glacialbold text-3xl pl-6">Job Listing Directory</div>
       <div class="border shadow mt-8 rounded-2lg">
         <div class="tab_wrapper" x-data="{ tab: window.location.hash ? window.location.hash.substring(1) : 'speciality' }">
           <div class="w-full flex justify-between items-center border border-doctor-yellow rounded-2lg">
-            <div class="w-3/12 text-center py-3 cursor-pointer" @click.prevent="tab = 'speciality'; window.location.hash = 'speciality'" :class="{ '-mb-px job-tab-active': tab === 'speciality' }">
+            <div class="w-1/3 text-center py-3 cursor-pointer" @click.prevent="tab = 'speciality'; window.location.hash = 'speciality'" :class="{ '-mb-px job-tab-active': tab === 'speciality' }">
               <a href="#">By Speciality</a>
             </div>
-            <div class="w-3/12 text-center py-3 cursor-pointer" @click.prevent="tab = 'states'; window.location.hash = 'states'" :class="{ '-mb-px job-tab-active': tab === 'states' }">
+            <div class="w-1/3 text-center py-3 cursor-pointer" @click.prevent="tab = 'states'; window.location.hash = 'states'" :class="{ '-mb-px job-tab-active': tab === 'states' }">
               <a href="#">By Cities</a>
             </div>
-            <div class="w-3/12 text-center py-3 cursor-pointer" @click.prevent="tab = 'cities'; window.location.hash = 'cities'" :class="{ '-mb-px job-tab-active': tab === 'cities' }">
+            <div class="w-1/3 text-center py-3 cursor-pointer" @click.prevent="tab = 'cities'; window.location.hash = 'cities'" :class="{ '-mb-px job-tab-active': tab === 'cities' }">
               <a href="#">By States</a>
             </div>
           </div>
-          <div class="w-full px-8 pt-4 pb-8 text-gray-700">
+          <div class="w-full px-3 lg:px-8 pt-4 pb-8 text-gray-700">
             <div x-show="tab === 'speciality'" class="flex flex-wrap">
               <% (@specialities).each do |speciality| %>
-                <div class="w-3/12 p-2">
+                <div class="w-full lg:w-3/12 p-2">
                   <a href="<%=search_jobs_path%>" class="hover:underline hover:text-blue-400"><%=speciality.name%></a>
                 </div>
               <% end %>
             </div>
             <div x-show="tab === 'states'" class="w-full flex flex-wrap">
               <% @cities.each do |city| %>
-                <div class="w-3/12 pt-2">
+                <div class="w-1/2 lg:w-3/12 pt-2">
                   <a href="<%=search_jobs_path%>" class="hover:underline hover:text-blue-400"><%=city.name%></a>
                 </div>
               <% end %>
             </div>
             <div x-show="tab === 'cities'" class="flex flex-wrap">
               <% @states.each do |state| %>
-                <div class="w-3/12 pt-2">
+                <div class="w-1/2 lg:w-3/12 pt-2">
                   <a href="<%=search_jobs_path%>" class="hover:underline hover:text-blue-400"><%=state.name%></a>
                 </div>
               <% end %>
@@ -98,7 +102,7 @@
       </div>
     </div>
   </div>
-  <div class="lg:col-span-1 relative mt-64">
+  <div class="lg:col-span-1 relative mt-64 hidden lg:block">
     <div class="relative mt-40">
       <div class="absolute right-0 -mr-8 -mt-20">
         <%=image_pack_tag 'light_yellow_slant.svg', class: "w-20"%>

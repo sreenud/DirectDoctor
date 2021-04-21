@@ -4,42 +4,55 @@
   align-items: center;
   justify-content: center;
 }
+
 .rounded-2lg {
   border-radius: 1.5rem;
 }
+
 .rounded-br-2lg {
   border-bottom-right-radius: 2.5rem;
 }
+
 .rounded-tl-2lg {
   border-top-left-radius: 2.5rem;
 }
+
 .rounded-3lg {
   border-radius: 2.5rem;
 }
+
 .blog-bg-gray {
   background-color: #dcdcdc;
 }
+
 .post h2 strong {
   @apply text-heading3 text-doctor-blue font-hurmebold;
 }
+
 .post h3 strong {
   @apply text-px18 text-doctor-blue font-hurmebold;
 }
+
 .post h3 {
   @apply text-heading3;
 }
+
 .post ul {
   @apply list-disc pl-6;
 }
+
 .post ul li {
   @apply py-2;
 }
+
 .post a {
   @apply text-hyperlink-blue;
 }
+
 .post p {
   @apply pt-5;
 }
+
 .post h1,
 .post h2,
 .post h3,
@@ -50,27 +63,35 @@
 .post a:hover {
   @apply border-b border-hyperlink-blue;
 }
+
 .section2-bg-yellow {
   background-color: #fefdf9;
 }
+
 .section3-bg-gray {
   background-color: #fbfbfb;
 }
+
 .subscribe-bg-gray {
   background-color: #e4e4e4;
 }
+
 .radio-toolbar input[type="radio"] {
   @apply opacity-0 fixed w-0;
 }
+
 .radio-toolbar label {
   @apply inline-block w-16 border border-doctor-yellow px-2 py-1 text-gray-600 rounded-full text-center bg-white;
 }
+
 .radio-toolbar label:hover {
   @apply bg-doctor-yellow text-gray-100 cursor-pointer;
 }
+
 .radio-toolbar input[type="radio"]:focus + label {
   @apply bg-doctor-yellow text-gray-100 shadow-2xl;
 }
+
 .radio-toolbar input[type="radio"]:checked + label {
   @apply bg-doctor-yellow text-gray-100;
 }
@@ -78,15 +99,19 @@
 .filter-checkbox-button input[type="checkbox"] {
   @apply opacity-0 fixed w-0;
 }
+
 .filter-checkbox-button label {
   @apply inline-block border-2 px-2 py-1 rounded-md text-center bg-white w-full;
 }
+
 .filter-checkbox-button label:hover {
   @apply bg-gray-500 text-gray-100 cursor-pointer;
 }
+
 .filter-checkbox-button input[type="checkbox"]:focus + label {
   @apply bg-gray-500 text-gray-100 shadow-2xl;
 }
+
 .filter-checkbox-button input[type="checkbox"]:checked + label {
   @apply bg-gray-500 text-gray-800 border-gray-800;
 }
@@ -114,9 +139,11 @@
 .about .a {
   @apply text-doctor-yellow;
 }
+
 .about a:hover {
   @apply border-b text-doctor-yellow;
 }
+
 .toggle-checkbox:checked {
   @apply right-0 border-doctor-yellow;
 }
@@ -124,6 +151,7 @@
 .toggle-checkbox:checked + .toggle-label {
   @apply bg-doctor-yellow;
 }
+
 .google-map {
   height: 700px;
 
@@ -166,26 +194,31 @@
   background-size: cover;
   background-repeat: no-repeat;
 }
+
 .mission-background-1 {
   // background-image: url("../images/mission_bg_1.svg");
   background: linear-gradient(to bottom, #fbfbfb, #e1e1e1);
   border-radius: 40px;
 }
+
 .mission-background-2 {
   background-image: url("../images/mission_bg_2.svg");
   background-size: cover;
   background-repeat: no-repeat;
 }
+
 .mission-background-3 {
   background-image: url("../images/mission_bg_3.svg");
   background-size: cover;
   background-repeat: no-repeat;
 }
+
 .mission-background-4 {
   background-image: url("../images/mission_bg_4.svg");
   background-size: cover;
   background-repeat: no-repeat;
 }
+
 .mission-background-5 {
   background-image: url("../images/mission_bg_5.svg");
   background-size: cover;
@@ -236,82 +269,100 @@
     overflow: auto;
     padding-left: 50px;
   }
+
   .form-radio {
     width: 1.5em;
     height: 1.5em;
   }
 }
-@media screen and (max-width: 540px) {
+
+@media screen and (max-width: 768px) {
   .slider__arrow--prev {
-    left: -0.5rem !important;
+    left: 0 !important;
     background: white;
     border-radius: 50%;
     width: 40px !important;
     height: 40px !important;
   }
+
   .slider__arrow--next {
-    right: -0.5rem !important;
+    right: 0 !important;
     background: white;
     border-radius: 50%;
     width: 40px !important;
     height: 40px !important;
   }
+
   .circle-doctors {
-    height: 32rem !important;
+    height: 30rem !important;
+    background-position: -36px;
   }
 }
+
 .search_width {
   width: 72%;
 }
+
 .w-max {
   width: max-content;
 }
+
 .circle-doctors {
   background-image: url("../images/10,000_doctors.svg");
   background-size: cover;
   background-repeat: no-repeat;
   height: 40rem;
+
   @media only screen and (max-width: 768px) {
     height: 52rem;
   }
 }
+
 @media only screen and (min-width: 768px) {
   .online-directory {
     background-size: cover;
     background-repeat: no-repeat;
     display: flex;
     align-items: center;
+
     &-1 {
       background-image: url("../images/1.svg");
       height: 22rem;
     }
+
     &-2 {
       background-image: url("../images/2.svg");
       height: 23rem;
     }
+
     &-3 {
       background-image: url("../images/3.svg");
       height: 16rem;
     }
   }
+
   .circle-padding {
     padding-left: 8rem;
     padding-right: 10rem;
   }
 }
+
 @media only screen and (min-width: 1024px) {
   .-ml-14r {
     margin-left: -14rem;
   }
 }
+
 .location-icon {
   .ap-input {
-    padding-left: 30px !important;
+    padding-left: 40px !important;
   }
+
   .ap-input-icon {
     left: 30px !important;
   }
 }
+
 .rounded-16px {
   border-radius: 16px;
 }
@@ -321,6 +372,7 @@
   border-bottom: 3px solid #e4e3e3;
   border-top: 3px solid #e4e3e3;
   z-index: 9;
+
   &-circle {
     width: 10rem;
     height: 10rem;
@@ -333,6 +385,7 @@
 
 .directory-2 {
   z-index: 9;
+
   &-circle {
     width: 11rem;
     height: 11rem;
@@ -342,10 +395,12 @@
     z-index: 9;
   }
 }
+
 .line {
   height: 4px;
   background: transparent;
 }
+
 .line::before {
   content: "";
   height: 10px;
@@ -356,28 +411,35 @@
   position: absolute;
   left: 14.3rem;
 }
+
 .line::after {
   float: right;
 }
+
 .h-80 {
   height: 80%;
 }
+
 .practice-bg {
   background-color: #f1f1f1;
   border-radius: 28px;
 }
+
 .line-pos {
   left: 7rem;
 }
+
 .top-dot {
   left: 50%;
   transform: translate(-50%, -50%);
 }
+
 .bottom-dot {
   left: 50%;
   transform: translate(-50%, -50%);
   bottom: -20px;
 }
+
 .right-dot {
   top: 50%;
   transform: translate(-50%, -50%);
@@ -388,26 +450,33 @@
   .checkbox-cont {
     @apply block relative cursor-pointer text-base select-none;
   }
+
   .checkbox-cont input {
     @apply absolute opacity-0 cursor-pointer h-0 w-0;
   }
+
   .checkmark {
     @apply absolute top-0 left-0 h-5 w-5 bg-gray-200;
   }
+
   .checkbox-cont:hover input ~ .checkmark {
     @apply bg-gray-400;
   }
+
   .checkbox-cont input:checked ~ .checkmark {
     @apply bg-doctor-yellow;
   }
+
   .checkmark::after {
     @apply absolute hidden;
 
     content: "";
   }
+
   .checkbox-cont input:checked ~ .checkmark::after {
     @apply block;
   }
+
   .checkbox-cont .checkmark::after {
     @apply border-white;
 
@@ -421,21 +490,26 @@
     transform: rotate(45deg);
   }
 }
+
 .shadow-3d {
   box-shadow: inset 0 0 2px rgba(255, 255, 255, 0.5),
     2px 2px 6px rgba(0, 0, 0, 0.6);
 }
+
 .rounded-20 {
   border-radius: 20px;
 }
+
 .cookie_close {
   right: 6.5rem;
   bottom: 17rem;
+
   @media screen and (max-width: 540px) {
     right: 0.5rem;
     bottom: 27rem;
   }
 }
+
 .auto_complete {
   box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.6) !important;
   border: 1px solid #e2e8f0 !important;
@@ -445,9 +519,11 @@
   padding: 0 1rem 0 2.5rem !important;
   width: 100% !important;
 }
+
 .autoComplete_wrapper {
   position: relative;
   width: 100% !important;
+
   &::before {
     content: "\1F50D";
     position: absolute;
@@ -462,6 +538,7 @@
     z-index: 1;
   }
 }
+
 input::-webkit-input-placeholder {
   color: #718096 !important;
 }
@@ -471,6 +548,7 @@ input::-webkit-input-placeholder {
     left: -7% !important;
   }
 }
+
 #consent-popup {
   position: fixed;
   bottom: 0;
@@ -480,15 +558,19 @@ input::-webkit-input-placeholder {
   background-color: #fff;
   transition: opacity 1s ease;
 }
+
 .autocomplete-div {
   /* the container must be positioned relative: */
   position: relative;
   display: inline-block;
+
   .autocomplete {
-    margin-top: -8px;
+    top: 53px;
+    margin-left: 15px;
     max-height: 300px;
     @apply shadow-lg list-none absolute w-full overflow-auto bg-white;
   }
+
   .autocomplete li {
     display: relative;
     list-style: none;
@@ -498,11 +580,20 @@ input::-webkit-input-placeholder {
   .autocomplete li:hover {
     background-color: bisque;
   }
+
   .autocomplete .active {
     background-color: bisque;
   }
 }
 
-.doctor-cost ol {
-  list-style-type: circle !important;
+.review {
+  .autocomplete {
+    top: unset !important;
+    margin-top: -7px;
+    margin-left: 0;
+  }
+}
+.doctor-cost ul {
+  list-style-type: disc !important;
+  @apply pl-4;
 }

@@ -18,7 +18,7 @@
               <input type="hidden" name="doctor_id" data-autocomplete-target="hidden"/>
               <input type="hidden" name="search_term_type" data-search-target="searchTermType"/>
             </div>
-            <div class="flex justify-center items-center w-full pr-4 border-b md:border-b-0">
+            <div class="flex justify-center items-center w-full pr-4 border-b md:border-b-0 location-icon">
               <input class="md:my-2 my-3 ml-3 w-full focus:outline-none bg-gray-100" id="near" data-search-target='near' type="text" name="near" placeholder="Zip/City/State" value="<%=params[:place]&.titleize%>">
             </div>
             <div class="text-center mt-4 md:text-left md:mt-0">
@@ -53,7 +53,7 @@
           <span class="text-gray-600">(<span id="search_results_count"><%= @pagy.count %></span> results)</span>
         </div>
         <div class="lg:hidden" >
-          <div class="px-4 py-1 border border-gray-500 rounded-full text-sm bg-gray-200 text-center cursor-pointer" data-action="click->customjs#filterClick">More Filters</div>
+          <div class="px-4 py-1 border border-gray-500 rounded-full text-sm bg-gray-200 text-center cursor-pointer w-32" data-action="click->customjs#filterClick">More Filters</div>
         </div>
       </div>
       <div class="lg:w-full lg:flex mt-4 relative">
@@ -114,7 +114,7 @@
         <div class=" text-black mb-3 text-xl">
           Best Doctors in <%=location_stinrg%>
         </div>
-        <div class="-my-2 py-2 overflow-x-auto sm:-mx-6 sm:px-6 lg:-mx-8 pr-10 lg:px-8">
+        <div class="-my-2 py-2 overflow-x-auto sm:px-6 lg:-mx-8 pr-10 lg:px-8">
           <div class="align-middle inline-block border border-gray-300 overflow-hidden bg-white shadow-dashboard">
             <table class="">
               <thead class="bg-gray-100">

@@ -4,16 +4,18 @@
       <%= image_pack_tag 'grey_cross_vector.svg', class: "w-8" %>
     </div>
   </div>
-  <div class="lg:col-span-8 relative -ml-4 -mr-4  mt-40">
-    <div class="w-full">
-      <div class="w-full flex justify-between">
-        <div class="-mb-8 ml-6"><%=image_pack_tag 'yellow_circle_full.svg', class: "w-20 h-20"%></div>
-        <div class="flex -mb-12 -mr-3">
-          <div class="flex items-end pt-8 -mr-10"><%=image_pack_tag 'yellow_circle_big_shadow.svg', class: "w-16 h-16"%></div>
-          <div><%=image_pack_tag 'light_yellow_slant.svg', class: "w-20 h-20"%></div>
+  <div class="lg:col-span-8 relative mt-40">
+    <div class="w-full px-4">
+      <div class="hidden lg:block">
+        <div class="w-full flex justify-between">
+          <div class="-mb-8 ml-6"><%=image_pack_tag 'yellow_circle_full.svg', class: "w-20 h-20"%></div>
+          <div class="flex -mb-12 -mr-3">
+            <div class="flex items-end pt-8 -mr-10"><%=image_pack_tag 'yellow_circle_big_shadow.svg', class: "w-16 h-16"%></div>
+            <div><%=image_pack_tag 'light_yellow_slant.svg', class: "w-20 h-20"%></div>
+          </div>
         </div>
       </div>
-      <div class="lg:w-full flex md:w-4 justify-center about-gray-background-light" >
+      <div class="lg:w-full flex justify-center about-gray-background-light" >
         <div class="font-glacialbold text-2xl md:px-24 h-40 text-center tracking-normal flex items-center">
           <div class="px-4">
             Direct patient care models are leading the movement towards <br>
@@ -32,7 +34,7 @@
     <div class="absolute right-0 -mt-16 mr-8">
       <%=image_pack_tag 'light_grey_2_lines_vertical.svg', class: "h-56" %>
     </div>
-    <div class="right-0 absolute -mr-4 -mt-32 z-50">
+    <div class="right-0 absolute -mr-4 -mt-32 z-50 hidden lg:block">
       <%= image_pack_tag 'yellow_circle_outline_opacity_right.png', class: "w-24 h-64" %>
     </div>
   </div>
@@ -79,7 +81,7 @@
                   </svg>
                 </div>
                 <div>
-                  We aim to create a thorough and up-to-date <span class="font-glacialitalic border-b border-gray-600">directory</span> of all the Direct Primary Care and Concierge Doctors in the US as online listings on FindMyDirectDoctor.com website.
+                  We aim to create a through and up-to-date <span class="border-b border-gray-600">directory</span> of all the Direct Primary Care and Concierge Doctors in the US as online listings on FindMyDirectDoctor.com website.
                 </div>
               </div>
               <div class="flex mt-2">
@@ -99,7 +101,7 @@
                   </svg>
                 </div>
                 <div>
-                  FindMyDirectDoctor thrives on improving the health and well-being of patients by <span class="font-glacialitalic  border-b border-gray-600">connecting</span> them with their best-suited Direct Primary Care and Concierge doctors via our online directory.
+                  FindMyDirectDoctor thrives on improving the health and wellbeing of patients by <span class=" border-b border-gray-600">connrecting</span> them with their best suited Direct Primary Care and Concierge Doctors via our online Directory.
                 </div>
               </div>
             </div>
@@ -223,7 +225,7 @@
         </label>
         <input class="md:my-2 my-3 w-full focus:outline-none text-xl" type="text" data-search-target="name" name="speciality" placeholder="Name/Speciality">
       </div>
-      <div class="flex justify-center items-center w-full pr-4 border-b md:border-b-0">
+      <div class="flex justify-center items-center w-full pr-4 border-b md:border-b-0 location-icon">
         <input class="md:my-2 my-3 ml-3 w-full focus:outline-none text-xl" id="near" data-search-target='near' type="text" name="near" placeholder="Zip/City/State">
       </div>
       <div class="text-center mt-4 md:text-left md:mt-0">
@@ -244,15 +246,15 @@
       <%=image_pack_tag 'yellow_half_circle_thick.svg'%>
     </div>
   </div>
-  <div class="lg:col-span-10 -ml-8 flex">
+  <div class="lg:col-span-10 lg:-ml-8 flex">
     <div class="lg:w-10/12 p-5">
       <div class="w-full font-glacialbold text-heading">
         Mission & Vision:
         <div class="border-t-2 border-doctor-yellow-500 mt-2 w-2/12"></div>
       </div>
       <div class="lg:w-full mt-16 flex relative">
-        <div class="z-40 absolute"><%=image_pack_tag 'mission_icon_1.svg', class: 'w-40'%></div>
-        <div class="mission-background-1 ml-24">
+        <div class="z-40 absolute"><%=image_pack_tag 'mission_icon_1.svg', class: 'w-20 lg:w-40'%></div>
+        <div class="mission-background-1 ml-10 lg:ml-24">
           <div class="w-full pl-10 md:pl-20 pt-8 pr-5">
             <div class="font-glacialbold text-2xl">AWARENESS & EDUCATION:</div>
             <div class="pt-2 text-xl pr-2">
@@ -299,9 +301,9 @@
         </div>
       </div>
       <div class="lg:w-full mt-16 flex relative">
-        <div class="z-40 absolute"><%=image_pack_tag 'mission_icon_2.svg', class: 'w-40'%></div>
-        <div class="mission-background-1 ml-24">
-          <div class="w-full pl-10 md:pl-20 pt-8 pr-5 pb-4">
+        <div class="z-40 absolute"><%=image_pack_tag 'mission_icon_2.svg', class: 'w-20 lg:w-40'%></div>
+        <div class="mission-background-1 ml-10 lg:ml-24">
+          <div class="w-full pl-8 md:pl-20 pt-8 pr-5 pb-4">
             <div class="font-glacialbold text-2xl">ACCURATE DIRECT CARE DOCTOR DIRECTORY:</div>
             <div class="pt-2 text-xl pr-2">
               <div class="flex">
@@ -329,9 +331,9 @@
         </div>
       </div>
       <div class="lg:w-full mt-16 flex relative">
-        <div class="z-40 absolute"><%=image_pack_tag 'mission_icon_3.svg', class: 'w-40'%></div>
-        <div class="mission-background-1 ml-24">
-          <div class="w-full pl-10 md:pl-20 pt-8 pr-5 pb-4">
+        <div class="z-40 absolute"><%=image_pack_tag 'mission_icon_3.svg', class: 'w-20 lg:w-40'%></div>
+        <div class="mission-background-1 ml-10 lg:ml-24">
+          <div class="w-full pl-8 md:pl-20 pt-8 pr-5 pb-4">
             <div class="font-glacialbold text-2xl">CONNECT PATIENTS WITH DIRECT CARE DOCTORS:</div>
             <div class="pt-2 text-xl pr-2">
               <div class="flex">
@@ -359,9 +361,9 @@
         </div>
       </div>
       <div class="lg:w-full mt-16 flex relative">
-        <div class="z-40 absolute"><%=image_pack_tag 'mission_icon_4.svg', class: 'w-40'%></div>
-        <div class="mission-background-1 ml-24">
-          <div class="w-full pl-10 md:pl-20 pt-8 pr-5 pb-4">
+        <div class="z-40 absolute"><%=image_pack_tag 'mission_icon_4.svg', class: 'w-20 lg:w-40'%></div>
+        <div class="mission-background-1 ml-10 lg:ml-24">
+          <div class="w-full pl-8 md:pl-20 pt-8 pr-5 pb-4">
             <div class="font-glacialbold text-2xl">BENEFITS OF DPC / CONCIERGE MEDICINE:</div>
             <div class="pt-2 text-xl pr-2">
               <div class="flex">
@@ -379,10 +381,10 @@
         </div>
       </div>
       <div class="lg:w-full mt-16 flex relative">
-        <div class="z-40 absolute"><%=image_pack_tag 'mission_icon_5.svg', class: 'w-40'%></div>
-        <div class="mission-background-1 ml-24">
-          <div class="w-full pl-10 md:pl-20 pt-8 pr-5 pb-4">
-            <div class="font-glacialbold text-2xl">PROMOTE PATIENT HEALTH & WELL-BEING:</div>
+        <div class="z-40 absolute"><%=image_pack_tag 'mission_icon_5.svg', class: 'w-20 lg:w-40'%></div>
+        <div class="mission-background-1 ml-10 lg:ml-24">
+          <div class="w-full pl-8 md:pl-20 pt-8 pr-5 pb-4">
+            <div class="font-glacialbold text-2xl">PROMOTE PATIENT HEALTH & WELLBEING:</div>
             <div class="pt-2 text-xl pr-2">
               <div class="flex">
                 <div class="pr-6 pt-2 flex justify-start">
@@ -399,9 +401,9 @@
         </div>
       </div>
       <div class="lg:w-full mt-16 flex relative">
-        <div class="z-40 absolute"><%=image_pack_tag 'mission_icon_6.svg', class: 'w-40'%></div>
-        <div class="mission-background-1 ml-24">
-          <div class="w-full pl-10 md:pl-20 pt-8 pr-5 pb-4">
+        <div class="z-40 absolute"><%=image_pack_tag 'mission_icon_6.svg', class: 'w-20 lg:w-40'%></div>
+        <div class="mission-background-1 ml-10 lg:ml-24">
+          <div class="w-full pl-8 md:pl-20 pt-8 pr-5 pb-4">
             <div class="font-glacialbold text-2xl">JOB LISTING BOARD FOR DIRECT CARE DOCTORS:</div>
             <div class="pt-2 text-xl pr-2">
               <div class="flex">
