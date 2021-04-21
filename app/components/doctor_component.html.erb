@@ -2,7 +2,7 @@
   <div class="hidden lg:block">
     <div class="w-full mt-6 flex">
       <div class="lg:w-40 w-20">
-        <%= doctor_avatar(class: 'md:h-48 w-full object-cover border rounded-lg doc-avatar') %>
+        <%= doctor_avatar(class: 'md:h-40 lg:h-48 w-full object-cover border rounded-lg doc-avatar') %>
         <div class="text-md tracking-wide font-hurmebold mt-4 text-center">
           <%=doctor.practice_name%>
         </div>
@@ -192,10 +192,10 @@
   </div>
   <div class="lg:hidden">
     <div class="flex mt-6">
-      <div class="w-1/4">
-        <%= doctor_avatar(class: 'md:h-32 w-32 object-cover border rounded-lg doc-avatar') %>
+      <div class="w-1/6 lg:w-1/4">
+        <%= doctor_avatar(class: 'md:h-32 w-24 object-cover border rounded-lg doc-avatar') %>
       </div>
-      <div class="w-3/4 pl-4">
+      <div class="w-5/6 lg:w-3/4 pl-4">
         <div class="w-full flex">
           <a href="<%=profile_url%>" target="_blank" class="hover:text-doctor-yellow focus:outline-none w-3/4">
             <h2 class="text-lg font-semibold"><%= doctor.name %></h2>
