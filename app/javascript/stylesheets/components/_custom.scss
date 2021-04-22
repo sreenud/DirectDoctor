@@ -298,6 +298,13 @@
     background-position: -36px;
   }
 }
+@media screen and (min-width: 540px) and (max-width: 900px) {
+  .circle-doctors {
+    width: 40rem !important;
+    height: 40rem !important;
+    margin: auto;
+  }
+}
 
 .search_width {
   width: 72%;
@@ -308,10 +315,10 @@
 }
 
 .circle-doctors {
-  background-image: url("../images/10,000_doctors.svg");
+  background-image: url("../images/image.png");
   background-size: cover;
   background-repeat: no-repeat;
-  height: 40rem;
+  height: 37rem;
 
   @media only screen and (max-width: 768px) {
     height: 52rem;
@@ -342,8 +349,9 @@
   }
 
   .circle-padding {
-    padding-left: 8rem;
-    padding-right: 10rem;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
   }
 }
 
