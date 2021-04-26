@@ -4,5 +4,4 @@ class SocialConnectsController < ApplicationController
 
   def index
   end
-
 end
