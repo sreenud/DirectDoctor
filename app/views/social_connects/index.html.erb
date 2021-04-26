@@ -1,0 +1,104 @@
+<header class="w-full">
+  <% if flash[:notice] %>
+    <div x-data="{ open: true }">
+      <div class="text-white px-6 py-4 border-0 rounded relative mb-4 bg-green-500" x-show="open" @click.away="open = false">
+        <span class="inline-block align-middle mr-8">
+          <%= flash[:notice] %>
+        </span>
+        <button class="absolute bg-transparent text-2xl font-semibold leading-none right-0 top-0 mt-4 mr-6 outline-none focus:outline-none" @click="open = false">
+          <span>×</span>
+        </button>
+      </div>
+    </div>
+  <% end %>
+  <% if flash[:alert] %>
+    <div x-data="{ open: true }">
+      <div class="text-white px-6 py-4 border-0 rounded relative mb-4 bg-orange-500" x-show="open" @click.away="open = false">
+        <span class="inline-block align-middle mr-8">
+          <%= flash[:alert] %>
+        </span>
+        <button class="absolute bg-transparent text-2xl font-semibold leading-none right-0 top-0 mt-4 mr-6 outline-none focus:outline-none" @click="open = false">
+          <span>×</span>
+        </button>
+      </div>
+    </div>
+  <% end %>
+  <div class="w-1/2">
+    <div class="inline-flex text-gray-600">
+      <h1 class="font-semibold text-2xl">My Social Connects</h1>
+    </div>
+  </div>
+</header>
+<section class="flex mt-6 mb-4">
+  <div class="w-full" data-controller="message tinymce slug doctor">
+    <div class="w-full z-10" data-message-target="errors"></div>
+    <div class="flex-1 mr-4" id="scroll_to_top">
+      <div class="bg-white border pb-16 rounded shadow p-5">
+        <div class="lg:w-7/12 max-w-xl mx-4 mt-5 pb-4">
+          <div class="w-full justify-between">
+            <div class="flex">
+              <div class="w-1/2 rounded-lg bg-facebook-blue px-4 py-2 text-gray-100 flex items-center">
+                <a class="w-full mr-2 flex">
+                  <div class="pr-4"><img class="w-4 h-5" src="/packs/media/images/icons/facebook_white_login-65cbf47b40980a0d738fb144aed0ceb1.svg"></div>
+                  <div>Sign in with facebook</div>
+                </a>
+              </div>
+              <div class="mx-2 my-2 pl-2">
+                <% if current_user.social_connects.facebook.any? %>
+                  <span class="text-green-500">Connected</span>
+                <% else %>
+                  <%= link_to "Connect", user_facebook_omniauth_authorize_path, class:"underline text-blue-400" %>
+                <% end %>
+              </div>
+            </div>
+            <div class="flex">
+              <div class="w-1/2 rounded-lg  bg-google-red px-4 py-2 text-gray-100 flex mt-5 items-center">
+                <a class="w-full ml-2 flex">
+                  <div class="pr-4"><img class="w-8 h-5" src="/packs/media/images/icons/google_white-d57e50bd17d7f5d820c0626ec1190b71.svg"></div>
+                  <div>Sign in with google</div>
+                </a>
+              </div>
+              <div class="mx-2 my-2 pl-2 pt-4 flex justify-center items-center">
+                <% if current_user.social_connects.google_oauth2.any? %>
+                  <span class="text-green-500">Connected</span>
+                <% else %>
+                  <%= link_to "Connect", user_google_oauth2_omniauth_authorize_path, class:"underline text-blue-400" %>
+                <% end %>
+              </div>
+            </div>
+            <div class="flex">
+              <div class="w-1/2 mt-5 rounded-lg bg-twitter-blue px-4 py-2 pr-10 text-gray-100 flex items-center">
+                <a class="w-full mr-2 flex">
+                  <div class="pr-4"><img class="w-6 h-5" src="/packs/media/images/icons/twitter_white_login-0a0a11c0be353248a4c75cb478414358.svg"></div>
+                  <div>Sign in with twitter</div>
+                </a>
+              </div>
+              <div class="mx-2 my-2 pl-2 pt-4 flex justify-center items-center">
+                <% if current_user.social_connects.twitter.any? %>
+                  Connected
+                <% else %>
+                  <%= link_to "Connect", user_twitter_omniauth_authorize_path, class:"underline text-blue-400" %>
+                <% end %>
+              </div>
+            </div>
+            <div class="flex">
+              <div class="w-1/2 rounded-lg bg-linkedin-blue px-4 py-2 text-gray-100 flex items-center mt-5">
+                <a class="w-full ml-2 flex" href="/users/auth/linkedin">
+                  <div class="pr-4"><img class="w-6 h-5" src="/packs/media/images/icons/linkedin_white_login-90a37306dd476d68d0dc6d002bfcbd76.svg"></div>
+                  <div>Sign in with linkedin</div>
+                </a>
+              </div>
+              <div class="mx-2 my-2 pl-2 pt-4 flex justify-center items-center">
+                <% if current_user.social_connects.linkedin.any? %>
+                  Connected
+                <% else %>
+                  <%= link_to "Connect", user_linkedin_omniauth_authorize_path, class:"underline text-blue-400" %>
+                <% end %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

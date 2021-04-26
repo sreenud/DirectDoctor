@@ -31,8 +31,13 @@
           <label class="inline-flex items-start pt-2">
             <input type="radio" class="form-radio h-3 w-3 text-gray-900" checked disabled>
           </label>
-          <div class="ml-4 flex items-start">
+          <div class="ml-4 items-start">
             Disciplinary Action Taken By States Medical Board: <%=doctor.disciplinary_action_taken%>
+            <% if doctor.disciplinary_action_taken == "Yes" %>
+              <div class="w-full mt-1">
+                <%=doctor.disciplinary_action_details.html_safe%>
+              </div>
+            <% end %>
           </div>
         </div>
         <div class="ml-4 w-2/12 md:w-4/12">

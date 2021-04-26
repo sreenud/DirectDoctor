@@ -32,8 +32,8 @@ class SearchesController < BaseController
   def global_search
     @doctors  = Doctor.ransack(name_cont: params[:q]).result(distinct: true)
       .where(status: "published").limit(5)
-    @clinics  = Doctor.ransack(practice_name_cont: params[:q]).result(distinct: true)
-      .where(status: "published").limit(5)
+    @clinics  = Doctor.ransack(practice_name_cont: params[:q]).result.select(:practice_name)
+      .where(status: "published").group("doctors.practice_name").limit(5)
     @spcialities = Speciality.ransack(name_cont: params[:q]).result(distinct: true).limit(5)
 
     render(layout: false)

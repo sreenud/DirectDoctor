@@ -17,14 +17,14 @@
     </li>
     <li class="flex items-left" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
       <a href="<%=root_url%><%=doctor&.state&.parameterize%>/<%=doctor&.speciality&.name&.parameterize%>" class="text-doctor-yellow pr-2" itemprop="item">
-        <span itemprop="name"><%=doctor&.speciality&.name&.capitalize%></span>
+        <span itemprop="name"><%=doctor&.speciality&.name&.titleize%></span>
       </a>
       <span class="text-gray-500 pr-2">&gt;</span>
       <meta itemprop="position" content="3" />
     </li>
     <li class="flex items-left" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
       <a href="<%=root_url%><%=doctor&.state&.parameterize%>/<%=doctor&.speciality&.name&.parameterize%>/<%=doctor&.city&.parameterize%>" class="text-doctor-yellow pr-2" itemprop="item">
-        <span itemprop="name"><%=doctor&.city&.capitalize%></span>
+        <span itemprop="name"><%=doctor&.city&.titleize%></span>
       </a>
       <span class="text-gray-500 pr-2">&gt;</span>
       <meta itemprop="position" content="4" />

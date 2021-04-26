@@ -77,4 +77,17 @@ namespace :state do
       puts "#{state.code} - lat and lng is updated"
     end
   end
+
+  desc "Create New State"
+  task create: :environment do
+    name = ENV["name"]
+    code = ENV["code"]
+
+    State.create(
+      name: name,
+      code: code,
+      status: 'active',
+    )
+
+  end
 end

@@ -32,7 +32,8 @@ module Users
 
       if user_signed_in?
         flash[:notice] = "Your #{kind} account was connected."
-        redirect_to(edit_user_registration_path)
+
+        redirect_to(social_connects_url)
       else
         sign_in_and_redirect(user, event: :authentication)
         set_flash_message(:notice, :success, kind: kind)

@@ -8,10 +8,12 @@ class ClaimProfilesController < BaseController
     @claim_profile_request = ClaimProfileRequest.includes(:claim_profile_comments)
       .where(status: "follow_up").where(request_token: params[:id])&.first
 
-    @claim_profile_comments = ClaimProfileComment.includes(:user)
-      .where(claim_profile_request_id: @claim_profile_request.id)
+    if @claim_profile_request.present?
+      @claim_profile_comments = ClaimProfileComment.includes(:user)
+        .where(claim_profile_request_id: @claim_profile_request&.id)
 
-    1.times { @claim_profile_request.claim_profile_comments.build }
+      1.times { @claim_profile_request&.claim_profile_comments&.build }
+    end
 
     if @claim_profile_request.present? && @claim_profile_request.profile_name.present?
       doctor_name = @claim_profile_request.profile_name

@@ -48,7 +48,7 @@ module Admin
 
           total_reviews = reviews ? reviews&.count : 0
           review_sum = reviews ? reviews&.sum(:rating) : 0
-          @doctor.avg_rating = review_sum / total_reviews
+          @doctor.avg_rating = review_sum / total_reviews if total_reviews > 0
           @doctor.save(validate: false)
 
           format.html { redirect_to(admin_reviews_url, notice: "Review is successfully updated.") }

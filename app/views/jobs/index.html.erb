@@ -23,7 +23,7 @@
             <input class="md:my-2 my-3 w-full focus:outline-none" type="text" data-search-target="name" name="speciality" placeholder="Name/Speciality" value="<%=speciality_name(params)%>">
           </div>
           <div class="flex justify-center items-center w-full pr-4 border-b md:border-b-0 location-icon">
-            <input class="md:my-2 my-3 ml-3 w-full focus:outline-none" id="near" data-search-target='near' type="text" name="near" placeholder="Zip/City/State" value="<%=params[:place]&.titleize%>">
+            <input class="md:my-2 my-3 ml-3 w-full focus:outline-none" id="near" data-search-target='near' type="text" name="near" placeholder="Address/City/Zip" value="<%=params[:place]&.titleize%>">
           </div>
           <div class="text-center mt-4 md:text-left md:mt-0">
             <button class="bg-doctor-yellow text-gray-100 md:mr-4 rounded-md px-4 py-1 w-11/12 md:w-auto" data-search-target="search">Search</button>

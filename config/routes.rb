@@ -26,6 +26,7 @@ Rails.application.routes.draw do
   end
   get "/blogs/:tip_slug/:id", to: "tips#show"
 
+  resources :social_connects, only: [:index]
   resources :surveys, only: [:index, :create]
   resources :leads, only: [:create]
   resources :jobs, only: [:index, :show] do
