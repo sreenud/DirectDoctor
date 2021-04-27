@@ -6,7 +6,6 @@ Rails.application.routes.draw do
   get "global-search", to: "searches#global_search"
   get "job-search", to: "jobs#search"
 
-
   get ":state/doctor/:fdd_id/:doctor_name", to: "doctors#show"
   get "/*any", to: "redirects#index", constraints: RedirectConstraint.new
 
@@ -65,7 +64,6 @@ Rails.application.routes.draw do
   get "/:place/:style", to: "searches#specialized_search", constraints: DoctorStyleConstraint.new
   get "/:place/:style/:speciality_slug", to: "searches#specialized_search", constraints: SpecialityConstraint.new
   get "/:place", to: "searches#specialized_search"
-
 
   get "*path", to: "application#raise_route_not_found", via: :all,
     constraints: lambda { |request| !request.fullpath.include?("/rails/active_storage/") }
