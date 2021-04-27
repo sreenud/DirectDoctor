@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   get "job-search", to: "jobs#search"
 
   get "/:place/:location", to: "searches#specialized_search", constraints: LocationConstraint.new
-  get "/:place/:style", to: "searches#specialized_search", constraints: StyleConstraint.new
+  # get "/:place(/:style)", to: "searches#specialized_search", constraints: DoctorStyleConstraint.new
   get "/:place/:style/:speciality_slug", to: "searches#specialized_search", constraints: SpecialityConstraint.new
   get "/:place", to: "searches#specialized_search"
 
