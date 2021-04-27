@@ -50,7 +50,7 @@ module DoctorSearch
   def apply_style_filter
     return @default_scope unless @params[:style].present?
 
-    style = if @params[:style] == "direct-primary-care"
+    style = if @params[:style] == "dpc"
       "dpc"
     else
       "concierge"

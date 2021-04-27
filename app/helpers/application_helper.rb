@@ -74,7 +74,8 @@ module ApplicationHelper
     end
 
     if params[:location].present?
-      h1_tag_text = "#{params[:speciality_slug].titleize} in #{params[:location].titleize}, #{place}"
+      # h1_tag_text = "#{params[:speciality_slug].titleize} in #{params[:location].titleize}, #{place}"
+      h1_tag_text = "#{place}, #{params[:location].titleize}"
     end
 
     if params[:speciality].present?

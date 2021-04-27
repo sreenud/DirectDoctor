@@ -108,7 +108,7 @@ class Doctor < ApplicationRecord
     doctor_name = "#{name}-#{speciality&.name}".parameterize
     fdd_id = self.fdd_id&.downcase
 
-    "#{state}/doctor/#{fdd_id}/#{doctor_name}"
+    "/#{state}/doctor/#{fdd_id}/#{doctor_name}"
   end
 
   def self.default_experience
