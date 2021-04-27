@@ -33,10 +33,12 @@ class Doctor
     end
 
     def display_free_consultation_time
-      if !free_consultation_time.present?
-        "Not Available"
+      if consultation == "Yes"
+        "#{free_consultation_time} - free initial consultation"
+      elsif consultation == "No"
+        "No - free initial consultation"
       else
-        "#{free_consultation_time} min"
+        "Not Available - free initial consultation"
       end
     end
 
