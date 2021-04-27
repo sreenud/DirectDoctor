@@ -1,5 +1,6 @@
 class LocationConstraint
   def matches?(request)
-    Location.where("name ILIKE ?", "%#{request.path_parameters[:location]}").present?
+    location_name = request.path_parameters[:location]&.titleize
+    Location.where("name ILIKE ?", "%#{location_name}").present?
   end
 end
