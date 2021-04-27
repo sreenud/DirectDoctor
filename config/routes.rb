@@ -14,8 +14,6 @@ Rails.application.routes.draw do
   get ":state/doctor/:fdd_id/:doctor_name", to: "doctors#show"
   get "/*any", to: "redirects#index", constraints: RedirectConstraint.new
 
-
-
   resources :blogs, only: [:index, :show]
   resources :tips, only: [:index]
   get "about-us", to: "abouts#index"
@@ -67,8 +65,6 @@ Rails.application.routes.draw do
 
   # place is nothing but state here
   # get "/:place(/:style)(/:speciality_slug)(/:location)", to: "searches#specialized_search"
-
-
 
   get "*path", to: "application#raise_route_not_found", via: :all,
     constraints: lambda { |request| !request.fullpath.include?("/rails/active_storage/") }
