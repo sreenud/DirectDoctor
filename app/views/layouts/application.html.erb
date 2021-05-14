@@ -10,7 +10,7 @@
     <link rel="dns-prefetch" href="https://code.jquery.com">
     <link rel="dns-prefetch" href="https://cdn.rawgit.com">
     <link rel="dns-prefetch" href="https://www.googletagmanager.com">
-    <%= gmaps_script %>
+    <script src="https://maps.googleapis.com/maps/api/js?key=<%= Rails.application.credentials[:google_maps_api_key] %>&libraries=places&callback=initPlaces" async defer data-turbolinks-eval="false"></script>
     <% if Rails.env.development? %>
       <%= stylesheet_pack_tag 'application_style', media: 'all', 'data-turbolinks-track': 'reload', :async => "async"%>
     <% else %>

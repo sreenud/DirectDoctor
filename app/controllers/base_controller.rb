@@ -5,7 +5,7 @@ class BaseController < ApplicationController
 
   attr_reader :current_location, :location_string
 
-  before_action :menu_details, only: %i[index show], unless: proc { request.xhr? }
+  before_action :menu_details, only: [:index, :show], unless: proc { request.xhr? }
   before_action :set_approximate_location, :validate_role
 
   def load_gmap

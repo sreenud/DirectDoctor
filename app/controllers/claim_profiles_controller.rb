@@ -45,6 +45,6 @@ class ClaimProfilesController < BaseController
 
   def claim_profile_request_params
     params.require(:claim_profile_request).permit(:doctor_id, :user_id,
-      claim_profile_comments_attributes: %i[id comment user_id document _destroy])
+      claim_profile_comments_attributes: [:id, :comment, :user_id, :document, :_destroy])
   end
 end

@@ -2,8 +2,8 @@ require "fastimage"
 require "image_processing/vips"
 class ImageUploader < Shrine
   MAX_SIZE       = 10 * 1024 * 1024
-  ALLOWED_EXTS   = %w[jpg jpeg png webp]
-  ALLOWED_TYPES  = %w[image/jpeg image/png image/webp]
+  ALLOWED_EXTS   = ["jpg", "jpeg", "png", "webp"]
+  ALLOWED_TYPES  = ["image/jpeg", "image/png", "image/webp"]
   MAX_DIMENSIONS = [5000, 5000]
 
   plugin :store_dimensions, analyzer: :fastimage, log_subscriber: nil

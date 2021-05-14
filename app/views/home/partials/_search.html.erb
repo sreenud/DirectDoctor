@@ -4,15 +4,15 @@
       <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd" />
     </svg>
   </label>
-  <input class="md:my-2 my-3 w-full focus:outline-none" type="text" data-search-target="name" name="speciality" placeholder="Name/Speciality" data-autocomplete-target="input" id="searchTerm">
+  <input class="md:my-2 my-3 w-full focus:outline-none" type="text" data-searches-target="name" name="speciality" placeholder="Name/Speciality" data-autocomplete-target="input" id="searchTerm">
   <ul data-autocomplete-target="results" class="autocomplete"></ul>
   <input type="hidden" name="doctor_id" data-autocomplete-target="hidden"/>
-  <input type="hidden" name="search_term_type" data-search-target="searchTermType"/>
+  <input type="hidden" name="search_term_type" data-searches-target="searchTermType"/>
 </div>
 <div class="flex justify-center items-center w-full pr-4 border-b md:border-b-0 location-icon">
-  <input class="md:my-2 my-3 ml-3 w-full focus:outline-none" id="near" data-search-target='near' type="text" name="near" placeholder="Address/City/Zip">
+  <input class="md:my-2 my-3 ml-3 w-full focus:outline-none" id="near" data-searches-target='field' type="text" name="near" placeholder="Address/City/Zip">
 </div>
 <div class="text-center mt-4 md:text-left md:mt-0">
   <button class="bg-doctor-yellow text-gray-100 md:mr-4 rounded-md px-8 py-2 w-11/12 md:w-auto"
-    data-search-target="search">Search</button>
+    data-searches-target="search" data-action="click->searches#submitSearch">Search</button>
 </div>

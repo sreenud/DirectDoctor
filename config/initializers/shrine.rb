@@ -1,7 +1,7 @@
 require "shrine"
 require "shrine/storage/s3"
 
-credentials = Rails.application.credentials[Rails.env.to_sym]
+credentials = Rails.application.credentials
 
 s3_options = {
   bucket: credentials[:aws_s3][:bucket], # required

@@ -11,7 +11,7 @@
         <p class="">
           <h1 class="text-2xl mt-1">Find your Direct Primary Care Physician or Concierge Doctor</h1>
         </p>
-        <div class="md:flex border rounded-lg mt-10 shadow justify-between items-center lg:mr-24 pb-2 md:py-2" data-controller="search">
+        <div class="md:flex border rounded-lg mt-10 shadow justify-between items-center lg:mr-24 pb-2 md:py-2" data-controller="searches" data-action="google-maps-callback@window->searches#initPlaces">
           <%= render partial: 'home/partials/search' %>
         </div>
       </div>

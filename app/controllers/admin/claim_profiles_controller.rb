@@ -100,7 +100,7 @@ module Admin
 
     def claim_profile_request_params
       params.require(:claim_profile_request).permit(:id, :name, :user_id, :email,
-        :doctor_id, :user_id, :status, claim_profile_comments_attributes: %i[id comment user_id _destroy])
+        :doctor_id, :user_id, :status, claim_profile_comments_attributes: [:id, :comment, :user_id, :_destroy])
     end
   end
 end

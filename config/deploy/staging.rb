@@ -11,7 +11,7 @@
 set(:branch, "development")
 set(:deploy_to, "/home/azureuser/direct_doctor_uat/")
 
-server("52.147.196.96", user: "azureuser", roles: %w[app db web])
+server("52.147.196.96", user: "azureuser", roles: ["app", "db", "web"])
 
 # role-based syntax
 # ==================
@@ -42,7 +42,7 @@ server("52.147.196.96", user: "azureuser", roles: %w[app db web])
 # Global options
 # --------------
 set(:ssh_options, {
-  keys: %w(~/.ssh/id_rsa),
+  keys: ["~/.ssh/id_rsa"],
   #    forward_agent: false,
   #    auth_methods: %w(password)
 })

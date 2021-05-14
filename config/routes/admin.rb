@@ -1,13 +1,13 @@
 namespace :admin do
   post "doctors/upload-image", to: "doctors#upload_image"
-  resources :dashboard, only: %i[index]
+  resources :dashboard, only: [:index]
   scope module: "blog" do
     resources :topics
     resources :tips
     resources :tags
   end
   resources :users
-  resources :media_storages, only: %i[create destroy]
+  resources :media_storages, only: [:create, :destroy]
   resources :page_redirects
   resources :doctors
   resources :jobs

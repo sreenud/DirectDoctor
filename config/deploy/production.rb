@@ -11,7 +11,7 @@
 set(:branch, "master")
 set(:deploy_to, "/home/ubuntu/direct_doctor/")
 
-server("18.217.233.214", user: "ubuntu", roles: %w[app db web])
+server("18.217.233.214", user: "ubuntu", roles: ["app", "db", "web"])
 
 # role-based syntax
 # ==================
@@ -42,7 +42,7 @@ server("18.217.233.214", user: "ubuntu", roles: %w[app db web])
 # Global options
 # --------------
 set(:ssh_options, {
-  keys: %w(~/.ssh/id_rsa),
+  keys: ["~/.ssh/id_rsa"],
   #    forward_agent: false,
   #    auth_methods: %w(password)
 })
