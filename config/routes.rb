@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   resources :blogs, only: [:index, :show]
   resources :tips, only: [:index]
   get "about-us", to: "abouts#index"
+  get "contact-us", to: "contactus#index"
   get "fmdd-score", to: "fmdd_score#index"
   get "terms-of-service", to: "terms_of_service#index"
   get "privacy-policy", to: "privacy_policy#index"
@@ -25,6 +26,7 @@ Rails.application.routes.draw do
     resource :likes
   end
   get "/blogs/:tip_slug/:id", to: "tips#show"
+  get "/static", to: "home#static_page"
 
   resources :social_connects, only: [:index]
   resources :surveys, only: [:index, :create]
@@ -32,6 +34,7 @@ Rails.application.routes.draw do
   resources :jobs, only: [:index, :show] do
     collection do
       get :search
+      get :global_search
     end
   end
   get "job/post-a-job", to: "jobs#post_job"

@@ -7,6 +7,7 @@ class ReviewsController < BaseController
     respond_to do |format|
       if @review.save
 
+
         format.html do
           render(partial: "doctors/thankyou", locals: { object: @review }, status: :ok)
         end

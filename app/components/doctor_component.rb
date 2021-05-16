@@ -29,6 +29,14 @@ class DoctorComponent < ViewComponent::Base
     end
   end
 
+  def doctor_image_url
+    if doctor.image.present?
+       doctor_display_image(doctor)
+    else
+      "./doctor_default.svg"
+    end
+  end
+
   def user_signed_in?
     @current_user
   end

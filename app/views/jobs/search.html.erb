@@ -29,8 +29,10 @@
         </ul>
       </nav>
       <div class="w-full text-left text-2xl mt-4">
-        <h1 class="font-hurmebold inline-block">Find a Job, Internal Medicine Jobs (1840 results) </h1>
-        <span class="text-gray-600">(18048 results)</span>
+        <h1 class="font-hurmebold inline-block">
+          <%= job_search_h1_tag(@location_string, params) %>
+        </h1>
+        <span class="text-gray-600">(<%=@pagy.count %> results)</span>
         <div class="relative">
           <div class="absolute right-0 -mt-24 mr-4">
             <%=image_pack_tag 'light_grey_2_lines_vertical.svg', class: "h-32" %>

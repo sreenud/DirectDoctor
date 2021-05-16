@@ -1,4 +1,4 @@
-<%= content_tag(:div, id: "doc-#{doctor.id}", **@props, class: " pr-1 doctor-card w-full box-bottom-shadow #{@props[:class]}", data: {name: doctor.name, price: doctor.price, rating: 4, image: doctor.image || asset_pack_path('media/images/doctor_PNG15987.png')}) do %>
+<%= content_tag(:div, id: "doc-#{doctor.id}", **@props, class: " pr-1 doctor-card w-full box-bottom-shadow #{@props[:class]}", data: {name: doctor.name, price: doctor.price, rating: 4, image:  doctor_image_url}) do %>
   <div class="hidden lg:block">
     <div class="w-full mt-6 flex">
       <div class="lg:w-40 w-20">

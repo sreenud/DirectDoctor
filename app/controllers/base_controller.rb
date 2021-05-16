@@ -7,6 +7,7 @@ class BaseController < ApplicationController
 
   before_action :menu_details, only: [:index, :show], unless: proc { request.xhr? }
   before_action :set_approximate_location, :validate_role
+  before_action :mega_menu
 
   def load_gmap
     @load_gmaps = true
@@ -38,6 +39,12 @@ class BaseController < ApplicationController
     if current_user.present? && current_user.has_role?("guest")
       redirect_to(onboarding_step1_url) && return
     end
+  end
+
+  def mega_menu
+    @specialities = Speciality.all
+    @cities = Location.order(population: :desc).limit(60)
+    @states = State.all
   end
 
   private

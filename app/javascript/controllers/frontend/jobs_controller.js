@@ -2,8 +2,6 @@
 
 import { Controller } from 'stimulus';
 
-const places = require('places.js');
-
 export default class extends Controller {
   static targets = [
     'field',
@@ -30,15 +28,6 @@ export default class extends Controller {
         .getElementById('searchTerm')
         .setAttribute('name', searchTermType);
       that.searchTermTypeTarget.value = searchTermType;
-    });
-
-    var map = document.getElementById('map_toggle');
-    map.addEventListener('change', (event) => {
-      document.getElementById('doctor_cards').classList.toggle('lg:w-8/12');
-      document.getElementById('doctor_cards').classList.toggle('lg:w-full');
-      document
-        .getElementsByClassName('map-container')[0]
-        .classList.toggle('lg:block');
     });
   }
 
@@ -80,7 +69,7 @@ export default class extends Controller {
     event.preventDefault();
     this.setParams();
     const queryString = new URLSearchParams(this.params || {}).toString();
-    const url = `/search-map?${queryString}`;
+    const url = `/jobs/search?${queryString}`;
     Turbolinks.visit(url);
   }
 

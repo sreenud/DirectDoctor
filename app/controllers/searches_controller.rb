@@ -8,6 +8,8 @@ class SearchesController < BaseController
   end
 
   def index_two
+    @cities = Location.order(population: :desc).limit(60)
+
     @pagy, @doctors = pagy(
       Doctor.includes(:speciality, :review_data).published.search(search_params,
         current_location: current_location), items: 10

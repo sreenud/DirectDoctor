@@ -1,0 +1,69 @@
+<section class="lg:grid lg:w-full lg:mt-24 lg:grid-cols-12 flex mt-32 bg-gray-200">
+  <div class="lg:col-span-1 relative">
+    <div class="absolute mt-32 hidden lg:block">
+      <%= image_pack_tag 'grey_cross_vector.svg', class: "w-8" %>
+    </div>
+  </div>
+  <div class="lg:col-span-10 flex mt-10 px-6 lg:px-16 mb-10">
+    <div class="w-full">
+      <div class=" font-glacialbold text-5xl lg:w-3/6 lg:pr-20 leading-none">
+        Are you a provider looking for a job?
+      </div>
+      <p class="">
+        <h1 class="text-xl my-4">Find your Direct Primary Care or Concierge Medicine Job </h1>
+      </p>
+      <div class="flex mt-4">
+        <div class="search_width md:flex border justify-between items-center pb-2 md:py-1 mb-4 rounded-lg shadow w-full lg:w-2/3 bg-white" data-controller="search" data-search-render-url="<%=request.original_url%>">
+          <div class="flex justify-center items-center w-full md:border-r border-b md:border-b-0 pr-4">
+            <label class="ml-3 mr-5">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-5 text-gray-600">
+                <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd" />
+              </svg>
+            </label>
+            <input class="md:my-2 my-3 w-full focus:outline-none" type="text" data-search-target="name" name="speciality" placeholder="Name/Speciality" value="<%=speciality_name(params)%>">
+          </div>
+          <div class="flex justify-center items-center w-full pr-4 border-b md:border-b-0 location-icon">
+            <input class="md:my-2 my-3 ml-3 w-full focus:outline-none" id="near" data-search-target='near' type="text" name="near" placeholder="Zip/City/State" value="<%=params[:place]&.titleize%>">
+          </div>
+          <div class="text-center mt-4 md:text-left md:mt-0">
+            <button class="bg-doctor-yellow text-gray-100 md:mr-4 rounded-md px-4 py-1 w-11/12 md:w-auto" data-search-target="search">Search</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="lg:col-span-1 relative hidden lg:block">
+    <div class="absolute right-0 mt-8 mr-8">
+      <%=image_pack_tag 'light_grey_2_lines_vertical.svg', class: "h-56" %>
+    </div>
+    <div class="right-0 absolute -mr-4 -mt-20 z-50">
+      <%= image_pack_tag 'yellow_circle_outline_opacity_right.png' %>
+    </div>
+  </div>
+</section>
+<section class="lg:grid lg:w-full lg:mt-10 lg:grid-cols-12 flex mt-10 pb-16 flex-wrap">
+  <div class="lg:col-span-10 px-6 lg:px-16 lg:col-start-2 border-b pb-8">
+    <div class=" font-glacialbold text-xl mb-2">
+      View All Cities
+    </div>
+    <div class="flex flex-wrap">
+      <% @cities.each do |city| %>
+        <div class="w-1/2 lg:w-3/12 pt-2">
+          <a href="<%=search_jobs_path%>" class="hover:underline hover:text-blue-400"><%=city.name%></a>
+        </div>
+      <% end %>
+    </div>
+  </div>
+  <div class="lg:col-span-10 px-6 lg:px-16 lg:col-start-2 mt-10">
+    <div class=" font-glacialbold text-xl mb-2">
+      View All States
+    </div>
+    <div class="flex flex-wrap">
+      <% @cities.each do |city| %>
+        <div class="w-1/2 lg:w-3/12 pt-2">
+          <a href="<%=search_jobs_path%>" class="hover:underline hover:text-blue-400"><%=city.name%></a>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</section>

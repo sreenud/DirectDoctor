@@ -6,4 +6,11 @@ class SignupMailer < ApplicationMailer
 
     mail(to: @user.email, subject: "Welcome to FindMyDirectDoctor!")
   end
+
+  def patient
+    @user = params[:user]
+
+    mail(to: @user.email, subject: "Welcome to FindMyDirectDoctor!")
+  end
+
 end

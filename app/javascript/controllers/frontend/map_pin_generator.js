@@ -11,7 +11,7 @@ const ICON_TWO_PATH =
 
 // circle on pole
 const ICON_THREE_PATH =
-  'M44 21a12 12 0 1 0-14 11.8V53a2 2 0 1 0 4 0V32.8A12 12 0 0 0 44 21z';
+  'M32 2a20 20 0 0 0-20 20c0 18 20 40 20 40s20-22 20-40A20 20 0 0 0 32 2z';
 
 const icon = ({ color = 'white', multiple = false }) => ({
   path: multiple ? ICON_PATH : ICON_THREE_PATH,
@@ -54,7 +54,7 @@ export default class MapPinGenerator {
         lat,
         lng,
         icon: icon({ multiple: count > 1 }),
-        label: count > 1 ? count.toString() : '',
+        label: count > 1 ? count.toString() : '1',
         ids: ids,
         infoWindow: skipInfoWindow
           ? ''

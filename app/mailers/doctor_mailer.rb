@@ -24,6 +24,13 @@ class DoctorMailer < ApplicationMailer
     mail(to: email, subject: "Account update - FindMyDirectDoctor.com")
   end
 
+  def profile_edit_approved
+    @docotr = params[:doctor]
+    email = @doctor&.user&.email
+
+    mail(to: email, subject: "Profile update notification | FindMyDirectDoctor")
+  end
+
   def deleted
     @doctor = params[:doctor]
     @deleted_by = params[:by]

@@ -37,6 +37,8 @@ class OnboardingController < BaseController
       user.remove_role(:guest)
       user.add_role(:patient)
 
+      SignupMailer.with(user: user).patient.deliver_now
+
       redirect_to(onboarding_thankyou_url, notice: "Thank you for your interest.")
     end
   end

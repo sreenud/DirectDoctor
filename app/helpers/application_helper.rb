@@ -87,6 +87,24 @@ module ApplicationHelper
     h1_tag_text
   end
 
+  def job_search_h1_tag(location_string, params)
+    place = if location_string.present?
+      location_string
+    else
+      params[:place].titleize
+    end
+
+    h1_tag_text = "Find a Job, #{place}"
+
+    if params[:speciality].present?
+      speciality = Speciality.find_by_code(params["speciality"])
+
+      h1_tag_text = "Find a Job, #{speciality&.name}"
+    end
+
+    h1_tag_text
+  end
+
   def doctor_display_image(doctor)
     if doctor&.image_url.present? && doctor&.image&.metadata["crop"]
       doctor&.image_url(:medium)

@@ -1,0 +1,3 @@
+<% @spcialities&.each do |speciality| %>
+  <%= content_tag :li, speciality.name, role: :option, data: { "autocomplete-value": "#{speciality.id}_speciality" } %>
+<% end %>

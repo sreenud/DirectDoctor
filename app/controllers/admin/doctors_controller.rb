@@ -53,6 +53,8 @@ module Admin
             request.respond_user_id = current_user.id
             request.status = ApprovalRequest.statuses[:approved]
             request.save
+
+            DoctorMailer.with(doctor: @doctor).profile_edit_approved.deliver_now
           end
           format.html { redirect_to(admin_doctors_url, notice: "Doctor is successfully updated.") }
           format.json { render(:show, status: :ok, location: @doctor) }

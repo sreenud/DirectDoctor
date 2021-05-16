@@ -6,6 +6,8 @@ import ParamRedirect, {
   ParamUrl,
   setLocationString,
   URIPush,
+  showLoading,
+  hideLoading,
 } from './param_redirect';
 import MapPinGenerator, { customIcon } from './map_pin_generator';
 
@@ -42,6 +44,7 @@ export default class extends Controller {
       //   this.redirect({ lat, lng });
       // },
     });
+    this.maps.fitZoom();
     // this.setPins();
     this.setPopups();
     window.google.maps.event.addListener(this.maps.map, 'click', () => {
@@ -168,7 +171,7 @@ export default class extends Controller {
 
   getResults({ lat, lng }) {
     const near = `${lat},${lng}`;
-    // showLoading();
+    showLoading();
     ajax({
       url: ParamUrl({
         changeParams: { near },
@@ -198,12 +201,12 @@ export default class extends Controller {
           removeParams: ['place', 'page'],
         });
         AddHoverHighlight();
-        // hideLoading();
+        hideLoading();
         return null;
       },
       (err) => {
         console.log(err);
-        // hideLoading();
+        hideLoading();
       }
     );
   }

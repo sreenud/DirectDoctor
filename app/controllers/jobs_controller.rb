@@ -33,6 +33,12 @@ class JobsController < BaseController
     end
   end
 
+  def global_search
+    @spcialities = Speciality.ransack(name_cont: params[:q]).result(distinct: true).limit(5)
+
+    render(layout: false)
+  end
+
   def post_job
   end
 
