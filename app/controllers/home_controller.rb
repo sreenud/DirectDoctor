@@ -4,8 +4,6 @@ class HomeController < BaseController
   def index
     @survey = Survey.new
     @questions = Survey.questions
-
-
   end
 
   def static_page

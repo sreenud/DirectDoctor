@@ -31,7 +31,7 @@ class DoctorComponent < ViewComponent::Base
 
   def doctor_image_url
     if doctor.image.present?
-       doctor_display_image(doctor)
+      doctor_display_image(doctor)
     else
       "./doctor_default.svg"
     end

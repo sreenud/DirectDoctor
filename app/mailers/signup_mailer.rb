@@ -12,5 +12,4 @@ class SignupMailer < ApplicationMailer
 
     mail(to: @user.email, subject: "Welcome to FindMyDirectDoctor!")
   end
-
 end
