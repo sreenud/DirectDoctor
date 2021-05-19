@@ -1,4 +1,4 @@
-class ContactusController < ApplicationController
+class ContactusController < BaseController
   before_action :set_meta_data, only: [:index]
 
   def index
