@@ -17,5 +17,4 @@ class Speciality < ApplicationRecord
 
     self.slug = name.parameterize
   end
-
 end

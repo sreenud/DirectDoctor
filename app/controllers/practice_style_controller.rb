@@ -2,7 +2,7 @@ class PracticeStyleController < BaseController
   before_action :set_meta_data, only: [:index]
 
   def index
-    @style_specialties = if params[:practice_style] == 'dpc'
+    @style_specialties = if params[:practice_style] == "dpc"
       Speciality.dpc
     else
       Speciality.cm
