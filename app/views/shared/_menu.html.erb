@@ -25,10 +25,10 @@
           <ul class="bg-white border fixed top-0 right-0 transition duration-150 ease-in-out origin-top-left shadow-2xl nested-menu roundedn-r-lg">
             <div class="w-full flex flex-wrap px-4 py-3">
               <div class="w-1/2 lg:w-1/3 pt-1">
-                <a href="#" class="hover:underline hover:text-blue-400 text-sm">Direct Primary Care</a>
+                <a href="/dpc" class="hover:underline hover:text-blue-400 text-sm">Direct Primary Care</a>
               </div>
               <div class="w-1/2 lg:w-1/3 pt-1">
-                <a href="#" class="hover:underline hover:text-blue-400 text-sm">Concierge Medicine</a>
+                <a href="/cm" class="hover:underline hover:text-blue-400 text-sm">Concierge Medicine</a>
               </div>
             </div>
           </ul>
@@ -48,7 +48,7 @@
             <div class="w-full flex flex-wrap px-4 py-3">
               <% (@specialities).each do |speciality| %>
                 <div class="w-full lg:w-1/2 pt-1">
-                  <a href="#" class="hover:underline hover:text-blue-400 text-sm"><%=speciality.name%></a>
+                  <a href="/search-map?speciality_name=<%=speciality&.name%>" class="hover:underline hover:text-blue-400 text-sm"><%=speciality.name%></a>
                 </div>
               <% end %>
             </div>
@@ -69,7 +69,7 @@
             <div class="w-full flex flex-wrap px-4 py-3">
               <% @states.each do |state| %>
                 <div class="w-1/2 lg:w-1/3 pt-1">
-                  <a href="#" class="hover:underline hover:text-blue-400 text-sm"><%=state.name%></a>
+                  <a href="/search-map?place=<%=state&.name%>" class="hover:underline hover:text-blue-400 text-sm"><%=state.name%></a>
                 </div>
               <% end %>
             </div>
@@ -90,7 +90,7 @@
             <div class="w-full flex flex-wrap px-4 py-3">
               <% @cities.each do |city| %>
                 <div class="w-1/2 lg:w-1/3 pt-1">
-                  <a href="#" class="hover:underline hover:text-blue-400 text-sm"><%=city.name%></a>
+                  <a href="/search-map?place=<%=city&.name%>" class="hover:underline hover:text-blue-400 text-sm"><%=city.name%></a>
                 </div>
               <% end %>
             </div>
