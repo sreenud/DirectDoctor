@@ -1,8 +1,7 @@
 require "shrine"
 require "shrine/storage/s3"
 
-credentials = Rails.application.credentials
-
+credentials = Rails.application.secrets
 s3_options = {
   bucket: credentials[:aws_s3][:bucket], # required
   access_key_id: credentials[:aws_s3][:access_key_id],
