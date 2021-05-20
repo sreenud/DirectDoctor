@@ -43,7 +43,7 @@ class BaseController < ApplicationController
 
   def mega_menu
     @specialities = Speciality.all
-    @cities = Location.order(population: :desc).limit(60)
+    @cities = Location.top.limit(60)
     @states = State.all
   end
 

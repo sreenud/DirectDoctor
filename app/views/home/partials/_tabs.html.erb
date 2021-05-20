@@ -1,7 +1,7 @@
 <div class="grid grid-cols-12 justify-center">
   <div class="col-start-2 col-span-10 flex flex-wrap">
     <div class="border shadow mt-8 rounded-2lg w-full">
-      <div class="tab_wrapper" x-data="{ tab: window.location.hash ? window.location.hash.substring(1) : 'practice' }">
+      <div class="tab_wrapper" x-data="{ tab: window.location.hash ? window.location.hash.substring(1) : 'speciality' }">
         <div class="w-full flex flex-wrap justify-between items-center border border-doctor-yellow rounded-2lg">
           <div class="w-1/2 lg:w-1/4 text-center py-3 cursor-pointer" @click.prevent="tab = 'practice'; window.location.hash = 'practice'" :class="{ '-mb-px job-tab-active': tab === 'practice' }">
             <a href="#">By Practice style</a>
@@ -20,30 +20,30 @@
         <div class="w-full px-3 lg:px-8 pt-4 pb-8 text-gray-700">
           <div x-show="tab === 'practice'" class="flex flex-wrap">
             <div class="w-full lg:w-3/12 p-2">
-              <a href="#" class="hover:underline hover:text-blue-400">Direct Primary Care</a>
+              <a href="/dpc" class="hover:underline hover:text-blue-400">Direct Primary Care</a>
             </div>
             <div class="w-full lg:w-3/12 p-2">
-              <a href="#" class="hover:underline hover:text-blue-400"> Concierge Medicine</a>
+              <a href="/cm" class="hover:underline hover:text-blue-400"> Concierge Medicine</a>
             </div>
           </div>
           <div x-show="tab === 'speciality'" class="flex flex-wrap">
             <% (@specialities).each do |speciality| %>
               <div class="w-full lg:w-3/12 p-2">
-                <a href="#" class="hover:underline hover:text-blue-400"><%=speciality.name%></a>
+                <a href="/search-map?speciality_name=<%=speciality&.name%>" class="hover:underline hover:text-blue-400" target="_blank"><%=speciality.name%></a>
               </div>
             <% end %>
           </div>
           <div x-show="tab === 'states'" class="w-full flex flex-wrap">
             <% @states.each do |state| %>
               <div class="w-1/2 lg:w-3/12 pt-2">
-                <a href="#" class="hover:underline hover:text-blue-400"><%=state.name%></a>
+                <a href="/search-map?place=<%=state.name%>" class="hover:underline hover:text-blue-400" target="_blank"><%=state.name%></a>
               </div>
             <% end %>
           </div>
           <div x-show="tab === 'cities'" class="flex flex-wrap">
             <% @cities.each do |city| %>
               <div class="w-1/2 lg:w-3/12 pt-2">
-                <a href="#" class="hover:underline hover:text-blue-400"><%=city.name%></a>
+                <a href="/search-map?place=<%=city.name%>" class="hover:underline hover:text-blue-400" target="_blank"><%=city.name%></a>
               </div>
             <% end %>
           </div>

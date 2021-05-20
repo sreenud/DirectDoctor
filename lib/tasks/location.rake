@@ -34,4 +34,13 @@ namespace :location do
 
     puts "States and cities import is completed"
   end
+
+  task update_people: :environment do
+    locations = Location.all
+    locations.each do |location|
+      location = Location.find(location.id)
+      location.people = location.population
+      location.save
+    end
+  end
 end

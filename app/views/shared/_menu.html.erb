@@ -8,95 +8,96 @@
         </svg>
       </span>
     </button>
-    <ul class="bg-white border transform scale-0 group-hover:scale-100 absolute
-      transition duration-150 ease-in-out origin-top min-w-32 w-80 shadow-2xl mt-5 -ml-32 rounded-lg">
-      <li class="relative hover:bg-gray-100 border-l-6 border-doctor-yellow">
-        <button class="w-full text-left flex items-center outline-none focus:outline-none border-b">
-          <span class="flex-1 p-3">
-            <div class="">By Practice Style</div>
-            <!--<div class="text-sm mt-2">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</div>-->
-          </span>
-          <span class="mr-auto pr-3">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-            </svg>
-          </span>
-        </button>
-        <ul class="bg-white border fixed top-0 right-0 transition duration-150 ease-in-out origin-top-left shadow-2xl nested-menu roundedn-r-lg">
-          <div class="w-full flex flex-wrap px-4 py-3">
-            <div class="w-1/2 lg:w-1/3 pt-1">
-              <a href="#" class="hover:underline hover:text-blue-400 text-sm">Direct Primary Care</a>
+    <div class="transform scale-0 group-hover:scale-100 absolute transition duration-150 ease-in-out origin-top ">
+      <ul class="bg-white border min-w-32 w-80 shadow-2xl -ml-32 rounded-l mt-5">
+        <li class="relative hover:bg-gray-100 border-l-6 border-doctor-yellow">
+          <button class="w-full text-left flex items-center outline-none focus:outline-none border-b border-gray-200">
+            <span class="flex-1 p-3">
+              <div class="">By Practice Style</div>
+              <!--<div class="text-sm mt-2">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</div>-->
+            </span>
+            <span class="mr-auto pr-3">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+              </svg>
+            </span>
+          </button>
+          <ul class="bg-white border fixed top-0 right-0 transition duration-150 ease-in-out origin-top-left shadow-2xl nested-menu roundedn-r-lg">
+            <div class="w-full flex flex-wrap px-4 py-3">
+              <div class="w-1/2 lg:w-1/3 pt-1">
+                <a href="#" class="hover:underline hover:text-blue-400 text-sm">Direct Primary Care</a>
+              </div>
+              <div class="w-1/2 lg:w-1/3 pt-1">
+                <a href="#" class="hover:underline hover:text-blue-400 text-sm">Concierge Medicine</a>
+              </div>
             </div>
-            <div class="w-1/2 lg:w-1/3 pt-1">
-              <a href="#" class="hover:underline hover:text-blue-400 text-sm">Concierge Medicine</a>
+          </ul>
+        </li>
+        <li class="relative hover:bg-gray-100 border-l-6 border-doctor-yellow">
+          <button class="w-full text-left flex items-center outline-none focus:outline-none border-b border-gray-200">
+            <span class="flex-1 p-3">
+              <div class="">By Specialty</div>
+            </span>
+            <span class="mr-auto pr-3">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+              </svg>
+            </span>
+          </button>
+          <ul class="bg-white border fixed top-0 right-0 transition duration-150 ease-in-out origin-top-left shadow-2xl nested-menu roundedn-r-lg">
+            <div class="w-full flex flex-wrap px-4 py-3">
+              <% (@specialities).each do |speciality| %>
+                <div class="w-full lg:w-1/2 pt-1">
+                  <a href="#" class="hover:underline hover:text-blue-400 text-sm"><%=speciality.name%></a>
+                </div>
+              <% end %>
             </div>
-          </div>
-        </ul>
-      </li>
-      <li class="relative hover:bg-gray-100 border-l-6 border-doctor-yellow">
-        <button class="w-full text-left flex items-center outline-none focus:outline-none border-b">
-          <span class="flex-1 p-3">
-            <div class="">By Specialty</div>
-          </span>
-          <span class="mr-auto pr-3">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-            </svg>
-          </span>
-        </button>
-        <ul class="bg-white border fixed top-0 right-0 transition duration-150 ease-in-out origin-top-left shadow-2xl nested-menu roundedn-r-lg">
-          <div class="w-full flex flex-wrap px-4 py-3">
-            <% (@specialities).each do |speciality| %>
-              <div class="w-1/2 lg:w-1/3 pt-1">
-                <a href="#" class="hover:underline hover:text-blue-400 text-sm"><%=speciality.name%></a>
-              </div>
-            <% end %>
-          </div>
-        </ul>
-      </li>
-      <li class="relative hover:bg-gray-100 border-l-6 border-doctor-yellow">
-        <button class="w-full text-left flex items-center outline-none focus:outline-none border-b">
-          <span class="flex-1 p-3">
-            <div class="">By State</div>
-          </span>
-          <span class="mr-auto pr-3">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-            </svg>
-          </span>
-        </button>
-        <ul class="bg-white border fixed top-0 right-0 transition duration-150 ease-in-out origin-top-left shadow-2xl nested-menu roundedn-r-lg">
-          <div class="w-full flex flex-wrap px-4 py-3">
-            <% @states.each do |state| %>
-              <div class="w-1/2 lg:w-1/3 pt-1">
-                <a href="#" class="hover:underline hover:text-blue-400 text-sm"><%=state.name%></a>
-              </div>
-            <% end %>
-          </div>
-        </ul>
-      </li>
-      <li class="relative hover:bg-gray-100 border-l-6 border-doctor-yellow">
-        <button class="w-full text-left flex items-center outline-none focus:outline-none border-b">
-          <span class="flex-1 p-3">
-            <div class="">By City</div>
-          </span>
-          <span class="mr-auto pr-3">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-            </svg>
-          </span>
-        </button>
-        <ul class="bg-white border fixed top-0 right-0 transition duration-150 ease-in-out origin-top-left shadow-2xl nested-menu roundedn-r-lg">
-          <div class="w-full flex flex-wrap px-4 py-3">
-            <% @cities.each do |city| %>
-              <div class="w-1/2 lg:w-1/3 pt-1">
-                <a href="#" class="hover:underline hover:text-blue-400 text-sm"><%=city.name%></a>
-              </div>
-            <% end %>
-          </div>
-        </ul>
-      </li>
-    </ul>
+          </ul>
+        </li>
+        <li class="relative hover:bg-gray-100 border-l-6 border-doctor-yellow">
+          <button class="w-full text-left flex items-center outline-none focus:outline-none border-b border-gray-200">
+            <span class="flex-1 p-3">
+              <div class="">By State</div>
+            </span>
+            <span class="mr-auto pr-3">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+              </svg>
+            </span>
+          </button>
+          <ul class="bg-white border fixed top-0 right-0 transition duration-150 ease-in-out origin-top-left shadow-2xl nested-menu roundedn-r-lg">
+            <div class="w-full flex flex-wrap px-4 py-3">
+              <% @states.each do |state| %>
+                <div class="w-1/2 lg:w-1/3 pt-1">
+                  <a href="#" class="hover:underline hover:text-blue-400 text-sm"><%=state.name%></a>
+                </div>
+              <% end %>
+            </div>
+          </ul>
+        </li>
+        <li class="relative hover:bg-gray-100 border-l-6 border-doctor-yellow">
+          <button class="w-full text-left flex items-center outline-none focus:outline-none border-b border-gray-200">
+            <span class="flex-1 p-3">
+              <div class="">By City</div>
+            </span>
+            <span class="mr-auto pr-3">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+              </svg>
+            </span>
+          </button>
+          <ul class="bg-white border fixed top-0 right-0 transition duration-150 ease-in-out origin-top-left shadow-2xl nested-menu roundedn-r-lg">
+            <div class="w-full flex flex-wrap px-4 py-3">
+              <% @cities.each do |city| %>
+                <div class="w-1/2 lg:w-1/3 pt-1">
+                  <a href="#" class="hover:underline hover:text-blue-400 text-sm"><%=city.name%></a>
+                </div>
+              <% end %>
+            </div>
+          </ul>
+        </li>
+      </ul>
+    </div>
   </div>
 </div>
 <div class="hoverable">

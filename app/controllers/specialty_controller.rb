@@ -1,12 +1,9 @@
-class HomeController < BaseController
+class SpecialtyController < BaseController
   before_action :set_meta_data, only: [:index]
 
   def index
-    @survey = Survey.new
-    @questions = Survey.questions
-  end
-
-  def static_page
+    @specialty = Speciality.find_by_code(params[:specialty]&.upcase)
+    @states = State.all
     @cities = Location.top.limit(60)
   end
 

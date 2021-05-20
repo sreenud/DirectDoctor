@@ -14,7 +14,7 @@
     <ul class="list-reset list-outside">
       <li class="border-b py-1 px-4">
         <div x-data="{ isOpen: false }">
-          <a class="block text-gray-800 font-semibold hover:text-doctor-yellow py-4" @click=" isOpen = !isOpen">
+          <a class="block text-gray-800 font-semibold hover:text-doctor-yellow py-4 flex items-center justify-between" @click=" isOpen = !isOpen">
             <div>
               <div class="">By Practice Style</div>
             </div>
@@ -43,7 +43,7 @@
       </li>
       <li class="border-b py-1 px-4">
         <div x-data="{ isOpen: false }">
-          <a class="block text-gray-800 font-semibold hover:text-doctor-yellow py-4" @click=" isOpen = !isOpen">
+          <a class="block text-gray-800 font-semibold hover:text-doctor-yellow py-4 flex items-center justify-between" @click=" isOpen = !isOpen">
             <div>
               <div class="">By Specialty</div>
             </div>
@@ -60,7 +60,7 @@
             <ul class="list-reset list-outside">
               <div class="w-full flex flex-wrap px-4 py-3">
                 <% (@specialities).each do |speciality| %>
-                  <div class="w-1/2 lg:w-1/3 pt-1">
+                  <div class="w-full lg:w-1/2 pt-1">
                     <a href="#" class="hover:underline hover:text-blue-400 text-sm"><%=speciality.name%></a>
                   </div>
                 <% end %>
@@ -71,7 +71,7 @@
       </li>
       <li class="border-b py-1 px-4">
         <div x-data="{ isOpen: false }">
-          <a class="block text-gray-800 font-semibold hover:text-doctor-yellow py-4" @click=" isOpen = !isOpen">
+          <a class="block text-gray-800 font-semibold hover:text-doctor-yellow py-4 flex items-center justify-between" @click=" isOpen = !isOpen">
             <div>
               <div class="">By State</div>
             </div>
@@ -99,7 +99,7 @@
       </li>
       <li class="border-b py-1 px-4">
         <div x-data="{ isOpen: false }">
-          <a class="block text-gray-800 font-semibold hover:text-doctor-yellow py-4" @click=" isOpen = !isOpen">
+          <a class="block text-gray-800 font-semibold hover:text-doctor-yellow py-4 flex items-center justify-between" @click=" isOpen = !isOpen">
             <div>
               <div class="">By State</div>
             </div>

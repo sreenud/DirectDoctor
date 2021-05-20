@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   get "job-search", to: "jobs#search"
 
   get ":state/doctor/:fdd_id/:doctor_name", to: "doctors#show"
+
   get "/*any", to: "redirects#index", constraints: RedirectConstraint.new
 
   resources :blogs, only: [:index, :show]
@@ -63,10 +64,12 @@ Rails.application.routes.draw do
 
   # place is nothing but state here
   # get "/:place(/:style)(/:speciality_slug)(/:location)", to: "searches#specialized_search"
-  get "/:place/:location", to: "searches#specialized_search", constraints: LocationConstraint.new
-  get "/:place/:style", to: "searches#specialized_search", constraints: DoctorStyleConstraint.new
-  get "/:place/:style/:speciality_slug", to: "searches#specialized_search", constraints: SpecialityConstraint.new
-  get "/:place", to: "searches#specialized_search"
+  get "/:practice_style", to: "practice_style#index"
+  get "/:practice_style/:specialty", to: "specialty#index"
+  # get "/:place/:location", to: "searches#specialized_search", constraints: LocationConstraint.new
+  # get "/:place/:style", to: "searches#specialized_search", constraints: DoctorStyleConstraint.new
+  # get "/:place/:style/:speciality_slug", to: "searches#specialized_search", constraints: SpecialityConstraint.new
+  # get "/:place", to: "searches#specialized_search"
 
   get "*path", to: "application#raise_route_not_found", via: :all,
     constraints: lambda { |request| !request.fullpath.include?("/rails/active_storage/") }

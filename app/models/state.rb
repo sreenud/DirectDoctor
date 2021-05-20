@@ -5,4 +5,8 @@ class State < ApplicationRecord
   has_many :locations
   scope :by_code, -> { order(code: :asc) }
   scope :by_name, -> { order(name: :asc) }
+
+  def self.valid_state(state_name)
+    State.find_by_name(state_name)
+  end
 end

@@ -8,7 +8,8 @@ class SearchesController < BaseController
   end
 
   def index_two
-    @cities = Location.order(population: :desc).limit(60)
+    state = State.valid_state(params[:place])
+    @state_cities = state.locations.top.limit(60) if state
 
     @pagy, @doctors = pagy(
       Doctor.includes(:speciality, :review_data).published.search(search_params,
