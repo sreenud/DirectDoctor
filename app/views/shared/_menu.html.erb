@@ -45,13 +45,15 @@
             </span>
           </button>
           <ul class="bg-white border fixed top-0 right-0 transition duration-150 ease-in-out origin-top-left shadow-2xl nested-menu roundedn-r-lg">
-            <div class="w-full flex flex-wrap px-4 py-3">
-              <% (@specialities).each do |speciality| %>
-                <div class="w-full lg:w-1/2 pt-1">
-                  <a href="/search-map?speciality_name=<%=speciality&.name%>" class="hover:underline hover:text-blue-400 text-sm"><%=speciality.name%></a>
-                </div>
-              <% end %>
-            </div>
+            <% if @specialities.present? %>
+              <div class="w-full flex flex-wrap px-4 py-3">
+                <% (@specialities).each do |speciality| %>
+                  <div class="w-full lg:w-1/2 pt-1">
+                    <a href="/search-map?speciality_name=<%=speciality&.name%>" class="hover:underline hover:text-blue-400 text-sm"><%=speciality.name%></a>
+                  </div>
+                <% end %>
+              </div>
+            <% end %>
           </ul>
         </li>
         <li class="relative hover:bg-gray-100 border-l-6 border-doctor-yellow">
