@@ -18,7 +18,7 @@ class BaseController < ApplicationController
     return if @current_location.present?
 
     geo_result = Geocoder.search(request.remote_ip).first
-    coordinates = geo_result.data["loc"] || DEFUALT_LOCATION
+    coordinates = geo_result.present? ? geo_result.data["loc"] : DEFUALT_LOCATION
     session[:current_location] = coordinates
     @current_location = coordinates
   end
