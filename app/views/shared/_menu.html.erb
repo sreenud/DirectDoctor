@@ -91,20 +91,20 @@
             </span>
           </button>
           <ul class="bg-white border fixed top-0 right-0 transition duration-150 ease-in-out origin-top-left shadow-2xl nested-menu roundedn-r-lg">
-            <% @cities.present? %>
-            <div class="w-full flex flex-wrap px-4 py-3">
-              <% @cities.each do |city| %>
-                <div class="w-1/2 lg:w-1/3 pt-1">
-                  <a href="/search-map?place=<%=city&.name%>" class="hover:underline hover:text-blue-400 text-sm"><%=city.name%></a>
-                </div>
-              <% end %>
-            </div>
-          <% end %>
-        </ul>
-      </li>
-    </ul>
+            <% if @cities.present? %>
+              <div class="w-full flex flex-wrap px-4 py-3">
+                <% @cities.each do |city| %>
+                  <div class="w-1/2 lg:w-1/3 pt-1">
+                    <a href="/search-map?place=<%=city&.name%>" class="hover:underline hover:text-blue-400 text-sm"><%=city.name%></a>
+                  </div>
+                <% end %>
+              </div>
+            <% end %>
+          </ul>
+        </li>
+      </ul>
+    </div>
   </div>
-</div>
 </div>
 <div class="hoverable">
   <a href="<%=blogs_url%>" class="block text-gray-800 font-semibold hover:text-doctor-yellow sm:mt-0 sm:ml-4">
