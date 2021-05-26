@@ -6,7 +6,7 @@ class JobsController < BaseController
 
   def index
     @specialities = Speciality.all
-    @cities = Location.all.limit(100)
+    @cities = Location.top.limit(100)
     @states = State.all
   end
 

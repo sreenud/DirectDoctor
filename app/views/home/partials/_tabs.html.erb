@@ -29,7 +29,7 @@
           <div x-show="tab === 'speciality'" class="flex flex-wrap">
             <% (@specialities).each do |speciality| %>
               <div class="w-full lg:w-3/12 p-2">
-                <a href="/search-map?speciality_name=<%=speciality&.name%>" class="hover:underline hover:text-blue-400" target="_blank"><%=speciality.name%></a>
+                <a href="/<%=doctor_style_code(speciality&.name)%>/<%=speciality&.code&.downcase%>" class="hover:underline hover:text-blue-400" target="_blank"><%=speciality.name%></a>
               </div>
             <% end %>
           </div>

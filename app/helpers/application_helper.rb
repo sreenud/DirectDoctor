@@ -112,4 +112,13 @@ module ApplicationHelper
       doctor&.image_url
     end
   end
+
+  def doctor_style_code(specialty)
+    specialty = specialty.split
+    if specialty.include?("Concierge")
+      "cm"
+    else
+      "dpc"
+    end
+  end
 end
