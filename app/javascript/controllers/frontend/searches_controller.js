@@ -85,6 +85,9 @@ export default class extends Controller {
   }
 
   setParams() {
+    const placeName = this.fieldTarget.value;
+    if (placeName) this.params.place = placeName;
+
     const value = this.nameTarget.value;
     if (value !== undefined && value !== null && value !== '') {
       if (this.searchTermTypeTarget.value == 'clinic') {

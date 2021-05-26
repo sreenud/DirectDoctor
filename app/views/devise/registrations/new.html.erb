@@ -1,9 +1,9 @@
 <%= render "devise/shared/links" %>
 <section class="lg:grid lg:w-full lg:mt-24 lg:grid-cols-12 flex mt-24">
-  <div class="lg:col-span-1 w-full"></div>
-  <div class="lg:col-span-10 flex px-16">
-    <div class="w-full mx-10">
-      <div class="w-8/12 max-w-xl mx-auto">
+  <div class="lg:col-span-1 w-full hidden lg:block"></div>
+  <div class="lg:col-span-10 flex lg:px-16">
+    <div class="w-full lg:mx-10">
+      <div class="lg:w-7/12 lg:max-w-xl mx-5 lg:mx-auto text-gray-900">
         <div class="text-center">
           <div class=" font-glacialbold text-2xl">Are you a Doctor?</div>
           <div class="text-xl text-gray-600">If you want to sign up, the first step is to
@@ -14,7 +14,7 @@
           </div>
         </div>
       </div>
-      <div class="w-7/12 max-w-xl mx-auto mt-10 text-gray-900 border-b" data-controller="sign-up">
+      <div class="lg:w-7/12 lg:max-w-xl mx-5 lg:mx-auto mt-10 text-gray-900" data-controller="sign-up">
         <div class="font-glacialbold text-heading">Sign Up</div>
         <% flash.each do |msg_type, message| %>
           <% if msg_type == "alert" %>

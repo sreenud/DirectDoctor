@@ -63,6 +63,8 @@ export default class MapInfoWindow {
       rating: ele.getAttribute('data-rating'),
       price: ele.getAttribute('data-price'),
       image: ele.getAttribute('data-image'),
+      spcialty: ele.getAttribute('data-spcialty'),
+      clinicName: ele.getAttribute('data-clinicname'),
     };
     const win = document.createElement('div');
     win.classList.add('popup-info-window', 'marker-edition');
@@ -71,8 +73,8 @@ export default class MapInfoWindow {
     cont.innerHTML = `
       <img src="${data.image}" />
       <p class="info-window-heading">${data.name}</p>
-      <p class="info-window-price-range">${data.price}</p>
-      <p class="info-window-rating">${data.rating}</p>
+      <p class="info-window-price-range">${data.spcialty}</p>
+      <p class="info-window-rating">${data.clinicName}</p>
     `;
     win.appendChild(cont);
     return win;

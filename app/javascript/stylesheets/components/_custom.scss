@@ -274,6 +274,9 @@
     width: 1.5em;
     height: 1.5em;
   }
+  #consent-popup {
+    padding: 0 !important;
+  }
 }
 
 @media screen and (max-width: 768px) {
@@ -572,9 +575,9 @@ input::-webkit-input-placeholder {
 
   .autocomplete {
     top: 53px;
-    margin-left: 15px;
+    margin-left: 49px;
     max-height: 300px;
-    @apply shadow-lg list-none absolute w-full overflow-auto bg-white;
+    @apply shadow-lg list-none absolute w-full overflow-auto bg-white z-20;
   }
 
   .autocomplete li {

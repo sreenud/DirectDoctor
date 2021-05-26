@@ -19,6 +19,9 @@
               <input type="hidden" name="search_term_type" data-searches-target="searchTermType"/>
             </div>
             <div class="flex justify-center items-center w-full pr-4 border-b md:border-b-0 location-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" class="ml-3 h-6 w-6 text-gray-600 mr-2" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd" />
+              </svg>
               <input class="md:my-2 my-3 ml-3 w-full focus:outline-none bg-gray-100" id="near" data-searches-target='field' type="text" name="near" placeholder="Address/City/Zip" value="<%=params[:place]&.titleize%>">
             </div>
             <div class="text-center mt-4 md:text-left md:mt-0">
@@ -90,7 +93,7 @@
                 </div>
               </div>
             </div>
-            <div class="w-4/12">
+            <div class="w-4/12" >
               <div class="w-full text-center">
                 <span class="mr-2">Map</span>
                 <div class="relative inline-block w-12 mr-2 align-middle select-none transition duration-200 ease-in">
@@ -101,7 +104,7 @@
             </div>
           </div>
           <div class="w-full lg:flex mt-6">
-            <div class="lg:w-8/12">
+            <div class="lg:w-8/12" id="doctor_cards">
               <div class="w-full" id="result-container" data-controller="modal">
                 <%= render_doctor_cards %>
               </div>

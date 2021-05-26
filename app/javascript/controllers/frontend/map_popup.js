@@ -39,18 +39,20 @@ export default class MapPopup {
       rating: card.getAttribute('data-rating'),
       price: card.getAttribute('data-price'),
       image: card.getAttribute('data-image'),
+      spcialty: card.getAttribute('data-spcialty'),
+      clinicName: card.getAttribute('data-clinicname'),
     };
   }
 
   doctorPopup(data = this.doctorData) {
-    const { name, rating, price, image } = data;
+    const { name, rating, price, image, clinicName } = data;
     const cont = document.createElement('div');
     cont.classList.add('info-window-container');
     cont.innerHTML = `
-      <img src="${image}" />
+      <img width="100%" height="12rem" src="${image}" />
       <p class="info-window-heading">${name}</p>
-      <p class="info-window-price-range">${price}</p>
-      <p class="info-window-rating">${rating}</p>
+      <p class="info-window-price-range">${spcialty}</p>
+      <p class="info-window-rating">${clinicName}</p>
     `;
     return cont;
   }
