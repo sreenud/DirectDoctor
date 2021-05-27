@@ -10,7 +10,7 @@
       <div class="w-full flex items-center">
         <div class="w-4/12 pl-4">
           <div class="tracking-wide font-hurmebold">
-            <a href="<%=job_path(doctor.job_id)%>" target="_blank" class="hover:text-doctor-yellow focus:outline-none">
+            <a href="<%=job_path(doctor.job_ids)%>" target="_blank" class="hover:text-doctor-yellow focus:outline-none">
               <h2 class="text-2xl"><%=doctor.name%></h2>
             </a>
           </div>
@@ -20,7 +20,7 @@
         </div>
         <div class="w-4/12 pl-2">
           <div class="w-full flex">
-            <a class="border-doctor-yellow rounded-lg px-2 bg-doctor-yellow text-white cursor-pointer hover:bg-doctor-yellow pt-1" href="<%=job_path(doctor.job_id)%>" target="_blank">
+            <a class="border-doctor-yellow rounded-lg px-2 bg-doctor-yellow text-white cursor-pointer hover:bg-doctor-yellow pt-1" href="<%=job_path(doctor.job_ids)%>" target="_blank">
               Full View Listing
             </a>
             <div class="pl-2 flex items-center">

@@ -6,7 +6,7 @@ export default class extends Controller {
   success(event) {
     const [data, status, xhr] = event.detail;
     this.successTarget.classList.add('text-blue-600');
-    this.successTarget.innerHTML = 'Thank you for submiting';
+    this.successTarget.innerHTML = 'Thank you for subscribing!';
     this.errorsTarget.innerHTML = '';
   }
 

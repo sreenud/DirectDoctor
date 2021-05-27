@@ -8,11 +8,13 @@
     </div>
     <div class="w-7/12 md:w-8/12 ml-6">
       <div class=" text-gray-600 text-sm">Address</div>
-      <div itemprop="address" itemscope itemtype="http://schema.org/PostalAddress">
+      <div itemprop="address" itemscope itemtype="http://schema.org/PostalAddress" class="md:w-6/12">
         <span itemprop="streetAddress"><%=doctor&.address_line_1%></span>,
-        <span><%=doctor&.address_suite%></span>,
+        <% if doctor&.address_suite.present? %>
+          <span><%=doctor&.address_suite%></span>,
+        <% end %>
         <span itemprop="addressLocality"><%=doctor&.city%></span>,
-        <h2><span itemprop="addressRegion"><%=doctor&.state%></span></h2>
+        <h2 class="inline-block"><span itemprop="addressRegion"><%=doctor&.state%></span></h2>
         ,
         <span itemprop="postalCode"><%=doctor&.zipcode%></span>
       </div>

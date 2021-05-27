@@ -1,19 +1,19 @@
-<section class="lg:grid lg:w-full lg:mt-24 lg:grid-cols-12 flex mt-24">
-  <div class="lg:col-span-1 w-full hidden lg:block"></div>
-  <div class="lg:col-span-10 flex lg:px-16">
-    <div class="w-full lg:mx-10">
-      <div class="lg:w-7/12 lg:max-w-xl mx-5 lg:mx-auto mt-10 text-gray-900">
-        <div class="font-glacialbold text-heading">Sign In</div>
-        <% flash.each do |msg_type, message| %>
-          <% if msg_type == "alert" %>
-            <div class="alert">
-              <div class="container">
-                <%= message %>
+<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+  <section class="lg:grid lg:w-full lg:mt-24 lg:grid-cols-12 flex mt-24">
+    <div class="lg:col-span-1 w-full hidden lg:block"></div>
+    <div class="lg:col-span-10 flex lg:px-16">
+      <div class="w-full lg:mx-10">
+        <div class="lg:w-7/12 lg:max-w-xl mx-5 lg:mx-auto mt-10 text-gray-900">
+          <div class="font-glacialbold text-heading">Sign In</div>
+          <% flash.each do |msg_type, message| %>
+            <% if msg_type == "alert" %>
+              <div class="alert">
+                <div class="container">
+                  <%= message %>
+                </div>
               </div>
-            </div>
+            <% end %>
           <% end %>
-        <% end %>
-        <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
           <div class="bg-white pt-6 pb-4 mb-4 flex flex-col">
             <div class="mb-4">
               <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "shadow-lg border rounded-2lg w-full py-3 px-5 text-gray-700 focus:outline-none", placeholder: "Your Email"%>
@@ -38,45 +38,45 @@
               </div>
             </div>
           </div>
-        <% end %>
-      </div>
-      <%= render partial: "devise/shared/social_login_links", locals: {button_text: 'Sign in'} %>
-      <div class="lg:w-7/12 mx-5 lg:mx-auto mt-3 text-xl text-center text-gray-500 border-b pb-3">
-        We won't auto-post to your social network
-      </div>
-      <div class="lg:w-7/12 lg:max-w-xl mx-5 lg:mx-auto mt-4">
-        <div class="lg:flex items-center">
-          <a href="<%=new_registration_path(resource_name)%>" class="text-gray-100 border rounded-lg px-12 py-3 border-doctor-yellow hover:bg-doctor-yellow hover:text-gray-100 bg-white cursor-pointer bg-doctor-yellow shadow-lg">
-            Sign Up
-          </a>
-          <div class="text-xl text-center text-gray-500 ml-3 mt-5 lg:mt-0">
-            Don't have an account already?
+        </div>
+        <%= render partial: "devise/shared/social_login_links", locals: {button_text: 'Sign in'} %>
+        <div class="lg:w-7/12 mx-5 lg:mx-auto mt-3 text-xl text-center text-gray-500 border-b pb-3">
+          We won't auto-post to your social network
+        </div>
+        <div class="lg:w-7/12 lg:max-w-xl mx-5 lg:mx-auto mt-4">
+          <div class="lg:flex items-center">
+            <a href="<%=new_registration_path(resource_name)%>" class="text-gray-100 border rounded-lg px-12 py-3 border-doctor-yellow hover:bg-doctor-yellow hover:text-gray-100 bg-white cursor-pointer bg-doctor-yellow shadow-lg">
+              Sign Up
+            </a>
+            <div class="text-xl text-center text-gray-500 ml-3 mt-5 lg:mt-0">
+              Don't have an account already?
+            </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
-  <div class="lg:col-span-1 relative">
-    <div class="absolute right-0 mr-8">
-      <%=image_pack_tag 'light_grey_2_lines_vertical.svg', class: "h-56" %>
+    <div class="lg:col-span-1 relative">
+      <div class="absolute right-0 mr-8">
+        <%=image_pack_tag 'light_grey_2_lines_vertical.svg', class: "h-56" %>
+      </div>
+      <div class="right-0 absolute -mr-4 -mt-32 z-50">
+        <%= image_pack_tag 'yellow_circle_outline_opacity_right.png' %>
+      </div>
     </div>
-    <div class="right-0 absolute -mr-4 -mt-32 z-50">
-      <%= image_pack_tag 'yellow_circle_outline_opacity_right.png' %>
+  </section>
+  <section class="lg:w-full flex mt-24">
+    <div class="w-6/12 relative">
+      <div class="absolute left-0 ml-20">
+        <%=image_pack_tag "yellow_circle_full.svg", class: "w-10" %>
+      </div>
+      <div class="absolute left-0 top-0 -mt-64">
+        <%=image_pack_tag "yellow_half_circle_thick.svg", class: "w-24" %>
+      </div>
     </div>
-  </div>
-</section>
-<section class="lg:w-full flex mt-24">
-  <div class="w-6/12 relative">
-    <div class="absolute left-0 ml-20">
-      <%=image_pack_tag "yellow_circle_full.svg", class: "w-10" %>
+    <div class="w-6/12 flex justify-end">
+      <div class="absolute right-0 -mt-12 -mr-6">
+        <%=image_pack_tag "yellow_circle_full.svg", class:"w-12" %>
+      </div>
     </div>
-    <div class="absolute left-0 top-0 -mt-64">
-      <%=image_pack_tag "yellow_half_circle_thick.svg", class: "w-24" %>
-    </div>
-  </div>
-  <div class="w-6/12 flex justify-end">
-    <div class="absolute right-0 -mt-12 -mr-6">
-      <%=image_pack_tag "yellow_circle_full.svg", class:"w-12" %>
-    </div>
-  </div>
-</section>
+  </section>
+<% end %>

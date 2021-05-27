@@ -59,29 +59,36 @@
       </div>
     </div>
   </div>
-  <div class="lg:w-3/12 w-full mt-4">
-    <div class="lg:flex lg:w-full lg:justify-center">
-      <div class="w-full relative">
-        <div class="">
-          <label class="text-white text-lg font-hurmebold">
-            Subscribe for Our Newsletter
-          </label>
-          <div class="flex justify-between items-center bg-white rounded-lg mt-3">
-            <div class="flex justify-center items-center w-full">
-              <label class="ml-3 mr-5">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" class="w-5 text-gray-600" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                </svg>
-              </label>
-              <input class="my-4 w-full focus:outline-none bg-white text-gray-800" type="text" name="" placeholder="Enter your Email">
-            </div>
-            <div>
-              <button class="bg-doctor-yellow text-gray-100 mr-2 rounded-md md:px-8 px-4 py-2 shadow">Subscribe</button>
+  <div class="lg:w-3/12 w-full mt-4" data-controller="news-letter">
+    <%= form_with(model: NewsLetter.new, class: " w-full", data: {type: "html", action: "ajax:error->news-letter#errorHandler ajax:success->news-letter#success"}) do |form| %>
+      <div class="lg:flex lg:w-full lg:justify-center" >
+        <div class="w-full relative">
+          <div class="">
+            <label class="text-white text-lg font-hurmebold">
+              Subscribe for Our Newsletter
+            </label>
+            <div data-news-letter-target="success">
+              <div class="flex justify-between items-center bg-white rounded-lg mt-3">
+                <div class="flex justify-center items-center w-full">
+                  <label class="ml-3 mr-5">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" class="w-5 text-gray-600" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                    </svg>
+                  </label>
+                  <%= form.text_field :email, :class => "my-4 w-full focus:outline-none bg-white text-gray-800", :autocomplete => "off", placeholder: "Enter your Email", data: {news_letter_target: "email"} %>
+                  <div class="pl-4 text-red-500 text-md" data-news-letter-target="emailError"></div>
+                </div>
+                <div>
+                  <%= form.button(type: "submit", class: "bg-doctor-yellow text-gray-100 mr-2 rounded-md md:px-8 px-4 py-2 shadow", data: {disable_with: "<i class='fab fa fa-spinner fa-spin pr-2'></i> Subscribing...." }) do %>
+                    <span>Subscribe</span>
+                  <% end %>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
+    <% end %>
     <div class="w-full">
       <div class="mt-8 w-full">
         <div class="w-6 inline-block">

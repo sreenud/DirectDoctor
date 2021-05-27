@@ -13,6 +13,7 @@ export default class extends Controller {
       lng: this.currentLocation.lng,
       zoomControl: false,
       fullscreenControl: false,
+      mapTypeControl: false,
     });
     this.addPin();
   }

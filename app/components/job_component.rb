@@ -41,6 +41,6 @@ class JobComponent < ViewComponent::Base
   end
 
   def job_posted
-    doctor.job_posted_on.strftime("%b %d, %y")
+    doctor.created_at.strftime("%b %d, %y")
   end
 end

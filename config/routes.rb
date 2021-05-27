@@ -31,6 +31,7 @@ Rails.application.routes.draw do
 
   resources :social_connects, only: [:index]
   resources :surveys, only: [:index, :create]
+  resources :news_letters, only: [:index, :create]
   resources :leads, only: [:create]
   resources :jobs, only: [:index, :show] do
     collection do
