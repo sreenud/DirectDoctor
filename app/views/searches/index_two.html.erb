@@ -80,7 +80,17 @@
         </div>
         <div class="lg:w-10/12 ml-3 text-sm">
           <div class="w-full lg:flex items-center hidden">
-            <div class="w-8/12 lg:text-right pr-6">
+            <div class="w-4/12 lg:text-left pr-6 flex">
+              <div class=" flex items-center">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-doctor-yellow mr-1 mt-1" viewBox="0 0 20 20" fill="currentColor">
+                  <path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"></path>
+                </svg>
+              </div>
+              <div class="relative text-sm mt-1 flex items-center" data-controller="geolocation" >
+                <a class="text-doctor-yellow underline cursor-pointer" data-action="click->geolocation#geolocate">Show doctors near me </a>
+              </div>
+            </div>
+            <div class="w-4/12 lg:text-right pr-6">
               <label class="text-sm">Sort by:</label>
               <div class="inline-block relative text-sm mt-1">
                 <select class="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-2 py-1 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline  text-gray-600">
