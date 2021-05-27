@@ -29,10 +29,10 @@
           <div class="bg-white pt-6 pb-4 mb-4 flex flex-col">
             <%= render "devise/shared/error_messages", resource: resource %>
             <div class="mb-4">
-              <%= f.text_field :full_name, autofocus: true, autocomplete: "full_name", class: "shadow-lg border rounded-2lg w-full py-3 px-5 text-gray-700 focus:outline-none", placeholder: "Name"%>
+              <%= f.text_field :full_name, autocomplete: "full_name", class: "shadow-lg border rounded-2lg w-full py-3 px-5 text-gray-700 focus:outline-none", placeholder: "Name"%>
             </div>
             <div class="mb-3">
-              <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "shadow-lg border rounded-2lg w-full py-3 px-5 text-gray-700 focus:outline-none", placeholder: "Your Email"%>
+              <%= f.email_field :email, autocomplete: "email", class: "shadow-lg border rounded-2lg w-full py-3 px-5 text-gray-700 focus:outline-none", placeholder: "Your Email"%>
             </div>
             <div class="mb-3">
               <%= f.password_field :password, autocomplete: "current-password", class: "shadow-lg border border-red rounded-2lg w-full py-3 px-5 text-gray-700 focus:outline-none", placeholder: "Password" %>
