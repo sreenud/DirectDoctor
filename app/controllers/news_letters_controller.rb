@@ -12,7 +12,9 @@ class NewsLettersController < BaseController
 
         format.html { render(partial: "shared/partials/success", locals: { object: @news_letter }, status: :ok) }
       else
-        format.html { render(partial: "shared/partials/errors", locals: { object: @news_letter }, status: :bad_request) }
+        format.html do
+          render(partial: "shared/partials/errors", locals: { object: @news_letter }, status: :bad_request)
+        end
       end
     end
   end
