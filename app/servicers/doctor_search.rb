@@ -2,7 +2,7 @@
 
 # a module for generating results for doctor search through parameters
 module DoctorSearch
-  SEARCH_RADIUS = 500
+  SEARCH_RADIUS = 1500
   SEARCH_UNITS = :km
   DEFAULT_LOCATION = BaseController::DEFUALT_LOCATION
   def search(params, current_location: DEFAULT_LOCATION)
