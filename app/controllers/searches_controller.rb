@@ -22,6 +22,10 @@ class SearchesController < BaseController
   end
 
   def specialized_search
+    unless params[:city].present?
+      state = State.state_with_code(params[:state])
+      @state_cities = state.locations.top.limit(60) if state
+    end
     @pagy, @doctors = pagy(
       Doctor.includes(:speciality, :review_data).published.search(converted_params,
         current_location: current_location), items: 10
@@ -68,14 +72,25 @@ class SearchesController < BaseController
   end
 
   def fetch_city_speciality
-    @special_speciality = Speciality.select(:code).where(
-      slug: params[:speciality_slug]
-    ).first&.code
+    if params[:specialty] != "doctors"
+      @special_speciality =  params[:specialty]
+    else
+      @special_speciality =  ""
+    end
+
+    if params[:state].present?
+      state = State.where(code: params[:state].upcase)&.first
+      place_name = state&.name
+    end
+    if params[:city].present? &&  params[:city] != "doctor_default"
+      city = Location.where(name: params[:city].titleize)&.first
+      city = city&.name
+    end
 
     {}.tap do |h|
       h[:style] = params[:style]
-      h[:city] = params[:location]&.titleize
-      h[:place] = params[:place].titleize
+      h[:city] = city
+      h[:place] = place_name
       h[:speciality] = @special_speciality
       h[:doctor_name] = params[:doctor_name]
       h[:clinic_name] = params[:clinic_name]

@@ -9,4 +9,8 @@ class State < ApplicationRecord
   def self.valid_state(state_name)
     State.find_by_name(state_name)
   end
+
+  def self.state_with_code(state_code)
+    State.find_by_code(state_code.upcase)
+  end
 end

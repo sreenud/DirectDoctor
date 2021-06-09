@@ -65,8 +65,13 @@ Rails.application.routes.draw do
 
   # place is nothing but state here
   # get "/:place(/:style)(/:speciality_slug)(/:location)", to: "searches#specialized_search"
+  get "/all/doctors/:state", to: "searches#specialized_search"
+  get "/all/doctors/:state/:city", to: "searches#specialized_search"
   get "/:practice_style", to: "practice_style#index"
   get "/:practice_style/:specialty", to: "specialty#index"
+  get "/:practice_style/:specialty/:state", to: "searches#specialized_search"
+  get "/:practice_style/:specialty/:state/:city", to: "searches#specialized_search"
+
   # get "/:place/:location", to: "searches#specialized_search", constraints: LocationConstraint.new
   # get "/:place/:style", to: "searches#specialized_search", constraints: DoctorStyleConstraint.new
   # get "/:place/:style/:speciality_slug", to: "searches#specialized_search", constraints: SpecialityConstraint.new

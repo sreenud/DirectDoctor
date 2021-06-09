@@ -5,6 +5,7 @@ class SpecialtyController < BaseController
     @specialty = Speciality.find_by_code(params[:specialty]&.upcase)
     @states = State.all
     @cities = Location.top.limit(60)
+    @style = params[:practice_style]
   end
 
   private

@@ -9,7 +9,7 @@ import ParamRedirect, {
   showLoading,
   hideLoading,
 } from './param_redirect';
-import MapPinGenerator, { customIcon } from './map_pin_generator';
+import MapPinGenerator, { customIcon, customIcon2 } from './map_pin_generator';
 
 const { GMaps } = window;
 
@@ -94,14 +94,14 @@ export default class extends Controller {
           marker.setIcon(customIcon({ color: '#e7ab00', multiple }));
         });
         card.addEventListener('mouseleave', () => {
-          marker.setIcon(customIcon({ color: 'white', multiple }));
+          marker.setIcon(customIcon2({ color: 'white', multiple }));
         });
       });
       window.google.maps.event.addListener(marker, 'mouseover', () => {
         marker.setIcon(customIcon({ color: '#e7ab00', multiple }));
       });
       window.google.maps.event.addListener(marker, 'mouseout', () => {
-        marker.setIcon(customIcon({ color: 'white', multiple }));
+        marker.setIcon(customIcon2({ color: 'white', multiple }));
       });
       window.google.maps.event.addListener(marker, 'click', () => {
         this.infoWindow = marker.infoWindow;

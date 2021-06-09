@@ -56,7 +56,7 @@ module ApplicationHelper
     place = if location_string.present?
       location_string
     else
-      params[:place].titleize
+      params[:place]&.titleize
     end
 
     h1_tag_text = "Concierge Doctors/Direct Primary Care Physicians in #{place}"
@@ -75,7 +75,7 @@ module ApplicationHelper
 
     if params[:location].present?
       # h1_tag_text = "#{params[:speciality_slug].titleize} in #{params[:location].titleize}, #{place}"
-      h1_tag_text = "#{place}, #{params[:location].titleize}"
+      h1_tag_text = "#{place}, #{params[:location]&.titleize}"
     end
 
     if params[:speciality].present?
@@ -119,6 +119,18 @@ module ApplicationHelper
       "cm"
     else
       "dpc"
+    end
+  end
+
+  def search_form_location(params)
+    return params[:place]&.titleize if params[:place].present?
+    if (params[:state])
+      state = params[:state]&.titleize&.upcase
+      if params[:city].present?
+        state = "#{params[:city]&.titleize}, #{state}"
+      end
+
+      return state
     end
   end
 end

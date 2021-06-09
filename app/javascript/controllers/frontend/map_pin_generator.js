@@ -14,16 +14,30 @@ const ICON_THREE_PATH =
   'M32 2a20 20 0 0 0-20 20c0 18 20 40 20 40s20-22 20-40A20 20 0 0 0 32 2z';
 
 const icon = ({ color = 'white', multiple = false }) => ({
-  path: multiple ? ICON_PATH : ICON_THREE_PATH,
-  fillColor: color,
-  scale: 0.5,
-  fillOpacity: 0.9,
-  strokeColor: 'grey',
-  strokeWidth: 3,
-  anchor: { x: 33, y: 62 },
-  labelOrigin: { x: 30, y: 25 },
+  url: 'http://localhost:3000/icon_yellow.svg',
+  // fillColor: color,
+  scaledSize: new google.maps.Size(44, 44),
+  // scale: 0.5,
+  // fillOpacity: 0.9,
+  // strokeColor: 'grey',
+  // strokeWidth: 3,
+  // anchor: { x: 33, y: 62 },
+  // labelOrigin: { x: 30, y: 30 },
+});
+
+const icon2 = ({ color = 'white', multiple = false }) => ({
+  url: 'http://localhost:3000/icon_gray.svg',
+  // fillColor: color,
+  scaledSize: new google.maps.Size(44, 44),
+  // scale: 0.5,
+  // fillOpacity: 0.9,
+  // strokeColor: 'grey',
+  // strokeWidth: 3,
+  // anchor: { x: 33, y: 62 },
+  // labelOrigin: { x: 30, y: 30 },
 });
 export const customIcon = icon;
+export const customIcon2 = icon2;
 
 export default class MapPinGenerator {
   constructor(pinsData = ['']) {
@@ -53,8 +67,13 @@ export default class MapPinGenerator {
       return {
         lat,
         lng,
-        icon: icon({ multiple: count > 1 }),
-        label: count > 1 ? count.toString() : '1',
+        icon: icon2({ multiple: count > 1 }),
+        // label: count > 1 ? count.toString() : '1',
+        label: {
+          text: count > 1 ? count.toString() : '1',
+          color: '#fff',
+          fontSize: '18px',
+        },
         ids: ids,
         infoWindow: skipInfoWindow
           ? ''

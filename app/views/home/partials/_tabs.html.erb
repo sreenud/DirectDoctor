@@ -36,14 +36,14 @@
           <div x-show="tab === 'states'" class="w-full flex flex-wrap">
             <% @states.each do |state| %>
               <div class="w-1/2 lg:w-3/12 pt-2">
-                <a href="/search-map?place=<%=state.name%>" class="hover:underline hover:text-blue-400" target="_blank"><%=state.name%></a>
+                <a href="/all/doctors/<%=state&.code&.downcase%>" class="hover:underline hover:text-blue-400" target="_blank"><%=state.name%></a>
               </div>
             <% end %>
           </div>
           <div x-show="tab === 'cities'" class="flex flex-wrap">
             <% @cities.each do |city| %>
               <div class="w-1/2 lg:w-3/12 pt-2">
-                <a href="/search-map?place=<%=city.name%>" class="hover:underline hover:text-blue-400" target="_blank"><%=city.name%></a>
+                <a href="/all/doctors/<%=city&.state&.code&.downcase%>/<%=city.name.parameterize%>" class="hover:underline hover:text-blue-400" target="_blank"><%=city.name%></a>
               </div>
             <% end %>
           </div>

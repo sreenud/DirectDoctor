@@ -1,4 +1,45 @@
-<section class="lg:grid lg:w-full lg:mt-24 lg:grid-cols-12 flex mt-32 bg-gray-200">
+<section class="lg:grid lg:w-full lg:mt-10 lg:grid-cols-12 flex mt-10 pb-12 flex-wrap">
+  <div class="lg:col-span-1 relative">
+    <div class="absolute mt-32 hidden lg:block">
+      <%= image_pack_tag 'grey_cross_vector.svg', class: "w-8" %>
+    </div>
+  </div>
+  <div class="lg:col-span-10 mt-10 px-6 lg:px-16 mb-10">
+    <div class="border-b pb-8 mt-12">
+      <div class=" font-glacialbold text-xl mb-2">
+        Search <%=@specialty&.name%> doctors by state
+      </div>
+      <div class="flex flex-wrap">
+        <% @states.each do |state| %>
+          <div class="w-1/2 lg:w-3/12 pt-2">
+            <a href="/<%=@style%>/<%=@specialty&.code&.downcase%>/<%=state.code&.downcase%>" class="hover:underline hover:text-blue-400" target="_blank"><%=state.name%></a>
+          </div>
+        <% end %>
+      </div>
+    </div>
+    <div class="mt-10">
+      <div class=" font-glacialbold text-xl mb-2">
+        Search <%=@specialty&.name%> doctors by city
+      </div>
+      <div class="flex flex-wrap">
+        <% @cities.each do |city| %>
+          <div class="w-1/2 lg:w-3/12 pt-2">
+            <a href="/<%=@style%>/<%=@specialty&.code&.downcase%>/<%=city&.state&.code&.downcase%>/<%=city.name.parameterize%>" class="hover:underline hover:text-blue-400" target="_blank"><%=city.name%></a>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+  <div class="lg:col-span-1 relative hidden lg:block">
+    <div class="absolute right-0 mt-8 mr-8">
+      <%=image_pack_tag 'light_grey_2_lines_vertical.svg', class: "h-56" %>
+    </div>
+    <div class="right-0 absolute -mr-4 -mt-20 z-50">
+      <%= image_pack_tag 'yellow_circle_outline_opacity_right.png' %>
+    </div>
+  </div>
+</section>
+<section class="lg:grid lg:w-full lg:mt-12 lg:grid-cols-12 flex mt-12 bg-gray-200 mb-10">
   <div class="lg:col-span-1 relative">
     <div class="absolute mt-32 hidden lg:block">
       <%= image_pack_tag 'grey_cross_vector.svg', class: "w-8" %>
@@ -38,40 +79,6 @@
           </div>
         </div>
       </div>
-    </div>
-  </div>
-  <div class="lg:col-span-1 relative hidden lg:block">
-    <div class="absolute right-0 mt-8 mr-8">
-      <%=image_pack_tag 'light_grey_2_lines_vertical.svg', class: "h-56" %>
-    </div>
-    <div class="right-0 absolute -mr-4 -mt-20 z-50">
-      <%= image_pack_tag 'yellow_circle_outline_opacity_right.png' %>
-    </div>
-  </div>
-</section>
-<section class="lg:grid lg:w-full lg:mt-10 lg:grid-cols-12 flex mt-10 pb-16 flex-wrap">
-  <div class="lg:col-span-10 px-6 lg:px-16 lg:col-start-2 border-b pb-8 mt-10">
-    <div class=" font-glacialbold text-xl mb-2">
-      Search <%=@specialty&.name%> doctors by state
-    </div>
-    <div class="flex flex-wrap">
-      <% @states.each do |state| %>
-        <div class="w-1/2 lg:w-3/12 pt-2">
-          <a href="/search-map?speciality_name=<%=@specialty&.name%>&place=<%=state.name%>" class="hover:underline hover:text-blue-400" target="_blank"><%=state.name%></a>
-        </div>
-      <% end %>
-    </div>
-  </div>
-  <div class="lg:col-span-10 px-6 lg:px-16 lg:col-start-2 mt-10">
-    <div class=" font-glacialbold text-xl mb-2">
-      Search <%=@specialty&.name%> doctors by city
-    </div>
-    <div class="flex flex-wrap">
-      <% @cities.each do |city| %>
-        <div class="w-1/2 lg:w-3/12 pt-2">
-          <a href="/search-map?speciality_name=<%=@specialty&.name%>&place=<%=city.name%>" class="hover:underline hover:text-blue-400" target="_blank"><%=city.name%></a>
-        </div>
-      <% end %>
     </div>
   </div>
 </section>

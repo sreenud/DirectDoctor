@@ -22,7 +22,7 @@
               <svg xmlns="http://www.w3.org/2000/svg" class="ml-3 h-6 w-6 text-gray-600 mr-2" viewBox="0 0 20 20" fill="currentColor">
                 <path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd" />
               </svg>
-              <input class="md:my-2 my-3 ml-3 w-full focus:outline-none bg-gray-100" id="near" data-searches-target='field' type="text" name="near" placeholder="Address/City/Zip" value="<%=params[:place]&.titleize%>">
+              <input class="md:my-2 my-3 ml-3 w-full focus:outline-none bg-gray-100" id="near" data-searches-target='field' type="text" name="near" placeholder="Address/City/Zip" value="<%=search_form_location(params) %>">
             </div>
             <div class="text-center mt-4 md:text-left md:mt-0">
               <button class="bg-doctor-yellow text-gray-100 md:mr-4 rounded-md px-4 py-1 w-11/12 md:w-auto" data-search-target="search" data-action="click->searches#submitSearch">Search</button>
