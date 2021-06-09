@@ -124,13 +124,13 @@ module ApplicationHelper
 
   def search_form_location(params)
     return params[:place]&.titleize if params[:place].present?
-    if (params[:state])
+    if params[:state]
       state = params[:state]&.titleize&.upcase
       if params[:city].present?
         state = "#{params[:city]&.titleize}, #{state}"
       end
 
-      return state
+      state
     end
   end
 end

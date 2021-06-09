@@ -72,10 +72,10 @@ class SearchesController < BaseController
   end
 
   def fetch_city_speciality
-    if params[:specialty] != "doctors"
-      @special_speciality =  params[:specialty]
+    @special_speciality = if params[:specialty] != "doctors"
+      params[:specialty]
     else
-      @special_speciality =  ""
+      ""
     end
 
     if params[:state].present?
