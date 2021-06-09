@@ -14,7 +14,7 @@ const ICON_THREE_PATH =
   'M32 2a20 20 0 0 0-20 20c0 18 20 40 20 40s20-22 20-40A20 20 0 0 0 32 2z';
 
 const icon = ({ color = 'white', multiple = false }) => ({
-  url: 'http://localhost:3000/icon_yellow.svg',
+  url: 'https://www.findmydirectdoctor.com/icon_yellow.svg',
   // fillColor: color,
   scaledSize: new google.maps.Size(44, 44),
   // scale: 0.5,
@@ -26,7 +26,7 @@ const icon = ({ color = 'white', multiple = false }) => ({
 });
 
 const icon2 = ({ color = 'white', multiple = false }) => ({
-  url: 'http://localhost:3000/icon_gray.svg',
+  url: 'https://www.findmydirectdoctor.com/icon_gray.svg',
   // fillColor: color,
   scaledSize: new google.maps.Size(44, 44),
   // scale: 0.5,
