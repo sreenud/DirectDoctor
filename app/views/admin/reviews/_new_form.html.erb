@@ -1,0 +1,121 @@
+<%= form_with(model: [:admin, review], class: "flex w-full", id: "admin_review_form", data: {type: "html", action: "ajax:error->message#errorHandler ajax:success->message#success" }) do |form| %>
+  <%= form.hidden_field :status, data: {target: "review.status"} %>
+  <div class="flex-1 mb-6 mr-4">
+    <div class="bg-white border pb-16 rounded shadow p-5 w-full">
+      <div class="flex justify-center items-center w-1/2 md:border-r border pr-4 autocomplete-div mb-4 my-2 ml-4" data-controller="autocomplete" data-autocomplete-url-value="<%=doctors_data_path%>">
+        <label class="ml-3 mr-5">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-5 text-gray-600">
+            <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd" />
+          </svg>
+        </label>
+        <input class="md:my-2 my-3 w-full focus:outline-none" type="text" data-searches-target="name" name="speciality" placeholder="Doctor name" data-autocomplete-target="input" id="searchTerm">
+        <ul data-autocomplete-target="results" class="autocomplete"></ul>
+        <input type="hidden" name="review[doctor_id]" data-autocomplete-target="hidden"/>
+        <input type="hidden" name="search_term_type" data-searches-target="searchTermType"/>
+      </div>
+      <div class="w-full pt-4 flex">
+        <div class="input-group w-1/2 ml-4">
+          <div class="">
+            <label class="block text-grey-darker text-base mb-1" for="title">
+              Select a rating for your doctor
+            </label>
+            <div class="flex items-center mr-4 mb-4">
+              <div class="stars">
+                <input type="radio" name="review[rating]" value="1" class="star-1" id="review_rating-1">
+                <label class="star-1 mr-2" for="review_rating-1">1</label>
+                <input type="radio" name="review[rating]" value="2" class="star-2" id="review_rating-2">
+                <label class="star-2 mr-2" for="review_rating-2">2</label>
+                <input type="radio" name="review[rating]" value="3" class="star-3" id="review_rating-3">
+                <label class="star-3 mr-2" for="review_rating-3">3</label>
+                <input type="radio" name="review[rating]" value="4" class="star-4" id="review_rating-4">
+                <label class="star-4 mr-2" for="review_rating-4">4</label>
+                <input type="radio" name="review[rating]" value="5" class="star-5" id="review_rating-5">
+                <label class="star-5" for="review_rating-5">5</label>
+                <span></span>
+              </div>
+            </div>
+            <div class="text-red-500" id="error_review_rating"></div>
+          </div>
+        </div>
+      </div>
+      <div class="w-full flex">
+        <div class="input-group w-1/2 ml-4">
+          <%= form.label :title, :class => "label text-gray-500" %>
+          <%= form.text_field :title, :class => "input bg-white", :autocomplete => "off" %>
+        </div>
+      </div>
+      <div class="w-full pt-4 flex">
+        <div class="input-group w-1/2 ml-4">
+          <%= form.label :review, :class => "label text-gray-500" %>
+          <%= form.text_area :review, :class => "input bg-white" %>
+        </div>
+      </div>
+      <div class="my-2 ml-4">
+        <label class="block text-grey-darker mb-1 text-base" for="title">
+          Were you ever treated by this doctor?
+        </label>
+        <div class="flex items-center mr-4 text-base">
+          <div>
+            <%=form.radio_button :treated_by_doctor, 'yes' %>
+            <%=form.label :treated_by_doctor, "Yes"%>
+          </div>
+          <div class="ml-4">
+            <%=form.radio_button :treated_by_doctor, 'no'%>
+            <%=form.label :treated_by_doctor, "No"%>
+          </div>
+        </div>
+      </div>
+      <div class="my-2 ml-4">
+        <label class="block text-grey-darker mb-1 text-base" for="title">
+          Would you recommend this doctor?
+        </label>
+        <div class="flex items-center mr-4 text-base">
+          <div>
+            <%=form.radio_button :will_you_recommend, 'yes' %>
+            <%=form.label :will_you_recommend, "Yes"%>
+          </div>
+          <div class="ml-4">
+            <%=form.radio_button :will_you_recommend, 'no'%>
+            <%=form.label :will_you_recommend, "No"%>
+          </div>
+        </div>
+      </div>
+      <div class="my-2 ml-4">
+        <label class="block text-grey-darker mb-1 text-base" for="title">
+          Would you preferred to be  anonymous?
+        </label>
+        <div class="flex items-center mr-4 text-base">
+          <div>
+            <%=form.radio_button :anonymous, 'yes'%>
+            <%=form.label :anonymous, "Yes"%>
+          </div>
+          <div class="ml-4">
+            <%=form.radio_button :anonymous, 'no' %>
+            <%=form.label :anonymous, "No"%>
+          </div>
+        </div>
+      </div>
+      <div class="my-2 ml-4 input-group w-1/2 mt-4">
+        <label class="block text-grey-darker text-base mb-1" for="title">
+          Your first name
+        </label>
+        <%= form.text_field :name, :class => "input bg-white", :autocomplete => "off"%>
+        <div class="text-red-500" id="error_review_name"></div>
+      </div>
+      <div class="my-2 ml-4 input-group w-1/2">
+        <label class="block text-grey-darker text-base mb-1" for="email">
+          Your email
+        </label>
+        <%= form.email_field :email, :class => "input bg-white", :autocomplete => "off"%>
+        <div class="text-red-500" id="error_review_email"></div>
+      </div>
+      <div class="float-left pt-5">
+        <%= form.button(type: "submit", class: "btn btn-md btn-default btn-dd-blue btn-outline text-sm font-bold float-right", data: {disable_with: "<i class='fab fa fa-spinner fa-spin pr-2'></i> Saving in..." }) do %>
+          <span><i class='fab fa fa-floppy-o pr-2'></i><%=button_text%> Review</span>
+        <% end %>
+      </div>
+    </div>
+  </div>
+  <div class="w-1/4">
+  </div>
+<% end %>

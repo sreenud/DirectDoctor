@@ -30,7 +30,16 @@ class BaseController < ApplicationController
   def set_location_string
     return if location_string.present?
     return @location_string = params[:place] if params[:place].present?
-    coords = (params[:near].presence || DEFUALT_LOCATION).split(",").map(&:to_f)
+    # coords = (params[:near].presence || DEFUALT_LOCATION).split(",").map(&:to_f)
+
+    if params[:near].presence
+      coordinates = params[:near]
+    else
+      geo_result = Geocoder.search(request.remote_ip).first
+      coordinates = geo_result.present? && geo_result.data["loc"] ? geo_result.data["loc"] : DEFUALT_LOCATION
+    end
+
+    coords = coordinates.split(",").map(&:to_f)
     result = Geocoder.search(coords).first
     @location_string = (result.data["address"] || {})["city"]
   end

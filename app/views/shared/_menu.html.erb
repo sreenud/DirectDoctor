@@ -117,15 +117,16 @@
   </a>
   <div class="rounded-lg shadow-2xl absolute overflow-auto z-30 profile-menu px-4 py-2 bg-white">
     <ul class="list-reset">
-      <% if @menu_categories %>
-        <% @menu_categories.each do |category| %>
-          <li class="border-b border-doctor-blue py-1">
-            <a href="<%=blogs_url%>#<%=category.slug%>" class="px-2 py-2 block hover:text-doctor-yellow">
-              <%=category.name%>
-            </a>
-          </li>
-        <% end %>
-      <% end %>
+      <li class="border-b border-doctor-blue py-1">
+        <a href="/blogs" class="px-2 py-2 block hover:text-doctor-yellow">
+          Resources
+        </a>
+      </li>
+      <li class="border-b border-doctor-blue py-1">
+        <a href="/tips" class="px-2 py-2 block hover:text-doctor-yellow">
+          Tidbits
+        </a>
+      </li>
     </ul>
   </div>
 </div>

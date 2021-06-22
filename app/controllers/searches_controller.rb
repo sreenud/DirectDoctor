@@ -62,7 +62,10 @@ class SearchesController < BaseController
       :practice_type,
       :speciality_name,
       :doctor_name,
-      :clinic_name
+      :clinic_name,
+      :specialty,
+      :state,
+      :practice_style
     )
   end
 
@@ -73,7 +76,7 @@ class SearchesController < BaseController
 
   def fetch_city_speciality
     @special_speciality = if params[:specialty] != "doctors"
-      params[:specialty]
+      params[:speciality] = params[:specialty]&.upcase
     else
       ""
     end

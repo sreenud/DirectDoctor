@@ -75,7 +75,9 @@ module Admin
     end
 
     def review_params
-      params.require(:review).permit(:title, :review, :status)
+      params.require(:review).permit(:title, :review, :status,
+        :doctor_id, :rating, :treated_by_doctor,
+        :will_you_recommend, :anonymous, :name, :email)
     end
   end
 end

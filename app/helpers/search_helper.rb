@@ -28,6 +28,6 @@ module SearchHelper
   end
 
   def max_distance
-    @max_distance ||= @doctors.map(&:distance).max
+    # @max_distance ||= @doctors.map(&:distance).max
   end
 end
