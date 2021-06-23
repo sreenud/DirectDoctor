@@ -11,16 +11,19 @@ namespace :doctor_fmdd do
   end
 
   task update_code_ga: :environment do
-    doctors = Doctor.where(state: "Georgia")
+    doctors = Doctor.where("state like '%Georgia%'")
 
     doctors.each do |doctor|
       fdd_id = doctor.fdd_id.split("-")
       unless fdd_id.include? "GA"
         doctor.fdd_id = "GA#{doctor.fdd_id}"
         doctor.save
+
+        puts "#{doctor.fdd_id}"
       end
 
-      puts "#{doctor.fdd_id}"
+
     end
   end
 end
+#-COP-30909-03897

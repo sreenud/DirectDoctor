@@ -17,11 +17,11 @@ const icon = ({ color = 'white', multiple = false }) => ({
   url: 'https://www.findmydirectdoctor.com/icon_yellow.svg',
   // fillColor: color,
   scaledSize: new google.maps.Size(44, 44),
-  // scale: 0.5,
-  // fillOpacity: 0.9,
+  scale: 0.5,
+  fillOpacity: 0.9,
   // strokeColor: 'grey',
-  // strokeWidth: 3,
-  // anchor: { x: 33, y: 62 },
+  strokeWidth: 3,
+  anchor: { x: 33, y: 62 },
   // labelOrigin: { x: 30, y: 30 },
 });
 
@@ -29,11 +29,11 @@ const icon2 = ({ color = 'white', multiple = false }) => ({
   url: 'https://www.findmydirectdoctor.com/icon_gray.svg',
   // fillColor: color,
   scaledSize: new google.maps.Size(44, 44),
-  // scale: 0.5,
-  // fillOpacity: 0.9,
+  scale: 0.5,
+  fillOpacity: 0.9,
   // strokeColor: 'grey',
-  // strokeWidth: 3,
-  // anchor: { x: 33, y: 62 },
+  strokeWidth: 3,
+  anchor: { x: 33, y: 62 },
   // labelOrigin: { x: 30, y: 30 },
 });
 export const customIcon = icon;
@@ -72,7 +72,7 @@ export default class MapPinGenerator {
         label: {
           text: count > 1 ? count.toString() : '1',
           color: '#fff',
-          fontSize: '18px',
+          fontSize: '14px',
         },
         ids: ids,
         infoWindow: skipInfoWindow
