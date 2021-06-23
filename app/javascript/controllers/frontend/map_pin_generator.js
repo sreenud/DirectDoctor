@@ -15,7 +15,7 @@ const ICON_THREE_PATH =
 
 const icon = ({ color = 'white', multiple = false }) => ({
   url: 'https://www.findmydirectdoctor.com/icon_yellow.svg',
-  // fillColor: color,
+  fillColor: '#fff',
   scaledSize: new google.maps.Size(44, 44),
   scale: 0.5,
   fillOpacity: 0.9,
@@ -27,7 +27,7 @@ const icon = ({ color = 'white', multiple = false }) => ({
 
 const icon2 = ({ color = 'white', multiple = false }) => ({
   url: 'https://www.findmydirectdoctor.com/icon_gray.svg',
-  // fillColor: color,
+  fillColor: '#fff',
   scaledSize: new google.maps.Size(44, 44),
   scale: 0.5,
   fillOpacity: 0.9,
