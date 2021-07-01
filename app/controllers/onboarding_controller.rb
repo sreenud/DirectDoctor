@@ -6,6 +6,7 @@ class OnboardingController < BaseController
   def step1
     if current_user.has_role?("guest")
       @claim_profile = ClaimProfileRequest.new
+      @doctor_profile = Doctor.where(fdd_id: params[:profile_id]).where.not(fdd_id: nil)&.first
     else
       redirect_to(root_url)
     end

@@ -1,3 +1,4 @@
+<% radio_check = @doctor_profile.present? ? 'checked' : '' %>
 <section class="lg:grid lg:w-full lg:mt-24 lg:grid-cols-12 flex mt-24">
   <div class="lg:col-span-1 w-full"></div>
   <div class="lg:col-span-10 flex lg:px-16" data-controller="onboarding">
@@ -19,7 +20,7 @@
               </div>
               <span>Patient</span>
             </label>
-            <%=form.radio_button :user_type, 'doctor', :id => 'doctor', data: {action: 'onboarding#userChoice', onboarding_target: 'userType'}%>
+            <%=form.radio_button :user_type, 'doctor', :id => 'doctor', checked: radio_check, data: {action: 'onboarding#userChoice', onboarding_target: 'userType'}%>
             <label for="doctor" class="cursor-pointer">
               <div class=" flex justify-center items-center mt-8">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-16 h-16">
@@ -29,7 +30,7 @@
               <span>Provider</span>
             </label>
           </div>
-          <div class="w-full mt-20 hidden" data-onboarding-target="doctorForm">
+          <div class="w-full mt-20 <%= @doctor_profile.present? ? 'block' : 'hidden' %>" data-onboarding-target="doctorForm">
             <div class="text-left font-glacialbold text-2xl flex w-full px-6">
               <div class="w-1/6">Step 1: </div>
               <div class="w-5/6">Please check if we already created a profile for you.</div>
@@ -37,7 +38,7 @@
             <div class="w-full mt-6 px-4 flex justify-center">
               <div class="w-5/6 ml-auto">
                 <div class="autoComplete_wrapper ">
-                  <%= form.text_field :profile_name, :class => "flex justify-center items-center w-full bg-white rounded-lg shadow-md border border-gray-100 lg:ml-6 auto_complete w-full", :autocomplete => "off", :id => "autoComplete" %>
+                  <%= form.text_field :profile_name, :class => "flex justify-center items-center w-full bg-white rounded-lg shadow-md border border-gray-100 lg:ml-6 auto_complete w-full", :autocomplete => "off", :id => "autoComplete", value: @doctor_profile&.name %>
                 </div>
                 <div class="text-red-500 mt-4 text-center" id="error_profile_name"></div>
               </div>
