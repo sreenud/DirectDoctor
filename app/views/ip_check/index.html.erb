@@ -1,14 +1,22 @@
 <div class="lg:flex lg:justify-between lg:items-center lg:px-4 lg:py-3 lg:mx-16 mx-2">
   <div class="mt-32 mb-20 text-lg">
-    <div class="flex w-5/6 justify-center text-gray-800 m-auto">
-      <div>IP Address:</div>
-      <div><%=@geo_result.to_json%></div>
-      <div>Cordinates:</div>
-      <div><%=@coords.to_json%></div>
-      <div>GEO Coder:</div>
-      <div><%=@result.to_json%></div>
-      <div>Location:</div>
-      <div><%=@location_string.to_json%></div>
+    <div class=" w-5/6 justify-center text-gray-800 m-auto">
+      <div class="w-full">
+        <div>IP Address:</div>
+        <div><%=@geo_result.to_json%></div>
+      </div>
+      <div class="w-full mt-6">
+        <div>Cordinates:</div>
+        <div><%=@coords.to_json%></div>
+      </div>
+      <div class="w-full mt-6">
+        <div>GEO Coder:</div>
+        <div><%=@result.to_json%></div>
+      </div>
+      <div class="w-full mt-6">
+        <div>Location:</div>
+        <div><%=@location_string.to_json%></div>
+      </div>
     </div>
   </div>
 </div>
