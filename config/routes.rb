@@ -20,6 +20,7 @@ Rails.application.routes.draw do
   get "onboarding/step1", to: "onboarding#step1"
   post "onboarding/step1", to: "onboarding#create_step1"
   get "onboarding/thankyou", to: "onboarding#thankyou"
+  get "gcoder-test", to: "ip_check#index"
   resources :claim_profiles, only: [:show, :update]
   get "list-your-practice", to: "list_your_practice#index"
   resources :doctors do
