@@ -1,5 +1,4 @@
 class IpCheckController < ApplicationController
-
   def index
     @geo_result = Geocoder.search(request.remote_ip).first
 
@@ -9,5 +8,4 @@ class IpCheckController < ApplicationController
     @result = Geocoder.search(@coords).first
     @location_string = (@result.data["address"] || {})["city"]
   end
-
 end
