@@ -32,6 +32,7 @@ module DoctorSearch
   # tries to find a doctor in 50 km radius first and then fallbacks to 10000km radius
   # results are ordered in the order of distance to the selected location
   def apply_location_filter
+    return @default_scope if @params[:doctor_name].present?
     return @default_scope unless @params[:near].present? || @params[:place].present? || @current_location.present?
     near = @default_scope.near(
       to_coordinates(@params[:near]) || @params[:place] || @current_location,

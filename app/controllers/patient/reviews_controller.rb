@@ -7,7 +7,7 @@ module Patient
 
     def create
       doctor = Doctor.find_by_id(params[:doctor_id])
-      profile_url = "/#{doctor.profile_url}#reviews"
+      profile_url = "#{request.base_url}#{doctor.profile_url}#reviews"
 
       redirect_to(profile_url)
     end
