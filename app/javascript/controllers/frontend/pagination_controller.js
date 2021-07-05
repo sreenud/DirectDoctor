@@ -26,7 +26,7 @@ export default class extends Controller {
         const paramObj = new URLSearchParams(query);
         const page = paramObj.get('page');
         const url = this.urlValue;
-
+        console.log(url);
         const currentURL = this.currentUrlValue;
         if (page !== undefined && page !== null && page !== '') {
           showLoading();

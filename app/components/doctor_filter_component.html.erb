@@ -1,4 +1,4 @@
-<%= form_tag(search_map_path, method: 'get', data: {controller: 'filter', filter_target: 'form'}) do%>
+<%= form_tag(search_map_path, method: 'get', data: {controller: 'filter', filter_target: 'form', filter_search_url: "#{request.base_url}#{request.path}" }) do%>
   <div class="w-full mt-2 flex justify-between">
     <span class="border border-gray-400 font-hurmebold text-sm tracking-wide p-1 rounded">Filter by</span>
     <div class="lg:hidden pr-5 pt-3" data-action="click->customjs#filterClick">

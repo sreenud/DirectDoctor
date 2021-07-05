@@ -9,7 +9,7 @@ import ParamRedirect, {
 } from './param_redirect';
 
 export default class FilterController extends Controller {
-  static targets = ['form', 'near', 'clear'];
+  static targets = ['form', 'near', 'clear', 'searchUrl'];
 
   connect() {
     this.timeout = null;
@@ -81,6 +81,7 @@ export default class FilterController extends Controller {
   }
 
   buildResults() {
+    const searchUrl = this.data.get('searchUrl');
     document.querySelector('#search-side-bar').classList.add('hidden');
     const formValues = this.formValue(this.formTarget);
     this.getResults().then(
@@ -103,7 +104,7 @@ export default class FilterController extends Controller {
         }
         URIPush({
           changeParams: formValues,
-          route: '/search-map',
+          route: searchUrl,
           removeParams: ['page', ...this.removedFilters(formValues)],
         });
         AddHoverHighlight();
@@ -136,12 +137,13 @@ export default class FilterController extends Controller {
   }
 
   getResults() {
+    const searchUrl = this.data.get('searchUrl');
     showLoading();
     return ajax({
       url: ParamUrl({
         changeParams: this.formValue(this.formTarget),
         removeParams: ['page'],
-        route: '/search-map.json',
+        route: `${searchUrl}.json`,
       }),
     });
   }

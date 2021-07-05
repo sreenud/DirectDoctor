@@ -170,12 +170,13 @@ export default class extends Controller {
   }
 
   getResults({ lat, lng }) {
+    const searchUrl = this.data.get('searchUrl');
     const near = `${lat},${lng}`;
     showLoading();
     ajax({
       url: ParamUrl({
         changeParams: { near },
-        route: '/search-map.json',
+        route: `${searchUrl}.json`,
         removeParams: ['place', 'page'],
       }),
     }).then(
@@ -197,7 +198,7 @@ export default class extends Controller {
         }
         URIPush({
           changeParams: { near },
-          route: '/search-map',
+          route: `${searchUrl}`,
           removeParams: ['place', 'page'],
         });
         AddHoverHighlight();

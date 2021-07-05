@@ -42,6 +42,7 @@ class BaseController < ApplicationController
     coords = coordinates.split(",").map(&:to_f)
     result = Geocoder.search(coords).first
     @location_string = (result.data["address"] || {})["city"]
+    @current_location_coords = coordinates
   end
 
   def validate_role

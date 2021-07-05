@@ -8,6 +8,7 @@ module DoctorSearch
   def search(params, current_location: DEFAULT_LOCATION)
     @params = params
     @current_location = to_coordinates(current_location)
+
     @default_scope = Doctor
     apply_filters
   end
@@ -34,6 +35,7 @@ module DoctorSearch
   def apply_location_filter
     return @default_scope if @params[:doctor_name].present?
     return @default_scope unless @params[:near].present? || @params[:place].present? || @current_location.present?
+
     near = @default_scope.near(
       to_coordinates(@params[:near]) || @params[:place] || @current_location,
       SEARCH_RADIUS,
@@ -67,7 +69,6 @@ module DoctorSearch
 
   def convert_speciality_name_to_speciality
     return if @params[:speciality].present? || !@params[:speciality_name].present?
-
     @params[:speciality] = Speciality.where("name ilike '%#{@params[:speciality_name].downcase}%'").pluck(:code)
   end
 

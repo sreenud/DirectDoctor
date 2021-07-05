@@ -10,7 +10,7 @@ class SearchesController < BaseController
   def index_two
     state = State.valid_state(params[:place])
     @state_cities = state.locations.top.limit(60) if state
-
+    current_location = @current_location_coords
     @pagy, @doctors = pagy(
       Doctor.includes(:speciality, :review_data).published.search(search_params,
         current_location: current_location), items: 10
