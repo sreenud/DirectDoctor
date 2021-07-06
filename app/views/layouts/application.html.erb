@@ -11,7 +11,7 @@
     <link rel="dns-prefetch" href="https://cdn.rawgit.com">
     <link rel="dns-prefetch" href="https://www.googletagmanager.com">
     <script src="https://maps.googleapis.com/maps/api/js?key=<%= Rails.application.credentials[:google_maps_api_key] %>&libraries=places&callback=initPlaces" async defer data-turbolinks-eval="false"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/gmaps.js/0.4.25/gmaps.min.js" integrity="sha512-gauu0VKZq9ry8hOZHgNpcB2ogbSDojs+XLDItpOLY0IyA+KigeuT/suwSdPgfU/TGYLAn4Nan4OeaCa/UPr70Q==" crossorigin="anonymous"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/gmaps.js/0.4.25/gmaps.min.js" integrity="sha512-gauu0VKZq9ry8hOZHgNpcB2ogbSDojs+XLDItpOLY0IyA+KigeuT/suwSdPgfU/TGYLAn4Nan4OeaCa/UPr70Q==" crossorigin="anonymous" async defer></script>
     <% if Rails.env.development? %>
       <%= stylesheet_pack_tag 'application_style', media: 'all', 'data-turbolinks-track': 'reload', :async => "async"%>
     <% else %>
@@ -30,8 +30,8 @@
       
       gtag('config', 'UA-151952917-2');
     </script>
-    <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
-    <script src="https://cdn.rawgit.com/nnattawat/flip/master/dist/jquery.flip.min.js"></script>
+    <script async src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script async src="https://cdn.rawgit.com/nnattawat/flip/master/dist/jquery.flip.min.js"></script>
   </head>
   <body class="font-glacial text-px18 overflow-x-hidden" itemscope itemtype="http://schema.org/WebPage">
     <%= render partial: 'shared/header' %>
