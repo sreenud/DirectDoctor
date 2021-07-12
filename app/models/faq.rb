@@ -1,6 +1,4 @@
 class Faq < ApplicationRecord
-
-
   scope :latest, -> { order(created_at: :desc) }
   scope :published, -> { where(status: "published") }
 

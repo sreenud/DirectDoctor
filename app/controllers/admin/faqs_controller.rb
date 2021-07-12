@@ -57,7 +57,6 @@ module Admin
     end
 
     def faq_params
-
       params.require(:faq).permit(:name, :slug, :content, :author_id, :image,
         :meta_title, :meta_description, :h1_tag, :status)
     end

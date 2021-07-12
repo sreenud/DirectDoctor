@@ -1,6 +1,6 @@
 class CreateFaq < ActiveRecord::Migration[6.0]
   def change
-    create_table :faqs do |t|
+    create_table(:faqs) do |t|
       t.string(:name)
       t.string(:slug)
       t.string(:code)
