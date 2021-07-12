@@ -87,12 +87,13 @@ class SearchesController < BaseController
     end
     if params[:city].present? &&  params[:city] != "doctor_default"
       city = Location.where(name: params[:city].titleize)&.first
-      city = city&.name
+      # city = city&.name
+      place_name = city&.name
     end
 
     {}.tap do |h|
       h[:style] = params[:style]
-      h[:city] = city
+      # h[:city] = city
       h[:place] = place_name
       h[:speciality] = @special_speciality
       h[:doctor_name] = params[:doctor_name]

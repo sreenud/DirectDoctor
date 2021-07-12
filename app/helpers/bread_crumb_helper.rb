@@ -67,7 +67,7 @@ module BreadCrumbHelper
       end
 
       bread_crumbs << [
-        "name" => speciality.name,
+        "name" => speciality&.name,
         "type" => "speciality",
       ]
     end

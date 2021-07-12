@@ -6,6 +6,7 @@ namespace :admin do
     resources :tips
     resources :tags
   end
+  resources :faqs
   resources :users
   resources :media_storages, only: [:create, :destroy]
   resources :page_redirects
