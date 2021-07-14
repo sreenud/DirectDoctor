@@ -8,7 +8,7 @@ module SrpSchemaHelper
       doctor_image = display_image.present? ? display_image : "#{website_url}/doctor_default.svg"
 
       doctor_schema = {
-       "@context": "http://schema.org",
+        "@context": "http://schema.org",
         "@type": "Physician",
         "name": doctor.name,
         "image": doctor_image,
@@ -35,7 +35,7 @@ module SrpSchemaHelper
             "@type": "Country",
             "name": "USA",
           },
-        }
+        },
       }
       list.push(doctor_schema)
     end
