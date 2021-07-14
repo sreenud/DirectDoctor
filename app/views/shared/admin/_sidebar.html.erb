@@ -88,6 +88,10 @@
         <% menu_classes = admin_menu_classes(controller: "reviews") %>
         <a href="<%=admin_reviews_url%>" class="block leading-tight ml-10 mb-2 mt-2 text-sm text-gray-600 px-2 hover:text-indigo-900 <%=menu_classes[:active_class]%>">Reviews</a>
       <% end %>
+      <% if current_user.has_role?('admin') %>
+        <% menu_classes = admin_menu_classes(controller: "faqs") %>
+        <a href="<%=admin_reviews_url%>" class="block leading-tight ml-10 mb-2 mt-2 text-sm text-gray-600 px-2 hover:text-indigo-900 <%=menu_classes[:active_class]%>">Reviews</a>
+      <% end %>
     </nav>
   </nav>
   <a href="" class="absolute bottom-0 flex items-center mb-5 pl-4">

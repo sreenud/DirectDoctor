@@ -1,5 +1,7 @@
 class SearchesController < BaseController
   include Pagy::Frontend
+  include SrpSchemaHelper
+  include ApplicationHelper
   # before_action :set_meta_data, only: [:index]
   before_action :load_gmap, only: [:index_two]
   before_action :set_location_string, only: [:index_two]
@@ -15,6 +17,9 @@ class SearchesController < BaseController
       Doctor.includes(:speciality, :review_data).published.search(search_params,
         current_location: current_location), items: 10
     )
+
+    @faqs = Faq.published
+    @schema = generate_schema(@doctors)
     respond_to do |format|
       format.html
       format.json { render(json: json_results) } # for limiting the usage of map render calls
@@ -30,6 +35,9 @@ class SearchesController < BaseController
       Doctor.includes(:speciality, :review_data).published.search(converted_params,
         current_location: current_location), items: 10
     )
+
+    @faqs = Faq.published
+    @schema = generate_schema(@doctors)
     respond_to do |format|
       format.html { render(:index_two) }
       format.json { render(json: json_results) } # for limiting the usage of map render calls

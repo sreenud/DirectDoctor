@@ -1,0 +1,55 @@
+<%= form_with(model: [:admin, faq], class: "flex w-full", data: {type: "html", action: "ajax:error->message#errorHandler ajax:success->message#success" }) do |form| %>
+  <div class="flex-1 mb-6 mr-4">
+    <div class="bg-white border pb-16 rounded shadow p-5">
+      <div class="tab_wrapper" x-data="{ tab: window.location.hash ? window.location.hash.substring(1) : 'faq' }">
+        <nav class="flex border-b">
+          <div @click.prevent="tab = 'faq'; window.location.hash = 'faq'" :class="{ '-mb-px': tab === 'faq' }">
+            <a :class="tab === 'faq' ? 'border-l border-t border-r rounded-t text-blue-700' : 'text-blue-500 hover:text-blue-800'" href="#" class="bg-white inline-block py-2 px-4 font-semibold">Faq</a>
+          </div>
+          <div @click.prevent="tab = 'meta'; window.location.hash = 'meta'" :class="{ '-mb-px': tab === 'meta' }">
+            <a :class="tab === 'meta' ? 'border-l border-t border-r rounded-t text-blue-700' : 'text-blue-500 hover:text-blue-800'" href="#" class="bg-white inline-block py-2 px-4 font-semibold">Meta tags</a>
+          </div>
+        </nav>
+        <div class="w-full pt-4">
+          <div x-show="tab === 'faq'">
+            <div class="input-group">
+              <%= form.label :faq_name, :class => "label text-gray-500" %>
+              <%= form.text_field :name, :class => "input bg-white", :autocomplete => "off", data: {action: "keyup->slug#updateSlug", record: form.object.new_record?} %>
+            </div>
+            <div class="input-group">
+              <%= form.label :faq_slug, :class => "label text-gray-500" %>
+              <%= form.text_field :slug, :class => "input bg-white", :autocomplete => "off", data: {target: "slug.slug"} %>
+            </div>
+            <div class="input-group">
+              <%= form.label :content, :class => "label text-gray-500" %>
+              <%= form.text_area :content, :class => "input bg-white tinymce" %>
+            </div>
+          </div>
+          <div x-show="tab === 'meta'">
+            <div class="input-group">
+              <%= form.label :meta_title, :class => "label text-gray-500" %>
+              <%= form.text_field :meta_title, :class => "input bg-white", :autocomplete => "off" %>
+            </div>
+            <div class="input-group">
+              <%= form.label :meta_description, :class => "label text-gray-500" %>
+              <%= form.text_area :meta_description, :class => "input bg-white"%>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="float-left pt-5">
+        <%= form.button(type: "submit", class: "btn btn-md btn-default btn-dd-blue btn-outline text-sm font-bold float-right", data: {disable_with: "<i class='fab fa fa-spinner fa-spin pr-2'></i> Saving in..." }) do %>
+          <span><i class='fab fa fa-floppy-o pr-2'></i><%=button_text%> faq</span>
+        <% end %>
+      </div>
+    </div>
+  </div>
+  <div class="w-1/4">
+    <div class="bg-white border p-5 rounded shadow">
+      <div class="input-group">
+        <%= form.label :faq_status, :class => "label text-gray-500" %>
+        <%= form.select(:status, statuses.map {|k, v| [k.humanize.capitalize, v]}, {}, {class: "select"}) %>
+      </div>
+    </div>
+  </div>
+<% end %>

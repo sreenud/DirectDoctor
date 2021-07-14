@@ -52,7 +52,7 @@ module Admin
 
     private
 
-    def set_tip
+    def set_faq
       @faq = Faq.find(params[:id])
     end
 

@@ -191,23 +191,32 @@
           </li>
         </ul>
       </div>
-      <div class="w-full lg:w-8/12 py-8 border-gray-300 border-b">
+      <div class="w-full lg:w-8/12 py-8 border-gray-300 border-b" itemscope="" itemtype="https://schema.org/FAQPage">
         <div class=" text-black mb-3 text-xl">Frequently Asked Questions</div>
-        <ul class="list-decimal pl-8">
-          <li class="mb-5">
-            <div class="mb-2">What are the different types of dental specialists?</div>
-            <div class="text-sm text-gray-700">This type of speciality deals with straightening of the teeth and jaw. The orthodontist will fit braces and treat disorders of the teeth. They will also deal with issues involving bone around the mouth area.</br>
-            This type of specialisation is related to cosmetic dentistry. They implants to replace removed teeth and also treat prosthetics in mouth.
-          </div>
-        </li>
-        <li class="mb-5">
-          <div class="mb-2">What are the different types of dental specialists?</div>
-          <div class="text-sm text-gray-700">This type of speciality deals with straightening of the teeth and jaw. The orthodontist will fit braces and treat disorders of the teeth. They will also deal with issues involving bone around the mouth area.</br>
-          This type of specialisation is related to cosmetic dentistry. They implants to replace removed teeth and also treat prosthetics in mouth.
-        </div>
-      </li>
-    </ul>
+        <% if @faqs.present? %>
+          <ul class="list-decimal pl-8">
+            <% @faqs&.each do |faq| %>
+              <li class="mb-5" itemscope="" itemprop="mainEntity" itemtype="https://schema.org/Question">
+                <div class="mb-2" itemprop="name"><%=faq.name%></div>
+                <div class="text-sm text-gray-700" itemscope="" itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+                  <p itemprop="text"><%=faq.content.html_safe%></p>
+                </div>
+              </li>
+            <% end %>
+          </ul>
+        <% else %>
+          <div class="mt-6">No Faq's found</div>
+        <% end %>
+      </div>
+    </div>
   </div>
 </div>
-</div>
-</div>
+<% if @schema.present? %>
+  <% content_for :jsond_schema do %>
+    <% @schema.each do |value, key| %>
+      <script type="application/ld+json">
+        <%= raw value.to_json %>
+      </script>
+    <% end %>
+  <% end %>
+<% end %>
