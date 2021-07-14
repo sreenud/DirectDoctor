@@ -4,7 +4,7 @@ module SrpSchemaHelper
 
     doctors.each do |doctor|
       list.push(
-       "@context": "http://health-lifesci.schema.org",
+       "@context": "http://schema.org",
         "@type" => "Physician",
         "name" => doctor.name,
         "image": doctor_display_image(doctor),
