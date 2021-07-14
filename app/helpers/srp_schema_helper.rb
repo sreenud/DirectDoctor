@@ -1,13 +1,18 @@
 module SrpSchemaHelper
   def generate_schema(doctors)
     list = []
+    website_url = "https://www.findmydirectdoctor.com"
 
     doctors.each do |doctor|
+      display_image = doctor_display_image(doctor)
+      doctor_image = display_image.present? ? display_image : "#{website_url}/doctor_default.svg"
+
       doctor_schema = {
-        "@context": "http://schema.org",
+       "@context": "http://schema.org",
         "@type": "Physician",
         "name": doctor.name,
-        "url": "https://www.findmydirectdoctor.com#{doctor.profile_url}",
+        "image": doctor_image,
+        "url": "#{website_url}#{doctor.profile_url}",
         "currenciesAccepted": "USD",
         "priceRange": doctor.price,
         "branchOf": {
@@ -30,9 +35,8 @@ module SrpSchemaHelper
             "@type": "Country",
             "name": "USA",
           },
-        },
+        }
       }
-      doctor_schema["image"] = doctor_display_image(doctor) if doctor_display_image(doctor).present?
       list.push(doctor_schema)
     end
     list
