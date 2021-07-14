@@ -3,11 +3,11 @@ module SrpSchemaHelper
     list = []
 
     doctors.each do |doctor|
-      list.push(
+
+      doctor_schema = {
        "@context": "http://schema.org",
-        "@type" => "Physician",
-        "name" => doctor.name,
-        "image": doctor_display_image(doctor),
+        "@type": "Physician",
+        "name": doctor.name,
         "url": "https://www.findmydirectdoctor.com#{doctor.profile_url}",
         "currenciesAccepted": "USD",
         "priceRange": doctor.price,
@@ -32,7 +32,9 @@ module SrpSchemaHelper
             "name": "USA",
           },
         }
-     )
+      }
+      doctor_schema["image"] = doctor_display_image(doctor) if doctor_display_image(doctor).present?
+      list.push(doctor_schema)
     end
     list
   end
