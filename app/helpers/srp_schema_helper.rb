@@ -32,7 +32,7 @@ module SrpSchemaHelper
             "name": "USA",
           },
         }
-      )
+     )
     end
     list
   end
