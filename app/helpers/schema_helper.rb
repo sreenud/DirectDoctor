@@ -1,5 +1,5 @@
-module SrpSchemaHelper
-  def generate_schema(doctors)
+module SchemaHelper
+  def srp_page_schema(doctors)
     list = []
     website_url = "https://www.findmydirectdoctor.com"
 
@@ -40,5 +40,34 @@ module SrpSchemaHelper
       list.push(doctor_schema)
     end
     list
+  end
+
+  def practice_style_bread_crumb_schema(practice_style)
+    website_url = "https://www.findmydirectdoctor.com"
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement":
+      [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "item":
+          {
+            "@id": website_url,
+            "name": "Home",
+          },
+        },
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "item":
+          {
+            "@id": "#{website_url}/#{practice_style}",
+            "name": practice_style.upcase,
+          },
+        },
+      ],
+    }
   end
 end

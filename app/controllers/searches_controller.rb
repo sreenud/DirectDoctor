@@ -1,6 +1,6 @@
 class SearchesController < BaseController
   include Pagy::Frontend
-  include SrpSchemaHelper
+  include SchemaHelper
   include ApplicationHelper
   # before_action :set_meta_data, only: [:index]
   before_action :load_gmap, only: [:index_two]
@@ -19,7 +19,7 @@ class SearchesController < BaseController
     )
 
     @faqs = Faq.published
-    @schema = generate_schema(@doctors)
+    @schema = srp_page_schema(@doctors)
     respond_to do |format|
       format.html
       format.json { render(json: json_results) } # for limiting the usage of map render calls
@@ -37,7 +37,7 @@ class SearchesController < BaseController
     )
 
     @faqs = Faq.published
-    @schema = generate_schema(@doctors)
+    @schema = srp_page_schema(@doctors)
     respond_to do |format|
       format.html { render(:index_two) }
       format.json { render(json: json_results) } # for limiting the usage of map render calls
