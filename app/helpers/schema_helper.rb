@@ -52,19 +52,19 @@ module SchemaHelper
         {
           "@type": "ListItem",
           "position": 1,
+          "name": "Home",
           "item":
           {
             "@id": website_url,
-            "name": "Home",
           },
         },
         {
           "@type": "ListItem",
-          "position": 1,
+          "position": 2,
+          "name": practice_style.upcase,
           "item":
           {
             "@id": "#{website_url}/#{practice_style}",
-            "name": practice_style.upcase,
           },
         },
       ],
