@@ -6,6 +6,8 @@
   </div>
   <div class="lg:col-span-10 mt-10 px-6 lg:px-16 mb-10">
     <div class="border-b pb-8 mt-12">
+      <%=render partial: 'specialty/bread_crumb', locals: { specialty: @specialty } %>
+      <h1 class="text-3xl font-glacialbold my-12 text-center"><%=@specialty&.name%> Specialists In US</h1>
       <div class=" font-glacialbold text-xl mb-2">
         Search <%=@specialty&.name%> doctors by state
       </div>
@@ -51,7 +53,7 @@
         You deserve better healthcare!
       </div>
       <p class="">
-        <h1 class="text-xl my-4">Find your Direct Primary Care Physician or Concierge Doctor </h1>
+        <h2 class="text-xl my-4">Find your Direct Primary Care Physician or Concierge Doctor </h2>
       </p>
       <div class="flex mt-4">
         <div data-controller="searches" data-action="google-maps-callback@window->searches#initPlaces" class="w-full">
@@ -82,3 +84,8 @@
     </div>
   </div>
 </section>
+<% content_for :jsond_schema do %>
+  <script type="application/ld+json">
+    <%= raw @breadcrumb_schema.to_json %>
+  </script>
+<% end %>

@@ -10,6 +10,14 @@ class Speciality < ApplicationRecord
 
   before_save :generate_slug
 
+  def practice_style
+    if name.split(" ").include?("Concierge")
+      "cm"
+    else
+      "dpc"
+    end
+  end
+
   private
 
   def generate_slug

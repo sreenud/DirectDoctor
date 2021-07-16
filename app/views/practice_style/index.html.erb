@@ -10,7 +10,7 @@
         You deserve better healthcare!
       </div>
       <p class="">
-        <h1 class="text-xl my-4">Find your Direct Primary Care Physician or Concierge Doctor </h1>
+        <div class="text-xl my-4">Find your Direct Primary Care Physician or Concierge Doctor </div>
       </p>
       <div class="flex mt-4">
         <div data-controller="searches" data-action="google-maps-callback@window->searches#initPlaces" class="w-full">
@@ -56,7 +56,8 @@
       <% if params[:practice_style] == "dpc" %>
         <h1>Direct Primary Care Physicians in US</h1>
       <% else %>
-        Search Concierge Medicine doctors by specialty
+        <h1 class="inline-block">Concierge Doctors in US</h1>
+        by specialty
       <% end %>
     </div>
     <div class="flex flex-wrap">

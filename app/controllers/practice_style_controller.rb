@@ -18,12 +18,17 @@ class PracticeStyleController < BaseController
   private
 
   def set_meta_data
-    practice_style = params[:practice_style]&.upcase
+    practice_style = params[:practice_style]
 
     @no_directory = true
-    @meta_title ||= "#{practice_style} Physician Index - Information about #{practice_style} Doctors
-      | Findmydirectdoctor.com"
-    @meta_description ||= "#{practice_style} Physician Index - Information about #{practice_style} Doctors.
-      Find a #{practice_style} Doctor Online and book appointments instantly! | Findmydirectdoctor.com"
+    if practice_style == "dpc"
+      @meta_title ||= "DPC Physician Index - Information about DPC Doctors | Findmydirectdoctor.com"
+      @meta_description ||= "DPC Physician Index - Information about DPC Doctors.
+        Find a DPC Doctor Online and book appointments instantly! | Findmydirectdoctor.com"
+    else
+      @meta_title ||= "Concierge Doctors Index - Information about Concierge Physicians | Findmydirectdoctor.com"
+      @meta_description ||= " Concierge Doctors Index - Information about Concierge Physicians.
+        Find a Concierge Doctor Online and book appointments instantly! | Findmydirectdoctor.com"
+    end
   end
 end

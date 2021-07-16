@@ -70,4 +70,42 @@ module SchemaHelper
       ],
     }
   end
+
+  def specialty_bread_crumb_schema(specialty)
+    website_url = "https://www.findmydirectdoctor.com"
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement":
+      [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item":
+          {
+            "@id": website_url,
+          },
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": specialty&.practice_style&.upcase,
+          "item":
+          {
+            "@id": "#{website_url}/#{specialty.practice_style}",
+          },
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": specialty.name,
+          "item":
+          {
+            "@id": "#{website_url}/#{specialty.practice_style}/#{specialty&.code&.downcase}",
+          },
+        },
+      ],
+    }
+  end
 end
