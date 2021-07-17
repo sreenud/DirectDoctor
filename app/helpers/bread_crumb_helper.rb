@@ -1,5 +1,5 @@
 module BreadCrumbHelper
-  def search_page_bread_crumb(_location_string, params)
+  def search_page_bread_crumb(params)
     bread_crumbs = []
     bread_crumbs << [
       "name" => "Home",
@@ -73,5 +73,50 @@ module BreadCrumbHelper
     end
 
     bread_crumbs
+  end
+
+  def srp_page_bread_crumb(params)
+    request_path = request.path
+
+    bread_crumbs = []
+    bread_crumbs << [
+      "name" => "Home",
+      "url" => "/",
+      "type" => "home",
+      "code" => "",
+      "enable_link" => true,
+    ]
+
+    if params["state"].present? && request_path == "/all/doctors/#{params["state"]}"
+      state = State.find_by_code(params["state"].upcase)
+      bread_crumbs << [
+        "name" => "#{state.name}, USA",
+        "type" => "state",
+        "code" => params["state"],
+        "url" => "/all/doctors/#{params["state"]}",
+        "enable_link" => false,
+      ]
+    end
+
+    if params["state"].present? && params["city"].present? &&
+      request_path == "/all/doctors/#{params["state"]}/#{params["city"]}"
+
+      state = State.find_by_code(params["state"].upcase)
+
+      bread_crumbs << [
+        "name" => state.name.to_s,
+        "type" => "state",
+        "code" => params["state"],
+        "url" => "/all/doctors/#{params["state"]}",
+        "enable_link" => true,
+      ]
+      bread_crumbs << [
+        "name" => params["city"].titleize.to_s,
+        "type" => "city",
+        "code" => params["city"],
+        "url" => "/all/doctors/#{params["state"]}/#{params["city"].titleize}",
+        "enable_link" => false,
+      ]
+    end
   end
 end
