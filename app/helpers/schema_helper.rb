@@ -108,4 +108,48 @@ module SchemaHelper
       ],
     }
   end
+
+  def srp_state_bread_crumb_schema(breadcrumbs)
+    list = []
+    website_url = "https://www.findmydirectdoctor.com"
+
+    breadcrumbs.each_with_index do |breadcrumb, index|
+      list.push(
+        {
+          "@type": "ListItem",
+          "position": index + 1,
+          "name": breadcrumb.first["name"],
+          "item":
+          {
+            "@id": "#{website_url}#{breadcrumb.first["url"]}",
+          },
+        }
+      )
+    end
+
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": list,
+    }
+  end
+
+  def local_business_schema(params)
+    website_url = "https://www.findmydirectdoctor.com"
+    if params["state"].present? && params["city"].present?
+      state = State.find_by_code(params["state"].upcase)
+      {
+        "@context": "https://schema.org",
+        "@type": "LocalBusiness",
+        "name": "Doctors in #{params["city"].titleize}",
+        "areaServed": state.name.to_s,
+        "image": "#{website_url}/logo.png",
+        "aggregateRating": {
+          "@type": "AggregateRating",
+          "ratingValue": "4.4",
+          "ratingCount": "332",
+        },
+      }
+    end
+  end
 end

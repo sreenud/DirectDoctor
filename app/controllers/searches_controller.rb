@@ -1,8 +1,9 @@
 class SearchesController < BaseController
   include Pagy::Frontend
   include SchemaHelper
+  include BreadCrumbHelper
   include ApplicationHelper
-  # before_action :set_meta_data, only: [:index]
+  before_action :set_meta_data, only: [:index, :index_two, :specialized_search]
   before_action :load_gmap, only: [:index_two]
   before_action :set_location_string, only: [:index_two]
 
@@ -20,6 +21,8 @@ class SearchesController < BaseController
 
     @faqs = Faq.published
     @schema = srp_page_schema(@doctors)
+    @srp_bread_crumbs = search_page_bread_crumb(params)
+
     respond_to do |format|
       format.html
       format.json { render(json: json_results) } # for limiting the usage of map render calls
@@ -38,6 +41,9 @@ class SearchesController < BaseController
 
     @faqs = Faq.published
     @schema = srp_page_schema(@doctors)
+    @local_business_schema = local_business_schema(params)
+    @srp_bread_crumbs = srp_page_bread_crumb(params)
+
     respond_to do |format|
       format.html { render(:index_two) }
       format.json { render(json: json_results) } # for limiting the usage of map render calls
@@ -110,7 +116,13 @@ class SearchesController < BaseController
   end
 
   def set_meta_data
-    @allow_robots = true
+    @allow_robots = false
+    @no_directory = true
+
+    place_holder = "#{params["state"].upcase}, USA" if params["state"].present?
+    @meta_title ||= "Find the nearest Concierge Doctors and Direct Primary Care Physicians in #{place_holder}"
+    @meta_description ||= "Find nearest Direct Primary Care Physicians and Concierge Doctors in
+      #{place_holder} on Findmydirectdoctor.com. Search by specialties, localities, symptoms, conditions etc."
   end
 
   def json_results

@@ -1,3 +1,4 @@
+# rubocop:disable Lint/UselessAssignment
 module ApplicationHelper
   include Pagy::Frontend
 
@@ -53,10 +54,16 @@ module ApplicationHelper
   end
 
   def search_page_h1_tag(location_string, params)
-    place = if location_string.present?
-      location_string
-    else
-      params[:place]&.titleize
+    place = params[:place]&.titleize
+    place = location_string if location_string.present?
+    place = if params[:state].present?
+      state = State.find_by_code(params["state"].upcase)
+      "#{state.name}, USA"
+    end
+
+    place = if params[:state].present? && params[:city].present?
+      state = State.find_by_code(params["state"].upcase)
+      "#{params[:city].titleize}, #{state.name}"
     end
 
     h1_tag_text = "Concierge Doctors/Direct Primary Care Physicians in #{place}"
