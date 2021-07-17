@@ -1,6 +1,6 @@
 <nav aria-label="Breadcrumb" class="text-sm">
   <ul class="list-none p-0 inline-flex">
-    <% @srp_bread_crumbs.each do |bread_crumb| %>
+    <% @srp_bread_crumbs&.each do |bread_crumb| %>
       <% if bread_crumb&.first["url"].present? && bread_crumb&.first["enable_link"] %>
         <li class="flex items-left">
           <a href="<%=bread_crumb&.first['url']%>" class="text-doctor-yellow pr-2"><%=bread_crumb&.first["name"]%></a>

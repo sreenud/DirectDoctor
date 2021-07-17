@@ -113,7 +113,7 @@ module SchemaHelper
     list = []
     website_url = "https://www.findmydirectdoctor.com"
 
-    breadcrumbs.each_with_index do |breadcrumb, index|
+    breadcrumbs&.each_with_index do |breadcrumb, index|
       list.push(
         {
           "@type": "ListItem",
