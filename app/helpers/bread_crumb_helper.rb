@@ -114,7 +114,7 @@ module BreadCrumbHelper
         "name" => params["city"].titleize.to_s,
         "type" => "city",
         "code" => params["city"],
-        "url" => "/all/doctors/#{params["state"]}/#{params["city"].titleize}",
+        "url" => "/all/doctors/#{params["state"]}/#{params["city"]}",
         "enable_link" => false,
       ]
     end
